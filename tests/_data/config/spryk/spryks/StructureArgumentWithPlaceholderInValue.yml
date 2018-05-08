@@ -1,0 +1,11 @@
+spryk: structure
+arguments:
+  module:
+    value: FooBar
+
+  directories:
+    value:
+      - src/
+
+  targetPath:
+    value: vendor/spryker/spryker/Bundles/%module%

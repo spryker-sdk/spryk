@@ -1,0 +1,11 @@
+spryk: template
+arguments:
+
+  template:
+    value: README.md
+
+  targetPath:
+    value: vendor/spryker/spryker/Bundles/
+
+preSpryks:
+  - StructureWithoutInteraction

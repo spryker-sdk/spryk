@@ -1,0 +1,15 @@
+spryk: structure
+arguments:
+
+  module:
+    value: CatFace
+
+  directories:
+    value:
+      - src/
+
+  targetPath:
+    value: vendor/spryker/spryker/Bundles/%module%
+
+postSpryks:
+  - TemplateWithoutInteraction

@@ -1,0 +1,8 @@
+spryk: template
+arguments:
+
+  template:
+    value: README.md
+
+  targetPath:
+    value: vendor/spryker/spryker/Bundles/Catface/

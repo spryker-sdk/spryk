@@ -1,0 +1,25 @@
+# IDEs
+/.idea
+/.project
+/nbproject
+/.buildpath
+/.settings
+*.sublime-*
+*.AppleDouble
+*.AppleDB
+*.AppleDesktop
+Temporary Items
+.apdisk
+GPATH
+GRTAGS
+GTAGS
+
+# OS
+.DS_Store
+
+.scrutinizer
+vendor/
+composer.phar
+
+tests/_output
+tests/_support/_generated/

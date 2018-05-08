@@ -1,0 +1,4 @@
+spryk: structure
+arguments:
+  module:
+    value: FooBar

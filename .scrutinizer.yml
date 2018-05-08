@@ -1,0 +1,15 @@
+build:
+    environment:
+        php: '7.1'
+
+    tests:
+        override:
+            - true
+
+build_failure_conditions:
+    - 'project.metric("scrutinizer.quality", < 10)'
+
+checks:
+    php:
+        code_rating: true
+        duplication: true

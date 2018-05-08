@@ -1,0 +1,10 @@
+spryk: structure
+arguments:
+  module: ~
+
+  directories:
+    value:
+      - src/
+
+  targetPath:
+    value: vendor/spryker/spryker/Bundles/
