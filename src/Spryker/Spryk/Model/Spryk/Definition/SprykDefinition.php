@@ -102,26 +102,6 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @return bool
-     */
-    public function isCalled(): bool
-    {
-        return $this->isCalled;
-    }
-
-    /**
-     * @param bool $isCalled
-     *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
-     */
-    public function setIsCalled(bool $isCalled): SprykDefinitionInterface
-    {
-        $this->isCalled = $isCalled;
-
-        return $this;
-    }
-
-    /**
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinition[]
      */
     public function getPreSpryks(): array

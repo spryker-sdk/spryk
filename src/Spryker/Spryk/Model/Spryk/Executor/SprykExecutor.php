@@ -10,6 +10,7 @@ namespace Spryker\Spryk\Model\Spryk\Executor;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinition;
+use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface;
 use Spryker\Spryk\Style\SprykStyleInterface;
 
@@ -36,6 +37,20 @@ class SprykExecutor implements SprykExecutorInterface
     protected $definitionCollection = [];
 
     /**
+     * @var string
+     */
+    protected $calledSpryk;
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface $sprykLoader
+     * @param \Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface $sprykBuilderCollection
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface $argumentResolver
+     */
+    const SPRYK_BUILDER_NAME = 'spryk';
+
+    const ARGUMENTS = 'arguments';
+
+    /**
      * @param \Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface $sprykLoader
      * @param \Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface $sprykBuilderCollection
      * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface $argumentResolver
@@ -55,54 +70,136 @@ class SprykExecutor implements SprykExecutorInterface
      */
     public function execute(string $sprykName, SprykStyleInterface $style): void
     {
-        $spryk = $this->sprykLoader->loadSpryk($sprykName);
+        $this->calledSpryk = $sprykName;
+        $sprykDefinition = $this->buildDefinition($sprykName, $style);
 
+        $this->buildSpryk($sprykDefinition, $style);
+    }
+
+    /**
+     * @param string $sprykName
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     */
+    protected function buildDefinition(string $sprykName, SprykStyleInterface $style): SprykDefinitionInterface
+    {
+        if (!isset($this->definitionCollection[$sprykName])) {
+            $sprykConfiguration = $this->sprykLoader->loadSpryk($sprykName);
+            $argumentCollection = $this->argumentResolver->resolve($sprykConfiguration[static::ARGUMENTS], $sprykName, $style);
+
+            $sprykDefinition = $this->createDefinition($sprykName, $sprykConfiguration[static::SPRYK_BUILDER_NAME]);
+            $sprykDefinition->setArgumentCollection($argumentCollection);
+            $sprykDefinition->setPreSpryks($this->getPreSpryks($sprykConfiguration, $style));
+            $sprykDefinition->setPostSpryks($this->getPostSpryks($sprykConfiguration, $style));
+
+            $this->definitionCollection[$sprykName] = $sprykDefinition;
+        }
+
+        return $this->definitionCollection[$sprykName];
+    }
+
+    /**
+     * @param string $sprykName
+     * @param string $builderName
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     */
+    protected function createDefinition(string $sprykName, string $builderName): SprykDefinitionInterface
+    {
         $sprykDefinition = new SprykDefinition();
         $sprykDefinition
-            ->setBuilder($spryk['spryk'])
+            ->setBuilder($builderName)
             ->setSprykName($sprykName);
 
-        $argumentCollection = $this->argumentResolver->resolve($spryk['arguments'], $style);
-        $sprykDefinition->setArgumentCollection($argumentCollection);
-
-        if (isset($spryk['preSpryks'])) {
-            foreach ($spryk['preSpryks'] as $sprykName) {
-                $this->execute($sprykName, $style);
-            }
-        }
-
-        $this->definitionCollection[$sprykDefinition->getBuilder()] = $sprykDefinition;
-
-        if (isset($spryk['postSpryks'])) {
-            foreach ($spryk['postSpryks'] as $sprykName) {
-                $this->execute($sprykName, $style);
-            }
-        }
-
-        $this->runBuildProcess($this->definitionCollection);
+        return $sprykDefinition;
     }
 
     /**
-     * @return void
+     * @param array $sprykConfiguration
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return array
      */
-    protected function buildDefinition(string $sprykName, SprykStyleInterface $style)
+    protected function getPreSpryks(array $sprykConfiguration, SprykStyleInterface $style): array
     {
-        $sprykConfiguration = $this->sprykLoader->loadSpryk($sprykName);
+        $preSpryks = [];
+        if (isset($sprykConfiguration['preSpryks'])) {
+            foreach ($sprykConfiguration['preSpryks'] as $preSprykName) {
+                if ($this->calledSpryk === $preSprykName) {
+                    continue;
+                }
+
+                $preSpryks[] = $this->buildDefinition($preSprykName, $style);
+            }
+        }
+
+        return $preSpryks;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[] $definitionCollection
+     * @param array $sprykConfiguration
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return array
+     */
+    protected function getPostSpryks(array $sprykConfiguration, SprykStyleInterface $style): array
+    {
+        $postSpryks = [];
+        if (isset($sprykConfiguration['postSpryks'])) {
+            foreach ($sprykConfiguration['postSpryks'] as $postSprykName) {
+                $postSpryks[] = $this->buildDefinition($postSprykName, $style);
+            }
+        }
+
+        return $postSpryks;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    private function runBuildProcess(array $definitionCollection)
+    protected function buildSpryk(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        foreach ($definitionCollection as $sprykDefinition) {
-            $builder = $this->sprykBuilderCollection->getBuilder($sprykDefinition);
-            $builder->build($sprykDefinition);
-        }
+        $this->buildPreSpryks($sprykDefinition, $style);
 
-//        if ($builder->shouldBuild($sprykDefinition)) {
-//        }
+        $builder = $this->sprykBuilderCollection->getBuilder($sprykDefinition);
+        $builder->build($sprykDefinition);
+
+        $this->buildPostSpryks($sprykDefinition, $style);
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return void
+     */
+    protected function buildPreSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
+    {
+        $preSpryks = $sprykDefinition->getPreSpryks();
+        if (count($preSpryks) > 0) {
+            foreach ($preSpryks as $preSprykDefinition) {
+                $this->buildSpryk($preSprykDefinition, $style);
+            }
+        }
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return void
+     */
+    protected function buildPostSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
+    {
+        $postSpryks = $sprykDefinition->getPostSpryks();
+        if (count($postSpryks) > 0) {
+            foreach ($postSpryks as $postSprykDefinition) {
+                $this->buildSpryk($postSprykDefinition, $style);
+            }
+        }
     }
 }

@@ -42,4 +42,28 @@ class SprykConsoleCommandTemplateTest extends Unit
 
         $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/Catface/');
     }
+
+    /**
+     * @return void
+     */
+    public function testReplacesContentInTemplate()
+    {
+        $command = new SprykConsoleCommand();
+        $tester = $this->tester->getCommandTester($command);
+
+        $arguments = [
+            'command' => $command->getName(),
+            SprykConsoleCommand::ARGUMENT_SPRYK => 'TemplateWithPlaceholder',
+        ];
+
+        $tester->setInputs(['FooBar']);
+        $tester->execute($arguments);
+
+        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json');
+
+        $this->assertRegExp(
+            '/"name": "spryker\/FooBar"/',
+            file_get_contents($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json')
+        );
+    }
 }

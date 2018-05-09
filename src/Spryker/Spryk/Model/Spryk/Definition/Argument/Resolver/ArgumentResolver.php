@@ -21,6 +21,16 @@ class ArgumentResolver implements ArgumentResolverInterface
     protected $argumentCollection;
 
     /**
+     * @var \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
+     */
+    protected $resolvedArgumentCollection;
+
+    /**
+     * @var \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface[]
+     */
+    protected $resolvedSprykArgumentCollection = [];
+
+    /**
      * @var \Spryker\Spryk\Style\SprykStyleInterface
      */
     protected $style;
@@ -31,54 +41,81 @@ class ArgumentResolver implements ArgumentResolverInterface
     public function __construct(ArgumentCollectionInterface $argumentCollection)
     {
         $this->argumentCollection = $argumentCollection;
+        $this->resolvedArgumentCollection = clone $argumentCollection;
     }
 
     /**
      * @param array $arguments
+     * @param string $sprykName
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
      */
-    public function resolve(array $arguments, SprykStyleInterface $style): ArgumentCollectionInterface
+    public function resolve(array $arguments, string $sprykName, SprykStyleInterface $style): ArgumentCollectionInterface
     {
+        if (isset($this->resolvedSprykArgumentCollection[$sprykName])) {
+            return $this->resolvedSprykArgumentCollection[$sprykName];
+        }
+
         $this->style = $style;
+        $argumentCollection = clone $this->argumentCollection;
 
         foreach ($arguments as $argumentName => $definition) {
-            if ($definition === null) {
-                $value = $this->askForArgumentValue($argumentName);
+            $value = $this->getValueForArgument($argumentName, $definition);
 
-                $argument = new Argument();
-                $argument
-                    ->setName($argumentName)
-                    ->setValue($value);
+            $argument = new Argument();
+            $argument
+                ->setName($argumentName)
+                ->setValue($value);
 
-                $this->argumentCollection->addArgument($argument);
+            $argumentCollection->addArgument($argument);
+            $this->resolvedArgumentCollection->addArgument($argument);
+        }
 
-                continue;
-            }
+        $argumentCollection = $this->replacePlaceholderInValues($argumentCollection);
 
-            if (isset($definition['default'])) {
-                $value = $this->askForArgumentValue($argumentName, $definition['default']);
+        $this->resolvedSprykArgumentCollection[$sprykName] = $argumentCollection;
 
-                $argument = new Argument();
-                $argument
-                    ->setName($argumentName)
-                    ->setValue($value);
+        return $argumentCollection;
+    }
 
-                $this->argumentCollection->addArgument($argument);
-            }
+    /**
+     * @param string $argumentName
+     * @param array|null $definition
+     *
+     * @return string|mixed
+     */
+    protected function getValueForArgument(string $argumentName, ?array $definition = null)
+    {
+        if (isset($definition['value'])) {
+            return $definition['value'];
+        }
 
-            if (isset($definition['value'])) {
-                $argument = new Argument();
-                $argument
-                    ->setName($argumentName)
-                    ->setValue($definition['value']);
+        $defaultValue = $this->getDefaultValue($argumentName, $definition);
 
-                $this->argumentCollection->addArgument($argument);
+        return $this->askForArgumentValue($argumentName, $defaultValue);
+    }
+
+    /**
+     * @param string $argument
+     * @param array|null $definition
+     *
+     * @return mixed|null
+     */
+    protected function getDefaultValue(string $argument, ?array $definition = null)
+    {
+        if (isset($definition['default'])) {
+            return $definition['default'];
+        }
+
+        if ($this->resolvedArgumentCollection->hasArgument($argument)) {
+            $argumentValue = $this->resolvedArgumentCollection->getArgument($argument)->getValue();
+            if (!is_array($argumentValue)) {
+                return $argumentValue;
             }
         }
 
-        return $this->replacePlaceholderInValues($this->argumentCollection);
+        return null;
     }
 
     /**

@@ -8,8 +8,6 @@ php:
 before_script:
     - composer self-update
     - composer install --prefer-dist --no-interaction
-    - mkdir -p data/install/logs
-    - chmod -R 777 data/install/logs
 
 script:
     - vendor/bin/codecept run --coverage-xml

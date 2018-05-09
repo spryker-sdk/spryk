@@ -8,6 +8,7 @@
 namespace Spryker\Spryk\Model\Spryk\Builder\Template;
 
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 
 class TemplateSpryk implements SprykBuilderInterface
@@ -19,6 +20,22 @@ class TemplateSpryk implements SprykBuilderInterface
 
     const ARGUMENT_TEMPLATE = 'template';
 
+    /**
+     * @var \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
+     */
+    protected $renderer;
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
+     */
+    public function __construct(TemplateRendererInterface $renderer)
+    {
+        $this->renderer = $renderer;
+    }
+
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return 'template';
@@ -47,9 +64,6 @@ class TemplateSpryk implements SprykBuilderInterface
         $targetPath = $this->getTargetPath($sprykerDefinition);
         $templateName = $this->getTemplateName($sprykerDefinition);
 
-        $templateDirectory = $this->getTemplateDirectory();
-
-        $sourcePath = $templateDirectory . $templateName;
         $targetPath = $targetPath . $templateName;
 
         $targetDirectory = dirname($targetPath);
@@ -58,15 +72,12 @@ class TemplateSpryk implements SprykBuilderInterface
             mkdir($targetDirectory, 0777, true);
         }
 
-        file_put_contents($targetPath, file_get_contents($sourcePath));
-    }
+        $content = $this->renderer->render(
+            $templateName,
+            $sprykerDefinition->getArgumentCollection()->getArguments()
+        );
 
-    /**
-     * @return string
-     */
-    protected function getTemplateDirectory(): string
-    {
-        return rtrim(APPLICATION_ROOT_DIR, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'spryk' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR;
+        file_put_contents($targetPath, $content);
     }
 
     /**

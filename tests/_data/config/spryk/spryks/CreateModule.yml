@@ -1,0 +1,14 @@
+spryk: structure
+arguments:
+  module: ~
+
+  directories:
+    value:
+      - src/
+
+  targetPath:
+    default: vendor/spryker/spryker/Bundles/%module%/
+
+postSpryks:
+  - AddReadme
+  - AddComposerJson

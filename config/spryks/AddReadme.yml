@@ -1,0 +1,13 @@
+spryk: template
+
+arguments:
+  module: ~
+
+  template:
+    value: README.md
+
+  targetPath:
+    default: vendor/spryker/spryker/Bundles/%module%/
+
+preSpryk:
+  - CreateModule

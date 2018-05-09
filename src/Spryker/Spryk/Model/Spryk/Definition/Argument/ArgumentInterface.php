@@ -32,4 +32,9 @@ interface ArgumentInterface
      * @return mixed
      */
     public function getValue();
+
+    /**
+     * @return mixed
+     */
+    public function __toString();
 }

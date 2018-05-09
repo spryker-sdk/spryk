@@ -63,4 +63,33 @@ class SprykConsoleCommandArgumentTest extends Unit
 
         $tester->execute($arguments);
     }
+
+    /**
+     * @return void
+     */
+    public function testAsksMultipleTimesForTheSameArgumentButFirstInputIsTakenAsDefault()
+    {
+        $command = new SprykConsoleCommand();
+        $tester = $this->tester->getCommandTester($command);
+
+        $arguments = [
+            'command' => $command->getName(),
+            SprykConsoleCommand::ARGUMENT_SPRYK => 'CreateModule',
+        ];
+
+        $tester->setInputs([
+            'FooBar',   // First answer for module
+            "\x0D",     // Use default for targetPath
+            "\x0D",     // Re-use first answer for module
+            "\x0D",     // Use default for targetPath
+            "\x0D",     // Re-use first answer for module
+            "\x0D",      // Use default for targetPath
+        ]);
+        $tester->execute($arguments);
+
+        $output = $tester->getDisplay();
+
+        $this->assertRegExp('/Enter value for module argument/', $output);
+        $this->assertRegExp('/Enter value for module argument \[FooBar\]/', $output);
+    }
 }

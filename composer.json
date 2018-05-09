@@ -5,7 +5,8 @@
   "require": {
     "php": ">=7.1",
     "symfony/console": "^3.0.0",
-    "symfony/yaml": "^3.0.0"
+    "symfony/yaml": "^3.0.0",
+    "twig/twig": "^2.4"
   },
   "require-dev": {
     "codeception/codeception": "*",

@@ -11,6 +11,8 @@ use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollection;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
@@ -79,7 +81,19 @@ class SprykFactory
      */
     public function createTemplateSpryk(): SprykBuilderInterface
     {
-        return new TemplateSpryk();
+        return new TemplateSpryk(
+            $this->createTemplateRenderer()
+        );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
+     */
+    public function createTemplateRenderer(): TemplateRendererInterface
+    {
+        return new TemplateRenderer(
+            $this->getConfig()->getTemplateDirectories()
+        );
     }
 
     /**
@@ -98,5 +112,13 @@ class SprykFactory
     public function createArgumentCollection(): ArgumentCollectionInterface
     {
         return new ArgumentCollection();
+    }
+
+    /**
+     * @return \Spryker\Spryk\SprykConfig
+     */
+    public function getConfig()
+    {
+        return new SprykConfig();
     }
 }

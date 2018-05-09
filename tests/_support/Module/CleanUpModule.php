@@ -15,6 +15,8 @@ use Symfony\Component\Finder\Finder;
 class CleanUpModule extends Module
 {
     /**
+     * @param \Codeception\TestInterface $test
+     *
      * @return void
      */
     public function _before(TestInterface $test): void

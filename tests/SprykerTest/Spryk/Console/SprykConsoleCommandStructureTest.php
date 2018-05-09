@@ -15,7 +15,7 @@ use Spryker\Spryk\Console\SprykConsoleCommand;
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandCreateStructureTest
+ * @group SprykConsoleCommandStructureTest
  * Add your own group annotations below this line
  */
 class SprykConsoleCommandStructureTest extends Unit

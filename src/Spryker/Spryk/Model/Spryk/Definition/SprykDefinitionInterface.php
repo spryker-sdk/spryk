@@ -48,18 +48,6 @@ interface SprykDefinitionInterface
     public function setArgumentCollection(ArgumentCollectionInterface $argumentCollection): SprykDefinitionInterface;
 
     /**
-     * @return bool
-     */
-    public function isCalled(): bool;
-
-    /**
-     * @param bool $isCalled
-     *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
-     */
-    public function setIsCalled(bool $isCalled): SprykDefinitionInterface;
-
-    /**
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinition[]
      */
     public function getPreSpryks(): array;

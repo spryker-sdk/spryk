@@ -7,14 +7,13 @@
 
 namespace Spryker\Spryk\Model\Spryk\Executor;
 
-
 use Spryker\Spryk\Style\SprykStyleInterface;
 
 interface SprykExecutorInterface
 {
     /**
      * @param string $sprykName
-     * @param SprykStyleInterface $style
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */

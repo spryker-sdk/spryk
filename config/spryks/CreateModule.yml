@@ -1,0 +1,15 @@
+spryk: structure
+
+arguments:
+  module: ~
+
+  targetPath:
+    value: .aSprykTest/vendor/spryker/spryker/Bundles/%module%/
+
+  directories:
+    value:
+      - src/
+
+postSpryks:
+#  - AddReadme
+  - AddComposerJson

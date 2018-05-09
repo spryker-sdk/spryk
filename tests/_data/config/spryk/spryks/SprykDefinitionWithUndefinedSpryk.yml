@@ -1,3 +1,4 @@
 spryk: undefinedSpryk
 arguments:
-  foo: bar
+  foo:
+    value: bar

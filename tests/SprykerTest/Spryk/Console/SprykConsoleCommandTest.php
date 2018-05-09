@@ -14,6 +14,7 @@ use Spryker\Spryk\Exception\BuilderNotFoundException;
 /**
  * Auto-generated group annotations
  * @group SprykerTest
+ * @group Spryk
  * @group Console
  * @group SprykConsoleCommandTest
  * Add your own group annotations below this line

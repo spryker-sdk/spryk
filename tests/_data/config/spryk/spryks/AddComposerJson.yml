@@ -1,0 +1,12 @@
+spryk: template
+arguments:
+  module: ~
+
+  template:
+    value: composer.json
+
+  targetPath:
+    default: vendor/spryker/spryker/Bundles/%module%/
+
+preSpryks:
+  - CreateModule
