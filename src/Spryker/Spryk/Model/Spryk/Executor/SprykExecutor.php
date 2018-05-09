@@ -25,6 +25,11 @@ class SprykExecutor implements SprykExecutorInterface
     protected $sprykBuilderCollection;
 
     /**
+     * @var string[]
+     */
+    protected $executedSpryks = [];
+
+    /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface $definitionBuilder
      * @param \Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface $sprykBuilderCollection
      */
@@ -64,11 +69,15 @@ class SprykExecutor implements SprykExecutorInterface
         $builder = $this->sprykBuilderCollection->getBuilder($sprykDefinition);
 
         $message = sprintf('<fg=green>%s</> already executed', $sprykDefinition->getSprykName());
+
         if ($builder->shouldBuild($sprykDefinition)) {
             $message = sprintf('<fg=green>%s</> build finished', $sprykDefinition->getSprykName());
 
             $builder->build($sprykDefinition);
         }
+
+        $this->executedSpryks[$sprykDefinition->getSprykName()] = $sprykDefinition;
+
         $style->write($message);
         $style->newLine();
 
@@ -93,6 +102,9 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         foreach ($preSpryks as $preSprykDefinition) {
+            if (isset($this->executedSpryks[$preSprykDefinition->getSprykName()])) {
+                continue;
+            }
             $this->buildSpryk($preSprykDefinition, $style);
         }
     }
@@ -111,6 +123,9 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         foreach ($postSpryks as $postSprykDefinition) {
+            if (isset($this->executedSpryks[$postSprykDefinition->getSprykName()])) {
+                continue;
+            }
             $this->buildSpryk($postSprykDefinition, $style);
         }
     }

@@ -65,11 +65,11 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
             $argumentCollection = $this->argumentResolver->resolve($sprykConfiguration[static::ARGUMENTS], $sprykName, $style);
 
             $sprykDefinition = $this->createDefinition($sprykName, $sprykConfiguration[static::SPRYK_BUILDER_NAME]);
+            $this->definitionCollection[$sprykName] = $sprykDefinition;
+
             $sprykDefinition->setArgumentCollection($argumentCollection);
             $sprykDefinition->setPreSpryks($this->getPreSpryks($sprykConfiguration, $style));
             $sprykDefinition->setPostSpryks($this->getPostSpryks($sprykConfiguration, $style));
-
-            $this->definitionCollection[$sprykName] = $sprykDefinition;
         }
 
         return $this->definitionCollection[$sprykName];
@@ -103,6 +103,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
         if (isset($sprykConfiguration['preSpryks'])) {
             foreach ($sprykConfiguration['preSpryks'] as $preSprykName) {
                 if ($this->calledSpryk === $preSprykName) {
+                    $preSpryks[] = $this->definitionCollection[$this->calledSpryk];
                     continue;
                 }
 

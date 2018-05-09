@@ -9,5 +9,5 @@ arguments:
   targetPath:
     default: vendor/spryker/spryker/Bundles/%module%/
 
-preSpryk:
+preSpryks:
   - CreateModule
