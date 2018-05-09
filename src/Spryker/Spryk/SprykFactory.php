@@ -18,6 +18,8 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolver;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface;
+use Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilder;
+use Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutor;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutorInterface;
 use Spryker\Spryk\Model\Spryk\Loader\SprykLoader;
@@ -31,8 +33,18 @@ class SprykFactory
     public function createSprykExecutor(): SprykExecutorInterface
     {
         return new SprykExecutor(
+            $this->createSprykDefinitionBuilder(),
+            $this->createSprykBuilderCollection()
+        );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface
+     */
+    public function createSprykDefinitionBuilder(): SprykDefinitionBuilderInterface
+    {
+        return new SprykDefinitionBuilder(
             $this->createConfigurationLoader(),
-            $this->createSprykBuilderCollection(),
             $this->createArgumentResolver()
         );
     }
