@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Style;
 
+use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use Symfony\Component\Console\Question\Question;
 
 interface SprykStyleInterface
@@ -22,46 +23,46 @@ interface SprykStyleInterface
     const OUTPUT_PLAIN = 4;
 
     /**
-     * @param string $sprykName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function startProcess(string $sprykName): void;
+    public function startSpryk(SprykDefinitionInterface $sprykDefinition): void;
 
     /**
-     * @param string $sprykName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function endProcess(string $sprykName): void;
+    public function endSpryk(SprykDefinitionInterface $sprykDefinition): void;
 
     /**
-     * @param string $sprykName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function startSpryk(string $sprykName): void;
+    public function startPreSpryks(SprykDefinitionInterface $sprykDefinition): void;
 
     /**
-     * @param string $sprykName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function endSpryk(string $sprykName): void;
+    public function endPreSpryks(SprykDefinitionInterface $sprykDefinition): void;
 
     /**
-     * @param string $sprykName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function dryRunSpryk(string $sprykName): void;
+    public function startPostSpryks(SprykDefinitionInterface $sprykDefinition): void;
 
     /**
-     * @param string $output
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function note(string $output): void;
+    public function endPostSpryks(SprykDefinitionInterface $sprykDefinition): void;
 
     /**
      * @param int $count

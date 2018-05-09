@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Console;
 
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 use Spryker\Spryk\SprykFacade;
 use Spryker\Spryk\Style\SprykStyle;
 use Spryker\Spryk\Style\SprykStyleInterface;
@@ -50,7 +51,9 @@ class SprykConsoleCommand extends Command
         $this->setName('spryker:spryk')
             ->setDescription('Runs a Spryk build process.')
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
-            ->addOption(static::OPTION_DRY_RUN, static::OPTION_DRY_RUN_SHORT, InputOption::VALUE_NONE, 'Dry runs the Spryk, nothing will be executed.');
+            ->addOption(static::OPTION_DRY_RUN, static::OPTION_DRY_RUN_SHORT, InputOption::VALUE_NONE, 'Dry runs the Spryk, nothing will be executed.')
+            ->addOption('module', 'm', InputOption::VALUE_REQUIRED, 'Module name to run for')
+            ->addOption('targetPath', 't', InputOption::VALUE_REQUIRED, 'TargetPath');
     }
 
     /**
@@ -64,19 +67,10 @@ class SprykConsoleCommand extends Command
         $this->input = $input;
         $this->output = $this->createOutput($input, $output);
 
+        OptionsContainer::setOptions($input->getOptions());
+
         $sprykName = $this->getSprykName($input);
-
-        if ($this->isDryRun()) {
-            $this->output->dryRunSpryk($sprykName);
-
-            return;
-        }
-
-        $this->output->startProcess($sprykName);
-
         $this->getFacade()->executeSpryk($sprykName, $this->output);
-
-        $this->output->endProcess($sprykName);
     }
 
     /**
@@ -101,14 +95,6 @@ class SprykConsoleCommand extends Command
     protected function getSprykName(InputInterface $input): string
     {
         return $input->getArgument(static::ARGUMENT_SPRYK);
-    }
-
-    /**
-     * @return bool
-     */
-    protected function isDryRun(): bool
-    {
-        return $this->input->getOption(static::OPTION_DRY_RUN);
     }
 
     /**

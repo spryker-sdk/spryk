@@ -10,6 +10,7 @@ namespace SprykerTest\Spryk\Console;
 use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykConsoleCommand;
 use Spryker\Spryk\Exception\BuilderNotFoundException;
+use Spryker\Spryk\Exception\SprykConfigFileNotFound;
 
 /**
  * Auto-generated group annotations
@@ -42,29 +43,7 @@ class SprykConsoleCommandTest extends Unit
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();
-        $this->assertRegExp('/Spryk StructureWithoutInteraction/', $output);
-        $this->assertNotRegExp('/Dry-run: Spryk StructureWithoutInteraction/', $output);
-    }
-
-    /**
-     * @return void
-     */
-    public function testDryRun()
-    {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'StructureWithoutInteraction',
-            '--' . SprykConsoleCommand::OPTION_DRY_RUN => true,
-        ];
-
-        $tester->setInputs(['FooBar']);
-        $tester->execute($arguments);
-
-        $output = $tester->getDisplay();
-        $this->assertRegExp('/Dry-run: Spryk StructureWithoutInteraction/', $output);
+        $this->assertRegExp('/Build StructureWithoutInteraction Spryk/', $output);
     }
 
     /**
@@ -81,6 +60,23 @@ class SprykConsoleCommandTest extends Unit
         ];
 
         $this->expectException(BuilderNotFoundException::class);
+        $tester->execute($arguments);
+    }
+
+    /**
+     * @return void
+     */
+    public function testThrowsExceptionWhenSprykConfigFileNotFound()
+    {
+        $command = new SprykConsoleCommand();
+        $tester = $this->tester->getCommandTester($command);
+
+        $arguments = [
+            'command' => $command->getName(),
+            SprykConsoleCommand::ARGUMENT_SPRYK => 'NotExistingSprykName',
+        ];
+
+        $this->expectException(SprykConfigFileNotFound::class);
         $tester->execute($arguments);
     }
 }

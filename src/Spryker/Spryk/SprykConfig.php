@@ -12,10 +12,26 @@ class SprykConfig
     /**
      * @return string[]
      */
+    public function getSprykDirectories(): array
+    {
+        $sprykDirectories = [
+            APPLICATION_ROOT_DIR . '/config/spryk/spryks/',
+            realpath(__DIR__ . '/../../../config/spryks'),
+        ];
+
+        return array_filter($sprykDirectories, 'is_dir');
+    }
+
+    /**
+     * @return string[]
+     */
     public function getTemplateDirectories(): array
     {
-        return [
+        $templateDirectories = [
             APPLICATION_ROOT_DIR . '/config/spryk/templates/',
+            realpath(__DIR__ . '/../../../config/templates'),
         ];
+
+        return array_filter($templateDirectories, 'is_dir');
     }
 }

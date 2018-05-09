@@ -55,12 +55,28 @@ class SprykExecutor implements SprykExecutorInterface
      */
     protected function buildSpryk(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
+        $style->startSpryk($sprykDefinition);
+
+        $style->startPreSpryks($sprykDefinition);
         $this->buildPreSpryks($sprykDefinition, $style);
+        $style->endPreSpryks($sprykDefinition);
 
         $builder = $this->sprykBuilderCollection->getBuilder($sprykDefinition);
-        $builder->build($sprykDefinition);
 
+        $message = sprintf('<fg=green>%s</> already executed', $sprykDefinition->getSprykName());
+        if ($builder->shouldBuild($sprykDefinition)) {
+            $message = sprintf('<fg=green>%s</> build finished', $sprykDefinition->getSprykName());
+
+            $builder->build($sprykDefinition);
+        }
+        $style->write($message);
+        $style->newLine();
+
+        $style->startPostSpryks($sprykDefinition);
         $this->buildPostSpryks($sprykDefinition, $style);
+        $style->endPostSpryks($sprykDefinition);
+
+        $style->endSpryk($sprykDefinition);
     }
 
     /**
@@ -72,10 +88,12 @@ class SprykExecutor implements SprykExecutorInterface
     protected function buildPreSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
         $preSpryks = $sprykDefinition->getPreSpryks();
-        if (count($preSpryks) > 0) {
-            foreach ($preSpryks as $preSprykDefinition) {
-                $this->buildSpryk($preSprykDefinition, $style);
-            }
+        if (count($preSpryks) === 0) {
+            return;
+        }
+
+        foreach ($preSpryks as $preSprykDefinition) {
+            $this->buildSpryk($preSprykDefinition, $style);
         }
     }
 
@@ -88,10 +106,12 @@ class SprykExecutor implements SprykExecutorInterface
     protected function buildPostSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
         $postSpryks = $sprykDefinition->getPostSpryks();
-        if (count($postSpryks) > 0) {
-            foreach ($postSpryks as $postSprykDefinition) {
-                $this->buildSpryk($postSprykDefinition, $style);
-            }
+        if (count($postSpryks) === 0) {
+            return;
+        }
+
+        foreach ($postSpryks as $postSprykDefinition) {
+            $this->buildSpryk($postSprykDefinition, $style);
         }
     }
 }

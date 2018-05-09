@@ -7,26 +7,48 @@
 
 namespace Spryker\Spryk\Model\Spryk\Loader;
 
+use Spryker\Spryk\Exception\SprykConfigFileNotFound;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\Yaml\Yaml;
 
 class SprykLoader implements SprykLoaderInterface
 {
     /**
+     * @var string[]
+     */
+    protected $sprykDirectories;
+
+    /**
+     * @param string[] $sprykDirectories
+     */
+    public function __construct(array $sprykDirectories)
+    {
+        $this->sprykDirectories = $sprykDirectories;
+    }
+
+    /**
      * @param string $sprykName
+     *
+     * @throws \Spryker\Spryk\Exception\SprykConfigFileNotFound
      *
      * @return array
      */
     public function loadSpryk(string $sprykName): array
     {
-        $pathToSpryks = implode(DIRECTORY_SEPARATOR, [
-            APPLICATION_ROOT_DIR,
-            'config',
-            'spryk',
-            'spryks',
-        ]) . DIRECTORY_SEPARATOR;
+        $fileName = sprintf('%s.yml', $sprykName);
 
-        $pathToSpryk = sprintf('%s%s.yml', $pathToSpryks, $sprykName);
+        $finder = new Finder();
+        $finder->in($this->sprykDirectories)->name($fileName);
 
-        return Yaml::parse(file_get_contents($pathToSpryk));
+        if (!$finder->hasResults()) {
+            throw new SprykConfigFileNotFound(sprintf('Could not find Spryk config file for "%s"', $sprykName));
+        }
+
+        $iterator = $finder->getIterator();
+        $iterator->rewind();
+
+        $sprykConfigFile = $iterator->current();
+
+        return Yaml::parse($sprykConfigFile->getContents());
     }
 }

@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Style;
 
+use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use Symfony\Component\Console\Helper\Helper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -57,45 +58,15 @@ class SprykStyle implements SprykStyleInterface
     }
 
     /**
-     * @param string $sprykName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function startProcess(string $sprykName): void
+    public function startSpryk(SprykDefinitionInterface $sprykDefinition): void
     {
-        $message = sprintf('Spryk <fg=green>%s</>', $sprykName);
-        $messageLengthWithoutDecoration = Helper::strlenWithoutDecoration($this->output->getFormatter(), $message);
-        $message = $message . str_pad(' ', $this->lineLength - $messageLengthWithoutDecoration);
-
-        $this->writeln([
-            str_repeat('=', $this->lineLength),
-            $message,
-            str_repeat('=', $this->lineLength),
-        ]);
-
         $this->newLine();
-    }
 
-    /**
-     * @param string $sprykName
-     *
-     * @return void
-     */
-    public function endProcess(string $sprykName): void
-    {
-        $message = sprintf('Spryk <fg=green>%s</> finished', $sprykName);
-        $this->newLine();
-        $this->writeln($message);
-    }
-
-    /**
-     * @param string $sprykName
-     *
-     * @return void
-     */
-    public function startSpryk(string $sprykName): void
-    {
-        $message = sprintf('<bg=green;options=bold> Spryk %s</>', $sprykName);
+        $message = sprintf('<bg=green;options=bold> Build %s Spryk</>', $sprykDefinition->getSprykName());
         $messageLengthWithoutDecoration = Helper::strlenWithoutDecoration($this->output->getFormatter(), $message);
         $messageLength = $this->lineLength - $messageLengthWithoutDecoration;
 
@@ -109,44 +80,67 @@ class SprykStyle implements SprykStyleInterface
     }
 
     /**
-     * @param string $sprykName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function endSpryk(string $sprykName): void
+    public function endSpryk(SprykDefinitionInterface $sprykDefinition): void
     {
         $this->newLine();
 
-        if ($this->output->isVerbose()) {
-            $message = sprintf('Spryk <fg=green>%s</> finished', $sprykName);
-            $this->writeln($message);
-            $this->writeln(str_repeat('=', $this->lineLength));
-            $this->newLine(3);
-        }
+        $message = sprintf('<fg=green>%s</> build finished', $sprykDefinition->getSprykName());
+        $this->writeln($message);
+        $this->writeln(str_repeat('=', $this->lineLength));
     }
 
     /**
-     * @param string $sprykName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function dryRunSpryk(string $sprykName): void
+    public function startPreSpryks(SprykDefinitionInterface $sprykDefinition): void
     {
-        $this->newLine();
-        $this->write(sprintf(' // Dry-run: Spryk <fg=green>%s</>', $sprykName));
-        $this->newLine(3);
+        $message = sprintf('<fg=green>%s</> has preSpryks', $sprykDefinition->getSprykName());
+
+        $hasPreSpryks = (count($sprykDefinition->getPreSpryks()) > 0);
+        if (!$hasPreSpryks) {
+            $message = sprintf('<fg=green>%s</> has no preSpryks', $sprykDefinition->getSprykName());
+        }
+        $this->writeln($message);
     }
 
     /**
-     * @param string $output
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
      */
-    public function note(string $output): void
+    public function endPreSpryks(SprykDefinitionInterface $sprykDefinition): void
     {
-        if ($this->output->isVeryVerbose()) {
-            $this->write(' // ' . $output);
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return void
+     */
+    public function startPostSpryks(SprykDefinitionInterface $sprykDefinition): void
+    {
+        $message = sprintf('<fg=green>%s</> has postSpryks', $sprykDefinition->getSprykName());
+
+        $hasPostSpryks = (count($sprykDefinition->getPostSpryks()) > 0);
+        if (!$hasPostSpryks) {
+            $message = sprintf('<fg=green>%s</> has no postSpryks', $sprykDefinition->getSprykName());
         }
+        $this->writeln($message);
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return void
+     */
+    public function endPostSpryks(SprykDefinitionInterface $sprykDefinition): void
+    {
     }
 
     /**

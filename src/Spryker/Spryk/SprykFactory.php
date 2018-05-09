@@ -54,7 +54,9 @@ class SprykFactory
      */
     public function createConfigurationLoader(): SprykLoaderInterface
     {
-        return new SprykLoader();
+        return new SprykLoader(
+            $this->getConfig()->getSprykDirectories()
+        );
     }
 
     /**

@@ -4,12 +4,12 @@ arguments:
   module: ~
 
   targetPath:
-    value: .aSprykTest/vendor/spryker/spryker/Bundles/%module%/
+    default: vendor/spryker/spryker/Bundles/%module%/
 
   directories:
     value:
       - src/
 
 postSpryks:
-#  - AddReadme
+  - AddReadme
   - AddComposerJson
