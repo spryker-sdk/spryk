@@ -41,7 +41,7 @@ class SprykConsoleCommandArgumentDefaultValueTest extends Unit
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();
-        $this->assertRegExp('/Enter value for targetPath argument \[defaultValue\]/', $output);
+        $this->assertRegExp('/Enter value for StructureWithDefaultArgumentValue.targetPath argument \[defaultValue\]/', $output);
 
         $this->assertDirectoryExists($this->tester->getRootDirectory() . 'defaultValue');
     }

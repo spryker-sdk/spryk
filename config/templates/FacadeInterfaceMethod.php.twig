@@ -1,0 +1,16 @@
+
+
+    /**
+     * Specification:
+     {% set specification = specification | array %}
+     {%- for specificationLine in specification -%}
+     * - {{ specificationLine }}
+     {% endfor -%}
+     *
+     * @api
+     *
+     * @param {{ inputType }} {{ inputVariable }}
+     *
+     * @return {{ outputType }}
+     */
+    public function {{ method }}({{ inputType }} {{ inputVariable }}): {{ outputType }};

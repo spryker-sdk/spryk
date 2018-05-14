@@ -61,7 +61,7 @@ class ArgumentResolver implements ArgumentResolverInterface
         $argumentCollection = clone $this->argumentCollection;
 
         foreach ($arguments as $argumentName => $definition) {
-            $value = $this->getValueForArgument($argumentName, $definition);
+            $value = $this->getValueForArgument($argumentName, $sprykName, $definition);
 
             $argument = new Argument();
             $argument
@@ -81,11 +81,12 @@ class ArgumentResolver implements ArgumentResolverInterface
 
     /**
      * @param string $argumentName
+     * @param string $sprykName
      * @param array|null $definition
      *
-     * @return string|mixed
+     * @return mixed
      */
-    protected function getValueForArgument(string $argumentName, ?array $definition = null)
+    protected function getValueForArgument(string $argumentName, string $sprykName, ?array $definition = null)
     {
         if (isset($definition['value'])) {
             return $definition['value'];
@@ -97,7 +98,7 @@ class ArgumentResolver implements ArgumentResolverInterface
 
         $defaultValue = $this->getDefaultValue($argumentName, $definition);
 
-        return $this->askForArgumentValue($argumentName, $defaultValue);
+        return $this->askForArgumentValue($argumentName, $sprykName, $defaultValue);
     }
 
     /**
@@ -178,13 +179,14 @@ class ArgumentResolver implements ArgumentResolverInterface
 
     /**
      * @param string $argument
+     * @param string $sprykName
      * @param string|int|null $default
      *
-     * @return mixed
+     * @return string
      */
-    protected function askForArgumentValue(string $argument, $default = null)
+    protected function askForArgumentValue(string $argument, string $sprykName, $default = null)
     {
-        $question = new Question(sprintf('Enter value for <fg=yellow>%s</> argument', $argument), $default);
+        $question = new Question(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $default);
 
         return $this->style->askQuestion($question);
     }

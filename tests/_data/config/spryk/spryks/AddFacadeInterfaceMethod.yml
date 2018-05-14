@@ -1,0 +1,32 @@
+spryk: method
+arguments:
+
+  module:
+    value: CatFace
+
+  moduleOrganization:
+    value: Spryker
+
+  specification:
+    value: "ADD SPECIFICATION HERE"
+
+  method:
+    value: addCatFace
+
+  inputType:
+    value: \Generated\Shared\Transfer\CatFaceTransfer
+
+  inputVariable:
+    value: $catFaceTransfer
+
+  outputType:
+    value: bool
+
+  template:
+    value: FacadeInterfaceMethod.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%FacadeInterface"
+
+preSpryks:
+  - AddFacadeInterface

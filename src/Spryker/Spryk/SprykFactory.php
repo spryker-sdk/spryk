@@ -9,6 +9,7 @@ namespace Spryker\Spryk;
 
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollection;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
+use Spryker\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
@@ -79,6 +80,7 @@ class SprykFactory
         return [
             $this->createStructureSpryk(),
             $this->createTemplateSpryk(),
+            $this->createMethodSpryk(),
         ];
     }
 
@@ -96,6 +98,16 @@ class SprykFactory
     public function createTemplateSpryk(): SprykBuilderInterface
     {
         return new TemplateSpryk(
+            $this->createTemplateRenderer()
+        );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createMethodSpryk(): SprykBuilderInterface
+    {
+        return new MethodSpryk(
             $this->createTemplateRenderer()
         );
     }

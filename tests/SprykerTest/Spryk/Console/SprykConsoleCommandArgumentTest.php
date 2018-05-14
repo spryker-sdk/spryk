@@ -43,7 +43,7 @@ class SprykConsoleCommandArgumentTest extends Unit
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();
-        $this->assertRegExp('/Enter value for module argument/', $output);
+        $this->assertRegExp('/Enter value for Structure.module argument/', $output);
     }
 
     /**
@@ -89,7 +89,7 @@ class SprykConsoleCommandArgumentTest extends Unit
 
         $output = $tester->getDisplay();
 
-        $this->assertRegExp('/Enter value for module argument/', $output);
-        $this->assertRegExp('/Enter value for module argument \[FooBar\]/', $output);
+        $this->assertRegExp('/Enter value for CreateModule.module argument/', $output);
+        $this->assertRegExp('/Enter value for AddReadme.module argument \[FooBar\]/', $output);
     }
 }
