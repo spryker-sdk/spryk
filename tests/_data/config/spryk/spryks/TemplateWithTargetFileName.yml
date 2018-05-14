@@ -1,0 +1,14 @@
+spryk: template
+arguments:
+
+  module: ~
+
+  template:
+    value: composer.json.twig
+
+  targetFileName:
+    value: new-filename.json
+
+
+  targetPath:
+    value: vendor/spryker/spryker/Bundles/%module%/

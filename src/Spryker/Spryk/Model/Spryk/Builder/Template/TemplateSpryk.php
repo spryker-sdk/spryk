@@ -13,11 +13,8 @@ use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 
 class TemplateSpryk implements SprykBuilderInterface
 {
-    /**
-     * @return string
-     */
     const ARGUMENT_TARGET_PATH = 'targetPath';
-
+    const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
     const ARGUMENT_TEMPLATE = 'template';
 
     /**
@@ -49,9 +46,8 @@ class TemplateSpryk implements SprykBuilderInterface
     public function shouldBuild(SprykDefinitionInterface $sprykerDefinition): bool
     {
         $targetPath = $this->getTargetPath($sprykerDefinition);
-        $fileName = $this->getTemplateName($sprykerDefinition);
 
-        return !file_exists($targetPath . $fileName);
+        return (!file_exists($targetPath));
     }
 
     /**
@@ -63,8 +59,6 @@ class TemplateSpryk implements SprykBuilderInterface
     {
         $targetPath = $this->getTargetPath($sprykerDefinition);
         $templateName = $this->getTemplateName($sprykerDefinition);
-
-        $targetPath = $targetPath . $templateName;
 
         $targetDirectory = dirname($targetPath);
 
@@ -94,7 +88,13 @@ class TemplateSpryk implements SprykBuilderInterface
 
         $targetPath = rtrim($targetPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
-        return rtrim(APPLICATION_ROOT_DIR, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $targetPath;
+        $fileName = str_replace('.twig', '', $this->getTemplateName($sprykerDefinition));
+
+        if ($sprykerDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_TARGET_FILE_NAME)) {
+            $fileName = $sprykerDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue();
+        }
+
+        return rtrim(APPLICATION_ROOT_DIR, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $targetPath . DIRECTORY_SEPARATOR . $fileName;
     }
 
     /**

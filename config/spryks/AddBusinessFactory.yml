@@ -1,0 +1,22 @@
+spryk: template
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  template:
+    value: BusinessFactory.php.twig
+
+  targetFileName:
+    value: %module%BusinessFactory.php
+
+  targetPath:
+    default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/
+
+preSpryks:
+  - CreateModule
+
+postSpryks:
+  - AddFacade

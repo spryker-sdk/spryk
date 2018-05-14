@@ -22,9 +22,6 @@ class SprykConsoleCommand extends Command
     const ARGUMENT_SPRYK = 'spryk';
     const ARGUMENT_SPRYK_SHORT = 's';
 
-    const ARGUMENT_MODULE = 'module';
-    const ARGUMENT_MODULE_SHORT = 'm';
-
     const OPTION_DRY_RUN = 'dry-run';
     const OPTION_DRY_RUN_SHORT = 'd';
 
@@ -53,6 +50,7 @@ class SprykConsoleCommand extends Command
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
             ->addOption(static::OPTION_DRY_RUN, static::OPTION_DRY_RUN_SHORT, InputOption::VALUE_NONE, 'Dry runs the Spryk, nothing will be executed.')
             ->addOption('module', 'm', InputOption::VALUE_REQUIRED, 'Module name to run for')
+            ->addOption('moduleOrganization', 'o', InputOption::VALUE_REQUIRED, 'Module Organization name to run for')
             ->addOption('targetPath', 't', InputOption::VALUE_REQUIRED, 'TargetPath');
     }
 

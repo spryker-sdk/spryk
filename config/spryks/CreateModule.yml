@@ -3,6 +3,9 @@ spryk: structure
 arguments:
   module: ~
 
+  moduleOrganization:
+    default: Spryker
+
   targetPath:
     default: vendor/spryker/spryker/Bundles/%module%/
 
@@ -13,3 +16,6 @@ arguments:
 postSpryks:
   - AddReadme
   - AddComposerJson
+  - AddLicense
+  - AddContributing
+  - AddChangelog

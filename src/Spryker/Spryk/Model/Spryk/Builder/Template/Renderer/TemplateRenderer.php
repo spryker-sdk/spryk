@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 
+use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\CamelCaseToDashFilter;
 use Twig\Extension\DebugExtension;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
@@ -28,6 +29,7 @@ class TemplateRenderer implements TemplateRendererInterface
             'debug' => true,
         ]);
         $renderer->addExtension(new DebugExtension());
+        $renderer->addFilter(new CamelCaseToDashFilter());
 
         $this->renderer = $renderer;
     }

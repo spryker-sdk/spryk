@@ -1,0 +1,19 @@
+spryk: template
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  template:
+    value: FacadeInterface.php.twig
+
+  targetFileName:
+    value: %module%FacadeInterface.php
+
+  targetPath:
+    default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/
+
+preSpryks:
+  - AddFacade

@@ -6,7 +6,8 @@
     "php": ">=7.1",
     "symfony/console": "^3.0.0",
     "symfony/yaml": "^3.0.0",
-    "twig/twig": "^1.22"
+    "twig/twig": "^1.22",
+    "zendframework/zend-filter": "^2.8"
   },
   "require-dev": {
     "codeception/codeception": "*",

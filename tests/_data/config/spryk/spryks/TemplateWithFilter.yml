@@ -1,0 +1,10 @@
+spryk: template
+arguments:
+
+  module: ~
+
+  template:
+    value: composer-with-filter.json
+
+  targetPath:
+    value: vendor/spryker/spryker/Bundles/%module%/
