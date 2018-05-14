@@ -9,7 +9,6 @@ namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykConsoleCommand;
-use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 
 /**
  * Auto-generated group annotations

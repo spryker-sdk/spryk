@@ -179,9 +179,10 @@ class ArgumentResolver implements ArgumentResolverInterface
 
     /**
      * @param string $argument
+     * @param string $sprykName
      * @param string|int|null $default
      *
-     * @return mixed
+     * @return string
      */
     protected function askForArgumentValue(string $argument, string $sprykName, $default = null)
     {

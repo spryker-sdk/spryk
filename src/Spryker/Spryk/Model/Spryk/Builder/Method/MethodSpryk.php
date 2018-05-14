@@ -29,6 +29,9 @@ class MethodSpryk implements SprykBuilderInterface
      */
     const ARGUMENT_TARGET = 'target';
 
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
+     */
     public function __construct(TemplateRendererInterface $renderer)
     {
         $this->renderer = $renderer;

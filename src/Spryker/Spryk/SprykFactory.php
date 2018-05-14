@@ -9,9 +9,9 @@ namespace Spryker\Spryk;
 
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollection;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
+use Spryker\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
-use Spryker\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
