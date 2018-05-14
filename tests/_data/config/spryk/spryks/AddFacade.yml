@@ -1,0 +1,16 @@
+spryk: template
+arguments:
+  module:
+    value: CatFace
+
+  moduleOrganization:
+    value: Spryker
+
+  template:
+    value: Facade.php.twig
+
+  targetFilename:
+    value: "%module%Facade.php"
+
+  targetPath:
+    value: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/"

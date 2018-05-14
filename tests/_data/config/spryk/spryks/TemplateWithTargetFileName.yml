@@ -6,7 +6,7 @@ arguments:
   template:
     value: composer.json.twig
 
-  targetFileName:
+  targetFilename:
     value: new-filename.json
 
 

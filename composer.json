@@ -23,7 +23,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "SprykerTest\\": "tests/SprykerTest/"
+      "SprykerTest\\": "tests/SprykerTest/",
+      "Spryker\\Zed\\CatFace\\": "tests/_data/vendor/spryker/spryker/Bundles/CatFace/src/"
     }
   },
   "minimum-stability": "dev",
