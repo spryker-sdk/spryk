@@ -8,17 +8,17 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandPreSprykTest
+ * @group SprykRunStructureTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandPreSprykTest extends Unit
+class SprykRunStructureTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -28,21 +28,19 @@ class SprykConsoleCommandPreSprykTest extends Unit
     /**
      * @return void
      */
-    public function testExecutesPreSprykBeforeCalledSpryk()
+    public function testCreatesStructure()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'SprykWithPreSpryk',
+            SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithoutInteraction',
         ];
 
         $tester->execute($arguments);
 
         $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/firstDirectory');
         $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/secondDirectory');
-
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/README.md');
     }
 }

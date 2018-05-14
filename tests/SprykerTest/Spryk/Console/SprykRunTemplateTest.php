@@ -8,17 +8,17 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandTemplateTest
+ * @group SprykRunTemplateTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandTemplateTest extends Unit
+class SprykRunTemplateTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -30,12 +30,12 @@ class SprykConsoleCommandTemplateTest extends Unit
      */
     public function testCreatesTemplate(): void
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'TemplateWithoutInteraction',
+            SprykRunConsole::ARGUMENT_SPRYK => 'TemplateWithoutInteraction',
         ];
 
         $tester->execute($arguments);
@@ -48,12 +48,12 @@ class SprykConsoleCommandTemplateTest extends Unit
      */
     public function testReplacesContentInTemplate(): void
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'TemplateWithPlaceholder',
+            SprykRunConsole::ARGUMENT_SPRYK => 'TemplateWithPlaceholder',
         ];
 
         $tester->setInputs(['FooBar']);
@@ -72,12 +72,12 @@ class SprykConsoleCommandTemplateTest extends Unit
      */
     public function testsUsesDefinedTargetFileName(): void
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'TemplateWithTargetFileName',
+            SprykRunConsole::ARGUMENT_SPRYK => 'TemplateWithTargetFileName',
         ];
 
         $tester->setInputs(['FooBar']);

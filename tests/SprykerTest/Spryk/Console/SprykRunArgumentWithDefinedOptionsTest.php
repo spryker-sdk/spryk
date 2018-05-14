@@ -8,7 +8,7 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 
 /**
@@ -16,10 +16,10 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandArgumentWithDefinedOptionsTest
+ * @group SprykRunArgumentWithDefinedOptionsTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandArgumentWithDefinedOptionsTest extends Unit
+class SprykRunArgumentWithDefinedOptionsTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -31,12 +31,12 @@ class SprykConsoleCommandArgumentWithDefinedOptionsTest extends Unit
      */
     public function testDoesNotAskForUserInputWhenAllArgumentsFullfilledByPassedOptions()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'CreateModule',
+            SprykRunConsole::ARGUMENT_SPRYK => 'CreateModule',
             '--module' => 'FooBar',
             '--targetPath' => 'vendor/spryker/spryker/Bundles/%module%/',
         ];

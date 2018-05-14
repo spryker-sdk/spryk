@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SprykConsoleCommand extends Command
+class SprykRunConsole extends Command
 {
     const ARGUMENT_SPRYK = 'spryk';
     const ARGUMENT_SPRYK_SHORT = 's';
@@ -45,7 +45,7 @@ class SprykConsoleCommand extends Command
      */
     protected function configure()
     {
-        $this->setName('spryker:spryk')
+        $this->setName('spryk:run')
             ->setDescription('Runs a Spryk build process.')
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
             ->addOption(static::OPTION_DRY_RUN, static::OPTION_DRY_RUN_SHORT, InputOption::VALUE_NONE, 'Dry runs the Spryk, nothing will be executed.')

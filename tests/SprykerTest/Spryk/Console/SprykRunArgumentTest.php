@@ -8,7 +8,7 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Spryk\Exception\ArgumentNotFoundException;
 
 /**
@@ -16,10 +16,10 @@ use Spryker\Spryk\Exception\ArgumentNotFoundException;
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandArgumentTest
+ * @group SprykRunArgumentTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandArgumentTest extends Unit
+class SprykRunArgumentTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -31,12 +31,12 @@ class SprykConsoleCommandArgumentTest extends Unit
      */
     public function testAsksForArgumentValue()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'Structure',
+            SprykRunConsole::ARGUMENT_SPRYK => 'Structure',
         ];
 
         $tester->setInputs(['Structure']);
@@ -51,12 +51,12 @@ class SprykConsoleCommandArgumentTest extends Unit
      */
     public function testThrowsExceptionWhenArgumentNotFound()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'StructureWithMissingArgument',
+            SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithMissingArgument',
         ];
 
         $this->expectException(ArgumentNotFoundException::class);
@@ -69,12 +69,12 @@ class SprykConsoleCommandArgumentTest extends Unit
      */
     public function testAsksMultipleTimesForTheSameArgumentButFirstInputIsTakenAsDefault()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'CreateModule',
+            SprykRunConsole::ARGUMENT_SPRYK => 'CreateModule',
         ];
 
         $tester->setInputs([

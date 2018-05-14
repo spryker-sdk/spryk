@@ -8,17 +8,17 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandArgumentDefinedValueTest
+ * @group SprykRunArgumentDefinedValueTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandArgumentDefinedValueTest extends Unit
+class SprykRunArgumentDefinedValueTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -30,12 +30,12 @@ class SprykConsoleCommandArgumentDefinedValueTest extends Unit
      */
     public function testTakesDefinedArgumentValue()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'StructureWithDefinedArgumentValue',
+            SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithDefinedArgumentValue',
         ];
 
         $tester->execute($arguments);

@@ -8,17 +8,17 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandArgumentWithPlaceholderTest
+ * @group SprykRunArgumentWithPlaceholderTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandArgumentWithPlaceholderTest extends Unit
+class SprykRunArgumentWithPlaceholderTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -30,12 +30,12 @@ class SprykConsoleCommandArgumentWithPlaceholderTest extends Unit
      */
     public function testReplacesPlaceholderInArgumentValue()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'StructureArgumentWithPlaceholderInValue',
+            SprykRunConsole::ARGUMENT_SPRYK => 'StructureArgumentWithPlaceholderInValue',
         ];
 
         $tester->execute($arguments);

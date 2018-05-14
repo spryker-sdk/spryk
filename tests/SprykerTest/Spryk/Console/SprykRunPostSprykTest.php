@@ -8,17 +8,17 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandPostSprykTest
+ * @group SprykRunPostSprykTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandPostSprykTest extends Unit
+class SprykRunPostSprykTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -30,12 +30,12 @@ class SprykConsoleCommandPostSprykTest extends Unit
      */
     public function testExecutesPostSprykAfterCalledSpryk()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getRunConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'SprykWithPostSpryk',
+            SprykRunConsole::ARGUMENT_SPRYK => 'SprykWithPostSpryk',
         ];
 
         $tester->execute($arguments);
