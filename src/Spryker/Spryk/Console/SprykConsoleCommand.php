@@ -49,9 +49,14 @@ class SprykConsoleCommand extends Command
             ->setDescription('Runs a Spryk build process.')
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
             ->addOption(static::OPTION_DRY_RUN, static::OPTION_DRY_RUN_SHORT, InputOption::VALUE_NONE, 'Dry runs the Spryk, nothing will be executed.')
-            ->addOption('module', 'm', InputOption::VALUE_REQUIRED, 'Module name to run for')
-            ->addOption('moduleOrganization', 'o', InputOption::VALUE_REQUIRED, 'Module Organization name to run for')
-            ->addOption('targetPath', 't', InputOption::VALUE_REQUIRED, 'TargetPath');
+            ->addOption('module', 'm', InputOption::VALUE_REQUIRED, 'Module name to run for.')
+            ->addOption('moduleOrganization', 'o', InputOption::VALUE_REQUIRED, 'Module Organization name to run for.')
+            ->addOption('method', null, InputOption::VALUE_REQUIRED, 'Name of the method to add.')
+            ->addOption('inputType', null, InputOption::VALUE_REQUIRED, 'Input type for the method argument.')
+            ->addOption('inputVariable', null, InputOption::VALUE_REQUIRED, 'Input variable name for the method argument.')
+            ->addOption('outputType', null, InputOption::VALUE_REQUIRED, 'Return type for the method.')
+            ->addOption('specification', null, InputOption::VALUE_REQUIRED, 'Specification text for the method to add.')
+            ->addOption('targetPath', 't', InputOption::VALUE_REQUIRED, 'TargetPath.');
     }
 
     /**

@@ -7,13 +7,10 @@ arguments:
     value: Spryker
 
   template:
-    value: Facade.php.twig
+    value: FacadeInterface.php.twig
 
   targetFilename:
-    value: "%module%Facade.php"
+    value: "%module%FacadeInterface.php"
 
   targetPath:
     value: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/"
-
-postSpryks:
-  - AddFacadeInterface

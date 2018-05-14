@@ -3,7 +3,7 @@ arguments:
   module: ~
 
   template:
-    value: README.md
+    value: README.md.twig
 
   targetPath:
     default: vendor/spryker/spryker/Bundles/%module%/

@@ -3,7 +3,7 @@ arguments:
   module: ~
 
   template:
-    value: composer.json
+    value: composer.json.twig
 
   targetPath:
     default: vendor/spryker/spryker/Bundles/%module%/

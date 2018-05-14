@@ -4,7 +4,7 @@ arguments:
   module: ~
 
   template:
-    value: composer.json
+    value: composer.json.twig
 
   targetPath:
     value: vendor/spryker/spryker/Bundles/%module%/

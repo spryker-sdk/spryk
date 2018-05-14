@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 
+use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ArrayCastFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\CamelCaseToDashFilter;
 use Twig\Extension\DebugExtension;
 use Twig_Environment;
@@ -30,6 +31,7 @@ class TemplateRenderer implements TemplateRendererInterface
         ]);
         $renderer->addExtension(new DebugExtension());
         $renderer->addFilter(new CamelCaseToDashFilter());
+        $renderer->addFilter(new ArrayCastFilter());
 
         $this->renderer = $renderer;
     }

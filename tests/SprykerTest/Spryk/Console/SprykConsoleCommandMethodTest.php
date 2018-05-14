@@ -9,6 +9,7 @@ namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 
 /**
  * Auto-generated group annotations
@@ -45,7 +46,28 @@ class SprykConsoleCommandMethodTest extends Unit
         $fileContent = file_get_contents($targetFile);
 
         $this->assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
-//        echo '<pre>' . PHP_EOL . \Symfony\Component\VarDumper\VarDumper::dump($fileContent) . PHP_EOL . 'Line: ' . __LINE__ . PHP_EOL . 'File: ' . __FILE__ . die();
+    }
 
+    /**
+     * @return void
+     */
+    public function testAddsMethodOnlyOnce(): void
+    {
+        $command = new SprykConsoleCommand();
+        $tester = $this->tester->getCommandTester($command);
+
+        $arguments = [
+            'command' => $command->getName(),
+            SprykConsoleCommand::ARGUMENT_SPRYK => 'AddFacadeMethod',
+        ];
+
+        $tester->execute($arguments);
+        $tester->execute($arguments);
+
+        $targetFile = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/Catface/src/Spryker/Zed/CatFace/Business/CatFaceFacade.php';
+        $this->assertFileExists($targetFile);
+        $fileContent = file_get_contents($targetFile);
+
+        $this->assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
     }
 }

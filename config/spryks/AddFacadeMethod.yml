@@ -1,23 +1,15 @@
 spryk: method
 arguments:
 
-  module:
-    value: CatFace
+  module: ~
 
   moduleOrganization:
-    value: Spryker
+    default: Spryker
 
-  method:
-    value: addCatFace
-
-  inputType:
-    value: \Generated\Shared\Transfer\CatFaceTransfer
-
-  inputVariable:
-    value: $catFaceTransfer
-
-  outputType:
-    value: bool
+  method: ~
+  inputType: ~
+  inputVariable: ~
+  outputType: ~
 
   template:
     value: FacadeMethod.php.twig

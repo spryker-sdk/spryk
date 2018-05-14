@@ -7,6 +7,9 @@ arguments:
   moduleOrganization:
     value: Spryker
 
+  specification:
+    value: "ADD SPECIFICATION HERE"
+
   method:
     value: addCatFace
 
@@ -20,13 +23,10 @@ arguments:
     value: bool
 
   template:
-    value: FacadeMethod.php.twig
+    value: FacadeInterfaceMethod.php.twig
 
   target:
-    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%Facade"
+    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%FacadeInterface"
 
 preSpryks:
-  - AddFacade
-
-postSpryks:
-  - AddFacadeInterfaceMethod
+  - AddFacadeInterface

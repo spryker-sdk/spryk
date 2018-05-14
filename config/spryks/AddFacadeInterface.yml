@@ -9,7 +9,7 @@ arguments:
   template:
     value: FacadeInterface.php.twig
 
-  targetFileName:
+  targetFilename:
     value: %module%FacadeInterface.php
 
   targetPath:
