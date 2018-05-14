@@ -25,7 +25,7 @@ class SprykExecutor implements SprykExecutorInterface
     protected $sprykBuilderCollection;
 
     /**
-     * @var string[]
+     * @var \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[]
      */
     protected $executedSpryks = [];
 
