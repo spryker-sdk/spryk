@@ -40,7 +40,7 @@ class SprykConsoleCommandMethodTest extends Unit
 
         $tester->execute($arguments);
 
-        $targetFile = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/Catface/src/Spryker/Zed/CatFace/Business/CatFaceFacade.php';
+        $targetFile = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/CatFace/src/Spryker/Zed/CatFace/Business/CatFaceFacade.php';
         $this->assertFileExists($targetFile);
         $fileContent = file_get_contents($targetFile);
 
@@ -63,7 +63,7 @@ class SprykConsoleCommandMethodTest extends Unit
         $tester->execute($arguments);
         $tester->execute($arguments);
 
-        $targetFile = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/Catface/src/Spryker/Zed/CatFace/Business/CatFaceFacade.php';
+        $targetFile = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/CatFace/src/Spryker/Zed/CatFace/Business/CatFaceFacade.php';
         $this->assertFileExists($targetFile);
         $fileContent = file_get_contents($targetFile);
 
