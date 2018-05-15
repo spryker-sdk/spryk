@@ -78,13 +78,20 @@ class SprykRunArgumentTest extends Unit
         ];
 
         $tester->setInputs([
-            'FooBar',   // First answer for module
-            'Spryker',   // First answer for moduleOrganization
-            "\x0D",     // Use default for targetPath
-            "\x0D",     // Re-use first answer for module
-            "\x0D",     // Use default for targetPath
-            "\x0D",     // Re-use first answer for module
-            "\x0D",      // Use default for targetPath
+            // First answer for module
+            'FooBar',
+            // First answer for moduleOrganization
+            'Spryker',
+            // Use default for targetPath (hit enter)
+            "\x0D",
+            // Re-use first answer for module (hit enter)
+            "\x0D",
+            // Use default for targetPath (hit enter)
+            "\x0D",
+            // Re-use first answer for module (hit enter)
+            "\x0D",
+            // Use default for targetPath (hit enter)
+            "\x0D",
         ]);
         $tester->execute($arguments);
 

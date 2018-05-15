@@ -14,12 +14,7 @@ class SprykConfig
      */
     public function getSprykDirectories(): array
     {
-        $sprykDirectories = [
-            APPLICATION_ROOT_DIR . '/config/spryk/spryks/',
-            realpath(__DIR__ . '/../../../config/spryks'),
-        ];
-
-        return array_filter($sprykDirectories, 'is_dir');
+        return $this->buildDirectoryList('spryks');
     }
 
     /**
@@ -27,11 +22,19 @@ class SprykConfig
      */
     public function getTemplateDirectories(): array
     {
-        $templateDirectories = [
-            APPLICATION_ROOT_DIR . '/config/spryk/templates/',
-            realpath(__DIR__ . '/../../../config/templates'),
-        ];
+        return $this->buildDirectoryList('templates');
+    }
 
-        return array_filter($templateDirectories, 'is_dir');
+    /**
+     * @param string $subDirectory
+     *
+     * @return string[]
+     */
+    protected function buildDirectoryList(string $subDirectory): array
+    {
+        return array_filter([
+            sprintf('/%s/config/spryk/%s/', APPLICATION_ROOT_DIR, $subDirectory),
+            realpath(sprintf('/%s/../../../config/%s/', __DIR__, $subDirectory)),
+        ], 'is_dir');
     }
 }
