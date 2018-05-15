@@ -7,4 +7,4 @@
 # [![License](https://img.shields.io/github/license/spryker/spryk.svg)](https://packagist.org/packages/spryker/spryk)
 
 ## Documentation
-https://academy.spryker.com/developing_with_spryker/module_guide/utilities/spryk_tool.html
+https://spryker.atlassian.net/wiki/spaces/CORE/pages/188481752/Spryks
