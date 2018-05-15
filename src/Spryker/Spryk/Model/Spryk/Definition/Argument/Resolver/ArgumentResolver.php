@@ -53,10 +53,6 @@ class ArgumentResolver implements ArgumentResolverInterface
      */
     public function resolve(array $arguments, string $sprykName, SprykStyleInterface $style): ArgumentCollectionInterface
     {
-//        if (isset($this->resolvedSprykArgumentCollection[$sprykName])) {
-//            return $this->resolvedSprykArgumentCollection[$sprykName];
-//        }
-
         $this->style = $style;
         $argumentCollection = clone $this->argumentCollection;
 

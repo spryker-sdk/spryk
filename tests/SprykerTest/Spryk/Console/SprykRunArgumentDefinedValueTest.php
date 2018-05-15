@@ -31,7 +31,7 @@ class SprykRunArgumentDefinedValueTest extends Unit
     public function testTakesDefinedArgumentValue()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),

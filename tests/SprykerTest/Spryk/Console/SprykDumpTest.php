@@ -31,7 +31,7 @@ class SprykDumpTest extends Unit
     public function testDumpsAllSpryks()
     {
         $command = new SprykDumpConsole();
-        $tester = $this->tester->getDumpConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),

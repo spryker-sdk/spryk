@@ -33,7 +33,7 @@ class SprykRunTest extends Unit
     public function testOutputsSprykNameWhenExecuted()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
@@ -52,7 +52,7 @@ class SprykRunTest extends Unit
     public function testThrowsExceptionWhenBuilderBySprykNameNotFound()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
@@ -69,7 +69,7 @@ class SprykRunTest extends Unit
     public function testThrowsExceptionWhenSprykConfigFileNotFound()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),

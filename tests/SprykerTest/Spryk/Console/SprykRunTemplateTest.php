@@ -31,7 +31,7 @@ class SprykRunTemplateTest extends Unit
     public function testCreatesTemplate(): void
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
@@ -49,7 +49,7 @@ class SprykRunTemplateTest extends Unit
     public function testReplacesContentInTemplate(): void
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
@@ -73,7 +73,7 @@ class SprykRunTemplateTest extends Unit
     public function testsUsesDefinedTargetFileName(): void
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),

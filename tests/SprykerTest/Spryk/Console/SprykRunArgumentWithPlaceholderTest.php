@@ -31,7 +31,7 @@ class SprykRunArgumentWithPlaceholderTest extends Unit
     public function testReplacesPlaceholderInArgumentValue()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),

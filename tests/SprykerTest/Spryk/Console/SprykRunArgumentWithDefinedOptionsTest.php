@@ -32,12 +32,13 @@ class SprykRunArgumentWithDefinedOptionsTest extends Unit
     public function testDoesNotAskForUserInputWhenAllArgumentsFullfilledByPassedOptions()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'CreateModule',
             '--module' => 'FooBar',
+            '--moduleOrganization' => 'Spryker',
             '--targetPath' => 'vendor/spryker/spryker/Bundles/%module%/',
         ];
 

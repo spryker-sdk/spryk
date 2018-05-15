@@ -15,10 +15,10 @@ use Spryker\Spryk\Console\SprykRunConsole;
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykRunArgumentDefaultValueTest
+ * @group SprykRunCreateModuleTest
  * Add your own group annotations below this line
  */
-class SprykRunArgumentDefaultValueTest extends Unit
+class SprykRunCreateModuleTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -28,21 +28,20 @@ class SprykRunArgumentDefaultValueTest extends Unit
     /**
      * @return void
      */
-    public function testTakesDefaultArgumentValueOnEnter()
+    public function testCreatesModule()
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithDefaultArgumentValue',
+            SprykRunConsole::ARGUMENT_SPRYK => 'CreateModule',
+            '-n' => true,
         ];
-        $tester->setInputs(["\x0D"]);
+
+        $tester->setInputs(['FooBar', 'Spryker', "\x0D", "\x0D", "\x0D", "\x0D", "\x0D"]);
         $tester->execute($arguments);
 
-        $output = $tester->getDisplay();
-        $this->assertRegExp('/Enter value for StructureWithDefaultArgumentValue.targetPath argument \[defaultValue\]/', $output);
-
-        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'defaultValue');
+        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
     }
 }

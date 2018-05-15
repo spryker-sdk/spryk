@@ -32,7 +32,7 @@ class SprykRunArgumentTest extends Unit
     public function testAsksForArgumentValue()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
@@ -52,7 +52,7 @@ class SprykRunArgumentTest extends Unit
     public function testThrowsExceptionWhenArgumentNotFound()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
@@ -70,7 +70,7 @@ class SprykRunArgumentTest extends Unit
     public function testAsksMultipleTimesForTheSameArgumentButFirstInputIsTakenAsDefault()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
@@ -79,6 +79,7 @@ class SprykRunArgumentTest extends Unit
 
         $tester->setInputs([
             'FooBar',   // First answer for module
+            'Spryker',   // First answer for moduleOrganization
             "\x0D",     // Use default for targetPath
             "\x0D",     // Re-use first answer for module
             "\x0D",     // Use default for targetPath

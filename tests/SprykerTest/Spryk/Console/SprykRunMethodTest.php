@@ -31,7 +31,7 @@ class SprykRunMethodTest extends Unit
     public function testAddsMethod(): void
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
@@ -53,7 +53,7 @@ class SprykRunMethodTest extends Unit
     public function testAddsMethodOnlyOnce(): void
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getRunConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
