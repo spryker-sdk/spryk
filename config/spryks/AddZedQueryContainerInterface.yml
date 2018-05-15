@@ -1,0 +1,19 @@
+spryk: template
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  template:
+    value: ZedQueryContainerInterface.php.twig
+
+  targetFilename:
+    value: %module%QueryContainerInterface.php
+
+  targetPath:
+    default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Persistence/
+
+preSpryks:
+  - AddZedQueryContainer

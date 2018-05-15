@@ -1,0 +1,23 @@
+spryk: template
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  template:
+    value: ZedRepository.php.twig
+
+  targetFilename:
+    value: %module%Repository.php
+
+  targetPath:
+    default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Persistence/
+
+preSpryks:
+  - CreateModule
+
+postSpryks:
+  - AddZedRepositoryInterface
+
