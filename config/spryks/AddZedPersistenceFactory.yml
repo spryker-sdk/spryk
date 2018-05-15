@@ -1,0 +1,20 @@
+spryk: template
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  template:
+    value: ZedPersistenceFactory.php.twig
+
+  targetFilename:
+    value: %module%PersistenceFactory.php
+
+  targetPath:
+    default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Persistence/
+
+preSpryks:
+  - CreateModule
+

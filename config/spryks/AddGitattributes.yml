@@ -1,0 +1,16 @@
+spryk: template
+
+arguments:
+  module: ~
+
+  template:
+    value: gitattributes.twig
+
+  targetFilename:
+    value: .gitattributes
+
+  targetPath:
+    default: vendor/spryker/spryker/Bundles/%module%/
+
+preSpryks:
+  - CreateModule
