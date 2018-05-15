@@ -7,7 +7,7 @@ arguments:
     default: Spryker
 
   template:
-    value: FacadeInterface.php.twig
+    value: ZedFacadeInterface.php.twig
 
   targetFilename:
     value: %module%FacadeInterface.php
@@ -16,4 +16,4 @@ arguments:
     default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/
 
 preSpryks:
-  - AddFacade
+  - AddZedFacade

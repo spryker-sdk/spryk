@@ -51,6 +51,7 @@ class SprykRunConsole extends Command
             ->addOption(static::OPTION_DRY_RUN, static::OPTION_DRY_RUN_SHORT, InputOption::VALUE_NONE, 'Dry runs the Spryk, nothing will be executed.')
             ->addOption('module', 'm', InputOption::VALUE_REQUIRED, 'Module name to run for.')
             ->addOption('moduleOrganization', 'o', InputOption::VALUE_REQUIRED, 'Module Organization name to run for.')
+            ->addOption('controller', null, InputOption::VALUE_REQUIRED, 'Name of the controller to add.')
             ->addOption('method', null, InputOption::VALUE_REQUIRED, 'Name of the method to add.')
             ->addOption('inputType', null, InputOption::VALUE_REQUIRED, 'Input type for the method argument.')
             ->addOption('inputVariable', null, InputOption::VALUE_REQUIRED, 'Input variable name for the method argument.')

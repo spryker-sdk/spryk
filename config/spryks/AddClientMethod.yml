@@ -12,13 +12,13 @@ arguments:
   outputType: ~
 
   template:
-    value: FacadeMethod.php.twig
+    value: Method.php.twig
 
   target:
-    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%Facade"
+    value: "%moduleOrganization%\\Client\\%module%\\%module%Client"
 
 preSpryks:
-  - AddFacade
+  - AddClient
 
 postSpryks:
-  - AddFacadeInterfaceMethod
+  - AddClientInterfaceMethod
