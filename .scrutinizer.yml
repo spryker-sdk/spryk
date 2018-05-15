@@ -1,6 +1,10 @@
 build:
     environment:
         php: '7.1'
+        
+    dependencies:
+        before:
+            - 'composer remove --dev spryker/git-hook'
 
     tests:
         override:
