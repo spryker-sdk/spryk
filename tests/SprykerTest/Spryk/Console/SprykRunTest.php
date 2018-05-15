@@ -8,7 +8,7 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Spryk\Exception\BuilderNotFoundException;
 use Spryker\Spryk\Exception\SprykConfigFileNotFound;
 
@@ -17,10 +17,10 @@ use Spryker\Spryk\Exception\SprykConfigFileNotFound;
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandTest
+ * @group SprykRunTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandTest extends Unit
+class SprykRunTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -32,12 +32,12 @@ class SprykConsoleCommandTest extends Unit
      */
     public function testOutputsSprykNameWhenExecuted()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'StructureWithoutInteraction',
+            SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithoutInteraction',
         ];
 
         $tester->execute($arguments);
@@ -51,12 +51,12 @@ class SprykConsoleCommandTest extends Unit
      */
     public function testThrowsExceptionWhenBuilderBySprykNameNotFound()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'SprykDefinitionWithUndefinedSpryk',
+            SprykRunConsole::ARGUMENT_SPRYK => 'SprykDefinitionWithUndefinedSpryk',
         ];
 
         $this->expectException(BuilderNotFoundException::class);
@@ -68,12 +68,12 @@ class SprykConsoleCommandTest extends Unit
      */
     public function testThrowsExceptionWhenSprykConfigFileNotFound()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'NotExistingSprykName',
+            SprykRunConsole::ARGUMENT_SPRYK => 'NotExistingSprykName',
         ];
 
         $this->expectException(SprykConfigFileNotFound::class);

@@ -8,17 +8,17 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandArgumentDefaultValueTest
+ * @group SprykRunArgumentDefaultValueTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandArgumentDefaultValueTest extends Unit
+class SprykRunArgumentDefaultValueTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -30,12 +30,12 @@ class SprykConsoleCommandArgumentDefaultValueTest extends Unit
      */
     public function testTakesDefaultArgumentValueOnEnter()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'StructureWithDefaultArgumentValue',
+            SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithDefaultArgumentValue',
         ];
         $tester->setInputs(["\x0D"]);
         $tester->execute($arguments);

@@ -21,6 +21,10 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolver;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilder;
 use Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
+use Spryker\Spryk\Model\Spryk\Dumper\Finder\SprykDefinitionFinder;
+use Spryker\Spryk\Model\Spryk\Dumper\Finder\SprykDefinitionFinderInterface;
+use Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumper;
+use Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutor;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutorInterface;
 use Spryker\Spryk\Model\Spryk\Loader\SprykLoader;
@@ -146,5 +150,25 @@ class SprykFactory
     public function getConfig()
     {
         return new SprykConfig();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface
+     */
+    public function createSprykDefinitionDumper(): SprykDefinitionDumperInterface
+    {
+        return new SprykDefinitionDumper(
+            $this->createDefinitionFinder()
+        );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Dumper\Finder\SprykDefinitionFinderInterface
+     */
+    public function createDefinitionFinder(): SprykDefinitionFinderInterface
+    {
+        return new SprykDefinitionFinder(
+            $this->getConfig()->getSprykDirectories()
+        );
     }
 }

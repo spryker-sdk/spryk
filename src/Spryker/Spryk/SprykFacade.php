@@ -29,4 +29,12 @@ class SprykFacade
     {
         return new SprykFactory();
     }
+
+    /**
+     * @return array
+     */
+    public function getSprykDefinitions()
+    {
+        return $this->getFactory()->createSprykDefinitionDumper()->dump();
+    }
 }

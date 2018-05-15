@@ -8,17 +8,17 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandArgumentDefinedValueTest
+ * @group SprykRunArgumentWithPlaceholderTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandArgumentDefinedValueTest extends Unit
+class SprykRunArgumentWithPlaceholderTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -28,19 +28,18 @@ class SprykConsoleCommandArgumentDefinedValueTest extends Unit
     /**
      * @return void
      */
-    public function testTakesDefinedArgumentValue()
+    public function testReplacesPlaceholderInArgumentValue()
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'StructureWithDefinedArgumentValue',
+            SprykRunConsole::ARGUMENT_SPRYK => 'StructureArgumentWithPlaceholderInValue',
         ];
 
         $tester->execute($arguments);
 
-        $output = $tester->getDisplay();
-        $this->assertNotRegExp('/Enter value for module argument/', $output);
+        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
     }
 }

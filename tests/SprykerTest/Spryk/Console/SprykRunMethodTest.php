@@ -8,17 +8,17 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandMethodTest
+ * @group SprykRunMethodTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandMethodTest extends Unit
+class SprykRunMethodTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -30,12 +30,12 @@ class SprykConsoleCommandMethodTest extends Unit
      */
     public function testAddsMethod(): void
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'AddFacadeMethod',
+            SprykRunConsole::ARGUMENT_SPRYK => 'AddFacadeMethod',
         ];
 
         $tester->execute($arguments);
@@ -52,12 +52,12 @@ class SprykConsoleCommandMethodTest extends Unit
      */
     public function testAddsMethodOnlyOnce(): void
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'AddFacadeMethod',
+            SprykRunConsole::ARGUMENT_SPRYK => 'AddFacadeMethod',
         ];
 
         $tester->execute($arguments);

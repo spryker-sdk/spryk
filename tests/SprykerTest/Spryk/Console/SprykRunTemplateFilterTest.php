@@ -8,17 +8,17 @@
 namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykConsoleCommand;
+use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykConsoleCommandTemplateFilterTest
+ * @group SprykRunTemplateFilterTest
  * Add your own group annotations below this line
  */
-class SprykConsoleCommandTemplateFilterTest extends Unit
+class SprykRunTemplateFilterTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykTester
@@ -30,12 +30,12 @@ class SprykConsoleCommandTemplateFilterTest extends Unit
      */
     public function testUsesCamelCaseToDashFilter(): void
     {
-        $command = new SprykConsoleCommand();
-        $tester = $this->tester->getCommandTester($command);
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykConsoleCommand::ARGUMENT_SPRYK => 'TemplateWithFilter',
+            SprykRunConsole::ARGUMENT_SPRYK => 'TemplateWithFilter',
         ];
 
         $tester->setInputs(['FooBar']);

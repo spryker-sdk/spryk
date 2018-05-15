@@ -44,12 +44,12 @@ class SprykTester extends Actor
      *
      * @return \Symfony\Component\Console\Tester\CommandTester
      */
-    public function getCommandTester(Command $command)
+    public function getConsoleTester(Command $command)
     {
         $application = new Application();
         $application->add($command);
 
-        $command = $application->find('spryker:spryk');
+        $command = $application->find($command->getName());
 
         return new CommandTester($command);
     }

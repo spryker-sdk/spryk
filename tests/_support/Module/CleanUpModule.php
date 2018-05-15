@@ -21,11 +21,21 @@ class CleanUpModule extends Module
      */
     public function _before(TestInterface $test): void
     {
-        $finder = new Finder();
-        $finder->in($this->getRootDirectory())->notPath('/config/');
+        $finder = $this->getFinder();
 
         $filesystem = new Filesystem();
         $filesystem->remove($finder);
+    }
+
+    /**
+     * @return \Iterator|\Symfony\Component\Finder\SplFileInfo[]
+     */
+    protected function getFinder()
+    {
+        $finder = new Finder();
+        $finder->in($this->getRootDirectory())->notPath('/config/');
+
+        return $finder->getIterator();
     }
 
     /**
@@ -33,6 +43,6 @@ class CleanUpModule extends Module
      */
     public function getRootDirectory(): string
     {
-        return codecept_data_dir();
+        return APPLICATION_ROOT_DIR;
     }
 }
