@@ -123,6 +123,9 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         foreach ($postSpryks as $postSprykDefinition) {
+            if (isset($this->executedSpryks[$postSprykDefinition->getSprykName()])) {
+                continue;
+            }
             $this->buildSpryk($postSprykDefinition, $style);
         }
     }
