@@ -7,7 +7,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Facade.php.twig
+    value: ZedFacade.php.twig
 
   targetFilename:
     value: %module%Facade.php
@@ -19,5 +19,5 @@ preSpryks:
   - CreateModule
 
 postSpryks:
-  - AddFacadeInterface
-  - AddBusinessFactory
+  - AddZedFacadeInterface
+  - AddZedBusinessFactory

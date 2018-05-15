@@ -1,0 +1,24 @@
+spryk: method
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  method: ~
+  inputType: ~
+  inputVariable: ~
+  outputType: ~
+
+  template:
+    value: Method.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%Facade"
+
+preSpryks:
+  - AddZedFacade
+
+postSpryks:
+  - AddZedFacadeInterfaceMethod

@@ -15,10 +15,10 @@ arguments:
     default: "ADD SPECIFICATION HERE"
 
   template:
-    value: FacadeInterfaceMethod.php.twig
+    value: InterfaceMethod.php.twig
 
   target:
     value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%FacadeInterface"
 
 preSpryks:
-  - AddFacadeInterface
+  - AddZedFacadeInterface

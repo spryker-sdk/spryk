@@ -62,8 +62,9 @@ class SprykDumpConsole extends Command
     {
         $formatted = [];
         foreach ($sprykDefinitions as $sprykDefinition) {
-            $formatted[] = [$sprykDefinition];
+            $formatted[$sprykDefinition] = [$sprykDefinition];
         }
+        sort($formatted);
 
         return $formatted;
     }
