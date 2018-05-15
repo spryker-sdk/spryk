@@ -14,7 +14,8 @@
     "phpstan/phpstan": "^0.8.5",
     "spryker/kernel": "^3.0.0",
     "spryker/code-sniffer": "dev-master as 1.0.0",
-    "php-coveralls/php-coveralls": "^1.0"
+    "php-coveralls/php-coveralls": "^1.0",
+    "spryker/git-hook": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -32,5 +33,13 @@
   "config": {
     "use-include-path": true,
     "process-timeout": 600
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
+    ],
+    "post-update-cmd": [
+      "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
+    ]
   }
 }
