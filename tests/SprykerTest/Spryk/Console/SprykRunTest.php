@@ -79,4 +79,23 @@ class SprykRunTest extends Unit
         $this->expectException(SprykConfigFileNotFound::class);
         $tester->execute($arguments);
     }
+
+    /**
+     * @return void
+     */
+    public function testDoesNotRunIntoRecursionWhenCalledSprykCallsPostSprykWhichHasPreviouslyExecutedSprykAsPostSpryk()
+    {
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
+
+        $arguments = [
+            'command' => $command->getName(),
+            SprykRunConsole::ARGUMENT_SPRYK => 'SprykWithRecursion2',
+        ];
+
+        $tester->execute($arguments);
+
+        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json');
+        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
+    }
 }
