@@ -15,12 +15,13 @@ use Spryker\Spryk\Console\SprykRunConsole;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddClientTest
+ * @group Facade
+ * @group AddZedFacadeInterfaceTest
  * Add your own group annotations below this line
  */
-class AddClientTest extends Unit
+class AddZedFacadeInterfaceTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddClient';
+    protected const SPRYK_NAME = 'AddZedFacadeInterface';
 
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -30,7 +31,7 @@ class AddClientTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientFile(): void
+    public function testAddsZedFacadeFile(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
@@ -42,6 +43,6 @@ class AddClientTest extends Unit
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClient.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/FooBarFacadeInterface.php');
     }
 }

@@ -57,7 +57,8 @@ class SprykRunConsole extends Command
             ->addOption('inputVariable', null, InputOption::VALUE_REQUIRED, 'Input variable name for the method argument.')
             ->addOption('outputType', null, InputOption::VALUE_REQUIRED, 'Return type for the method.')
             ->addOption('specification', null, InputOption::VALUE_REQUIRED, 'Specification text for the method to add.')
-            ->addOption('targetPath', 't', InputOption::VALUE_REQUIRED, 'TargetPath.');
+            ->addOption('targetPath', 't', InputOption::VALUE_REQUIRED, 'TargetPath.')
+            ->addOption('repositoryToken', null, InputOption::VALUE_REQUIRED, 'Token for repository.');
     }
 
     /**

@@ -39,6 +39,7 @@ suites:
         modules:
             enabled:
                 - Asserts
+                - SprykerTest\Module\AssertionModule
                 - SprykerTest\Module\CleanUpModule:
                     rootDirectory: 'vendor/spryker/spryker/'
                 - SprykerTest\Module\IntegrationModule

@@ -10,10 +10,10 @@ arguments:
     value: ClientDependencyProvider.php.twig
 
   targetFilename:
-    value: %module%DependencyProvider.php
+    value: "%module%DependencyProvider.php"
 
   targetPath:
-    default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Client/%module%/
+    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Client/%module%/"
 
 preSpryks:
   - CreateModule
