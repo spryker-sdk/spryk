@@ -16,6 +16,19 @@ class StructureSpryk implements SprykBuilderInterface
     protected const ARGUMENT_TARGET_PATH = 'targetPath';
 
     /**
+     * @var string
+     */
+    protected $rootDirectory;
+
+    /**
+     * @param string $rootDirectory
+     */
+    public function __construct(string $rootDirectory)
+    {
+        $this->rootDirectory = $rootDirectory;
+    }
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -70,7 +83,7 @@ class StructureSpryk implements SprykBuilderInterface
 
         $moduleDirectory = $this->getBaseDirectory($sprykerDefinition);
         foreach ($directoriesArgument->getValue() as $directory) {
-            $directories[] = rtrim(APPLICATION_ROOT_DIR, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $moduleDirectory . $directory;
+            $directories[] = $this->rootDirectory . DIRECTORY_SEPARATOR . $moduleDirectory . $directory;
         }
 
         return $directories;

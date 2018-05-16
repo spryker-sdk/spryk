@@ -36,9 +36,9 @@ class SprykRunConsole extends Command
     protected $output;
 
     /**
-     * @var bool
+     * @var \Spryker\Spryk\SprykFacade|null
      */
-    protected $isDryRun;
+    protected $facade;
 
     /**
      * @return void
@@ -106,6 +106,22 @@ class SprykRunConsole extends Command
      */
     protected function getFacade(): SprykFacade
     {
-        return new SprykFacade();
+        if ($this->facade === null) {
+            $this->facade = new SprykFacade();
+        }
+
+        return $this->facade;
+    }
+
+    /**
+     * @param \Spryker\Spryk\SprykFacade $facade
+     *
+     * @return $this
+     */
+    public function setFacade(SprykFacade $facade): SprykRunConsole
+    {
+        $this->facade = $facade;
+
+        return $this;
     }
 }

@@ -7,7 +7,7 @@ arguments:
     default: Spryker
 
   targetPath:
-    default: vendor/spryker/spryker/Bundles/%module%/
+    default: "vendor/spryker/spryker/Bundles/%module%/"
 
   directories:
     value:

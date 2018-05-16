@@ -10,10 +10,10 @@ arguments:
     value: ZedRepository.php.twig
 
   targetFilename:
-    value: %module%Repository.php
+    value: "%module%Repository.php"
 
   targetPath:
-    default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Persistence/
+    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Persistence/"
 
 preSpryks:
   - CreateModule

@@ -33,6 +33,11 @@ use Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface;
 class SprykFactory
 {
     /**
+     * @var \Spryker\Spryk\SprykConfig|null
+     */
+    protected $config;
+
+    /**
      * @return \Spryker\Spryk\Model\Spryk\Executor\SprykExecutorInterface
      */
     public function createSprykExecutor(): SprykExecutorInterface
@@ -93,7 +98,9 @@ class SprykFactory
      */
     public function createStructureSpryk(): SprykBuilderInterface
     {
-        return new StructureSpryk();
+        return new StructureSpryk(
+            $this->getConfig()->getRootDirectory()
+        );
     }
 
     /**
@@ -102,7 +109,8 @@ class SprykFactory
     public function createTemplateSpryk(): SprykBuilderInterface
     {
         return new TemplateSpryk(
-            $this->createTemplateRenderer()
+            $this->createTemplateRenderer(),
+            $this->getConfig()->getRootDirectory()
         );
     }
 
@@ -145,14 +153,6 @@ class SprykFactory
     }
 
     /**
-     * @return \Spryker\Spryk\SprykConfig
-     */
-    public function getConfig()
-    {
-        return new SprykConfig();
-    }
-
-    /**
      * @return \Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface
      */
     public function createSprykDefinitionDumper(): SprykDefinitionDumperInterface
@@ -170,5 +170,29 @@ class SprykFactory
         return new SprykDefinitionFinder(
             $this->getConfig()->getSprykDirectories()
         );
+    }
+
+    /**
+     * @return \Spryker\Spryk\SprykConfig
+     */
+    public function getConfig()
+    {
+        if ($this->config === null) {
+            $this->config = new SprykConfig();
+        }
+
+        return $this->config;
+    }
+
+    /**
+     * @param \Spryker\Spryk\SprykConfig $config
+     *
+     * @return $this
+     */
+    public function setConfig(SprykConfig $config): SprykFactory
+    {
+        $this->config = $config;
+
+        return $this;
     }
 }

@@ -23,11 +23,18 @@ class TemplateSpryk implements SprykBuilderInterface
     protected $renderer;
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
+     * @var string
      */
-    public function __construct(TemplateRendererInterface $renderer)
+    protected $rootDirectory;
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
+     * @param string $rootDirectory
+     */
+    public function __construct(TemplateRendererInterface $renderer, string $rootDirectory)
     {
         $this->renderer = $renderer;
+        $this->rootDirectory = $rootDirectory;
     }
 
     /**
@@ -94,7 +101,7 @@ class TemplateSpryk implements SprykBuilderInterface
             $fileName = $sprykerDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue();
         }
 
-        return rtrim(APPLICATION_ROOT_DIR, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $targetPath . DIRECTORY_SEPARATOR . $fileName;
+        return $this->rootDirectory . DIRECTORY_SEPARATOR . $targetPath . DIRECTORY_SEPARATOR . $fileName;
     }
 
     /**

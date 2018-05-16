@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Spryk\Console;
+namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykRunConsole;
@@ -14,33 +14,32 @@ use Spryker\Spryk\Console\SprykRunConsole;
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
- * @group Console
- * @group SprykRunArgumentDefinedValueTest
+ * @group Integration
+ * @group AddChangeLogTest
  * Add your own group annotations below this line
  */
-class SprykRunArgumentDefinedValueTest extends Unit
+class AddChangeLogTest extends Unit
 {
     /**
-     * @var \SprykerTest\SprykTester
+     * @var \SprykerTest\SprykIntegrationTester
      */
     protected $tester;
 
     /**
      * @return void
      */
-    public function testTakesDefinedArgumentValue()
+    public function testCreatesChangeLogFile()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command);
+        $tester = $this->tester->getConsoleTester($command, 'AddChangelog');
 
         $arguments = [
             'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithDefinedArgumentValue',
+            SprykRunConsole::ARGUMENT_SPRYK => 'AddChangelog',
+            '--module' => 'FooBar',
         ];
 
-        $tester->execute($arguments);
-
-        $output = $tester->getDisplay();
-        $this->assertNotRegExp('/Enter value for module argument/', $output);
+        $tester->execute($arguments, ['interactive' => false]);
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
     }
 }

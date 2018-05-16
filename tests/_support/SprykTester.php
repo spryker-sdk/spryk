@@ -40,6 +40,16 @@ class SprykTester extends Actor
     }
 
     /**
+     * @param string $module
+     *
+     * @return string
+     */
+    public function getModuleDirectory(string $module = 'FooBar'): string
+    {
+        return sprintf('%svendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
+    }
+
+    /**
      * @param \Symfony\Component\Console\Command\Command $command
      *
      * @return \Symfony\Component\Console\Tester\CommandTester

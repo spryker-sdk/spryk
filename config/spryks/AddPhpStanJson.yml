@@ -7,7 +7,7 @@ arguments:
     value: phpstan.json.twig
 
   targetPath:
-    default: vendor/spryker/spryker/Bundles/%module%/
+    default: "vendor/spryker/spryker/Bundles/%module%/"
 
 preSpryks:
   - CreateModule
