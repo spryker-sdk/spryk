@@ -15,7 +15,6 @@ use Spryker\Spryk\SprykFacade;
 use Spryker\Spryk\SprykFactory;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Inherited Methods
@@ -48,11 +47,21 @@ class SprykIntegrationTester extends Actor
         $application->add($command);
 
         $command->setFacade($this->getFacadeWithMockedConfig());
-
         $command = $application->find($command->getName());
 
         $this->addExecutedSpryk($sprykName);
+
         return new CommandTester($command);
+    }
+
+    /**
+     * @param string $module
+     *
+     * @return string
+     */
+    public function getModuleDirectory(string $module = 'FooBar'): string
+    {
+        return sprintf('%s/vendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
     }
 
     /**
@@ -66,6 +75,7 @@ class SprykIntegrationTester extends Actor
         $sprykFactory->setConfig($sprykConfig);
 
         $sprykFacade = new SprykFacade();
+        $sprykFacade->setFactory($sprykFactory);
 
         return $sprykFacade;
     }
@@ -75,14 +85,20 @@ class SprykIntegrationTester extends Actor
      */
     protected function getSprykConfigMock()
     {
-        echo '<pre>' . PHP_EOL . VarDumper::dump(realpath(__DIR__)) . PHP_EOL . 'Line: ' . __LINE__ . PHP_EOL . 'File: ' . __FILE__ . die();
-
         $sprykConfig = Stub::make(new SprykConfig(), [
             'getRootDirectory' => function () {
-                return true;
+                return $this->getRootDirectory();
             },
         ]);
 
         return $sprykConfig;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getRootDirectory(): string
+    {
+        return realpath(__DIR__ . '/../../');
     }
 }

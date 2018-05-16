@@ -110,7 +110,7 @@ class SprykRunConsole extends Command
             $this->facade = new SprykFacade();
         }
 
-        $this->facade;
+        return $this->facade;
     }
 
     /**

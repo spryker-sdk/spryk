@@ -33,7 +33,7 @@ class SprykConfig
     protected function buildDirectoryList(string $subDirectory): array
     {
         return array_filter([
-            sprintf('/%s/config/spryk/%s/', APPLICATION_ROOT_DIR, $subDirectory),
+            sprintf('/%s/config/spryk/%s/', $this->getRootDirectory(), $subDirectory),
             realpath(sprintf('/%s/../../../config/%s/', __DIR__, $subDirectory)),
         ], 'is_dir');
     }

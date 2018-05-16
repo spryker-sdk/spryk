@@ -26,8 +26,9 @@ suites:
         modules:
             enabled:
                 - Asserts
-                - SprykerTest\Module\CleanUpModule
                 - SprykerTest\Module\ConsoleEnvironmentModule
+                - SprykerTest\Module\CleanUpModule:
+                    rootDirectory: 'tests/_data/'
 
     Integration:
         path: SprykerTest/Spryk/Integration
@@ -38,6 +39,6 @@ suites:
         modules:
             enabled:
                 - Asserts
-                - SprykerTest\Module\CleanUpModule
+                - SprykerTest\Module\CleanUpModule:
+                    rootDirectory: 'vendor/spryker/spryker/'
                 - SprykerTest\Module\IntegrationModule
-                - SprykerTest\Module\IntegrationEnvironmentModule

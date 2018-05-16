@@ -15,6 +15,11 @@ use Symfony\Component\Finder\Finder;
 class CleanUpModule extends Module
 {
     /**
+     * @var array
+     */
+    protected $config = ['rootDirectory' => ''];
+
+    /**
      * @param \Codeception\TestInterface $test
      *
      * @return void
@@ -42,7 +47,7 @@ class CleanUpModule extends Module
 
         foreach ($toDelete as $item) {
             $filesystem = new Filesystem();
-            $filesystem->remove($item);
+//            $filesystem->remove($item);
         }
     }
 
@@ -62,10 +67,9 @@ class CleanUpModule extends Module
      */
     public function getRootDirectory(): string
     {
-        if (strpos(APPLICATION_ROOT_DIR, '_data') === false) {
-            return APPLICATION_ROOT_DIR . 'vendor/spryker/spryker/';
-        }
+        $baseDir = realpath(__DIR__ . '/../../../');
+        $rootDirectory = $baseDir . DIRECTORY_SEPARATOR . $this->config['rootDirectory'];
 
-        return APPLICATION_ROOT_DIR;
+        return $rootDirectory;
     }
 }

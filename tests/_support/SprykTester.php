@@ -36,7 +36,7 @@ class SprykTester extends Actor
      */
     public function getRootDirectory(): string
     {
-        return APPLICATION_ROOT_DIR;
+        return codecept_data_dir();
     }
 
     /**
@@ -46,25 +46,20 @@ class SprykTester extends Actor
      */
     public function getModuleDirectory(string $module = 'FooBar'): string
     {
-        return sprintf('%svendor/spryker/spryker/Bundles/%s/', APPLICATION_ROOT_DIR, $module);
+        return sprintf('%svendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
     }
 
     /**
      * @param \Symfony\Component\Console\Command\Command $command
-     * @param string|null $sprykName
      *
      * @return \Symfony\Component\Console\Tester\CommandTester
      */
-    public function getConsoleTester(Command $command, ?string $sprykName = null)
+    public function getConsoleTester(Command $command)
     {
         $application = new Application();
         $application->add($command);
 
         $command = $application->find($command->getName());
-
-        if ($sprykName !== null) {
-            $this->addExecutedSpryk($sprykName);
-        }
 
         return new CommandTester($command);
     }
