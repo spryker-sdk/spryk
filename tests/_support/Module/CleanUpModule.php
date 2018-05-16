@@ -23,8 +23,10 @@ class CleanUpModule extends Module
     {
         $finder = $this->getFinder();
 
-        $filesystem = new Filesystem();
-        $filesystem->remove($finder);
+        if ($finder->valid()) {
+            $filesystem = new Filesystem();
+            $filesystem->remove($finder);
+        }
     }
 
     /**
@@ -33,7 +35,7 @@ class CleanUpModule extends Module
     protected function getFinder()
     {
         $finder = new Finder();
-        $finder->in($this->getRootDirectory())->notPath('/config/');
+        $finder->in($this->getRootDirectory())->notPath('config');
 
         return $finder->getIterator();
     }
@@ -43,6 +45,10 @@ class CleanUpModule extends Module
      */
     public function getRootDirectory(): string
     {
+        if (strpos(APPLICATION_ROOT_DIR, '_data') === false) {
+            return APPLICATION_ROOT_DIR . 'vendor/spryker/spryker/';
+        }
+
         return APPLICATION_ROOT_DIR;
     }
 }

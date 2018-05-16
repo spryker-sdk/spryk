@@ -8,4 +8,4 @@ arguments:
       - src/
 
   targetPath:
-    default: defaultValue
+    default: "vendor/spryker/spryker/Bundles/%module%/"
