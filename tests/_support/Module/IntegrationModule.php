@@ -8,8 +8,9 @@
 namespace SprykerTest\Module;
 
 use Codeception\Module;
+use PHPUnit\Framework\IncompleteTestError;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\VarDumper\VarDumper;
 
 class IntegrationModule extends Module
 {
@@ -31,16 +32,32 @@ class IntegrationModule extends Module
     }
 
     /**
+     * @param array $settings
+     *
+     * @return void
+     */
+    public function _beforeSuite($settings = []): void
+    {
+        OptionsContainer::setOptions([
+            'module' => 'FooBar',
+        ]);
+    }
+
+    /**
+     * @throws \PHPUnit\Framework\IncompleteTestError
+     *
      * @return void
      */
     public function _afterSuite()
     {
+        OptionsContainer::clearOptions();
+
         $allSpryks = $this->getAllSpryks();
 
         $diff = array_diff(static::$executedSpryks, $allSpryks);
 
         if (count($diff) > 0) {
-            die('Not all spryks executed');
+            throw new IncompleteTestError(sprintf('Not all spryks executed! Please add tests for the following spryks: %s'), implode(', ', $diff));
         }
     }
 
@@ -60,6 +77,6 @@ class IntegrationModule extends Module
             $allSpryks[] = $sprykName;
         }
 
-        echo '<pre>' . PHP_EOL . VarDumper::dump($allSpryks) . PHP_EOL . 'Line: ' . __LINE__ . PHP_EOL . 'File: ' . __FILE__ . die();
+        return $allSpryks;
     }
 }

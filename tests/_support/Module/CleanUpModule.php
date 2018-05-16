@@ -21,6 +21,10 @@ class CleanUpModule extends Module
      */
     public function _before(TestInterface $test): void
     {
+        if (!is_dir($this->getRootDirectory())) {
+            return;
+        }
+
         $finder = $this->getFinder();
 
         if ($finder->valid()) {
