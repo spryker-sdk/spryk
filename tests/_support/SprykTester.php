@@ -46,7 +46,7 @@ class SprykTester extends Actor
      */
     public function getModuleDirectory(string $module = 'FooBar'): string
     {
-        return sprintf('%s/vendor/spryker/spryker/Bundles/%s/', APPLICATION_ROOT_DIR, $module);
+        return sprintf('%svendor/spryker/spryker/Bundles/%s/', APPLICATION_ROOT_DIR, $module);
     }
 
     /**

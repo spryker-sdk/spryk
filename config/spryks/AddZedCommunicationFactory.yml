@@ -10,10 +10,10 @@ arguments:
     value: ZedCommunicationFactory.php.twig
 
   targetFilename:
-    value: %module%CommunicationFactory.php
+    value: "%module%CommunicationFactory.php"
 
   targetPath:
-    default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Communication/
+    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Communication/"
 
 preSpryks:
   - CreateModule

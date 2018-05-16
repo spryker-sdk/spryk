@@ -12,6 +12,11 @@ use Spryker\Spryk\Style\SprykStyleInterface;
 class SprykFacade
 {
     /**
+     * @var \Spryker\Spryk\SprykFactory|null
+     */
+    protected $factory;
+
+    /**
      * @param string $sprykName
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
@@ -23,18 +28,34 @@ class SprykFacade
     }
 
     /**
-     * @return \Spryker\Spryk\SprykFactory
-     */
-    protected function getFactory(): SprykFactory
-    {
-        return new SprykFactory();
-    }
-
-    /**
      * @return array
      */
     public function getSprykDefinitions()
     {
         return $this->getFactory()->createSprykDefinitionDumper()->dump();
+    }
+
+    /**
+     * @return \Spryker\Spryk\SprykFactory
+     */
+    protected function getFactory(): SprykFactory
+    {
+        if ($this->factory === null) {
+            $this->factory = new SprykFactory();
+        }
+
+        return $this->factory;
+    }
+
+    /**
+     * @param \Spryker\Spryk\SprykFactory $factory
+     *
+     * @return \Spryker\Spryk\SprykFacade
+     */
+    public function setFactory(SprykFactory $factory): SprykFacade
+    {
+        $this->factory = $factory;
+
+        return $this;
     }
 }

@@ -15,10 +15,10 @@ use Spryker\Spryk\Console\SprykRunConsole;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddChangeLogTest
+ * @group AddClientTest
  * Add your own group annotations below this line
  */
-class AddChangeLogTest extends Unit
+class AddClientTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -31,15 +31,15 @@ class AddChangeLogTest extends Unit
     public function testCreatesChangeLogFile()
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, 'AddChangelog');
+        $tester = $this->tester->getConsoleTester($command, 'AddClient');
 
         $arguments = [
             'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => 'AddChangelog',
+            SprykRunConsole::ARGUMENT_SPRYK => 'AddClient',
             '--module' => 'FooBar',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClient.php');
     }
 }

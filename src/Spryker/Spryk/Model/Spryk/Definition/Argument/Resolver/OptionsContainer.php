@@ -21,10 +21,6 @@ class OptionsContainer
      */
     public static function setOptions(array $options): void
     {
-        if (static::$options !== null) {
-            $options = array_merge($options, static::$options);
-        }
-
         static::$options = $options;
     }
 

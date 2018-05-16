@@ -37,4 +37,12 @@ class SprykConfig
             realpath(sprintf('/%s/../../../config/%s/', __DIR__, $subDirectory)),
         ], 'is_dir');
     }
+
+    /**
+     * @return string
+     */
+    public function getRootDirectory(): string
+    {
+        return rtrim(APPLICATION_ROOT_DIR, DIRECTORY_SEPARATOR);
+    }
 }

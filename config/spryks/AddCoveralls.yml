@@ -12,7 +12,7 @@ arguments:
       value: .coveralls.yml
 
   targetPath:
-    default: vendor/spryker/spryker/Bundles/%module%/
+    default: "vendor/spryker/spryker/Bundles/%module%/"
 
 preSpryks:
   - CreateModule

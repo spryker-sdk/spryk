@@ -27,14 +27,27 @@ class CleanUpModule extends Module
 
         $finder = $this->getFinder();
 
-        if ($finder->valid()) {
+        $toDelete = [];
+        foreach ($finder as $fileInfo) {
+//            echo $fileInfo->getPathname() . PHP_EOL;
+            $path = $fileInfo->getRealPath();
+            $toDelete[] = $path;
+//            chmod($path, 0777);
+//
+//            if (is_dir($path) || is_file($path) && is_readable($path)) {
+//                $filesystem = new Filesystem();
+//                $filesystem->remove($path);
+//            }
+        }
+
+        foreach ($toDelete as $item) {
             $filesystem = new Filesystem();
-            $filesystem->remove($finder);
+            $filesystem->remove($item);
         }
     }
 
     /**
-     * @return \Iterator|\Symfony\Component\Finder\SplFileInfo[]
+     * @return \Symfony\Component\Finder\SplFileInfo[]|\Symfony\Component\Finder\Finder
      */
     protected function getFinder()
     {

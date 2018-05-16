@@ -31,7 +31,10 @@ suites:
 
     Integration:
         path: SprykerTest/Spryk/Integration
-        class_name: SprykTester
+        class_name: SprykIntegrationTester
+        extensions:
+            enabled: [SprykerTest\Extension\MissingSprykExecutionExtension]
+
         modules:
             enabled:
                 - Asserts

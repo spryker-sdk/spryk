@@ -10,10 +10,10 @@ arguments:
     value: ZedFacade.php.twig
 
   targetFilename:
-    value: %module%Facade.php
+    value: "%module%Facade.php"
 
   targetPath:
-    default: vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/
+    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/"
 
 preSpryks:
   - CreateModule

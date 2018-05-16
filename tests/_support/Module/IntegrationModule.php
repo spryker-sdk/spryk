@@ -8,9 +8,8 @@
 namespace SprykerTest\Module;
 
 use Codeception\Module;
-use PHPUnit\Framework\IncompleteTestError;
+use Codeception\Step;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
-use Symfony\Component\Finder\Finder;
 
 class IntegrationModule extends Module
 {
@@ -32,51 +31,20 @@ class IntegrationModule extends Module
     }
 
     /**
-     * @param array $settings
-     *
-     * @return void
+     * @return array
      */
-    public function _beforeSuite($settings = []): void
+    public static function getExecutedSpryks()
     {
-        OptionsContainer::setOptions([
-            'module' => 'FooBar',
-        ]);
+        return static::$executedSpryks;
     }
 
     /**
-     * @throws \PHPUnit\Framework\IncompleteTestError
+     * @param \Codeception\Step $step
      *
      * @return void
      */
-    public function _afterSuite()
+    public function _afterStep(Step $step): void
     {
         OptionsContainer::clearOptions();
-
-        $allSpryks = $this->getAllSpryks();
-
-        $diff = array_diff(static::$executedSpryks, $allSpryks);
-
-        if (count($diff) > 0) {
-            throw new IncompleteTestError(sprintf('Not all spryks executed! Please add tests for the following spryks: %s'), implode(', ', $diff));
-        }
-    }
-
-    /**
-     * @return string[]
-     */
-    protected function getAllSpryks(): array
-    {
-        $configDirectory = APPLICATION_ROOT_DIR . 'config/spryks/';
-        $finder = new Finder();
-        $finder->in($configDirectory);
-
-        $allSpryks = [];
-
-        foreach ($finder as $fileInfo) {
-            $sprykName = str_replace('.' . $fileInfo->getExtension(), '', $fileInfo->getFilename());
-            $allSpryks[] = $sprykName;
-        }
-
-        return $allSpryks;
     }
 }
