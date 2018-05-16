@@ -34,20 +34,13 @@ class CleanUpModule extends Module
 
         $toDelete = [];
         foreach ($finder as $fileInfo) {
-//            echo $fileInfo->getPathname() . PHP_EOL;
             $path = $fileInfo->getRealPath();
             $toDelete[] = $path;
-//            chmod($path, 0777);
-//
-//            if (is_dir($path) || is_file($path) && is_readable($path)) {
-//                $filesystem = new Filesystem();
-//                $filesystem->remove($path);
-//            }
         }
 
         foreach ($toDelete as $item) {
             $filesystem = new Filesystem();
-//            $filesystem->remove($item);
+            $filesystem->remove($item);
         }
     }
 
@@ -59,7 +52,7 @@ class CleanUpModule extends Module
         $finder = new Finder();
         $finder->in($this->getRootDirectory())->notPath('config');
 
-        return $finder->getIterator();
+        return $finder;
     }
 
     /**
