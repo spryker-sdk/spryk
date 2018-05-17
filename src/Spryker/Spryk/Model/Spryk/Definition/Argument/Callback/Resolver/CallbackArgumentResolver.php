@@ -33,10 +33,6 @@ class CallbackArgumentResolver implements CallbackArgumentResolverInterface
     public function resolve(ArgumentCollectionInterface $argumentCollection): ArgumentCollectionInterface
     {
         foreach ($argumentCollection->getArguments() as $argument) {
-            if (!$argument->hasCallbacks()) {
-                continue;
-            }
-
             $value = $argument->getValue();
             foreach ($argument->getCallbacks() as $callback) {
                 $callback = $this->callbackCollection->getCallbackByName($callback);
