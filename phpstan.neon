@@ -2,3 +2,10 @@ parameters:
     bootstrap: %rootDir%/../../../phpstan-bootstrap.php
     autoload_directories:
         - %rootDir%/../../../tests/
+
+    ignoreErrors:
+        - '#Class Spryker\\Zed\\FooBar\\Business\\FooBarFacadeInterface not found.#'
+        - '#Class Spryker\\Client\\FooBar\\FooBarClientInterface not found.#'
+        - '#Class Spryker\\Client\\FooBar\\FooBarClient not found.#'
+        - '#Class Spryker\\Zed\\FooBar\\Business\\FooBarFacade not found.#'
+        - '#Method SprykerTest\\SprykIntegrationTester::assertClassHasMethod\(\) with return type void returns mixed but should not return anything.#'

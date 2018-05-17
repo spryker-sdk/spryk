@@ -18,11 +18,10 @@ class AssertionModule extends Module
      *
      * @return void
      */
-    public function assertClassHasMethod(string $className, string $methodName)
+    public function assertClassHasMethod(string $className, string $methodName): void
     {
         $reflection = new BetterReflection();
         $classInfo = $reflection->classReflector()->reflect($className);
-        $classInfo->hasMethod($methodName);
 
         $this->assertTrue($classInfo->hasMethod($methodName), sprintf('Expected that class "%s" has method "%s" but method not found.', $className, $methodName));
     }
