@@ -101,7 +101,7 @@ class TemplateSpryk implements SprykBuilderInterface
             $fileName = $sprykerDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue();
         }
 
-        return $this->rootDirectory . DIRECTORY_SEPARATOR . $targetPath . DIRECTORY_SEPARATOR . $fileName;
+        return $this->rootDirectory . $targetPath . $fileName;
     }
 
     /**

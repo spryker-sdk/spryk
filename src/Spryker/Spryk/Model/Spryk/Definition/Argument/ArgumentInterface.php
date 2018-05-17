@@ -34,6 +34,23 @@ interface ArgumentInterface
     public function getValue();
 
     /**
+     * @param array $callbacks
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
+     */
+    public function setCallbacks(array $callbacks): ArgumentInterface;
+
+    /**
+     * @return string[]
+     */
+    public function getCallbacks(): array;
+
+    /**
+     * @return bool
+     */
+    public function hasCallbacks(): bool;
+
+    /**
      * @return mixed
      */
     public function __toString();

@@ -15,6 +15,12 @@ use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Collection\CallbackCollection;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Collection\CallbackCollectionInterface;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolver;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\ZedBusinessFactoryMethodNameCallback;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolver;
@@ -140,7 +146,8 @@ class SprykFactory
     public function createArgumentResolver(): ArgumentResolverInterface
     {
         return new ArgumentResolver(
-            $this->createArgumentCollection()
+            $this->createArgumentCollection(),
+            $this->createCallbackArgumentResolver()
         );
     }
 
@@ -150,6 +157,34 @@ class SprykFactory
     public function createArgumentCollection(): ArgumentCollectionInterface
     {
         return new ArgumentCollection();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface
+     */
+    public function createCallbackArgumentResolver(): CallbackArgumentResolverInterface
+    {
+        return new CallbackArgumentResolver(
+            $this->createCallbackCollection()
+        );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Collection\CallbackCollectionInterface
+     */
+    public function createCallbackCollection(): CallbackCollectionInterface
+    {
+        return new CallbackCollection([
+            $this->createZedFactoryMethodNameCallback(),
+        ]);
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createZedFactoryMethodNameCallback(): CallbackInterface
+    {
+        return new ZedBusinessFactoryMethodNameCallback();
     }
 
     /**

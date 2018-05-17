@@ -40,7 +40,7 @@ class SprykRunTemplateTest extends Unit
 
         $tester->execute($arguments);
 
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/CatFace/README.md');
+        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
     }
 
     /**

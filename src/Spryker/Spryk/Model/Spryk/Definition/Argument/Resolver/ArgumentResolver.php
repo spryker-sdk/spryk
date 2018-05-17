@@ -9,6 +9,7 @@ namespace Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver;
 
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Argument;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use Spryker\Spryk\Style\SprykStyleInterface;
 use Symfony\Component\Console\Question\Question;
@@ -31,17 +32,24 @@ class ArgumentResolver implements ArgumentResolverInterface
     protected $resolvedSprykArgumentCollection = [];
 
     /**
+     * @var \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface
+     */
+    protected $callbackArgumentResolver;
+
+    /**
      * @var \Spryker\Spryk\Style\SprykStyleInterface
      */
     protected $style;
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface $callbackArgumentResolver
      */
-    public function __construct(ArgumentCollectionInterface $argumentCollection)
+    public function __construct(ArgumentCollectionInterface $argumentCollection, CallbackArgumentResolverInterface $callbackArgumentResolver)
     {
         $this->argumentCollection = $argumentCollection;
         $this->resolvedArgumentCollection = clone $argumentCollection;
+        $this->callbackArgumentResolver = $callbackArgumentResolver;
     }
 
     /**
@@ -57,22 +65,41 @@ class ArgumentResolver implements ArgumentResolverInterface
         $argumentCollection = clone $this->argumentCollection;
 
         foreach ($arguments as $argumentName => $definition) {
-            $value = $this->getValueForArgument($argumentName, $sprykName, $definition);
-
-            $argument = new Argument();
-            $argument
-                ->setName($argumentName)
-                ->setValue($value);
-
+            $argument = $this->resolveArgument($argumentName, $sprykName, $definition);
             $argumentCollection->addArgument($argument);
             $this->resolvedArgumentCollection->addArgument($argument);
         }
 
         $argumentCollection = $this->replacePlaceholderInValues($argumentCollection);
+        $argumentCollection = $this->callbackArgumentResolver->resolve($argumentCollection);
 
         $this->resolvedSprykArgumentCollection[$sprykName] = $argumentCollection;
 
         return $argumentCollection;
+    }
+
+    /**
+     * @param string $argumentName
+     * @param string $sprykName
+     * @param array|null $definition
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Argument
+     */
+    protected function resolveArgument(string $argumentName, string $sprykName, ?array $definition = null): Argument
+    {
+        $argument = new Argument();
+        $argument->setName($argumentName);
+
+        if (isset($definition['callbackOnly'])) {
+            $argument->setCallbacks((array)$definition['callback']);
+
+            return $argument;
+        }
+
+        $value = $this->getValueForArgument($argumentName, $sprykName, $definition);
+        $argument->setValue($value);
+
+        return $argument;
     }
 
     /**
@@ -171,6 +198,22 @@ class ArgumentResolver implements ArgumentResolverInterface
 
             $argument->setValue($value);
         }
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
+     */
+    protected function executeCallbacks(ArgumentCollectionInterface $argumentCollection): ArgumentCollectionInterface
+    {
+        foreach ($argumentCollection->getArguments() as $argument) {
+            if ($this->hasPlaceholder($argument)) {
+                $this->replacePlaceholder($argument, $argumentCollection);
+            }
+        }
+
+        return $argumentCollection;
     }
 
     /**

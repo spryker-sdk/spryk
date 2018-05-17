@@ -2,19 +2,19 @@ spryk: method
 arguments:
 
   module:
-    value: CatFace
+    value: FooBar
 
   moduleOrganization:
     value: Spryker
 
   method:
-    value: addCatFace
+    value: addFooBar
 
   inputType:
-    value: \Generated\Shared\Transfer\CatFaceTransfer
+    value: \Generated\Shared\Transfer\FooBarTransfer
 
   inputVariable:
-    value: $catFaceTransfer
+    value: $fooBarTransfer
 
   outputType:
     value: bool

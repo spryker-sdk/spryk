@@ -7,7 +7,7 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder\Method;
 
-use ReflectionClass;
+use Roave\BetterReflection\BetterReflection;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
@@ -133,12 +133,12 @@ class MethodSpryk implements SprykBuilderInterface
      */
     protected function getMethodName(SprykDefinitionInterface $sprykerDefinition): string
     {
-        $templateName = $sprykerDefinition
+        $methodName = $sprykerDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_METHOD_NAME)
             ->getValue();
 
-        return $templateName;
+        return $methodName;
     }
 
     /**
@@ -148,7 +148,7 @@ class MethodSpryk implements SprykBuilderInterface
      */
     protected function getTargetFileContent(SprykDefinitionInterface $sprykerDefinition): string
     {
-        $targetReflection = new ReflectionClass($this->getTargetArgument($sprykerDefinition));
+        $targetReflection = $this->getReflection($sprykerDefinition);
 
         return file_get_contents($targetReflection->getFileName());
     }
@@ -161,8 +161,20 @@ class MethodSpryk implements SprykBuilderInterface
      */
     protected function putTargetFileContent(SprykDefinitionInterface $sprykerDefinition, string $newContent): void
     {
-        $targetReflection = new ReflectionClass($this->getTargetArgument($sprykerDefinition));
+        $targetReflection = $this->getReflection($sprykerDefinition);
 
         file_put_contents($targetReflection->getFileName(), $newContent);
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     *
+     * @return \Roave\BetterReflection\Reflection\Reflection|\Roave\BetterReflection\Reflection\ReflectionClass
+     */
+    protected function getReflection(SprykDefinitionInterface $sprykerDefinition)
+    {
+        $betterReflection = new BetterReflection();
+
+        return $betterReflection->classReflector()->reflect($this->getTargetArgument($sprykerDefinition));
     }
 }

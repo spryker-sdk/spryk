@@ -20,9 +20,9 @@ class Argument implements ArgumentInterface
     protected $value;
 
     /**
-     * @var array
+     * @var string[]|null
      */
-    protected $options;
+    protected $callbacks;
 
     /**
      * @param string $name
@@ -60,6 +60,38 @@ class Argument implements ArgumentInterface
     public function setValue($value): ArgumentInterface
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasCallbacks(): bool
+    {
+        return ($this->callbacks !== null);
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getCallbacks(): array
+    {
+        if (!$this->hasCallbacks()) {
+            return [];
+        }
+        
+        return $this->callbacks;
+    }
+
+    /**
+     * @param array $callbacks
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
+     */
+    public function setCallbacks(array $callbacks): ArgumentInterface
+    {
+        $this->callbacks = $callbacks;
 
         return $this;
     }

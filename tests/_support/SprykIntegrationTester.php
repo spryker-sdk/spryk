@@ -87,7 +87,10 @@ class SprykIntegrationTester extends Actor
     {
         $sprykConfig = Stub::make(new SprykConfig(), [
             'getRootDirectory' => function () {
-                return $this->getRootDirectory();
+                return $this->getRootDirectory() . DIRECTORY_SEPARATOR;
+            },
+            'get' => function () {
+                return $this->getRootDirectory() . DIRECTORY_SEPARATOR;
             },
         ]);
 

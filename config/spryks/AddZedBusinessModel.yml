@@ -1,0 +1,29 @@
+spryk: template
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  className: ~
+
+  interfaceName:
+    default: "%className%Interface"
+
+  template:
+    value: ZedBusinessModel.php.twig
+
+  targetFilename:
+    value: "%className%.php"
+
+  targetPath:
+    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/Model/"
+
+preSpryks:
+  - CreateModule
+
+postSpryks:
+  - AddZedBusinessModelInterface
+  - AddZedBusinessFactoryMethod
+

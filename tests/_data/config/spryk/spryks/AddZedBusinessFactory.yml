@@ -1,0 +1,17 @@
+spryk: template
+
+arguments:
+  module:
+    value: FooBar
+
+  moduleOrganization:
+    default: Spryker
+
+  template:
+    value: ZedBusinessFactory.php.twig
+
+  targetFilename:
+    value: "%module%BusinessFactory.php"
+
+  targetPath:
+    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/"

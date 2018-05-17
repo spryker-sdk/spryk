@@ -5,4 +5,4 @@ arguments:
     value: README.md.twig
 
   targetPath:
-    value: vendor/spryker/spryker/Bundles/CatFace/
+    value: vendor/spryker/spryker/Bundles/FooBar/

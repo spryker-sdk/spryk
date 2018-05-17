@@ -1,0 +1,22 @@
+spryk: method
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  className: ~
+  # Spryker\Zed\FooBar\Business\Model\FooBar
+
+  returnType:
+    default: "%className%Interface"
+  template:
+    value: MethodBusinessFactory.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%BusinessFactory"
+
+preSpryks:
+  - AddZedBusinessFactory
+

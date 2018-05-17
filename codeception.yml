@@ -26,6 +26,7 @@ suites:
         modules:
             enabled:
                 - Asserts
+                - SprykerTest\Module\AssertionModule
                 - SprykerTest\Module\ConsoleEnvironmentModule
                 - SprykerTest\Module\CleanUpModule:
                     rootDirectory: 'tests/_data/'

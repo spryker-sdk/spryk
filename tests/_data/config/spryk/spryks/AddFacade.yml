@@ -1,7 +1,7 @@
 spryk: template
 arguments:
   module:
-    value: CatFace
+    value: FooBar
 
   moduleOrganization:
     value: Spryker

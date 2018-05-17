@@ -39,7 +39,7 @@ class AddZedConsoleTest extends Unit
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
             '--module' => 'FooBar',
-            '--consoleName' => 'FooBar',
+            '--className' => 'FooBar',
             '--consoleCommand' => 'spryker:spryker',
         ];
 

@@ -43,6 +43,6 @@ class SprykConfig
      */
     public function getRootDirectory(): string
     {
-        return rtrim(APPLICATION_ROOT_DIR, DIRECTORY_SEPARATOR);
+        return APPLICATION_ROOT_DIR;
     }
 }

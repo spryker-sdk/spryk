@@ -1,0 +1,25 @@
+spryk: method
+arguments:
+
+  module:
+    value: FooBar
+
+  moduleOrganization:
+    value: Spryker
+
+  className:
+    value: Spryker\Zed\FooBar\Business\Model\FooBar
+
+  method:
+    callbackOnly: true
+    callback: UndefinedCallback
+
+  template:
+    value: MethodBusinessFactory.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%BusinessFactory"
+
+preSpryks:
+  - AddZedBusinessFactory
+

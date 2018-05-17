@@ -2,7 +2,7 @@ spryk: structure
 arguments:
 
   module:
-    value: CatFace
+    value: FooBar
 
   directories:
     value:
