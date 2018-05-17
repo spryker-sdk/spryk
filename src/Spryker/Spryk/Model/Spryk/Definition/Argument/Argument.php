@@ -20,9 +20,9 @@ class Argument implements ArgumentInterface
     protected $value;
 
     /**
-     * @var string[]|null
+     * @var string[]
      */
-    protected $callbacks;
+    protected $callbacks = [];
 
     /**
      * @param string $name
@@ -69,7 +69,7 @@ class Argument implements ArgumentInterface
      */
     public function hasCallbacks(): bool
     {
-        return ($this->callbacks !== null);
+        return (count($this->callbacks) === 0);
     }
 
     /**
@@ -77,10 +77,6 @@ class Argument implements ArgumentInterface
      */
     public function getCallbacks(): array
     {
-        if (!$this->hasCallbacks()) {
-            return [];
-        }
-
         return $this->callbacks;
     }
 

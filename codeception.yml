@@ -42,5 +42,5 @@ suites:
                 - Asserts
                 - SprykerTest\Module\AssertionModule
                 - SprykerTest\Module\CleanUpModule:
-                    rootDirectory: 'vendor/spryker/spryker/'
+                    rootDirectory: 'tests/_data/'
                 - SprykerTest\Module\IntegrationModule
