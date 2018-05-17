@@ -15,12 +15,12 @@ use Spryker\Spryk\Console\SprykRunConsole;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddClientTest
+ * @group AddZedDependencyProviderTest
  * Add your own group annotations below this line
  */
-class AddClientTest extends Unit
+class AddZedDependencyProviderTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddClient';
+    protected const SPRYK_NAME = 'AddZedDependencyProvider';
 
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -30,7 +30,7 @@ class AddClientTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientFile(): void
+    public function testAddsZedDependencyProvider(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
@@ -42,6 +42,6 @@ class AddClientTest extends Unit
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClient.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/FooBarDependencyProvider.php');
     }
 }

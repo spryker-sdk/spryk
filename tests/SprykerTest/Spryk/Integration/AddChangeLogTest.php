@@ -20,6 +20,8 @@ use Spryker\Spryk\Console\SprykRunConsole;
  */
 class AddChangeLogTest extends Unit
 {
+    protected const SPRYK_NAME = 'AddChangelog';
+
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -28,14 +30,14 @@ class AddChangeLogTest extends Unit
     /**
      * @return void
      */
-    public function testCreatesChangeLogFile()
+    public function testAddsChangeLogFile(): void
     {
         $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, 'AddChangelog');
+        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
 
         $arguments = [
             'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => 'AddChangelog',
+            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
             '--module' => 'FooBar',
         ];
 

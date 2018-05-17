@@ -9,18 +9,20 @@ namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykRunConsole;
+use Spryker\Zed\FooBar\Business\FooBarFacadeInterface;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddClientTest
+ * @group Facade
+ * @group AddZedFacadeInterfaceMethodTest
  * Add your own group annotations below this line
  */
-class AddClientTest extends Unit
+class AddZedFacadeInterfaceMethodTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddClient';
+    protected const SPRYK_NAME = 'AddZedFacadeInterfaceMethod';
 
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -30,7 +32,7 @@ class AddClientTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientFile(): void
+    public function testAddsMethodToFacadeInterface(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
@@ -39,9 +41,13 @@ class AddClientTest extends Unit
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
             '--module' => 'FooBar',
+            '--method' => 'addSomething',
+            '--inputType' => 'string',
+            '--inputVariable' => '$something',
+            '--outputType' => 'bool',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClient.php');
+        $this->tester->assertClassHasMethod(FooBarFacadeInterface::class, 'addSomething');
     }
 }

@@ -4,7 +4,10 @@ arguments:
   module: ~
 
   template:
-    value: CHANGELOG.md.twig
+    value: scrutinizer.yml.twig
+
+  targetFilename:
+    value: .scrutinizer.yml
 
   targetPath:
     default: "vendor/spryker/spryker/Bundles/%module%/"

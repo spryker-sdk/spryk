@@ -4,7 +4,10 @@ arguments:
   module: ~
 
   template:
-    value: CHANGELOG.md.twig
+    value: travis.yml.twig
+
+  targetFilename:
+    value: .travis.yml
 
   targetPath:
     default: "vendor/spryker/spryker/Bundles/%module%/"
