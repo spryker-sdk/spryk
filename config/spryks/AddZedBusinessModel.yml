@@ -15,7 +15,8 @@ arguments:
     value: ZedBusinessModel.php.twig
 
   targetFilename:
-    value: "%className%.php"
+    callbackOnly: true
+    callback: ZedBusinessModelTargetFilenameCallback
 
   targetPath:
     default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/Model/"

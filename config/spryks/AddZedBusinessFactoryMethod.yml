@@ -11,6 +11,11 @@ arguments:
 
   returnType:
     default: "%className%Interface"
+
+  method:
+    callbackOnly: true
+    callback: ZedBusinessFactoryMethodNameCallback
+
   template:
     value: MethodBusinessFactory.php.twig
 

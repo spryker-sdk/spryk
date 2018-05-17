@@ -80,7 +80,7 @@ class Argument implements ArgumentInterface
         if (!$this->hasCallbacks()) {
             return [];
         }
-        
+
         return $this->callbacks;
     }
 

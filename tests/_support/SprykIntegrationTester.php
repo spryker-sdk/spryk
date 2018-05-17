@@ -61,7 +61,7 @@ class SprykIntegrationTester extends Actor
      */
     public function getModuleDirectory(string $module = 'FooBar'): string
     {
-        return sprintf('%s/vendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
+        return sprintf('%s/tests/_data/vendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
     }
 
     /**
@@ -87,10 +87,13 @@ class SprykIntegrationTester extends Actor
     {
         $sprykConfig = Stub::make(new SprykConfig(), [
             'getRootDirectory' => function () {
-                return $this->getRootDirectory() . DIRECTORY_SEPARATOR;
+                return $this->getRootDirectory() . DIRECTORY_SEPARATOR . 'tests/_data/';
             },
-            'get' => function () {
-                return $this->getRootDirectory() . DIRECTORY_SEPARATOR;
+            'getSprykDirectories' => function () {
+                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryks/'];
+            },
+            'getTemplateDirectories' => function () {
+                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/templates/'];
             },
         ]);
 

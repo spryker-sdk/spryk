@@ -6,13 +6,17 @@ arguments:
   moduleOrganization:
     default: Spryker
 
-  interfaceName: ~
+  className: ~
+
+  interfaceName:
+    default: "%className%Interface"
 
   template:
     value: ZedBusinessModelInterface.php.twig
 
   targetFilename:
-    value: "%interfaceName%Interface.php"
+      callbackOnly: true
+      callback: ZedBusinessModelInterfaceTargetFilenameCallback
 
   targetPath:
     default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/Model/"

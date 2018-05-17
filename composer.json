@@ -30,10 +30,10 @@
       "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
       "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
       "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
-      "Spryker\\Client\\FooBar\\": "vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
-      "Spryker\\Shared\\FooBar\\": "vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
-      "Spryker\\Yves\\FooBar\\": "vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
-      "Spryker\\Zed\\FooBar\\": "vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/"
+      "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
+      "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
+      "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
+      "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/"
     }
   },
   "minimum-stability": "dev",

@@ -16,12 +16,12 @@ use Spryker\Zed\FooBar\Business\FooBarBusinessFactory;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddZedBusinessModelTest
+ * @group AddZedBusinessFactoryMethodTest
  * Add your own group annotations below this line
  */
-class AddZedBusinessModelTest extends Unit
+class AddZedBusinessFactoryMethodTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddZedBusinessModel';
+    protected const SPRYK_NAME = 'AddZedBusinessFactoryMethod';
 
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -31,7 +31,7 @@ class AddZedBusinessModelTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedBusinessModel(): void
+    public function testAddsMethodToBusinessFactory(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
@@ -41,25 +41,7 @@ class AddZedBusinessModelTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
             '--module' => 'FooBar',
             '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
-        ];
-
-        $tester->execute($arguments, ['interactive' => false]);
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Model/FooBar.php');
-    }
-
-    /**
-     * @return void
-     */
-    public function testAddsMethodToZedBusinessFactory(): void
-    {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
-            '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
+            '--returnType' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
