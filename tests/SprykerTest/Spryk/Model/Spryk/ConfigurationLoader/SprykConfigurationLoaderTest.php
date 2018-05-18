@@ -11,7 +11,6 @@ use Codeception\Test\Unit;
 use Spryker\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
 use Spryker\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoader;
 use Spryker\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Auto-generated group annotations
@@ -44,7 +43,5 @@ class SprykConfigurationLoaderTest extends Unit
         $sprykConfiguration = $configurationLoader->loadSpryk('SprykDefinition');
         $this->assertInternalType('array', $sprykConfiguration);
         $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration['arguments']['targetPath']);
-
-        echo '<pre>' . PHP_EOL . VarDumper::dump($sprykConfiguration) . PHP_EOL . 'Line: ' . __LINE__ . PHP_EOL . 'File: ' . __FILE__ . die();
     }
 }
