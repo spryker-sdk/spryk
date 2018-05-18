@@ -57,39 +57,61 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
      */
     protected function doMerge(array $rootConfiguration, array $sprykDefinition): array
     {
-        $mergedConfiguration = [];
-        foreach ($sprykDefinition as $key => $value) {
-            if ($key !== 'arguments') {
-                $mergedConfiguration[$key] = $value;
+        $sprykDefinition['arguments'] = $this->mergeArguments(
+            $sprykDefinition['arguments'],
+            $rootConfiguration['arguments']
+        );
+
+        return $sprykDefinition;
+    }
+
+    /**
+     * @param array $arguments
+     * @param array $rootArguments
+     *
+     * @return array
+     */
+    protected function mergeArguments(array $arguments, array $rootArguments): array
+    {
+        $mergedArguments = [];
+        foreach ($arguments as $argumentName => $argumentDefinition) {
+            if (!isset($rootArguments[$argumentName]) || $rootArguments[$argumentName] === null) {
+                $mergedArguments[$argumentName] = $argumentDefinition;
+                continue;
             }
-            if ($key === 'arguments') {
-                $arguments = [];
-                foreach ($sprykDefinition[$key] as $argumentName => $argumentDefinition) {
-                    if (!isset($rootConfiguration['arguments'][$argumentName]) || $rootConfiguration['arguments'][$argumentName] === null) {
-                        $arguments[$argumentName] = $argumentDefinition;
-                        continue;
-                    }
 
-                    $mergeType = $rootConfiguration['arguments'][$argumentName]['type'];
-                    $mergeValue = $rootConfiguration['arguments'][$argumentName]['value'];
+            $mergedArgumentDefinition = $this->getMergedArgumentDefinition($rootArguments, $argumentName, $argumentDefinition);
+            $mergedArguments[$argumentName] = $mergedArgumentDefinition;
+        }
 
-                    $mergedArgumentDefinition = [];
+        return $mergedArguments;
+    }
 
-                    foreach ($argumentDefinition as $definitionKey => $definitionValue) {
-                        if ($definitionKey !== 'default' && $definitionKey !== 'value') {
-                            $mergedArgumentDefinition[$definitionKey] = $definitionValue;
-                            continue;
-                        }
-                        if ($mergeType === 'prepend') {
-                            $mergedArgumentDefinition[$definitionKey] = $mergeValue . $definitionValue;
-                        }
-                    }
-                    $arguments[$argumentName] = $mergedArgumentDefinition;
-                }
-                $mergedConfiguration['arguments'] = $arguments;
+    /**
+     * @param array $rootArguments
+     * @param string $argumentName
+     * @param array $argumentDefinition
+     *
+     * @return array
+     */
+    protected function getMergedArgumentDefinition(array $rootArguments, string $argumentName, array $argumentDefinition): array
+    {
+        $mergeType = $rootArguments[$argumentName]['type'];
+        $mergeValue = $rootArguments[$argumentName]['value'];
+
+        $mergedArgumentDefinition = [];
+
+        foreach ($argumentDefinition as $definitionKey => $definitionValue) {
+            if ($definitionKey !== 'default' && $definitionKey !== 'value') {
+                $mergedArgumentDefinition[$definitionKey] = $definitionValue;
+                continue;
+            }
+
+            if ($mergeType === 'prepend') {
+                $mergedArgumentDefinition[$definitionKey] = $mergeValue . $definitionValue;
             }
         }
 
-        return $mergedConfiguration;
+        return $mergedArgumentDefinition;
     }
 }
