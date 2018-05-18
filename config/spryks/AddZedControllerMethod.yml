@@ -1,0 +1,31 @@
+spryk: method
+description: "Adds a new method to the Zed controller."
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  controller:
+    default: Index
+
+  method: ~
+
+  returnType:
+    default: void
+
+  template:
+    value: MethodZedController.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Zed\\%module%\\Communication\\Controller\\%controller%Controller"
+
+preSpryks:
+  - AddZedController
+
+postSpryks:
+  - AddZedPresentationTwig
+  - AddZedNavigationNode
+

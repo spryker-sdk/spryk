@@ -70,6 +70,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
             $sprykDefinition->setArgumentCollection($argumentCollection);
             $sprykDefinition->setPreSpryks($this->getPreSpryks($sprykConfiguration, $style));
             $sprykDefinition->setPostSpryks($this->getPostSpryks($sprykConfiguration, $style));
+            $sprykDefinition->setConfig($this->getConfig($sprykConfiguration));
         }
 
         return $this->definitionCollection[$sprykName];
@@ -89,6 +90,20 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
             ->setSprykName($sprykName);
 
         return $sprykDefinition;
+    }
+
+    /**
+     * @param array $sprykConfiguration
+     *
+     * @return array
+     */
+    protected function getConfig(array $sprykConfiguration): array
+    {
+        if (!isset($sprykConfiguration['config'])) {
+            return [];
+        }
+
+        return $sprykConfiguration['config'];
     }
 
     /**

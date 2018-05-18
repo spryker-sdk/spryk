@@ -9,7 +9,8 @@ namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ArrayCastFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\CamelCaseToDashFilter;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFiler;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFilter;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\LispCaseFilter;
 use Twig\Extension\DebugExtension;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
@@ -33,7 +34,8 @@ class TemplateRenderer implements TemplateRendererInterface
         $renderer->addExtension(new DebugExtension());
         $renderer->addFilter(new CamelCaseToDashFilter());
         $renderer->addFilter(new ArrayCastFilter());
-        $renderer->addFilter(new ClassNameShortFiler());
+        $renderer->addFilter(new ClassNameShortFilter());
+        $renderer->addFilter(new LispCaseFilter());
 
         $this->renderer = $renderer;
     }
@@ -47,5 +49,25 @@ class TemplateRenderer implements TemplateRendererInterface
     public function render(string $template, array $arguments): string
     {
         return $this->renderer->render($template, $arguments);
+    }
+
+    /**
+     * @param string $template
+     *
+     * @return string
+     */
+    public function getSource(string $template): string
+    {
+        $loader = $this->getLoader();
+
+        return $loader->getSourceContext($template)->getCode();
+    }
+
+    /**
+     * @return \Twig_Loader_Filesystem|\Twig_LoaderInterface
+     */
+    protected function getLoader(): Twig_Loader_Filesystem
+    {
+        return $this->renderer->getLoader();
     }
 }

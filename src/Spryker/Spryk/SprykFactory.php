@@ -10,6 +10,7 @@ namespace Spryker\Spryk;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollection;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
+use Spryker\Spryk\Model\Spryk\Builder\Navigation\NavigationSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
@@ -88,6 +89,7 @@ class SprykFactory
             $this->createStructureSpryk(),
             $this->createTemplateSpryk(),
             $this->createMethodSpryk(),
+            $this->createNavigationSpryk(),
         ];
     }
 
@@ -119,6 +121,16 @@ class SprykFactory
     {
         return new MethodSpryk(
             $this->createTemplateRenderer()
+        );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createNavigationSpryk(): SprykBuilderInterface
+    {
+        return new NavigationSpryk(
+            $this->getConfig()->getRootDirectory()
         );
     }
 

@@ -73,10 +73,7 @@ class TemplateSpryk implements SprykBuilderInterface
             mkdir($targetDirectory, 0777, true);
         }
 
-        $content = $this->renderer->render(
-            $templateName,
-            $sprykerDefinition->getArgumentCollection()->getArguments()
-        );
+        $content = $this->getContent($sprykerDefinition, $templateName);
 
         file_put_contents($targetPath, $content);
     }
@@ -117,5 +114,23 @@ class TemplateSpryk implements SprykBuilderInterface
             ->getValue();
 
         return $templateName;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param string $templateName
+     *
+     * @return string
+     */
+    protected function getContent(SprykDefinitionInterface $sprykerDefinition, string $templateName): string
+    {
+        if (isset($sprykerDefinition->getConfig()['noRender'])) {
+            return $this->renderer->getSource($templateName);
+        }
+
+        return $this->renderer->render(
+            $templateName,
+            $sprykerDefinition->getArgumentCollection()->getArguments()
+        );
     }
 }

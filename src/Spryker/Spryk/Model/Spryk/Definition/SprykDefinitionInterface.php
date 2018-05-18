@@ -21,7 +21,7 @@ interface SprykDefinitionInterface
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function setBuilder(string $builder): SprykDefinitionInterface;
+    public function setBuilder(string $builder): self;
 
     /**
      * @return string
@@ -33,7 +33,19 @@ interface SprykDefinitionInterface
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function setSprykName(string $sprykName): SprykDefinitionInterface;
+    public function setSprykName(string $sprykName): self;
+
+    /**
+     * @param array $config
+     *
+     * @return $this
+     */
+    public function setConfig(array $config): self;
+
+    /**
+     * @return array
+     */
+    public function getConfig(): array;
 
     /**
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
@@ -45,7 +57,7 @@ interface SprykDefinitionInterface
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function setArgumentCollection(ArgumentCollectionInterface $argumentCollection): SprykDefinitionInterface;
+    public function setArgumentCollection(ArgumentCollectionInterface $argumentCollection): self;
 
     /**
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinition[]
@@ -57,7 +69,7 @@ interface SprykDefinitionInterface
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function setPreSpryks(array $preSpryks): SprykDefinitionInterface;
+    public function setPreSpryks(array $preSpryks): self;
 
     /**
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinition[]
@@ -69,5 +81,5 @@ interface SprykDefinitionInterface
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function setPostSpryks(array $postSpryks): SprykDefinitionInterface;
+    public function setPostSpryks(array $postSpryks): self;
 }

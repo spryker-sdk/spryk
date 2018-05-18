@@ -3,6 +3,7 @@ description: "Adds a new navigation.xml to the Zed application."
 
 arguments:
   module: ~
+
   moduleOrganization:
     default: Spryker
 

@@ -9,7 +9,7 @@ namespace Spryker\Spryk\Model\Spryk\Builder\Template\Filter;
 
 use Twig\TwigFilter;
 
-class ClassNameShortFiler extends TwigFilter
+class ClassNameShortFilter extends TwigFilter
 {
     public function __construct()
     {

@@ -16,4 +16,11 @@ interface TemplateRendererInterface
      * @return string
      */
     public function render(string $template, array $arguments): string;
+
+    /**
+     * @param string $template
+     *
+     * @return string
+     */
+    public function getSource(string $template): string;
 }
