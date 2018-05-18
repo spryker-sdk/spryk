@@ -1,4 +1,6 @@
 spryk: structure
+description: "Unit Test configuration"
+
 arguments:
   module:
     value: FooBar

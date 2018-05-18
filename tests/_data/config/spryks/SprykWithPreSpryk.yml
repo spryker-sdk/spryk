@@ -1,4 +1,6 @@
 spryk: template
+description: "Unit Test configuration"
+
 arguments:
 
   template:

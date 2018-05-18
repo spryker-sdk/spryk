@@ -9,6 +9,7 @@ namespace SprykerTest;
 
 use Codeception\Actor;
 use Codeception\Stub;
+use Spryker\Spryk\Console\SprykDumpConsole;
 use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Spryk\SprykConfig;
 use Spryker\Spryk\SprykFacade;
@@ -64,7 +65,7 @@ class SprykConsoleTester extends Actor
         $application = new Application();
         $application->add($command);
 
-        if ($command instanceof SprykRunConsole) {
+        if ($command instanceof SprykRunConsole || $command instanceof SprykDumpConsole) {
             $command->setFacade($this->getFacadeWithMockedConfig());
         }
 

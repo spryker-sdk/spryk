@@ -16,6 +16,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SprykDumpConsole extends Command
 {
     /**
+     * @var \Spryker\Spryk\SprykFacade|null
+     */
+    protected $facade;
+
+    /**
      * @return void
      */
     protected function configure()
@@ -46,14 +51,6 @@ class SprykDumpConsole extends Command
     }
 
     /**
-     * @return \Spryker\Spryk\SprykFacade
-     */
-    protected function getFacade(): SprykFacade
-    {
-        return new SprykFacade();
-    }
-
-    /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[] $sprykDefinitions
      *
      * @return array
@@ -67,5 +64,29 @@ class SprykDumpConsole extends Command
         sort($formatted);
 
         return $formatted;
+    }
+
+    /**
+     * @return \Spryker\Spryk\SprykFacade
+     */
+    protected function getFacade(): SprykFacade
+    {
+        if ($this->facade === null) {
+            $this->facade = new SprykFacade();
+        }
+
+        return $this->facade;
+    }
+
+    /**
+     * @param \Spryker\Spryk\SprykFacade $facade
+     *
+     * @return $this
+     */
+    public function setFacade(SprykFacade $facade): SprykDumpConsole
+    {
+        $this->facade = $facade;
+
+        return $this;
     }
 }
