@@ -8,6 +8,11 @@
 namespace SprykerTest;
 
 use Codeception\Actor;
+use Codeception\Stub;
+use Spryker\Spryk\Console\SprykRunConsole;
+use Spryker\Spryk\SprykConfig;
+use Spryker\Spryk\SprykFacade;
+use Spryker\Spryk\SprykFactory;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -31,23 +36,23 @@ class SprykConsoleTester extends Actor
 {
     use _generated\SprykConsoleTesterActions;
 
-    /**
-     * @return string
-     */
-    public function getRootDirectory(): string
-    {
-        return codecept_data_dir();
-    }
-
-    /**
-     * @param string $module
-     *
-     * @return string
-     */
-    public function getModuleDirectory(string $module = 'FooBar'): string
-    {
-        return sprintf('%svendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
-    }
+//    /**
+//     * @return string
+//     */
+//    public function getRootDirectory(): string
+//    {
+//        return codecept_data_dir();
+//    }
+//
+//    /**
+//     * @param string $module
+//     *
+//     * @return string
+//     */
+//    public function getModuleDirectory(string $module = 'FooBar'): string
+//    {
+//        return sprintf('%svendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
+//    }
 
     /**
      * @param \Symfony\Component\Console\Command\Command $command
@@ -59,8 +64,59 @@ class SprykConsoleTester extends Actor
         $application = new Application();
         $application->add($command);
 
+        if ($command instanceof SprykRunConsole) {
+            $command->setFacade($this->getFacadeWithMockedConfig());
+        }
+
         $command = $application->find($command->getName());
 
         return new CommandTester($command);
+    }
+
+    /**
+     * @return \Spryker\Spryk\SprykFacade
+     */
+    protected function getFacadeWithMockedConfig(): SprykFacade
+    {
+        $sprykConfig = $this->getSprykConfigMock();
+
+        $sprykFactory = new SprykFactory();
+        $sprykFactory->setConfig($sprykConfig);
+
+        $sprykFacade = new SprykFacade();
+        $sprykFacade->setFactory($sprykFactory);
+
+        return $sprykFacade;
+    }
+
+    /**
+     * @return object|\Spryker\Spryk\SprykConfig
+     */
+    protected function getSprykConfigMock()
+    {
+        $sprykConfig = Stub::make(new SprykConfig(), [
+            'getRootDirectory' => function () {
+                return $this->getRootDirectory();
+            },
+            'getSprykDirectories' => function () {
+                return [$this->getRootDirectory() . 'config/spryks/'];
+            },
+            'getRootSprykDirectories' => function () {
+                return [$this->getRootDirectory() . 'config/'];
+            },
+            'getTemplateDirectories' => function () {
+                return [$this->getRootDirectory() . 'config/templates/'];
+            },
+        ]);
+
+        return $sprykConfig;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRootDirectory(): string
+    {
+        return realpath(__DIR__ . '/../../tests/_data/') . DIRECTORY_SEPARATOR;
     }
 }
