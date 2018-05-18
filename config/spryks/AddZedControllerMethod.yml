@@ -11,7 +11,8 @@ arguments:
   controller:
     default: Index
 
-  method: ~
+  method:
+    default: index
 
   returnType:
     default: void
