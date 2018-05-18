@@ -41,12 +41,18 @@ class SprykConfig
     protected function buildDirectoryList(?string $subDirectory = null): array
     {
         $subDirectory = ($subDirectory) ? $subDirectory . DIRECTORY_SEPARATOR : DIRECTORY_SEPARATOR;
-        return array_filter([
-            realpath($this->getRootDirectory() . '/config/spryk/' . $subDirectory),
-            realpath(__DIR__ . '/../../../config/spryk/' . $subDirectory),
-//            sprintf('/%s/config/spryk/%s/', $this->getRootDirectory(), $subDirectory),
-//            realpath(sprintf('/%s/../../../config/%s/', __DIR__, $subDirectory)),
-        ], 'is_dir');
+
+        $directories = [];
+        $projectSprykDirectory = realpath($this->getRootDirectory() . '../../../config/spryk/' . $subDirectory);
+        $sprykModuleDirectory = realpath($this->getRootDirectory() . 'config/' . $subDirectory);
+        if ($projectSprykDirectory) {
+            $directories[] = $projectSprykDirectory . DIRECTORY_SEPARATOR;
+        }
+        if ($sprykModuleDirectory) {
+            $directories[] = $sprykModuleDirectory . DIRECTORY_SEPARATOR;
+        }
+
+        return $directories;
     }
 
     /**
@@ -54,6 +60,6 @@ class SprykConfig
      */
     public function getRootDirectory(): string
     {
-        return APPLICATION_ROOT_DIR;
+        return realpath(__DIR__ . '/../../../') . DIRECTORY_SEPARATOR;
     }
 }
