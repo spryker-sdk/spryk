@@ -21,7 +21,7 @@ use Spryker\Spryk\Console\SprykRunConsole;
 class SprykRunArgumentWithPlaceholderTest extends Unit
 {
     /**
-     * @var \SprykerTest\SprykTester
+     * @var \SprykerTest\SprykConsoleTester
      */
     protected $tester;
 

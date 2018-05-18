@@ -21,7 +21,7 @@ use Spryker\Spryk\Console\SprykDumpConsole;
 class SprykDumpTest extends Unit
 {
     /**
-     * @var \SprykerTest\SprykTester
+     * @var \SprykerTest\SprykConsoleTester
      */
     protected $tester;
 

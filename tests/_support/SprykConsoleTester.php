@@ -8,6 +8,9 @@
 namespace SprykerTest;
 
 use Codeception\Actor;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * Inherited Methods
@@ -24,9 +27,9 @@ use Codeception\Actor;
  *
  * @SuppressWarnings(PHPMD)
  */
-class SprykTester extends Actor
+class SprykConsoleTester extends Actor
 {
-    use _generated\SprykTesterActions;
+    use _generated\SprykConsoleTesterActions;
 
     /**
      * @return string
@@ -44,5 +47,20 @@ class SprykTester extends Actor
     public function getModuleDirectory(string $module = 'FooBar'): string
     {
         return sprintf('%svendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Command\Command $command
+     *
+     * @return \Symfony\Component\Console\Tester\CommandTester
+     */
+    public function getConsoleTester(Command $command)
+    {
+        $application = new Application();
+        $application->add($command);
+
+        $command = $application->find($command->getName());
+
+        return new CommandTester($command);
     }
 }
