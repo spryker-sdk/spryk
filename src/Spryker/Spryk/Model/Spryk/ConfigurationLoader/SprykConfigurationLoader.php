@@ -5,13 +5,13 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Spryk\Model\Spryk\Loader;
+namespace Spryker\Spryk\Model\Spryk\ConfigurationLoader;
 
 use Spryker\Spryk\Exception\SprykConfigFileNotFound;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Yaml\Yaml;
 
-class SprykLoader implements SprykLoaderInterface
+class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
 {
     /**
      * @var string[]

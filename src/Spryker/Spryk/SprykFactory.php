@@ -15,6 +15,8 @@ use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
+use Spryker\Spryk\Model\Spryk\ConfigurationLoader\SprykConfigurationLoader;
+use Spryker\Spryk\Model\Spryk\ConfigurationLoader\SprykConfigurationLoaderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackFactory;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
@@ -28,8 +30,6 @@ use Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumper;
 use Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutor;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutorInterface;
-use Spryker\Spryk\Model\Spryk\Loader\SprykLoader;
-use Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface;
 
 class SprykFactory
 {
@@ -61,11 +61,11 @@ class SprykFactory
     }
 
     /**
-     * @return \Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface
+     * @return \Spryker\Spryk\Model\Spryk\ConfigurationLoader\SprykConfigurationLoaderInterface
      */
-    public function createConfigurationLoader(): SprykLoaderInterface
+    public function createConfigurationLoader(): SprykConfigurationLoaderInterface
     {
-        return new SprykLoader(
+        return new SprykConfigurationLoader(
             $this->getConfig()->getSprykDirectories()
         );
     }

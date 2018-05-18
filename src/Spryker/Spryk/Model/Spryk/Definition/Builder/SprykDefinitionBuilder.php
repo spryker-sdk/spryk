@@ -7,10 +7,10 @@
 
 namespace Spryker\Spryk\Model\Spryk\Definition\Builder;
 
+use Spryker\Spryk\Model\Spryk\ConfigurationLoader\SprykConfigurationLoaderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinition;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
-use Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface;
 use Spryker\Spryk\Style\SprykStyleInterface;
 
 class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
@@ -19,7 +19,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     const ARGUMENTS = 'arguments';
 
     /**
-     * @var \Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface
+     * @var \Spryker\Spryk\Model\Spryk\ConfigurationLoader\SprykConfigurationLoaderInterface
      */
     protected $sprykLoader;
 
@@ -39,10 +39,10 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     protected $calledSpryk;
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface $sprykLoader
+     * @param \Spryker\Spryk\Model\Spryk\ConfigurationLoader\SprykConfigurationLoaderInterface $sprykLoader
      * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface $argumentResolver
      */
-    public function __construct(SprykLoaderInterface $sprykLoader, ArgumentResolverInterface $argumentResolver)
+    public function __construct(SprykConfigurationLoaderInterface $sprykLoader, ArgumentResolverInterface $argumentResolver)
     {
         $this->sprykLoader = $sprykLoader;
         $this->argumentResolver = $argumentResolver;
