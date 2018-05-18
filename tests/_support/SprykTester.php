@@ -8,6 +8,9 @@
 namespace SprykerTest;
 
 use Codeception\Actor;
+use Spryker\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
+use Spryker\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoader;
+use Spryker\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
 
 /**
  * Inherited Methods
@@ -44,5 +47,21 @@ class SprykTester extends Actor
     public function getModuleDirectory(string $module = 'FooBar'): string
     {
         return sprintf('%svendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
+    }
+
+    /**
+     * @param string $directory
+     *
+     * @return array
+     */
+    public function getMergedConfiguration(string $directory)
+    {
+        $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/']);
+        $configurationMerger = new SprykConfigurationMerger($configurationFinder);
+
+        $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/spryks/']);
+        $configurationLoader = new SprykConfigurationLoader($configurationFinder, $configurationMerger);
+
+        return $configurationLoader->loadSpryk('SprykDefinition');
     }
 }

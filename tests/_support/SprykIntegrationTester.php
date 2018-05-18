@@ -92,6 +92,9 @@ class SprykIntegrationTester extends Actor
             'getSprykDirectories' => function () {
                 return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryks/'];
             },
+            'getRootSprykDirectories' => function () {
+                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/'];
+            },
             'getTemplateDirectories' => function () {
                 return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/templates/'];
             },

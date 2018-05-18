@@ -1,4 +1,5 @@
 spryk: template
+description: "Adds a new codeception.yml to the Modules root."
 
 arguments:
   module: ~
@@ -10,7 +11,7 @@ arguments:
     value: codeception.yml.twig
 
   targetPath:
-    default: "vendor/spryker/spryker/Bundles/%module%/"
+    default: "%module%/"
 
 preSpryks:
   - CreateModule

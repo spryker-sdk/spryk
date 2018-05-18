@@ -1,4 +1,5 @@
 spryk: template
+description: "Adds a new .coveralls.yml to the Modules root."
 
 arguments:
   module: ~
@@ -12,7 +13,7 @@ arguments:
       value: .coveralls.yml
 
   targetPath:
-    default: "vendor/spryker/spryker/Bundles/%module%/"
+    default: "%module%/"
 
 preSpryks:
   - CreateModule

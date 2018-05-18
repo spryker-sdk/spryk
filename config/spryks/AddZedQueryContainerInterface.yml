@@ -1,4 +1,5 @@
 spryk: template
+description: "Adds a new *module*QueryContainerInterface to the Zed application."
 
 arguments:
   module: ~
@@ -13,7 +14,7 @@ arguments:
     value: "%module%QueryContainerInterface.php"
 
   targetPath:
-    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Persistence/"
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Persistence/"
 
 preSpryks:
   - AddZedQueryContainer

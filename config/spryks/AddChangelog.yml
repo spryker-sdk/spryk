@@ -1,4 +1,5 @@
 spryk: template
+description: "Adds a new CHANGELOG.md to the Modules root."
 
 arguments:
   module: ~
@@ -7,7 +8,7 @@ arguments:
     value: CHANGELOG.md.twig
 
   targetPath:
-    default: "vendor/spryker/spryker/Bundles/%module%/"
+    default: "%module%/"
 
 preSpryks:
   - CreateModule

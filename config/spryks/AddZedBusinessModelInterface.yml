@@ -1,4 +1,5 @@
 spryk: template
+description: "Adds a new Business model interface to the Zed application."
 
 arguments:
   module: ~
@@ -19,7 +20,7 @@ arguments:
       callback: ZedBusinessModelInterfaceTargetFilenameCallback
 
   targetPath:
-    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/Model/"
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/Model/"
 
 preSpryks:
   - CreateModule

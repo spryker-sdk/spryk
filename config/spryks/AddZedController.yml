@@ -1,4 +1,5 @@
 spryk: template
+description: "Adds a new Controller to the Zed application."
 
 arguments:
   module: ~
@@ -16,7 +17,7 @@ arguments:
     value: "%controller%Controller.php"
 
   targetPath:
-    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Communication/Controller/"
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Communication/Controller/"
 
 preSpryks:
   - CreateModule

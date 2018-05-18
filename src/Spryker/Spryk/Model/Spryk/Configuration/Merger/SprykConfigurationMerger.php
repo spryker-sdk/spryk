@@ -64,16 +64,27 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
             }
             if ($key === 'arguments') {
                 $arguments = [];
-                foreach ($sprykDefinition[$key] as $argumentName => $argumentValue) {
-                    if (!isset($rootConfiguration['arguments'][$argumentName])) {
-                        $arguments[$argumentName] = $argumentValue;
+                foreach ($sprykDefinition[$key] as $argumentName => $argumentDefinition) {
+                    if (!isset($rootConfiguration['arguments'][$argumentName]) || $rootConfiguration['arguments'][$argumentName] === null) {
+                        $arguments[$argumentName] = $argumentDefinition;
                         continue;
                     }
 
                     $mergeType = $rootConfiguration['arguments'][$argumentName]['type'];
-                    if ($mergeType === 'prepend') {
-                        $arguments[$argumentName] = $rootConfiguration['arguments'][$argumentName]['value'] . $argumentValue;
+                    $mergeValue = $rootConfiguration['arguments'][$argumentName]['value'];
+
+                    $mergedArgumentDefinition = [];
+
+                    foreach ($argumentDefinition as $definitionKey => $definitionValue) {
+                        if ($definitionKey !== 'default' && $definitionKey !== 'value') {
+                            $mergedArgumentDefinition[$definitionKey] = $definitionValue;
+                            continue;
+                        }
+                        if ($mergeType === 'prepend') {
+                            $mergedArgumentDefinition[$definitionKey] = $mergeValue . $definitionValue;
+                        }
                     }
+                    $arguments[$argumentName] = $mergedArgumentDefinition;
                 }
                 $mergedConfiguration['arguments'] = $arguments;
             }

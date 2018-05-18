@@ -1,2 +1,7 @@
 arguments:
-  targetPath: "%module%/src/"
+  emptyValue: ~
+  replaceValue:
+    value: "%module%/src/"
+
+  replaceDefault:
+    default: "%module%/src/"

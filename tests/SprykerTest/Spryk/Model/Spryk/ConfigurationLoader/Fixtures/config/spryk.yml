@@ -1,4 +1,10 @@
 arguments:
-  targetPath:
+  emptyValue:
+
+  replaceValue:
+    value: vendor/spryker/spryker/Bundles/
+    type: prepend
+
+  replaceDefault:
     value: vendor/spryker/spryker/Bundles/
     type: prepend

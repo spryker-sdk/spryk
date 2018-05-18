@@ -1,4 +1,5 @@
 spryk: template
+description: "Adds a new .travis.yml to the Modules root."
 
 arguments:
   module: ~
@@ -10,7 +11,7 @@ arguments:
     value: .travis.yml
 
   targetPath:
-    default: "vendor/spryker/spryker/Bundles/%module%/"
+    default: "%module%/"
 
 preSpryks:
   - CreateModule

@@ -8,9 +8,6 @@
 namespace SprykerTest\Spryk\Model\Spryk\ConfigurationLoader;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
-use Spryker\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoader;
-use Spryker\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
 
 /**
  * Auto-generated group annotations
@@ -32,16 +29,30 @@ class SprykConfigurationLoaderTest extends Unit
     /**
      * @return void
      */
-    public function testPrependsSprykConfigurationValuesWithRootConfigurationValues(): void
+    public function testDoesNotReplaceEmptyValue(): void
     {
-        $configurationFinder = new SprykConfigurationFinder([__DIR__ . '/Fixtures/config/']);
-        $configurationMerger = new SprykConfigurationMerger($configurationFinder);
+        $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        $configurationFinder = new SprykConfigurationFinder([__DIR__ . '/Fixtures/config/spryks/']);
-        $configurationLoader = new SprykConfigurationLoader($configurationFinder, $configurationMerger);
+        $this->assertSame(null, $sprykConfiguration['arguments']['emptyValue']);
+    }
 
-        $sprykConfiguration = $configurationLoader->loadSpryk('SprykDefinition');
-        $this->assertInternalType('array', $sprykConfiguration);
-        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration['arguments']['targetPath']);
+    /**
+     * @return void
+     */
+    public function testPrependsSprykConfigurationDefaultWithRootConfigurationValue(): void
+    {
+        $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
+
+        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration['arguments']['replaceDefault']['default']);
+    }
+
+    /**
+     * @return void
+     */
+    public function testPrependsSprykConfigurationValueWithRootConfigurationValue(): void
+    {
+        $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
+
+        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration['arguments']['replaceValue']['value']);
     }
 }

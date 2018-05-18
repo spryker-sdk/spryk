@@ -1,4 +1,6 @@
 spryk: method
+description: "Adds a new method to the *module*BusinessFactory to the Modules root."
+
 arguments:
 
   module: ~
@@ -7,7 +9,6 @@ arguments:
     default: Spryker
 
   className: ~
-  # Spryker\Zed\FooBar\Business\Model\FooBar
 
   returnType:
     default: "%className%Interface"
