@@ -177,7 +177,8 @@ class SprykFactory
     public function createSprykDefinitionDumper(): SprykDefinitionDumperInterface
     {
         return new SprykDefinitionDumper(
-            $this->createDefinitionFinder()
+            $this->createDefinitionFinder(),
+            $this->createConfigurationFactory()->createConfigurationLoader()
         );
     }
 

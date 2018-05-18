@@ -37,7 +37,7 @@ class ArgumentResolver implements ArgumentResolverInterface
     protected $callbackArgumentResolver;
 
     /**
-     * @var \Spryker\Spryk\Style\SprykStyleInterface
+     * @var \Spryker\Spryk\Style\SprykStyleInterface|null
      */
     protected $style;
 
@@ -55,11 +55,11 @@ class ArgumentResolver implements ArgumentResolverInterface
     /**
      * @param array $arguments
      * @param string $sprykName
-     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     * @param \Spryker\Spryk\Style\SprykStyleInterface|null $style
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
      */
-    public function resolve(array $arguments, string $sprykName, SprykStyleInterface $style): ArgumentCollectionInterface
+    public function resolve(array $arguments, string $sprykName, ?SprykStyleInterface $style = null): ArgumentCollectionInterface
     {
         $this->style = $style;
         $argumentCollection = clone $this->argumentCollection;
@@ -221,10 +221,14 @@ class ArgumentResolver implements ArgumentResolverInterface
      * @param string $sprykName
      * @param string|int|null $default
      *
-     * @return string
+     * @return string|int|null
      */
     protected function askForArgumentValue(string $argument, string $sprykName, $default = null)
     {
+        if (!$this->style) {
+            return $default;
+        }
+
         $question = new Question(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $default);
 
         return $this->style->askQuestion($question);

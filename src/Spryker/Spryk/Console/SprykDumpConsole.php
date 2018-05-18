@@ -39,7 +39,7 @@ class SprykDumpConsole extends Command
 
         $table = new Table($output);
         $table
-            ->setHeaders(['Spryk name'])
+            ->setHeaders(['Spryk name', 'Description'])
             ->setRows($sprykDefinitions);
         ;
         $table->render();
@@ -54,15 +54,15 @@ class SprykDumpConsole extends Command
     }
 
     /**
-     * @param array $sprykDefinitions
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[] $sprykDefinitions
      *
      * @return array
      */
     protected function formatForTable(array $sprykDefinitions): array
     {
         $formatted = [];
-        foreach ($sprykDefinitions as $sprykDefinition) {
-            $formatted[$sprykDefinition] = [$sprykDefinition];
+        foreach ($sprykDefinitions as $sprykName => $sprykDefinition) {
+            $formatted[$sprykName] = [$sprykName, $sprykDefinition['description']];
         }
         sort($formatted);
 

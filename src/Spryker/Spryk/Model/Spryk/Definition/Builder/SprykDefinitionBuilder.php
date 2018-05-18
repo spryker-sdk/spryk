@@ -39,6 +39,11 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     protected $calledSpryk;
 
     /**
+     * @var \Spryker\Spryk\Style\SprykStyleInterface
+     */
+    protected $style;
+
+    /**
      * @param \Spryker\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface $sprykLoader
      * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface $argumentResolver
      */
@@ -49,12 +54,23 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     }
 
     /**
-     * @param string $sprykName
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface
+     */
+    public function setStyle(SprykStyleInterface $style): SprykDefinitionBuilderInterface
+    {
+        $this->style = $style;
+
+        return $this;
+    }
+
+    /**
+     * @param string $sprykName
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function buildDefinition(string $sprykName, SprykStyleInterface $style): SprykDefinitionInterface
+    public function buildDefinition(string $sprykName): SprykDefinitionInterface
     {
         if ($this->calledSpryk === null) {
             $this->calledSpryk = $sprykName;
@@ -62,14 +78,14 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
         if (!isset($this->definitionCollection[$sprykName])) {
             $sprykConfiguration = $this->sprykLoader->loadSpryk($sprykName);
-            $argumentCollection = $this->argumentResolver->resolve($sprykConfiguration[static::ARGUMENTS], $sprykName, $style);
+            $argumentCollection = $this->argumentResolver->resolve($sprykConfiguration[static::ARGUMENTS], $sprykName, $this->style);
 
             $sprykDefinition = $this->createDefinition($sprykName, $sprykConfiguration[static::SPRYK_BUILDER_NAME]);
             $this->definitionCollection[$sprykName] = $sprykDefinition;
 
             $sprykDefinition->setArgumentCollection($argumentCollection);
-            $sprykDefinition->setPreSpryks($this->getPreSpryks($sprykConfiguration, $style));
-            $sprykDefinition->setPostSpryks($this->getPostSpryks($sprykConfiguration, $style));
+            $sprykDefinition->setPreSpryks($this->getPreSpryks($sprykConfiguration));
+            $sprykDefinition->setPostSpryks($this->getPostSpryks($sprykConfiguration));
             $sprykDefinition->setConfig($this->getConfig($sprykConfiguration));
         }
 
@@ -108,11 +124,10 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
     /**
      * @param array $sprykConfiguration
-     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return array
      */
-    protected function getPreSpryks(array $sprykConfiguration, SprykStyleInterface $style): array
+    protected function getPreSpryks(array $sprykConfiguration): array
     {
         $preSpryks = [];
         if (isset($sprykConfiguration['preSpryks'])) {
@@ -122,7 +137,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
                     continue;
                 }
 
-                $preSpryks[] = $this->buildDefinition($preSprykName, $style);
+                $preSpryks[] = $this->buildDefinition($preSprykName);
             }
         }
 
@@ -131,16 +146,15 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
     /**
      * @param array $sprykConfiguration
-     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return array
      */
-    protected function getPostSpryks(array $sprykConfiguration, SprykStyleInterface $style): array
+    protected function getPostSpryks(array $sprykConfiguration): array
     {
         $postSpryks = [];
         if (isset($sprykConfiguration['postSpryks'])) {
             foreach ($sprykConfiguration['postSpryks'] as $postSprykName) {
-                $postSpryks[] = $this->buildDefinition($postSprykName, $style);
+                $postSpryks[] = $this->buildDefinition($postSprykName);
             }
         }
 

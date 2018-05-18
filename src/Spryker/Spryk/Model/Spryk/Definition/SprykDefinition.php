@@ -22,6 +22,11 @@ class SprykDefinition implements SprykDefinitionInterface
     protected $sprykName;
 
     /**
+     * @var string
+     */
+    protected $description;
+
+    /**
      * @var array
      */
     protected $config = [];
@@ -84,6 +89,26 @@ class SprykDefinition implements SprykDefinitionInterface
         $this->sprykName = $sprykSprykName;
 
         return $this;
+    }
+
+    /**
+     * @param string $description
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     */
+    public function setDescription(string $description): SprykDefinitionInterface
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
     }
 
     /**

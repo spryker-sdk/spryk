@@ -28,7 +28,7 @@ class SprykFacade
     }
 
     /**
-     * @return array
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[]
      */
     public function getSprykDefinitions()
     {
