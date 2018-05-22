@@ -44,12 +44,12 @@ class SprykConsoleTester extends Actor
      */
     public function getConsoleTester(Command $command)
     {
-        $application = new Application();
-        $application->add($command);
-
         if ($command instanceof SprykRunConsole || $command instanceof SprykDumpConsole) {
             $command->setFacade($this->getFacadeWithMockedConfig());
         }
+
+        $application = new Application();
+        $application->add($command);
 
         $command = $application->find($command->getName());
 
@@ -82,13 +82,13 @@ class SprykConsoleTester extends Actor
                 return $this->getRootDirectory();
             },
             'getSprykDirectories' => function () {
-                return [$this->getRootDirectory() . 'config/spryks/'];
+                return [$this->getRootDirectory() . 'config/spryk/spryks/'];
             },
             'getRootSprykDirectories' => function () {
-                return [$this->getRootDirectory() . 'config/'];
+                return [$this->getRootDirectory() . 'config/spryk/'];
             },
             'getTemplateDirectories' => function () {
-                return [$this->getRootDirectory() . 'config/templates/'];
+                return [$this->getRootDirectory() . 'config/spryk/templates/'];
             },
         ]);
 

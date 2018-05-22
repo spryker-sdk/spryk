@@ -45,23 +45,72 @@ class SprykRunConsole extends Command
      */
     protected function configure()
     {
+        $sprykArguments = $this->getSprykArguments();
         $this->setName('spryk:run')
             ->setDescription('Runs a Spryk build process.')
-            ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
-            ->addOption(static::OPTION_DRY_RUN, static::OPTION_DRY_RUN_SHORT, InputOption::VALUE_NONE, 'Dry runs the Spryk, nothing will be executed.')
-            ->addOption('module', 'm', InputOption::VALUE_REQUIRED, 'Module name to run for.')
-            ->addOption('moduleOrganization', 'o', InputOption::VALUE_REQUIRED, 'Module Organization name to run for.')
-            ->addOption('controller', null, InputOption::VALUE_REQUIRED, 'Name of the controller to add.')
-            ->addOption('method', null, InputOption::VALUE_REQUIRED, 'Name of the method to add.')
-            ->addOption('inputType', null, InputOption::VALUE_REQUIRED, 'Input type for the method argument.')
-            ->addOption('inputVariable', null, InputOption::VALUE_REQUIRED, 'Input variable name for the method argument.')
-            ->addOption('outputType', null, InputOption::VALUE_REQUIRED, 'Return type for the method.')
-            ->addOption('specification', null, InputOption::VALUE_REQUIRED, 'Specification text for the method to add.')
-            ->addOption('targetPath', 't', InputOption::VALUE_REQUIRED, 'TargetPath.')
-            ->addOption('repositoryToken', null, InputOption::VALUE_REQUIRED, 'Token for repository.')
-            ->addOption('className', null, InputOption::VALUE_REQUIRED, 'Class name for the class.')
-            ->addOption('consoleCommand', null, InputOption::VALUE_REQUIRED, 'Name for the console command.')
-            ->addOption('returnType', null, InputOption::VALUE_REQUIRED, 'Return type for method.');
+            ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.');
+
+        foreach ($sprykArguments as $argumentName => $argumentDefinition) {
+            $this->addOption($argumentName, null, InputOption::VALUE_REQUIRED, $argumentDefinition['description']);
+        }
+
+//            ->addOption('module', 'm', InputOption::VALUE_REQUIRED, 'Module name to run for.')
+//            ->addOption('moduleOrganization', 'o', InputOption::VALUE_REQUIRED, 'Module Organization name to run for.')
+//            ->addOption('controller', null, InputOption::VALUE_REQUIRED, 'Name of the controller to add.')
+//            ->addOption('method', null, InputOption::VALUE_REQUIRED, 'Name of the method to add.')
+//            ->addOption('inputType', null, InputOption::VALUE_REQUIRED, 'Input type for the method argument.')
+//            ->addOption('inputVariable', null, InputOption::VALUE_REQUIRED, 'Input variable name for the method argument.')
+//            ->addOption('outputType', null, InputOption::VALUE_REQUIRED, 'Return type for the method.')
+//            ->addOption('specification', null, InputOption::VALUE_REQUIRED, 'Specification text for the method to add.')
+//            ->addOption('targetPath', 't', InputOption::VALUE_REQUIRED, 'TargetPath.')
+//            ->addOption('repositoryToken', null, InputOption::VALUE_REQUIRED, 'Token for repository.')
+//            ->addOption('className', null, InputOption::VALUE_REQUIRED, 'Class name for the class.')
+//            ->addOption('consoleCommand', null, InputOption::VALUE_REQUIRED, 'Name for the console command.')
+//            ->addOption('returnType', null, InputOption::VALUE_REQUIRED, 'Return type for method.');
+    }
+
+//    protected function initialize(InputInterface $input, OutputInterface $output)
+//    {
+//        $sprykArguments = $this->getSprykArguments();
+//        foreach ($sprykArguments as $argumentName => $argumentDefinition) {
+//            $this->addOption($argumentName, null, InputOption::VALUE_REQUIRED, $argumentDefinition['description']);
+//        }
+//    }
+
+
+    /**
+     * @return array
+     */
+    protected function getSprykArguments(): array
+    {
+        $argumentsList = [];
+        $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
+        foreach ($sprykDefinitions as $sprykName => $sprykDefinition) {
+            foreach ($sprykDefinition['arguments'] as $argumentName => $argumentDefinition) {
+                if (isset($argumentDefinition['value'])) {
+                    continue;
+                }
+                if (!isset($argumentsList[$argumentName])) {
+                    $argumentsList[$argumentName] = [
+                        'name' => $argumentName,
+                        'description' => sprintf('%s argument', $argumentName),
+                    ];
+                }
+            }
+        }
+        foreach ($sprykDefinitions as $sprykName => $sprykDefinition) {
+            foreach ($sprykDefinition['arguments'] as $argumentName => $argumentDefinition) {
+                if (isset($argumentDefinition['value'])) {
+                    continue;
+                }
+                $argumentsList[$sprykName . '.' . $argumentName] = [
+                    'name' => $argumentName,
+                    'description' => sprintf('%s %s argument', $sprykName, $argumentName),
+                ];
+            }
+        }
+
+        return $argumentsList;
     }
 
     /**

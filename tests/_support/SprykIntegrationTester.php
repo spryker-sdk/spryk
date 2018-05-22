@@ -43,10 +43,11 @@ class SprykIntegrationTester extends Actor
      */
     public function getConsoleTester(SprykRunConsole $command, string $sprykName)
     {
+        $command->setFacade($this->getFacadeWithMockedConfig());
+
         $application = new Application();
         $application->add($command);
 
-        $command->setFacade($this->getFacadeWithMockedConfig());
         $command = $application->find($command->getName());
 
         $this->addExecutedSpryk($sprykName);
