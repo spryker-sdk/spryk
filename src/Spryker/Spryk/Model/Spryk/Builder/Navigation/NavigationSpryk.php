@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder\Navigation;
 
+use DOMDocument;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use Zend\Filter\FilterChain;
@@ -71,11 +72,19 @@ class NavigationSpryk implements SprykBuilderInterface
 
         $xml = simplexml_load_file($targetPath);
         $page = $xml->$module->pages->addChild($module);
+        $page->addChild('lable', $this->getModule($sprykerDefinition));
+        $page->addChild('title', $this->getModule($sprykerDefinition));
         $page->addChild('bundle', $module);
         $page->addChild('controller', $controller);
         $page->addChild('action', $action);
 
-        $xml->saveXML($targetPath);
+//        $xml->saveXML($targetPath);
+
+        $dom = new DOMDocument('1.0');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($xml->asXML());
+        $dom->save($targetPath);
     }
 
     /**

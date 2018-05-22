@@ -37,24 +37,6 @@ class SprykConsoleTester extends Actor
 {
     use _generated\SprykConsoleTesterActions;
 
-//    /**
-//     * @return string
-//     */
-//    public function getRootDirectory(): string
-//    {
-//        return codecept_data_dir();
-//    }
-//
-//    /**
-//     * @param string $module
-//     *
-//     * @return string
-//     */
-//    public function getModuleDirectory(string $module = 'FooBar'): string
-//    {
-//        return sprintf('%svendor/spryker/spryker/Bundles/%s/', $this->getRootDirectory(), $module);
-//    }
-
     /**
      * @param \Symfony\Component\Console\Command\Command $command
      *

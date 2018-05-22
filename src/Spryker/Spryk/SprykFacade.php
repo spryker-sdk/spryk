@@ -36,6 +36,8 @@ class SprykFacade
     }
 
     /**
+     * @codeCoverageIgnore
+     *
      * @return \Spryker\Spryk\SprykFactory
      */
     protected function getFactory(): SprykFactory

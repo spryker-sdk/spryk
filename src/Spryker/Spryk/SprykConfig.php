@@ -7,6 +7,9 @@
 
 namespace Spryker\Spryk;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SprykConfig
 {
     /**

@@ -67,6 +67,8 @@ class SprykDumpConsole extends Command
     }
 
     /**
+     * @codeCoverageIgnore
+     *
      * @return \Spryker\Spryk\SprykFacade
      */
     protected function getFacade(): SprykFacade
