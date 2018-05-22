@@ -20,3 +20,4 @@ postSpryks:
   - AddLicense
   - AddContributing
   - AddChangelog
+  - AddTravis

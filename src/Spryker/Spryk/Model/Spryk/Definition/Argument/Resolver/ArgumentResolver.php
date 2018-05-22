@@ -64,8 +64,8 @@ class ArgumentResolver implements ArgumentResolverInterface
         $this->style = $style;
         $argumentCollection = clone $this->argumentCollection;
 
-        foreach ($arguments as $argumentName => $definition) {
-            $argument = $this->resolveArgument($argumentName, $sprykName, $definition);
+        foreach ($arguments as $argumentName => $argumentDefinition) {
+            $argument = $this->resolveArgument($argumentName, $sprykName, $argumentDefinition);
             $argumentCollection->addArgument($argument);
             $this->resolvedArgumentCollection->addArgument($argument);
         }
@@ -81,22 +81,24 @@ class ArgumentResolver implements ArgumentResolverInterface
     /**
      * @param string $argumentName
      * @param string $sprykName
-     * @param array|null $definition
+     * @param array|null $argumentDefinition
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Argument
      */
-    protected function resolveArgument(string $argumentName, string $sprykName, ?array $definition = null): Argument
+    protected function resolveArgument(string $argumentName, string $sprykName, ?array $argumentDefinition = null): Argument
     {
         $argument = new Argument();
         $argument->setName($argumentName);
 
-        if (isset($definition['callbackOnly'])) {
-            $argument->setCallbacks((array)$definition['callback']);
+        if (isset($argumentDefinition['callback'])) {
+            $argument->setCallbacks((array)$argumentDefinition['callback']);
+        }
 
+        if (isset($argumentDefinition['callbackOnly'])) {
             return $argument;
         }
 
-        $value = $this->getValueForArgument($argumentName, $sprykName, $definition);
+        $value = $this->getValueForArgument($argumentName, $sprykName, $argumentDefinition);
         $argument->setValue($value);
 
         return $argument;
@@ -105,39 +107,39 @@ class ArgumentResolver implements ArgumentResolverInterface
     /**
      * @param string $argumentName
      * @param string $sprykName
-     * @param array|null $definition
+     * @param array|null $argumentDefinition
      *
      * @return mixed
      */
-    protected function getValueForArgument(string $argumentName, string $sprykName, ?array $definition = null)
+    protected function getValueForArgument(string $argumentName, string $sprykName, ?array $argumentDefinition = null)
     {
-        if (isset($definition['value'])) {
-            return $definition['value'];
+        if (isset($argumentDefinition['value'])) {
+            return $argumentDefinition['value'];
         }
 
         if (OptionsContainer::hasOption($argumentName)) {
             return OptionsContainer::getOption($argumentName);
         }
 
-        $defaultValue = $this->getDefaultValue($argumentName, $definition);
+        $defaultValue = $this->getDefaultValue($argumentName, $argumentDefinition);
 
         return $this->askForArgumentValue($argumentName, $sprykName, $defaultValue);
     }
 
     /**
-     * @param string $argument
-     * @param array|null $definition
+     * @param string $argumentName
+     * @param array|null $argumentDefinition
      *
      * @return mixed|null
      */
-    protected function getDefaultValue(string $argument, ?array $definition = null)
+    protected function getDefaultValue(string $argumentName, ?array $argumentDefinition = null)
     {
-        if (isset($definition['default'])) {
-            return $definition['default'];
+        if (isset($argumentDefinition['default'])) {
+            return $argumentDefinition['default'];
         }
 
-        if ($this->resolvedArgumentCollection->hasArgument($argument)) {
-            $argumentValue = $this->resolvedArgumentCollection->getArgument($argument)->getValue();
+        if ($this->resolvedArgumentCollection->hasArgument($argumentName)) {
+            $argumentValue = $this->resolvedArgumentCollection->getArgument($argumentName)->getValue();
             if (!is_array($argumentValue)) {
                 return $argumentValue;
             }
@@ -198,22 +200,6 @@ class ArgumentResolver implements ArgumentResolverInterface
 
             $argument->setValue($value);
         }
-    }
-
-    /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
-     *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
-     */
-    protected function executeCallbacks(ArgumentCollectionInterface $argumentCollection): ArgumentCollectionInterface
-    {
-        foreach ($argumentCollection->getArguments() as $argument) {
-            if ($this->hasPlaceholder($argument)) {
-                $this->replacePlaceholder($argument, $argumentCollection);
-            }
-        }
-
-        return $argumentCollection;
     }
 
     /**

@@ -33,6 +33,7 @@ class CallbackFactory
             $this->createZedFactoryMethodNameCallback(),
             $this->createZedBusinessModelTargetFilenameCallback(),
             $this->createZedBusinessModelInterfaceTargetFilenameCallback(),
+            $this->createZedPresentationTwigFilterActionCallback(),
         ]);
     }
 
@@ -58,5 +59,13 @@ class CallbackFactory
     public function createZedBusinessModelInterfaceTargetFilenameCallback(): CallbackInterface
     {
         return new ZedBusinessModelInterfaceTargetFilenameCallback();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createZedPresentationTwigFilterActionCallback(): CallbackInterface
+    {
+        return new ZedPresentationTwigNormalizeFileNameCallback();
     }
 }

@@ -41,7 +41,7 @@ class AddZedControllerMethodTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--method' => 'indexAction',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
@@ -61,7 +61,7 @@ class AddZedControllerMethodTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--method' => 'indexAction',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
@@ -81,7 +81,7 @@ class AddZedControllerMethodTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--method' => 'indexAction',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);

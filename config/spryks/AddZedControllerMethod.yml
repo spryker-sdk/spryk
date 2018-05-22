@@ -12,7 +12,7 @@ arguments:
     default: Index
 
   method:
-    default: index
+    default: indexAction
 
   returnType:
     default: void

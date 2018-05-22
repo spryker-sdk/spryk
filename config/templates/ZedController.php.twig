@@ -5,10 +5,15 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\{{ module }}\Communication\Controller;
+namespace {{ moduleOrganization }}\Zed\{{ module }}\Communication\Controller;
 
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 
+/**
+ * @method \{{ moduleOrganization }}\Zed\{{ module }}\Communication\{{ module }}CommunicationFactory getFactory()
+ * @method \{{ moduleOrganization }}\Zed\{{ module }}\Business\{{ module }}FacadeInterface getFacade()
+ * @method \{{ moduleOrganization }}\Zed\{{ module }}\Persistence\{{ module }}QueryContainerInterface getQueryContainer()
+ */
 class {{ controller }}Controller extends AbstractController
 {
 }

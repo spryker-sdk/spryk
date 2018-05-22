@@ -15,13 +15,14 @@ arguments:
     default: Index
 
   method:
-    default: index
+    default: indexAction
 
   template:
-    value: zedPresentationTwig.twig
+    value: ZedPresentationTwig.twig
 
   targetFilename:
     value: "%method%.twig"
+    callback: ZedPresentationTwigNormalizeFileNameCallback
 
   targetPath:
     default: "%module%/src/%moduleOrganization%/Zed/%module%/Presentation/%controller%/"
