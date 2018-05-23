@@ -60,11 +60,11 @@ class NavigationSpryk implements SprykBuilderInterface
      */
     public function build(SprykDefinitionInterface $sprykerDefinition): void
     {
-        $filter = $this->getFilter();
+        $lispCaseFilter = $this->getLispCaseFilter();
 
-        $module = $filter->filter($this->getModule($sprykerDefinition));
-        $controller = $filter->filter($this->getController($sprykerDefinition));
-        $action = $filter->filter($this->getAction($sprykerDefinition));
+        $module = $lispCaseFilter->filter($this->getModule($sprykerDefinition));
+        $controller = $lispCaseFilter->filter($this->getController($sprykerDefinition));
+        $action = $lispCaseFilter->filter($this->getAction($sprykerDefinition));
 
         $xml = $this->getXml($sprykerDefinition);
 
@@ -161,13 +161,13 @@ class NavigationSpryk implements SprykBuilderInterface
     /**
      * @return \Zend\Filter\FilterChain
      */
-    protected function getFilter(): FilterChain
+    protected function getLispCaseFilter(): FilterChain
     {
-        $filter = new FilterChain();
-        $filter
+        $filterChain = new FilterChain();
+        $filterChain
             ->attach(new CamelCaseToDash())
             ->attach(new StringToLower());
 
-        return $filter;
+        return $filterChain;
     }
 }
