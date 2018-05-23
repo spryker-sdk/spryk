@@ -8,9 +8,8 @@
 namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ArrayCastFilter;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\CamelCaseToDashFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFilter;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\LispCaseFilter;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\DasherizeFilter;
 use Twig\Extension\DebugExtension;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
@@ -32,10 +31,9 @@ class TemplateRenderer implements TemplateRendererInterface
             'debug' => true,
         ]);
         $renderer->addExtension(new DebugExtension());
-        $renderer->addFilter(new CamelCaseToDashFilter());
+        $renderer->addFilter(new DasherizeFilter());
         $renderer->addFilter(new ArrayCastFilter());
         $renderer->addFilter(new ClassNameShortFilter());
-        $renderer->addFilter(new LispCaseFilter());
 
         $this->renderer = $renderer;
     }
