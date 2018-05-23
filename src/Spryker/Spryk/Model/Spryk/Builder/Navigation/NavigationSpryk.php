@@ -8,6 +8,7 @@
 namespace Spryker\Spryk\Model\Spryk\Builder\Navigation;
 
 use DOMDocument;
+use SimpleXMLElement;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use Zend\Filter\FilterChain;
@@ -59,32 +60,50 @@ class NavigationSpryk implements SprykBuilderInterface
      */
     public function build(SprykDefinitionInterface $sprykerDefinition): void
     {
-        $targetPath = $this->getTargetPath($sprykerDefinition);
-
-        $filter = new FilterChain();
-        $filter
-            ->attach(new CamelCaseToDash())
-            ->attach(new StringToLower());
+        $filter = $this->getFilter();
 
         $module = $filter->filter($this->getModule($sprykerDefinition));
         $controller = $filter->filter($this->getController($sprykerDefinition));
         $action = $filter->filter($this->getAction($sprykerDefinition));
 
-        $xml = simplexml_load_file($targetPath);
+        $xml = $this->getXml($sprykerDefinition);
+
         $page = $xml->$module->pages->addChild($module);
-        $page->addChild('lable', $this->getModule($sprykerDefinition));
+        $page->addChild('label', $this->getModule($sprykerDefinition));
         $page->addChild('title', $this->getModule($sprykerDefinition));
         $page->addChild('bundle', $module);
         $page->addChild('controller', $controller);
         $page->addChild('action', $action);
 
-//        $xml->saveXML($targetPath);
+        $this->prettyPrintXml($xml, $sprykerDefinition);
+    }
 
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     *
+     * @return \SimpleXMLElement
+     */
+    protected function getXml(SprykDefinitionInterface $sprykerDefinition): SimpleXMLElement
+    {
+        $targetPath = $this->getTargetPath($sprykerDefinition);
+        $xml = simplexml_load_file($targetPath);
+
+        return $xml;
+    }
+
+    /**
+     * @param \Spryker\Zed\Ratepay\Business\Api\SimpleXMLElement $xml
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return void
+     */
+    protected function prettyPrintXml(SimpleXMLElement $xml, SprykDefinitionInterface $sprykDefinition): void
+    {
         $dom = new DOMDocument('1.0');
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = true;
         $dom->loadXML($xml->asXML());
-        $dom->save($targetPath);
+        $dom->save($this->getTargetPath($sprykDefinition));
     }
 
     /**
@@ -137,5 +156,18 @@ class NavigationSpryk implements SprykBuilderInterface
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_ACTION)
             ->getValue();
+    }
+
+    /**
+     * @return \Zend\Filter\FilterChain
+     */
+    protected function getFilter(): FilterChain
+    {
+        $filter = new FilterChain();
+        $filter
+            ->attach(new CamelCaseToDash())
+            ->attach(new StringToLower());
+
+        return $filter;
     }
 }
