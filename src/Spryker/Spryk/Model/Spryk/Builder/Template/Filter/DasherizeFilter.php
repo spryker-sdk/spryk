@@ -12,11 +12,11 @@ use Zend\Filter\FilterChain;
 use Zend\Filter\StringToLower;
 use Zend\Filter\Word\CamelCaseToDash;
 
-class CamelCaseToDashFilter extends TwigFilter
+class DasherizeFilter extends TwigFilter
 {
     public function __construct()
     {
-        parent::__construct('camelCaseToDash', $this->getCallback());
+        parent::__construct('dasherize', $this->getCallback());
     }
 
     /**
