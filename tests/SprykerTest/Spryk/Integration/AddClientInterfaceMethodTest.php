@@ -41,9 +41,8 @@ class AddClientInterfaceMethodTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
             '--module' => 'FooBar',
             '--method' => 'addSomething',
-            '--inputType' => 'string',
-            '--inputVariable' => '$something',
-            '--outputType' => 'bool',
+            '--input' => 'string $something',
+            '--output' => 'bool',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);

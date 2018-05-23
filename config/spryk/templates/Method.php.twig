@@ -4,11 +4,16 @@
      * {@inheritdoc}
      *
      * @api
+     {% set inputs = input.value | split(',') -%}
+     {%- if inputs is iterable -%}
      *
-     * @param {{ inputType }} {{ inputVariable }}
+     {% for input in inputs -%}
+     * @param {{ input }}
+     {% endfor -%}
      *
-     * @return {{ outputType }}
+     {% endif -%}
+     * @return {{ output }}
      */
-    public function {{ method }}({{ inputType }} {{ inputVariable }}): {{ outputType }}
+    public function {{ method }}({{ input }}): {{ output }}
     {
     }

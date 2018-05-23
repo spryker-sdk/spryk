@@ -9,9 +9,8 @@ arguments:
     default: Spryker
 
   method: ~
-  inputType: ~
-  inputVariable: ~
-  outputType: ~
+  input: ~
+  output: ~
 
   template:
     value: Method.php.twig

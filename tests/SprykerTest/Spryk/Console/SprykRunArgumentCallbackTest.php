@@ -40,7 +40,7 @@ class SprykRunArgumentCallbackTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => 'AddZedBusinessFactoryMethod',
             '--module' => 'FooBar',
             '--moduleOrganization' => 'Spryker',
-            '--returnType' => 'Spryker',
+            '--output' => 'Spryker',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
