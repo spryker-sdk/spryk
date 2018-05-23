@@ -15,4 +15,4 @@ arguments:
     value: "%module%FacadeInterface.php"
 
   targetPath:
-    value: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/"
+    value: "%module%/src/%moduleOrganization%/Zed/%module%/Business/"

@@ -15,9 +15,9 @@ interface ArgumentResolverInterface
     /**
      * @param array $arguments
      * @param string $sprykName
-     * @param \Spryker\Spryk\Style\SprykStyleInterface|null $style
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
      */
-    public function resolve(array $arguments, string $sprykName, ?SprykStyleInterface $style = null): ArgumentCollectionInterface;
+    public function resolve(array $arguments, string $sprykName, SprykStyleInterface $style): ArgumentCollectionInterface;
 }

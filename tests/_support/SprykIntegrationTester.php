@@ -91,13 +91,13 @@ class SprykIntegrationTester extends Actor
                 return $this->getRootDirectory() . DIRECTORY_SEPARATOR . 'tests/_data/';
             },
             'getSprykDirectories' => function () {
-                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryks/'];
+                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryk/spryks/'];
             },
             'getRootSprykDirectories' => function () {
-                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/'];
+                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryk/'];
             },
             'getTemplateDirectories' => function () {
-                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/templates/'];
+                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryk/templates/'];
             },
         ]);
 

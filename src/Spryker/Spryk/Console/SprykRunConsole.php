@@ -8,22 +8,22 @@
 namespace Spryker\Spryk\Console;
 
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
-use Spryker\Spryk\SprykFacade;
 use Spryker\Spryk\Style\SprykStyle;
 use Spryker\Spryk\Style\SprykStyleInterface;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SprykRunConsole extends Command
+class SprykRunConsole extends AbstractSprykConsole
 {
     const ARGUMENT_SPRYK = 'spryk';
     const ARGUMENT_SPRYK_SHORT = 's';
 
-    const OPTION_DRY_RUN = 'dry-run';
-    const OPTION_DRY_RUN_SHORT = 'd';
+    /**
+     * @var array|null
+     */
+    protected static $argumentsList;
 
     /**
      * @var \Symfony\Component\Console\Input\InputInterface
@@ -34,11 +34,6 @@ class SprykRunConsole extends Command
      * @var \Spryker\Spryk\Style\SprykStyleInterface
      */
     protected $output;
-
-    /**
-     * @var \Spryker\Spryk\SprykFacade|null
-     */
-    protected $facade;
 
     /**
      * @return void
@@ -53,64 +48,92 @@ class SprykRunConsole extends Command
         foreach ($sprykArguments as $argumentName => $argumentDefinition) {
             $this->addOption($argumentName, null, InputOption::VALUE_REQUIRED, $argumentDefinition['description']);
         }
-
-//            ->addOption('module', 'm', InputOption::VALUE_REQUIRED, 'Module name to run for.')
-//            ->addOption('moduleOrganization', 'o', InputOption::VALUE_REQUIRED, 'Module Organization name to run for.')
-//            ->addOption('controller', null, InputOption::VALUE_REQUIRED, 'Name of the controller to add.')
-//            ->addOption('method', null, InputOption::VALUE_REQUIRED, 'Name of the method to add.')
-//            ->addOption('inputType', null, InputOption::VALUE_REQUIRED, 'Input type for the method argument.')
-//            ->addOption('inputVariable', null, InputOption::VALUE_REQUIRED, 'Input variable name for the method argument.')
-//            ->addOption('outputType', null, InputOption::VALUE_REQUIRED, 'Return type for the method.')
-//            ->addOption('specification', null, InputOption::VALUE_REQUIRED, 'Specification text for the method to add.')
-//            ->addOption('targetPath', 't', InputOption::VALUE_REQUIRED, 'TargetPath.')
-//            ->addOption('repositoryToken', null, InputOption::VALUE_REQUIRED, 'Token for repository.')
-//            ->addOption('className', null, InputOption::VALUE_REQUIRED, 'Class name for the class.')
-//            ->addOption('consoleCommand', null, InputOption::VALUE_REQUIRED, 'Name for the console command.')
-//            ->addOption('returnType', null, InputOption::VALUE_REQUIRED, 'Return type for method.');
     }
-
-//    protected function initialize(InputInterface $input, OutputInterface $output)
-//    {
-//        $sprykArguments = $this->getSprykArguments();
-//        foreach ($sprykArguments as $argumentName => $argumentDefinition) {
-//            $this->addOption($argumentName, null, InputOption::VALUE_REQUIRED, $argumentDefinition['description']);
-//        }
-//    }
-
 
     /**
      * @return array
      */
     protected function getSprykArguments(): array
     {
-        $argumentsList = [];
-        $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
-        foreach ($sprykDefinitions as $sprykName => $sprykDefinition) {
-            foreach ($sprykDefinition['arguments'] as $argumentName => $argumentDefinition) {
-                if (isset($argumentDefinition['value'])) {
-                    continue;
-                }
-                if (!isset($argumentsList[$argumentName])) {
-                    $argumentsList[$argumentName] = [
-                        'name' => $argumentName,
-                        'description' => sprintf('%s argument', $argumentName),
-                    ];
-                }
-            }
-        }
-        foreach ($sprykDefinitions as $sprykName => $sprykDefinition) {
-            foreach ($sprykDefinition['arguments'] as $argumentName => $argumentDefinition) {
-                if (isset($argumentDefinition['value'])) {
-                    continue;
-                }
-                $argumentsList[$sprykName . '.' . $argumentName] = [
-                    'name' => $argumentName,
-                    'description' => sprintf('%s %s argument', $sprykName, $argumentName),
-                ];
-            }
+        if (static::$argumentsList === null) {
+            static::$argumentsList = $this->buildArgumentList();
         }
 
-        return $argumentsList;
+        return static::$argumentsList;
+    }
+
+    /**
+     * @return array
+     */
+    protected function buildArgumentList(): array
+    {
+        $standardArguments = [];
+        $sprykArguments = [];
+        foreach ($this->getSprykDefinitions() as $sprykName => $sprykDefinition) {
+            $standardArguments += $this->buildStandardArgumentList($sprykDefinition['arguments']);
+            $sprykArguments += $this->buildSprykArgumentList($sprykName, $sprykDefinition['arguments']);
+        }
+
+        return $standardArguments + $sprykArguments;
+    }
+
+    /**
+     * @param array $arguments
+     *
+     * @return array
+     */
+    protected function buildStandardArgumentList(array $arguments): array
+    {
+        $standardArguments = [];
+        foreach ($arguments as $argumentName => $argumentDefinition) {
+            $standardArguments[$argumentName] = [
+                'name' => $argumentName,
+                'description' => sprintf('%s argument', $argumentName),
+            ];
+        }
+
+        return $standardArguments;
+    }
+
+    /**
+     * @param string $sprykName
+     * @param array $arguments
+     *
+     * @return array
+     */
+    protected function buildSprykArgumentList(string $sprykName, array $arguments): array
+    {
+        $sprykArguments = [];
+        foreach ($arguments as $argumentName => $argumentDefinition) {
+            $sprykArguments[$sprykName . '.' . $argumentName] = [
+                'name' => $argumentName,
+                'description' => sprintf('%s %s argument', $sprykName, $argumentName),
+            ];
+        }
+
+        return $sprykArguments;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSprykDefinitions(): array
+    {
+        $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
+
+        return $this->filterValueArguments($sprykDefinitions);
+    }
+
+    /**
+     * @param array $sprykDefinitions
+     *
+     * @return array
+     */
+    protected function filterValueArguments(array $sprykDefinitions): array
+    {
+        return array_filter($sprykDefinitions, function ($argumentDefinition) {
+            return (!isset($argumentDefinition['value']));
+        });
     }
 
     /**
@@ -152,31 +175,5 @@ class SprykRunConsole extends Command
     protected function getSprykName(InputInterface $input): string
     {
         return $input->getArgument(static::ARGUMENT_SPRYK);
-    }
-
-    /**
-     * @codeCoverageIgnore
-     *
-     * @return \Spryker\Spryk\SprykFacade
-     */
-    protected function getFacade(): SprykFacade
-    {
-        if ($this->facade === null) {
-            $this->facade = new SprykFacade();
-        }
-
-        return $this->facade;
-    }
-
-    /**
-     * @param \Spryker\Spryk\SprykFacade $facade
-     *
-     * @return $this
-     */
-    public function setFacade(SprykFacade $facade): SprykRunConsole
-    {
-        $this->facade = $facade;
-
-        return $this;
     }
 }

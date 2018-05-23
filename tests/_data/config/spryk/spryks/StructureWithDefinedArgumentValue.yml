@@ -10,4 +10,4 @@ arguments:
       - src/
 
   targetPath:
-    value: vendor/spryker/spryker/Bundles/
+    value: "%module%/"

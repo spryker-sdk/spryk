@@ -3,10 +3,13 @@ description: "Unit Test configuration"
 
 arguments:
 
+  module:
+    value: FooBar
+
   directories:
     value:
       - firstDirectory/
       - secondDirectory/
 
   targetPath:
-    value: vendor/spryker/spryker/Bundles/
+    value: "%module%/"

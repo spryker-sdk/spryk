@@ -11,7 +11,7 @@ arguments:
       - src/
 
   targetPath:
-    value: vendor/spryker/spryker/Bundles/%module%
+    value: "%module%/"
 
 postSpryks:
   - TemplateWithoutInteraction

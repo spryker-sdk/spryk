@@ -193,8 +193,6 @@ class SprykFactory
     }
 
     /**
-     * @codeCoverageIgnore
-     *
      * @return \Spryker\Spryk\SprykConfig
      */
     public function getConfig()

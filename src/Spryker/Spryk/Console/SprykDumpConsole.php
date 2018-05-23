@@ -7,19 +7,12 @@
 
 namespace Spryker\Spryk\Console;
 
-use Spryker\Spryk\SprykFacade;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SprykDumpConsole extends Command
+class SprykDumpConsole extends AbstractSprykConsole
 {
-    /**
-     * @var \Spryker\Spryk\SprykFacade|null
-     */
-    protected $facade;
-
     /**
      * @return void
      */
@@ -64,31 +57,5 @@ class SprykDumpConsole extends Command
         sort($formatted);
 
         return $formatted;
-    }
-
-    /**
-     * @codeCoverageIgnore
-     *
-     * @return \Spryker\Spryk\SprykFacade
-     */
-    protected function getFacade(): SprykFacade
-    {
-        if ($this->facade === null) {
-            $this->facade = new SprykFacade();
-        }
-
-        return $this->facade;
-    }
-
-    /**
-     * @param \Spryker\Spryk\SprykFacade $facade
-     *
-     * @return $this
-     */
-    public function setFacade(SprykFacade $facade): SprykDumpConsole
-    {
-        $this->facade = $facade;
-
-        return $this;
     }
 }

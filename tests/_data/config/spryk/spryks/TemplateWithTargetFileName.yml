@@ -11,6 +11,5 @@ arguments:
   targetFilename:
     value: new-filename.json
 
-
   targetPath:
-    value: vendor/spryker/spryker/Bundles/%module%/
+    value: "%module%/"

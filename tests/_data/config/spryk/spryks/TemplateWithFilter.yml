@@ -9,4 +9,4 @@ arguments:
     value: composer-with-filter.json.twig
 
   targetPath:
-    value: vendor/spryker/spryker/Bundles/%module%/
+    value: "%module%/"

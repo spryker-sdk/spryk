@@ -8,7 +8,7 @@ arguments:
     value: README.md.twig
 
   targetPath:
-    default: vendor/spryker/spryker/Bundles/%module%/
+    default: "%module%/"
 
 preSpryks:
   - CreateModule

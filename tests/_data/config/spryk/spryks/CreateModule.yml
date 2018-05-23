@@ -10,7 +10,7 @@ arguments:
       - src/
 
   targetPath:
-    default: vendor/spryker/spryker/Bundles/%module%/
+    default: "%module%/"
 
 postSpryks:
   - AddReadme

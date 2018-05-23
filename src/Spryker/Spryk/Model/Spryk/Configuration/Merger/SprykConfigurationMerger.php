@@ -39,10 +39,6 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
      */
     public function merge(array $sprykDefinition): array
     {
-        if (!$this->configurationFinder->has($this->rootSprykName)) {
-            return $sprykDefinition;
-        }
-
         $rootConfiguration = $this->configurationFinder->find($this->rootSprykName);
         $rootConfiguration = Yaml::parse($rootConfiguration->getContents());
 
@@ -102,11 +98,6 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         $mergedArgumentDefinition = [];
 
         foreach ($argumentDefinition as $definitionKey => $definitionValue) {
-            if ($definitionKey !== 'default' && $definitionKey !== 'value') {
-                $mergedArgumentDefinition[$definitionKey] = $definitionValue;
-                continue;
-            }
-
             if ($mergeType === 'prepend') {
                 $mergedArgumentDefinition[$definitionKey] = $mergeValue . $definitionValue;
             }
