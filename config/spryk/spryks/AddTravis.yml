@@ -1,0 +1,17 @@
+spryk: template
+description: "Adds a new .travis.yml to the Modules root."
+
+arguments:
+  module: ~
+
+  template:
+    value: travis.yml.twig
+
+  targetFilename:
+    value: .travis.yml
+
+  targetPath:
+    default: "%module%/"
+
+preSpryks:
+  - CreateModule

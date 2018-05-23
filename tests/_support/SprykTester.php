@@ -8,9 +8,9 @@
 namespace SprykerTest;
 
 use Codeception\Actor;
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Tester\CommandTester;
+use Spryker\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
+use Spryker\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoader;
+use Spryker\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
 
 /**
  * Inherited Methods
@@ -50,17 +50,18 @@ class SprykTester extends Actor
     }
 
     /**
-     * @param \Symfony\Component\Console\Command\Command $command
+     * @param string $directory
      *
-     * @return \Symfony\Component\Console\Tester\CommandTester
+     * @return array
      */
-    public function getConsoleTester(Command $command)
+    public function getMergedConfiguration(string $directory)
     {
-        $application = new Application();
-        $application->add($command);
+        $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/']);
+        $configurationMerger = new SprykConfigurationMerger($configurationFinder);
 
-        $command = $application->find($command->getName());
+        $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/spryks/']);
+        $configurationLoader = new SprykConfigurationLoader($configurationFinder, $configurationMerger);
 
-        return new CommandTester($command);
+        return $configurationLoader->loadSpryk('SprykDefinition');
     }
 }

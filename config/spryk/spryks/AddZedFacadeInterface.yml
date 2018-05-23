@@ -1,0 +1,20 @@
+spryk: template
+description: "Adds a new *module*FacadeInterface to the Zed application."
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  template:
+    value: ZedFacadeInterface.php.twig
+
+  targetFilename:
+    value: "%module%FacadeInterface.php"
+
+  targetPath:
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/"
+
+preSpryks:
+  - AddZedFacade

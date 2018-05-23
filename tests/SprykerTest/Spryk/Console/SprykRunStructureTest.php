@@ -21,7 +21,7 @@ use Spryker\Spryk\Console\SprykRunConsole;
 class SprykRunStructureTest extends Unit
 {
     /**
-     * @var \SprykerTest\SprykTester
+     * @var \SprykerTest\SprykConsoleTester
      */
     protected $tester;
 
@@ -40,7 +40,7 @@ class SprykRunStructureTest extends Unit
 
         $tester->execute($arguments);
 
-        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/firstDirectory');
-        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/secondDirectory');
+        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/firstDirectory');
+        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/secondDirectory');
     }
 }

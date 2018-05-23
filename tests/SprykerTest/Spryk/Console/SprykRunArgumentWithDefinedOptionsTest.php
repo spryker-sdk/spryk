@@ -22,7 +22,7 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 class SprykRunArgumentWithDefinedOptionsTest extends Unit
 {
     /**
-     * @var \SprykerTest\SprykTester
+     * @var \SprykerTest\SprykConsoleTester
      */
     protected $tester;
 

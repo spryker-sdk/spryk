@@ -1,0 +1,31 @@
+spryk: template
+description: "Adds a new twig file to the *module* Presentation layer."
+
+config:
+  noRender: true
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  controller:
+    default: Index
+
+  method:
+    default: indexAction
+
+  template:
+    value: ZedPresentationTwig.twig
+
+  targetFilename:
+    value: "%method%.twig"
+    callback: ZedPresentationTwigNormalizeFileNameCallback
+
+  targetPath:
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Presentation/%controller%/"
+
+preSpryks:
+  - AddZedControllerMethod

@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Spryker\Spryk\Model\Spryk\Configuration\Finder;
+
+use Spryker\Spryk\Exception\SprykConfigFileNotFound;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
+
+class SprykConfigurationFinder implements SprykConfigurationFinderInterface
+{
+    /**
+     * @var string[]
+     */
+    protected $directories;
+
+    /**
+     * @param string[] $directories
+     */
+    public function __construct(array $directories)
+    {
+        $this->directories = $directories;
+    }
+
+    /**
+     * @param string $sprykName
+     *
+     * @throws \Spryker\Spryk\Exception\SprykConfigFileNotFound
+     *
+     * @return \Symfony\Component\Finder\SplFileInfo
+     */
+    public function find(string $sprykName): SplFileInfo
+    {
+        $finder = $this->buildFinder($sprykName);
+
+        if (!$finder->hasResults()) {
+            throw new SprykConfigFileNotFound(sprintf('Could not find Spryk config file for "%s"', $sprykName));
+        }
+
+        $iterator = $finder->getIterator();
+        $iterator->rewind();
+
+        return $iterator->current();
+    }
+
+    /**
+     * @param string $sprykName
+     *
+     * @return bool
+     */
+    public function has(string $sprykName): bool
+    {
+        $finder = $this->buildFinder($sprykName);
+
+        return $finder->hasResults();
+    }
+
+    /**
+     * @param string $sprykName
+     *
+     * @return \Symfony\Component\Finder\Finder
+     */
+    protected function buildFinder(string $sprykName): Finder
+    {
+        $fileName = sprintf('%s.yml', $sprykName);
+
+        $finder = new Finder();
+        $finder->in($this->directories)->name($fileName);
+
+        return $finder;
+    }
+}

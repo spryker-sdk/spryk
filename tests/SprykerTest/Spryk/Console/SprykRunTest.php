@@ -23,7 +23,7 @@ use Spryker\Spryk\Exception\SprykConfigFileNotFound;
 class SprykRunTest extends Unit
 {
     /**
-     * @var \SprykerTest\SprykTester
+     * @var \SprykerTest\SprykConsoleTester
      */
     protected $tester;
 

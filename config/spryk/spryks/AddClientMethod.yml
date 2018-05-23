@@ -1,0 +1,26 @@
+spryk: method
+description: "Adds a new method to the *Module*Client."
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  method: ~
+  inputType: ~
+  inputVariable: ~
+  outputType: ~
+
+  template:
+    value: Method.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Client\\%module%\\%module%Client"
+
+preSpryks:
+  - AddClient
+
+postSpryks:
+  - AddClientInterfaceMethod

@@ -1,8 +1,10 @@
 spryk: template
+description: "Unit Test configuration"
+
 arguments:
 
   template:
     value: README.md.twig
 
   targetPath:
-    value: vendor/spryker/spryker/Bundles/FooBar/
+    value: FooBar/

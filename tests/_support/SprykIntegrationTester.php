@@ -43,10 +43,11 @@ class SprykIntegrationTester extends Actor
      */
     public function getConsoleTester(SprykRunConsole $command, string $sprykName)
     {
+        $command->setFacade($this->getFacadeWithMockedConfig());
+
         $application = new Application();
         $application->add($command);
 
-        $command->setFacade($this->getFacadeWithMockedConfig());
         $command = $application->find($command->getName());
 
         $this->addExecutedSpryk($sprykName);
@@ -90,10 +91,13 @@ class SprykIntegrationTester extends Actor
                 return $this->getRootDirectory() . DIRECTORY_SEPARATOR . 'tests/_data/';
             },
             'getSprykDirectories' => function () {
-                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryks/'];
+                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryk/spryks/'];
+            },
+            'getRootSprykDirectories' => function () {
+                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryk/'];
             },
             'getTemplateDirectories' => function () {
-                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/templates/'];
+                return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryk/templates/'];
             },
         ]);
 

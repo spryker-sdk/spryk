@@ -14,9 +14,15 @@ interface SprykDefinitionBuilderInterface
 {
     /**
      * @param string $sprykName
-     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function buildDefinition(string $sprykName, SprykStyleInterface $style): SprykDefinitionInterface;
+    public function buildDefinition(string $sprykName): SprykDefinitionInterface;
+
+    /**
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface
+     */
+    public function setStyle(SprykStyleInterface $style): self;
 }

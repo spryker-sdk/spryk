@@ -1,0 +1,24 @@
+spryk: template
+description: "Adds a new Controller to the Zed application."
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  controller:
+    default: Index
+
+  template:
+    value: ZedController.php.twig
+
+  targetFilename:
+    value: "%controller%Controller.php"
+
+  targetPath:
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Communication/Controller/"
+
+preSpryks:
+  - CreateModule
+

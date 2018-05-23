@@ -1,0 +1,26 @@
+spryk: method
+description: "Adds a new Interface method to the *Module*ClientInterface."
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  method: ~
+  inputType: ~
+  inputVariable: ~
+  outputType: ~
+
+  specification:
+    default: "ADD SPECIFICATION HERE"
+
+  template:
+    value: InterfaceMethod.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Client\\%module%\\%module%ClientInterface"
+
+preSpryks:
+  - AddClientInterface

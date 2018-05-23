@@ -22,7 +22,7 @@ use Spryker\Spryk\Exception\ArgumentNotFoundException;
 class SprykRunArgumentTest extends Unit
 {
     /**
-     * @var \SprykerTest\SprykTester
+     * @var \SprykerTest\SprykConsoleTester
      */
     protected $tester;
 

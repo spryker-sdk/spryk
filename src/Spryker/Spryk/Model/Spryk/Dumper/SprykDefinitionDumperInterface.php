@@ -10,7 +10,7 @@ namespace Spryker\Spryk\Model\Spryk\Dumper;
 interface SprykDefinitionDumperInterface
 {
     /**
-     * @return array
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[]
      */
     public function dump(): array;
 }

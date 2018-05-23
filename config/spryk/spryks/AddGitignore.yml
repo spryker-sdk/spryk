@@ -1,0 +1,17 @@
+spryk: template
+description: "Adds a new .gitignore to the Modules root."
+
+arguments:
+  module: ~
+
+  template:
+    value: gitignore.twig
+
+  targetFilename:
+    value: .gitignore
+
+  targetPath:
+    default: "%module%/"
+
+preSpryks:
+  - CreateModule

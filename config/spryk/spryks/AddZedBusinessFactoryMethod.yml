@@ -1,0 +1,28 @@
+spryk: method
+description: "Adds a new method to the *module*BusinessFactory to the Modules root."
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  className: ~
+
+  returnType:
+    default: "%className%Interface"
+
+  method:
+    callbackOnly: true
+    callback: ZedBusinessFactoryMethodNameCallback
+
+  template:
+    value: MethodBusinessFactory.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%BusinessFactory"
+
+preSpryks:
+  - AddZedBusinessFactory
+

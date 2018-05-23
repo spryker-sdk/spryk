@@ -7,8 +7,19 @@
 
 namespace Spryker\Spryk;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SprykConfig
 {
+    /**
+     * @return string[]
+     */
+    public function getRootSprykDirectories(): array
+    {
+        return $this->buildDirectoryList();
+    }
+
     /**
      * @return string[]
      */
@@ -26,16 +37,26 @@ class SprykConfig
     }
 
     /**
-     * @param string $subDirectory
+     * @param null|string $subDirectory
      *
      * @return string[]
      */
-    protected function buildDirectoryList(string $subDirectory): array
+    protected function buildDirectoryList(?string $subDirectory = null): array
     {
-        return array_filter([
-            sprintf('/%s/config/spryk/%s/', $this->getRootDirectory(), $subDirectory),
-            realpath(sprintf('/%s/../../../config/%s/', __DIR__, $subDirectory)),
-        ], 'is_dir');
+        $subDirectory = ($subDirectory) ? $subDirectory . DIRECTORY_SEPARATOR : DIRECTORY_SEPARATOR;
+
+        $directories = [];
+        $projectSprykDirectory = realpath($this->getRootDirectory() . 'config/spryk/' . $subDirectory);
+        $sprykModuleDirectory = realpath($this->getRootDirectory() . 'vendor/spryker/spryk/config/spryk/' . $subDirectory);
+
+        if ($projectSprykDirectory) {
+            $directories[] = $projectSprykDirectory . DIRECTORY_SEPARATOR;
+        }
+        if ($sprykModuleDirectory) {
+            $directories[] = $sprykModuleDirectory . DIRECTORY_SEPARATOR;
+        }
+
+        return $directories;
     }
 
     /**
@@ -43,6 +64,6 @@ class SprykConfig
      */
     public function getRootDirectory(): string
     {
-        return APPLICATION_ROOT_DIR;
+        return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR;
     }
 }

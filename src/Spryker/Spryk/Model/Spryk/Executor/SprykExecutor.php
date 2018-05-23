@@ -47,7 +47,8 @@ class SprykExecutor implements SprykExecutorInterface
      */
     public function execute(string $sprykName, SprykStyleInterface $style): void
     {
-        $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName, $style);
+        $this->definitionBuilder->setStyle($style);
+        $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
 
         $this->buildSpryk($sprykDefinition, $style);
     }

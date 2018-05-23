@@ -10,11 +10,13 @@ namespace Spryker\Spryk;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollection;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
+use Spryker\Spryk\Model\Spryk\Builder\Navigation\NavigationSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
+use Spryker\Spryk\Model\Spryk\Configuration\ConfigurationFactory;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackFactory;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
@@ -28,8 +30,6 @@ use Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumper;
 use Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutor;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutorInterface;
-use Spryker\Spryk\Model\Spryk\Loader\SprykLoader;
-use Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface;
 
 class SprykFactory
 {
@@ -55,19 +55,17 @@ class SprykFactory
     public function createSprykDefinitionBuilder(): SprykDefinitionBuilderInterface
     {
         return new SprykDefinitionBuilder(
-            $this->createConfigurationLoader(),
+            $this->createConfigurationFactory()->createConfigurationLoader(),
             $this->createArgumentResolver()
         );
     }
 
     /**
-     * @return \Spryker\Spryk\Model\Spryk\Loader\SprykLoaderInterface
+     * @return \Spryker\Spryk\Model\Spryk\Configuration\ConfigurationFactory
      */
-    public function createConfigurationLoader(): SprykLoaderInterface
+    public function createConfigurationFactory(): ConfigurationFactory
     {
-        return new SprykLoader(
-            $this->getConfig()->getSprykDirectories()
-        );
+        return new ConfigurationFactory($this->getConfig());
     }
 
     /**
@@ -91,6 +89,7 @@ class SprykFactory
             $this->createStructureSpryk(),
             $this->createTemplateSpryk(),
             $this->createMethodSpryk(),
+            $this->createNavigationSpryk(),
         ];
     }
 
@@ -122,6 +121,16 @@ class SprykFactory
     {
         return new MethodSpryk(
             $this->createTemplateRenderer()
+        );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createNavigationSpryk(): SprykBuilderInterface
+    {
+        return new NavigationSpryk(
+            $this->getConfig()->getRootDirectory()
         );
     }
 
@@ -168,7 +177,8 @@ class SprykFactory
     public function createSprykDefinitionDumper(): SprykDefinitionDumperInterface
     {
         return new SprykDefinitionDumper(
-            $this->createDefinitionFinder()
+            $this->createDefinitionFinder(),
+            $this->createConfigurationFactory()->createConfigurationLoader()
         );
     }
 

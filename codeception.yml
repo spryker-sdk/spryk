@@ -9,6 +9,7 @@ paths:
     envs: tests/_envs
 
 settings:
+    bootstrap: _bootstrap.php
     suite_class: \PHPUnit_Framework_TestSuite
     colors: true
     memory_limit: 1024M
@@ -20,9 +21,16 @@ coverage:
     whitelist: { include: ['src/Spryker/*.php'] }
 
 suites:
+    Spryk:
+        path: SprykerTest/Spryk/Model
+        class_name: SprykTester
+        modules:
+            enabled:
+                - Asserts
+
     Console:
         path: SprykerTest/Spryk/Console
-        class_name: SprykTester
+        class_name: SprykConsoleTester
         modules:
             enabled:
                 - Asserts

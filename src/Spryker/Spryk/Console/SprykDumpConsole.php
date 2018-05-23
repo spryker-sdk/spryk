@@ -7,13 +7,11 @@
 
 namespace Spryker\Spryk\Console;
 
-use Spryker\Spryk\SprykFacade;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SprykDumpConsole extends Command
+class SprykDumpConsole extends AbstractSprykConsole
 {
     /**
      * @return void
@@ -39,30 +37,22 @@ class SprykDumpConsole extends Command
 
         $table = new Table($output);
         $table
-            ->setHeaders(['Spryk name'])
+            ->setHeaders(['Spryk name', 'Description'])
             ->setRows($sprykDefinitions);
         ;
         $table->render();
     }
 
     /**
-     * @return \Spryker\Spryk\SprykFacade
-     */
-    protected function getFacade(): SprykFacade
-    {
-        return new SprykFacade();
-    }
-
-    /**
-     * @param array $sprykDefinitions
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[] $sprykDefinitions
      *
      * @return array
      */
     protected function formatForTable(array $sprykDefinitions): array
     {
         $formatted = [];
-        foreach ($sprykDefinitions as $sprykDefinition) {
-            $formatted[$sprykDefinition] = [$sprykDefinition];
+        foreach ($sprykDefinitions as $sprykName => $sprykDefinition) {
+            $formatted[$sprykName] = [$sprykName, $sprykDefinition['description']];
         }
         sort($formatted);
 

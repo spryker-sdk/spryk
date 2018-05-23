@@ -1,0 +1,8 @@
+arguments:
+  emptyValue: ~
+
+  replaceValue:
+    value: "%module%/src/"
+
+  replaceDefault:
+    default: "%module%/src/"

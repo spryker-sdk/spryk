@@ -1,0 +1,17 @@
+spryk: template
+description: "Adds a new navigation.xml to the Zed application."
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  template:
+    value: navigation.xml.twig
+
+  targetPath:
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Communication/"
+
+preSpryks:
+  - CreateModule

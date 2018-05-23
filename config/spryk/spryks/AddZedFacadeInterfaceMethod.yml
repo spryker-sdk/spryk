@@ -1,0 +1,26 @@
+spryk: method
+description: "Adds a new method to the *module*FacadeInterface."
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  method: ~
+  inputType: ~
+  inputVariable: ~
+  outputType: ~
+
+  specification:
+    default: "ADD SPECIFICATION HERE"
+
+  template:
+    value: InterfaceMethod.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%FacadeInterface"
+
+preSpryks:
+  - AddZedFacadeInterface

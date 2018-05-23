@@ -1,0 +1,23 @@
+spryk: structure
+description: "Creates a new *module* structure."
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  targetPath:
+    default: "%module%/"
+
+  directories:
+    value:
+      - src/
+
+postSpryks:
+  - AddReadme
+  - AddComposerJson
+  - AddLicense
+  - AddContributing
+  - AddChangelog
+  - AddTravis

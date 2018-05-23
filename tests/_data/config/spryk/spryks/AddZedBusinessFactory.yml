@@ -1,4 +1,5 @@
 spryk: template
+description: "Unit Test configuration"
 
 arguments:
   module:
@@ -14,4 +15,4 @@ arguments:
     value: "%module%BusinessFactory.php"
 
   targetPath:
-    default: "vendor/spryker/spryker/Bundles/%module%/src/%moduleOrganization%/Zed/%module%/Business/"
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/"
