@@ -20,6 +20,8 @@ use Spryker\Spryk\Console\SprykRunConsole;
  */
 class SprykRunArgumentDefaultValueTest extends Unit
 {
+    const KEY_STROKE_ENTER = "\x0D";
+
     /**
      * @var \SprykerTest\SprykConsoleTester
      */
@@ -37,7 +39,7 @@ class SprykRunArgumentDefaultValueTest extends Unit
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithDefaultArgumentValue',
         ];
-        $tester->setInputs(["\x0D"]);
+        $tester->setInputs([static::KEY_STROKE_ENTER]);
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();

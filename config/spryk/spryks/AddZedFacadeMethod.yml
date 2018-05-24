@@ -8,6 +8,9 @@ arguments:
   moduleOrganization:
     default: Spryker
 
+  comment:
+    multiline: true
+
   method: ~
   input: ~
   output: ~

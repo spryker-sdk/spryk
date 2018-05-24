@@ -9,7 +9,7 @@ namespace Spryker\Spryk;
 
 use Spryker\Spryk\Style\SprykStyleInterface;
 
-class SprykFacade
+class SprykFacade implements SprykFacadeInterface
 {
     /**
      * @var \Spryker\Spryk\SprykFactory|null
@@ -30,7 +30,7 @@ class SprykFacade
     /**
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[]
      */
-    public function getSprykDefinitions()
+    public function getSprykDefinitions(): array
     {
         return $this->getFactory()->createSprykDefinitionDumper()->dump();
     }
@@ -52,9 +52,9 @@ class SprykFacade
     /**
      * @param \Spryker\Spryk\SprykFactory $factory
      *
-     * @return \Spryker\Spryk\SprykFacade
+     * @return \Spryker\Spryk\SprykFacadeInterface
      */
-    public function setFactory(SprykFactory $factory): SprykFacade
+    public function setFactory(SprykFactory $factory): SprykFacadeInterface
     {
         $this->factory = $factory;
 
