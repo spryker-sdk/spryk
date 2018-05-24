@@ -20,6 +20,26 @@ Spryks are written with the help of yml files. The filename of the yml file repr
 
 The vast majority of the Spryks need to execute other Spryks before the called Spryk can run. For example Add a Zed Business Facade needs to have a properly created module before the Facade itself can be created. Therefore Spryks have pre and post Spryks and with the call of one Spryk many things can and will be created for you.
 
+## Currently we support the following Spryk types:
+
+- template
+- structure
+- method
+
+### Template Spryk
+
+A template Spryk adds a new file to your filesystem and uses twig as render engine. Twig gives you the ability to easily create file from a template with placeholders e.g. for `module` or `moduleOrganization`. The template Spryk will at least need the `template` argument defined. This argument tells the Spryk what template should be used to fullfill your task.
+
+### Structure Spryk
+
+A structure Spryk creates directory structure you define. The CreateModule Spryk e.g. contains the definition of directories the Spryk has to create for you. The main argument in the structure Spryk is the directories argument. Here you can add a list of directories which have to be created.
+
+### Method Spryk
+
+The method Spryk is able to add methods to a specified target e.g. `Spryker\Zed\FooBar\Business\FooBarFacade` it needs some more arguments to fullfill the task as the prior mentioned Spryks. 
+
+To get an idea what your Spryk needs take a look into the already existing Spryks.  
+
 ## How to use Spryks?
 
 Currently we support two ways to work with Spryks.
@@ -46,8 +66,17 @@ We also provide a UI build inside the Zed application to build Spryks UI based. 
 When the SprykGui module is installed you can navigation to it inside Zed. The first page you see contains a list of all available Spryks. After you clicked on of the Spryks a form will be displayed and will give you the ability to enter all argument values the Spryk needs to run.
 
 
-# How to build Spryks?
+# How to create a Spryk?
 
+In most cases it is very easy to create a Spryk. As the whole Spryk Tool is covered by tests you also have to star6t by adding a test for the Spryk you want to create.
 
+If you only need to add a new Spryk configuration you will start by adding an Integration test for the new Spryk definition. You need to add the name of the Spryk you want to test. E.g. AddMySuperNiceFile and add the assertion to have this file created after you executed the test.
 
+When this is done run the Integration tests with `vendor/bin/codecept run Integration -g {YOUR TEST GROUP}` and see the test failing. YOu will get a message that the Spryk definition was not found by the given name, so add the definition file for you new Spryk. 
+
+You need to add your Spryk definition file into `spryker/spryk/config/spryk/spryks` when you added your new Spryk definition file re-run the tests. Now it dependends on the spryk type you choosed for your Spryk definition what comes next.
+
+If you selected the template Spryk you will most likely see the error that the defined template file could not be found. In this case you need to add your template to `spryker/spryker/config/spryk/templates` when this is done re-run your tests. Now you should see a green test.
+
+   
 
