@@ -63,10 +63,34 @@ class SprykExecutor implements SprykExecutorInterface
     {
         $style->startSpryk($sprykDefinition);
 
+        $this->executePreSpryks($sprykDefinition, $style);
+        $this->executeSpryk($sprykDefinition, $style);
+        $this->executePostSpryks($sprykDefinition, $style);
+
+        $style->endSpryk($sprykDefinition);
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return void
+     */
+    protected function executePreSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style)
+    {
         $style->startPreSpryks($sprykDefinition);
         $this->buildPreSpryks($sprykDefinition, $style);
         $style->endPreSpryks($sprykDefinition);
+    }
 
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return void
+     */
+    protected function executeSpryk(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style)
+    {
         $builder = $this->sprykBuilderCollection->getBuilder($sprykDefinition);
 
         $message = sprintf('<fg=green>%s</> already executed', $sprykDefinition->getSprykName());
@@ -81,12 +105,19 @@ class SprykExecutor implements SprykExecutorInterface
 
         $style->write($message);
         $style->newLine();
+    }
 
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return void
+     */
+    protected function executePostSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style)
+    {
         $style->startPostSpryks($sprykDefinition);
         $this->buildPostSpryks($sprykDefinition, $style);
         $style->endPostSpryks($sprykDefinition);
-
-        $style->endSpryk($sprykDefinition);
     }
 
     /**

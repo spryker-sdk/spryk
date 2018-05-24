@@ -20,6 +20,8 @@ use Spryker\Spryk\Console\SprykRunConsole;
  */
 class SprykRunCreateModuleTest extends Unit
 {
+    const KEY_STROKE_ENTER = "\x0D";
+
     /**
      * @var \SprykerTest\SprykConsoleTester
      */
@@ -39,7 +41,7 @@ class SprykRunCreateModuleTest extends Unit
             '-n' => true,
         ];
 
-        $tester->setInputs(['FooBar', 'Spryker', "\x0D", "\x0D", "\x0D", "\x0D", "\x0D"]);
+        $tester->setInputs(['FooBar', 'Spryker', static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER]);
         $tester->execute($arguments);
 
         $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');

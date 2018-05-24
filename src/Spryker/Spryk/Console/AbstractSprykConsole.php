@@ -8,19 +8,20 @@
 namespace Spryker\Spryk\Console;
 
 use Spryker\Spryk\SprykFacade;
+use Spryker\Spryk\SprykFacadeInterface;
 use Symfony\Component\Console\Command\Command;
 
 abstract class AbstractSprykConsole extends Command
 {
     /**
-     * @var \Spryker\Spryk\SprykFacade|null
+     * @var \Spryker\Spryk\SprykFacadeInterface|null
      */
     protected $facade;
 
     /**
-     * @return \Spryker\Spryk\SprykFacade
+     * @return \Spryker\Spryk\SprykFacadeInterface
      */
-    protected function getFacade(): SprykFacade
+    protected function getFacade(): SprykFacadeInterface
     {
         if ($this->facade === null) {
             $this->facade = new SprykFacade();
@@ -30,11 +31,11 @@ abstract class AbstractSprykConsole extends Command
     }
 
     /**
-     * @param \Spryker\Spryk\SprykFacade $facade
+     * @param \Spryker\Spryk\SprykFacadeInterface $facade
      *
      * @return $this
      */
-    public function setFacade(SprykFacade $facade): self
+    public function setFacade(SprykFacadeInterface $facade): self
     {
         $this->facade = $facade;
 

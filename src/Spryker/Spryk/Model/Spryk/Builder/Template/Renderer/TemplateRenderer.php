@@ -7,7 +7,6 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ArrayCastFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\DasherizeFilter;
 use Twig\Extension\DebugExtension;
@@ -32,7 +31,6 @@ class TemplateRenderer implements TemplateRendererInterface
         ]);
         $renderer->addExtension(new DebugExtension());
         $renderer->addFilter(new DasherizeFilter());
-        $renderer->addFilter(new ArrayCastFilter());
         $renderer->addFilter(new ClassNameShortFilter());
 
         $this->renderer = $renderer;

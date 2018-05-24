@@ -46,7 +46,11 @@ class SprykRunConsole extends AbstractSprykConsole
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.');
 
         foreach ($sprykArguments as $argumentName => $argumentDefinition) {
-            $this->addOption($argumentName, null, InputOption::VALUE_REQUIRED, $argumentDefinition['description']);
+            $inputOption = InputOption::VALUE_REQUIRED;
+            if (isset($argumentDefinition['multiline'])) {
+                $inputOption = InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY;
+            }
+            $this->addOption($argumentName, null, $inputOption, $argumentDefinition['description']);
         }
     }
 
@@ -86,10 +90,16 @@ class SprykRunConsole extends AbstractSprykConsole
     {
         $standardArguments = [];
         foreach ($arguments as $argumentName => $argumentDefinition) {
-            $standardArguments[$argumentName] = [
+            $argumentInfo = [
                 'name' => $argumentName,
                 'description' => sprintf('%s argument', $argumentName),
             ];
+
+            if (isset($argumentDefinition['multiline'])) {
+                $argumentInfo['multiline'] = true;
+            }
+
+            $standardArguments[$argumentName] = $argumentInfo;
         }
 
         return $standardArguments;

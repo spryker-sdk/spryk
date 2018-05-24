@@ -8,12 +8,12 @@ arguments:
   moduleOrganization:
     default: Spryker
 
+  comment:
+    multiline: true
+
   method: ~
   input: ~
   output: ~
-
-  specification:
-    default: "ADD SPECIFICATION HERE"
 
   template:
     value: InterfaceMethod.php.twig

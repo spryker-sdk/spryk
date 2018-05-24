@@ -21,3 +21,7 @@ postSpryks:
   - AddContributing
   - AddChangelog
   - AddTravis
+  - AddGitattributes
+  - AddGitignore
+  - AddPhpStanJson
+  - AddPhpStanNeon

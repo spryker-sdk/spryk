@@ -1,12 +1,12 @@
 
 
     /**
-     * Specification:
-     {% set specification = specification | array %}
-     {%- for specificationLine in specification -%}
-     * - {{ specificationLine }}
+     {% if comment is defined %}
+     {%- for commentLine in comment.value -%}
+     * {{ commentLine }}
      {% endfor -%}
      *
+     {% endif -%}
      * @api
      {% set inputs = input.value | split(',') -%}
      {%- if inputs is iterable -%}

@@ -12,6 +12,13 @@ arguments:
   method:
     value: addFooBar
 
+  comment:
+    multi: true
+    value:
+      - "Specification:"
+      - "- First specification line."
+      - "- Second specification line."
+
   input:
     value: \Generated\Shared\Transfer\FooBarTransfer $fooBarTransfer
 

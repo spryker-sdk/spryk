@@ -9,8 +9,12 @@ arguments:
   moduleOrganization:
     value: Spryker
 
-  specification:
-    value: "ADD SPECIFICATION HERE"
+  comment:
+    multi: true
+    value:
+      - "Specification:"
+      - "- First specification line."
+      - "- Second specification line."
 
   method:
     value: addFooBar

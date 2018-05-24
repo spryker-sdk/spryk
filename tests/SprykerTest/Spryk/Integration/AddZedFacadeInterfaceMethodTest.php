@@ -49,4 +49,35 @@ class AddZedFacadeInterfaceMethodTest extends Unit
         $tester->execute($arguments, ['interactive' => false]);
         $this->tester->assertClassHasMethod(FooBarFacadeInterface::class, 'addSomething');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsCommentFacadeInterface(): void
+    {
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
+
+        $arguments = [
+            'command' => $command->getName(),
+            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+            '--module' => 'FooBar',
+            '--method' => 'addSomething',
+            '--input' => 'string $something',
+            '--output' => 'bool',
+            '--comment' => [
+                'Specification:',
+                '- First specification line.',
+                '- Second specification line.',
+            ],
+        ];
+
+        $tester->execute($arguments, ['interactive' => false]);
+        $pathToFacadeInterface = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/FooBarFacadeInterface.php';
+        $facadeInterfaceContent = file_get_contents($pathToFacadeInterface);
+
+        $this->assertRegExp('/\* Specification:/', $facadeInterfaceContent);
+        $this->assertRegExp('/\* - First specification line./', $facadeInterfaceContent);
+        $this->assertRegExp('/\* - Second specification line./', $facadeInterfaceContent);
+    }
 }

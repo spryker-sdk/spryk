@@ -21,6 +21,8 @@ use Spryker\Spryk\Exception\ArgumentNotFoundException;
  */
 class SprykRunArgumentTest extends Unit
 {
+    const KEY_STROKE_ENTER = "\x0D";
+
     /**
      * @var \SprykerTest\SprykConsoleTester
      */
@@ -77,22 +79,7 @@ class SprykRunArgumentTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => 'CreateModule',
         ];
 
-        $tester->setInputs([
-            // First answer for module
-            'FooBar',
-            // First answer for moduleOrganization
-            'Spryker',
-            // Use default for targetPath (hit enter)
-            "\x0D",
-            // Re-use first answer for module (hit enter)
-            "\x0D",
-            // Use default for targetPath (hit enter)
-            "\x0D",
-            // Re-use first answer for module (hit enter)
-            "\x0D",
-            // Use default for targetPath (hit enter)
-            "\x0D",
-        ]);
+        $tester->setInputs(['FooBar', 'Spryker', static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER]);
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();
