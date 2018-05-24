@@ -13,7 +13,6 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgu
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use Spryker\Spryk\Style\SprykStyleInterface;
 use Symfony\Component\Console\Question\Question;
-use TypeError;
 
 class ArgumentResolver implements ArgumentResolverInterface
 {
@@ -214,10 +213,6 @@ class ArgumentResolver implements ArgumentResolverInterface
     {
         $question = new Question(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $default);
 
-        try {
-            return $this->style->askQuestion($question);
-        } catch (TypeError $exception) {
-            $foo = 'bar';
-        }
+        return $this->style->askQuestion($question);
     }
 }
