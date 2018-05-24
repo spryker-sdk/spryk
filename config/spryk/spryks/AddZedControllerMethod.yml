@@ -14,7 +14,7 @@ arguments:
   method:
     default: indexAction
 
-  returnType:
+  output:
     default: void
 
   template:

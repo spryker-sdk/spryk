@@ -10,7 +10,7 @@ arguments:
 
   className: ~
 
-  returnType:
+  output:
     default: "%className%Interface"
 
   method:

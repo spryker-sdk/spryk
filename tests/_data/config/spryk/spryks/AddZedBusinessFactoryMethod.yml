@@ -12,7 +12,7 @@ arguments:
   className:
     value: Spryker\Zed\FooBar\Business\Model\FooBar
 
-  returnType:
+  output:
     value: Spryker\Zed\FooBar\Business\Model\FooBar
 
   method:

@@ -41,7 +41,7 @@ class AddZedBusinessFactoryMethodTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
             '--module' => 'FooBar',
             '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
-            '--returnType' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
+            '--output' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
