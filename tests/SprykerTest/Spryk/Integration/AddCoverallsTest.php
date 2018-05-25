@@ -8,7 +8,6 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
@@ -20,8 +19,6 @@ use Spryker\Spryk\Console\SprykRunConsole;
  */
 class AddCoverallsTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddCoveralls';
-
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -32,17 +29,11 @@ class AddCoverallsTest extends Unit
      */
     public function testAddsCoverallsFile(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--repositoryToken' => 'uzf78t67832fe76923f764f3249f329f)&/vuzf76&/R',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->assertFileExists($this->tester->getModuleDirectory() . '.coveralls.yml');
     }
 }

@@ -8,7 +8,6 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
@@ -20,8 +19,6 @@ use Spryker\Spryk\Console\SprykRunConsole;
  */
 class CreateModuleTest extends Unit
 {
-    protected const SPRYK_NAME = 'CreateModule';
-
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -32,16 +29,10 @@ class CreateModuleTest extends Unit
      */
     public function testCreatesModule(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src');
     }
 }

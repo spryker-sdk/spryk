@@ -38,6 +38,7 @@ class AddZedDependencyFacadeMethodTest extends Unit
             '--input' => 'string $fooBar',
             '--output' => 'array',
         ]);
+
         $this->tester->assertClassHasMethod(FooBarToZipZapFacadeBridge::class, 'doSomething');
     }
 }

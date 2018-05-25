@@ -8,7 +8,6 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Zed\FooBar\Business\FooBarBusinessFactory;
 
 /**
@@ -21,8 +20,6 @@ use Spryker\Zed\FooBar\Business\FooBarBusinessFactory;
  */
 class AddZedBusinessModelTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddZedBusinessModel';
-
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -33,17 +30,11 @@ class AddZedBusinessModelTest extends Unit
      */
     public function testAddsZedBusinessModel(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Model/FooBar.php');
     }
 
@@ -52,17 +43,11 @@ class AddZedBusinessModelTest extends Unit
      */
     public function testAddsMethodToZedBusinessFactory(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->tester->assertClassHasMethod(FooBarBusinessFactory::class, 'createFooBar');
     }
 }

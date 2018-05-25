@@ -9,7 +9,6 @@ namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
 use Spryker\Client\FooBar\FooBarClientInterface;
-use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
@@ -21,8 +20,6 @@ use Spryker\Spryk\Console\SprykRunConsole;
  */
 class AddClientInterfaceMethodTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddClientInterfaceMethod';
-
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -33,19 +30,13 @@ class AddClientInterfaceMethodTest extends Unit
      */
     public function testAddsMethodToClient(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--method' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->tester->assertClassHasMethod(FooBarClientInterface::class, 'addSomething');
     }
 }
