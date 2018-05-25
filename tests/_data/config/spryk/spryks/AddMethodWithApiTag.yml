@@ -10,20 +10,17 @@ arguments:
     value: Spryker
 
   method:
-    value: addFooBar
-
-  comment:
-    multi: true
-    value:
-      - "Specification:"
-      - "- First specification line."
-      - "- Second specification line."
+    value: doSomething
 
   input:
-    value: \Generated\Shared\Transfer\FooBarTransfer $fooBarTransfer
+    value: false
 
   output:
     value: bool
+
+  annotations:
+    value:
+      - "@api"
 
   template:
     value: Method.php.twig
@@ -33,6 +30,3 @@ arguments:
 
 preSpryks:
   - AddFacade
-
-postSpryks:
-  - AddFacadeInterfaceMethod

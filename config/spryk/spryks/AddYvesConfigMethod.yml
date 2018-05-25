@@ -1,0 +1,23 @@
+spryk: method
+description: "Adds a new method to the Yves *module*Config."
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  method: ~
+  input: ~
+  output: ~
+
+  template:
+    value: Method.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Yves\\%module%\\%module%Config"
+
+preSpryks:
+  - AddYvesConfig
+
