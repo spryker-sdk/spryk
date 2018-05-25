@@ -30,6 +30,8 @@ The vast majority of the Spryks need to execute other Spryks before the called S
 
 A template Spryk adds a new file to your filesystem and uses twig as render engine. Twig gives you the ability to easily create file from a template with placeholders e.g. for `module` or `moduleOrganization`. The template Spryk will at least need the `template` argument defined. This argument tells the Spryk what template should be used to fullfill your task.
 
+Template Spryks can have as many arguments defined as you will need in the template which should be build.
+
 ### Structure Spryk
 
 A structure Spryk creates directory structure you define. The CreateModule Spryk e.g. contains the definition of directories the Spryk has to create for you. The main argument in the structure Spryk is the directories argument. Here you can add a list of directories which have to be created.

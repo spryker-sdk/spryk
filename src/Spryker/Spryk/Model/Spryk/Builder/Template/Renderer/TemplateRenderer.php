@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 
+use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\CamelBackFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\DasherizeFilter;
 use Twig\Extension\DebugExtension;
@@ -32,6 +33,7 @@ class TemplateRenderer implements TemplateRendererInterface
         $renderer->addExtension(new DebugExtension());
         $renderer->addFilter(new DasherizeFilter());
         $renderer->addFilter(new ClassNameShortFilter());
+        $renderer->addFilter(new CamelBackFilter());
 
         $this->renderer = $renderer;
     }

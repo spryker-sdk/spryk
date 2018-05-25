@@ -9,6 +9,7 @@ namespace SprykerTest;
 
 use Codeception\Actor;
 use Codeception\Stub;
+use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Spryk\SprykConfig;
 use Spryker\Spryk\SprykFacade;
@@ -34,6 +35,41 @@ use Symfony\Component\Console\Tester\CommandTester;
 class SprykIntegrationTester extends Actor
 {
     use _generated\SprykIntegrationTesterActions;
+
+    /**
+     * @param \Codeception\Test\Unit $testClass
+     * @param array $arguments
+     *
+     * @return void
+     */
+    public function run(Unit $testClass, array $arguments): void
+    {
+        $sprykName = $this->getSprykName($testClass);
+
+        $command = new SprykRunConsole();
+        $tester = $this->getConsoleTester($command, $sprykName);
+
+        $arguments += [
+            'command' => $command->getName(),
+            SprykRunConsole::ARGUMENT_SPRYK => $sprykName,
+        ];
+
+        $tester->execute($arguments, ['interactive' => false]);
+    }
+
+    /**
+     * @param \Codeception\Test\Unit $testClass
+     *
+     * @return string
+     */
+    protected function getSprykName(Unit $testClass): string
+    {
+        $classNameFragments = explode('\\', get_class($testClass));
+        $classNameShort = array_pop($classNameFragments);
+        $sprykName = str_replace('Test', '', $classNameShort);
+
+        return $sprykName;
+    }
 
     /**
      * @param \Spryker\Spryk\Console\SprykRunConsole $command
