@@ -14,10 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddZedEntityManagerTest
+ * @group AddZedPersistenceRepositoryTest
  * Add your own group annotations below this line
  */
-class AddZedEntityManagerTest extends Unit
+class AddZedPersistenceRepositoryTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -27,12 +27,12 @@ class AddZedEntityManagerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedEntityManagerFile(): void
+    public function testAddsZedRepositoryFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarEntityManager.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarRepository.php');
     }
 }
