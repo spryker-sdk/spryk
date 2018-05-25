@@ -16,12 +16,12 @@ use Spryker\Spryk\Console\SprykRunConsole;
  * @group Spryk
  * @group Integration
  * @group Facade
- * @group AddZedFacadeTest
+ * @group AddZedBusinessFacadeTest
  * Add your own group annotations below this line
  */
-class AddZedFacadeTest extends Unit
+class AddZedBusinessFacadeTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddZedFacade';
+    protected const SPRYK_NAME = 'AddZedBusinessFacade';
 
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -31,7 +31,7 @@ class AddZedFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedFacadeFile(): void
+    public function testAddsZedBusinessFacadeFile(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);

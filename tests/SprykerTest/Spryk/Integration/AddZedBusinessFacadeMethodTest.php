@@ -17,12 +17,12 @@ use Spryker\Zed\FooBar\Business\FooBarFacade;
  * @group Spryk
  * @group Integration
  * @group Facade
- * @group AddZedFacadeMethodTest
+ * @group AddZedBusinessFacadeMethodTest
  * Add your own group annotations below this line
  */
-class AddZedFacadeMethodTest extends Unit
+class AddZedBusinessFacadeMethodTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddZedFacadeMethod';
+    protected const SPRYK_NAME = 'AddZedBusinessFacadeMethod';
 
     /**
      * @var \SprykerTest\SprykIntegrationTester

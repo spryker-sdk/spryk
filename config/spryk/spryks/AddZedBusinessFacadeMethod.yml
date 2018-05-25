@@ -22,7 +22,7 @@ arguments:
     value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%Facade"
 
 preSpryks:
-  - AddZedFacade
+  - AddZedBusinessFacade
 
 postSpryks:
-  - AddZedFacadeInterfaceMethod
+  - AddZedBusinessFacadeInterfaceMethod

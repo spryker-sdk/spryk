@@ -22,4 +22,4 @@ arguments:
     value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%FacadeInterface"
 
 preSpryks:
-  - AddZedFacadeInterface
+  - AddZedBusinessFacadeInterface
