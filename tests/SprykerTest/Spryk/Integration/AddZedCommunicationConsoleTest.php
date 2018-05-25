@@ -14,10 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddZedControllerTest
+ * @group AddZedCommunicationConsoleTest
  * Add your own group annotations below this line
  */
-class AddZedControllerTest extends Unit
+class AddZedCommunicationConsoleTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -27,12 +27,14 @@ class AddZedControllerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedControllerFile(): void
+    public function testAddsZedConsole(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--className' => 'FooBar',
+            '--consoleCommand' => 'spryker:spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Plugin/Console/FooBarConsole.php');
     }
 }

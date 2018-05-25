@@ -28,4 +28,4 @@ arguments:
     default: "%module%/src/%moduleOrganization%/Zed/%module%/Presentation/%controller%/"
 
 preSpryks:
-  - AddZedControllerMethod
+  - AddZedCommunicationControllerMethod

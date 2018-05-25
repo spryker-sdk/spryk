@@ -15,10 +15,10 @@ use Spryker\Zed\FooBar\Communication\Controller\IndexController;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddZedControllerMethodTest
+ * @group AddZedCommunicationControllerMethodTest
  * Add your own group annotations below this line
  */
-class AddZedControllerMethodTest extends Unit
+class AddZedCommunicationControllerMethodTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester
