@@ -42,12 +42,7 @@ class SprykRunArgumentMultiTest extends Unit
 
         $tester->execute($arguments);
 
-        $pathToFacade = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacade.php';
-        $this->assertFileExists($pathToFacade);
-
         $pathToFacadeInterface = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacadeInterface.php';
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacadeInterface.php');
-
         $facadeInterfaceContent = file_get_contents($pathToFacadeInterface);
         $this->assertRegExp('/\* Specification:/', $facadeInterfaceContent);
         $this->assertRegExp('/\* - First specification line./', $facadeInterfaceContent);

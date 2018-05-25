@@ -8,7 +8,6 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
@@ -20,8 +19,6 @@ use Spryker\Spryk\Console\SprykRunConsole;
  */
 class AddZedEntityManagerInterfaceTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddZedEntityManagerInterface';
-
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -32,16 +29,10 @@ class AddZedEntityManagerInterfaceTest extends Unit
      */
     public function testAddsZedEntityManagerInterfaceFile(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarEntityManagerInterface.php');
     }
 }

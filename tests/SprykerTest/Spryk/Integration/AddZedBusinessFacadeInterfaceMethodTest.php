@@ -8,7 +8,6 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Zed\FooBar\Business\FooBarFacadeInterface;
 
 /**
@@ -22,8 +21,6 @@ use Spryker\Zed\FooBar\Business\FooBarFacadeInterface;
  */
 class AddZedBusinessFacadeInterfaceMethodTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddZedBusinessFacadeInterfaceMethod';
-
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -34,19 +31,13 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
      */
     public function testAddsMethodToFacadeInterface(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--method' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->tester->assertClassHasMethod(FooBarFacadeInterface::class, 'addSomething');
     }
 
@@ -55,12 +46,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
      */
     public function testAddsCommentFacadeInterface(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--method' => 'addSomething',
             '--input' => 'string $something',
@@ -70,9 +56,8 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
                 '- First specification line.',
                 '- Second specification line.',
             ],
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $pathToFacadeInterface = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/FooBarFacadeInterface.php';
         $facadeInterfaceContent = file_get_contents($pathToFacadeInterface);
 

@@ -8,7 +8,6 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Zed\FooBar\Business\FooBarFacade;
 
 /**
@@ -22,8 +21,6 @@ use Spryker\Zed\FooBar\Business\FooBarFacade;
  */
 class AddZedBusinessFacadeMethodTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddZedBusinessFacadeMethod';
-
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -34,19 +31,13 @@ class AddZedBusinessFacadeMethodTest extends Unit
      */
     public function testAddsMethodToFacade(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--method' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->tester->assertClassHasMethod(FooBarFacade::class, 'addSomething');
     }
 }

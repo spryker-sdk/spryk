@@ -8,7 +8,6 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
@@ -20,8 +19,6 @@ use Spryker\Spryk\Console\SprykRunConsole;
  */
 class AddZedNavigationNodeTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddZedNavigationNode';
-
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -32,18 +29,12 @@ class AddZedNavigationNodeTest extends Unit
      */
     public function testAddsZedNavigationSchemaFile(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'index',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
         $this->assertFileExists($pathToNavigationSchema);
         $xmlContent = file_get_contents($pathToNavigationSchema);

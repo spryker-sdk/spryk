@@ -8,7 +8,6 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Zed\FooBar\Communication\Controller\IndexController;
 
 /**
@@ -21,8 +20,6 @@ use Spryker\Zed\FooBar\Communication\Controller\IndexController;
  */
 class AddZedControllerMethodTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddZedControllerMethod';
-
     /**
      * @var \SprykerTest\SprykIntegrationTester
      */
@@ -33,18 +30,12 @@ class AddZedControllerMethodTest extends Unit
      */
     public function testAddsZedControllerMethod(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'indexAction',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->tester->assertClassHasMethod(IndexController::class, 'indexAction');
     }
 
@@ -53,18 +44,12 @@ class AddZedControllerMethodTest extends Unit
      */
     public function testAddsViewFileForControllerAction(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'indexAction',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
     }
 
@@ -73,18 +58,12 @@ class AddZedControllerMethodTest extends Unit
      */
     public function testAddsNavigationNodeEntryToNavigationSchema(): void
     {
-        $command = new SprykRunConsole();
-        $tester = $this->tester->getConsoleTester($command, static::SPRYK_NAME);
-
-        $arguments = [
-            'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => static::SPRYK_NAME,
+        $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'indexAction',
-        ];
+        ]);
 
-        $tester->execute($arguments, ['interactive' => false]);
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
     }
 }
