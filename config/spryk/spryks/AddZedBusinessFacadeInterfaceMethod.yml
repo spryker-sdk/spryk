@@ -15,6 +15,10 @@ arguments:
   input: ~
   output: ~
 
+  annotations:
+    value:
+      - "@api"
+
   template:
     value: InterfaceMethod.php.twig
 

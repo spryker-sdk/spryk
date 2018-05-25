@@ -9,6 +9,7 @@ namespace SprykerTest\Spryk\Console;
 
 use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykRunConsole;
+use Spryker\Zed\FooBar\Business\FooBarFacade;
 
 /**
  * Auto-generated group annotations
@@ -68,5 +69,51 @@ class SprykRunMethodTest extends Unit
         $fileContent = file_get_contents($targetFile);
 
         $this->assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsApiAnnotation(): void
+    {
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
+
+        $arguments = [
+            'command' => $command->getName(),
+            SprykRunConsole::ARGUMENT_SPRYK => 'AddMethodWithApiTag',
+        ];
+
+        $tester->execute($arguments);
+        $expectedDocBlock = '/**
+ * @api
+ *
+ * @return bool
+ */';
+        $this->tester->assertDocBlockForClassMethod($expectedDocBlock, FooBarFacade::class, 'doSomething');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsApiAndInheritdocAnnotations(): void
+    {
+        $command = new SprykRunConsole();
+        $tester = $this->tester->getConsoleTester($command);
+
+        $arguments = [
+            'command' => $command->getName(),
+            SprykRunConsole::ARGUMENT_SPRYK => 'AddMethodWithApiAndInheritdocTag',
+        ];
+
+        $tester->execute($arguments);
+        $expectedDocBlock = '/**
+ * {@inheritdoc}
+ *
+ * @api
+ *
+ * @return bool
+ */';
+        $this->tester->assertDocBlockForClassMethod($expectedDocBlock, FooBarFacade::class, 'doSomething');
     }
 }

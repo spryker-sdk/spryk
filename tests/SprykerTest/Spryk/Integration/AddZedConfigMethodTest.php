@@ -8,18 +8,17 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Business\FooBarFacade;
+use Spryker\Zed\FooBar\FooBarConfig;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group Facade
- * @group AddZedBusinessFacadeMethodTest
+ * @group AddZedConfigMethodTest
  * Add your own group annotations below this line
  */
-class AddZedBusinessFacadeMethodTest extends Unit
+class AddZedConfigMethodTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -29,20 +28,15 @@ class AddZedBusinessFacadeMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodToFacade(): void
+    public function testAddsZedConfigMethod(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'addSomething',
-            '--input' => 'string $something',
-            '--output' => 'bool',
-            '--comment' => [
-                'Specification:',
-                '- Line one.',
-                '- Line two.',
-            ],
+            '--method' => 'getConfigValue',
+            '--input' => 'string $foo',
+            '--output' => 'string',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarFacade::class, 'addSomething');
+        $this->tester->assertClassHasMethod(FooBarConfig::class, 'getConfigValue');
     }
 }
