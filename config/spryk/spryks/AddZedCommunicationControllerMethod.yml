@@ -18,13 +18,13 @@ arguments:
     default: void
 
   template:
-    value: MethodZedController.php.twig
+    value: MethodZedCommunicationController.php.twig
 
   target:
     value: "%moduleOrganization%\\Zed\\%module%\\Communication\\Controller\\%controller%Controller"
 
 preSpryks:
-  - AddZedController
+  - AddZedCommunicationController
 
 postSpryks:
   - AddZedPresentationTwig
