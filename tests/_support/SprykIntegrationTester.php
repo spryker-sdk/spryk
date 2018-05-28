@@ -66,7 +66,7 @@ class SprykIntegrationTester extends Actor
     {
         $classNameFragments = explode('\\', get_class($testClass));
         $classNameShort = array_pop($classNameFragments);
-        $sprykName = str_replace('Test', '', $classNameShort);
+        $sprykName = substr($classNameShort, 0, -4);
 
         return $sprykName;
     }

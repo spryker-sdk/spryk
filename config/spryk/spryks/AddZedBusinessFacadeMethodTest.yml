@@ -1,0 +1,25 @@
+spryk: method
+description: "Adds a new method to the *module*FacadeTest."
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  comment:
+    multiline: true
+
+  method: ~
+  input: ~
+  output: ~
+
+  template:
+    value: Method.php.twig
+
+  target:
+    value: "%moduleOrganization%Test\\Zed\\%module%\\Business\\%module%FacadeTest"
+
+preSpryks:
+  - AddZedBusinessFacadeTest

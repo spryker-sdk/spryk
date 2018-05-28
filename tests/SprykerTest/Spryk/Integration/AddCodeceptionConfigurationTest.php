@@ -14,10 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddCodeceptionConfigTest
+ * @group AddCodeceptionConfigurationTest
  * Add your own group annotations below this line
  */
-class AddCodeceptionConfigTest extends Unit
+class AddCodeceptionConfigurationTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester

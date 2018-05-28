@@ -1,0 +1,17 @@
+spryk: template
+description: "Add the Zed *module* test suite configuration."
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  template:
+    value: ZedTestSuiteCodeceptionConfiguration.yml.twig
+
+preSpryks:
+  - AddCodeceptionConfiguration
+
+postSpryks:
+  - AddZedTestSuiteToCodeceptionConfiguration

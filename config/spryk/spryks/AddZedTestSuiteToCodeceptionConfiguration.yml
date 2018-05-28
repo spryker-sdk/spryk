@@ -1,0 +1,23 @@
+spryk: update-yml
+description: "Adds the include for the Zed test suite to the codeception.yml."
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  after:
+    value: actor
+
+  addToElement:
+    value: include
+
+  content:
+    value: "tests/SprykerTest/Zed/%module%"
+
+  targetPath:
+    value: "%module%/codeception.yml"
+
+preSpryks:
+  - AddCodeceptionConfiguration

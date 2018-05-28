@@ -16,6 +16,7 @@ use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
+use Spryker\Spryk\Model\Spryk\Builder\Template\UpdateYmlSpryk;
 use Spryker\Spryk\Model\Spryk\Configuration\ConfigurationFactory;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackFactory;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
@@ -88,6 +89,7 @@ class SprykFactory
         return [
             $this->createStructureSpryk(),
             $this->createTemplateSpryk(),
+            $this->createUpdateYmlSpryk(),
             $this->createMethodSpryk(),
             $this->createNavigationSpryk(),
         ];
@@ -109,6 +111,17 @@ class SprykFactory
     public function createTemplateSpryk(): SprykBuilderInterface
     {
         return new TemplateSpryk(
+            $this->createTemplateRenderer(),
+            $this->getConfig()->getRootDirectory()
+        );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createUpdateYmlSpryk(): SprykBuilderInterface
+    {
+        return new UpdateYmlSpryk(
             $this->createTemplateRenderer(),
             $this->getConfig()->getRootDirectory()
         );
