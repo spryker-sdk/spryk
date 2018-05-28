@@ -16,5 +16,5 @@ arguments:
   targetPath:
     default: "%module%/tests/%moduleOrganization%Test/Zed/%module%/Business/"
 
-preSpryks:
-  - AddZedBusinessTestSuite
+#preSpryks:
+#  - AddZedBusinessTestSuite

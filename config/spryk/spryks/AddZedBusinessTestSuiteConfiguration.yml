@@ -1,5 +1,5 @@
 spryk: update-yml
-description: "Updates the *module* test suite configuration."
+description: "Updates the *module* test configuration and adds the suite configuration for Business tests."
 
 arguments:
   module: ~
@@ -10,5 +10,14 @@ arguments:
   template:
     value: ZedBusinessTestSuiteCodeceptionConfiguration.yml.twig
 
+  afterElement:
+    value: coverage
+
+  addToElement:
+    value: suites
+
+  targetPath:
+    value: "%module%/tests/%moduleOrganization%Test/Zed/%module%/codeception.yml"
+
 preSpryks:
-  - AddCodeceptionConfiguration
+  - AddZedTestCodeceptionConfiguration

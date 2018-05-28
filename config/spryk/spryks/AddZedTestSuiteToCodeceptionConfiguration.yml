@@ -7,7 +7,7 @@ arguments:
   moduleOrganization:
     default: Spryker
 
-  after:
+  afterElement:
     value: actor
 
   addToElement:

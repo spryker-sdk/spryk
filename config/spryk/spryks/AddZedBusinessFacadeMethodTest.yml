@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a new method to the *module*FacadeTest."
+description: "Adds a new test method to the *module*FacadeTest."
 
 arguments:
 
@@ -8,12 +8,13 @@ arguments:
   moduleOrganization:
     default: Spryker
 
-  comment:
-    multiline: true
+  method:
+    callbackOnly: true
+    callback:
+      - ZedTestMethodNameCallback
 
-  method: ~
-  input: ~
-  output: ~
+  output:
+    value: void
 
   template:
     value: Method.php.twig

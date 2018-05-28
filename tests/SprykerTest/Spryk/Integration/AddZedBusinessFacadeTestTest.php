@@ -15,10 +15,10 @@ use Codeception\Test\Unit;
  * @group Spryk
  * @group Integration
  * @group Facade
- * @group AddZedBusinessFacadeTest
+ * @group AddZedBusinessFacadeTestTest
  * Add your own group annotations below this line
  */
-class AddZedBusinessFacadeTest extends Unit
+class AddZedBusinessFacadeTestTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -34,6 +34,6 @@ class AddZedBusinessFacadeTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/FooBarFacade.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business/FooBarFacadeTest.php');
     }
 }

@@ -1,5 +1,5 @@
 spryk: structure
-description: "Adds a new *module* Business test suite."
+description: "Adds a new *module* Business test suite directory."
 
 arguments:
   module: ~
@@ -7,9 +7,12 @@ arguments:
   moduleOrganization:
     default: Spryker
 
+  targetPath:
+    default: "%module%/"
+
   directories:
     value:
-      - tests/%moduleOrganization%Test/Zed/%module%/Business/
+      - "tests/%moduleOrganization%Test/Zed/%module%/Business/"
 
 postSpryks:
   - AddZedBusinessTestSuiteConfiguration

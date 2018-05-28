@@ -17,6 +17,12 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     const ARGUMENT_TARGET_PATH = 'targetPath';
     const ARGUMENT_TEMPLATE = 'template';
 
+    const ARGUMENT_AFTER_ELEMENT = 'afterElement';
+    const ARGUMENT_ADD_TO_ELEMENT = 'addToElement';
+    const ARGUMENT_CONTENT = 'content';
+
+    const YAML_START_INLINE_LEVEL = 10;
+
     /**
      * @var \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
@@ -31,12 +37,6 @@ class UpdateYmlSpryk implements SprykBuilderInterface
      * @param \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
      * @param string $rootDirectory
      */
-    const ARGUMENT_ADD_TO_ELEMENT = 'addToElement';
-
-    const ARGUMENT_AFTER_ELEMENT = 'after';
-
-    const ARGUMENT_CONTENT = 'content';
-
     public function __construct(TemplateRendererInterface $renderer, string $rootDirectory)
     {
         $this->renderer = $renderer;
@@ -59,9 +59,6 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     public function shouldBuild(SprykDefinitionInterface $sprykerDefinition): bool
     {
         return true;
-        $targetPath = $this->getTargetPath($sprykerDefinition);
-
-        return (!file_exists($targetPath));
     }
 
     /**
@@ -87,10 +84,14 @@ class UpdateYmlSpryk implements SprykBuilderInterface
 
         $targetYaml = $newTargetYaml;
 
-        $content = $afterElement = $sprykerDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_CONTENT)->getValue();
-        $targetYaml[$addToElement][] = $content;
+        $content = $this->getYamlToAdd($sprykerDefinition);
+        if (is_array($content)) {
+            $targetYaml[$addToElement] = array_merge($targetYaml[$addToElement], $content);
+        } else {
+            $targetYaml[$addToElement][] = $content;
+        }
 
-        $yamlContent = Yaml::dump($targetYaml);
+        $yamlContent = Yaml::dump($targetYaml, static::YAML_START_INLINE_LEVEL);
 
         file_put_contents($this->getTargetPath($sprykerDefinition), $yamlContent);
     }
@@ -108,6 +109,46 @@ class UpdateYmlSpryk implements SprykBuilderInterface
             ->getValue();
 
         return $this->rootDirectory . $targetPath;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     *
+     * @return array
+     */
+    protected function getTargetYamlAsArray(SprykDefinitionInterface $sprykerDefinition): array
+    {
+        $targetPath = $this->getTargetPath($sprykerDefinition);
+        $yaml = Yaml::parse(file_get_contents($targetPath));
+
+        return $yaml;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     *
+     * @return mixed
+     */
+    protected function getYamlToAdd(SprykDefinitionInterface $sprykerDefinition)
+    {
+        if ($sprykerDefinition->getArgumentCollection()->hasArgument(self::ARGUMENT_CONTENT)) {
+            return $sprykerDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_CONTENT)->getValue();
+        }
+
+        return $this->getSourceYamlAsArray($sprykerDefinition);
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     *
+     * @return array
+     */
+    protected function getSourceYamlAsArray(SprykDefinitionInterface $sprykerDefinition): array
+    {
+        $content = $this->getContent($sprykerDefinition, $this->getTemplateName($sprykerDefinition));
+        $yaml = Yaml::parse($content);
+
+        return $yaml;
     }
 
     /**
@@ -141,31 +182,5 @@ class UpdateYmlSpryk implements SprykBuilderInterface
             $templateName,
             $sprykerDefinition->getArgumentCollection()->getArguments()
         );
-    }
-
-    /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
-     *
-     * @return array
-     */
-    protected function getTargetYamlAsArray(SprykDefinitionInterface $sprykerDefinition): array
-    {
-        $targetPath = $this->getTargetPath($sprykerDefinition);
-        $yaml = Yaml::parse(file_get_contents($targetPath));
-
-        return $yaml;
-    }
-
-    /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
-     *
-     * @return array
-     */
-    protected function getSourceYamlAsArray(SprykDefinitionInterface $sprykerDefinition): string
-    {
-        $targetPath = $this->getTargetPath($sprykerDefinition);
-        $yaml = Yaml::parse(file_get_contents($targetPath));
-
-        return $yaml;
     }
 }
