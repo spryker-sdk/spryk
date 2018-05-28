@@ -1,5 +1,8 @@
 arguments:
 
+  rootArgument:
+    value: foo/bar
+
   replaceValue:
     value: vendor/spryker/spryker/Bundles/
     type: prepend
