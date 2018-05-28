@@ -8,16 +8,17 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use Spryker\Zed\FooBar\Persistence\FooBarRepositoryInterface;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddZedRepositoryTest
+ * @group AddZedPersistenceRepositoryInterfaceMethodTest
  * Add your own group annotations below this line
  */
-class AddZedRepositoryTest extends Unit
+class AddZedPersistenceRepositoryInterfaceMethodTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -27,12 +28,15 @@ class AddZedRepositoryTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedRepositoryFile(): void
+    public function testAddsZedPersistenceRepositoryInterfaceMethod(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--method' => 'doSomething',
+            '--input' => 'string $fooBar',
+            '--output' => 'array',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarRepository.php');
+        $this->tester->assertClassHasMethod(FooBarRepositoryInterface::class, 'doSomething');
     }
 }
