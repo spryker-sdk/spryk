@@ -1,0 +1,27 @@
+spryk: method
+description: "Adds a new method to the *target* business model interface."
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  className: ~
+
+  method: ~
+  input: ~
+  output: ~
+
+  template:
+    value: InterfaceMethod.php.twig
+
+  target:
+    value: "%className%Interface"
+
+preSpryks:
+  - AddZedBusinessModel
+
+postSpryks:
+  - AddZedBusinessModelInterfaceMethod
