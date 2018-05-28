@@ -36,6 +36,10 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
             '--method' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
+            '--specification' => [
+                '- First specification line.',
+                '- Second specification line.',
+            ],
         ]);
 
         $this->tester->assertClassHasMethod(FooBarFacadeInterface::class, 'addSomething');
@@ -51,8 +55,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
             '--method' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
-            '--comment' => [
-                'Specification:',
+            '--specification' => [
                 '- First specification line.',
                 '- Second specification line.',
             ],

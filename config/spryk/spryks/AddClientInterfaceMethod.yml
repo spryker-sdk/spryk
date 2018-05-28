@@ -13,7 +13,7 @@ arguments:
   output: ~
 
   specification:
-    default: "ADD SPECIFICATION HERE"
+    multiline: true
 
   template:
     value: InterfaceMethod.php.twig
