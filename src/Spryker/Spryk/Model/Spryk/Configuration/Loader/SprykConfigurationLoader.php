@@ -41,7 +41,6 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
     public function loadSpryk(string $sprykName): array
     {
         $sprykConfiguration = $this->configurationFinder->find($sprykName);
-
         $sprykConfiguration = Yaml::parse($sprykConfiguration->getContents());
 
         return $this->configurationMerger->merge($sprykConfiguration);

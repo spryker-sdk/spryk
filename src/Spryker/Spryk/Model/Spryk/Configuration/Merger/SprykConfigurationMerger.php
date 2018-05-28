@@ -58,6 +58,11 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
             $rootConfiguration['arguments']
         );
 
+        $sprykDefinition['arguments'] = $this->addRootArguments(
+            $sprykDefinition['arguments'],
+            $rootConfiguration['arguments']
+        );
+
         return $sprykDefinition;
     }
 
@@ -104,5 +109,25 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         }
 
         return $mergedArgumentDefinition;
+    }
+
+    /**
+     * @param array $arguments
+     * @param array $rootArguments
+     *
+     * @return array
+     */
+    protected function addRootArguments(array $arguments, array $rootArguments): array
+    {
+        $mergedArguments = $arguments;
+        foreach ($rootArguments as $argumentName => $argumentDefinition) {
+            if (isset($arguments[$argumentName])) {
+                continue;
+            }
+
+            $mergedArguments[$argumentName] = $argumentDefinition;
+        }
+
+        return $mergedArguments;
     }
 }
