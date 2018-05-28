@@ -36,8 +36,7 @@ class AddZedBusinessFacadeMethodTest extends Unit
             '--method' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
-            '--comment' => [
-                'Specification:',
+            '--specification' => [
                 '- Line one.',
                 '- Line two.',
             ],
