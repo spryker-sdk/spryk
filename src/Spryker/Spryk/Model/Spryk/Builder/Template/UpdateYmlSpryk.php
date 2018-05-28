@@ -80,9 +80,8 @@ class UpdateYmlSpryk implements SprykBuilderInterface
                     $newTargetYaml[$addToElement] = [];
                 }
             }
+            $targetYaml = $newTargetYaml;
         }
-
-        $targetYaml = $newTargetYaml;
 
         $content = $this->getYamlToAdd($sprykerDefinition);
         if (is_array($content)) {

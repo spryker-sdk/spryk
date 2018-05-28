@@ -19,4 +19,7 @@
      */
     public function {{ method }}({% if input.value is not empty %}{{ input.value }}{% endif %}): {{ output }}
     {
+    {% if body is defined %}
+    {{ body | raw }}
+    {% endif -%}
     }

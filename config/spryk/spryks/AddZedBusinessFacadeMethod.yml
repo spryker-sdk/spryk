@@ -8,7 +8,7 @@ arguments:
   moduleOrganization:
     default: Spryker
 
-  specification:
+  comment:
     multiline: true
 
   method: ~
@@ -31,3 +31,4 @@ preSpryks:
 
 postSpryks:
   - AddZedBusinessFacadeInterfaceMethod
+  - AddZedBusinessFacadeMethodTest
