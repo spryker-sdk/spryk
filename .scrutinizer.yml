@@ -1,7 +1,7 @@
 build:
     environment:
         php: '7.1'
-        
+
     dependencies:
         before:
             - 'composer remove --dev spryker/git-hook'
@@ -11,7 +11,7 @@ build:
             - true
 
 build_failure_conditions:
-    - 'project.metric("scrutinizer.quality", < 9.98)'
+    - 'project.metric("scrutinizer.quality", < 10)'
 
 checks:
     php:

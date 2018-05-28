@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *module*EntityManager to the Zed application."
+description: "Adds a new *module*RepositoryInterface to the Zed application."
 
 arguments:
   module: ~
@@ -8,16 +8,13 @@ arguments:
     default: Spryker
 
   template:
-    value: ZedEntityManager.php.twig
+    value: ZedPersistenceRepositoryInterface.php.twig
 
   targetFilename:
-    value: "%module%EntityManager.php"
+    value: "%module%RepositoryInterface.php"
 
   targetPath:
     default: "%module%/src/%moduleOrganization%/Zed/%module%/Persistence/"
 
 preSpryks:
-  - CreateModule
-
-postSpryks:
-  - AddZedEntityManagerInterface
+  - AddZedPersistenceRepository

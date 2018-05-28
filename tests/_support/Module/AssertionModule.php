@@ -25,4 +25,22 @@ class AssertionModule extends Module
 
         $this->assertTrue($classInfo->hasMethod($methodName), sprintf('Expected that class "%s" has method "%s" but method not found.', $className, $methodName));
     }
+
+    /**
+     * @param string $expectedDocBlock
+     * @param string $className
+     * @param string $methodName
+     *
+     * @return void
+     */
+    public function assertDocBlockForClassMethod(string $expectedDocBlock, string $className, string $methodName): void
+    {
+        $betterReflection = new BetterReflection();
+        $reflectedClass = $betterReflection->classReflector()
+            ->reflect($className);
+
+        $reflectedMethod = $reflectedClass->getMethod($methodName);
+        $docBlock = $reflectedMethod->getDocComment();
+        $this->assertSame($expectedDocBlock, $docBlock);
+    }
 }

@@ -8,16 +8,17 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use Spryker\Yves\FooBar\FooBarConfig;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddZedRepositoryInterfaceTest
+ * @group AddYvesConfigMethodTest
  * Add your own group annotations below this line
  */
-class AddZedRepositoryInterfaceTest extends Unit
+class AddYvesConfigMethodTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -27,12 +28,15 @@ class AddZedRepositoryInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedRepositoryInterfaceFile(): void
+    public function testAddsYvesConfigMethod(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--method' => 'getConfigValue',
+            '--input' => 'string $foo',
+            '--output' => 'string',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarRepositoryInterface.php');
+        $this->tester->assertClassHasMethod(FooBarConfig::class, 'getConfigValue');
     }
 }

@@ -8,18 +8,16 @@
 namespace SprykerTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Business\FooBarFacade;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group Facade
- * @group AddZedBusinessFacadeMethodTest
+ * @group AddZedPersistenceRepositoryTest
  * Add your own group annotations below this line
  */
-class AddZedBusinessFacadeMethodTest extends Unit
+class AddZedPersistenceRepositoryTest extends Unit
 {
     /**
      * @var \SprykerTest\SprykIntegrationTester
@@ -29,20 +27,12 @@ class AddZedBusinessFacadeMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodToFacade(): void
+    public function testAddsZedRepositoryFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'addSomething',
-            '--input' => 'string $something',
-            '--output' => 'bool',
-            '--comment' => [
-                'Specification:',
-                '- Line one.',
-                '- Line two.',
-            ],
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarFacade::class, 'addSomething');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarRepository.php');
     }
 }

@@ -1,19 +1,22 @@
 spryk: method
-description: "Adds a new method to the *module*Facade."
+description: "Unit Test configuration"
 
 arguments:
 
-  module: ~
+  module:
+    value: FooBar
 
   moduleOrganization:
-    default: Spryker
+    value: Spryker
 
-  comment:
-    multiline: true
+  method:
+    value: doSomething
 
-  method: ~
-  input: ~
-  output: ~
+  input:
+    value: false
+
+  output:
+    value: bool
 
   annotations:
     value:
@@ -27,7 +30,4 @@ arguments:
     value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%Facade"
 
 preSpryks:
-  - AddZedBusinessFacade
-
-postSpryks:
-  - AddZedBusinessFacadeInterfaceMethod
+  - AddFacade
