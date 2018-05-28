@@ -1,5 +1,6 @@
 spryk: template
 description: "Adds a new *Module*Client to the Client application."
+priority: 1
 
 arguments:
   module: ~
@@ -20,5 +21,6 @@ preSpryks:
   - CreateModule
 
 postSpryks:
+  - AddClientDependencyProvider
   - AddClientInterface
   - AddClientFactory
