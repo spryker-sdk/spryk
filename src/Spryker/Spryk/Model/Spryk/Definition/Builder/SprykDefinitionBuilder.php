@@ -125,7 +125,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     /**
      * @param array $sprykConfiguration
      *
-     * @return array
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinition[]
      */
     protected function getPreSpryks(array $sprykConfiguration): array
     {
@@ -147,7 +147,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     /**
      * @param array $sprykConfiguration
      *
-     * @return array
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinition[]
      */
     protected function getPostSpryks(array $sprykConfiguration): array
     {
