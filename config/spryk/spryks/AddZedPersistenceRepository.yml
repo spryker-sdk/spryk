@@ -20,5 +20,6 @@ preSpryks:
   - CreateModule
 
 postSpryks:
+  - AddZedPersistenceFactory
   - AddZedPersistenceRepositoryInterface
 
