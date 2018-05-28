@@ -5,12 +5,12 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Extension;
+namespace SprykTest\Extension;
 
 use Codeception\Event\SuiteEvent;
 use Codeception\Events;
 use Codeception\Extension;
-use SprykerTest\Module\IntegrationModule;
+use SprykTest\Module\IntegrationModule;
 use Symfony\Component\Finder\Finder;
 
 class MissingSprykExecutionExtension extends Extension

@@ -1,4 +1,4 @@
-namespace: SprykerTest
+namespace: SprykTest
 actor: Tester
 
 paths:
@@ -22,33 +22,33 @@ coverage:
 
 suites:
     Spryk:
-        path: SprykerTest/Spryk/Model
+        path: SprykTest/Spryk/Model
         class_name: SprykTester
         modules:
             enabled:
                 - Asserts
 
     Console:
-        path: SprykerTest/Spryk/Console
+        path: SprykTest/Spryk/Console
         class_name: SprykConsoleTester
         modules:
             enabled:
                 - Asserts
-                - SprykerTest\Module\AssertionModule
-                - SprykerTest\Module\ConsoleEnvironmentModule
-                - SprykerTest\Module\CleanUpModule:
+                - SprykTest\Module\AssertionModule
+                - SprykTest\Module\ConsoleEnvironmentModule
+                - SprykTest\Module\CleanUpModule:
                     rootDirectory: 'tests/_data/'
 
     Integration:
-        path: SprykerTest/Spryk/Integration
+        path: SprykTest/Spryk/Integration
         class_name: SprykIntegrationTester
         extensions:
-            enabled: [SprykerTest\Extension\MissingSprykExecutionExtension]
+            enabled: [SprykTest\Extension\MissingSprykExecutionExtension]
 
         modules:
             enabled:
                 - Asserts
-                - SprykerTest\Module\AssertionModule
-                - SprykerTest\Module\CleanUpModule:
+                - SprykTest\Module\AssertionModule
+                - SprykTest\Module\CleanUpModule:
                     rootDirectory: 'tests/_data/'
-                - SprykerTest\Module\IntegrationModule
+                - SprykTest\Module\IntegrationModule

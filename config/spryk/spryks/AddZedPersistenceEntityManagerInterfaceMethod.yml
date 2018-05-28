@@ -1,0 +1,22 @@
+spryk: method
+description: "Adds a new method to the *module*EntityManagerInterface."
+
+arguments:
+
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  method: ~
+  input: ~
+  output: ~
+
+  template:
+    value: InterfaceMethod.php.twig
+
+  target:
+    value: "%moduleOrganization%\\Zed\\%module%\\Persistence\\%module%EntityManagerInterface"
+
+preSpryks:
+  - AddZedPersistenceEntityManagerInterface

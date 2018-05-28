@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest;
+namespace SprykTest;
 
 use Codeception\Actor;
 use Spryker\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
