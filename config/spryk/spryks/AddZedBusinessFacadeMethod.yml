@@ -31,3 +31,4 @@ preSpryks:
 
 postSpryks:
   - AddZedBusinessFacadeInterfaceMethod
+  - AddZedBusinessFacadeMethodTest
