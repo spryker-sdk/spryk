@@ -9,7 +9,6 @@ arguments:
     default: Spryker
 
   method:
-    callbackOnly: true
     callback:
       - ZedTestMethodNameCallback
 
