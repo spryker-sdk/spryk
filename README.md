@@ -11,6 +11,24 @@
 
 https://spryker.atlassian.net/wiki/spaces/CORE/pages/188481752/Spryks
 
+## Installation
+
+Add teh private repository to your projects composer.json.
+
+```
+"repositories": [
+    ...
+    {
+        "type": "git",
+        "url": "git@github.com:spryker/spryk.git"
+    }
+    ...
+],
+```
+
+Now you can run `composer require --dev spryker/spryk` and The tool will be installed.
+
+
 # What are Spryks?
 
 Spryks are some sort of code generators for Spryker. Writing code is often a very repetitive task and you often need to write a lot code just to follow Spryker's clean and complex architecture.
@@ -74,7 +92,7 @@ In most cases it is very easy to create a Spryk. As the whole Spryk Tool is cove
 
 If you only need to add a new Spryk configuration you will start by adding an Integration test for the new Spryk definition. You need to add the name of the Spryk you want to test. E.g. AddMySuperNiceFile and add the assertion to have this file created after you executed the test.
 
-When this is done run the Integration tests with `vendor/bin/codecept run Integration -g {YOUR TEST GROUP}` and see the test failing. YOou will get a message that the Spryk definition was not found by the given name, so add the definition file for you new Spryk. 
+When this is done run the Integration tests with `vendor/bin/codecept run Integration -g {YOUR TEST GROUP}` and see the test failing. You will get a message that the Spryk definition was not found by the given name, so add the definition file for you new Spryk. 
 
 You need to add your Spryk definition file into `spryker/spryk/config/spryk/spryks` when you added your new Spryk definition file re-run the tests. Now it dependends on the spryk type you choosed for your Spryk definition what comes next.
 
