@@ -20,6 +20,9 @@ class SprykRunConsole extends AbstractSprykConsole
     const ARGUMENT_SPRYK = 'spryk';
     const ARGUMENT_SPRYK_SHORT = 's';
 
+    const OPTION_INCLUDE_OPTIONALS = 'include-optional';
+    const OPTION_INCLUDE_OPTIONALS_SHORT = 'i';
+
     /**
      * @var array|null
      */
@@ -43,7 +46,8 @@ class SprykRunConsole extends AbstractSprykConsole
         $sprykArguments = $this->getSprykArguments();
         $this->setName('spryk:run')
             ->setDescription('Runs a Spryk build process.')
-            ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.');
+            ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
+            ->addOption(static::OPTION_INCLUDE_OPTIONALS, static::OPTION_INCLUDE_OPTIONALS_SHORT, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Name(s) of the Spryks which are marked as optional but should be build.');
 
         foreach ($sprykArguments as $argumentName => $argumentDefinition) {
             $inputOption = InputOption::VALUE_REQUIRED;
@@ -160,7 +164,11 @@ class SprykRunConsole extends AbstractSprykConsole
         OptionsContainer::setOptions($input->getOptions());
 
         $sprykName = $this->getSprykName($input);
-        $this->getFacade()->executeSpryk($sprykName, $this->output);
+        $this->getFacade()->executeSpryk(
+            $sprykName,
+            OptionsContainer::getOption(static::OPTION_INCLUDE_OPTIONALS),
+            $this->output
+        );
     }
 
     /**
