@@ -14,10 +14,11 @@ interface SprykDefinitionBuilderInterface
 {
     /**
      * @param string $sprykName
+     * @param array|null $preDefinedDefinition
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function buildDefinition(string $sprykName): SprykDefinitionInterface;
+    public function buildDefinition(string $sprykName, ?array $preDefinedDefinition = null): SprykDefinitionInterface;
 
     /**
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style

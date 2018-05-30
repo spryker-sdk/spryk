@@ -15,7 +15,6 @@ arguments:
   comment:
     multi: true
     value:
-      - "Specification:"
       - "- First specification line."
       - "- Second specification line."
 

@@ -14,6 +14,9 @@ arguments:
   input: ~
   output: ~
 
+  facadeMethod:
+    default: undefined
+
   template:
     value: Method.php.twig
 
@@ -25,3 +28,8 @@ preSpryks:
 
 postSpryks:
   - AddZedBusinessModelInterfaceMethod
+  - AddZedBusinessFacadeMethod:
+      isOptional: true
+      arguments:
+        method:
+          value: "%facadeMethod%"

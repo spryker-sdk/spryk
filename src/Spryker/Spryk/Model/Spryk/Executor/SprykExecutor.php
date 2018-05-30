@@ -30,6 +30,11 @@ class SprykExecutor implements SprykExecutorInterface
     protected $executedSpryks = [];
 
     /**
+     * @var string[]|null
+     */
+    protected $includeOptionalSubSpryks;
+
+    /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface $definitionBuilder
      * @param \Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface $sprykBuilderCollection
      */
@@ -41,13 +46,16 @@ class SprykExecutor implements SprykExecutorInterface
 
     /**
      * @param string $sprykName
+     * @param array|null $includeOptionalSubSpryks
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function execute(string $sprykName, SprykStyleInterface $style): void
+    public function execute(string $sprykName, ?array $includeOptionalSubSpryks, SprykStyleInterface $style): void
     {
         $this->definitionBuilder->setStyle($style);
+        $this->includeOptionalSubSpryks = $includeOptionalSubSpryks;
+
         $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
 
         $this->buildSpryk($sprykDefinition, $style);
@@ -148,10 +156,29 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         foreach ($postSpryks as $postSprykDefinition) {
-            if (isset($this->executedSpryks[$postSprykDefinition->getSprykName()])) {
+            if (!$this->shouldSubSprykBeBuild($postSprykDefinition)) {
                 continue;
             }
+
             $this->buildSpryk($postSprykDefinition, $style);
         }
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return bool
+     */
+    protected function shouldSubSprykBeBuild(SprykDefinitionInterface $sprykDefinition): bool
+    {
+        if (isset($this->executedSpryks[$sprykDefinition->getSprykName()])) {
+            return false;
+        }
+
+        if (isset($sprykDefinition->getConfig()['isOptional']) && !in_array($sprykDefinition->getSprykName(), $this->includeOptionalSubSpryks)) {
+            return false;
+        }
+
+        return true;
     }
 }
