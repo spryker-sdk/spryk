@@ -52,7 +52,7 @@ class SprykStyle implements SprykStyleInterface
      *
      * @return void
      */
-    public function newLine(int $count = 1): void
+    protected function newLine(int $count = 1): void
     {
         $this->write(str_repeat(PHP_EOL, $count));
     }
@@ -64,6 +64,10 @@ class SprykStyle implements SprykStyleInterface
      */
     public function startSpryk(SprykDefinitionInterface $sprykDefinition): void
     {
+        if (!$this->output->isVerbose()) {
+            return;
+        }
+
         $this->newLine();
 
         $message = sprintf('<bg=green;options=bold> Build %s Spryk</>', $sprykDefinition->getSprykName());
@@ -86,6 +90,10 @@ class SprykStyle implements SprykStyleInterface
      */
     public function endSpryk(SprykDefinitionInterface $sprykDefinition): void
     {
+        if (!$this->output->isVerbose()) {
+            return;
+        }
+
         $this->newLine();
 
         $message = sprintf('<fg=green>%s</> build finished', $sprykDefinition->getSprykName());
@@ -100,6 +108,10 @@ class SprykStyle implements SprykStyleInterface
      */
     public function startPreSpryks(SprykDefinitionInterface $sprykDefinition): void
     {
+        if (!$this->output->isVerbose()) {
+            return;
+        }
+
         $message = sprintf('<fg=green>%s</> has preSpryks', $sprykDefinition->getSprykName());
 
         $hasPreSpryks = (count($sprykDefinition->getPreSpryks()) > 0);
@@ -125,6 +137,10 @@ class SprykStyle implements SprykStyleInterface
      */
     public function startPostSpryks(SprykDefinitionInterface $sprykDefinition): void
     {
+        if (!$this->output->isVerbose()) {
+            return;
+        }
+
         $message = sprintf('<fg=green>%s</> has postSpryks', $sprykDefinition->getSprykName());
 
         $hasPostSpryks = (count($sprykDefinition->getPostSpryks()) > 0);
@@ -152,6 +168,16 @@ class SprykStyle implements SprykStyleInterface
     public function write($messages, int $options = 0): void
     {
         $this->output->write($messages, false, $options);
+    }
+
+    /**
+     * @param string $message
+     *
+     * @return void
+     */
+    public function report(string $message): void
+    {
+        $this->output->writeln($message);
     }
 
     /**

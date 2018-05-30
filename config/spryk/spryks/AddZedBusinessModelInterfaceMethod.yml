@@ -24,4 +24,4 @@ preSpryks:
   - AddZedBusinessModel
 
 postSpryks:
-  - AddZedBusinessModelInterfaceMethod
+  - AddZedBusinessModelMethod

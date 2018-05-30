@@ -50,18 +50,6 @@ class SprykConfigurationFinder implements SprykConfigurationFinderInterface
     /**
      * @param string $sprykName
      *
-     * @return bool
-     */
-    public function has(string $sprykName): bool
-    {
-        $finder = $this->buildFinder($sprykName);
-
-        return $finder->hasResults();
-    }
-
-    /**
-     * @param string $sprykName
-     *
      * @return \Symfony\Component\Finder\Finder
      */
     protected function buildFinder(string $sprykName): Finder

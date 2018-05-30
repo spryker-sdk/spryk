@@ -65,14 +65,6 @@ class Argument implements ArgumentInterface
     }
 
     /**
-     * @return bool
-     */
-    public function hasCallbacks(): bool
-    {
-        return (count($this->callbacks) === 0);
-    }
-
-    /**
      * @return string[]
      */
     public function getCallbacks(): array

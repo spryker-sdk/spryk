@@ -46,11 +46,6 @@ interface ArgumentInterface
     public function getCallbacks(): array;
 
     /**
-     * @return bool
-     */
-    public function hasCallbacks(): bool;
-
-    /**
      * @return mixed
      */
     public function __toString();

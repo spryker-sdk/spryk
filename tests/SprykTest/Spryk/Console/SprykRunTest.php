@@ -11,6 +11,7 @@ use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Spryk\Exception\BuilderNotFoundException;
 use Spryker\Spryk\Exception\SprykConfigFileNotFound;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Auto-generated group annotations
@@ -30,7 +31,7 @@ class SprykRunTest extends Unit
     /**
      * @return void
      */
-    public function testOutputsSprykNameWhenExecuted()
+    public function testOutputsSprykNameWhenVerbose()
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);
@@ -40,7 +41,7 @@ class SprykRunTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithoutInteraction',
         ];
 
-        $tester->execute($arguments);
+        $tester->execute($arguments, ['verbosity' => OutputInterface::VERBOSITY_VERBOSE]);
 
         $output = $tester->getDisplay();
         $this->assertRegExp('/Build StructureWithoutInteraction Spryk/', $output);

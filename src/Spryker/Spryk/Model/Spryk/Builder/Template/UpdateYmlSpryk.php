@@ -10,6 +10,7 @@ namespace Spryker\Spryk\Model\Spryk\Builder\Template;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use Spryker\Spryk\Style\SprykStyleInterface;
 use Symfony\Component\Yaml\Yaml;
 
 class UpdateYmlSpryk implements SprykBuilderInterface
@@ -63,15 +64,18 @@ class UpdateYmlSpryk implements SprykBuilderInterface
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition): void
+    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
     {
         $targetYaml = $this->getTargetYaml($sprykerDefinition);
         $targetYaml = $this->updateYaml($sprykerDefinition, $targetYaml);
 
         $this->dumpYamlToFile($sprykerDefinition, $targetYaml);
+
+        $style->report(sprintf('Updated <fg=green>%s</>', $this->getTargetPath($sprykerDefinition)));
     }
 
     /**
@@ -191,10 +195,6 @@ class UpdateYmlSpryk implements SprykBuilderInterface
      */
     protected function getContent(SprykDefinitionInterface $sprykerDefinition, string $templateName): string
     {
-        if (isset($sprykerDefinition->getConfig()['noRender'])) {
-            return $this->renderer->getSource($templateName);
-        }
-
         return $this->renderer->render(
             $templateName,
             $sprykerDefinition->getArgumentCollection()->getArguments()

@@ -11,6 +11,7 @@ use Roave\BetterReflection\BetterReflection;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use Spryker\Spryk\Style\SprykStyleInterface;
 
 class MethodSpryk implements SprykBuilderInterface
 {
@@ -57,10 +58,11 @@ class MethodSpryk implements SprykBuilderInterface
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition): void
+    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
     {
         $targetFileContent = $this->getTargetFileContent($sprykerDefinition);
 
@@ -79,6 +81,12 @@ class MethodSpryk implements SprykBuilderInterface
         }
 
         $this->putTargetFileContent($sprykerDefinition, $targetFileContent);
+
+        $style->report(sprintf(
+            'Added method <fg=green>%s</> to <fg="green">%s</>',
+            $sprykerDefinition->getArgumentCollection()->getArgument('method'),
+            $sprykerDefinition->getArgumentCollection()->getArgument('target')
+        ));
     }
 
     /**
