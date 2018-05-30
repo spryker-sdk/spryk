@@ -83,7 +83,7 @@ class MethodSpryk implements SprykBuilderInterface
         $this->putTargetFileContent($sprykerDefinition, $targetFileContent);
 
         $style->report(sprintf(
-            'Added method <fg=green>%s</> to <fg="green">%s</>',
+            'Added method <fg=green>%s</> to <fg=green>%s</>',
             $sprykerDefinition->getArgumentCollection()->getArgument('method'),
             $sprykerDefinition->getArgumentCollection()->getArgument('target')
         ));
