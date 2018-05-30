@@ -195,10 +195,6 @@ class UpdateYmlSpryk implements SprykBuilderInterface
      */
     protected function getContent(SprykDefinitionInterface $sprykerDefinition, string $templateName): string
     {
-        if (isset($sprykerDefinition->getConfig()['noRender'])) {
-            return $this->renderer->getSource($templateName);
-        }
-
         return $this->renderer->render(
             $templateName,
             $sprykerDefinition->getArgumentCollection()->getArguments()

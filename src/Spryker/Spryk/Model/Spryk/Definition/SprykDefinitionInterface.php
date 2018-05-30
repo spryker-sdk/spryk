@@ -36,18 +36,6 @@ interface SprykDefinitionInterface
     public function setSprykName(string $sprykName): self;
 
     /**
-     * @param string $description
-     *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
-     */
-    public function setDescription(string $description): self;
-
-    /**
-     * @return string
-     */
-    public function getDescription(): string;
-
-    /**
      * @param array $config
      *
      * @return $this

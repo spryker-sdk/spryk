@@ -74,7 +74,7 @@ In most cases it is very easy to create a Spryk. As the whole Spryk Tool is cove
 
 If you only need to add a new Spryk configuration you will start by adding an Integration test for the new Spryk definition. You need to add the name of the Spryk you want to test. E.g. AddMySuperNiceFile and add the assertion to have this file created after you executed the test.
 
-When this is done run the Integration tests with `vendor/bin/codecept run Integration -g {YOUR TEST GROUP}` and see the test failing. YOu will get a message that the Spryk definition was not found by the given name, so add the definition file for you new Spryk. 
+When this is done run the Integration tests with `vendor/bin/codecept run Integration -g {YOUR TEST GROUP}` and see the test failing. YOou will get a message that the Spryk definition was not found by the given name, so add the definition file for you new Spryk. 
 
 You need to add your Spryk definition file into `spryker/spryk/config/spryk/spryks` when you added your new Spryk definition file re-run the tests. Now it dependends on the spryk type you choosed for your Spryk definition what comes next.
 

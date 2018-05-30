@@ -92,26 +92,6 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @param string $description
-     *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
-     */
-    public function setDescription(string $description): SprykDefinitionInterface
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    /**
      * @param array $config
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
