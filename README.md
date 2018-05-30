@@ -13,7 +13,7 @@ https://spryker.atlassian.net/wiki/spaces/CORE/pages/188481752/Spryks
 
 ## Installation
 
-Add teh private repository to your projects composer.json.
+Add the private repository to your project's composer.json.
 
 ```
 "repositories": [
