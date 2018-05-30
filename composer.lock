@@ -1160,6 +1160,56 @@
             "time": "2017-11-23T18:22:44+00:00"
         },
         {
+            "name": "fzaninotto/faker",
+            "version": "v1.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "d3ed4cc37051c1ca52d22d76b437d14809fc7e0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d3ed4cc37051c1ca52d22d76b437d14809fc7e0d",
+                "reference": "d3ed4cc37051c1ca52d22d76b437d14809fc7e0d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "phpunit/phpunit": "^4.0 || ^5.0",
+                "squizlabs/php_codesniffer": "^1.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2017-08-15T16:48:10+00:00"
+        },
+        {
             "name": "guzzle/guzzle",
             "version": "v3.8.1",
             "source": {
@@ -4021,16 +4071,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.20.0",
+            "version": "3.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "8dc2c53128a00d5243eac73efb359aef6b3f584d"
+                "reference": "c1a7dcdd43438eb9156a7561c35fe48e46da4453"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/8dc2c53128a00d5243eac73efb359aef6b3f584d",
-                "reference": "8dc2c53128a00d5243eac73efb359aef6b3f584d",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/c1a7dcdd43438eb9156a7561c35fe48e46da4453",
+                "reference": "c1a7dcdd43438eb9156a7561c35fe48e46da4453",
                 "shasum": ""
             },
             "require": {
@@ -4066,7 +4116,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2018-04-04T09:50:41+00:00"
+            "time": "2018-05-16T16:01:08+00:00"
         },
         {
             "name": "spryker/log",
@@ -4224,23 +4274,25 @@
         },
         {
             "name": "spryker/queue",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/Queue.git",
-                "reference": "b04e8d5451d3376a42d75d5dab4d0a5559da2ca5"
+                "url": "https://github.com/spryker/queue.git",
+                "reference": "dd592657398ad5f3d2cdd3ecb4314c8634781dd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Queue/zipball/b04e8d5451d3376a42d75d5dab4d0a5559da2ca5",
-                "reference": "b04e8d5451d3376a42d75d5dab4d0a5559da2ca5",
+                "url": "https://api.github.com/repos/spryker/queue/zipball/dd592657398ad5f3d2cdd3ecb4314c8634781dd2",
+                "reference": "dd592657398ad5f3d2cdd3ecb4314c8634781dd2",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.1",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.0.0"
             },
             "type": "library",
             "extra": {
@@ -4258,7 +4310,7 @@
                 "proprietary"
             ],
             "description": "Queue module",
-            "time": "2018-01-09T17:12:08+00:00"
+            "time": "2018-05-16T16:01:08+00:00"
         },
         {
             "name": "spryker/silex",
@@ -4349,6 +4401,52 @@
             ],
             "description": "Symfony module",
             "time": "2018-02-05T06:01:59+00:00"
+        },
+        {
+            "name": "spryker/transfer",
+            "version": "3.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/transfer.git",
+                "reference": "3617b793ebe61af30dc9506f36def0a34ed9de21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/transfer/zipball/3617b793ebe61af30dc9506f36def0a34ed9de21",
+                "reference": "3617b793ebe61af30dc9506f36def0a34ed9de21",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "^1.6",
+                "php": ">=7.1",
+                "spryker/kernel": "^3.17.0",
+                "spryker/log": "^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/twig": "^3.0.0",
+                "spryker/zend": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\Transfer\\Helper\\": "tests/SprykerTest/Shared/Transfer/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Transfer module",
+            "time": "2018-03-13T13:39:09+00:00"
         },
         {
             "name": "spryker/twig",

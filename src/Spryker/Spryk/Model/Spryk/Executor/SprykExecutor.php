@@ -156,7 +156,7 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         foreach ($postSpryks as $postSprykDefinition) {
-            if ($this->shouldSubSprykBeBuild($postSprykDefinition)) {
+            if (!$this->shouldSubSprykBeBuild($postSprykDefinition)) {
                 continue;
             }
 
