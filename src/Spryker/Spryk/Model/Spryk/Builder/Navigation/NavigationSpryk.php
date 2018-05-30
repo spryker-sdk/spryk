@@ -11,6 +11,7 @@ use DOMDocument;
 use SimpleXMLElement;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use Spryker\Spryk\Style\SprykStyleInterface;
 use Zend\Filter\FilterChain;
 use Zend\Filter\StringToLower;
 use Zend\Filter\Word\CamelCaseToDash;
@@ -55,10 +56,11 @@ class NavigationSpryk implements SprykBuilderInterface
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition): void
+    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
     {
         $dasherizeFilter = $this->getDasherizeFilter();
 
@@ -76,6 +78,8 @@ class NavigationSpryk implements SprykBuilderInterface
         $page->addChild('action', $action);
 
         $this->prettyPrintXml($xml, $sprykerDefinition);
+
+        $style->report(sprintf('Added navigation entry in <fg=green>%s</>', $this->getTargetPath($sprykerDefinition)));
     }
 
     /**

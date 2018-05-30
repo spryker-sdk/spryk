@@ -9,6 +9,7 @@ namespace Spryker\Spryk\Model\Spryk\Builder\Structure;
 
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use Spryker\Spryk\Style\SprykStyleInterface;
 
 class StructureSpryk implements SprykBuilderInterface
 {
@@ -57,16 +58,18 @@ class StructureSpryk implements SprykBuilderInterface
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition): void
+    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
     {
         $directories = $this->getDirectoriesToCreate($sprykerDefinition);
 
         foreach ($directories as $directory) {
             if (!is_dir($directory)) {
                 mkdir($directory, 0777, true);
+                $style->report(sprintf('Created <fg=green>%s</>', $directory));
             }
         }
     }
@@ -83,7 +86,7 @@ class StructureSpryk implements SprykBuilderInterface
 
         $moduleDirectory = $this->getBaseDirectory($sprykerDefinition);
         foreach ($directoriesArgument->getValue() as $directory) {
-            $directories[] = $this->rootDirectory . DIRECTORY_SEPARATOR . $moduleDirectory . $directory;
+            $directories[] = $this->rootDirectory . $moduleDirectory . $directory;
         }
 
         return $directories;

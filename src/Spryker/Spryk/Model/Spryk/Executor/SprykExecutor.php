@@ -93,18 +93,11 @@ class SprykExecutor implements SprykExecutorInterface
     {
         $builder = $this->sprykBuilderCollection->getBuilder($sprykDefinition);
 
-        $message = sprintf('<fg=green>%s</> already executed', $sprykDefinition->getSprykName());
-
         if ($builder->shouldBuild($sprykDefinition)) {
-            $message = sprintf('<fg=green>%s</> build finished', $sprykDefinition->getSprykName());
-
-            $builder->build($sprykDefinition);
+            $builder->build($sprykDefinition, $style);
         }
 
         $this->executedSpryks[$sprykDefinition->getSprykName()] = $sprykDefinition;
-
-        $style->write($message);
-        $style->newLine();
     }
 
     /**

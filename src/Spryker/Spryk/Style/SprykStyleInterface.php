@@ -65,13 +65,6 @@ interface SprykStyleInterface
     public function endPostSpryks(SprykDefinitionInterface $sprykDefinition): void;
 
     /**
-     * @param int $count
-     *
-     * @return void
-     */
-    public function newLine(int $count = 1): void;
-
-    /**
      * @param string|array $messages
      * @param int $options
      *
@@ -85,4 +78,11 @@ interface SprykStyleInterface
      * @return string
      */
     public function askQuestion(Question $question): string;
+
+    /**
+     * @param string $message
+     *
+     * @return void
+     */
+    public function report(string $message): void;
 }

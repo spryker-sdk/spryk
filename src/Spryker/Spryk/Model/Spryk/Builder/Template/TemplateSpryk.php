@@ -10,6 +10,7 @@ namespace Spryker\Spryk\Model\Spryk\Builder\Template;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use Spryker\Spryk\Style\SprykStyleInterface;
 
 class TemplateSpryk implements SprykBuilderInterface
 {
@@ -59,10 +60,11 @@ class TemplateSpryk implements SprykBuilderInterface
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition): void
+    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
     {
         $targetPath = $this->getTargetPath($sprykerDefinition);
         $templateName = $this->getTemplateName($sprykerDefinition);
@@ -71,11 +73,14 @@ class TemplateSpryk implements SprykBuilderInterface
 
         if (!is_dir($targetDirectory)) {
             mkdir($targetDirectory, 0777, true);
+            $style->report(sprintf('Created <fg=green>%s</>', $targetDirectory));
         }
 
         $content = $this->getContent($sprykerDefinition, $templateName);
 
         file_put_contents($targetPath, $content);
+
+        $style->report(sprintf('Created <fg=green>%s</>', $targetPath));
     }
 
     /**
