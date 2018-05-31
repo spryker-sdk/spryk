@@ -1,0 +1,19 @@
+spryk: template
+description: "Adds a new .coveralls.yml to the Modules root."
+
+arguments:
+  module: ~
+
+  repositoryToken: ~
+
+  template:
+    value: coveralls.yml.twig
+
+  targetFilename:
+      value: .coveralls.yml
+
+  targetPath:
+    default: "%module%/"
+
+preSpryks:
+  - CreateSprykerModule

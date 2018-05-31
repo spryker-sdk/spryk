@@ -58,7 +58,7 @@ class MissingSprykExecutionExtension extends Extension
     {
         $configDirectory = realpath(__DIR__ . '/../../../config/spryk/spryks/');
         $finder = new Finder();
-        $finder->in($configDirectory);
+        $finder->in($configDirectory)->files();
 
         $allSpryks = [];
 

@@ -30,7 +30,7 @@ class SprykDefinitionFinder implements SprykDefinitionFinderInterface
     public function find(): iterable
     {
         $finder = new Finder();
-        $finder->in($this->sprykDirectories);
+        $finder->in($this->sprykDirectories)->files();
 
         return $finder;
     }

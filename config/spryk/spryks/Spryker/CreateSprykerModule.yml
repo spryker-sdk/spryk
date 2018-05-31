@@ -1,0 +1,28 @@
+spryk: structure
+description: "Creates a new *module* structure."
+priority: 1
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  targetPath:
+    default: "%module%/"
+
+  directories:
+    value:
+      - src/
+
+postSpryks:
+  - AddSprykerReadme
+  - AddSprykerComposerJson
+  - AddSprykerLicense
+  - AddSprykerContributing
+  - AddSprykerChangelog
+  - AddSprykerTravis
+  - AddSprykerGitattributes
+  - AddSprykerGitignore
+  - AddSprykerPhpStanJson
+  - AddSprykerPhpStanNeon

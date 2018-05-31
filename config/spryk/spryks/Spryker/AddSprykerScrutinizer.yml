@@ -1,0 +1,17 @@
+spryk: template
+description: "Adds a new .scrutinizer.yml to the Modules root."
+
+arguments:
+  module: ~
+
+  template:
+    value: scrutinizer.yml.twig
+
+  targetFilename:
+    value: .scrutinizer.yml
+
+  targetPath:
+    default: "%module%/"
+
+preSpryks:
+  - CreateSprykerModule
