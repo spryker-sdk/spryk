@@ -59,6 +59,16 @@ class SprykConfigurationLoaderTest extends Unit
     /**
      * @return void
      */
+    public function testPrependsSprykConfigurationValueWithRootConfigurationValueInSubSpryk(): void
+    {
+        $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
+
+        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/foo-bar/', $sprykConfiguration['postSpryks'][0]['FooBarSpryk']['arguments']['replaceValue']['value']);
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsRootArguments(): void
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);

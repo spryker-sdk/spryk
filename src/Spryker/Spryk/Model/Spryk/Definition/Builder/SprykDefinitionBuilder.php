@@ -79,7 +79,8 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
         if (!isset($this->definitionCollection[$sprykName])) {
             $sprykConfiguration = $this->sprykLoader->loadSpryk($sprykName);
-            $argumentCollection = $this->argumentResolver->resolve($sprykConfiguration[static::ARGUMENTS], $sprykName, $this->style);
+            $arguments = $this->mergeArguments($sprykConfiguration[static::ARGUMENTS], $preDefinedDefinition);
+            $argumentCollection = $this->argumentResolver->resolve($arguments, $sprykName, $this->style);
 
             $sprykDefinition = $this->createDefinition($sprykName, $sprykConfiguration[static::SPRYK_BUILDER_NAME]);
             $this->definitionCollection[$sprykName] = $sprykDefinition;
@@ -91,6 +92,21 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
         }
 
         return $this->definitionCollection[$sprykName];
+    }
+
+    /**
+     * @param array $arguments
+     * @param array|null $preDefinedDefinition
+     *
+     * @return array
+     */
+    protected function mergeArguments(array $arguments, ?array $preDefinedDefinition = null)
+    {
+        if ($preDefinedDefinition && isset($preDefinedDefinition[static::ARGUMENTS])) {
+            $arguments = array_merge($arguments, $preDefinedDefinition[static::ARGUMENTS]);
+        }
+
+        return $arguments;
     }
 
     /**
@@ -169,9 +185,9 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
                 }
 
                 $sprykName = array_keys($postSprykName)[0];
-                $sprykPreDefinedDefinition = $postSprykName[$sprykName];
+                $preDefinedDefinition = $postSprykName[$sprykName];
 
-                $postSpryks[] = $this->buildDefinition($sprykName, $sprykPreDefinedDefinition);
+                $postSpryks[] = $this->buildDefinition($sprykName, $preDefinedDefinition);
             }
         }
 
