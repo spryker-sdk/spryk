@@ -13,8 +13,14 @@ arguments:
   targetPath:
     value: "%module%/"
 
+  templateTargetPath:
+    value: "%module%/sub-directory/"
+
 postSpryks:
    - TemplateWithoutInteraction:
       isOptional: true
+      arguments:
+        targetPath:
+          value: "%templateTargetPath%"
 
 

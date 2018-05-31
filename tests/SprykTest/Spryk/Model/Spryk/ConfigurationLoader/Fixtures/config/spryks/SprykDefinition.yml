@@ -6,3 +6,12 @@ arguments:
 
   replaceDefault:
     default: "%module%/src/"
+
+postSpryks:
+  - FooBarSpryk:
+      arguments:
+        replaceValue:
+            value: "%module%/src/foo-bar/"
+
+        replaceDefault:
+          default: "%module%/src/foo-bar/"

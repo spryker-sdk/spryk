@@ -42,7 +42,10 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         $rootConfiguration = $this->configurationFinder->find($this->rootSprykName);
         $rootConfiguration = Yaml::parse($rootConfiguration->getContents());
 
-        return $this->doMerge($rootConfiguration, $sprykDefinition);
+        $sprykDefinition = $this->doMerge($rootConfiguration, $sprykDefinition);
+        $sprykDefinition = $this->doMergeSubSpryks($rootConfiguration, $sprykDefinition);
+
+        return $sprykDefinition;
     }
 
     /**
@@ -64,6 +67,54 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         );
 
         return $sprykDefinition;
+    }
+
+    /**
+     * @param array $rootConfiguration
+     * @param array $sprykDefinition
+     *
+     * @return array
+     */
+    protected function doMergeSubSpryks(array $rootConfiguration, array $sprykDefinition): array
+    {
+        if (isset($sprykDefinition['postSpryks'])) {
+            $sprykDefinition['postSpryks'] = $this->mergeSubSprykArguments($sprykDefinition['postSpryks'], $rootConfiguration);
+        }
+
+        if (isset($sprykDefinition['preSpryks'])) {
+            $sprykDefinition['preSpryks'] = $this->mergeSubSprykArguments($sprykDefinition['preSpryks'], $rootConfiguration);
+        }
+
+        return $sprykDefinition;
+    }
+
+    /**
+     * @param array $subSpryks
+     * @param array $rootConfiguration
+     *
+     * @return array
+     */
+    protected function mergeSubSprykArguments(array $subSpryks, array $rootConfiguration): array
+    {
+        $mergedSubSpryks = [];
+        foreach ($subSpryks as $subSpryk) {
+            if (!is_array($subSpryk)) {
+                $mergedSubSpryks[] = $subSpryk;
+
+                continue;
+            }
+            $sprykName = array_keys($subSpryk)[0];
+            $subSprykDefinition = $subSpryk[$sprykName];
+
+            if (isset($subSprykDefinition['arguments'])) {
+                $mergedArguments = $this->mergeArguments($subSprykDefinition['arguments'], $rootConfiguration['arguments']);
+                $subSpryk[$sprykName]['arguments'] = $mergedArguments;
+            }
+
+            $mergedSubSpryks[] = $subSpryk;
+        }
+
+        return $mergedSubSpryks;
     }
 
     /**

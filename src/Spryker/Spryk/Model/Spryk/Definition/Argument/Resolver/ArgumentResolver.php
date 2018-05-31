@@ -27,11 +27,6 @@ class ArgumentResolver implements ArgumentResolverInterface
     protected $resolvedArgumentCollection;
 
     /**
-     * @var \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface[]
-     */
-    protected $resolvedSprykArgumentCollection = [];
-
-    /**
      * @var \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface
      */
     protected $callbackArgumentResolver;
@@ -72,8 +67,6 @@ class ArgumentResolver implements ArgumentResolverInterface
 
         $argumentCollection = $this->replacePlaceholderInValues($argumentCollection);
         $argumentCollection = $this->callbackArgumentResolver->resolve($argumentCollection);
-
-        $this->resolvedSprykArgumentCollection[$sprykName] = $argumentCollection;
 
         return $argumentCollection;
     }
@@ -189,17 +182,76 @@ class ArgumentResolver implements ArgumentResolverInterface
      */
     protected function replacePlaceholder(ArgumentInterface $argument, ArgumentCollectionInterface $argumentCollection): void
     {
-        foreach ($argumentCollection->getArguments() as $resolvedArgument) {
-            if (is_array($resolvedArgument->getValue())) {
-                continue;
-            }
+        $argumentValue = $argument->getValue();
+        if (!is_array($argumentValue)) {
+            $argument->setValue(
+                $this->replacePlaceholderInValue($argumentValue, $argumentCollection)
+            );
 
-            $search = '%' . $resolvedArgument->getName() . '%';
-            $replace = $resolvedArgument->getValue();
-            $value = str_replace($search, $replace, $argument->getValue());
-
-            $argument->setValue($value);
+            return;
         }
+
+        $argumentValues = [];
+        foreach ($argumentValue as $value) {
+            $argumentValues[] = $this->replacePlaceholderInValue($value, $argumentCollection);
+        }
+        $argument->setValue($argumentValues);
+    }
+
+    /**
+     * @param string $argumentValue
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
+     *
+     * @return string
+     */
+    protected function replacePlaceholderInValue(string $argumentValue, ArgumentCollectionInterface $argumentCollection): string
+    {
+        preg_match_all('/%(.*?)%/', $argumentValue, $matches, PREG_SET_ORDER);
+
+        if (count($matches) === 0) {
+            return $argumentValue;
+        }
+
+        foreach ($matches as $match) {
+            $argumentName = $match[1];
+            $placeholder = $match[0];
+            if ($this->isAlreadyResolved($argumentName, $argumentCollection)) {
+                $resolvedArgumentValue = $this->getAlreadyResolvedValue($argumentName, $argumentCollection);
+                $argumentValue = str_replace($placeholder, $resolvedArgumentValue, $argumentValue);
+            }
+        }
+
+        return $argumentValue;
+    }
+
+    /**
+     * @param string $argumentName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
+     *
+     * @return bool
+     */
+    protected function isAlreadyResolved(string $argumentName, ArgumentCollectionInterface $argumentCollection): bool
+    {
+        if ($argumentCollection->hasArgument($argumentName) || $this->resolvedArgumentCollection->hasArgument($argumentName)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $argumentName
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
+     *
+     * @return mixed
+     */
+    protected function getAlreadyResolvedValue(string $argumentName, ArgumentCollectionInterface $argumentCollection)
+    {
+        if ($argumentCollection->hasArgument($argumentName)) {
+            return $argumentCollection->getArgument($argumentName)->getValue();
+        }
+
+        return $this->resolvedArgumentCollection->getArgument($argumentName)->getValue();
     }
 
     /**
