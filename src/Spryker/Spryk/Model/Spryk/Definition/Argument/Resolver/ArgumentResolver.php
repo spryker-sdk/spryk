@@ -149,29 +149,13 @@ class ArgumentResolver implements ArgumentResolverInterface
     protected function replacePlaceholderInValues(ArgumentCollectionInterface $argumentCollection): ArgumentCollectionInterface
     {
         foreach ($argumentCollection->getArguments() as $argument) {
-            if ($this->hasPlaceholder($argument)) {
-                $this->replacePlaceholder($argument, $argumentCollection);
+            if ($argument->getValue() === null) {
+                continue;
             }
+            $this->replacePlaceholder($argument, $argumentCollection);
         }
 
         return $argumentCollection;
-    }
-
-    /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface $argument
-     *
-     * @return bool
-     */
-    protected function hasPlaceholder(ArgumentInterface $argument): bool
-    {
-        $values = (array)$argument->getValue();
-        foreach ($values as $value) {
-            if (preg_match('/%.+%/', $value)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**
@@ -183,6 +167,7 @@ class ArgumentResolver implements ArgumentResolverInterface
     protected function replacePlaceholder(ArgumentInterface $argument, ArgumentCollectionInterface $argumentCollection): void
     {
         $argumentValue = $argument->getValue();
+
         if (!is_array($argumentValue)) {
             $argument->setValue(
                 $this->replacePlaceholderInValue($argumentValue, $argumentCollection)
@@ -215,28 +200,11 @@ class ArgumentResolver implements ArgumentResolverInterface
         foreach ($matches as $match) {
             $argumentName = $match[1];
             $placeholder = $match[0];
-            if ($this->isAlreadyResolved($argumentName, $argumentCollection)) {
-                $resolvedArgumentValue = $this->getAlreadyResolvedValue($argumentName, $argumentCollection);
-                $argumentValue = str_replace($placeholder, $resolvedArgumentValue, $argumentValue);
-            }
+            $resolvedArgumentValue = $this->getAlreadyResolvedValue($argumentName, $argumentCollection);
+            $argumentValue = str_replace($placeholder, $resolvedArgumentValue, $argumentValue);
         }
 
         return $argumentValue;
-    }
-
-    /**
-     * @param string $argumentName
-     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
-     *
-     * @return bool
-     */
-    protected function isAlreadyResolved(string $argumentName, ArgumentCollectionInterface $argumentCollection): bool
-    {
-        if ($argumentCollection->hasArgument($argumentName) || $this->resolvedArgumentCollection->hasArgument($argumentName)) {
-            return true;
-        }
-
-        return false;
     }
 
     /**

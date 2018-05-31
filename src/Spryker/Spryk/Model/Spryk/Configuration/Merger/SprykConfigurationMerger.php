@@ -103,18 +103,30 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
 
                 continue;
             }
-            $sprykName = array_keys($subSpryk)[0];
-            $subSprykDefinition = $subSpryk[$sprykName];
 
-            if (isset($subSprykDefinition['arguments'])) {
-                $mergedArguments = $this->mergeArguments($subSprykDefinition['arguments'], $rootConfiguration['arguments']);
-                $subSpryk[$sprykName]['arguments'] = $mergedArguments;
-            }
-
-            $mergedSubSpryks[] = $subSpryk;
+            $mergedSubSpryks[] = $this->mergeSubSpryk($subSpryk, $rootConfiguration);
         }
 
         return $mergedSubSpryks;
+    }
+
+    /**
+     * @param array $subSpryk
+     * @param array $rootConfiguration
+     *
+     * @return array
+     */
+    protected function mergeSubSpryk(array $subSpryk, array $rootConfiguration): array
+    {
+        $sprykName = array_keys($subSpryk)[0];
+        $subSprykDefinition = $subSpryk[$sprykName];
+
+        if (isset($subSprykDefinition['arguments'])) {
+            $mergedArguments = $this->mergeArguments($subSprykDefinition['arguments'], $rootConfiguration['arguments']);
+            $subSpryk[$sprykName]['arguments'] = $mergedArguments;
+        }
+
+        return $subSpryk;
     }
 
     /**
