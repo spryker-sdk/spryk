@@ -1,0 +1,14 @@
+spryk: template
+description: "Adds a new phpstan.neon to the Modules root."
+
+arguments:
+  module: ~
+
+  template:
+    value: phpstan.neon.twig
+
+  targetPath:
+    default: "%module%/"
+
+preSpryks:
+  - CreateSprykerModule

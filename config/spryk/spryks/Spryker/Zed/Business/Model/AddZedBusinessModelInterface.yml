@@ -1,0 +1,28 @@
+spryk: template
+description: "Adds a new Business model interface to the Zed application."
+
+arguments:
+  module: ~
+
+  moduleOrganization:
+    default: Spryker
+
+  className: ~
+
+  interfaceName:
+    default: "%className%Interface"
+
+  template:
+    value: ZedBusinessModelInterface.php.twig
+
+  targetFilename:
+      callbackOnly: true
+      callback: ZedBusinessModelInterfaceTargetFilenameCallback
+
+  targetPath:
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/Model/"
+
+preSpryks:
+  - CreateSprykerModule
+  - AddZedBusinessModel
+

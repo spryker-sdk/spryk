@@ -52,7 +52,7 @@ Template Spryks can have as many arguments defined as you will need in the templ
 
 ### Structure Spryk
 
-A structure Spryk creates directory structure you define. The CreateModule Spryk e.g. contains the definition of directories the Spryk has to create for you. The main argument in the structure Spryk is the directories argument. Here you can add a list of directories which have to be created.
+A structure Spryk creates directory structure you define. The CreateSprykerModule Spryk e.g. contains the definition of directories the Spryk has to create for you. The main argument in the structure Spryk is the directories argument. Here you can add a list of directories which have to be created.
 
 ### Method Spryk
 
