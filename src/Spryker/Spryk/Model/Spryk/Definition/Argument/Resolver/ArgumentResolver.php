@@ -67,7 +67,7 @@ class ArgumentResolver implements ArgumentResolverInterface
         $argumentCollection = clone $this->argumentCollection;
 
         foreach ($arguments as $argumentName => $argumentDefinition) {
-            $argument = $this->resolveArgument($argumentName, $sprykName, $argumentDefinition);
+            $argument = $this->resolveArgument($argumentName, $sprykName, (array)$argumentDefinition);
             $argumentCollection->addArgument($argument);
             $this->resolvedArgumentCollection->addArgument($argument);
         }
@@ -81,11 +81,11 @@ class ArgumentResolver implements ArgumentResolverInterface
     /**
      * @param string $argumentName
      * @param string $sprykName
-     * @param array|null $argumentDefinition
+     * @param array $argumentDefinition
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Argument
      */
-    protected function resolveArgument(string $argumentName, string $sprykName, ?array $argumentDefinition = null): Argument
+    protected function resolveArgument(string $argumentName, string $sprykName, array $argumentDefinition): Argument
     {
         $argument = new Argument();
         $argument->setName($argumentName);
@@ -107,27 +107,64 @@ class ArgumentResolver implements ArgumentResolverInterface
     /**
      * @param string $argumentName
      * @param string $sprykName
-     * @param array|null $argumentDefinition
+     * @param array $argumentDefinition
      *
      * @return mixed
      */
-    protected function getValueForArgument(string $argumentName, string $sprykName, ?array $argumentDefinition = null)
+    protected function getValueForArgument(string $argumentName, string $sprykName, array $argumentDefinition)
     {
-        if (isset($argumentDefinition['value'])) {
-            return $argumentDefinition['value'];
-        }
-
-        if (isset($argumentDefinition['inherit']) && $this->resolvedArgumentCollection->hasArgument($argumentName)) {
-            return $this->resolvedArgumentCollection->getArgument($argumentName)->getValue();
-        }
-
-        if (OptionsContainer::hasOption($argumentName)) {
-            return OptionsContainer::getOption($argumentName);
+        if ($this->isValueKnownForArgument($argumentName, $argumentDefinition)) {
+            return $this->getKnownValueForArgument($argumentName, $argumentDefinition);
         }
 
         $defaultValue = $this->getDefaultValue($argumentName, $argumentDefinition);
 
         return $this->askForArgumentValue($argumentName, $sprykName, $defaultValue);
+    }
+
+    /**
+     * @param string $argumentName
+     * @param array $argumentDefinition
+     *
+     * @return bool
+     */
+    protected function isValueKnownForArgument(string $argumentName, array $argumentDefinition): bool
+    {
+        if (isset($argumentDefinition['value']) || $this->canInherit($argumentName, $argumentDefinition) || OptionsContainer::hasOption($argumentName)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $argumentName
+     * @param array $argumentDefinition
+     *
+     * @return bool
+     */
+    protected function canInherit(string $argumentName, array $argumentDefinition): bool
+    {
+        return (isset($argumentDefinition['inherit']) && $this->resolvedArgumentCollection->hasArgument($argumentName));
+    }
+
+    /**
+     * @param string $argumentName
+     * @param array $argumentDefinition
+     *
+     * @return mixed
+     */
+    protected function getKnownValueForArgument(string $argumentName, array $argumentDefinition)
+    {
+        if (isset($argumentDefinition['value'])) {
+            return $argumentDefinition['value'];
+        }
+
+        if ($this->canInherit($argumentName, $argumentDefinition)) {
+            return $this->resolvedArgumentCollection->getArgument($argumentName)->getValue();
+        }
+
+        return OptionsContainer::getOption($argumentName);
     }
 
     /**
