@@ -75,4 +75,14 @@ class SprykConfigurationLoaderTest extends Unit
 
         $this->assertSame('foo/bar', $sprykConfiguration['arguments']['rootArgument']['value']);
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsOnlyValueRootArguments(): void
+    {
+        $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
+
+        $this->assertArrayNotHasKey('shouldNotBeMerged', $sprykConfiguration['arguments']);
+    }
 }

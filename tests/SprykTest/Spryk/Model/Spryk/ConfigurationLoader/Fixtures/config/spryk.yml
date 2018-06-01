@@ -10,3 +10,7 @@ arguments:
   replaceDefault:
     value: vendor/spryker/spryker/Bundles/
     type: prepend
+
+  shouldNotBeMerged:
+    value: FooBar
+    type: prepend

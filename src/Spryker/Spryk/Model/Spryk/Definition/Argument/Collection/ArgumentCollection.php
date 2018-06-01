@@ -20,7 +20,7 @@ class ArgumentCollection implements ArgumentCollectionInterface
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface $argument
      *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection
+     * @return $this
      */
     public function addArgument(ArgumentInterface $argument): ArgumentCollectionInterface
     {

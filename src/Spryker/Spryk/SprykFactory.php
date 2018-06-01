@@ -16,6 +16,8 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolver;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Superseder\Superseder;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Superseder\SupersederInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilder;
 use Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Dumper\Finder\SprykDefinitionFinder;
@@ -91,8 +93,17 @@ class SprykFactory
     {
         return new ArgumentResolver(
             $this->createArgumentCollection(),
+            $this->createSuperseder(),
             $this->createCallbackFactory()->createCallbackArgumentResolver()
         );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Superseder\SupersederInterface
+     */
+    public function createSuperseder(): SupersederInterface
+    {
+        return new Superseder();
     }
 
     /**
@@ -149,7 +160,7 @@ class SprykFactory
      *
      * @return $this
      */
-    public function setConfig(SprykConfig $config): SprykFactory
+    public function setConfig(SprykConfig $config): self
     {
         $this->config = $config;
 
