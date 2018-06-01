@@ -11,7 +11,9 @@ arguments:
   specification:
     multiline: true
 
-  method: ~
+  method:
+    inherit: true
+
   input: ~
   output: ~
 

@@ -117,6 +117,10 @@ class ArgumentResolver implements ArgumentResolverInterface
             return $argumentDefinition['value'];
         }
 
+        if (isset($argumentDefinition['inherit']) && $this->resolvedArgumentCollection->hasArgument($argumentName)) {
+            return $this->resolvedArgumentCollection->getArgument($argumentName)->getValue();
+        }
+
         if (OptionsContainer::hasOption($argumentName)) {
             return OptionsContainer::getOption($argumentName);
         }
