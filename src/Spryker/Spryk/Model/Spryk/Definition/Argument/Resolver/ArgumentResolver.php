@@ -8,9 +8,9 @@
 namespace Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver;
 
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Argument;
-use Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Superseder\SupersederInterface;
 use Spryker\Spryk\Style\SprykStyleInterface;
 use Symfony\Component\Console\Question\Question;
 
@@ -27,6 +27,11 @@ class ArgumentResolver implements ArgumentResolverInterface
     protected $resolvedArgumentCollection;
 
     /**
+     * @var \Spryker\Spryk\Model\Spryk\Definition\Argument\Superseder\SupersederInterface
+     */
+    protected $superseder;
+
+    /**
      * @var \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface
      */
     protected $callbackArgumentResolver;
@@ -38,12 +43,14 @@ class ArgumentResolver implements ArgumentResolverInterface
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Superseder\SupersederInterface $superseder
      * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface $callbackArgumentResolver
      */
-    public function __construct(ArgumentCollectionInterface $argumentCollection, CallbackArgumentResolverInterface $callbackArgumentResolver)
+    public function __construct(ArgumentCollectionInterface $argumentCollection, SupersederInterface $superseder, CallbackArgumentResolverInterface $callbackArgumentResolver)
     {
         $this->argumentCollection = $argumentCollection;
         $this->resolvedArgumentCollection = clone $argumentCollection;
+        $this->superseder = $superseder;
         $this->callbackArgumentResolver = $callbackArgumentResolver;
     }
 
@@ -65,7 +72,7 @@ class ArgumentResolver implements ArgumentResolverInterface
             $this->resolvedArgumentCollection->addArgument($argument);
         }
 
-        $argumentCollection = $this->replacePlaceholderInValues($argumentCollection);
+        $argumentCollection = $this->superseder->supersede($argumentCollection, $this->resolvedArgumentCollection);
         $argumentCollection = $this->callbackArgumentResolver->resolve($argumentCollection);
 
         return $argumentCollection;
@@ -139,87 +146,6 @@ class ArgumentResolver implements ArgumentResolverInterface
         }
 
         return null;
-    }
-
-    /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
-     *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
-     */
-    protected function replacePlaceholderInValues(ArgumentCollectionInterface $argumentCollection): ArgumentCollectionInterface
-    {
-        foreach ($argumentCollection->getArguments() as $argument) {
-            if ($argument->getValue() === null) {
-                continue;
-            }
-            $this->replacePlaceholder($argument, $argumentCollection);
-        }
-
-        return $argumentCollection;
-    }
-
-    /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface $argument
-     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
-     *
-     * @return void
-     */
-    protected function replacePlaceholder(ArgumentInterface $argument, ArgumentCollectionInterface $argumentCollection): void
-    {
-        $argumentValue = $argument->getValue();
-
-        if (!is_array($argumentValue)) {
-            $argument->setValue(
-                $this->replacePlaceholderInValue($argumentValue, $argumentCollection)
-            );
-
-            return;
-        }
-
-        $argumentValues = [];
-        foreach ($argumentValue as $value) {
-            $argumentValues[] = $this->replacePlaceholderInValue($value, $argumentCollection);
-        }
-        $argument->setValue($argumentValues);
-    }
-
-    /**
-     * @param string $argumentValue
-     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
-     *
-     * @return string
-     */
-    protected function replacePlaceholderInValue(string $argumentValue, ArgumentCollectionInterface $argumentCollection): string
-    {
-        preg_match_all('/%(.*?)%/', $argumentValue, $matches, PREG_SET_ORDER);
-
-        if (count($matches) === 0) {
-            return $argumentValue;
-        }
-
-        foreach ($matches as $match) {
-            $argumentName = $match[1];
-            $placeholder = $match[0];
-            $resolvedArgumentValue = $this->getAlreadyResolvedValue($argumentName, $argumentCollection);
-            $argumentValue = str_replace($placeholder, $resolvedArgumentValue, $argumentValue);
-        }
-
-        return $argumentValue;
-    }
-
-    /**
-     * @param string $argumentName
-     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
-     *
-     * @return mixed
-     */
-    protected function getAlreadyResolvedValue(string $argumentName, ArgumentCollectionInterface $argumentCollection)
-    {
-        if ($argumentCollection->hasArgument($argumentName)) {
-            return $argumentCollection->getArgument($argumentName)->getValue();
-        }
-
-        return $this->resolvedArgumentCollection->getArgument($argumentName)->getValue();
     }
 
     /**
