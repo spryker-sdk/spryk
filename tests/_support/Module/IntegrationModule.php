@@ -23,7 +23,7 @@ class IntegrationModule extends Module
      *
      * @return $this
      */
-    public function addExecutedSpryk(string $spryk): IntegrationModule
+    public function addExecutedSpryk(string $spryk): self
     {
         static::$executedSpryks[$spryk] = $spryk;
 

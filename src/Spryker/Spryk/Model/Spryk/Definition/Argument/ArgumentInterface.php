@@ -14,7 +14,7 @@ interface ArgumentInterface
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
      */
-    public function setName(string $name): ArgumentInterface;
+    public function setName(string $name): self;
 
     /**
      * @return string
@@ -26,7 +26,7 @@ interface ArgumentInterface
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
      */
-    public function setValue($value): ArgumentInterface;
+    public function setValue($value): self;
 
     /**
      * @return mixed
@@ -38,7 +38,7 @@ interface ArgumentInterface
      *
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
      */
-    public function setCallbacks(array $callbacks): ArgumentInterface;
+    public function setCallbacks(array $callbacks): self;
 
     /**
      * @return string[]
