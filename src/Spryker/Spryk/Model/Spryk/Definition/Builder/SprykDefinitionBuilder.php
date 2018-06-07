@@ -161,7 +161,18 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
                     continue;
                 }
 
-                $preSpryks[] = $this->buildDefinition($preSprykName);
+//                $preSpryks[] = $this->buildDefinition($preSprykName);
+
+                if (!is_array($preSprykName)) {
+                    $preSpryks[] = $this->buildDefinition($preSprykName);
+
+                    continue;
+                }
+
+                $sprykName = array_keys($preSprykName)[0];
+                $preDefinedDefinition = $preSprykName[$sprykName];
+
+                $preSpryks[] = $this->buildDefinition($sprykName, $preDefinedDefinition);
             }
         }
 

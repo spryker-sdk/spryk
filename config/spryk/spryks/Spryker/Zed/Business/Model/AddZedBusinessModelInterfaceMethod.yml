@@ -21,7 +21,13 @@ arguments:
     value: "%className%Interface"
 
 preSpryks:
-  - AddZedBusinessModel
+  - AddZedBusinessModel:
+      arguments:
+        subDirectory:
+          callback: ZedBusinessModelSubDirectoryCallback
+
+        className:
+          callback: ClassNameShortCallback
 
 postSpryks:
   - AddZedBusinessModelMethod

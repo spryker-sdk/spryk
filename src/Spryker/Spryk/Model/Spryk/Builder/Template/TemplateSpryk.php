@@ -103,7 +103,15 @@ class TemplateSpryk implements SprykBuilderInterface
             $fileName = $sprykerDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue();
         }
 
-        return $this->rootDirectory . $targetPath . $fileName;
+        $subDirectory = '';
+        if ($sprykerDefinition->getArgumentCollection()->hasArgument('subDirectory')) {
+            $subDirectory = $sprykerDefinition->getArgumentCollection()->getArgument('subDirectory')->getValue();
+            if ($subDirectory) {
+                $subDirectory = rtrim($subDirectory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+            }
+        }
+
+        return $this->rootDirectory . $targetPath . $subDirectory . $fileName;
     }
 
     /**

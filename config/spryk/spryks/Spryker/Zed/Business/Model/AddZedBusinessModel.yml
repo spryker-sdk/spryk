@@ -7,7 +7,14 @@ arguments:
   moduleOrganization:
     default: Spryker
 
+  subDirectory:
+    isOptional: true
+
   className: ~
+
+  constructorArguments:
+    type: ZedBusinessDependency
+    isOptional: true
 
   interfaceName:
     default: "%className%Interface"
@@ -20,7 +27,7 @@ arguments:
     callback: ZedBusinessModelTargetFilenameCallback
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/Model/"
+    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/"
 
 preSpryks:
   - CreateSprykerModule

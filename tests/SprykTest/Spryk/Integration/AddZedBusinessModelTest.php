@@ -8,7 +8,6 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Business\FooBarBusinessFactory;
 
 /**
  * Auto-generated group annotations
@@ -32,10 +31,27 @@ class AddZedBusinessModelTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--constructorArguments' => '\Spryker\Zed\FooBar\Business\Foo\Zip $zip, \Spryker\Zed\FooBar\Business\Foo\Zap $zap',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Model/FooBar.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/Bar.php');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsConstructor(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--constructorArguments' => '\Spryker\Zed\FooBar\Business\Foo\Zip $zip, \Spryker\Zed\FooBar\Business\Foo\Zap $zap',
+        ]);
+
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Foo\Bar', '__construct');
     }
 
     /**
@@ -48,6 +64,6 @@ class AddZedBusinessModelTest extends Unit
             '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarBusinessFactory::class, 'createFooBar');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createFooBar');
     }
 }
