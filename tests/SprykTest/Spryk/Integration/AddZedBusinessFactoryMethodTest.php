@@ -8,7 +8,6 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Business\FooBarBusinessFactory;
 
 /**
  * Auto-generated group annotations
@@ -32,10 +31,31 @@ class AddZedBusinessFactoryMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
-            '--output' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
+            '--subDirectory' => 'Foo',
+            '--className' => 'Bar',
+            '--output' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
+        ]);
+        $expectedBody = 'return new \Spryker\Zed\FooBar\Business\Foo\Bar();';
+        $this->tester->assertMethodBody('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createBar', $expectedBody);
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsMethodWithBodyToBusinessFactory(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--subDirectory' => 'Foo',
+            '--className' => 'Bar',
+            '--dependencyMethods' => [
+                'createZip',
+                'createZap',
+            ],
+            '--output' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarBusinessFactory::class, 'createFooBar');
+        $expectedBody = 'return new \Spryker\Zed\FooBar\Business\Foo\Bar($this->createZip(), $this->createZap());';
+        $this->tester->assertMethodBody('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createBar', $expectedBody);
     }
 }

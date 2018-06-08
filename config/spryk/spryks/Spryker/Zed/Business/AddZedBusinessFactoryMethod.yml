@@ -8,14 +8,18 @@ arguments:
   moduleOrganization:
     default: Spryker
 
-  className: ~
+  subDirectory:
+    isOptional: true
 
-  output:
-    default: "%className%Interface"
+  className: ~
 
   method:
     callbackOnly: true
     callback: ZedBusinessFactoryMethodNameCallback
+
+  dependencyMethods:
+    multiple: true
+    isOptional: true
 
   template:
     value: MethodBusinessFactory.php.twig

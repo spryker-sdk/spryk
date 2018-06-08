@@ -61,9 +61,30 @@ class AddZedBusinessModelTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
         ]);
 
-        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createFooBar');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createBar');
+    }
+
+    /**
+     * @return void
+     */
+    public function testInjectsDependenciesInBusinessFactoryMethod(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--constructorArguments' => '\Spryker\Zed\FooBar\Business\Foo\Zip $zip, \Spryker\Zed\FooBar\Business\Foo\Zap $zap',
+            '--dependencyMethods' => [
+                'createZip',
+                'createZap',
+            ],
+        ]);
+
+        $expectedBody = 'return new \Spryker\Zed\FooBar\Business\Foo\Bar($this->createZip(), $this->createZap());';
+        $this->tester->assertMethodBody('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createBar', $expectedBody);
     }
 }

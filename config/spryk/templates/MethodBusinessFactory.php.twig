@@ -1,9 +1,29 @@
 
-
+{% if not dependencyMethods.value %}
     /**
-     * @return {{ output }}
+     * @return \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
      */
-    public function {{ method }}(): {{ output }}
+    public function {{ method }}(): \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
     {
-        return new {{ className }}();
+        return new \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}();
     }
+{% else %}
+    /**
+    * @return \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    */
+    public function {{ method }}(): \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    {
+        return new \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}(
+        {% for dependencyMethod in dependencyMethods.value -%}
+            {%- spaceless -%}
+                {% set endofline = '' %}
+                {% if not loop.last %}
+                    {% set endofline = ',' %}
+                {% endif %}
+                {% set line = '    $this->' ~ dependencyMethod ~ '()' ~ endofline %}
+            {%- endspaceless -%}
+            {{ line | raw }}
+        {% endfor -%}
+        );
+    }
+{% endif %}
