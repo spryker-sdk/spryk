@@ -18,7 +18,7 @@ arguments:
     callback: ZedBusinessFactoryMethodNameCallback
 
   dependencyMethods:
-    multiple: true
+    isMultiple: true
     isOptional: true
 
   template:

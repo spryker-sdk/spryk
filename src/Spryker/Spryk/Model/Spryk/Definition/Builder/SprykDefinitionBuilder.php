@@ -155,28 +155,39 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     {
         $preSpryks = [];
         if (isset($sprykConfiguration['preSpryks'])) {
-            foreach ($sprykConfiguration['preSpryks'] as $preSprykName) {
-                if ($this->calledSpryk === $preSprykName) {
-                    $preSpryks[] = $this->definitionCollection[$this->calledSpryk];
-                    continue;
-                }
-
-//                $preSpryks[] = $this->buildDefinition($preSprykName);
-
-                if (!is_array($preSprykName)) {
-                    $preSpryks[] = $this->buildDefinition($preSprykName);
-
-                    continue;
-                }
-
-                $sprykName = array_keys($preSprykName)[0];
-                $preDefinedDefinition = $preSprykName[$sprykName];
-
-                $preSpryks[] = $this->buildDefinition($sprykName, $preDefinedDefinition);
-            }
+            $preSpryks = $this->buildPreSprykDefinitions($sprykConfiguration['preSpryks']);
         }
 
         return $preSpryks;
+    }
+
+    /**
+     * @param array $preSpryks
+     *
+     * @return array
+     */
+    protected function buildPreSprykDefinitions(array $preSpryks): array
+    {
+        $preSprykDefinitions = [];
+        foreach ($preSpryks as $preSprykName) {
+            if ($this->calledSpryk === $preSprykName) {
+                $preSprykDefinitions[] = $this->definitionCollection[$this->calledSpryk];
+                continue;
+            }
+
+            if (!is_array($preSprykName)) {
+                $preSprykDefinitions[] = $this->buildDefinition($preSprykName);
+
+                continue;
+            }
+
+            $sprykName = array_keys($preSprykName)[0];
+            $preDefinedDefinition = $preSprykName[$sprykName];
+
+            $preSprykDefinitions[] = $this->buildDefinition($sprykName, $preDefinedDefinition);
+        }
+
+        return $preSprykDefinitions;
     }
 
     /**
@@ -188,20 +199,33 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     {
         $postSpryks = [];
         if (isset($sprykConfiguration['postSpryks'])) {
-            foreach ($sprykConfiguration['postSpryks'] as $postSprykName) {
-                if (!is_array($postSprykName)) {
-                    $postSpryks[] = $this->buildDefinition($postSprykName);
-
-                    continue;
-                }
-
-                $sprykName = array_keys($postSprykName)[0];
-                $preDefinedDefinition = $postSprykName[$sprykName];
-
-                $postSpryks[] = $this->buildDefinition($sprykName, $preDefinedDefinition);
-            }
+            $postSpryks = $this->buildPostSprykDefinitions($sprykConfiguration['postSpryks']);
         }
 
         return $postSpryks;
+    }
+
+    /**
+     * @param array $postSpryks
+     *
+     * @return array
+     */
+    protected function buildPostSprykDefinitions(array $postSpryks): array
+    {
+        $postSprykDefinitions = [];
+        foreach ($postSpryks as $postSprykName) {
+            if (!is_array($postSprykName)) {
+                $postSprykDefinitions[] = $this->buildDefinition($postSprykName);
+
+                continue;
+            }
+
+            $sprykName = array_keys($postSprykName)[0];
+            $preDefinedDefinition = $postSprykName[$sprykName];
+
+            $postSprykDefinitions[] = $this->buildDefinition($sprykName, $preDefinedDefinition);
+        }
+
+        return $postSprykDefinitions;
     }
 }

@@ -19,8 +19,8 @@ arguments:
     value: ZedBusinessModelInterface.php.twig
 
   targetFilename:
-      callbackOnly: true
-      callback: ZedBusinessModelInterfaceTargetFilenameCallback
+    callbackOnly: true
+    callback: ZedBusinessModelInterfaceTargetFilenameCallback
 
   targetPath:
     default: "%module%/src/%organization%/Zed/%module%/Business/"

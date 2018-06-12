@@ -97,21 +97,41 @@ class TemplateSpryk implements SprykBuilderInterface
 
         $targetPath = rtrim($targetPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
-        $fileName = str_replace('.twig', '', $this->getTemplateName($sprykerDefinition));
-
-        if ($sprykerDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_TARGET_FILE_NAME)) {
-            $fileName = $sprykerDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue();
-        }
-
-        $subDirectory = '';
-        if ($sprykerDefinition->getArgumentCollection()->hasArgument('subDirectory')) {
-            $subDirectory = $sprykerDefinition->getArgumentCollection()->getArgument('subDirectory')->getValue();
-            if ($subDirectory) {
-                $subDirectory = rtrim($subDirectory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-            }
-        }
+        $fileName = $this->getFilename($sprykerDefinition);
+        $subDirectory = $this->getSubDirectory($sprykerDefinition);
 
         return $this->rootDirectory . $targetPath . $subDirectory . $fileName;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     *
+     * @return string
+     */
+    protected function getFilename(SprykDefinitionInterface $sprykerDefinition): string
+    {
+        $filename = str_replace('.twig', '', $this->getTemplateName($sprykerDefinition));
+
+        if ($sprykerDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_TARGET_FILE_NAME)) {
+            $filename = $sprykerDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue();
+        }
+
+        return $filename;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     *
+     * @return string
+     */
+    protected function getSubDirectory(SprykDefinitionInterface $sprykerDefinition): string
+    {
+        $subDirectory = '';
+        if ($sprykerDefinition->getArgumentCollection()->hasArgument('subDirectory') && $sprykerDefinition->getArgumentCollection()->getArgument('subDirectory')->getValue() !== null) {
+            $subDirectory = rtrim($sprykerDefinition->getArgumentCollection()->getArgument('subDirectory')->getValue(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        }
+
+        return $subDirectory;
     }
 
     /**

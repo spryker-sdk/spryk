@@ -94,20 +94,10 @@ class SprykRunConsole extends AbstractSprykConsole
     {
         $standardArguments = [];
         foreach ($arguments as $argumentName => $argumentDefinition) {
-            $argumentInfo = [
-                'name' => $argumentName,
-                'description' => sprintf('%s argument', $argumentName),
-            ];
+            $argumentDefinition['name'] = $argumentName;
+            $argumentDefinition['description'] = sprintf('%s argument', $argumentName);
 
-            if (isset($argumentDefinition['multiline'])) {
-                $argumentInfo['multiline'] = true;
-            }
-
-            if (isset($argumentDefinition['isMultiple'])) {
-                $argumentInfo['isMultiple'] = true;
-            }
-
-            $standardArguments[$argumentName] = $argumentInfo;
+            $standardArguments[$argumentName] = $argumentDefinition;
         }
 
         return $standardArguments;
