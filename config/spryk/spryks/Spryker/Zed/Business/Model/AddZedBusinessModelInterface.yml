@@ -4,7 +4,7 @@ description: "Adds a new Business model interface to the Zed application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   subDirectory:
@@ -23,7 +23,7 @@ arguments:
       callback: ZedBusinessModelInterfaceTargetFilenameCallback
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/"
+    default: "%module%/src/%organization%/Zed/%module%/Business/"
 
 preSpryks:
   - CreateSprykerModule

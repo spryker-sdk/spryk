@@ -6,7 +6,7 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   method: ~
@@ -17,7 +17,7 @@ arguments:
     value: Method.php.twig
 
   target:
-    value: "%moduleOrganization%\\Client\\%module%\\%module%Client"
+    value: "%organization%\\Client\\%module%\\%module%Client"
 
 preSpryks:
   - AddClient

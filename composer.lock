@@ -2175,16 +2175,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.14",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "f6ce7dd93628088e1017fb5dd73b0b9fec7df9e5"
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/f6ce7dd93628088e1017fb5dd73b0b9fec7df9e5",
-                "reference": "f6ce7dd93628088e1017fb5dd73b0b9fec7df9e5",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
                 "shasum": ""
             },
             "require": {
@@ -2220,7 +2220,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-06-06T17:40:22+00:00"
+            "time": "2018-06-08T15:26:40+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -3254,16 +3254,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8"
+                "reference": "366541b989927187c4ca70490a35615d3fef2dce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/e09160918c66281713f1c324c1f4c4c3037ba1e8",
-                "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/366541b989927187c4ca70490a35615d3fef2dce",
+                "reference": "366541b989927187c4ca70490a35615d3fef2dce",
                 "shasum": ""
             },
             "require": {
@@ -3306,7 +3306,7 @@
                 "unidiff",
                 "unified diff"
             ],
-            "time": "2018-02-01T13:45:15+00:00"
+            "time": "2018-06-10T07:54:39+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -3828,12 +3828,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "5213f9bb5a2eff524e9e5a16c7e8b58dc7667617"
+                "reference": "ea667f75a9ef907cea1356742403f357ad53f075"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/5213f9bb5a2eff524e9e5a16c7e8b58dc7667617",
-                "reference": "5213f9bb5a2eff524e9e5a16c7e8b58dc7667617",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/ea667f75a9ef907cea1356742403f357ad53f075",
+                "reference": "ea667f75a9ef907cea1356742403f357ad53f075",
                 "shasum": ""
             },
             "require": {
@@ -3842,6 +3842,7 @@
                 "squizlabs/php_codesniffer": "^3.0"
             },
             "require-dev": {
+                "phpstan/phpstan-shim": "^0.9.2",
                 "phpunit/phpunit": "<5.0"
             },
             "bin": [
@@ -3871,7 +3872,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-06-06T15:32:47+00:00"
+            "time": "2018-06-08T08:21:01+00:00"
         },
         {
             "name": "spryker/config",

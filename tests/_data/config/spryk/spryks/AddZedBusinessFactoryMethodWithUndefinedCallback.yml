@@ -6,7 +6,7 @@ arguments:
   module:
     value: FooBar
 
-  moduleOrganization:
+  organization:
     value: Spryker
 
   className:
@@ -20,7 +20,7 @@ arguments:
     value: MethodBusinessFactory.php.twig
 
   target:
-    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%BusinessFactory"
+    value: "%organization%\\Zed\\%module%\\Business\\%module%BusinessFactory"
 
 preSpryks:
   - AddZedBusinessFactory

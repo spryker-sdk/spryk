@@ -4,7 +4,7 @@ description: "Adds a new *module*PersistenceFactory to the Zed application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -14,7 +14,7 @@ arguments:
     value: "%module%PersistenceFactory.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Persistence/"
+    default: "%module%/src/%organization%/Zed/%module%/Persistence/"
 
 preSpryks:
   - CreateSprykerModule

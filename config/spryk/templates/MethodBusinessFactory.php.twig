@@ -1,19 +1,19 @@
 
 {% if not dependencyMethods.value %}
     /**
-     * @return \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+     * @return \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
      */
-    public function {{ method }}(): \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    public function {{ method }}(): \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
     {
-        return new \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}();
+        return new \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}();
     }
 {% else %}
     /**
-    * @return \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    * @return \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
     */
-    public function {{ method }}(): \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    public function {{ method }}(): \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
     {
-        return new \{{ moduleOrganization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}(
+        return new \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}(
         {% for dependencyMethod in dependencyMethods.value -%}
             {%- spaceless -%}
                 {% set endofline = '' %}

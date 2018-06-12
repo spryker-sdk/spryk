@@ -4,7 +4,7 @@ description: "Adds a new *module*FacadeInterface to the Zed application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -14,7 +14,7 @@ arguments:
     value: "%module%FacadeInterface.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/"
+    default: "%module%/src/%organization%/Zed/%module%/Business/"
 
 preSpryks:
   - AddZedBusinessFacade

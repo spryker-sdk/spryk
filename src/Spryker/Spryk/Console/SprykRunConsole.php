@@ -51,7 +51,7 @@ class SprykRunConsole extends AbstractSprykConsole
 
         foreach ($sprykArguments as $argumentName => $argumentDefinition) {
             $inputOption = InputOption::VALUE_REQUIRED;
-            if (isset($argumentDefinition['multiline']) || isset($argumentDefinition['multiple'])) {
+            if (isset($argumentDefinition['multiline']) || isset($argumentDefinition['isMultiple'])) {
                 $inputOption = InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY;
             }
             $this->addOption($argumentName, null, $inputOption, $argumentDefinition['description']);
@@ -103,8 +103,8 @@ class SprykRunConsole extends AbstractSprykConsole
                 $argumentInfo['multiline'] = true;
             }
 
-            if (isset($argumentDefinition['multiple'])) {
-                $argumentInfo['multiple'] = true;
+            if (isset($argumentDefinition['isMultiple'])) {
+                $argumentInfo['isMultiple'] = true;
             }
 
             $standardArguments[$argumentName] = $argumentInfo;

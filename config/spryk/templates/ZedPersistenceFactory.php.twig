@@ -5,13 +5,13 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace {{ moduleOrganization }}\Zed\{{ module }}\Persistence;
+namespace {{ organization }}\Zed\{{ module }}\Persistence;
 
-use {{ moduleOrganization }}\Zed\Kernel\Persistence\AbstractPersistenceFactory;
+use {{ organization }}\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
- * @method \{{ moduleOrganization }}\Zed\{{ module }}\{{ module }}Config getConfig()
- * @method \{{ moduleOrganization }}\Zed\{{ module }}\Persistence\{{ module }}QueryContainerInterface getQueryContainer()
+ * @method \{{ organization }}\Zed\{{ module }}\{{ module }}Config getConfig()
+ * @method \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}QueryContainerInterface getQueryContainer()
  */
 class {{ module }}PersistenceFactory extends AbstractPersistenceFactory
 {

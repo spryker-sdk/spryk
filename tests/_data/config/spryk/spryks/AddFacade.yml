@@ -5,7 +5,7 @@ arguments:
   module:
     value: FooBar
 
-  moduleOrganization:
+  organization:
     value: Spryker
 
   template:
@@ -15,7 +15,7 @@ arguments:
     value: "%module%Facade.php"
 
   targetPath:
-    value: "%module%/src/%moduleOrganization%/Zed/%module%/Business/"
+    value: "%module%/src/%organization%/Zed/%module%/Business/"
 
 postSpryks:
   - AddFacadeInterface

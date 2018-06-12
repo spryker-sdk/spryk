@@ -33,7 +33,10 @@ class AddZedBusinessModelTest extends Unit
             '--module' => 'FooBar',
             '--className' => 'Bar',
             '--subDirectory' => 'Foo',
-            '--constructorArguments' => '\Spryker\Zed\FooBar\Business\Foo\Zip $zip, \Spryker\Zed\FooBar\Business\Foo\Zap $zap',
+            '--constructorArguments' => [
+                '\Spryker\Zed\FooBar\Business\Foo\Zip $zip',
+                '\Spryker\Zed\FooBar\Business\Foo\Zap $zap',
+            ],
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/Bar.php');
@@ -48,7 +51,10 @@ class AddZedBusinessModelTest extends Unit
             '--module' => 'FooBar',
             '--className' => 'Bar',
             '--subDirectory' => 'Foo',
-            '--constructorArguments' => '\Spryker\Zed\FooBar\Business\Foo\Zip $zip, \Spryker\Zed\FooBar\Business\Foo\Zap $zap',
+            '--constructorArguments' => [
+                '\Spryker\Zed\FooBar\Business\Foo\Zip $zip',
+                '\Spryker\Zed\FooBar\Business\Foo\Zap $zap',
+            ],
         ]);
 
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Foo\Bar', '__construct');
@@ -77,7 +83,10 @@ class AddZedBusinessModelTest extends Unit
             '--module' => 'FooBar',
             '--className' => 'Bar',
             '--subDirectory' => 'Foo',
-            '--constructorArguments' => '\Spryker\Zed\FooBar\Business\Foo\Zip $zip, \Spryker\Zed\FooBar\Business\Foo\Zap $zap',
+            '--constructorArguments' => [
+                '\Spryker\Zed\FooBar\Business\Foo\Zip $zip',
+                '\Spryker\Zed\FooBar\Business\Foo\Zap $zap',
+            ],
             '--dependencyMethods' => [
                 'createZip',
                 'createZap',

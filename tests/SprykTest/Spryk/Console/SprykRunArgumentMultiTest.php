@@ -37,7 +37,7 @@ class SprykRunArgumentMultiTest extends Unit
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddFacadeMethod',
             '--module' => 'FooBar',
-            '--moduleOrganization' => 'Spryker',
+            '--organization' => 'Spryker',
         ];
 
         $tester->execute($arguments);

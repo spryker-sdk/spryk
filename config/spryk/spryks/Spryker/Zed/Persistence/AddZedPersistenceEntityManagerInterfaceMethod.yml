@@ -5,7 +5,7 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   method: ~
@@ -16,7 +16,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "%moduleOrganization%\\Zed\\%module%\\Persistence\\%module%EntityManagerInterface"
+    value: "%organization%\\Zed\\%module%\\Persistence\\%module%EntityManagerInterface"
 
 preSpryks:
   - AddZedPersistenceEntityManagerInterface

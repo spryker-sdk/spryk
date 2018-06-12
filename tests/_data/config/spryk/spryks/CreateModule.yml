@@ -3,7 +3,7 @@ description: "Unit Test configuration"
 
 arguments:
   module: ~
-  moduleOrganization: ~
+  organization: ~
 
   directories:
     value:

@@ -4,7 +4,7 @@ description: "Adds a new *module*FacadeTest."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -14,7 +14,7 @@ arguments:
     value: "%module%FacadeTest.php"
 
   targetPath:
-    default: "%module%/tests/%moduleOrganization%Test/Zed/%module%/Business/"
+    default: "%module%/tests/%organization%Test/Zed/%module%/Business/"
 
 preSpryks:
   - AddZedBusinessTestSuite

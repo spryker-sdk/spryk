@@ -5,7 +5,7 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   className: ~

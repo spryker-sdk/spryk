@@ -4,7 +4,7 @@ description: "Adds a new *module*CommunicationFactory to the Zed application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -14,7 +14,7 @@ arguments:
     value: "%module%CommunicationFactory.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Communication/"
+    default: "%module%/src/%organization%/Zed/%module%/Communication/"
 
 preSpryks:
   - CreateSprykerModule

@@ -10,7 +10,6 @@ namespace SprykTest\Spryk\Console;
 use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Spryk\Exception\CallbackNotFoundException;
-use Spryker\Zed\FooBar\Business\FooBarBusinessFactory;
 
 /**
  * Auto-generated group annotations
@@ -39,13 +38,13 @@ class SprykRunArgumentCallbackTest extends Unit
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddZedBusinessFactoryMethod',
             '--module' => 'FooBar',
-            '--moduleOrganization' => 'Spryker',
+            '--organization' => 'Spryker',
             '--output' => 'Spryker',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
 
-        $this->tester->assertClassHasMethod(FooBarBusinessFactory::class, 'createFooBar');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createFooBar');
     }
 
     /**
@@ -60,7 +59,7 @@ class SprykRunArgumentCallbackTest extends Unit
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddZedBusinessFactoryMethodWithUndefinedCallback',
             '--module' => 'FooBar',
-            '--moduleOrganization' => 'Spryker',
+            '--organization' => 'Spryker',
         ];
 
         $this->expectException(CallbackNotFoundException::class);

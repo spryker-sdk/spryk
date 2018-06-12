@@ -5,12 +5,12 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace {{ moduleOrganization }}\Zed\{{ module }}\Business{% if subDirectory.value %}\{{ subDirectory | replace({'/': '\\'}) }}{% endif %};
+namespace {{ organization }}\Zed\{{ module }}\Business{% if subDirectory.value %}\{{ subDirectory | replace({'/': '\\'}) }}{% endif %};
 
 class {{ className | classNameShort }} implements {{ interfaceName | classNameShort }}
 {
 {% if constructorArguments.value %}
-    {% set dependencies = constructorArguments.value | split(',') -%}
+    {% set dependencies = constructorArguments.value -%}
     {%- if dependencies is iterable -%}
     {% for dependency in dependencies -%}
     {% set dependency = dependency | trim(' ') -%}
@@ -27,7 +27,7 @@ class {{ className | classNameShort }} implements {{ interfaceName | classNameSh
      * @param {{ dependency | trim(' ') }}
      {% endfor -%}
      */
-    public function __construct({{ constructorArguments }})
+    public function __construct({{ constructorArguments.value | join(', ') }})
     {
     {% for dependency in dependencies -%}
     {%- set dependencyParts = dependency | split(' $') %}

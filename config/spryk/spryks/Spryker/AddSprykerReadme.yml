@@ -4,7 +4,7 @@ description: "Adds a new README.md to the Modules root."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:

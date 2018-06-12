@@ -8,7 +8,7 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   controller:
@@ -25,7 +25,7 @@ arguments:
     callback: ZedPresentationTwigNormalizeFileNameCallback
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Presentation/%controller%/"
+    default: "%module%/src/%organization%/Zed/%module%/Presentation/%controller%/"
 
 preSpryks:
   - AddZedCommunicationControllerMethod
