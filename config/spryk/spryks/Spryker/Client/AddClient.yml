@@ -5,7 +5,7 @@ priority: 1
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -15,7 +15,7 @@ arguments:
     value: "%module%Client.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Client/%module%/"
+    default: "%module%/src/%organization%/Client/%module%/"
 
 preSpryks:
   - CreateSprykerModule

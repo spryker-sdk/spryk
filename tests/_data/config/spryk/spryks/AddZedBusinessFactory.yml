@@ -5,7 +5,7 @@ arguments:
   module:
     value: FooBar
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -15,4 +15,4 @@ arguments:
     value: "%module%BusinessFactory.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/"
+    default: "%module%/src/%organization%/Zed/%module%/Business/"

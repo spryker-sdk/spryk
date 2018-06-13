@@ -5,7 +5,7 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   specification:
@@ -25,7 +25,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%FacadeInterface"
+    value: "%organization%\\Zed\\%module%\\Business\\%module%FacadeInterface"
 
 preSpryks:
   - AddZedBusinessFacadeInterface

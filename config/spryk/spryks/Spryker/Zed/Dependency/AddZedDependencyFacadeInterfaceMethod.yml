@@ -6,7 +6,7 @@ arguments:
   module: ~
   dependentModule: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   method: ~
@@ -17,7 +17,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "%moduleOrganization%\\Zed\\%module%\\Dependency\\Facade\\%module%To%dependentModule%FacadeInterface"
+    value: "%organization%\\Zed\\%module%\\Dependency\\Facade\\%module%To%dependentModule%FacadeInterface"
 
 preSpryks:
   - AddZedDependencyFacadeInterface

@@ -3,9 +3,10 @@ description: "Creates a new *module* structure."
 priority: 1
 
 arguments:
-  module: ~
+  module:
+    type: NewModuleType
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   targetPath:
@@ -13,7 +14,7 @@ arguments:
 
   directories:
     value:
-      - src/
+      - "src/%organization%/"
 
 postSpryks:
   - AddSprykerReadme

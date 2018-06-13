@@ -4,7 +4,7 @@ description: "Adds a new *module*BusinessFactory to the Zed application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -14,7 +14,7 @@ arguments:
     value: "%module%BusinessFactory.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/"
+    default: "%module%/src/%organization%/Zed/%module%/Business/"
 
 preSpryks:
   - CreateSprykerModule

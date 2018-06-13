@@ -27,12 +27,29 @@ class AssertionModule extends Module
         $this->assertTrue(
             $classInfo->hasMethod($methodName),
             sprintf(
-                'Expected that class "%s" has method "%s" but method not found. Existing method(s): %s.',
+                'Expected that class "%s" has method "%s" but method not found.',
                 $className,
-                $methodName,
-                implode(' ,', $this->getClassMethodNames($classInfo))
+                $methodName
             )
         );
+    }
+
+    /**
+     * @param string $className
+     * @param string $methodName
+     * @param string $expectBody
+     *
+     * @return void
+     */
+    public function assertMethodBody(string $className, string $methodName, string $expectBody): void
+    {
+        $this->assertClassHasMethod($className, $methodName);
+
+        $reflection = new BetterReflection();
+        $classInfo = $reflection->classReflector()->reflect($className);
+
+        $methodBody = $classInfo->getMethod($methodName)->getBodyCode();
+        $this->assertSame($expectBody, $methodBody);
     }
 
     /**

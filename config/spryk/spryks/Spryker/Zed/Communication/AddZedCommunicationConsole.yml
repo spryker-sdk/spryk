@@ -4,7 +4,7 @@ description: "Adds a new Console command to the Zed application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   className: ~
@@ -18,7 +18,7 @@ arguments:
     value: "%className%Console.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Communication/Plugin/Console/"
+    default: "%module%/src/%organization%/Zed/%module%/Communication/Plugin/Console/"
 
 preSpryks:
   - CreateSprykerModule

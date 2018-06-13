@@ -5,7 +5,7 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   method: ~
@@ -16,7 +16,7 @@ arguments:
     value: Method.php.twig
 
   target:
-    value: "%moduleOrganization%\\Zed\\%module%\\%module%Config"
+    value: "%organization%\\Zed\\%module%\\%module%Config"
 
 preSpryks:
   - AddZedConfig

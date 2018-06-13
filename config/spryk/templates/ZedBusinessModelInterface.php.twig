@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace {{ moduleOrganization }}\Zed\{{ module }}\Business\Model;
+namespace {{ organization }}\Zed\{{ module }}\Business{% if subDirectory.value %}\{{ subDirectory | replace({'/': '\\'}) }}{% endif %};
 
 interface {{ interfaceName | classNameShort }}
 {

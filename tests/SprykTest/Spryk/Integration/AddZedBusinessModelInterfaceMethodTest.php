@@ -8,14 +8,13 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Business\Model\FooBarInterface;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddZedBusinessModelMethodTest
+ * @group AddZedBusinessModelInterfaceMethodTest
  * Add your own group annotations below this line
  */
 class AddZedBusinessModelInterfaceMethodTest extends Unit
@@ -32,12 +31,12 @@ class AddZedBusinessModelInterfaceMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
+            '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
             '--method' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarInterface::class, 'addSomething');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Foo\BarInterface', 'addSomething');
     }
 }

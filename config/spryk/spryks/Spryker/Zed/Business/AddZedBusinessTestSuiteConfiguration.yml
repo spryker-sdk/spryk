@@ -4,7 +4,7 @@ description: "Updates the *module* test configuration and adds the suite configu
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -17,7 +17,7 @@ arguments:
     value: suites
 
   targetPath:
-    value: "%module%/tests/%moduleOrganization%Test/Zed/%module%/codeception.yml"
+    value: "%module%/tests/%organization%Test/Zed/%module%/codeception.yml"
 
 preSpryks:
   - AddZedTestCodeceptionConfiguration

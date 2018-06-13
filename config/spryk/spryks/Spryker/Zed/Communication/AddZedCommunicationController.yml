@@ -4,7 +4,7 @@ description: "Adds a new Controller to the Zed application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   controller:
@@ -17,7 +17,7 @@ arguments:
     value: "%controller%Controller.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Communication/Controller/"
+    default: "%module%/src/%organization%/Zed/%module%/Communication/Controller/"
 
 preSpryks:
   - CreateSprykerModule

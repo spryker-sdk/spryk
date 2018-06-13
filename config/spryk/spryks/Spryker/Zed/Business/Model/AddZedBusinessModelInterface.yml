@@ -4,8 +4,11 @@ description: "Adds a new Business model interface to the Zed application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
+
+  subDirectory:
+    isOptional: true
 
   className: ~
 
@@ -16,13 +19,18 @@ arguments:
     value: ZedBusinessModelInterface.php.twig
 
   targetFilename:
-      callbackOnly: true
-      callback: ZedBusinessModelInterfaceTargetFilenameCallback
+    callbackOnly: true
+    callback: ZedBusinessModelInterfaceTargetFilenameCallback
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Zed/%module%/Business/Model/"
+    default: "%module%/src/%organization%/Zed/%module%/Business/"
 
 preSpryks:
   - CreateSprykerModule
-  - AddZedBusinessModel
+  - AddZedBusinessModel:
+      arguments:
+        subDirectory:
+          callback: ZedBusinessModelSubDirectoryCallback
 
+        className:
+          callback: ClassNameShortCallback

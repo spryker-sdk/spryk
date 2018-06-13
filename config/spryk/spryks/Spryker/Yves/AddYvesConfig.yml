@@ -4,7 +4,7 @@ description: "Adds a new *module*Config to the Yves application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -14,7 +14,7 @@ arguments:
     value: "%module%Config.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Yves/%module%/"
+    default: "%module%/src/%organization%/Yves/%module%/"
 
 preSpryks:
   - CreateSprykerModule

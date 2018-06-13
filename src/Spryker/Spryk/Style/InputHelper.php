@@ -25,9 +25,9 @@ trait InputHelper
     /**
      * @param \Symfony\Component\Console\Question\Question $question
      *
-     * @return string
+     * @return string|int|null
      */
-    public function askQuestion(Question $question): string
+    public function askQuestion(Question $question)
     {
         $questionHelper = new SymfonyQuestionHelper();
 

@@ -4,7 +4,7 @@ description: "Adds a new *module*ConstantsInterface to the shared application."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   template:
@@ -14,7 +14,7 @@ arguments:
     value: "%module%Constants.php"
 
   targetPath:
-    default: "%module%/src/%moduleOrganization%/Shared/%module%/"
+    default: "%module%/src/%organization%/Shared/%module%/"
 
 preSpryks:
   - CreateSprykerModule

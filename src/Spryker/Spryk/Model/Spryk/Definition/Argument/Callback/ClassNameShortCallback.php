@@ -9,14 +9,14 @@ namespace Spryker\Spryk\Model\Spryk\Definition\Argument\Callback;
 
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 
-class ZedBusinessModelTargetFilenameCallback implements CallbackInterface
+class ClassNameShortCallback implements CallbackInterface
 {
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'ZedBusinessModelTargetFilenameCallback';
+        return 'ClassNameShortCallback';
     }
 
     /**
@@ -28,13 +28,12 @@ class ZedBusinessModelTargetFilenameCallback implements CallbackInterface
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
         $className = $argumentCollection->getArgument('className')->getValue();
-//        if (strpos($className, '\\') !== false) {
-//            $classNameFragments = explode('\\', $className);
-//            $requiredClassNameFragments = array_slice($classNameFragments, 5);
-//
-//            $className = implode(DIRECTORY_SEPARATOR, $requiredClassNameFragments);
-//        }
+        if (strpos($className, '\\') === false) {
+            return $className;
+        }
 
-        return $className . '.php';
+        $classNameFragments = explode('\\', $className);
+
+        return array_pop($classNameFragments);
     }
 }

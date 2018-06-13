@@ -4,7 +4,7 @@ description: "Adds the include for the Zed test suite to the codeception.yml."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   afterElement:

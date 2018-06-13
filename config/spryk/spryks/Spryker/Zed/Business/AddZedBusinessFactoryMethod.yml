@@ -5,23 +5,27 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
-  className: ~
+  subDirectory:
+    isOptional: true
 
-  output:
-    default: "%className%Interface"
+  className: ~
 
   method:
     callbackOnly: true
     callback: ZedBusinessFactoryMethodNameCallback
 
+  dependencyMethods:
+    isMultiple: true
+    isOptional: true
+
   template:
     value: MethodBusinessFactory.php.twig
 
   target:
-    value: "%moduleOrganization%\\Zed\\%module%\\Business\\%module%BusinessFactory"
+    value: "%organization%\\Zed\\%module%\\Business\\%module%BusinessFactory"
 
 preSpryks:
   - AddZedBusinessFactory

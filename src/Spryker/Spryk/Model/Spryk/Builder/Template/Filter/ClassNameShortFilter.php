@@ -22,6 +22,9 @@ class ClassNameShortFilter extends TwigFilter
     protected function getCallback()
     {
         return function (string $string) {
+            if (strpos($string, '\\') === false) {
+                return $string;
+            }
             $classNameFragments = explode('\\', $string);
 
             return array_pop($classNameFragments);

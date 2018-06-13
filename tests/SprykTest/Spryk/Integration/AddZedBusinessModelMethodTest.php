@@ -8,9 +8,6 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Business\FooBarFacade;
-use Spryker\Zed\FooBar\Business\FooBarFacadeInterface;
-use Spryker\Zed\FooBar\Business\Model\FooBar;
 
 /**
  * Auto-generated group annotations
@@ -34,13 +31,13 @@ class AddZedBusinessModelMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
+            '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
             '--method' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBar::class, 'addSomething');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Foo\Bar', 'addSomething');
     }
 
     /**
@@ -50,7 +47,7 @@ class AddZedBusinessModelMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
+            '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
             '--method' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
@@ -59,8 +56,8 @@ class AddZedBusinessModelMethodTest extends Unit
             ],
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarFacade::class, 'addSomething');
-        $this->tester->assertClassHasMethod(FooBarFacadeInterface::class, 'addSomething');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarFacade', 'addSomething');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarFacadeInterface', 'addSomething');
     }
 
     /**
@@ -70,7 +67,7 @@ class AddZedBusinessModelMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Model\FooBar',
+            '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
             '--method' => 'addSomething',
             '--facadeMethod' => 'addSomethingDifferent',
             '--input' => 'string $foo',
@@ -80,7 +77,7 @@ class AddZedBusinessModelMethodTest extends Unit
             ],
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarFacade::class, 'addSomethingDifferent');
-        $this->tester->assertClassHasMethod(FooBarFacadeInterface::class, 'addSomethingDifferent');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarFacade', 'addSomethingDifferent');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarFacadeInterface', 'addSomethingDifferent');
     }
 }

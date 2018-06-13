@@ -5,7 +5,7 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   controller:
@@ -21,7 +21,7 @@ arguments:
     value: MethodZedCommunicationController.php.twig
 
   target:
-    value: "%moduleOrganization%\\Zed\\%module%\\Communication\\Controller\\%controller%Controller"
+    value: "%organization%\\Zed\\%module%\\Communication\\Controller\\%controller%Controller"
 
 preSpryks:
   - AddZedCommunicationController

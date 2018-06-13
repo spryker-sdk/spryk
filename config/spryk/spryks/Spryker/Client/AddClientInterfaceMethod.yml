@@ -5,7 +5,7 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   method: ~
@@ -19,7 +19,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "%moduleOrganization%\\Client\\%module%\\%module%ClientInterface"
+    value: "%organization%\\Client\\%module%\\%module%ClientInterface"
 
 preSpryks:
   - AddClientInterface

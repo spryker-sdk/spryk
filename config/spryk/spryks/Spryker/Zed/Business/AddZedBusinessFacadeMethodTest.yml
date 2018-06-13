@@ -5,7 +5,7 @@ arguments:
 
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   method:
@@ -23,7 +23,7 @@ arguments:
     value: Method.php.twig
 
   target:
-    value: "%moduleOrganization%Test\\Zed\\%module%\\Business\\%module%FacadeTest"
+    value: "%organization%Test\\Zed\\%module%\\Business\\%module%FacadeTest"
 
 preSpryks:
   - AddZedBusinessFacadeTest

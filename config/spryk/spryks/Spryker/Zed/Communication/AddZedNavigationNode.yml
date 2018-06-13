@@ -4,7 +4,7 @@ description: "Adds a new navigation node entry tho the *module* navigation.xml."
 arguments:
   module: ~
 
-  moduleOrganization:
+  organization:
     default: Spryker
 
   controller:
@@ -14,7 +14,7 @@ arguments:
     default: index
 
   targetPath:
-    value: "%module%/src/%moduleOrganization%/Zed/%module%/Communication/navigation.xml"
+    value: "%module%/src/%organization%/Zed/%module%/Communication/navigation.xml"
 
 preSpryks:
   - AddZedNavigationSchema
