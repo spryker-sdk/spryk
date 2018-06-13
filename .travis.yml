@@ -6,7 +6,6 @@ php:
     - 7.1
 
 install:
-    - composer self-update
     - composer remove --dev spryker/git-hook
     - composer install --optimize-autoloader --no-interaction
 
