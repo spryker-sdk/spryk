@@ -1,6 +1,11 @@
 spryk: template
 description: "Adds a new Business model to the Zed application."
 
+application: Zed
+layer: Business
+
+priority: 1
+
 arguments:
   module: ~
 
