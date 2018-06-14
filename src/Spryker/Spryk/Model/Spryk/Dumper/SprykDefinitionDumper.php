@@ -33,7 +33,7 @@ class SprykDefinitionDumper implements SprykDefinitionDumperInterface
     }
 
     /**
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[]
+     * @return array
      */
     public function dump(): array
     {

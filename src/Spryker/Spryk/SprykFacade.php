@@ -29,7 +29,7 @@ class SprykFacade implements SprykFacadeInterface
     }
 
     /**
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[]
+     * @return array
      */
     public function getSprykDefinitions(): array
     {
