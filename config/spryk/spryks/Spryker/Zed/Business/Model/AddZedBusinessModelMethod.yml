@@ -18,7 +18,6 @@ arguments:
   method: ~
 
   input:
-    type: ZedBusinessModel
     isOptional: true
     isMultiple: true
 
