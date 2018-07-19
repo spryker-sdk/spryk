@@ -29,7 +29,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "%organization%\\Zed\\%module%\\Business\\%module%FacadeInterface"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}FacadeInterface"
 
 preSpryks:
   - AddFacadeInterface

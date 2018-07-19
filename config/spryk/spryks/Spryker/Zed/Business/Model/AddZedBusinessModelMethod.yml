@@ -25,13 +25,13 @@ arguments:
     isOptional: true
 
   facadeMethod:
-    default: "%method%"
+    default: "{{ method }}"
 
   template:
     value: Method.php.twig
 
   target:
-    value: "%className%"
+    value: "{{ className }}"
 
 preSpryks:
   - AddZedBusinessModel:
@@ -48,4 +48,4 @@ postSpryks:
       isOptional: true
       arguments:
         method:
-          value: "%facadeMethod%"
+          value: "{{ facadeMethod }}"

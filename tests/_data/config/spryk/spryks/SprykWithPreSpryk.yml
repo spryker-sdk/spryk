@@ -10,7 +10,7 @@ arguments:
     value: README.md.twig
 
   targetPath:
-    value: "%module%/"
+    value: "{{ module }}/"
 
 preSpryks:
   - StructureWithoutInteraction

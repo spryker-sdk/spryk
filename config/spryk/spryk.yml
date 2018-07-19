@@ -3,5 +3,5 @@ arguments:
     value: spryker/spryker
 
   targetPath:
-    value: "vendor/%repository%/Bundles/"
+    value: "vendor/{{ repository }}/Bundles/"
     type: prepend

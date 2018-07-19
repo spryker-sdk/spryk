@@ -11,16 +11,16 @@ arguments:
       - src/
 
   targetPath:
-    value: "%module%/"
+    value: "{{ module }}/"
 
   templateTargetPath:
-    value: "%module%/sub-directory/"
+    value: "{{ module }}/sub-directory/"
 
 postSpryks:
    - TemplateWithoutInteraction:
       isOptional: true
       arguments:
         targetPath:
-          value: "%templateTargetPath%"
+          value: "{{ templateTargetPath }}"
 
 

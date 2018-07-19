@@ -10,7 +10,7 @@ arguments:
     value: README.md.twig
 
   targetPath:
-    value: "%module%/"
+    value: "{{ module }}/"
 
 # The preSpryk call as postSpryk this spryk, this would lead a unresolvable recursion.
 postSpryks:

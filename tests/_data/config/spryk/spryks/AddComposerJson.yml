@@ -8,7 +8,7 @@ arguments:
     value: composer.json.twig
 
   targetPath:
-    default: "%module%/"
+    default: "{{ module }}/"
 
 preSpryks:
   - CreateModule

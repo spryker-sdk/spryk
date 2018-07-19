@@ -16,7 +16,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "%organization%\\Zed\\%module%\\Persistence\\%module%RepositoryInterface"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}RepositoryInterface"
 
 preSpryks:
   - AddZedPersistenceRepositoryInterface

@@ -23,7 +23,7 @@ arguments:
     isMultiple: true
 
   interfaceName:
-    default: "%className%Interface"
+    default: "{{ className }}Interface"
 
   template:
     value: ZedBusinessModel.php.twig
@@ -33,7 +33,7 @@ arguments:
     callback: ZedBusinessModelTargetFilenameCallback
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Business/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
   - CreateSprykerModule

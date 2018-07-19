@@ -16,7 +16,7 @@ arguments:
     value: Method.php.twig
 
   target:
-    value: "%organization%\\Zed\\%module%\\Persistence\\%module%EntityManager"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}EntityManager"
 
 preSpryks:
   - AddZedPersistenceEntityManager

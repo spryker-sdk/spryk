@@ -15,10 +15,10 @@ arguments:
     value: ZedCommunicationConsole.php.twig
 
   targetFilename:
-    value: "%className%Console.php"
+    value: "{{ className }}Console.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Communication/Console/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Console/"
 
 preSpryks:
   - CreateSprykerModule

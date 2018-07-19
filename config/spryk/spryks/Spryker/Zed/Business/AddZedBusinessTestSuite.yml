@@ -8,11 +8,11 @@ arguments:
     default: Spryker
 
   targetPath:
-    default: "%module%/"
+    default: "{{ module }}/"
 
   directories:
     value:
-      - "tests/%organization%Test/Zed/%module%/Business/"
+      - "tests/{{ organization }}Test/Zed/{{ module }}/Business/"
 
 postSpryks:
   - AddZedBusinessTestSuiteConfiguration

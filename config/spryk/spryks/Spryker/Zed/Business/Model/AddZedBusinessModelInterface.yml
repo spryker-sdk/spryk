@@ -13,7 +13,7 @@ arguments:
   className: ~
 
   interfaceName:
-    default: "%className%Interface"
+    default: "{{ className }}Interface"
 
   template:
     value: ZedBusinessModelInterface.php.twig
@@ -23,7 +23,7 @@ arguments:
     callback: ZedBusinessModelInterfaceTargetFilenameCallback
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Business/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
   - CreateSprykerModule

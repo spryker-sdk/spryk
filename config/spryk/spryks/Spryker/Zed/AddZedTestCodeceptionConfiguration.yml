@@ -11,7 +11,7 @@ arguments:
     value: ZedTestCodeceptionConfiguration.yml.twig
 
   targetPath:
-    value: "%module%/tests/SprykerTest/Zed/%module%/"
+    value: "{{ module }}/tests/SprykerTest/Zed/{{ module }}/"
 
   targetFilename:
     value: codeception.yml

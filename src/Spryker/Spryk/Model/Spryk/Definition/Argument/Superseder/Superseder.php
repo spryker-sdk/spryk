@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Model\Spryk\Definition\Argument\Superseder;
 
+use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 
@@ -65,18 +66,22 @@ class Superseder implements SupersederInterface
      */
     protected function replacePlaceholderInValue(string $argumentValue, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments): string
     {
-        preg_match_all('/%(.*?)%/', $argumentValue, $matches, PREG_SET_ORDER);
+        preg_match_all('/{{(.*?)}}/', $argumentValue, $matches, PREG_SET_ORDER);
 
         if (count($matches) === 0) {
             return $argumentValue;
         }
 
+        $valueRenderer = new TemplateRenderer([]);
+
+        $replacements = [];
         foreach ($matches as $match) {
-            $argumentName = $match[1];
-            $placeholder = $match[0];
+            $argumentName = trim($match[1]);
             $resolvedArgumentValue = $this->getAlreadyResolvedValue($argumentName, $sprykArguments, $resolvedArguments);
-            $argumentValue = str_replace($placeholder, $resolvedArgumentValue, $argumentValue);
+            $replacements[$argumentName] = $resolvedArgumentValue;
         }
+
+        $argumentValue = $valueRenderer->render($argumentValue, $replacements);
 
         return $argumentValue;
     }

@@ -12,10 +12,10 @@ arguments:
     value: ZedDependencyFacadeInterface.php.twig
 
   targetFilename:
-    value: "%module%To%dependentModule%FacadeInterface.php"
+    value: "{{ module }}To{{ dependentModule }}FacadeInterface.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Dependency/Facade/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Facade/"
 
 preSpryks:
   - AddZedDependencyFacadeBridge

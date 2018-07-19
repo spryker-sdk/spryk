@@ -12,7 +12,9 @@ use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\DasherizeFilter;
 use Twig\Extension\DebugExtension;
 use Twig_Environment;
+use Twig_Loader_Chain;
 use Twig_Loader_Filesystem;
+use Twig_Loader_String;
 
 class TemplateRenderer implements TemplateRendererInterface
 {
@@ -27,7 +29,12 @@ class TemplateRenderer implements TemplateRendererInterface
     public function __construct(array $templateDirectories)
     {
         $loader = new Twig_Loader_Filesystem($templateDirectories);
-        $renderer = new Twig_Environment($loader, [
+
+        $chainLoader = new Twig_Loader_Chain();
+        $chainLoader->addLoader($loader);
+        $chainLoader->addLoader(new Twig_Loader_String());
+
+        $renderer = new Twig_Environment($chainLoader, [
             'debug' => true,
         ]);
         $renderer->addExtension(new DebugExtension());
@@ -62,9 +69,9 @@ class TemplateRenderer implements TemplateRendererInterface
     }
 
     /**
-     * @return \Twig_Loader_Filesystem|\Twig_LoaderInterface
+     * @return \Twig_LoaderInterface|\Twig_Loader_Chain
      */
-    protected function getLoader(): Twig_Loader_Filesystem
+    protected function getLoader()
     {
         return $this->renderer->getLoader();
     }

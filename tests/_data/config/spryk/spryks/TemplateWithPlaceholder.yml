@@ -9,4 +9,4 @@ arguments:
     value: composer.json.twig
 
   targetPath:
-    value: "%module%/"
+    value: "{{ module }}/"

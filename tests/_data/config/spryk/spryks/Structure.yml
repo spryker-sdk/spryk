@@ -9,4 +9,4 @@ arguments:
       - src/
 
   targetPath:
-    value: "%module%/"
+    value: "{{ module }}/"

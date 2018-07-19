@@ -14,10 +14,10 @@ arguments:
     value: include
 
   content:
-    value: "tests/SprykerTest/Zed/%module%"
+    value: "tests/SprykerTest/Zed/{{ module }}"
 
   targetPath:
-    value: "%module%/codeception.yml"
+    value: "{{ module }}/codeception.yml"
 
 preSpryks:
   - AddSprykerCodeceptionConfiguration

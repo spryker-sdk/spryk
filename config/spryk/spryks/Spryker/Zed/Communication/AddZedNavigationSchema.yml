@@ -11,7 +11,7 @@ arguments:
     value: navigation.xml.twig
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Communication/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/"
 
 preSpryks:
   - CreateSprykerModule
