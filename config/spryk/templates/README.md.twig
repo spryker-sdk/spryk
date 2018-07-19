@@ -1,13 +1,15 @@
 # {{ module }} Module
+[![Build Status](https://travis-ci.org/{{ organization | dasherize }}/{{ module | dasherize }}.svg)](https://travis-ci.org/{{ organization | dasherize }}/{{ module | dasherize }})
+[![Coverage Status](https://coveralls.io/repos/github/{{ organization | dasherize }}/{{ module | dasherize }}/badge.svg)](https://coveralls.io/github/{{ organization | dasherize }}/{{ module | dasherize }})
 
-ADD MODULE DESCRIPTION HERE
+{{ '{{' }}ADD DESCRIPTION HERE{{ '}}' }}
 
 ## Installation
 
 ```
-composer require spryker/{{ module | dasherize }}
+composer require {{ organization | dasherize }}/{{ module | dasherize}}
 ```
 
 ## Documentation
 
-[Module Documentation](https://academy.spryker.com/developing_with_spryker/module_guide/modules.html)
+[Spryker Documentation](https://academy.spryker.com/developing_with_spryker/module_guide/modules.html)
