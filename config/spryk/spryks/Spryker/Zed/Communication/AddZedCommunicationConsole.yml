@@ -18,7 +18,7 @@ arguments:
     value: "%className%Console.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Communication/Plugin/Console/"
+    default: "%module%/src/%organization%/Zed/%module%/Communication/Console/"
 
 preSpryks:
   - CreateSprykerModule

@@ -12,8 +12,13 @@ arguments:
     multiline: true
 
   method: ~
-  input: ~
-  output: ~
+
+  input:
+    isOptional: true
+    isMultiple: true
+
+  output:
+    isOptional: true
 
   annotations:
     value:

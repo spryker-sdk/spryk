@@ -218,6 +218,10 @@ class UpdateYmlSpryk implements SprykBuilderInterface
             return $targetYaml;
         }
 
+        if (in_array($content, $targetYaml[$addToElement])) {
+            return $targetYaml;
+        }
+
         $targetYaml[$addToElement][] = $content;
 
         return $targetYaml;
