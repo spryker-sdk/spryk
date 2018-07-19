@@ -66,7 +66,7 @@ class Superseder implements SupersederInterface
      */
     protected function replacePlaceholderInValue(string $argumentValue, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments): string
     {
-        preg_match_all('/{{(.*?)}}/', $argumentValue, $matches, PREG_SET_ORDER);
+        preg_match_all('/{{(.*?)[}|\|]/', $argumentValue, $matches, PREG_SET_ORDER);
 
         if (count($matches) === 0) {
             return $argumentValue;
