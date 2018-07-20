@@ -11,10 +11,10 @@ arguments:
     value: transfer.xml.twig
 
   targetFilename:
-    value: "{{ module | dasherize }}.transfer.xml"
+    value: "{{ module | snakeCase }}.transfer.xml"
 
   targetPath:
     default: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/Transfer/"
 
-#preSpryks:
-#  - CreateSprykerModule
+preSpryks:
+  - CreateSprykerModule
