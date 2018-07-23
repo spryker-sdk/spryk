@@ -11,6 +11,10 @@ use Codeception\Actor;
 use Spryker\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
 use Spryker\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoader;
 use Spryker\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Argument;
+use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
+use Spryker\Spryk\Model\Spryk\Definition\SprykDefinition;
+use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 
 /**
  * Inherited Methods
@@ -63,5 +67,29 @@ class SprykTester extends Actor
         $configurationLoader = new SprykConfigurationLoader($configurationFinder, $configurationMerger);
 
         return $configurationLoader->loadSpryk('SprykDefinition');
+    }
+
+    /**
+     * @param array $arguments
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     */
+    public function getSprykDefinition(array $arguments): SprykDefinitionInterface
+    {
+        $sprykArgumentCollection = new ArgumentCollection();
+
+        foreach ($arguments as $argumentKey => $argumentValue) {
+            $sprykArgument = new Argument();
+            $sprykArgument
+                ->setName($argumentKey)
+                ->setValue($argumentValue);
+
+            $sprykArgumentCollection->addArgument($sprykArgument);
+        }
+
+        $sprykDefinition = new SprykDefinition();
+        $sprykDefinition->setArgumentCollection($sprykArgumentCollection);
+
+        return $sprykDefinition;
     }
 }

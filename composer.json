@@ -16,7 +16,8 @@
     "spryker/kernel": "^3.0.0",
     "spryker/code-sniffer": "dev-master as 1.0.0",
     "php-coveralls/php-coveralls": "^1.0",
-    "spryker/git-hook": "dev-bugfix/core-4886-githook-broken"
+    "spryker/git-hook": "dev-bugfix/core-4886-githook-broken",
+    "phpstan/phpstan-phpunit": "^0.10.0"
   },
   "autoload": {
     "psr-4": {

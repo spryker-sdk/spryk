@@ -17,6 +17,7 @@ use Spryker\Spryk\Style\SprykStyleInterface;
 
 class MethodSpryk implements SprykBuilderInterface
 {
+    const ARGUMENT_TARGET = 'target';
     const ARGUMENT_TARGET_PATH = 'targetPath';
     const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
     const ARGUMENT_TEMPLATE = 'template';
@@ -26,11 +27,6 @@ class MethodSpryk implements SprykBuilderInterface
      * @var \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
     protected $renderer;
-
-    /**
-     * @param \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
-     */
-    const ARGUMENT_TARGET = 'target';
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
@@ -183,7 +179,7 @@ class MethodSpryk implements SprykBuilderInterface
         $targetFilename = $targetReflection->getFileName();
 
         if ($targetFilename === null) {
-            throw new ReflectionException('Filename is not expected to be null');
+            throw new ReflectionException('Filename is not expected to be null!');
         }
 
         return $targetFilename;
