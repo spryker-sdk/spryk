@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *module*.transfer.xml to the shared application."
+description: "Adds a new *module*.transfer.xml to the Shared application."
 
 arguments:
   module: ~
