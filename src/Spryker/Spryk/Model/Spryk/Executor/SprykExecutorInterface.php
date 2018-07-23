@@ -13,10 +13,10 @@ interface SprykExecutorInterface
 {
     /**
      * @param string $sprykName
-     * @param array|null $includeOptionalSubSpryks
+     * @param string[] $includeOptionalSubSpryks
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function execute(string $sprykName, ?array $includeOptionalSubSpryks, SprykStyleInterface $style): void;
+    public function execute(string $sprykName, array $includeOptionalSubSpryks, SprykStyleInterface $style): void;
 }

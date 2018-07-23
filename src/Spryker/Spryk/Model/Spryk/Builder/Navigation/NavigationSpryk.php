@@ -9,6 +9,7 @@ namespace Spryker\Spryk\Model\Spryk\Builder\Navigation;
 
 use DOMDocument;
 use SimpleXMLElement;
+use Spryker\Spryk\Exception\XmlException;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use Spryker\Spryk\Style\SprykStyleInterface;
@@ -85,6 +86,8 @@ class NavigationSpryk implements SprykBuilderInterface
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
      *
+     * @throws \Spryker\Spryk\Exception\XmlException
+     *
      * @return \SimpleXMLElement
      */
     protected function getXml(SprykDefinitionInterface $sprykerDefinition): SimpleXMLElement
@@ -92,12 +95,18 @@ class NavigationSpryk implements SprykBuilderInterface
         $targetPath = $this->getTargetPath($sprykerDefinition);
         $xml = simplexml_load_file($targetPath);
 
+        if (!($xml instanceof SimpleXMLElement)) {
+            throw new XmlException('Could not load xml file!');
+        }
+
         return $xml;
     }
 
     /**
-     * @param \Spryker\Zed\Ratepay\Business\Api\SimpleXMLElement $xml
+     * @param \SimpleXMLElement $xml
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @throws \Spryker\Spryk\Exception\XmlException
      *
      * @return void
      */
@@ -106,7 +115,11 @@ class NavigationSpryk implements SprykBuilderInterface
         $dom = new DOMDocument('1.0');
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = true;
-        $dom->loadXML($xml->asXML());
+        $xmlString = $xml->asXML();
+        if (!is_string($xmlString)) {
+            throw new XmlException('Could not get xml as string!');
+        }
+        $dom->loadXML($xmlString);
         $dom->save($this->getTargetPath($sprykDefinition));
     }
 

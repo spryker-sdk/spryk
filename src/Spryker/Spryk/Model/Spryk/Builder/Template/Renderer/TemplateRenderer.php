@@ -7,11 +7,13 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 
+use Spryker\Spryk\Exception\TwigException;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\CamelBackFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\DasherizeFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\UnderscoreFilter;
 use Twig\Extension\DebugExtension;
+use Twig\Loader\SourceContextLoaderInterface;
 use Twig_Environment;
 use Twig_Loader_Chain;
 use Twig_Loader_Filesystem;
@@ -61,17 +63,23 @@ class TemplateRenderer implements TemplateRendererInterface
     /**
      * @param string $template
      *
+     * @throws \Spryker\Spryk\Exception\TwigException
+     *
      * @return string
      */
     public function getSource(string $template): string
     {
         $loader = $this->getLoader();
 
+        if (!($loader instanceof SourceContextLoaderInterface)) {
+            throw new TwigException('Loader expected to be an instance of SourceContextLoaderInterface!');
+        }
+
         return $loader->getSourceContext($template)->getCode();
     }
 
     /**
-     * @return \Twig_LoaderInterface|\Twig_Loader_Chain
+     * @return \Twig_LoaderInterface
      */
     protected function getLoader()
     {

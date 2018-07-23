@@ -99,7 +99,13 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     protected function getTargetYamlAsArray(SprykDefinitionInterface $sprykerDefinition): array
     {
         $targetPath = $this->getTargetPath($sprykerDefinition);
-        $yaml = Yaml::parse(file_get_contents($targetPath));
+        $fileContent = file_get_contents($targetPath);
+
+        if (!$fileContent) {
+            return [];
+        }
+
+        $yaml = Yaml::parse($fileContent);
 
         return $yaml;
     }

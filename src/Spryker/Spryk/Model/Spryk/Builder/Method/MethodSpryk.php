@@ -8,6 +8,8 @@
 namespace Spryker\Spryk\Model\Spryk\Builder\Method;
 
 use Roave\BetterReflection\BetterReflection;
+use Spryker\Spryk\Exception\EmptyFileException;
+use Spryker\Spryk\Exception\ReflectionException;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
@@ -47,30 +49,30 @@ class MethodSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return bool
      */
-    public function shouldBuild(SprykDefinitionInterface $sprykerDefinition): bool
+    public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        return (!$this->methodExists($sprykerDefinition));
+        return (!$this->methodExists($sprykDefinition));
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
+    public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $targetFileContent = $this->getTargetFileContent($sprykerDefinition);
+        $targetFileContent = $this->getTargetFileContent($sprykDefinition);
 
-        $templateName = $this->getTemplateName($sprykerDefinition);
+        $templateName = $this->getTemplateName($sprykDefinition);
 
         $methodContent = $this->renderer->render(
             $templateName,
-            $sprykerDefinition->getArgumentCollection()->getArguments()
+            $sprykDefinition->getArgumentCollection()->getArguments()
         );
 
         $search = '}';
@@ -80,24 +82,24 @@ class MethodSpryk implements SprykBuilderInterface
             $targetFileContent = substr_replace($targetFileContent, $methodContent, $positionOfClosingBrace - 1, strlen($search));
         }
 
-        $this->putTargetFileContent($sprykerDefinition, $targetFileContent);
+        $this->putTargetFileContent($sprykDefinition, $targetFileContent);
 
         $style->report(sprintf(
             'Added method "<fg=green>%s</>" to "<fg=green>%s</>"',
-            $sprykerDefinition->getArgumentCollection()->getArgument('method'),
-            $sprykerDefinition->getArgumentCollection()->getArgument('target')
+            $sprykDefinition->getArgumentCollection()->getArgument('method'),
+            $sprykDefinition->getArgumentCollection()->getArgument('target')
         ));
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return bool
      */
-    protected function methodExists(SprykDefinitionInterface $sprykerDefinition): bool
+    protected function methodExists(SprykDefinitionInterface $sprykDefinition): bool
     {
-        $targetFileContent = $this->getTargetFileContent($sprykerDefinition);
-        $methodToCheck = sprintf('public function %s(', $this->getMethodName($sprykerDefinition));
+        $targetFileContent = $this->getTargetFileContent($sprykDefinition);
+        $methodToCheck = sprintf('public function %s(', $this->getMethodName($sprykDefinition));
 
         if (strpos($targetFileContent, $methodToCheck) !== false) {
             return true;
@@ -107,26 +109,26 @@ class MethodSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getTargetArgument(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getTargetArgument(SprykDefinitionInterface $sprykDefinition): string
     {
-        return $sprykerDefinition
+        return $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_TARGET)
             ->getValue();
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getTemplateName(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getTemplateName(SprykDefinitionInterface $sprykDefinition): string
     {
-        $templateName = $sprykerDefinition
+        $templateName = $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_TEMPLATE)
             ->getValue();
@@ -135,13 +137,13 @@ class MethodSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getMethodName(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getMethodName(SprykDefinitionInterface $sprykDefinition): string
     {
-        $methodName = $sprykerDefinition
+        $methodName = $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_METHOD_NAME)
             ->getValue();
@@ -150,39 +152,65 @@ class MethodSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @throws \Spryker\Spryk\Exception\EmptyFileException
      *
      * @return string
      */
-    protected function getTargetFileContent(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getTargetFileContent(SprykDefinitionInterface $sprykDefinition): string
     {
-        $targetReflection = $this->getReflection($sprykerDefinition);
+        $targetFileName = $this->getTargetFileName($sprykDefinition);
 
-        return file_get_contents($targetReflection->getFileName());
+        $targetFileContent = file_get_contents($targetFileName);
+        if (!$targetFileContent) {
+            throw new EmptyFileException(sprintf('Target file "%s" seems to be empty', $targetFileName));
+        }
+
+        return $targetFileContent;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @throws \Spryker\Spryk\Exception\ReflectionException
+     *
+     * @return string
+     */
+    protected function getTargetFileName(SprykDefinitionInterface $sprykDefinition): string
+    {
+        $targetReflection = $this->getReflection($sprykDefinition);
+        $targetFilename = $targetReflection->getFileName();
+
+        if ($targetFilename === null) {
+            throw new ReflectionException('Filename is not expected to be null');
+        }
+
+        return $targetFilename;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param string $newContent
      *
      * @return void
      */
-    protected function putTargetFileContent(SprykDefinitionInterface $sprykerDefinition, string $newContent): void
+    protected function putTargetFileContent(SprykDefinitionInterface $sprykDefinition, string $newContent): void
     {
-        $targetReflection = $this->getReflection($sprykerDefinition);
+        $targetFilename = $this->getTargetFileName($sprykDefinition);
 
-        file_put_contents($targetReflection->getFileName(), $newContent);
+        file_put_contents($targetFilename, $newContent);
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return \Roave\BetterReflection\Reflection\Reflection|\Roave\BetterReflection\Reflection\ReflectionClass
+     * @return \Roave\BetterReflection\Reflection\ReflectionClass
      */
-    protected function getReflection(SprykDefinitionInterface $sprykerDefinition)
+    protected function getReflection(SprykDefinitionInterface $sprykDefinition)
     {
         $betterReflection = new BetterReflection();
 
-        return $betterReflection->classReflector()->reflect($this->getTargetArgument($sprykerDefinition));
+        return $betterReflection->classReflector()->reflect($this->getTargetArgument($sprykDefinition));
     }
 }

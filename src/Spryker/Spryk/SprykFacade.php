@@ -18,12 +18,12 @@ class SprykFacade implements SprykFacadeInterface
 
     /**
      * @param string $sprykName
-     * @param array|null $includeOptionalSubSpryks
+     * @param string[] $includeOptionalSubSpryks
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function executeSpryk(string $sprykName, ?array $includeOptionalSubSpryks, SprykStyleInterface $style): void
+    public function executeSpryk(string $sprykName, array $includeOptionalSubSpryks, SprykStyleInterface $style): void
     {
         $this->getFactory()->createSprykExecutor()->execute($sprykName, $includeOptionalSubSpryks, $style);
     }

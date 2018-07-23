@@ -31,7 +31,7 @@ class ZedBusinessModelSubDirectoryCallback implements CallbackInterface
         $subDirectory = null;
         if (strpos($className, '\\') !== false) {
             $classNameFragments = explode('\\', $className);
-            $positionOfBusiness = array_search('Business', $classNameFragments);
+            $positionOfBusiness = (int)array_search('Business', $classNameFragments);
             $requiredSubDirectoryFragments = array_slice($classNameFragments, $positionOfBusiness + 1);
             array_pop($requiredSubDirectoryFragments);
             $subDirectory = implode(DIRECTORY_SEPARATOR, $requiredSubDirectoryFragments);

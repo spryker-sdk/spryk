@@ -44,7 +44,7 @@ class SprykDumpConsole extends AbstractSprykConsole
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[] $sprykDefinitions
+     * @param array $sprykDefinitions
      *
      * @return array
      */
