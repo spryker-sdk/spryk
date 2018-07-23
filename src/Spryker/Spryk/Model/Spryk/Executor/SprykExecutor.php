@@ -175,7 +175,7 @@ class SprykExecutor implements SprykExecutorInterface
             return false;
         }
 
-        if (isset($sprykDefinition->getConfig()['isOptional']) && !in_array($sprykDefinition->getSprykName(), $this->includeOptionalSubSpryks)) {
+        if (isset($sprykDefinition->getConfig()['isOptional']) && !in_array($sprykDefinition->getSprykName(), $this->includeOptionalSubSpryks, true)) {
             return false;
         }
 

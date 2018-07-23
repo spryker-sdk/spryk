@@ -104,7 +104,7 @@ class UpdateYmlSpryk implements SprykBuilderInterface
         $targetPath = $this->getTargetPath($sprykDefinition);
         $fileContent = file_get_contents($targetPath);
 
-        if (!$fileContent) {
+        if ($fileContent === false) {
             throw new YmlException(sprintf('Could not load yaml content from "%s"!', $targetPath));
         }
 
@@ -227,7 +227,7 @@ class UpdateYmlSpryk implements SprykBuilderInterface
             return $targetYaml;
         }
 
-        if (in_array($content, $targetYaml[$addToElement])) {
+        if (in_array($content, $targetYaml[$addToElement], true)) {
             return $targetYaml;
         }
 

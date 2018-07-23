@@ -43,16 +43,16 @@ class SprykConfig
      */
     protected function buildDirectoryList(?string $subDirectory = null): array
     {
-        $subDirectory = ($subDirectory) ? $subDirectory . DIRECTORY_SEPARATOR : DIRECTORY_SEPARATOR;
+        $subDirectory = (is_string($subDirectory)) ? $subDirectory . DIRECTORY_SEPARATOR : DIRECTORY_SEPARATOR;
 
         $directories = [];
         $projectSprykDirectory = realpath($this->getRootDirectory() . 'config/spryk/' . $subDirectory);
         $sprykModuleDirectory = realpath($this->getRootDirectory() . 'vendor/spryker/spryk/config/spryk/' . $subDirectory);
 
-        if ($projectSprykDirectory) {
+        if ($projectSprykDirectory !== false) {
             $directories[] = $projectSprykDirectory . DIRECTORY_SEPARATOR;
         }
-        if ($sprykModuleDirectory) {
+        if ($sprykModuleDirectory !== false) {
             $directories[] = $sprykModuleDirectory . DIRECTORY_SEPARATOR;
         }
 
