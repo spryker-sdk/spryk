@@ -10,7 +10,7 @@ namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\CamelBackFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\DasherizeFilter;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\SnakeCaseFilter;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\UnderscoreFilter;
 use Twig\Extension\DebugExtension;
 use Twig_Environment;
 use Twig_Loader_Chain;
@@ -40,7 +40,7 @@ class TemplateRenderer implements TemplateRendererInterface
         ]);
         $renderer->addExtension(new DebugExtension());
         $renderer->addFilter(new DasherizeFilter());
-        $renderer->addFilter(new SnakeCaseFilter());
+        $renderer->addFilter(new UnderscoreFilter());
         $renderer->addFilter(new ClassNameShortFilter());
         $renderer->addFilter(new CamelBackFilter());
 

@@ -12,11 +12,11 @@ use Zend\Filter\FilterChain;
 use Zend\Filter\StringToLower;
 use Zend\Filter\Word\CamelCaseToUnderscore;
 
-class SnakeCaseFilter extends TwigFilter
+class UnderscoreFilter extends TwigFilter
 {
     public function __construct()
     {
-        parent::__construct('snakeCase', $this->getCallback());
+        parent::__construct('underscored', $this->getCallback());
     }
 
     /**

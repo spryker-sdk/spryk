@@ -11,7 +11,7 @@ arguments:
     value: transfer.xml.twig
 
   targetFilename:
-    value: "{{ module | snakeCase }}.transfer.xml"
+    value: "{{ module | underscored }}.transfer.xml"
 
   targetPath:
     default: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/Transfer/"
