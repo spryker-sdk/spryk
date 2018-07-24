@@ -10,11 +10,10 @@ install:
     - composer install --optimize-autoloader --no-interaction
 
 script:
-    - vendor/bin/codecept run --coverage-xml
-    - Spryker/Spryk/Model/Spryk/Executor/SprykExecutor.php
-#    - vendor/bin/phpstan analyse tests/ -l 7 -c phpstan.neon
+    - vendor/bin/phpstan analyse src/ -l 7 -c phpstan.neon
     - vendor/bin/phpcs src -v -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml
     - vendor/bin/phpcs tests -v -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml
+    - vendor/bin/codecept run --coverage-xml
 
 notifications:
     email: false

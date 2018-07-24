@@ -50,8 +50,15 @@ class UpdateYmlSprykTest extends Unit
     {
         $this->expectException(YmlException::class);
 
+        $sprykDefinition = $this->tester->getSprykDefinition([
+                UpdateYmlSpryk::ARGUMENT_TARGET_PATH => static::TARGET_PATH_VALUE,
+        ]);
+
         $updateYmlSpryk = $this->buildUpdateYmlSpryk();
-        $updateYmlSpryk->build($this->tester->getSprykDefinition([UpdateYmlSpryk::ARGUMENT_TARGET_PATH => static::TARGET_PATH_VALUE]), $this->getSprykStyleMock());
+        $updateYmlSpryk->build(
+            $sprykDefinition,
+            $this->getSprykStyleMock()
+        );
     }
 
     /**

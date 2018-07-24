@@ -104,7 +104,7 @@ class UpdateYmlSpryk implements SprykBuilderInterface
         $targetPath = $this->getTargetPath($sprykDefinition);
         $fileContent = file_get_contents($targetPath);
 
-        if ($fileContent === false) {
+        if ($fileContent === false || strlen($fileContent) === 0) {
             throw new YmlException(sprintf('Could not load yaml content from "%s"!', $targetPath));
         }
 

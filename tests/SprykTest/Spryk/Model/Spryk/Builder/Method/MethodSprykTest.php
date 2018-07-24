@@ -41,7 +41,7 @@ class MethodSprykTest extends Unit
     {
         parent::setUp();
 
-        touch($this->tester->getRootDirectory() . static::EMPTY_FILE_NAME);
+        file_put_contents($this->tester->getRootDirectory() . static::EMPTY_FILE_NAME, '');
     }
 
     /**
@@ -83,7 +83,7 @@ class MethodSprykTest extends Unit
 
         $methodSprykMock = $mockBuilder->getMock();
         $methodSprykMock
-            ->expects($this->once())
+            ->expects(Unit::once())
             ->method('getReflection')
             ->willReturn(
                 $this->buildReflectionClassMock()
@@ -103,7 +103,7 @@ class MethodSprykTest extends Unit
 
         $methodSprykMock = $mockBuilder->getMock();
         $methodSprykMock
-            ->expects($this->once())
+            ->expects(Unit::once())
             ->method('getTargetFilename')
             ->willReturn(
                 codecept_data_dir() . static::EMPTY_FILE_NAME
@@ -122,7 +122,7 @@ class MethodSprykTest extends Unit
             ->setMethods(['getFilename']);
 
         $reflectionClassMock = $mockBuilder->getMock();
-        $reflectionClassMock->expects($this->once())->method('getFilename')->willReturn(null);
+        $reflectionClassMock->expects(Unit::once())->method('getFilename')->willReturn(null);
 
         return $reflectionClassMock;
     }

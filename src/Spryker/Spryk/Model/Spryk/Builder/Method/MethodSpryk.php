@@ -159,7 +159,7 @@ class MethodSpryk implements SprykBuilderInterface
         $targetFileName = $this->getTargetFileName($sprykDefinition);
 
         $targetFileContent = file_get_contents($targetFileName);
-        if ($targetFileContent === false) {
+        if ($targetFileContent === false || strlen($targetFileContent) === 0) {
             throw new EmptyFileException(sprintf('Target file "%s" seems to be empty', $targetFileName));
         }
 
