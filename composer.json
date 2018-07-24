@@ -7,18 +7,18 @@
     "twig/twig": "^1.22",
     "symfony/yaml": "^3.4.9",
     "zendframework/zend-filter": "^2.8",
-    "roave/better-reflection": "^3.0"
+    "roave/better-reflection": "^2.0 || ^3.0"
   },
   "require-dev": {
     "codeception/codeception": "*",
     "symfony/var-dumper": "^4.0.9",
-    "phpstan/phpstan": "^0.10.0",
+    "phpstan/phpstan": "^0.9.0 || ^0.10.0",
     "spryker/kernel": "^3.0.0",
     "spryker/code-sniffer": "dev-master as 1.0.0",
     "php-coveralls/php-coveralls": "^1.0",
     "spryker/git-hook": "dev-bugfix/core-4886-githook-broken",
-    "phpstan/phpstan-phpunit": "^0.10.0",
-    "phpstan/phpstan-strict-rules": "^0.10.1"
+    "phpstan/phpstan-phpunit": "^0.9.0 || ^0.10.0",
+    "phpstan/phpstan-strict-rules": "^0.9.0 || ^0.10.0"
   },
   "autoload": {
     "psr-4": {
