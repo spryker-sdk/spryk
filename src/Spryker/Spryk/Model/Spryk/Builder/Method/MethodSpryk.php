@@ -8,6 +8,7 @@
 namespace Spryker\Spryk\Model\Spryk\Builder\Method;
 
 use Roave\BetterReflection\BetterReflection;
+use Roave\BetterReflection\Reflection\ReflectionClass;
 use Spryker\Spryk\Exception\EmptyFileException;
 use Spryker\Spryk\Exception\ReflectionException;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
@@ -175,8 +176,7 @@ class MethodSpryk implements SprykBuilderInterface
      */
     protected function getTargetFileName(SprykDefinitionInterface $sprykDefinition): string
     {
-        $targetReflection = $this->getReflection($sprykDefinition);
-        $targetFilename = $targetReflection->getFileName();
+        $targetFilename = $this->getTargetFileNameFromReflectionClass($sprykDefinition);
 
         if ($targetFilename === null) {
             throw new ReflectionException('Filename is not expected to be null!');
@@ -201,12 +201,27 @@ class MethodSpryk implements SprykBuilderInterface
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return \Roave\BetterReflection\Reflection\ReflectionClass
+     * @return \Roave\BetterReflection\Reflection\ReflectionClass|\Roave\BetterReflection\Reflection\Reflection
      */
     protected function getReflection(SprykDefinitionInterface $sprykDefinition)
     {
         $betterReflection = new BetterReflection();
 
         return $betterReflection->classReflector()->reflect($this->getTargetArgument($sprykDefinition));
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return string|null
+     */
+    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition)
+    {
+        $targetReflection = $this->getReflection($sprykDefinition);
+        if (!($targetReflection instanceof ReflectionClass)) {
+            return null;
+        }
+
+        return $targetReflection->getFileName();
     }
 }
