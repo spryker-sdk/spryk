@@ -25,3 +25,5 @@ tests/_data/emptyFile
 tests/_data/vendor/*
 tests/_output
 tests/_support/_generated/
+
+composer.lock
