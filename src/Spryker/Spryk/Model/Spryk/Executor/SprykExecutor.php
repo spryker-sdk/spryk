@@ -32,7 +32,7 @@ class SprykExecutor implements SprykExecutorInterface
     /**
      * @var string[]
      */
-    protected $includeOptionalSubSpryks;
+    protected $includeOptionalSubSpryks = [];
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface $definitionBuilder
