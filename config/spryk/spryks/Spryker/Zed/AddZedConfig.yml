@@ -11,10 +11,10 @@ arguments:
     value: ZedConfig.php.twig
 
   targetFilename:
-    value: "%module%Config.php"
+    value: "{{ module }}Config.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/"
 
 preSpryks:
   - CreateSprykerModule

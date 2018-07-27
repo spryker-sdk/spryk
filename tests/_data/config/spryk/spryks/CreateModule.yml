@@ -10,7 +10,7 @@ arguments:
       - src/
 
   targetPath:
-    default: "%module%/"
+    default: "{{ module }}/"
 
 postSpryks:
   - AddReadme

@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *module*ConstantsInterface to the shared application."
+description: "Adds a new *module*ConstantsInterface to the Shared application."
 
 arguments:
   module: ~
@@ -11,10 +11,10 @@ arguments:
     value: SharedConstantsInterface.php.twig
 
   targetFilename:
-    value: "%module%Constants.php"
+    value: "{{ module }}Constants.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Shared/%module%/"
+    default: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/"
 
 preSpryks:
   - CreateSprykerModule

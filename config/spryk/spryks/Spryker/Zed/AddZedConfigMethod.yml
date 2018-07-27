@@ -16,7 +16,7 @@ arguments:
     value: Method.php.twig
 
   target:
-    value: "%organization%\\Zed\\%module%\\%module%Config"
+    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
 
 preSpryks:
   - AddZedConfig

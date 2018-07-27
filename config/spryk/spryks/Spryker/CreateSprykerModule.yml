@@ -10,11 +10,11 @@ arguments:
     default: Spryker
 
   targetPath:
-    default: "%module%/"
+    default: "{{ module }}/"
 
   directories:
     value:
-      - "src/%organization%/"
+      - "src/{{ organization }}/"
 
 postSpryks:
   - AddSprykerReadme

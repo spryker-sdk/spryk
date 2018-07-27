@@ -7,12 +7,17 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 
+use Spryker\Spryk\Exception\TwigException;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\CamelBackFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFilter;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\DasherizeFilter;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\UnderscoreFilter;
 use Twig\Extension\DebugExtension;
+use Twig\Loader\SourceContextLoaderInterface;
 use Twig_Environment;
+use Twig_Loader_Chain;
 use Twig_Loader_Filesystem;
+use Twig_Loader_String;
 
 class TemplateRenderer implements TemplateRendererInterface
 {
@@ -27,11 +32,17 @@ class TemplateRenderer implements TemplateRendererInterface
     public function __construct(array $templateDirectories)
     {
         $loader = new Twig_Loader_Filesystem($templateDirectories);
-        $renderer = new Twig_Environment($loader, [
+
+        $chainLoader = new Twig_Loader_Chain();
+        $chainLoader->addLoader($loader);
+        $chainLoader->addLoader(new Twig_Loader_String());
+
+        $renderer = new Twig_Environment($chainLoader, [
             'debug' => true,
         ]);
         $renderer->addExtension(new DebugExtension());
         $renderer->addFilter(new DasherizeFilter());
+        $renderer->addFilter(new UnderscoreFilter());
         $renderer->addFilter(new ClassNameShortFilter());
         $renderer->addFilter(new CamelBackFilter());
 
@@ -52,19 +63,25 @@ class TemplateRenderer implements TemplateRendererInterface
     /**
      * @param string $template
      *
+     * @throws \Spryker\Spryk\Exception\TwigException
+     *
      * @return string
      */
     public function getSource(string $template): string
     {
         $loader = $this->getLoader();
 
+        if (!($loader instanceof SourceContextLoaderInterface)) {
+            throw new TwigException('Loader expected to be an instance of SourceContextLoaderInterface!');
+        }
+
         return $loader->getSourceContext($template)->getCode();
     }
 
     /**
-     * @return \Twig_Loader_Filesystem|\Twig_LoaderInterface
+     * @return \Twig_LoaderInterface
      */
-    protected function getLoader(): Twig_Loader_Filesystem
+    protected function getLoader()
     {
         return $this->renderer->getLoader();
     }

@@ -8,7 +8,7 @@ arguments:
     value: CONTRIBUTING.md.twig
 
   targetPath:
-    default: "%module%/"
+    default: "{{ module }}/"
 
 preSpryks:
   - CreateSprykerModule

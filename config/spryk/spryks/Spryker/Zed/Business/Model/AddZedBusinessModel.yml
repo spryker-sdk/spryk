@@ -1,6 +1,11 @@
 spryk: template
 description: "Adds a new Business model to the Zed application."
 
+application: Zed
+layer: Business
+
+priority: 1
+
 arguments:
   module: ~
 
@@ -18,7 +23,7 @@ arguments:
     isMultiple: true
 
   interfaceName:
-    default: "%className%Interface"
+    default: "{{ className }}Interface"
 
   template:
     value: ZedBusinessModel.php.twig
@@ -28,7 +33,7 @@ arguments:
     callback: ZedBusinessModelTargetFilenameCallback
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Business/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
   - CreateSprykerModule

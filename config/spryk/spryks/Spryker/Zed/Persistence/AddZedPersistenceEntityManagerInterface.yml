@@ -11,10 +11,10 @@ arguments:
     value: ZedPersistenceEntityManagerInterface.php.twig
 
   targetFilename:
-    value: "%module%EntityManagerInterface.php"
+    value: "{{ module }}EntityManagerInterface.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Persistence/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
 
 preSpryks:
   - AddZedPersistenceEntityManager

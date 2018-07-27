@@ -12,4 +12,4 @@ arguments:
       - secondDirectory/
 
   targetPath:
-    value: "%module%/"
+    value: "{{ module }}/"

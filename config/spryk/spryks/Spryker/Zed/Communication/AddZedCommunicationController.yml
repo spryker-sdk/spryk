@@ -14,10 +14,10 @@ arguments:
     value: ZedCommunicationController.php.twig
 
   targetFilename:
-    value: "%controller%Controller.php"
+    value: "{{ controller }}Controller.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Communication/Controller/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
 
 preSpryks:
   - CreateSprykerModule

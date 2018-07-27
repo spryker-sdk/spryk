@@ -4,19 +4,24 @@
   "license": "MIT",
   "require": {
     "php": ">=7.1",
-    "twig/twig": "^1.22",
+    "twig/twig": "^1.34",
     "symfony/yaml": "^3.4.9",
     "zendframework/zend-filter": "^2.8",
-    "roave/better-reflection": "^2.0"
+    "roave/better-reflection": "^2.0 || ^3.0",
+    "symfony/finder": "^3.4.0 || ^4.0.0",
+    "spryker/kernel": "^3.17.0"
   },
   "require-dev": {
-    "codeception/codeception": "*",
+    "codeception/codeception": "^2.4.0",
     "symfony/var-dumper": "^4.0.9",
-    "phpstan/phpstan": "^0.8.5",
-    "spryker/kernel": "^3.0.0",
+    "phpstan/phpstan": "^0.9.0 || ^0.10.0",
+    "nette/utils": "^2.5.0",
+    "nette/finder": "^2.4.0",
     "spryker/code-sniffer": "dev-master as 1.0.0",
     "php-coveralls/php-coveralls": "^1.0",
-    "spryker/git-hook": "dev-bugfix/core-4886-githook-broken"
+    "spryker/git-hook": "dev-bugfix/core-4886-githook-broken",
+    "phpstan/phpstan-phpunit": "^0.9.0 || ^0.10.0",
+    "phpstan/phpstan-strict-rules": "^0.9.0 || ^0.10.0"
   },
   "autoload": {
     "psr-4": {

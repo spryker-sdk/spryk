@@ -18,7 +18,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "%className%Interface"
+    value: "{{ className }}Interface"
 
 preSpryks:
   - AddZedBusinessModel:

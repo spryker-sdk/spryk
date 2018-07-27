@@ -17,7 +17,7 @@ arguments:
     value: suites
 
   targetPath:
-    value: "%module%/tests/%organization%Test/Zed/%module%/codeception.yml"
+    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/codeception.yml"
 
 preSpryks:
   - AddZedTestCodeceptionConfiguration

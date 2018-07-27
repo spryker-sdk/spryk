@@ -8,6 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Auto-generated group annotations
@@ -34,5 +35,20 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedTestSuiteToCodeceptionConfigurationOnlyOnce(): void
+    {
+        $this->tester->run($this, ['--module' => 'FooBar']);
+        $this->tester->run($this, ['--module' => 'FooBar']);
+
+        $configurationFilePath = $this->tester->getModuleDirectory() . 'codeception.yml';
+        $this->assertFileExists($configurationFilePath);
+
+        $yaml = Yaml::parse(file_get_contents($configurationFilePath));
+        $this->assertCount(1, $yaml['include']);
     }
 }

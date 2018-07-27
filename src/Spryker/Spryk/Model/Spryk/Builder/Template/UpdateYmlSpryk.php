@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder\Template;
 
+use Spryker\Spryk\Exception\YmlException;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
@@ -53,67 +54,75 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return bool
      */
-    public function shouldBuild(SprykDefinitionInterface $sprykerDefinition): bool
+    public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
         return true;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
+    public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $targetYaml = $this->getTargetYaml($sprykerDefinition);
-        $targetYaml = $this->updateYaml($sprykerDefinition, $targetYaml);
+        $targetYaml = $this->getTargetYaml($sprykDefinition);
+        $targetYaml = $this->updateYaml($sprykDefinition, $targetYaml);
 
-        $this->dumpYamlToFile($sprykerDefinition, $targetYaml);
+        $this->dumpYamlToFile($sprykDefinition, $targetYaml);
 
-        $style->report(sprintf('Updated <fg=green>%s</>', $this->getTargetPath($sprykerDefinition)));
+        $style->report(sprintf('Updated <fg=green>%s</>', $this->getTargetPath($sprykDefinition)));
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return array
      */
-    protected function getTargetYaml(SprykDefinitionInterface $sprykerDefinition): array
+    protected function getTargetYaml(SprykDefinitionInterface $sprykDefinition): array
     {
-        $targetYaml = $this->getTargetYamlAsArray($sprykerDefinition);
-        $targetYaml = $this->prepareTargetYaml($sprykerDefinition, $targetYaml);
+        $targetYaml = $this->getTargetYamlAsArray($sprykDefinition);
+        $targetYaml = $this->prepareTargetYaml($sprykDefinition, $targetYaml);
 
         return $targetYaml;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @throws \Spryker\Spryk\Exception\YmlException
      *
      * @return array
      */
-    protected function getTargetYamlAsArray(SprykDefinitionInterface $sprykerDefinition): array
+    protected function getTargetYamlAsArray(SprykDefinitionInterface $sprykDefinition): array
     {
-        $targetPath = $this->getTargetPath($sprykerDefinition);
-        $yaml = Yaml::parse(file_get_contents($targetPath));
+        $targetPath = $this->getTargetPath($sprykDefinition);
+        $fileContent = file_get_contents($targetPath);
+
+        if ($fileContent === false || strlen($fileContent) === 0) {
+            throw new YmlException(sprintf('Could not load yaml content from "%s"!', $targetPath));
+        }
+
+        $yaml = Yaml::parse($fileContent);
 
         return $yaml;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param array $targetYaml
      *
      * @return array
      */
-    protected function prepareTargetYaml(SprykDefinitionInterface $sprykerDefinition, array $targetYaml): array
+    protected function prepareTargetYaml(SprykDefinitionInterface $sprykDefinition, array $targetYaml): array
     {
-        $addToElement = $this->getAddToElement($sprykerDefinition);
-        $afterElement = $this->getAfterElement($sprykerDefinition);
+        $addToElement = $this->getAddToElement($sprykDefinition);
+        $afterElement = $this->getAfterElement($sprykDefinition);
 
         $newTargetYaml = [];
 
@@ -131,13 +140,13 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getTargetPath(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getTargetPath(SprykDefinitionInterface $sprykDefinition): string
     {
-        $targetPath = $sprykerDefinition
+        $targetPath = $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_TARGET_PATH)
             ->getValue();
@@ -146,40 +155,40 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return mixed
      */
-    protected function getYamlToAdd(SprykDefinitionInterface $sprykerDefinition)
+    protected function getYamlToAdd(SprykDefinitionInterface $sprykDefinition)
     {
-        if ($sprykerDefinition->getArgumentCollection()->hasArgument(self::ARGUMENT_CONTENT)) {
-            return $sprykerDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_CONTENT)->getValue();
+        if ($sprykDefinition->getArgumentCollection()->hasArgument(self::ARGUMENT_CONTENT)) {
+            return $sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_CONTENT)->getValue();
         }
 
-        return $this->getSourceYamlAsArray($sprykerDefinition);
+        return $this->getSourceYamlAsArray($sprykDefinition);
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return array
      */
-    protected function getSourceYamlAsArray(SprykDefinitionInterface $sprykerDefinition): array
+    protected function getSourceYamlAsArray(SprykDefinitionInterface $sprykDefinition): array
     {
-        $content = $this->getContent($sprykerDefinition, $this->getTemplateName($sprykerDefinition));
+        $content = $this->getContent($sprykDefinition, $this->getTemplateName($sprykDefinition));
         $yaml = Yaml::parse($content);
 
         return $yaml;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getTemplateName(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getTemplateName(SprykDefinitionInterface $sprykDefinition): string
     {
-        $templateName = $sprykerDefinition
+        $templateName = $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_TEMPLATE)
             ->getValue();
@@ -188,33 +197,37 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param string $templateName
      *
      * @return string
      */
-    protected function getContent(SprykDefinitionInterface $sprykerDefinition, string $templateName): string
+    protected function getContent(SprykDefinitionInterface $sprykDefinition, string $templateName): string
     {
         return $this->renderer->render(
             $templateName,
-            $sprykerDefinition->getArgumentCollection()->getArguments()
+            $sprykDefinition->getArgumentCollection()->getArguments()
         );
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param array $targetYaml
      *
      * @return array
      */
-    protected function updateYaml(SprykDefinitionInterface $sprykerDefinition, array $targetYaml): array
+    protected function updateYaml(SprykDefinitionInterface $sprykDefinition, array $targetYaml): array
     {
-        $content = $this->getYamlToAdd($sprykerDefinition);
-        $addToElement = $this->getAddToElement($sprykerDefinition);
+        $content = $this->getYamlToAdd($sprykDefinition);
+        $addToElement = $this->getAddToElement($sprykDefinition);
 
         if (is_array($content)) {
             $targetYaml[$addToElement] = array_merge($targetYaml[$addToElement], $content);
 
+            return $targetYaml;
+        }
+
+        if (in_array($content, $targetYaml[$addToElement], true)) {
             return $targetYaml;
         }
 
@@ -224,13 +237,13 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getAddToElement(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getAddToElement(SprykDefinitionInterface $sprykDefinition): string
     {
-        $addToElement = $sprykerDefinition
+        $addToElement = $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_ADD_TO_ELEMENT)
             ->getValue();
@@ -239,13 +252,13 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getAfterElement(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getAfterElement(SprykDefinitionInterface $sprykDefinition): string
     {
-        $afterElement = $sprykerDefinition
+        $afterElement = $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_AFTER_ELEMENT)
             ->getValue();
@@ -254,15 +267,15 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param array $targetYaml
      *
      * @return void
      */
-    protected function dumpYamlToFile(SprykDefinitionInterface $sprykerDefinition, array $targetYaml): void
+    protected function dumpYamlToFile(SprykDefinitionInterface $sprykDefinition, array $targetYaml): void
     {
         $yamlContent = Yaml::dump($targetYaml, static::YAML_START_INLINE_LEVEL);
 
-        file_put_contents($this->getTargetPath($sprykerDefinition), $yamlContent);
+        file_put_contents($this->getTargetPath($sprykDefinition), $yamlContent);
     }
 }

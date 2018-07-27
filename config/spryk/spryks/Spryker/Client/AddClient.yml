@@ -12,10 +12,10 @@ arguments:
     value: Client.php.twig
 
   targetFilename:
-    value: "%module%Client.php"
+    value: "{{ module }}Client.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Client/%module%/"
+    default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
   - CreateSprykerModule

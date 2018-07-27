@@ -12,7 +12,7 @@ arguments:
     value: ZedBusinessFactory.php.twig
 
   targetFilename:
-    value: "%module%BusinessFactory.php"
+    value: "{{ module }}BusinessFactory.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Business/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"

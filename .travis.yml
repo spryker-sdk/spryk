@@ -3,18 +3,22 @@ language: php
 sudo: false
 
 php:
-    - 7.1
+    - 7.2
 
-install:
-    - composer remove --dev spryker/git-hook
-    - composer install --optimize-autoloader --no-interaction
+env:
+  - dependencies=lowest
+  - dependencies=highest
+
+before_script:
+  - composer remove --dev spryker/git-hook
+  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --no-interaction; fi;
+  - if [ "$dependencies" = "highest" ]; then composer update --no-interaction; fi;
 
 script:
-    - vendor/bin/codecept run --coverage-xml
     - vendor/bin/phpstan analyse src/ -l 7 -c phpstan.neon
-#    - vendor/bin/phpstan analyse tests/ -l 7 -c phpstan.neon
     - vendor/bin/phpcs src -v -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml
     - vendor/bin/phpcs tests -v -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml
+    - vendor/bin/codecept run --coverage-xml
 
 notifications:
     email: false

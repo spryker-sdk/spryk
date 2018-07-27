@@ -13,7 +13,7 @@ arguments:
       value: .coveralls.yml
 
   targetPath:
-    default: "%module%/"
+    default: "{{ module }}/"
 
 preSpryks:
   - CreateSprykerModule

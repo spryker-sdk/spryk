@@ -30,12 +30,24 @@ class ZedPresentationTwigNormalizeFileNameCallback implements CallbackInterface
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
         $targetFilename = $argumentCollection->getArgument('targetFilename')->getValue();
+        $targetFileNameWithoutExtension = $this->getTargetFileNameWithoutExtension($targetFilename);
+
+        return $targetFileNameWithoutExtension . '.twig';
+    }
+
+    /**
+     * @param string $targetFilename
+     *
+     * @return string
+     */
+    protected function getTargetFileNameWithoutExtension(string $targetFilename): string
+    {
         $targetFileNameWithoutExtension = str_replace('.twig', '', $targetFilename);
 
-        if (substr($targetFileNameWithoutExtension, - strlen(static::ACTION)) === static::ACTION) {
+        if (substr($targetFileNameWithoutExtension, -strlen(static::ACTION)) === static::ACTION) {
             $targetFileNameWithoutExtension = substr($targetFilename, 0, strlen(static::ACTION) - 1);
         }
 
-        return $targetFileNameWithoutExtension . '.twig';
+        return $targetFileNameWithoutExtension;
     }
 }

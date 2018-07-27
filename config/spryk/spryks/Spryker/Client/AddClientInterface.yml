@@ -11,10 +11,10 @@ arguments:
     value: ClientInterface.php.twig
 
   targetFilename:
-    value: "%module%ClientInterface.php"
+    value: "{{ module }}ClientInterface.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Client/%module%/"
+    default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
   - AddClient

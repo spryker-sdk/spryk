@@ -10,7 +10,7 @@ arguments:
     value: composer.json.twig
 
   targetPath:
-    value: "%module%/"
+    value: "{{ module }}/"
 
 # The postSpryk contains a call to this spryk, this would lead a unresolvable recursion.
 postSpryks:

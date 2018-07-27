@@ -18,17 +18,17 @@ interface SprykBuilderInterface
     public function getName(): string;
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return bool
      */
-    public function shouldBuild(SprykDefinitionInterface $sprykerDefinition): bool;
+    public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool;
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void;
+    public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void;
 }

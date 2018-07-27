@@ -1,6 +1,11 @@
 spryk: method
 description: "Adds a new method to the *target* business model."
 
+application: Zed
+layer: Business
+
+priority: 1
+
 arguments:
 
   module: ~
@@ -11,17 +16,22 @@ arguments:
   className: ~
 
   method: ~
-  input: ~
-  output: ~
+
+  input:
+    isOptional: true
+    isMultiple: true
+
+  output:
+    isOptional: true
 
   facadeMethod:
-    default: "%method%"
+    default: "{{ method }}"
 
   template:
     value: Method.php.twig
 
   target:
-    value: "%className%"
+    value: "{{ className }}"
 
 preSpryks:
   - AddZedBusinessModel:
@@ -38,4 +48,4 @@ postSpryks:
       isOptional: true
       arguments:
         method:
-          value: "%facadeMethod%"
+          value: "{{ facadeMethod }}"

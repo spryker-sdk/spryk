@@ -21,7 +21,7 @@ arguments:
     value: MethodZedCommunicationController.php.twig
 
   target:
-    value: "%organization%\\Zed\\%module%\\Communication\\Controller\\%controller%Controller"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller }}Controller"
 
 preSpryks:
   - AddZedCommunicationController

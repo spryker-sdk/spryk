@@ -19,7 +19,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "%organization%\\Client\\%module%\\%module%ClientInterface"
+    value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}ClientInterface"
 
 preSpryks:
   - AddClientInterface

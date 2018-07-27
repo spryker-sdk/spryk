@@ -11,10 +11,10 @@ arguments:
     value: ClientFactory.php.twig
 
   targetFilename:
-    value: "%module%Factory.php"
+    value: "{{ module }}Factory.php"
 
   targetPath:
-    default: "%module%/src/%organization%/Client/%module%/"
+    default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
   - CreateSprykerModule

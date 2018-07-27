@@ -21,11 +21,11 @@ arguments:
     value: ZedPresentationTwig.twig
 
   targetFilename:
-    value: "%method%.twig"
+    value: "{{ method }}.twig"
     callback: ZedPresentationTwigNormalizeFileNameCallback
 
   targetPath:
-    default: "%module%/src/%organization%/Zed/%module%/Presentation/%controller%/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller }}/"
 
 preSpryks:
   - AddZedCommunicationControllerMethod

@@ -9,6 +9,7 @@ namespace Spryker\Spryk\Model\Spryk\Builder\Navigation;
 
 use DOMDocument;
 use SimpleXMLElement;
+use Spryker\Spryk\Exception\XmlException;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use Spryker\Spryk\Style\SprykStyleInterface;
@@ -45,58 +46,75 @@ class NavigationSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return bool
      */
-    public function shouldBuild(SprykDefinitionInterface $sprykerDefinition): bool
+    public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
         return true;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
+    public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
+        $xml = $this->getXml($sprykDefinition);
+
         $dasherizeFilter = $this->getDasherizeFilter();
 
-        $module = $dasherizeFilter->filter($this->getModule($sprykerDefinition));
-        $controller = $dasherizeFilter->filter($this->getController($sprykerDefinition));
-        $action = $dasherizeFilter->filter($this->getAction($sprykerDefinition));
-
-        $xml = $this->getXml($sprykerDefinition);
+        $module = $dasherizeFilter->filter($this->getModule($sprykDefinition));
+        $controller = $dasherizeFilter->filter($this->getController($sprykDefinition));
+        $action = $dasherizeFilter->filter($this->getAction($sprykDefinition));
 
         $page = $xml->$module->pages->addChild($module);
-        $page->addChild('label', $this->getModule($sprykerDefinition));
-        $page->addChild('title', $this->getModule($sprykerDefinition));
+        $page->addChild('label', $this->getModule($sprykDefinition));
+        $page->addChild('title', $this->getModule($sprykDefinition));
         $page->addChild('bundle', $module);
         $page->addChild('controller', $controller);
         $page->addChild('action', $action);
 
-        $this->prettyPrintXml($xml, $sprykerDefinition);
+        $this->prettyPrintXml($xml, $sprykDefinition);
 
-        $style->report(sprintf('Added navigation entry in <fg=green>%s</>', $this->getTargetPath($sprykerDefinition)));
+        $style->report(sprintf('Added navigation entry in <fg=green>%s</>', $this->getTargetPath($sprykDefinition)));
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @throws \Spryker\Spryk\Exception\XmlException
      *
      * @return \SimpleXMLElement
      */
-    protected function getXml(SprykDefinitionInterface $sprykerDefinition): SimpleXMLElement
+    protected function getXml(SprykDefinitionInterface $sprykDefinition): SimpleXMLElement
     {
-        $targetPath = $this->getTargetPath($sprykerDefinition);
-        $xml = simplexml_load_file($targetPath);
+        $xml = $this->loadXmlFromFile($sprykDefinition);
+
+        if (!($xml instanceof SimpleXMLElement)) {
+            throw new XmlException('Could not load xml file!');
+        }
 
         return $xml;
     }
 
     /**
-     * @param \Spryker\Zed\Ratepay\Business\Api\SimpleXMLElement $xml
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return \SimpleXMLElement|false
+     */
+    protected function loadXmlFromFile(SprykDefinitionInterface $sprykDefinition)
+    {
+        $targetPath = $this->getTargetPath($sprykDefinition);
+
+        return simplexml_load_file($targetPath);
+    }
+
+    /**
+     * @param \SimpleXMLElement $xml
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return void
@@ -106,57 +124,77 @@ class NavigationSpryk implements SprykBuilderInterface
         $dom = new DOMDocument('1.0');
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = true;
-        $dom->loadXML($xml->asXML());
+
+        $dom->loadXML($this->getXmlAsString($xml));
         $dom->save($this->getTargetPath($sprykDefinition));
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @codeCoverageIgnore
+     *
+     * @param \SimpleXMLElement $xml
+     *
+     * @throws \Spryker\Spryk\Exception\XmlException
      *
      * @return string
      */
-    protected function getTargetPath(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getXmlAsString(SimpleXMLElement $xml): string
     {
-        return $this->rootDirectory . $sprykerDefinition
+        $xmlString = $xml->asXML();
+        if (!is_string($xmlString)) {
+            throw new XmlException('Could not get xml as string!');
+        }
+
+        return $xmlString;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return string
+     */
+    protected function getTargetPath(SprykDefinitionInterface $sprykDefinition): string
+    {
+        return $this->rootDirectory . $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_TARGET_PATH)
             ->getValue();
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getModule(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getModule(SprykDefinitionInterface $sprykDefinition): string
     {
-        return $sprykerDefinition
+        return $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_MODULE)
             ->getValue();
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getController(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getController(SprykDefinitionInterface $sprykDefinition): string
     {
-        return $sprykerDefinition
+        return $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_CONTROLLER)
             ->getValue();
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getAction(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getAction(SprykDefinitionInterface $sprykDefinition): string
     {
-        return $sprykerDefinition
+        return $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_ACTION)
             ->getValue();

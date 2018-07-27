@@ -12,7 +12,7 @@ arguments:
     value: FacadeInterface.php.twig
 
   targetFilename:
-    value: "%module%FacadeInterface.php"
+    value: "{{ module }}FacadeInterface.php"
 
   targetPath:
-    value: "%module%/src/%organization%/Zed/%module%/Business/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"

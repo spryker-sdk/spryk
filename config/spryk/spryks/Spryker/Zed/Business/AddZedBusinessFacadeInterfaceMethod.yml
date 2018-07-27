@@ -14,8 +14,12 @@ arguments:
   method:
     inherit: true
 
-  input: ~
-  output: ~
+  input:
+    isOptional: true
+    isMultiple: true
+
+  output:
+    isOptional: true
 
   annotations:
     value:
@@ -25,7 +29,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "%organization%\\Zed\\%module%\\Business\\%module%FacadeInterface"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}FacadeInterface"
 
 preSpryks:
   - AddZedBusinessFacadeInterface

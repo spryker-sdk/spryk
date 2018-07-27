@@ -47,27 +47,27 @@ class TemplateSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return bool
      */
-    public function shouldBuild(SprykDefinitionInterface $sprykerDefinition): bool
+    public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        $targetPath = $this->getTargetPath($sprykerDefinition);
+        $targetPath = $this->getTargetPath($sprykDefinition);
 
         return (!file_exists($targetPath));
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
+    public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $targetPath = $this->getTargetPath($sprykerDefinition);
-        $templateName = $this->getTemplateName($sprykerDefinition);
+        $targetPath = $this->getTargetPath($sprykDefinition);
+        $templateName = $this->getTemplateName($sprykDefinition);
 
         $targetDirectory = dirname($targetPath);
 
@@ -76,7 +76,7 @@ class TemplateSpryk implements SprykBuilderInterface
             $style->report(sprintf('Created <fg=green>%s</>', $targetDirectory));
         }
 
-        $content = $this->getContent($sprykerDefinition, $templateName);
+        $content = $this->getContent($sprykDefinition, $templateName);
 
         file_put_contents($targetPath, $content);
 
@@ -84,64 +84,64 @@ class TemplateSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getTargetPath(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getTargetPath(SprykDefinitionInterface $sprykDefinition): string
     {
-        $targetPath = $sprykerDefinition
+        $targetPath = $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_TARGET_PATH)
             ->getValue();
 
         $targetPath = rtrim($targetPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
-        $fileName = $this->getFilename($sprykerDefinition);
-        $subDirectory = $this->getSubDirectory($sprykerDefinition);
+        $fileName = $this->getFilename($sprykDefinition);
+        $subDirectory = $this->getSubDirectory($sprykDefinition);
 
         return $this->rootDirectory . $targetPath . $subDirectory . $fileName;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getFilename(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getFilename(SprykDefinitionInterface $sprykDefinition): string
     {
-        $filename = str_replace('.twig', '', $this->getTemplateName($sprykerDefinition));
+        $filename = str_replace('.twig', '', $this->getTemplateName($sprykDefinition));
 
-        if ($sprykerDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_TARGET_FILE_NAME)) {
-            $filename = $sprykerDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue();
+        if ($sprykDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_TARGET_FILE_NAME)) {
+            $filename = $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue();
         }
 
         return $filename;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getSubDirectory(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getSubDirectory(SprykDefinitionInterface $sprykDefinition): string
     {
         $subDirectory = '';
-        if ($sprykerDefinition->getArgumentCollection()->hasArgument('subDirectory') && $sprykerDefinition->getArgumentCollection()->getArgument('subDirectory')->getValue() !== null) {
-            $subDirectory = rtrim($sprykerDefinition->getArgumentCollection()->getArgument('subDirectory')->getValue(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        if ($sprykDefinition->getArgumentCollection()->hasArgument('subDirectory') && $sprykDefinition->getArgumentCollection()->getArgument('subDirectory')->getValue() !== null) {
+            $subDirectory = rtrim($sprykDefinition->getArgumentCollection()->getArgument('subDirectory')->getValue(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         }
 
         return $subDirectory;
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getTemplateName(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getTemplateName(SprykDefinitionInterface $sprykDefinition): string
     {
-        $templateName = $sprykerDefinition
+        $templateName = $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_TEMPLATE)
             ->getValue();
@@ -150,20 +150,20 @@ class TemplateSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param string $templateName
      *
      * @return string
      */
-    protected function getContent(SprykDefinitionInterface $sprykerDefinition, string $templateName): string
+    protected function getContent(SprykDefinitionInterface $sprykDefinition, string $templateName): string
     {
-        if (isset($sprykerDefinition->getConfig()['noRender'])) {
+        if (isset($sprykDefinition->getConfig()['noRender'])) {
             return $this->renderer->getSource($templateName);
         }
 
         return $this->renderer->render(
             $templateName,
-            $sprykerDefinition->getArgumentCollection()->getArguments()
+            $sprykDefinition->getArgumentCollection()->getArguments()
         );
     }
 }

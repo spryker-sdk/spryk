@@ -102,7 +102,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
      */
     protected function mergeArguments(array $arguments, ?array $preDefinedDefinition = null)
     {
-        if ($preDefinedDefinition && isset($preDefinedDefinition[static::ARGUMENTS])) {
+        if (is_array($preDefinedDefinition) && isset($preDefinedDefinition[static::ARGUMENTS])) {
             $arguments = array_merge($arguments, $preDefinedDefinition[static::ARGUMENTS]);
         }
 
@@ -139,7 +139,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
             $configuration = $sprykConfiguration['config'];
         }
 
-        if ($preDefinedConfiguration) {
+        if (is_array($preDefinedConfiguration)) {
             $configuration = array_merge($configuration, $preDefinedConfiguration);
         }
 

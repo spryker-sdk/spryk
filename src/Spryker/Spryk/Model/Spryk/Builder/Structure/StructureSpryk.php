@@ -38,14 +38,14 @@ class StructureSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return bool
      */
-    public function shouldBuild(SprykDefinitionInterface $sprykerDefinition): bool
+    public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
         $shouldBuild = false;
-        $directories = $this->getDirectoriesToCreate($sprykerDefinition);
+        $directories = $this->getDirectoriesToCreate($sprykDefinition);
 
         foreach ($directories as $directory) {
             if (!is_dir($directory)) {
@@ -57,14 +57,14 @@ class StructureSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function build(SprykDefinitionInterface $sprykerDefinition, SprykStyleInterface $style): void
+    public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $directories = $this->getDirectoriesToCreate($sprykerDefinition);
+        $directories = $this->getDirectoriesToCreate($sprykDefinition);
 
         foreach ($directories as $directory) {
             if (!is_dir($directory)) {
@@ -75,16 +75,16 @@ class StructureSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string[]
      */
-    protected function getDirectoriesToCreate(SprykDefinitionInterface $sprykerDefinition): array
+    protected function getDirectoriesToCreate(SprykDefinitionInterface $sprykDefinition): array
     {
         $directories = [];
-        $directoriesArgument = $sprykerDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_DIRECTORIES);
+        $directoriesArgument = $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_DIRECTORIES);
 
-        $moduleDirectory = $this->getBaseDirectory($sprykerDefinition);
+        $moduleDirectory = $this->getBaseDirectory($sprykDefinition);
         foreach ($directoriesArgument->getValue() as $directory) {
             $directories[] = $this->rootDirectory . $moduleDirectory . $directory;
         }
@@ -93,13 +93,13 @@ class StructureSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykerDefinition
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
-    protected function getBaseDirectory(SprykDefinitionInterface $sprykerDefinition): string
+    protected function getBaseDirectory(SprykDefinitionInterface $sprykDefinition): string
     {
-        $rootDirectory = $sprykerDefinition
+        $rootDirectory = $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_TARGET_PATH)
             ->getValue();

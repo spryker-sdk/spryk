@@ -11,7 +11,7 @@ arguments:
     value: codeception.yml.twig
 
   targetPath:
-    default: "%module%/"
+    default: "{{ module }}/"
 
 preSpryks:
   - CreateSprykerModule
