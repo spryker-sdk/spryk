@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: ZedPersistenceRepositoryInterface.php.twig
+    value: Zed/Persistence/ZedPersistenceRepositoryInterface.php.twig
 
   targetFilename:
     value: "{{ module }}RepositoryInterface.php"

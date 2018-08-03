@@ -35,6 +35,6 @@ class AddZedCommunicationConsoleTest extends Unit
             '--consoleCommand' => 'spryker:spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Console/FooBarConsole.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Console/FooBarConsole.php');
     }
 }

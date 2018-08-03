@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykTest\Spryk\Integration;
+namespace SprykTest\Spryk\Integration\Zed\Persistence\Propel;
 
 use Codeception\Test\Unit;
 
@@ -14,13 +14,14 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddClientFactoryTest
+ * @group Zed
+ * @group Persistence
+ * @group Propel
+ * @group AddZedPersistencePropelAbstractEntityTest
  * Add your own group annotations below this line
  */
-class AddClientFactoryTest extends Unit
+class AddZedPersistencePropelAbstractEntityTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddClientFactory';
-
     /**
      * @var \SprykTest\SprykIntegrationTester
      */
@@ -29,12 +30,14 @@ class AddClientFactoryTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientFactoryFile(): void
+    public function testAddsZedPersistenceAbstractEntityFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--targetModule' => 'FooBar',
+            '--tableName' => 'spy_foo_bar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarFactory.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/AbstractSpyFooBar.php');
     }
 }

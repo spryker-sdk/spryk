@@ -45,7 +45,7 @@ class SprykRunArgumentTest extends Unit
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();
-        $this->assertRegExp('/Enter value for Structure.module argument/', $output);
+        static::assertRegExp('/Enter value for Structure.module argument/', $output);
     }
 
     /**
@@ -84,7 +84,7 @@ class SprykRunArgumentTest extends Unit
 
         $output = $tester->getDisplay();
 
-        $this->assertRegExp('/Enter value for CreateModule.module argument/', $output);
-        $this->assertRegExp('/Enter value for AddReadme.module argument \[FooBar\]/', $output);
+        static::assertRegExp('/Enter value for CreateModule.module argument/', $output);
+        static::assertRegExp('/Enter value for AddReadme.module argument \[FooBar\]/', $output);
     }
 }

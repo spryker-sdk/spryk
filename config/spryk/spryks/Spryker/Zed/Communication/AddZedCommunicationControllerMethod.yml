@@ -18,7 +18,7 @@ arguments:
     default: void
 
   template:
-    value: MethodZedCommunicationController.php.twig
+    value: Zed/Communication/MethodZedCommunicationController.php.twig
 
   target:
     value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller }}Controller"

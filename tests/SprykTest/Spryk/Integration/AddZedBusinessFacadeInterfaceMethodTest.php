@@ -8,7 +8,6 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Business\FooBarFacadeInterface;
 
 /**
  * Auto-generated group annotations
@@ -42,7 +41,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
             ],
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarFacadeInterface::class, 'addSomething');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarFacadeInterface', 'addSomething');
     }
 
     /**
@@ -63,9 +62,10 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
 
         $pathToFacadeInterface = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/FooBarFacadeInterface.php';
         $facadeInterfaceContent = file_get_contents($pathToFacadeInterface);
+        $facadeInterfaceContent = ($facadeInterfaceContent) ?: '';
 
-        $this->assertRegExp('/\* Specification:/', $facadeInterfaceContent);
-        $this->assertRegExp('/\* - First specification line./', $facadeInterfaceContent);
-        $this->assertRegExp('/\* - Second specification line./', $facadeInterfaceContent);
+        static::assertRegExp('/\* Specification:/', $facadeInterfaceContent);
+        static::assertRegExp('/\* - First specification line./', $facadeInterfaceContent);
+        static::assertRegExp('/\* - Second specification line./', $facadeInterfaceContent);
     }
 }

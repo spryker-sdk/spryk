@@ -5,22 +5,22 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykTest\Spryk\Integration;
+namespace SprykTest\Spryk\Integration\Client;
 
 use Codeception\Test\Unit;
+use SprykTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddClientInterfaceTest
+ * @group Client
+ * @group AddClientMethodTest
  * Add your own group annotations below this line
  */
-class AddClientInterfaceTest extends Unit
+class AddClientMethodTest extends Unit
 {
-    protected const SPRYK_NAME = 'AddClientInterface';
-
     /**
      * @var \SprykTest\SprykIntegrationTester
      */
@@ -29,12 +29,15 @@ class AddClientInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientInterfaceFile(): void
+    public function testAddsMethodToClient(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--method' => 'addSomething',
+            '--input' => 'string $something',
+            '--output' => 'bool',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClientInterface.php');
+        $this->tester->assertClassHasMethod(ClassName::CLIENT, 'addSomething');
     }
 }

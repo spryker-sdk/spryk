@@ -50,7 +50,7 @@ class TemplateRendererTest extends Unit
             ->setMethods(['getLoader']);
 
         $templateRendererMock = $mockBuilder->getMock();
-        $templateRendererMock->expects($this->once())->method('getLoader')->willReturn(false);
+        $templateRendererMock->expects(static::once())->method('getLoader')->willReturn(false);
 
         return $templateRendererMock;
     }

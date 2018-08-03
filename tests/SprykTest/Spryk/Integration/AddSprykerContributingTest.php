@@ -33,6 +33,6 @@ class AddSprykerContributingTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'CONTRIBUTING.md');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'CONTRIBUTING.md');
     }
 }

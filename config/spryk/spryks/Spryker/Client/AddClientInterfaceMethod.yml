@@ -16,7 +16,7 @@ arguments:
     multiline: true
 
   template:
-    value: InterfaceMethod.php.twig
+    value: Common/InterfaceMethod.php.twig
 
   target:
     value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}ClientInterface"

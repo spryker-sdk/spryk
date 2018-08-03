@@ -9,7 +9,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Client.php.twig
+    value: Client/Client.php.twig
 
   targetFilename:
     value: "{{ module }}Client.php"

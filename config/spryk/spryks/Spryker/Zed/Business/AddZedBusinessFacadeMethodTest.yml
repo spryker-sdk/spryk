@@ -20,7 +20,7 @@ arguments:
     value: void
 
   template:
-    value: Method.php.twig
+    value: Common/Method.php.twig
 
   target:
     value: "{{ organization }}Test\\Zed\\{{ module }}\\Business\\{{ module }}FacadeTest"

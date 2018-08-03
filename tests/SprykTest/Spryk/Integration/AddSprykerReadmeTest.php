@@ -33,6 +33,6 @@ class AddSprykerReadmeTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'README.md');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'README.md');
     }
 }

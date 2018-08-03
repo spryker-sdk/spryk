@@ -5,20 +5,22 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykTest\Spryk\Integration;
+namespace SprykTest\Spryk\Integration\Zed\Persistence\Propel;
 
 use Codeception\Test\Unit;
-use Spryker\Client\FooBar\FooBarClient;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddClientMethodTest
+ * @group Zed
+ * @group Persistence
+ * @group Propel
+ * @group AddZedPersistenceAbstractQueryTest
  * Add your own group annotations below this line
  */
-class AddClientMethodTest extends Unit
+class AddZedPersistencePropelAbstractQueryTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester
@@ -28,15 +30,14 @@ class AddClientMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodToClient(): void
+    public function testAddsZedPersistenceAbstractQueryFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'addSomething',
-            '--input' => 'string $something',
-            '--output' => 'bool',
+            '--targetModule' => 'FooBar',
+            '--tableName' => 'spy_foo_bar',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarClient::class, 'addSomething');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/AbstractSpyFooBarQuery.php');
     }
 }

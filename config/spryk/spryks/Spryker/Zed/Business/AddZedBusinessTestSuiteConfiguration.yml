@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: ZedBusinessTestSuiteCodeceptionConfiguration.yml.twig
+    value: Zed/Business/ZedBusinessTestSuiteCodeceptionConfiguration.yml.twig
 
   afterElement:
     value: coverage

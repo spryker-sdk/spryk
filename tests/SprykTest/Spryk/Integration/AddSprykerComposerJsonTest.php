@@ -33,6 +33,6 @@ class AddSprykerComposerJsonTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'composer.json');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'composer.json');
     }
 }

@@ -33,6 +33,6 @@ class AddSharedConstantsInterfaceTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/FooBarConstants.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/FooBarConstants.php');
     }
 }

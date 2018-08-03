@@ -1,0 +1,21 @@
+spryk: schema
+description: "Adds a new table to the spy_*targetModule*.schema.xml."
+
+arguments:
+  module: ~
+  targetModule: ~
+  tableName:
+
+  organization:
+    default: Spryker
+
+  targetPath:
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/spy_{{ targetModule | underscored }}.schema.xml"
+
+preSpryks:
+  - AddZedPersistencePropelSchema
+
+
+postSpryks:
+  - AddZedPersistencePropelAbstractEntity
+  - AddZedPersistencePropelAbstractQuery

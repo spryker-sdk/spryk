@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykTest\Spryk\Integration;
+namespace SprykTest\Spryk\Integration\Client;
 
 use Codeception\Test\Unit;
 
@@ -14,10 +14,11 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddClientDependencyProviderTest
+ * @group Client
+ * @group AddClientTest
  * Add your own group annotations below this line
  */
-class AddClientDependencyProviderTest extends Unit
+class AddClientTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester
@@ -27,12 +28,12 @@ class AddClientDependencyProviderTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientDependencyProviderFile(): void
+    public function testAddsClientFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarDependencyProvider.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClient.php');
     }
 }

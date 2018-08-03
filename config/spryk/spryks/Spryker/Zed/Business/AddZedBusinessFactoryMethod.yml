@@ -22,7 +22,7 @@ arguments:
     isOptional: true
 
   template:
-    value: MethodBusinessFactory.php.twig
+    value: Zed/Business/MethodBusinessFactory.php.twig
 
   target:
     value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"

@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: transfer.xml.twig
+    value: Shared/transfer.xml.twig
 
   targetFilename:
     value: "{{ module | underscored }}.transfer.xml"

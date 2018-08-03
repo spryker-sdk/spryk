@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: YvesConfig.php.twig
+    value: Yves/YvesConfig.php.twig
 
   targetFilename:
     value: "{{ module }}Config.php"

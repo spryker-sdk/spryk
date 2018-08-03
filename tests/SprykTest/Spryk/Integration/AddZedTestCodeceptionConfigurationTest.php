@@ -33,6 +33,6 @@ class AddZedTestCodeceptionConfigurationTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/codeception.yml');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/codeception.yml');
     }
 }

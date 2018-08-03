@@ -33,6 +33,6 @@ class AddSprykerChangelogTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
     }
 }

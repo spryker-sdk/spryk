@@ -33,6 +33,6 @@ class AddSprykerScrutinizerTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.scrutinizer.yml');
+        static::assertFileExists($this->tester->getModuleDirectory() . '.scrutinizer.yml');
     }
 }

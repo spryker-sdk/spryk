@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: ZedBusinessFacadeTest.php.twig
+    value: Zed/Business/ZedBusinessFacadeTest.php.twig
 
   targetFilename:
     value: "{{ module }}FacadeTest.php"

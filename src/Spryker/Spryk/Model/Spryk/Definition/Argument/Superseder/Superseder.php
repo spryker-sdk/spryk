@@ -7,12 +7,25 @@
 
 namespace Spryker\Spryk\Model\Spryk\Definition\Argument\Superseder;
 
-use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 
 class Superseder implements SupersederInterface
 {
+    /**
+     * @var \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
+     */
+    protected $templateRenderer;
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $templateRenderer
+     */
+    public function __construct(TemplateRendererInterface $templateRenderer)
+    {
+        $this->templateRenderer = $templateRenderer;
+    }
+
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $sprykArguments
      * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $resolvedArguments
@@ -72,8 +85,6 @@ class Superseder implements SupersederInterface
             return $argumentValue;
         }
 
-        $valueRenderer = new TemplateRenderer([]);
-
         $replacements = [];
         foreach ($matches as $match) {
             $argumentName = trim($match[1]);
@@ -81,7 +92,7 @@ class Superseder implements SupersederInterface
             $replacements[$argumentName] = $resolvedArgumentValue;
         }
 
-        $argumentValue = $valueRenderer->render($argumentValue, $replacements);
+        $argumentValue = $this->templateRenderer->render($argumentValue, $replacements);
 
         return $argumentValue;
     }

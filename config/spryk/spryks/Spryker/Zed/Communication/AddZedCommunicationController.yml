@@ -11,7 +11,7 @@ arguments:
     default: Index
 
   template:
-    value: ZedCommunicationController.php.twig
+    value: Zed/Communication/ZedCommunicationController.php.twig
 
   targetFilename:
     value: "{{ controller }}Controller.php"

@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: ZedPersistenceEntityManagerInterface.php.twig
+    value: Zed/Persistence/ZedPersistenceEntityManagerInterface.php.twig
 
   targetFilename:
     value: "{{ module }}EntityManagerInterface.php"

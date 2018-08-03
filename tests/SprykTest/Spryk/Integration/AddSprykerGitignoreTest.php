@@ -33,6 +33,6 @@ class AddSprykerGitignoreTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.gitignore');
+        static::assertFileExists($this->tester->getModuleDirectory() . '.gitignore');
     }
 }

@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: navigation.xml.twig
+    value: Zed/Communication/navigation.xml.twig
 
   targetPath:
     default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/"

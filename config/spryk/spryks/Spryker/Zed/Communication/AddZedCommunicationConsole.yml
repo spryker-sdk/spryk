@@ -12,7 +12,7 @@ arguments:
   consoleCommand: ~
 
   template:
-    value: ZedCommunicationConsole.php.twig
+    value: Zed/Communication/ZedCommunicationConsole.php.twig
 
   targetFilename:
     value: "{{ className }}Console.php"

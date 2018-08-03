@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: ZedCommunicationFactory.php.twig
+    value: Zed/Communication/ZedCommunicationFactory.php.twig
 
   targetFilename:
     value: "{{ module }}CommunicationFactory.php"

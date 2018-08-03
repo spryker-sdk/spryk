@@ -8,7 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\FooBarConfig;
+use SprykTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -37,6 +37,6 @@ class AddZedConfigMethodTest extends Unit
             '--output' => 'string',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarConfig::class, 'getConfigValue');
+        $this->tester->assertClassHasMethod(ClassName::CONFIG_ZED, 'getConfigValue');
     }
 }

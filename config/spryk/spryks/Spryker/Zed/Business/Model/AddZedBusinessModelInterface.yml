@@ -16,7 +16,7 @@ arguments:
     default: "{{ className }}Interface"
 
   template:
-    value: ZedBusinessModelInterface.php.twig
+    value: Zed/Business/Model/ZedBusinessModelInterface.php.twig
 
   targetFilename:
     callbackOnly: true

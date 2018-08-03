@@ -33,6 +33,6 @@ class AddSprykerLicenseTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'LICENSE');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'LICENSE');
     }
 }

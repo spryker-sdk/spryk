@@ -26,7 +26,7 @@ arguments:
       - "@api"
 
   template:
-    value: Method.php.twig
+    value: Common/Method.php.twig
 
   target:
     value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}Facade"

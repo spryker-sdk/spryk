@@ -8,7 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Business\FooBarFacade;
+use SprykTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -42,6 +42,6 @@ class AddZedBusinessFacadeMethodTest extends Unit
             ],
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarFacade::class, 'addSomething');
+        $this->tester->assertClassHasMethod(ClassName::FACADE, 'addSomething');
     }
 }
