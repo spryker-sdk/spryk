@@ -10,6 +10,11 @@ namespace Spryker\Spryk\Model\Spryk\Filter;
 interface FilterInterface
 {
     /**
+     * @return string
+     */
+    public function getName(): string;
+
+    /**
      * @param string $value
      *
      * @return string

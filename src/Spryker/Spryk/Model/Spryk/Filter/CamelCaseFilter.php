@@ -13,6 +13,14 @@ use Zend\Filter\Word\UnderscoreToCamelCase;
 class CamelCaseFilter implements FilterInterface
 {
     /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'camelCased';
+    }
+
+    /**
      * @param string $value
      *
      * @return string

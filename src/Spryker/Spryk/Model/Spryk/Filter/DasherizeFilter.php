@@ -14,6 +14,14 @@ use Zend\Filter\Word\CamelCaseToDash;
 class DasherizeFilter implements FilterInterface
 {
     /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'dasherize';
+    }
+
+    /**
      * @param string $value
      *
      * @return string

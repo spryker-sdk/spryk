@@ -11,14 +11,14 @@ use Spryker\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Navigation\NavigationSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Schema\SchemaSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\TemplateFilter;
+use Spryker\Spryk\Model\Spryk\Builder\Template\Extension\TwigFilterExtension;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Template\UpdateYmlSpryk;
 use Spryker\Spryk\Model\Spryk\Filter\FilterFactory;
 use Spryker\Spryk\SprykConfig;
-use Twig\TwigFilter;
+use Twig\Extension\ExtensionInterface;
 
 class SprykBuilderFactory
 {
@@ -135,61 +135,29 @@ class SprykBuilderFactory
     {
         return new TemplateRenderer(
             $this->getConfig()->getTemplateDirectories(),
-            $this->getFilterCollection()
+            [$this->createFilterExtension()]
         );
     }
 
     /**
-     * @return \Twig\TwigFilter[]
+     * @return \Twig\Extension\ExtensionInterface
+     */
+    public function createFilterExtension(): ExtensionInterface
+    {
+        return new TwigFilterExtension($this->getFilterCollection());
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface[]
      */
     public function getFilterCollection(): array
     {
         return [
-            $this->createCamelBackFilter(),
-            $this->createClassNameShortFilter(),
-            $this->createDasherizeFilter(),
-            $this->createUnderscoreFilter(),
-            $this->createCamelCaseFilter(),
+            $this->filterFactory->createCamelBackFilter(),
+            $this->filterFactory->createClassNameShortFilter(),
+            $this->filterFactory->createDasherizeFilter(),
+            $this->filterFactory->createUnderscoreFilter(),
+            $this->filterFactory->createCamelCaseFilter(),
         ];
-    }
-
-    /**
-     * @return \Twig\TwigFilter
-     */
-    protected function createCamelBackFilter(): TwigFilter
-    {
-        return new TemplateFilter($this->filterFactory->createCamelBackFilter(), 'camelBack');
-    }
-
-    /**
-     * @return \Twig\TwigFilter
-     */
-    protected function createClassNameShortFilter(): TwigFilter
-    {
-        return new TemplateFilter($this->filterFactory->createClassNameShortFilter(), 'classNameShort');
-    }
-
-    /**
-     * @return \Twig\TwigFilter
-     */
-    protected function createDasherizeFilter(): TwigFilter
-    {
-        return new TemplateFilter($this->filterFactory->createDasherizeFilter(), 'dasherize');
-    }
-
-    /**
-     * @return \Twig\TwigFilter
-     */
-    protected function createUnderscoreFilter(): TwigFilter
-    {
-        return new TemplateFilter($this->filterFactory->createUnderscoreFilter(), 'underscored');
-    }
-
-    /**
-     * @return \Twig\TwigFilter
-     */
-    protected function createCamelCaseFilter(): TwigFilter
-    {
-        return new TemplateFilter($this->filterFactory->createCamelCaseFilter(), 'camelCased');
     }
 }

@@ -14,6 +14,14 @@ use Zend\Filter\Word\CamelCaseToUnderscore;
 class UnderscoreFilter implements FilterInterface
 {
     /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'underscored';
+    }
+
+    /**
      * @param string $value
      *
      * @return string

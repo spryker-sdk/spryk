@@ -92,7 +92,7 @@ class Superseder implements SupersederInterface
             $replacements[$argumentName] = $resolvedArgumentValue;
         }
 
-        $argumentValue = $this->templateRenderer->render($argumentValue, $replacements);
+        $argumentValue = $this->templateRenderer->renderString($argumentValue, $replacements);
 
         return $argumentValue;
     }

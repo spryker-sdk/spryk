@@ -10,6 +10,14 @@ namespace Spryker\Spryk\Model\Spryk\Filter;
 class ClassNameShortFilter implements FilterInterface
 {
     /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'classNameShort';
+    }
+
+    /**
      * @param string $value
      *
      * @return string
