@@ -4,7 +4,7 @@ description: "Adds a new table to the spy_*targetModule*.schema.xml."
 arguments:
   module: ~
   targetModule: ~
-  tableName:
+  tableName: ~
 
   organization:
     default: Spryker
