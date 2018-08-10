@@ -13,7 +13,8 @@ arguments:
   organization:
     default: Spryker
 
-  className: ~
+  className:
+    isChoice: true
 
   method: ~
 
