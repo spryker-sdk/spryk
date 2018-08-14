@@ -19,6 +19,9 @@ arguments:
 
   constructorArguments:
     type: ZedBusinessDependency
+    typeOptions:
+        - module
+        - spryk
     isOptional: true
     isMultiple: true
 
