@@ -7,7 +7,7 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Persistence\Propel;
 
-use Orm\Zed\{{ module }}\Persistence\Base\{{ tableName | camelCased }} as Base{{ tableName | camelCased }};
+use Orm\Zed\{{ module }}\Persistence\Base\{{ tableName | camelCased }};
 
 /**
  * Skeleton subclass for representing a row from the '{{ tableName }}' table.
@@ -18,6 +18,6 @@ use Orm\Zed\{{ module }}\Persistence\Base\{{ tableName | camelCased }} as Base{{
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-abstract class Abstract{{ tableName | camelCased }} extends Base{{ tableName | camelCased }}
+abstract class Abstract{{ tableName | camelCased }} extends {{ tableName | camelCased }}
 {
 }

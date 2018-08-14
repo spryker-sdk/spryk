@@ -7,7 +7,7 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Persistence\Propel;
 
-use Orm\Zed\{{ module }}\Persistence\Base\{{ tableName | camelCased }}Query as Base{{ tableName | camelCased }}Query;
+use Orm\Zed\{{ module }}\Persistence\Base\{{ tableName | camelCased }}Query;
 
 /**
  * Skeleton subclass for performing query and update operations on the '{{ tableName }}' table.
@@ -18,6 +18,6 @@ use Orm\Zed\{{ module }}\Persistence\Base\{{ tableName | camelCased }}Query as B
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-abstract class Abstract{{ tableName | camelCased }}Query extends Base{{ tableName | camelCased }}Query
+abstract class Abstract{{ tableName | camelCased }}Query extends {{ tableName | camelCased }}Query
 {
 } // {{ tableName | camelCased }}Query
