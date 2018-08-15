@@ -8,7 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Persistence\FooBarRepositoryInterface;
+use SprykTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -37,6 +37,6 @@ class AddZedPersistenceRepositoryInterfaceMethodTest extends Unit
             '--output' => 'array',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarRepositoryInterface::class, 'doSomething');
+        $this->tester->assertClassHasMethod(ClassName::REPOSITORY_INTERFACE, 'doSomething');
     }
 }

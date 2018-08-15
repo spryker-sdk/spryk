@@ -33,6 +33,6 @@ class AddSprykerTravisTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.travis.yml');
+        static::assertFileExists($this->tester->getModuleDirectory() . '.travis.yml');
     }
 }

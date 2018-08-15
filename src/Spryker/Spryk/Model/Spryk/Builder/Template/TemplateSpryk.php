@@ -110,7 +110,7 @@ class TemplateSpryk implements SprykBuilderInterface
      */
     protected function getFilename(SprykDefinitionInterface $sprykDefinition): string
     {
-        $filename = str_replace('.twig', '', $this->getTemplateName($sprykDefinition));
+        $filename = $this->getFilenameFromTemplateName($sprykDefinition);
 
         if ($sprykDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_TARGET_FILE_NAME)) {
             $filename = $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue();
@@ -165,5 +165,21 @@ class TemplateSpryk implements SprykBuilderInterface
             $templateName,
             $sprykDefinition->getArgumentCollection()->getArguments()
         );
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return string
+     */
+    protected function getFilenameFromTemplateName(SprykDefinitionInterface $sprykDefinition): string
+    {
+        $filename = str_replace('.twig', '', $this->getTemplateName($sprykDefinition));
+        if (strpos($filename, '/') !== false) {
+            $filenameFragments = explode('/', $filename);
+            $filename = (string)array_pop($filenameFragments);
+        }
+
+        return $filename;
     }
 }

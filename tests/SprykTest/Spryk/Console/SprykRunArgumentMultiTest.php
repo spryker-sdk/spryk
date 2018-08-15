@@ -44,8 +44,10 @@ class SprykRunArgumentMultiTest extends Unit
 
         $pathToFacadeInterface = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacadeInterface.php';
         $facadeInterfaceContent = file_get_contents($pathToFacadeInterface);
-        $this->assertRegExp('/\* Specification:/', $facadeInterfaceContent);
-        $this->assertRegExp('/\* - First specification line./', $facadeInterfaceContent);
-        $this->assertRegExp('/\* - Second specification line./', $facadeInterfaceContent);
+        $facadeInterfaceContent = ($facadeInterfaceContent) ?: '';
+
+        static::assertRegExp('/\* Specification:/', $facadeInterfaceContent);
+        static::assertRegExp('/\* - First specification line./', $facadeInterfaceContent);
+        static::assertRegExp('/\* - Second specification line./', $facadeInterfaceContent);
     }
 }

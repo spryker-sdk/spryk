@@ -36,11 +36,11 @@ class AddZedNavigationNodeTest extends Unit
         ]);
 
         $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
-        $this->assertFileExists($pathToNavigationSchema);
+        static::assertFileExists($pathToNavigationSchema);
         $xmlContent = file_get_contents($pathToNavigationSchema);
-
-        $this->assertRegExp('/\<bundle\>foo-bar\<\/bundle\>/', $xmlContent);
-        $this->assertRegExp('/\<controller\>index\<\/controller\>/', $xmlContent);
-        $this->assertRegExp('/\<action\>index\<\/action\>/', $xmlContent);
+        $xmlContent = ($xmlContent) ?: '';
+        static::assertRegExp('/\<bundle\>foo-bar\<\/bundle\>/', $xmlContent);
+        static::assertRegExp('/\<controller\>index\<\/controller\>/', $xmlContent);
+        static::assertRegExp('/\<action\>index\<\/action\>/', $xmlContent);
     }
 }

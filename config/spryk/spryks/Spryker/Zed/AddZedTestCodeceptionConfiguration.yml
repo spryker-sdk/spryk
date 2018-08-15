@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: ZedTestCodeceptionConfiguration.yml.twig
+    value: Zed/ZedTestCodeceptionConfiguration.yml.twig
 
   targetPath:
     value: "{{ module }}/tests/SprykerTest/Zed/{{ module }}/"

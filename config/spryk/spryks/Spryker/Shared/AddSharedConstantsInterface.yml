@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: SharedConstantsInterface.php.twig
+    value: Shared/SharedConstantsInterface.php.twig
 
   targetFilename:
     value: "{{ module }}Constants.php"

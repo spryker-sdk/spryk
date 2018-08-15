@@ -15,7 +15,7 @@ arguments:
   output: ~
 
   template:
-    value: InterfaceMethod.php.twig
+    value: Common/InterfaceMethod.php.twig
 
   target:
     value: "{{ className }}Interface"

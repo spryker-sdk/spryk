@@ -34,6 +34,6 @@ class AddSprykerCoverallsTest extends Unit
             '--repositoryToken' => 'uzf78t67832fe76923f764f3249f329f)&/vuzf76&/R',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.coveralls.yml');
+        static::assertFileExists($this->tester->getModuleDirectory() . '.coveralls.yml');
     }
 }

@@ -13,7 +13,7 @@ arguments:
   output: ~
 
   template:
-    value: Method.php.twig
+    value: Common/Method.php.twig
 
   target:
     value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}Config"

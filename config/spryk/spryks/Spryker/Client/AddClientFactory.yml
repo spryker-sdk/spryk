@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: ClientFactory.php.twig
+    value: Client/ClientFactory.php.twig
 
   targetFilename:
     value: "{{ module }}Factory.php"

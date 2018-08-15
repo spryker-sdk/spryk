@@ -18,7 +18,7 @@ arguments:
     default: indexAction
 
   template:
-    value: ZedPresentationTwig.twig
+    value: Zed/Presentation/ZedPresentationTwig.twig
 
   targetFilename:
     value: "{{ method }}.twig"

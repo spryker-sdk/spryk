@@ -41,6 +41,6 @@ class SprykRunArgumentDefinedValueTest extends Unit
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();
-        $this->assertNotRegExp('/Enter value for module argument/', $output);
+        static::assertNotRegExp('/Enter value for module argument/', $output);
     }
 }

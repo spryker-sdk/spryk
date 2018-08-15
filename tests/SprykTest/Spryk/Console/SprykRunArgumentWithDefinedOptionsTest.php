@@ -46,8 +46,8 @@ class SprykRunArgumentWithDefinedOptionsTest extends Unit
 
         $output = $tester->getDisplay();
 
-        $this->assertNotRegExp('/Enter value for module argument/', $output);
-        $this->assertNotRegExp('/Enter value for targetPath argument/', $output);
+        static::assertNotRegExp('/Enter value for module argument/', $output);
+        static::assertNotRegExp('/Enter value for targetPath argument/', $output);
 
         OptionsContainer::clearOptions();
     }

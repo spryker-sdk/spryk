@@ -33,6 +33,6 @@ class CreateSprykerModuleTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src');
+        static::assertDirectoryExists($this->tester->getModuleDirectory() . 'src');
     }
 }

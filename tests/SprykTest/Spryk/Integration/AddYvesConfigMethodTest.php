@@ -8,7 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Yves\FooBar\FooBarConfig;
+use SprykTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -37,6 +37,6 @@ class AddYvesConfigMethodTest extends Unit
             '--output' => 'string',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarConfig::class, 'getConfigValue');
+        $this->tester->assertClassHasMethod(ClassName::CONFIG_YVES, 'getConfigValue');
     }
 }

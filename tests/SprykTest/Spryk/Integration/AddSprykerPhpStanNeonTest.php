@@ -33,6 +33,6 @@ class AddSprykerPhpStanNeonTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'phpstan.neon');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'phpstan.neon');
     }
 }

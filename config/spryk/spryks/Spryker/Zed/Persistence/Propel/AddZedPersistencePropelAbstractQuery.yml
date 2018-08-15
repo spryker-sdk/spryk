@@ -1,0 +1,25 @@
+spryk: template
+description: "Adds a new Abstract*tableName*Query class to Zed's persistence layer."
+
+arguments:
+  module: ~
+  targetModule: ~
+  tableName: ~
+
+  organization:
+    default: Spryker
+
+  template:
+    value: Zed/Persistence/Propel/AbstractQuery.php.twig
+
+  targetFilename:
+    value: "Abstract{{ tableName | camelCased }}Query.php"
+
+  targetPath:
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/"
+
+preSpryks:
+  - AddZedPersistencePropelSchemaTable
+
+postSpryks:
+  - AddZedPersistencePropelAbstractEntity

@@ -33,6 +33,6 @@ class AddZedCommunicationFactoryTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/FooBarCommunicationFactory.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/FooBarCommunicationFactory.php');
     }
 }

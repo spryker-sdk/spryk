@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: ClientDependencyProvider.php.twig
+    value: Client/ClientDependencyProvider.php.twig
 
   targetFilename:
     value: "{{ module }}DependencyProvider.php"

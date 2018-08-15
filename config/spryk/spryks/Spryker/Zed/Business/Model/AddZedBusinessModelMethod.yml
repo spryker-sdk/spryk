@@ -29,7 +29,7 @@ arguments:
     default: "{{ method }}"
 
   template:
-    value: Method.php.twig
+    value: Common/Method.php.twig
 
   target:
     value: "{{ className }}"

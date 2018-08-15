@@ -8,7 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Persistence\FooBarEntityManager;
+use SprykTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -37,6 +37,6 @@ class AddZedPersistenceEntityManagerMethodTest extends Unit
             '--output' => 'array',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarEntityManager::class, 'doSomething');
+        $this->tester->assertClassHasMethod(ClassName::ENTITY_MANAGER, 'doSomething');
     }
 }

@@ -13,7 +13,7 @@ arguments:
   output: ~
 
   template:
-    value: InterfaceMethod.php.twig
+    value: Common/InterfaceMethod.php.twig
 
   target:
     value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}RepositoryInterface"

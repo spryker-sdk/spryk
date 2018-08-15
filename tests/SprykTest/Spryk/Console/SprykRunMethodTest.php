@@ -9,7 +9,6 @@ namespace SprykTest\Spryk\Console;
 
 use Codeception\Test\Unit;
 use Spryker\Spryk\Console\SprykRunConsole;
-use Spryker\Zed\FooBar\Business\FooBarFacade;
 
 /**
  * Auto-generated group annotations
@@ -42,10 +41,11 @@ class SprykRunMethodTest extends Unit
         $tester->execute($arguments);
 
         $targetFile = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacade.php';
-        $this->assertFileExists($targetFile);
+        static::assertFileExists($targetFile);
         $fileContent = file_get_contents($targetFile);
+        $fileContent = ($fileContent) ?: '';
 
-        $this->assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
+        static::assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
     }
 
     /**
@@ -65,10 +65,11 @@ class SprykRunMethodTest extends Unit
         $tester->execute($arguments);
 
         $targetFile = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacade.php';
-        $this->assertFileExists($targetFile);
+        static::assertFileExists($targetFile);
         $fileContent = file_get_contents($targetFile);
+        $fileContent = ($fileContent) ?: '';
 
-        $this->assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
+        static::assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
     }
 
     /**
@@ -90,7 +91,7 @@ class SprykRunMethodTest extends Unit
  *
  * @return bool
  */';
-        $this->tester->assertDocBlockForClassMethod($expectedDocBlock, FooBarFacade::class, 'doSomething');
+        $this->tester->assertDocBlockForClassMethod($expectedDocBlock, 'Spryker\Zed\FooBar\Business\FooBarFacade', 'doSomething');
     }
 
     /**
@@ -114,6 +115,6 @@ class SprykRunMethodTest extends Unit
  *
  * @return bool
  */';
-        $this->tester->assertDocBlockForClassMethod($expectedDocBlock, FooBarFacade::class, 'doSomething');
+        $this->tester->assertDocBlockForClassMethod($expectedDocBlock, 'Spryker\Zed\FooBar\Business\FooBarFacade', 'doSomething');
     }
 }

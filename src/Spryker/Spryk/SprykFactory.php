@@ -26,6 +26,7 @@ use Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumper;
 use Spryker\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutor;
 use Spryker\Spryk\Model\Spryk\Executor\SprykExecutorInterface;
+use Spryker\Spryk\Model\Spryk\Filter\FilterFactory;
 
 class SprykFactory
 {
@@ -82,8 +83,17 @@ class SprykFactory
     public function createSprykBuilderFactory(): SprykBuilderFactory
     {
         return new SprykBuilderFactory(
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createFilterFactory()
         );
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Filter\FilterFactory
+     */
+    public function createFilterFactory()
+    {
+        return new FilterFactory();
     }
 
     /**
@@ -103,7 +113,9 @@ class SprykFactory
      */
     public function createSuperseder(): SupersederInterface
     {
-        return new Superseder();
+        return new Superseder(
+            $this->createSprykBuilderFactory()->createTemplateRenderer()
+        );
     }
 
     /**

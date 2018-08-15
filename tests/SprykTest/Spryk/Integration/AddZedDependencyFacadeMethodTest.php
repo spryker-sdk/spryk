@@ -8,7 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Dependency\Facade\FooBarToZipZapFacadeBridge;
+use SprykTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -39,6 +39,6 @@ class AddZedDependencyFacadeMethodTest extends Unit
             '--output' => 'array',
         ]);
 
-        $this->tester->assertClassHasMethod(FooBarToZipZapFacadeBridge::class, 'doSomething');
+        $this->tester->assertClassHasMethod(ClassName::BRIDGE, 'doSomething');
     }
 }

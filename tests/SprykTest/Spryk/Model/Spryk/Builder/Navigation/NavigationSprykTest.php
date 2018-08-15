@@ -68,7 +68,7 @@ class NavigationSprykTest extends Unit
             ->setMethods(['loadXmlFromFile']);
 
         $navigationMock = $mockBuilder->getMock();
-        $navigationMock->expects($this->once())->method('loadXmlFromFile')->willReturn(false);
+        $navigationMock->expects(static::once())->method('loadXmlFromFile')->willReturn(false);
 
         return $navigationMock;
     }

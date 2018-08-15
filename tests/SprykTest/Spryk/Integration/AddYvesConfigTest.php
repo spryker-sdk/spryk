@@ -33,6 +33,6 @@ class AddYvesConfigTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/FooBarConfig.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/FooBarConfig.php');
     }
 }

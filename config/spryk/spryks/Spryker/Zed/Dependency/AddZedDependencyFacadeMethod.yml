@@ -14,7 +14,7 @@ arguments:
   output: ~
 
   template:
-    value: Method.php.twig
+    value: Common/Method.php.twig
 
   target:
     value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Facade\\{{ module }}To{{ dependentModule }}FacadeBridge"

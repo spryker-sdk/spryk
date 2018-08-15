@@ -8,43 +8,34 @@
 namespace Spryker\Spryk\Model\Spryk\Builder\Template\Renderer;
 
 use Spryker\Spryk\Exception\TwigException;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\CamelBackFilter;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\ClassNameShortFilter;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\DasherizeFilter;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Filter\UnderscoreFilter;
+use Twig\Environment;
 use Twig\Extension\DebugExtension;
+use Twig\Loader\FilesystemLoader;
 use Twig\Loader\SourceContextLoaderInterface;
-use Twig_Environment;
-use Twig_Loader_Chain;
-use Twig_Loader_Filesystem;
-use Twig_Loader_String;
 
 class TemplateRenderer implements TemplateRendererInterface
 {
     /**
-     * @var \Twig_Environment
+     * @var \Twig\Environment
      */
     protected $renderer;
 
     /**
-     * @param string[] $templateDirectories
+     * @param array $templateDirectories
+     * @param \Twig\Extension\ExtensionInterface[] $extensions
      */
-    public function __construct(array $templateDirectories)
+    public function __construct(array $templateDirectories, array $extensions)
     {
-        $loader = new Twig_Loader_Filesystem($templateDirectories);
+        $loader = new FilesystemLoader($templateDirectories);
 
-        $chainLoader = new Twig_Loader_Chain();
-        $chainLoader->addLoader($loader);
-        $chainLoader->addLoader(new Twig_Loader_String());
-
-        $renderer = new Twig_Environment($chainLoader, [
+        $renderer = new Environment($loader, [
             'debug' => true,
         ]);
         $renderer->addExtension(new DebugExtension());
-        $renderer->addFilter(new DasherizeFilter());
-        $renderer->addFilter(new UnderscoreFilter());
-        $renderer->addFilter(new ClassNameShortFilter());
-        $renderer->addFilter(new CamelBackFilter());
+
+        foreach ($extensions as $extension) {
+            $renderer->addExtension($extension);
+        }
 
         $this->renderer = $renderer;
     }
@@ -58,6 +49,19 @@ class TemplateRenderer implements TemplateRendererInterface
     public function render(string $template, array $arguments): string
     {
         return $this->renderer->render($template, $arguments);
+    }
+
+    /**
+     * @param string $templateString
+     * @param array $arguments
+     *
+     * @return string
+     */
+    public function renderString(string $templateString, array $arguments): string
+    {
+        $template = $this->renderer->createTemplate($templateString);
+
+        return $template->render($arguments);
     }
 
     /**

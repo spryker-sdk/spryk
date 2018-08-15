@@ -211,6 +211,8 @@ class MethodSpryk implements SprykBuilderInterface
     }
 
     /**
+     * @codeCoverageIgnore
+     *
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string|null

@@ -8,7 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
-use Spryker\Zed\FooBar\Communication\Controller\IndexController;
+use SprykTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -36,7 +36,7 @@ class AddZedCommunicationControllerMethodTest extends Unit
             '--method' => 'indexAction',
         ]);
 
-        $this->tester->assertClassHasMethod(IndexController::class, 'indexAction');
+        $this->tester->assertClassHasMethod(ClassName::CONTROLLER_ZED, 'indexAction');
     }
 
     /**
@@ -50,7 +50,7 @@ class AddZedCommunicationControllerMethodTest extends Unit
             '--method' => 'indexAction',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
     }
 
     /**
@@ -64,6 +64,6 @@ class AddZedCommunicationControllerMethodTest extends Unit
             '--method' => 'indexAction',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
     }
 }

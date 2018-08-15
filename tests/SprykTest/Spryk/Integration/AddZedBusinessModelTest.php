@@ -39,7 +39,7 @@ class AddZedBusinessModelTest extends Unit
             ],
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/Bar.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/Bar.php');
     }
 
     /**

@@ -35,12 +35,13 @@ class AddZedBusinessTestSuiteConfigurationTest extends Unit
         ]);
 
         $targetFile = $this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/codeception.yml';
-        $this->assertFileExists($targetFile);
+        static::assertFileExists($targetFile);
 
-        $configuration = Yaml::parse(file_get_contents($targetFile));
-        $this->assertArrayHasKey('suites', $configuration);
+        $fileContent = file_get_contents($targetFile);
+        $configuration = Yaml::parse(($fileContent) ?: '');
+        static::assertArrayHasKey('suites', $configuration);
 
         $suitesConfiguration = $configuration['suites'];
-        $this->assertArrayHasKey('Business', $suitesConfiguration);
+        static::assertArrayHasKey('Business', $suitesConfiguration);
     }
 }

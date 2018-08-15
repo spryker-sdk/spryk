@@ -9,7 +9,7 @@ arguments:
     default: Spryker
 
   template:
-    value: ZedDependencyFacadeInterface.php.twig
+    value: Zed/Dependency/ZedDependencyFacadeInterface.php.twig
 
   targetFilename:
     value: "{{ module }}To{{ dependentModule }}FacadeInterface.php"

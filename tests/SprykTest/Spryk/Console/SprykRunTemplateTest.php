@@ -40,7 +40,7 @@ class SprykRunTemplateTest extends Unit
 
         $tester->execute($arguments);
 
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
+        static::assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
     }
 
     /**
@@ -59,12 +59,11 @@ class SprykRunTemplateTest extends Unit
         $tester->setInputs(['FooBar']);
         $tester->execute($arguments);
 
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json');
+        static::assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json');
+        $fileContent = file_get_contents($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json');
+        $fileContent = ($fileContent) ?: '';
 
-        $this->assertRegExp(
-            '/"name": "spryker\/FooBar"/',
-            file_get_contents($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json')
-        );
+        static::assertRegExp('/"name": "spryker\/FooBar"/', $fileContent);
     }
 
     /**
@@ -83,6 +82,6 @@ class SprykRunTemplateTest extends Unit
         $tester->setInputs(['FooBar']);
         $tester->execute($arguments);
 
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/new-filename.json');
+        static::assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/new-filename.json');
     }
 }
