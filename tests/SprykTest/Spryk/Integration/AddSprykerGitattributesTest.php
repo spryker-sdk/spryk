@@ -31,6 +31,7 @@ class AddSprykerGitattributesTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--organization' => 'Spryker',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . '.gitattributes');

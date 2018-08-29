@@ -13,10 +13,17 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionI
 
 class Superseder implements SupersederInterface
 {
+    protected const PLACEHOLDER_PATTERN = '/{{(.*?)[}|\|]/';
+
     /**
      * @var \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
     protected $templateRenderer;
+
+    /**
+     * @var string[]
+     */
+    protected $resolvedArguments = [];
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $templateRenderer
@@ -38,7 +45,7 @@ class Superseder implements SupersederInterface
             if ($argument->getValue() === null) {
                 continue;
             }
-            $this->replacePlaceholder($argument, $sprykArguments, $resolvedArguments);
+            $this->resolveArgument($argument, $sprykArguments, $resolvedArguments);
         }
 
         return $sprykArguments;
@@ -51,7 +58,7 @@ class Superseder implements SupersederInterface
      *
      * @return void
      */
-    protected function replacePlaceholder(ArgumentInterface $argument, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments): void
+    protected function resolveArgument(ArgumentInterface $argument, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments): void
     {
         $argumentValue = $argument->getValue();
 
@@ -79,7 +86,7 @@ class Superseder implements SupersederInterface
      */
     protected function replacePlaceholderInValue(string $argumentValue, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments): string
     {
-        preg_match_all('/{{(.*?)[}|\|]/', $argumentValue, $matches, PREG_SET_ORDER);
+        preg_match_all(static::PLACEHOLDER_PATTERN, $argumentValue, $matches, PREG_SET_ORDER);
 
         if (count($matches) === 0) {
             return $argumentValue;
@@ -88,7 +95,7 @@ class Superseder implements SupersederInterface
         $replacements = [];
         foreach ($matches as $match) {
             $argumentName = trim($match[1]);
-            $resolvedArgumentValue = $this->getAlreadyResolvedValue($argumentName, $sprykArguments, $resolvedArguments);
+            $resolvedArgumentValue = $this->getResolvedValue($argumentName, $sprykArguments, $resolvedArguments);
             $replacements[$argumentName] = $resolvedArgumentValue;
         }
 
@@ -104,12 +111,44 @@ class Superseder implements SupersederInterface
      *
      * @return mixed
      */
-    protected function getAlreadyResolvedValue(string $argumentName, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments)
+    protected function getResolvedValue(string $argumentName, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments)
     {
-        if ($sprykArguments->hasArgument($argumentName)) {
-            return $resolvedArguments->getArgument($argumentName)->getValue();
+        $argument = $resolvedArguments->getArgument($argumentName);
+
+        return $this->resolveValue($argument, $sprykArguments, $resolvedArguments);
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface $argument
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $sprykArguments
+     * @param \Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $resolvedArguments
+     *
+     * @return mixed
+     */
+    protected function resolveValue(ArgumentInterface $argument, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments)
+    {
+        $value = $argument->getValue();
+
+        if ($this->argumentHasPlaceholder($value)) {
+            $this->resolveArgument($argument, $sprykArguments, $resolvedArguments);
         }
 
-        return $resolvedArguments->getArgument($argumentName)->getValue();
+        return $argument->getValue();
+    }
+
+    /**
+     * @param string $argumentValue
+     *
+     * @return bool
+     */
+    protected function argumentHasPlaceholder(string $argumentValue): bool
+    {
+        preg_match_all(static::PLACEHOLDER_PATTERN, $argumentValue, $matches, PREG_SET_ORDER);
+
+        if (count($matches) === 0) {
+            return false;
+        }
+
+        return true;
     }
 }

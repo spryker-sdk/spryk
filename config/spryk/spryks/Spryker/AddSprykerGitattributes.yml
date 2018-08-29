@@ -4,6 +4,9 @@ description: "Adds a new .gitattributes to the Modules root."
 arguments:
   module: ~
 
+  organization:
+    default: Spryker
+
   template:
     value: gitattributes.twig
 
