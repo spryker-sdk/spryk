@@ -1,6 +1,6 @@
 arguments:
   repository:
-    value: spryker/spryker
+    value: "spryker/{{ organization | dasherize }}"
 
   targetPath:
     value: "vendor/{{ repository }}/Bundles/"

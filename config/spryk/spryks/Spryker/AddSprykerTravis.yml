@@ -4,6 +4,9 @@ description: "Adds a new .travis.yml to the Modules root."
 arguments:
   module: ~
 
+  organization:
+    default: Spryker
+
   template:
     value: travis.yml.twig
 
