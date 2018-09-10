@@ -3,22 +3,32 @@ language: php
 sudo: false
 
 php:
-    - 7.2
+  - 7.1
+  - 7.2
 
 env:
-  - dependencies=lowest
-  - dependencies=highest
+  global:
+  - DEFAULT=1 CI=1
+
+matrix:
+  include:
+  - php: 7.1
+    env: PREFER_LOWEST=1
+
+  - php: 7.2
+    env: CHECKS=1 DEFAULT=0
+
+    fast_finish: true
 
 before_script:
   - composer remove --dev spryker/git-hook
-  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --no-interaction; fi;
-  - if [ "$dependencies" = "highest" ]; then composer update --no-interaction; fi;
+  - if [[ $PREFER_LOWEST != 1 ]]; then composer update --no-interaction; fi;
+  - if [[ $PREFER_LOWEST == 1 ]]; then composer update --prefer-lowest --no-interaction --prefer-dist --prefer-stable ; fi;
 
 script:
-    - vendor/bin/phpstan analyse src/ -l 7 -c phpstan.neon
-    - vendor/bin/phpcs src -v -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml
-    - vendor/bin/phpcs tests -v -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml
-    - vendor/bin/codecept run --coverage-xml
+  - if [[ $DEFAULT = 1 ]]; then vendor/bin/codecept run --coverage-xml ; fi
+  - if [[ $ CHECKS = 1 ]]; then composer phpstan ; fi
+  - if [[ $ CHECKS = 1 ]]; then composer cs-check ; fi
 
 notifications:
     email: false

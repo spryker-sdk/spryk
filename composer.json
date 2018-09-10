@@ -17,7 +17,7 @@
     "phpstan/phpstan": "^0.9.0 || ^0.10.0",
     "nette/utils": "^2.5.0",
     "nette/finder": "^2.4.0",
-    "spryker/code-sniffer": "^0.12.0",
+    "spryker/code-sniffer": "dev-master",
     "php-coveralls/php-coveralls": "^1.0",
     "spryker/git-hook": "dev-master",
     "phpstan/phpstan-phpunit": "^0.9.0 || ^0.10.0",
@@ -55,6 +55,9 @@
     ],
     "post-update-cmd": [
       "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-    ]
+    ],
+    "cs-check": "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/",
+    "cs-fix": "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/",
+    "phpstan": "phpstan analyse src/ -l 7 -c phpstan.neon"
   }
 }
