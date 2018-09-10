@@ -37,7 +37,7 @@ class SprykConfig
     }
 
     /**
-     * @param null|string $subDirectory
+     * @param string|null $subDirectory
      *
      * @return string[]
      */

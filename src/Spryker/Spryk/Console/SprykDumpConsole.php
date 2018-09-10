@@ -39,7 +39,6 @@ class SprykDumpConsole extends AbstractSprykConsole
         $table
             ->setHeaders(['Spryk name', 'Description'])
             ->setRows($sprykDefinitions);
-        ;
         $table->render();
     }
 
