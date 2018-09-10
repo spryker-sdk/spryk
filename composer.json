@@ -58,6 +58,6 @@
     ],
     "cs-check": "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/",
     "cs-fix": "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/",
-    "phpstan": "phpstan analyse src/ -l 7 -c phpstan.neon"
+    "phpstan": "phpstan analyse -l 7 -c phpstan.neon src/"
   }
 }
