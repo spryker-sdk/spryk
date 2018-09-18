@@ -1,5 +1,11 @@
 
     /**
+     {% if comment is defined and comment.value is not empty %}
+     {%- for commentLine in comment.value -%}
+     * {{ commentLine }}
+     {% endfor -%}
+     *
+     {% endif -%}
      {% if annotations.value is not empty -%}
      {% for annotation in annotations.value -%}
      * {{ annotation }}
