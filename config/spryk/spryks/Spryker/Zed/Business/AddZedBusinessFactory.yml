@@ -21,3 +21,5 @@ preSpryks:
 
 postSpryks:
   - AddZedBusinessFacade
+  - AddZedDependencyProvider
+  - AddZedConfig

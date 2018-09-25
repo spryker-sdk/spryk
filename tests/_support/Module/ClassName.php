@@ -11,6 +11,7 @@ interface ClassName
 {
     public const CONFIG_YVES = 'Spryker\Yves\FooBar\FooBarConfig';
     public const CONFIG_ZED = 'Spryker\Zed\FooBar\FooBarConfig';
+    public const CONFIG_CLIENT = 'Spryker\Client\FooBar\FooBarConfig';
 
     public const CONTROLLER_ZED = 'Spryker\Zed\FooBar\Communication\Controller\IndexController';
 
