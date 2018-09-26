@@ -10,13 +10,13 @@ arguments:
   controller:
     callback:
       - ClassNameShortCallback
-      - ControllerNameCallback
+      - EnsureControllerSuffixCallback
 
   template:
     value: Zed/Communication/ZedCommunicationController.php.twig
 
   targetFilename:
-    value: "{{ controller | classNameShort | controllerName }}Controller.php"
+    value: "{{ controller | classNameShort | ensureControllerSuffix }}.php"
 
   targetPath:
     default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"

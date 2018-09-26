@@ -9,7 +9,7 @@ namespace Spryker\Spryk\Model\Spryk\Definition\Argument\Callback;
 
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 
-class ActionNameCallback implements CallbackInterface
+class EnsureActionSuffixCallback implements CallbackInterface
 {
     protected const ACTION_SUFFIX = 'Action';
 
@@ -18,7 +18,7 @@ class ActionNameCallback implements CallbackInterface
      */
     public function getName(): string
     {
-        return 'ActionNameCallback';
+        return 'EnsureActionSuffixCallback';
     }
 
     /**
@@ -29,11 +29,10 @@ class ActionNameCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
-        $actionName = $argumentCollection->getArgument('method')->getValue();
-        if (mb_substr($actionName, - mb_strlen(static::ACTION_SUFFIX)) === static::ACTION_SUFFIX) {
-            $actionName = mb_substr($actionName, 0, mb_strlen($actionName) - mb_strlen(static::ACTION_SUFFIX));
+        if (mb_substr($value, - mb_strlen(static::ACTION_SUFFIX)) !== static::ACTION_SUFFIX) {
+            $value = $value . static::ACTION_SUFFIX;
         }
 
-        return lcfirst($actionName);
+        return lcfirst($value);
     }
 }

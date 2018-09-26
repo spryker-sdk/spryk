@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a new method to the Zed controller."
+description: "Adds a new action to the Zed controller."
 
 arguments:
 
@@ -11,7 +11,7 @@ arguments:
   controller:
     callback:
       - ClassNameShortCallback
-      - ControllerNameCallback
+      - EnsureControllerSuffixCallback
     type: ClassNameChoice
     choiceLoader: ZedCommunicationControllerChoiceLoader
     typeOptions:
@@ -20,7 +20,7 @@ arguments:
       - choiceLoader
 
   method:
-    callback: ActionNameCallback
+    callback: EnsureActionSuffixCallback
 
   output:
     default: void
@@ -29,7 +29,7 @@ arguments:
     value: Zed/Communication/MethodZedCommunicationController.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller | classNameShort | controllerName }}Controller"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"
 
 preSpryks:
   - AddZedCommunicationController

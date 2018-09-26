@@ -37,8 +37,10 @@ class CallbackFactory
             $this->createZedPresentationTwigFilterActionCallback(),
             $this->createZedTestMethodNameCallback(),
             $this->createClassNameShortCallback(),
-            $this->createControllerNameCallback(),
-            $this->createActionNameCallback(),
+            $this->createEnsureControllerSuffixCallback(),
+            $this->createRemoveControllerSuffixCallback(),
+            $this->createEnsureActionSuffixCallback(),
+            $this->createRemoveActionSuffixCallback(),
         ]);
     }
 
@@ -101,16 +103,32 @@ class CallbackFactory
     /**
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
      */
-    public function createControllerNameCallback(): CallbackInterface
+    public function createEnsureControllerSuffixCallback(): CallbackInterface
     {
-        return new ControllerNameCallback();
+        return new EnsureControllerSuffixCallback();
     }
 
     /**
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
      */
-    public function createActionNameCallback(): CallbackInterface
+    public function createRemoveControllerSuffixCallback(): CallbackInterface
     {
-        return new ActionNameCallback();
+        return new RemoveControllerSuffixCallback();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createEnsureActionSuffixCallback(): CallbackInterface
+    {
+        return new EnsureActionSuffixCallback();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createRemoveActionSuffixCallback(): CallbackInterface
+    {
+        return new RemoveActionSuffixCallback();
     }
 }

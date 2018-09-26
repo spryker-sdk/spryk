@@ -18,10 +18,10 @@ use SprykTest\Module\ClassName;
  * @group Zed
  * @group Communication
  * @group Controller
- * @group AddZedCommunicationControllerMethodTest
+ * @group AddZedCommunicationControllerActionTest
  * Add your own group annotations below this line
  */
-class AddZedCommunicationControllerMethodTest extends Unit
+class AddZedCommunicationControllerActionTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester

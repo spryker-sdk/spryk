@@ -155,7 +155,7 @@ class SprykBuilderFactory
         return [
             $this->filterFactory->createCamelBackFilter(),
             $this->filterFactory->createClassNameShortFilter(),
-            $this->filterFactory->createControllerNameFilter(),
+            $this->filterFactory->createEnsureControllerSuffixFilter(),
             $this->filterFactory->createDasherizeFilter(),
             $this->filterFactory->createUnderscoreFilter(),
             $this->filterFactory->createCamelCaseFilter(),

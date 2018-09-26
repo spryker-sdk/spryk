@@ -28,9 +28,9 @@ class FilterFactory
     /**
      * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface
      */
-    public function createControllerNameFilter(): FilterInterface
+    public function createEnsureControllerSuffixFilter(): FilterInterface
     {
-        return new ControllerNameFilter();
+        return new EnsureControllerSuffixFilter();
     }
 
     /**
