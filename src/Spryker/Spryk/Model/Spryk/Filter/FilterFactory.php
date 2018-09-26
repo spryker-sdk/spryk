@@ -36,6 +36,22 @@ class FilterFactory
     /**
      * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface
      */
+    public function createRemoveControllerSuffixFilter(): FilterInterface
+    {
+        return new RemoveControllerSuffixFilter();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createRemoveActionSuffixFilter(): FilterInterface
+    {
+        return new RemoveActionSuffixFilter();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface
+     */
     public function createDasherizeFilter(): FilterInterface
     {
         return new DasherizeFilter();

@@ -156,6 +156,8 @@ class SprykBuilderFactory
             $this->filterFactory->createCamelBackFilter(),
             $this->filterFactory->createClassNameShortFilter(),
             $this->filterFactory->createEnsureControllerSuffixFilter(),
+            $this->filterFactory->createRemoveControllerSuffixFilter(),
+            $this->filterFactory->createRemoveActionSuffixFilter(),
             $this->filterFactory->createDasherizeFilter(),
             $this->filterFactory->createUnderscoreFilter(),
             $this->filterFactory->createCamelCaseFilter(),
