@@ -37,6 +37,8 @@ class CallbackFactory
             $this->createZedPresentationTwigFilterActionCallback(),
             $this->createZedTestMethodNameCallback(),
             $this->createClassNameShortCallback(),
+            $this->createControllerNameCallback(),
+            $this->createActionNameCallback(),
         ]);
     }
 
@@ -94,5 +96,21 @@ class CallbackFactory
     public function createClassNameShortCallback(): CallbackInterface
     {
         return new ClassNameShortCallback();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createControllerNameCallback(): CallbackInterface
+    {
+        return new ControllerNameCallback();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createActionNameCallback(): CallbackInterface
+    {
+        return new ActionNameCallback();
     }
 }

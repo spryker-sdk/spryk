@@ -140,7 +140,7 @@ class SprykBuilderFactory
     }
 
     /**
-     * @return \Twig\Extension\ExtensionInterface
+     * @return \Spryker\Spryk\Model\Spryk\Builder\Template\Extension\TwigFilterExtension|\Twig\Extension\ExtensionInterface
      */
     public function createFilterExtension(): ExtensionInterface
     {
@@ -155,6 +155,7 @@ class SprykBuilderFactory
         return [
             $this->filterFactory->createCamelBackFilter(),
             $this->filterFactory->createClassNameShortFilter(),
+            $this->filterFactory->createControllerNameFilter(),
             $this->filterFactory->createDasherizeFilter(),
             $this->filterFactory->createUnderscoreFilter(),
             $this->filterFactory->createCamelCaseFilter(),

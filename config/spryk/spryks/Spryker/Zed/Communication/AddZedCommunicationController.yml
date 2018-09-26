@@ -8,13 +8,13 @@ arguments:
     default: Spryker
 
   controller:
-    default: Index
+    callback: ControllerNameCallback
 
   template:
     value: Zed/Communication/ZedCommunicationController.php.twig
 
   targetFilename:
-    value: "{{ controller }}Controller.php"
+    value: "{{ controller | controllerName }}Controller.php"
 
   targetPath:
     default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"

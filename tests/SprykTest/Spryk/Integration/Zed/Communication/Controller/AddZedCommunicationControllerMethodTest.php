@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykTest\Spryk\Integration;
+namespace SprykTest\Spryk\Integration\Zed\Communication\Controller;
 
 use Codeception\Test\Unit;
 use SprykTest\Module\ClassName;
@@ -15,6 +15,9 @@ use SprykTest\Module\ClassName;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
+ * @group Zed
+ * @group Communication
+ * @group Controller
  * @group AddZedCommunicationControllerMethodTest
  * Add your own group annotations below this line
  */
@@ -26,6 +29,8 @@ class AddZedCommunicationControllerMethodTest extends Unit
     protected $tester;
 
     /**
+     * @group single
+     *
      * @return void
      */
     public function testAddsZedControllerMethod(): void
@@ -33,6 +38,20 @@ class AddZedCommunicationControllerMethodTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
+            '--method' => 'index',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::CONTROLLER_ZED, 'indexAction');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedControllerMethodAndReplacesActionSuffix(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => 'IndexController',
             '--method' => 'indexAction',
         ]);
 

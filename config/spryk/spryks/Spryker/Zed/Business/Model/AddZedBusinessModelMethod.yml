@@ -14,7 +14,14 @@ arguments:
     default: Spryker
 
   className:
-    isChoice: true
+    type: ClassNameChoice
+    choiceLoader: ZedBusinessModelChoiceLoader
+    typeOptions:
+      - module
+      - spryk
+      - choiceLoader
+#    isChoice: true
+#    choiceLoader: ZedBusinessModel
 
   method: ~
 

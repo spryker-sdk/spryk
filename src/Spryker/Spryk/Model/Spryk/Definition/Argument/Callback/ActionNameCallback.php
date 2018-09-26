@@ -9,14 +9,16 @@ namespace Spryker\Spryk\Model\Spryk\Definition\Argument\Callback;
 
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 
-class ZedBusinessModelTargetFilenameCallback implements CallbackInterface
+class ActionNameCallback implements CallbackInterface
 {
+    protected const ACTION_SUFFIX = 'Action';
+
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'ZedBusinessModelTargetFilenameCallback';
+        return 'ActionNameCallback';
     }
 
     /**
@@ -27,8 +29,11 @@ class ZedBusinessModelTargetFilenameCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
-        $className = $argumentCollection->getArgument('className')->getValue();
+        $actionName = $argumentCollection->getArgument('method')->getValue();
+        if (mb_substr($actionName, - mb_strlen(static::ACTION_SUFFIX)) === static::ACTION_SUFFIX) {
+            $actionName = mb_substr($actionName, 0, mb_strlen($actionName) - mb_strlen(static::ACTION_SUFFIX));
+        }
 
-        return $className . '.php';
+        return lcfirst($actionName);
     }
 }

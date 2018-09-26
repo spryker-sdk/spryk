@@ -28,6 +28,14 @@ class FilterFactory
     /**
      * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface
      */
+    public function createControllerNameFilter(): FilterInterface
+    {
+        return new ControllerNameFilter();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface
+     */
     public function createDasherizeFilter(): FilterInterface
     {
         return new DasherizeFilter();
