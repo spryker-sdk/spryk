@@ -8,6 +8,7 @@
 namespace SprykTest\Spryk\Integration\Zed\Communication\Controller;
 
 use Codeception\Test\Unit;
+use SprykTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -35,6 +36,19 @@ class AddZedCommunicationControllerTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
+        ]);
+
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedControllerFileFromFullyQualifiedControllerClassName(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => ClassName::CONTROLLER_ZED,
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');

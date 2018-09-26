@@ -9,7 +9,9 @@ arguments:
     default: Spryker
 
   controller:
-    callback: ControllerNameCallback
+    callback:
+      - ClassNameShortCallback
+      - ControllerNameCallback
     type: ClassNameChoice
     choiceLoader: ZedCommunicationControllerChoiceLoader
     typeOptions:
@@ -27,7 +29,7 @@ arguments:
     value: Zed/Communication/MethodZedCommunicationController.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller | controllerName }}Controller"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller | classNameShort | controllerName }}Controller"
 
 preSpryks:
   - AddZedCommunicationController

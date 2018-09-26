@@ -8,10 +8,13 @@ arguments:
     default: Spryker
 
   controller:
-    default: Index
+    callback:
+      - ClassNameShortCallback
+      - ControllerNameCallback
 
   method:
-    default: index
+    callback:
+      - ActionNameCallback
 
   targetPath:
     value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/navigation.xml"

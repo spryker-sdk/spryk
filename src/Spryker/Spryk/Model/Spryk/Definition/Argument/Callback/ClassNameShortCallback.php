@@ -27,12 +27,11 @@ class ClassNameShortCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
-        $className = $argumentCollection->getArgument('className')->getValue();
-        if (strpos($className, '\\') === false) {
-            return $className;
+        if (strpos($value, '\\') === false) {
+            return $value;
         }
 
-        $classNameFragments = explode('\\', $className);
+        $classNameFragments = explode('\\', $value);
 
         return array_pop($classNameFragments);
     }

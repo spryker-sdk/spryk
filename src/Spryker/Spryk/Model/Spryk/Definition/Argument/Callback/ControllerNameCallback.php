@@ -29,11 +29,10 @@ class ControllerNameCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
-        $controllerClassName = $argumentCollection->getArgument('controller')->getValue();
-        if (mb_substr($controllerClassName, - mb_strlen(static::CONTROLLER_SUFFIX)) === static::CONTROLLER_SUFFIX) {
-            $controllerClassName = mb_substr($controllerClassName, 0, mb_strlen($controllerClassName) - mb_strlen(static::CONTROLLER_SUFFIX));
+        if (mb_substr($value, - mb_strlen(static::CONTROLLER_SUFFIX)) === static::CONTROLLER_SUFFIX) {
+            $value = mb_substr($value, 0, mb_strlen($value) - mb_strlen(static::CONTROLLER_SUFFIX));
         }
 
-        return ucfirst($controllerClassName);
+        return ucfirst($value);
     }
 }

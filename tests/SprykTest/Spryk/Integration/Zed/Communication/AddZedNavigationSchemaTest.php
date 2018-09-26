@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykTest\Spryk\Integration;
+namespace SprykTest\Spryk\Integration\Zed\Communication;
 
 use Codeception\Test\Unit;
 
@@ -14,6 +14,8 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
+ * @group Zed
+ * @group Communication
  * @group AddZedNavigationSchemaTest
  * Add your own group annotations below this line
  */

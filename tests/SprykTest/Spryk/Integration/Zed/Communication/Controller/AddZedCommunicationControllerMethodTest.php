@@ -29,8 +29,6 @@ class AddZedCommunicationControllerMethodTest extends Unit
     protected $tester;
 
     /**
-     * @group single
-     *
      * @return void
      */
     public function testAddsZedControllerMethod(): void
@@ -52,6 +50,22 @@ class AddZedCommunicationControllerMethodTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'IndexController',
+            '--method' => 'indexAction',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::CONTROLLER_ZED, 'indexAction');
+    }
+
+    /**
+     * @group single
+     *
+     * @return void
+     */
+    public function testAddsZedControllerMethodToFullyQualifiedControllerClassName(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => ClassName::CONTROLLER_ZED,
             '--method' => 'indexAction',
         ]);
 
