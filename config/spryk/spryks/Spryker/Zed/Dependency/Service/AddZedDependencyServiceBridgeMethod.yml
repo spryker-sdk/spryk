@@ -1,0 +1,41 @@
+spryk: bridgeMethods
+description: "Adds a new method to the *module* dependency Service bridge."
+priority: 1
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  organization:
+    default: Spryker
+
+  dependentModule:
+    moduleFilter:
+      application: Service
+
+  methods:
+    type: MethodNameChoice
+    choiceLoader: ServiceMethodChoiceLoader
+    isMultiple: true
+    typeOptions:
+      - module
+      - choiceLoader
+
+  template:
+    value: Zed/Dependency/ZedDependencyBridgeMethod.php.twig
+
+  dependencyType:
+    value: Service
+
+  sourceClass:
+    value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
+
+  target:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
+
+preSpryks:
+  - AddZedDependencyServiceBridge
+
+postSpryks:
+  - AddZedDependencyServiceBridgeInterfaceMethod

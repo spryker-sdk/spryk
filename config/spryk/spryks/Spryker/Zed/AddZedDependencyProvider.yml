@@ -8,7 +8,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Zed/Dependency/ZedDependencyProvider.php.twig
+    value: Zed/ZedDependencyProvider.php.twig
 
   targetFilename:
     value: "{{ module }}DependencyProvider.php"

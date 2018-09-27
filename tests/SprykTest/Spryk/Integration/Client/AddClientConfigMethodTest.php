@@ -38,6 +38,6 @@ class AddClientConfigMethodTest extends Unit
             '--output' => 'string',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::CONFIG_CLIENT, 'getConfigValue');
+        $this->tester->assertClassHasMethod(ClassName::CLIENT_CONFIG, 'getConfigValue');
     }
 }

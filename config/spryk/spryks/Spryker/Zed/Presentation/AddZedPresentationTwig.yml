@@ -24,8 +24,7 @@ arguments:
     value: Zed/Presentation/ZedPresentationTwig.twig
 
   targetFilename:
-    value: "{{ method | removeActionSuffix }}.twig"
-    callback: ZedPresentationTwigNormalizeFileNameCallback
+    value: "{{ method | removeActionSuffix | dasherize | lcfirst }}.twig"
 
   targetPath:
     default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"

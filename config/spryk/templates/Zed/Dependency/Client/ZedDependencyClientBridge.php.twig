@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace {{ organization }}\Zed\{{ module }}\Dependency\Client;
+
+class {{ module }}To{{ dependentModule }}ClientBridge implements {{ module }}To{{ dependentModule }}ClientInterface
+{
+    /**
+     * @var \{{ organization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface
+     */
+    protected ${{ dependentModule | camelBack }}Client;
+
+    /**
+     * @param \{{ organization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface ${{ dependentModule | camelBack }}Client
+     */
+    public function __construct(${{ dependentModule | camelBack }}Client)
+    {
+        $this->{{ dependentModule | camelBack }}Client = ${{ dependentModule | camelBack }}Client;
+    }
+}

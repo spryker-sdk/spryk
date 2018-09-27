@@ -1,0 +1,33 @@
+spryk: method
+description: "Adds a Client dependency method to the *module*DependencyProvider."
+
+arguments:
+
+  module: ~
+  dependentModule: ~
+
+  organization:
+    default: Spryker
+
+  method:
+    value: "add{{ dependentModule }}Client"
+
+  template:
+    value: Yves/Dependency/Client/YvesDependencyClientDependencyProviderMethod.php.twig
+
+  target:
+    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+  - AddYvesDependencyProvider
+
+postSpryks:
+  - AddYvesDependencyClientBridge
+  - AddYvesDependencyClientDependencyProviderConstant:
+      arguments:
+        name:
+          value: "CLIENT_{{ dependentModule | underscored | upper }}"
+        value:
+          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} client"
+        visibility:
+          value:  "public"

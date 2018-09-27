@@ -7,8 +7,38 @@
 
 namespace Spryker\Spryk\Model\Spryk\Filter;
 
+use Spryker\Spryk\Model\Spryk\Builder\Template\Extension\TwigFilterExtension;
+use Twig\Extension\ExtensionInterface;
+
 class FilterFactory
 {
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface[]
+     */
+    public function getFilterCollection(): array
+    {
+        return [
+            $this->createCamelBackFilter(),
+            $this->createClassNameShortFilter(),
+            $this->createEnsureControllerSuffixFilter(),
+            $this->createRemoveControllerSuffixFilter(),
+            $this->createRemoveActionSuffixFilter(),
+            $this->createDasherizeFilter(),
+            $this->createUnderscoreFilter(),
+            $this->createCamelCaseFilter(),
+            $this->createLowerCaseFirstFilter(),
+            $this->createCamelCaseToWhitespaceFilter(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Builder\Template\Extension\TwigFilterExtension|\Twig\Extension\ExtensionInterface
+     */
+    public function createFilterExtension(): ExtensionInterface
+    {
+        return new TwigFilterExtension($this->getFilterCollection());
+    }
+
     /**
      * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface
      */
@@ -71,5 +101,21 @@ class FilterFactory
     public function createCamelCaseFilter(): FilterInterface
     {
         return new CamelCaseFilter();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createLowerCaseFirstFilter(): FilterInterface
+    {
+        return new LowerCaseFirstFilter();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createCamelCaseToWhitespaceFilter(): FilterInterface
+    {
+        return new CamelCaseToWhitespaceFilter();
     }
 }

@@ -11,7 +11,7 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionI
 
 class EnsureControllerSuffixCallback implements CallbackInterface
 {
-    protected const CONTROLLER_SUFFIX = 'Controller';
+    public const CONTROLLER_SUFFIX = 'Controller';
 
     /**
      * @return string

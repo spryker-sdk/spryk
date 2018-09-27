@@ -34,7 +34,6 @@ class CallbackFactory
             $this->createZedBusinessModelTargetFilenameCallback(),
             $this->createZedBusinessModelInterfaceTargetFilenameCallback(),
             $this->createZedBusinessModelSubDirectoryCallback(),
-            $this->createZedPresentationTwigFilterActionCallback(),
             $this->createZedTestMethodNameCallback(),
             $this->createClassNameShortCallback(),
             $this->createEnsureControllerSuffixCallback(),
@@ -74,14 +73,6 @@ class CallbackFactory
     public function createZedBusinessModelSubDirectoryCallback(): CallbackInterface
     {
         return new ZedBusinessModelSubDirectoryCallback();
-    }
-
-    /**
-     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
-     */
-    public function createZedPresentationTwigFilterActionCallback(): CallbackInterface
-    {
-        return new ZedPresentationTwigNormalizeFileNameCallback();
     }
 
     /**

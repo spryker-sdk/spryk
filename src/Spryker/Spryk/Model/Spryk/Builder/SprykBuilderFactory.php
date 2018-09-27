@@ -7,18 +7,22 @@
 
 namespace Spryker\Spryk\Model\Spryk\Builder;
 
+use Spryker\Spryk\Model\Spryk\Builder\Bridge\BridgeMethodsSpryk;
+use Spryker\Spryk\Model\Spryk\Builder\Bridge\Reflection\MethodHelper;
+use Spryker\Spryk\Model\Spryk\Builder\Bridge\Reflection\MethodHelperInterface;
+use Spryker\Spryk\Model\Spryk\Builder\Bridge\Reflection\ReflectionHelper;
+use Spryker\Spryk\Model\Spryk\Builder\Bridge\Reflection\ReflectionHelperInterface;
+use Spryker\Spryk\Model\Spryk\Builder\Constant\ConstantSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Navigation\NavigationSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Schema\SchemaSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
-use Spryker\Spryk\Model\Spryk\Builder\Template\Extension\TwigFilterExtension;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
 use Spryker\Spryk\Model\Spryk\Builder\Template\UpdateYmlSpryk;
 use Spryker\Spryk\Model\Spryk\Filter\FilterFactory;
 use Spryker\Spryk\SprykConfig;
-use Twig\Extension\ExtensionInterface;
 
 class SprykBuilderFactory
 {
@@ -60,8 +64,10 @@ class SprykBuilderFactory
             $this->createTemplateSpryk(),
             $this->createUpdateYmlSpryk(),
             $this->createMethodSpryk(),
+            $this->createConstantSpryk(),
             $this->createNavigationSpryk(),
             $this->createSchemaSpryk(),
+            $this->createBridgeMethodsSpryk(),
         ];
     }
 
@@ -110,6 +116,14 @@ class SprykBuilderFactory
     /**
      * @return \Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface
      */
+    public function createConstantSpryk(): SprykBuilderInterface
+    {
+        return new ConstantSpryk();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
     public function createNavigationSpryk(): SprykBuilderInterface
     {
         return new NavigationSpryk(
@@ -135,32 +149,35 @@ class SprykBuilderFactory
     {
         return new TemplateRenderer(
             $this->getConfig()->getTemplateDirectories(),
-            [$this->createFilterExtension()]
+            [$this->filterFactory->createFilterExtension()]
         );
     }
 
     /**
-     * @return \Spryker\Spryk\Model\Spryk\Builder\Template\Extension\TwigFilterExtension|\Twig\Extension\ExtensionInterface
+     * @return \Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface
      */
-    public function createFilterExtension(): ExtensionInterface
+    public function createBridgeMethodsSpryk(): SprykBuilderInterface
     {
-        return new TwigFilterExtension($this->getFilterCollection());
+        return new BridgeMethodsSpryk(
+            $this->createTemplateRenderer(),
+            $this->createReflectionHelper(),
+            $this->createMethodHelper()
+        );
     }
 
     /**
-     * @return \Spryker\Spryk\Model\Spryk\Filter\FilterInterface[]
+     * @return \Spryker\Spryk\Model\Spryk\Builder\Bridge\Reflection\ReflectionHelperInterface
      */
-    public function getFilterCollection(): array
+    public function createReflectionHelper(): ReflectionHelperInterface
     {
-        return [
-            $this->filterFactory->createCamelBackFilter(),
-            $this->filterFactory->createClassNameShortFilter(),
-            $this->filterFactory->createEnsureControllerSuffixFilter(),
-            $this->filterFactory->createRemoveControllerSuffixFilter(),
-            $this->filterFactory->createRemoveActionSuffixFilter(),
-            $this->filterFactory->createDasherizeFilter(),
-            $this->filterFactory->createUnderscoreFilter(),
-            $this->filterFactory->createCamelCaseFilter(),
-        ];
+        return new ReflectionHelper();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Builder\Bridge\Reflection\MethodHelperInterface
+     */
+    public function createMethodHelper(): MethodHelperInterface
+    {
+        return new MethodHelper();
     }
 }

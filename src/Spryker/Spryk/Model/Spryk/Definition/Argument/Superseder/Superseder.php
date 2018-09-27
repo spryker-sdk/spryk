@@ -13,7 +13,7 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionI
 
 class Superseder implements SupersederInterface
 {
-    protected const PLACEHOLDER_PATTERN = '/{{(.*?)[}|\|]/';
+    public const PLACEHOLDER_PATTERN = '/{{(.*?)[}|\|]/';
 
     /**
      * @var \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface

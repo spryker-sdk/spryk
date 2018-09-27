@@ -1,0 +1,37 @@
+spryk: method
+description: "Adds a Client dependency method to the *module*BusinessFactory."
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  dependentModule:
+    moduleFilter:
+      application: Client
+
+  organization:
+    default: Spryker
+
+  method:
+    value: "get{{ dependentModule }}Client"
+
+  template:
+    value: Zed/Dependency/Client/ZedDependencyClientBusinessFactoryMethod.php.twig
+
+  target:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
+
+preSpryks:
+  - AddZedBusinessFactory
+
+postSpryks:
+  - AddZedDependencyClientDependencyProviderConstant:
+      arguments:
+        name:
+          value: "CLIENT_{{ dependentModule | underscored | upper }}"
+        value:
+          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} client"
+        visibility:
+          value:  "public"
+

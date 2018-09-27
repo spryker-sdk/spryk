@@ -1,0 +1,8 @@
+
+    /**
+     * @return \{{ organization }}\Zed\{{ module }}\Dependency\Service\{{ module }}To{{ dependentModule }}ServiceInterface
+     */
+    public function {{ method }}(): \{{ organization }}\Zed\{{ module }}\Dependency\Service\{{ module }}To{{ dependentModule }}ServiceInterface
+    {
+        return $this->getProvidedDependency(\{{ organization }}\Zed\{{ module}}\{{ module}}DependencyProvider::SERVICE_{{ dependentModule | underscored | upper }});
+    }

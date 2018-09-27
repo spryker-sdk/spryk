@@ -48,7 +48,7 @@ class AddZedPresentationTwigTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--controller' => ClassName::CONTROLLER_ZED,
+            '--controller' => ClassName::ZED_CONTROLLER,
             '--method' => 'indexAction',
         ]);
 

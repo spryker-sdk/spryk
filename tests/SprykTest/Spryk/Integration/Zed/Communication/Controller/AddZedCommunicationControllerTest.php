@@ -48,7 +48,7 @@ class AddZedCommunicationControllerTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--controller' => ClassName::CONTROLLER_ZED,
+            '--controller' => ClassName::ZED_CONTROLLER,
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');

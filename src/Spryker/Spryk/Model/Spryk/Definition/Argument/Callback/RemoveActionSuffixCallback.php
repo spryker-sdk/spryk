@@ -11,7 +11,7 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionI
 
 class RemoveActionSuffixCallback implements CallbackInterface
 {
-    protected const ACTION_SUFFIX = 'Action';
+    public const ACTION_SUFFIX = 'Action';
 
     /**
      * @return string

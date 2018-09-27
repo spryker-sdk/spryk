@@ -8,7 +8,6 @@
 namespace Spryker\Spryk\Model\Spryk\Builder\Method;
 
 use Roave\BetterReflection\BetterReflection;
-use Roave\BetterReflection\Reflection\ReflectionClass;
 use Spryker\Spryk\Exception\EmptyFileException;
 use Spryker\Spryk\Exception\ReflectionException;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
@@ -95,10 +94,9 @@ class MethodSpryk implements SprykBuilderInterface
      */
     protected function methodExists(SprykDefinitionInterface $sprykDefinition): bool
     {
-        $targetFileContent = $this->getTargetFileContent($sprykDefinition);
-        $methodToCheck = sprintf('public function %s(', $this->getMethodName($sprykDefinition));
+        $reflectionClass = $this->getReflection($sprykDefinition);
 
-        if (strpos($targetFileContent, $methodToCheck) !== false) {
+        if ($reflectionClass->hasMethod($this->getMethodName($sprykDefinition))) {
             return true;
         }
 
@@ -201,7 +199,7 @@ class MethodSpryk implements SprykBuilderInterface
     /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return \Roave\BetterReflection\Reflection\ReflectionClass|\Roave\BetterReflection\Reflection\Reflection
+     * @return \Roave\BetterReflection\Reflection\ReflectionClass
      */
     protected function getReflection(SprykDefinitionInterface $sprykDefinition)
     {
@@ -220,9 +218,6 @@ class MethodSpryk implements SprykBuilderInterface
     protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition)
     {
         $targetReflection = $this->getReflection($sprykDefinition);
-        if (!($targetReflection instanceof ReflectionClass)) {
-            return null;
-        }
 
         return $targetReflection->getFileName();
     }

@@ -1,0 +1,34 @@
+spryk: method
+description: "Adds a Service dependency method to the *module*DependencyProvider."
+
+arguments:
+
+  module: ~
+  dependentModule: ~
+
+  organization:
+    default: Spryker
+
+  method:
+    value: "add{{ dependentModule }}Service"
+
+  template:
+    value: Yves/Dependency/Service/YvesDependencyServiceDependencyProviderMethod.php.twig
+
+  target:
+    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+  - AddYvesDependencyProvider
+
+postSpryks:
+  - AddYvesDependencyServiceBridge
+  - AddYvesDependencyServiceDependencyProviderConstant:
+      arguments:
+        name:
+          value: "SERVICE_{{ dependentModule | underscored | upper }}"
+        value:
+          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
+        visibility:
+          value:  "public"
+

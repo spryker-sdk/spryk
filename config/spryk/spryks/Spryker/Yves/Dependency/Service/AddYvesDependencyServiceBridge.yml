@@ -1,0 +1,39 @@
+spryk: template
+description: "Adds a new *module*To*dependentModule*ServiceBridge."
+
+arguments:
+  module: ~
+
+  organization:
+    default: Spryker
+
+  dependentModule: ~
+
+  dependentModuleOrganization:
+    default: Spryker
+
+
+  template:
+    value: Yves/Dependency/Service/YvesDependencyServiceBridge.php.twig
+
+  targetFilename:
+    value: "{{ module }}To{{ dependentModule }}ServiceBridge.php"
+
+  targetPath:
+    default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
+
+preSpryks:
+  - CreateSprykerModule
+
+postSpryks:
+  - AddYvesDependencyServiceInterface
+  - AddYvesDependencyServiceFactoryMethod
+  - AddYvesDependencyServiceDependencyProviderMethod
+  - AddYvesDependencyServiceDependencyProviderConstant:
+      arguments:
+          name:
+            value: "SERVICE_{{ dependentModule | underscored | upper }}"
+          value:
+            value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
+          visibility:
+            value:  "public"

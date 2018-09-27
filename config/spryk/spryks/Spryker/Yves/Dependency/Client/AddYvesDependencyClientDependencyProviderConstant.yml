@@ -1,0 +1,21 @@
+spryk: constant
+description: "Adds a Client dependency constant to the *module*DependencyProvider."
+
+arguments:
+
+  module: ~
+  dependentModule: ~
+
+  organization:
+    default: Spryker
+
+  name: ~
+  value: ~
+  visibility:
+    value: "public"
+
+  target:
+    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+  - AddYvesDependencyProvider

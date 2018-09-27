@@ -1,0 +1,38 @@
+spryk: method
+description: "Adds a facade dependency method to the *module*DependencyProvider."
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  dependentModule:
+    moduleFilter:
+      application: Zed
+
+  organization:
+    default: Spryker
+
+  method:
+    value: "add{{ dependentModule }}Facade"
+
+  template:
+    value: Zed/Dependency/Facade/ZedDependencyFacadeDependencyProviderMethod.php.twig
+
+  target:
+    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+  - AddZedDependencyProvider
+
+postSpryks:
+  - AddZedDependencyFacadeBridge
+  - AddZedDependencyFacadeDependencyProviderConstant:
+      arguments:
+        name:
+          value: "FACADE_{{ dependentModule | underscored | upper }}"
+        value:
+          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} facade"
+        visibility:
+          value:  "public"
+

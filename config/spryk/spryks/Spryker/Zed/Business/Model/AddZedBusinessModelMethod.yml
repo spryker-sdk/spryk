@@ -20,8 +20,6 @@ arguments:
       - module
       - spryk
       - choiceLoader
-#    isChoice: true
-#    choiceLoader: ZedBusinessModel
 
   method: ~
 

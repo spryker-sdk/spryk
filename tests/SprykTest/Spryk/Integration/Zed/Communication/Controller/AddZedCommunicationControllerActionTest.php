@@ -39,7 +39,7 @@ class AddZedCommunicationControllerActionTest extends Unit
             '--method' => 'index',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::CONTROLLER_ZED, 'indexAction');
+        $this->tester->assertClassHasMethod(ClassName::ZED_CONTROLLER, 'indexAction');
     }
 
     /**
@@ -53,7 +53,7 @@ class AddZedCommunicationControllerActionTest extends Unit
             '--method' => 'indexAction',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::CONTROLLER_ZED, 'indexAction');
+        $this->tester->assertClassHasMethod(ClassName::ZED_CONTROLLER, 'indexAction');
     }
 
     /**
@@ -65,11 +65,11 @@ class AddZedCommunicationControllerActionTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--controller' => ClassName::CONTROLLER_ZED,
+            '--controller' => ClassName::ZED_CONTROLLER,
             '--method' => 'indexAction',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::CONTROLLER_ZED, 'indexAction');
+        $this->tester->assertClassHasMethod(ClassName::ZED_CONTROLLER, 'indexAction');
     }
 
     /**

@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a new method to the *module*BusinessFactory to the Modules root."
+description: "Adds a method to the *module*BusinessFactory."
 
 arguments:
 

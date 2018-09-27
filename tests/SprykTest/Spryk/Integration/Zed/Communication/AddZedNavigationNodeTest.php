@@ -39,12 +39,40 @@ class AddZedNavigationNodeTest extends Unit
         ]);
 
         $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
-        static::assertFileExists($pathToNavigationSchema);
+        $this->assertFileExists($pathToNavigationSchema);
+
         $xmlContent = file_get_contents($pathToNavigationSchema);
         $xmlContent = ($xmlContent) ?: '';
-        static::assertRegExp('/\<bundle\>foo-bar\<\/bundle\>/', $xmlContent);
-        static::assertRegExp('/\<controller\>index\<\/controller\>/', $xmlContent);
-        static::assertRegExp('/\<action\>index\<\/action\>/', $xmlContent);
+
+        $this->assertRegExp('/\<bundle\>foo-bar\<\/bundle\>/', $xmlContent);
+        $this->assertRegExp('/\<controller\>index\<\/controller\>/', $xmlContent);
+        $this->assertRegExp('/\<action\>index\<\/action\>/', $xmlContent);
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsNodeToSchemaFileToFirstNode(): void
+    {
+        $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
+        if (!is_dir(dirname($pathToNavigationSchema))) {
+            mkdir(dirname($pathToNavigationSchema), 0777, true);
+        }
+        $navigationSchemaContent = '<navigation><firstNode><pages></pages></firstNode></navigation>';
+        file_put_contents($pathToNavigationSchema, $navigationSchemaContent);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => 'Index',
+            '--method' => 'index',
+        ]);
+
+        $xmlContent = file_get_contents($pathToNavigationSchema);
+        $xmlContent = ($xmlContent) ?: '';
+
+        $this->assertRegExp('/\<bundle\>foo-bar\<\/bundle\>/', $xmlContent);
+        $this->assertRegExp('/\<controller\>index\<\/controller\>/', $xmlContent);
+        $this->assertRegExp('/\<action\>index\<\/action\>/', $xmlContent);
     }
 
     /**
@@ -54,16 +82,18 @@ class AddZedNavigationNodeTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--controller' => ClassName::CONTROLLER_ZED,
+            '--controller' => ClassName::ZED_CONTROLLER,
             '--method' => 'indexAction',
         ]);
 
         $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
-        static::assertFileExists($pathToNavigationSchema);
+        $this->assertFileExists($pathToNavigationSchema);
+
         $xmlContent = file_get_contents($pathToNavigationSchema);
         $xmlContent = ($xmlContent) ?: '';
-        static::assertRegExp('/\<bundle\>foo-bar\<\/bundle\>/', $xmlContent);
-        static::assertRegExp('/\<controller\>index\<\/controller\>/', $xmlContent);
-        static::assertRegExp('/\<action\>index\<\/action\>/', $xmlContent);
+
+        $this->assertRegExp('/\<bundle\>foo-bar\<\/bundle\>/', $xmlContent);
+        $this->assertRegExp('/\<controller\>index\<\/controller\>/', $xmlContent);
+        $this->assertRegExp('/\<action\>index\<\/action\>/', $xmlContent);
     }
 }

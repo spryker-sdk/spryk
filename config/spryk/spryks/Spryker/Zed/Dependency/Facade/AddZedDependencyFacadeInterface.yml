@@ -1,0 +1,26 @@
+spryk: template
+description: "Adds a new *module*To*dependentModule*FacadeInterface."
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  dependentModule:
+    moduleFilter:
+      application: Zed
+
+  organization:
+    default: Spryker
+
+  template:
+    value: Zed/Dependency/Facade/ZedDependencyFacadeInterface.php.twig
+
+  targetFilename:
+    value: "{{ module }}To{{ dependentModule }}FacadeInterface.php"
+
+  targetPath:
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Facade/"
+
+preSpryks:
+  - AddZedDependencyFacadeBridge

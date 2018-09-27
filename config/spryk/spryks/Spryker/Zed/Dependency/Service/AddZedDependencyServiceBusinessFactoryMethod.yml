@@ -1,0 +1,36 @@
+spryk: method
+description: "Adds a Service dependency method to the *module*BusinessFactory."
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  dependentModule:
+    moduleFilter:
+      application: Service
+
+  organization:
+    default: Spryker
+
+  method:
+    value: "get{{ dependentModule }}Service"
+
+  template:
+    value: Zed/Dependency/Service/ZedDependencyServiceBusinessFactoryMethod.php.twig
+
+  target:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
+
+preSpryks:
+  - AddZedBusinessFactory
+
+postSpryks:
+  - AddZedDependencyServiceDependencyProviderConstant:
+      arguments:
+        name:
+          value: "SERVICE_{{ dependentModule | underscored | upper }}"
+        value:
+          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
+        visibility:
+          value:  "public"
