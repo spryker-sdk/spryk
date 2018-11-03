@@ -17,8 +17,8 @@ use Spryker\Spryk\Style\SprykStyleInterface;
 
 class SchemaSpryk implements SprykBuilderInterface
 {
-    const ARGUMENT_TARGET_PATH = 'targetPath';
-    const ARGUMENT_TABLE_NAME = 'tableName';
+    public const ARGUMENT_TARGET_PATH = 'targetPath';
+    public const ARGUMENT_TABLE_NAME = 'tableName';
 
     /**
      * @var string

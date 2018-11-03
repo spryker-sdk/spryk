@@ -24,10 +24,10 @@ use Spryker\Spryk\Style\SprykStyleInterface;
  */
 class NavigationSprykTest extends Unit
 {
-    const TARGET_PATH_VALUE = 'emptyFile';
-    const MODULE = 'module';
-    const CONTROLLER = 'controller';
-    const ACTION = 'action';
+    public const TARGET_PATH_VALUE = 'emptyFile';
+    public const MODULE = 'module';
+    public const CONTROLLER = 'controller';
+    public const ACTION = 'action';
 
     /**
      * @var \SprykTest\SprykTester

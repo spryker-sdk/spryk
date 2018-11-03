@@ -18,11 +18,11 @@ use Spryker\Spryk\Style\SprykStyleInterface;
 
 class MethodSpryk implements SprykBuilderInterface
 {
-    const ARGUMENT_TARGET = 'target';
-    const ARGUMENT_TARGET_PATH = 'targetPath';
-    const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
-    const ARGUMENT_TEMPLATE = 'template';
-    const ARGUMENT_METHOD_NAME = 'method';
+    public const ARGUMENT_TARGET = 'target';
+    public const ARGUMENT_TARGET_PATH = 'targetPath';
+    public const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
+    public const ARGUMENT_TEMPLATE = 'template';
+    public const ARGUMENT_METHOD_NAME = 'method';
 
     /**
      * @var \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface

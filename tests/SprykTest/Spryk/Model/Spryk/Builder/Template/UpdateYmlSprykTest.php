@@ -26,7 +26,7 @@ use Spryker\Spryk\Style\SprykStyleInterface;
  */
 class UpdateYmlSprykTest extends Unit
 {
-    const TARGET_PATH_VALUE = 'emptyFile';
+    public const TARGET_PATH_VALUE = 'emptyFile';
 
     /**
      * @var \SprykTest\SprykTester

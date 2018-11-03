@@ -15,8 +15,8 @@ use Spryker\Spryk\Style\SprykStyleInterface;
 
 class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 {
-    const SPRYK_BUILDER_NAME = 'spryk';
-    const ARGUMENTS = 'arguments';
+    public const SPRYK_BUILDER_NAME = 'spryk';
+    public const ARGUMENTS = 'arguments';
 
     /**
      * @var \Spryker\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface

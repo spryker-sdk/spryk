@@ -26,8 +26,8 @@ use Spryker\Spryk\Style\SprykStyleInterface;
  */
 class MethodSprykTest extends Unit
 {
-    const ARGUMENT_TARGET = '';
-    const EMPTY_FILE_NAME = 'emptyFile';
+    public const ARGUMENT_TARGET = '';
+    public const EMPTY_FILE_NAME = 'emptyFile';
 
     /**
      * @var \SprykTest\SprykTester

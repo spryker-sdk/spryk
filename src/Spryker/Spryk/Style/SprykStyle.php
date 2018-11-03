@@ -15,7 +15,7 @@ use Symfony\Component\Console\Terminal;
 
 class SprykStyle implements SprykStyleInterface
 {
-    const MAX_LINE_LENGTH = 120;
+    public const MAX_LINE_LENGTH = 120;
 
     use InputHelper;
 

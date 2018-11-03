@@ -20,7 +20,7 @@ use Spryker\Spryk\Console\SprykRunConsole;
  */
 class SprykRunCreateModuleTest extends Unit
 {
-    const KEY_STROKE_ENTER = "\x0D";
+    public const KEY_STROKE_ENTER = "\x0D";
 
     /**
      * @var \SprykTest\SprykConsoleTester

@@ -14,9 +14,9 @@ use Spryker\Spryk\Style\SprykStyleInterface;
 
 class TemplateSpryk implements SprykBuilderInterface
 {
-    const ARGUMENT_TARGET_PATH = 'targetPath';
-    const ARGUMENT_TARGET_FILE_NAME = 'targetFilename';
-    const ARGUMENT_TEMPLATE = 'template';
+    public const ARGUMENT_TARGET_PATH = 'targetPath';
+    public const ARGUMENT_TARGET_FILE_NAME = 'targetFilename';
+    public const ARGUMENT_TEMPLATE = 'template';
 
     /**
      * @var \Spryker\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface

@@ -11,7 +11,7 @@ use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionI
 
 class ZedPresentationTwigNormalizeFileNameCallback implements CallbackInterface
 {
-    const ACTION = 'Action';
+    public const ACTION = 'Action';
 
     /**
      * @return string

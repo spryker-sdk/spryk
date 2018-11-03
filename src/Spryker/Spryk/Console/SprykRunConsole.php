@@ -17,11 +17,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SprykRunConsole extends AbstractSprykConsole
 {
-    const ARGUMENT_SPRYK = 'spryk';
-    const ARGUMENT_SPRYK_SHORT = 's';
+    public const ARGUMENT_SPRYK = 'spryk';
+    public const ARGUMENT_SPRYK_SHORT = 's';
 
-    const OPTION_INCLUDE_OPTIONALS = 'include-optional';
-    const OPTION_INCLUDE_OPTIONALS_SHORT = 'i';
+    public const OPTION_INCLUDE_OPTIONALS = 'include-optional';
+    public const OPTION_INCLUDE_OPTIONALS_SHORT = 'i';
 
     /**
      * @var array|null
