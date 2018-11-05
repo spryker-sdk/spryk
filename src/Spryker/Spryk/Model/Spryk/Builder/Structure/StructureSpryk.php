@@ -13,8 +13,8 @@ use Spryker\Spryk\Style\SprykStyleInterface;
 
 class StructureSpryk implements SprykBuilderInterface
 {
-    protected const ARGUMENT_DIRECTORIES = 'directories';
-    protected const ARGUMENT_TARGET_PATH = 'targetPath';
+    public const ARGUMENT_DIRECTORIES = 'directories';
+    public const ARGUMENT_TARGET_PATH = 'targetPath';
 
     /**
      * @var string

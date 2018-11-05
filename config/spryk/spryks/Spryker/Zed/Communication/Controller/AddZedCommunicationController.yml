@@ -1,0 +1,26 @@
+spryk: template
+description: "Adds a new Controller to the Zed application."
+
+arguments:
+  module: ~
+
+  organization:
+    default: Spryker
+
+  controller:
+    callback:
+      - ClassNameShortCallback
+      - EnsureControllerSuffixCallback
+
+  template:
+    value: Zed/Communication/ZedCommunicationController.php.twig
+
+  targetFilename:
+    value: "{{ controller | classNameShort | ensureControllerSuffix }}.php"
+
+  targetPath:
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
+
+preSpryks:
+  - CreateSprykerModule
+

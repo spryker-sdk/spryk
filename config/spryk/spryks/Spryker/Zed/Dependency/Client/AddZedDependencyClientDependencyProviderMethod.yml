@@ -1,0 +1,38 @@
+spryk: method
+description: "Adds a Client dependency method to the *module*DependencyProvider."
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  dependentModule:
+    moduleFilter:
+      application: Client
+
+  organization:
+    default: Spryker
+
+  method:
+    value: "add{{ dependentModule }}Client"
+
+  template:
+    value: Zed/Dependency/Client/ZedDependencyClientDependencyProviderMethod.php.twig
+
+  target:
+    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+  - AddZedDependencyProvider
+
+postSpryks:
+  - AddZedDependencyClientBridge
+  - AddZedDependencyClientDependencyProviderConstant:
+      arguments:
+        name:
+          value: "CLIENT_{{ dependentModule | underscored | upper }}"
+        value:
+          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} client"
+        visibility:
+          value:  "public"
+

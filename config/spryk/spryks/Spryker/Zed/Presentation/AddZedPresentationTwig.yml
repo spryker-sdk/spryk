@@ -12,20 +12,22 @@ arguments:
     default: Spryker
 
   controller:
-    default: Index
+    callback:
+      - ClassNameShortCallback
+      - RemoveControllerSuffixCallback
 
   method:
-    default: indexAction
+    callback:
+      - RemoveActionSuffixCallback
 
   template:
     value: Zed/Presentation/ZedPresentationTwig.twig
 
   targetFilename:
-    value: "{{ method }}.twig"
-    callback: ZedPresentationTwigNormalizeFileNameCallback
+    value: "{{ method | removeActionSuffix | dasherize | lcfirst }}.twig"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller }}/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"
 
 preSpryks:
-  - AddZedCommunicationControllerMethod
+  - AddZedCommunicationControllerAction

@@ -18,11 +18,9 @@ class UpdateYmlSpryk implements SprykBuilderInterface
 {
     public const ARGUMENT_TARGET_PATH = 'targetPath';
     public const ARGUMENT_TEMPLATE = 'template';
-
     public const ARGUMENT_AFTER_ELEMENT = 'afterElement';
     public const ARGUMENT_ADD_TO_ELEMENT = 'addToElement';
     public const ARGUMENT_CONTENT = 'content';
-
     public const YAML_START_INLINE_LEVEL = 10;
 
     /**

@@ -71,7 +71,12 @@ class NavigationSpryk implements SprykBuilderInterface
         $controller = $dasherizeFilter->filter($this->getController($sprykDefinition));
         $action = $dasherizeFilter->filter($this->getAction($sprykDefinition));
 
-        $page = $xml->$module->pages->addChild($module);
+        $parentNode = $xml->$module;
+        if (!$parentNode) {
+            $parentNode = current($xml->children());
+        }
+
+        $page = $parentNode->pages->addChild($module);
         $page->addChild('label', $this->getModule($sprykDefinition));
         $page->addChild('title', $this->getModule($sprykDefinition));
         $page->addChild('bundle', $module);

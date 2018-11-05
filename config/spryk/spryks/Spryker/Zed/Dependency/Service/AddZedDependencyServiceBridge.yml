@@ -1,0 +1,43 @@
+spryk: template
+description: "Adds a new *module*To*dependentModule*ServiceBridge."
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  organization:
+    default: Spryker
+
+  dependentModule:
+    moduleFilter:
+      application: Service
+
+  dependentModuleOrganization:
+    default: Spryker
+
+
+  template:
+    value: Zed/Dependency/Service/ZedDependencyServiceBridge.php.twig
+
+  targetFilename:
+    value: "{{ module }}To{{ dependentModule }}ServiceBridge.php"
+
+  targetPath:
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Service/"
+
+preSpryks:
+  - CreateSprykerModule
+
+postSpryks:
+  - AddZedDependencyServiceInterface
+  - AddZedDependencyServiceBusinessFactoryMethod
+  - AddZedDependencyServiceDependencyProviderMethod
+  - AddZedDependencyServiceDependencyProviderConstant:
+      arguments:
+          name:
+            value: "SERVICE_{{ dependentModule | underscored | upper }}"
+          value:
+            value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
+          visibility:
+            value:  "public"

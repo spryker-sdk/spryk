@@ -1,0 +1,40 @@
+spryk: bridgeMethods
+description: "Adds a new method to the *module* dependency Client bridge."
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  organization:
+    default: Spryker
+
+  dependentModule:
+    moduleFilter:
+      application: Client
+
+  methods:
+    type: MethodNameChoice
+    choiceLoader: ClientMethodChoiceLoader
+    isMultiple: true
+    typeOptions:
+      - module
+      - choiceLoader
+
+  template:
+    value: Zed/Dependency/ZedDependencyBridgeInterfaceMethod.php.twig
+
+  dependencyType:
+    value: Client
+
+  sourceClass:
+    value: "{{ organization }}\\Client\\{{ dependentModule }}\\{{ dependentModule }}ClientInterface"
+
+  target:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Client\\{{ module }}To{{ dependentModule }}ClientInterface"
+
+preSpryks:
+  - AddZedDependencyClientInterface
+
+postSpryks:
+  - AddZedDependencyClientBridgeMethod

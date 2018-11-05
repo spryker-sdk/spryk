@@ -1,0 +1,25 @@
+spryk: template
+description: "Adds a new *module*Factory to the Yves application."
+
+arguments:
+  module: ~
+
+  organization:
+    default: Spryker
+
+  template:
+    value: Yves/YvesFactory.php.twig
+
+  targetFilename:
+    value: "{{ module }}Factory.php"
+
+  targetPath:
+    default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
+
+preSpryks:
+  - CreateSprykerModule
+
+postSpryks:
+  - AddZedBusinessFacade
+  - AddYvesDependencyProvider
+  - AddZedConfig

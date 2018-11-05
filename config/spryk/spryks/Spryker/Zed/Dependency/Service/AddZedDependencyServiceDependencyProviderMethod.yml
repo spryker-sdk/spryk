@@ -1,0 +1,38 @@
+spryk: method
+description: "Adds a Service dependency method to the *module*DependencyProvider."
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  dependentModule:
+    moduleFilter:
+      application: Service
+
+  organization:
+    default: Spryker
+
+  method:
+    value: "add{{ dependentModule }}Service"
+
+  template:
+    value: Zed/Dependency/Service/ZedDependencyServiceDependencyProviderMethod.php.twig
+
+  target:
+    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+  - AddZedDependencyProvider
+
+postSpryks:
+  - AddZedDependencyServiceBridge
+  - AddZedDependencyServiceDependencyProviderConstant:
+      arguments:
+        name:
+          value: "SERVICE_{{ dependentModule | underscored | upper }}"
+        value:
+          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
+        visibility:
+          value:  "public"
+

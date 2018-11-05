@@ -1,0 +1,27 @@
+spryk: method
+description: "Adds a new method to the Client *module*Config."
+
+arguments:
+
+  module: ~
+
+  organization:
+    default: Spryker
+
+  comment:
+    multiline: true
+    isOptional: true
+
+  method: ~
+  input: ~
+  output: ~
+
+  template:
+    value: Common/Method.php.twig
+
+  target:
+    value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}Config"
+
+preSpryks:
+  - AddClientConfig
+

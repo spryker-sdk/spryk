@@ -28,12 +28,6 @@ class ZedBusinessModelTargetFilenameCallback implements CallbackInterface
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
         $className = $argumentCollection->getArgument('className')->getValue();
-//        if (strpos($className, '\\') !== false) {
-//            $classNameFragments = explode('\\', $className);
-//            $requiredClassNameFragments = array_slice($classNameFragments, 5);
-//
-//            $className = implode(DIRECTORY_SEPARATOR, $requiredClassNameFragments);
-//        }
 
         return $className . '.php';
     }

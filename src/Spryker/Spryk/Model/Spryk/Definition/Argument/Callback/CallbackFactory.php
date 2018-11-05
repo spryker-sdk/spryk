@@ -34,9 +34,12 @@ class CallbackFactory
             $this->createZedBusinessModelTargetFilenameCallback(),
             $this->createZedBusinessModelInterfaceTargetFilenameCallback(),
             $this->createZedBusinessModelSubDirectoryCallback(),
-            $this->createZedPresentationTwigFilterActionCallback(),
             $this->createZedTestMethodNameCallback(),
             $this->createClassNameShortCallback(),
+            $this->createEnsureControllerSuffixCallback(),
+            $this->createRemoveControllerSuffixCallback(),
+            $this->createEnsureActionSuffixCallback(),
+            $this->createRemoveActionSuffixCallback(),
         ]);
     }
 
@@ -75,14 +78,6 @@ class CallbackFactory
     /**
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
      */
-    public function createZedPresentationTwigFilterActionCallback(): CallbackInterface
-    {
-        return new ZedPresentationTwigNormalizeFileNameCallback();
-    }
-
-    /**
-     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
-     */
     public function createZedTestMethodNameCallback(): CallbackInterface
     {
         return new ZedTestMethodNameCallback();
@@ -94,5 +89,37 @@ class CallbackFactory
     public function createClassNameShortCallback(): CallbackInterface
     {
         return new ClassNameShortCallback();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createEnsureControllerSuffixCallback(): CallbackInterface
+    {
+        return new EnsureControllerSuffixCallback();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createRemoveControllerSuffixCallback(): CallbackInterface
+    {
+        return new RemoveControllerSuffixCallback();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createEnsureActionSuffixCallback(): CallbackInterface
+    {
+        return new EnsureActionSuffixCallback();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createRemoveActionSuffixCallback(): CallbackInterface
+    {
+        return new RemoveActionSuffixCallback();
     }
 }

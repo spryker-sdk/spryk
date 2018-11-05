@@ -186,6 +186,6 @@ class SprykRunConsole extends AbstractSprykConsole
      */
     protected function getSprykName(InputInterface $input): string
     {
-        return $input->getArgument(static::ARGUMENT_SPRYK);
+        return current((array)$input->getArgument(static::ARGUMENT_SPRYK));
     }
 }

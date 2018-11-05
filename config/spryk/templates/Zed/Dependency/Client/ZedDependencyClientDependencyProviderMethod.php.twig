@@ -1,0 +1,16 @@
+
+    /**
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function {{ method }}(\Spryker\Zed\Kernel\Container $container): \Spryker\Zed\Kernel\Container
+    {
+        $container[static::CLIENT_{{ dependentModule | underscored | upper }}] = function (\Spryker\Zed\Kernel\Container $container) {
+            ${{ module | lcfirst }}To{{ dependentModule }}ClientBridge = new \{{ organization }}\Zed\{{ module }}\Dependency\Client\{{ module }}To{{ dependentModule }}ClientBridge(
+                $container->getLocator()->{{ dependentModule | lcfirst }}()->client()
+            );
+
+            return ${{ module | lcfirst }}To{{ dependentModule }}ClientBridge;
+        };
+
+        return $container;
+    }

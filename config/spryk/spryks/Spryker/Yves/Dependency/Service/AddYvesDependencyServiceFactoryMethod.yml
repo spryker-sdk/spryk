@@ -1,0 +1,32 @@
+spryk: method
+description: "Adds a Service dependency method to the *module*Factory."
+
+arguments:
+
+  module: ~
+  dependentModule: ~
+
+  organization:
+    default: Spryker
+
+  method:
+    value: "get{{ dependentModule }}Service"
+
+  template:
+    value: Yves/Dependency/Service/YvesDependencyServiceFactoryMethod.php.twig
+
+  target:
+    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}Factory"
+
+preSpryks:
+  - AddYvesFactory
+
+postSpryks:
+  - AddYvesDependencyServiceDependencyProviderConstant:
+      arguments:
+        name:
+          value: "SERVICE_{{ dependentModule | underscored | upper }}"
+        value:
+          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
+        visibility:
+          value:  "public"

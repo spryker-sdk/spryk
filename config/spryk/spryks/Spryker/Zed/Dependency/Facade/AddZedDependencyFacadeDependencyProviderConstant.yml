@@ -1,0 +1,26 @@
+spryk: constant
+description: "Adds a facade dependency constant to the *module*DependencyProvider."
+
+arguments:
+  module:
+    moduleFilter:
+      application: Zed
+
+  dependentModule:
+    moduleFilter:
+      application: Zed
+
+  organization:
+    default: Spryker
+
+  name: ~
+  value: ~
+  visibility:
+    value: "public"
+
+  target:
+    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+  - AddZedDependencyProvider
+

@@ -1,0 +1,21 @@
+spryk: template
+description: "Adds a new *module*To*dependentModule*ClientInterface."
+
+arguments:
+  module: ~
+  dependentModule: ~
+
+  organization:
+    default: Spryker
+
+  template:
+    value: Yves/Dependency/Client/YvesDependencyClientInterface.php.twig
+
+  targetFilename:
+    value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
+
+  targetPath:
+    default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
+
+preSpryks:
+  - AddYvesDependencyClientBridge
