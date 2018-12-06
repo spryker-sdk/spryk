@@ -19,4 +19,4 @@ arguments:
     default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddSprykerModule
