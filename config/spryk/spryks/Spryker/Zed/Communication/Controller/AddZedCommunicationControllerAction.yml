@@ -3,7 +3,7 @@ description: "Adds a new action to the Zed controller."
 
 arguments:
 
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -29,7 +29,7 @@ arguments:
     value: Zed/Communication/MethodZedCommunicationController.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"
+    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Communication\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"
 
 preSpryks:
   - AddZedCommunicationController

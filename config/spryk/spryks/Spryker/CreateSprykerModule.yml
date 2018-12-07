@@ -1,16 +1,16 @@
 spryk: structure
-description: "Creates a new *module* structure."
+description: "Creates a new *moduleName* structure."
 priority: 1
 
 arguments:
-  module:
+  moduleName:
     type: NewModuleType
 
   organization:
     default: Spryker
 
   targetPath:
-    default: "{{ module }}/"
+    default: "{{ moduleName }}/"
 
   directories:
     value:

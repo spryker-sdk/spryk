@@ -1,9 +1,9 @@
 spryk: method
-description: "Adds a Client dependency method to the *module*DependencyProvider."
+description: "Adds a Client dependency method to the *moduleName*DependencyProvider."
 
 arguments:
 
-  module: ~
+  moduleName: ~
   dependentModule: ~
 
   organization:
@@ -16,7 +16,7 @@ arguments:
     value: Yves/Dependency/Client/YvesDependencyClientDependencyProviderMethod.php.twig
 
   target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
+    value: "{{ organization }}\\Yves\\{{ moduleName }}\\{{ moduleName }}DependencyProvider"
 
 preSpryks:
   - AddYvesDependencyProvider

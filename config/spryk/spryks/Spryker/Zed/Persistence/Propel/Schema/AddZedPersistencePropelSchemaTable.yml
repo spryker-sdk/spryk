@@ -2,7 +2,7 @@ spryk: schema
 description: "Adds a new table to the spy_*targetModule*.schema.xml."
 
 arguments:
-  module: ~
+  moduleName: ~
   targetModule: ~
   tableName: ~
 
@@ -10,7 +10,7 @@ arguments:
     default: Spryker
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/spy_{{ targetModule | underscored }}.schema.xml"
+    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Persistence/Propel/Schema/spy_{{ targetModule | underscored }}.schema.xml"
 
 preSpryks:
   - AddZedPersistencePropelSchema

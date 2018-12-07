@@ -1,9 +1,9 @@
 spryk: constant
-description: "Adds a Client dependency constant to the *module*DependencyProvider."
+description: "Adds a Client dependency constant to the *moduleName*DependencyProvider."
 
 arguments:
 
-  module: ~
+  moduleName: ~
   dependentModule: ~
 
   organization:
@@ -15,7 +15,7 @@ arguments:
     value: "public"
 
   target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
+    value: "{{ organization }}\\Yves\\{{ moduleName }}\\{{ moduleName }}DependencyProvider"
 
 preSpryks:
   - AddYvesDependencyProvider

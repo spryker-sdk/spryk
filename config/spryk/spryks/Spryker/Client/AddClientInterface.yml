@@ -2,7 +2,7 @@ spryk: template
 description: "Adds a new *Module*ClientInterface to the Client application."
 
 arguments:
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Client/ClientInterface.php.twig
 
   targetFilename:
-    value: "{{ module }}ClientInterface.php"
+    value: "{{ moduleName }}ClientInterface.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
+    default: "{{ moduleName }}/src/{{ organization }}/Client/{{ moduleName }}/"
 
 preSpryks:
   - AddClient

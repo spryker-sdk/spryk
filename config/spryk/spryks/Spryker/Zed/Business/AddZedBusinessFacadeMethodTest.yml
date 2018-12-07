@@ -1,9 +1,9 @@
 spryk: method
-description: "Adds a new test method to the *module*FacadeTest."
+description: "Adds a new test method to the *moduleName*FacadeTest."
 
 arguments:
 
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -23,7 +23,7 @@ arguments:
     value: Common/Method.php.twig
 
   target:
-    value: "{{ organization }}Test\\Zed\\{{ module }}\\Business\\{{ module }}FacadeTest"
+    value: "{{ organization }}Test\\Zed\\{{ moduleName }}\\Business\\{{ moduleName }}FacadeTest"
 
 preSpryks:
   - AddZedBusinessFacadeTest

@@ -1,9 +1,9 @@
 spryk: method
-description: "Adds a new method to the *module*Repository."
+description: "Adds a new method to the *moduleName*Repository."
 
 arguments:
 
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -16,7 +16,7 @@ arguments:
     value: Common/Method.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}Repository"
+    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Persistence\\{{ moduleName }}Repository"
 
 preSpryks:
   - AddZedPersistenceRepository

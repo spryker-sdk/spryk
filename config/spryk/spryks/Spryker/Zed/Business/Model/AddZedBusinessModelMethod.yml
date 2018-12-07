@@ -8,7 +8,7 @@ priority: 1
 
 arguments:
 
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
