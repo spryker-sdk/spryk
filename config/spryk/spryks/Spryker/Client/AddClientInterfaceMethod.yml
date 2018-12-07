@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a new Interface method to the *Module*ClientInterface."
+description: "Adds a new Interface method to the *moduleName*ClientInterface."
 
 arguments:
 

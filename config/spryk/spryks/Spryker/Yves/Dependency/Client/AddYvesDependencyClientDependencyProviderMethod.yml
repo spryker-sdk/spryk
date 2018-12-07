@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a Client dependency method to the *moduleName* DependencyProvider."
+description: "Adds a Client dependency method to the *moduleName*DependencyProvider."
 
 arguments:
 

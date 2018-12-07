@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *moduleName* Config to the Client application."
+description: "Adds a new *moduleName*Config to the Client application."
 
 arguments:
   moduleName: ~

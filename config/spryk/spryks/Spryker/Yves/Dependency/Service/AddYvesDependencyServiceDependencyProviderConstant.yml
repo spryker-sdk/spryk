@@ -1,5 +1,5 @@
 spryk: constant
-description: "Adds a Service dependency constant to the *moduleName* DependencyProvider."
+description: "Adds a Service dependency constant to the *moduleName*DependencyProvider."
 
 arguments:
 

@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a new method to the *moduleName* Facade."
+description: "Adds a new method to the *moduleName*Facade."
 
 arguments:
 

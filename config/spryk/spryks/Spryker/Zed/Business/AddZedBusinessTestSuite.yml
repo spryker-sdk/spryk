@@ -1,5 +1,5 @@
 spryk: structure
-description: "Adds a new *moduleName* Business test suite directory."
+description: "Adds a new *moduleName*Business test suite directory."
 
 arguments:
   moduleName: ~

@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *Module*Client to the Client application."
+description: "Adds a new *moduleName*Client to the Client application."
 priority: 1
 
 arguments:

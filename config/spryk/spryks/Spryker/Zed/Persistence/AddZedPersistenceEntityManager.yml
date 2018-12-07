@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *moduleName* EntityManager to the Zed application."
+description: "Adds a new *moduleName*EntityManager to the Zed application."
 
 arguments:
   moduleName: ~
