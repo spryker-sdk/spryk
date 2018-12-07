@@ -15,7 +15,7 @@ arguments:
     type: ClassNameChoice
     choiceLoader: ZedCommunicationControllerChoiceLoader
     typeOptions:
-      - module
+      - moduleName
       - spryk
       - choiceLoader
 

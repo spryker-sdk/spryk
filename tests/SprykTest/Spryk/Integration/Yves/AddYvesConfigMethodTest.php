@@ -31,7 +31,7 @@ class AddYvesConfigMethodTest extends Unit
     public function testAddsYvesConfigMethod(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--method' => 'getConfigValue',
             '--input' => 'string $foo',
             '--output' => 'string',

@@ -34,7 +34,7 @@ class AddZedPersistencePropelSchemaTest extends Unit
     public function testAddsZedPersistencePropelSchemaFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--targetModule' => 'FooBar',
         ]);
 

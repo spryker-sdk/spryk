@@ -30,7 +30,7 @@ class CreateSprykerModuleTest extends Unit
     public function testCreatesModule(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertDirectoryExists($this->tester->getModuleDirectory() . 'src');

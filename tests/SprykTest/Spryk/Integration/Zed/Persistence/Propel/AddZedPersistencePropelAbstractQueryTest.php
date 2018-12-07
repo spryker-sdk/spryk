@@ -33,7 +33,7 @@ class AddZedPersistencePropelAbstractQueryTest extends Unit
     public function testAddsZedPersistenceAbstractQueryFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--targetModule' => 'FooBar',
             '--tableName' => 'spy_foo_bar',
         ]);

@@ -30,7 +30,7 @@ class AddSprykerComposerJsonTest extends Unit
     public function testAddsComposerJsonFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'composer.json');

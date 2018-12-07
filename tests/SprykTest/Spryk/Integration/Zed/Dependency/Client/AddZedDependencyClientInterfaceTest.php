@@ -33,7 +33,7 @@ class AddZedDependencyClientInterfaceTest extends Unit
     public function testAddsZedDependencyFacadeInterface(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

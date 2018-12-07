@@ -2,16 +2,16 @@ arguments:
   emptyValue: ~
 
   replaceValue:
-    value: "%module%/src/"
+    value: "%moduleName%/src/"
 
   replaceDefault:
-    default: "%module%/src/"
+    default: "%moduleName%/src/"
 
 postSpryks:
   - FooBarSpryk:
       arguments:
         replaceValue:
-            value: "%module%/src/foo-bar/"
+            value: "%moduleName%/src/foo-bar/"
 
         replaceDefault:
-          default: "%module%/src/foo-bar/"
+          default: "%moduleName%/src/foo-bar/"

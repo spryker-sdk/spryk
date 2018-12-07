@@ -34,7 +34,7 @@ class AddZedDependencyFacadeDependencyProviderMethodTest extends Unit
     public function testAddsDependencyFacadeMethodToDependencyProvider(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

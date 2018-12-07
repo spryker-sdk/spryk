@@ -2,11 +2,11 @@ spryk: structure
 description: "Unit Test configuration"
 
 arguments:
-  module: ~
+  moduleName: ~
 
   directories:
     value:
       - src/
 
   targetPath:
-    value: "{{ module }}/"
+    value: "{{ moduleName }}/"

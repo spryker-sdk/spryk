@@ -34,7 +34,7 @@ class AddZedCommunicationControllerActionTest extends Unit
     public function testAddsZedControllerMethod(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'index',
         ]);
@@ -48,7 +48,7 @@ class AddZedCommunicationControllerActionTest extends Unit
     public function testAddsZedControllerMethodAndReplacesActionSuffix(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--controller' => 'IndexController',
             '--method' => 'indexAction',
         ]);
@@ -64,7 +64,7 @@ class AddZedCommunicationControllerActionTest extends Unit
     public function testAddsZedControllerMethodToFullyQualifiedControllerClassName(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--controller' => ClassName::ZED_CONTROLLER,
             '--method' => 'indexAction',
         ]);
@@ -78,7 +78,7 @@ class AddZedCommunicationControllerActionTest extends Unit
     public function testAddsViewFileForControllerAction(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'indexAction',
         ]);
@@ -92,7 +92,7 @@ class AddZedCommunicationControllerActionTest extends Unit
     public function testAddsNavigationNodeEntryToNavigationSchema(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'indexAction',
         ]);

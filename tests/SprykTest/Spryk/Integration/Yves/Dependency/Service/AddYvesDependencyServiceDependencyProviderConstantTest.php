@@ -34,7 +34,7 @@ class AddYvesDependencyServiceDependencyProviderConstantTest extends Unit
     public function testAddsDependencyServiceConstantToDependencyProvider(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--name' => 'SERVICE_ZIP_ZAP',
             '--value' => 'zip zap service',

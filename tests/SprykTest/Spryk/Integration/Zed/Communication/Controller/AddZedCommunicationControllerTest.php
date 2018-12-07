@@ -34,7 +34,7 @@ class AddZedCommunicationControllerTest extends Unit
     public function testAddsZedControllerFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--controller' => 'Index',
         ]);
 
@@ -47,7 +47,7 @@ class AddZedCommunicationControllerTest extends Unit
     public function testAddsZedControllerFileFromFullyQualifiedControllerClassName(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--controller' => ClassName::ZED_CONTROLLER,
         ]);
 
@@ -60,7 +60,7 @@ class AddZedCommunicationControllerTest extends Unit
     public function testAddsZedControllerFileAndRemovesControllerSuffix(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--controller' => 'IndexController',
         ]);
 

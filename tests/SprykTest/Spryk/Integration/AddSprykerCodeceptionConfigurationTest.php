@@ -30,7 +30,7 @@ class AddSprykerCodeceptionConfigurationTest extends Unit
     public function testAddsCodeceptionConfigFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');

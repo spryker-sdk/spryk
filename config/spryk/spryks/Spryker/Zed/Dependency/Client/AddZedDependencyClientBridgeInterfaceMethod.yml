@@ -18,7 +18,7 @@ arguments:
     choiceLoader: ClientMethodChoiceLoader
     isMultiple: true
     typeOptions:
-      - module
+      - moduleName
       - choiceLoader
 
   template:

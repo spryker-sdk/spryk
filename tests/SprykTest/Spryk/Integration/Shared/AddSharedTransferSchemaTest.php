@@ -30,7 +30,7 @@ class AddSharedTransferSchemaTest extends Unit
     public function testAddsSharedTransferSchemaFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml');

@@ -30,7 +30,7 @@ class AddZedBusinessFactoryMethodTest extends Unit
     public function testAddsMethodToBusinessFactory(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--subDirectory' => 'Foo',
             '--className' => 'Bar',
             '--output' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
@@ -45,7 +45,7 @@ class AddZedBusinessFactoryMethodTest extends Unit
     public function testAddsMethodWithBodyToBusinessFactory(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--subDirectory' => 'Foo',
             '--className' => 'Bar',
             '--dependencyMethods' => [

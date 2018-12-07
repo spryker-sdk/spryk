@@ -30,7 +30,7 @@ class AddZedBusinessModelTest extends Unit
     public function testAddsZedBusinessModel(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--className' => 'Bar',
             '--subDirectory' => 'Foo',
             '--constructorArguments' => [
@@ -48,7 +48,7 @@ class AddZedBusinessModelTest extends Unit
     public function testAddsConstructor(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--className' => 'Bar',
             '--subDirectory' => 'Foo',
             '--constructorArguments' => [
@@ -66,7 +66,7 @@ class AddZedBusinessModelTest extends Unit
     public function testAddsMethodToZedBusinessFactory(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--className' => 'Bar',
             '--subDirectory' => 'Foo',
         ]);
@@ -80,7 +80,7 @@ class AddZedBusinessModelTest extends Unit
     public function testInjectsDependenciesInBusinessFactoryMethod(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--className' => 'Bar',
             '--subDirectory' => 'Foo',
             '--constructorArguments' => [

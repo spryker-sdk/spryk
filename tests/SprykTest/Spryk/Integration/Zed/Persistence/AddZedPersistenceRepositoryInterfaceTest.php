@@ -32,7 +32,7 @@ class AddZedPersistenceRepositoryInterfaceTest extends Unit
     public function testAddsZedRepositoryInterfaceFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarRepositoryInterface.php');

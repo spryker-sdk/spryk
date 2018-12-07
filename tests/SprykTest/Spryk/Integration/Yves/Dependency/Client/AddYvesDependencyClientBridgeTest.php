@@ -34,7 +34,7 @@ class AddYvesDependencyClientBridgeTest extends Unit
     public function testAddsYvesDependencyClientBridge(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 
@@ -47,7 +47,7 @@ class AddYvesDependencyClientBridgeTest extends Unit
     public function testAddsGetterToFactory(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

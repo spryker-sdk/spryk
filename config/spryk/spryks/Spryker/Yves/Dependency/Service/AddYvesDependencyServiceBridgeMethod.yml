@@ -15,7 +15,7 @@ arguments:
     choiceLoader: ServiceMethodChoiceLoader
     isMultiple: true
     typeOptions:
-      - module
+      - moduleName
       - choiceLoader
 
   template:

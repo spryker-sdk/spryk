@@ -32,7 +32,7 @@ class AddZedPersistenceEntityManagerInterfaceTest extends Unit
     public function testAddsZedEntityManagerInterfaceFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarEntityManagerInterface.php');

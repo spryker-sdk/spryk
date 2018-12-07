@@ -30,7 +30,7 @@ class AddZedBusinessModelMethodTest extends Unit
     public function testAddsMethodToBusinessModel(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
             '--method' => 'addSomething',
             '--input' => 'string $foo',
@@ -46,7 +46,7 @@ class AddZedBusinessModelMethodTest extends Unit
     public function testAddsFacadeMethodWhenSubSprykIsIncluded(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
             '--method' => 'addSomething',
             '--input' => 'string $foo',
@@ -66,7 +66,7 @@ class AddZedBusinessModelMethodTest extends Unit
     public function testAddsFacadeMethodWithDifferentName(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
             '--method' => 'addSomething',
             '--facadeMethod' => 'addSomethingDifferent',

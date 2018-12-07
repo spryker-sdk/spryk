@@ -17,7 +17,7 @@ arguments:
     type: ClassNameChoice
     choiceLoader: ZedBusinessModelChoiceLoader
     typeOptions:
-      - module
+      - moduleName
       - spryk
       - choiceLoader
 

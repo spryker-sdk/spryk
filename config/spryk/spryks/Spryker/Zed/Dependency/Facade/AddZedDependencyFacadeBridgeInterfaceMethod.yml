@@ -18,7 +18,7 @@ arguments:
     choiceLoader: ZedFacadeMethodChoiceLoader
     isMultiple: true
     typeOptions:
-      - module
+      - moduleName
       - choiceLoader
 
   template:

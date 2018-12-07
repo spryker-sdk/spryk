@@ -1,8 +1,8 @@
 
     /**
-     * @return \{{ organization }}\Zed\{{ module }}\Dependency\Service\{{ module }}To{{ dependentModule }}ServiceInterface
+     * @return \{{ organization }}\Zed\{{ moduleName }}\Dependency\Service\{{ moduleName }}To{{ dependentModule }}ServiceInterface
      */
-    public function {{ method }}(): \{{ organization }}\Zed\{{ module }}\Dependency\Service\{{ module }}To{{ dependentModule }}ServiceInterface
+    public function {{ method }}(): \{{ organization }}\Zed\{{ moduleName }}\Dependency\Service\{{ moduleName }}To{{ dependentModule }}ServiceInterface
     {
-        return $this->getProvidedDependency(\{{ organization }}\Zed\{{ module}}\{{ module}}DependencyProvider::SERVICE_{{ dependentModule | underscored | upper }});
+        return $this->getProvidedDependency(\{{ organization }}\Zed\{{ moduleName}}\{{ moduleName}}DependencyProvider::SERVICE_{{ dependentModule | underscored | upper }});
     }

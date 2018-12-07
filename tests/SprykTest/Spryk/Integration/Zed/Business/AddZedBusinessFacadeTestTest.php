@@ -31,7 +31,7 @@ class AddZedBusinessFacadeTestTest extends Unit
     public function testAddsZedBusinessFacade(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business/FooBarFacadeTest.php');

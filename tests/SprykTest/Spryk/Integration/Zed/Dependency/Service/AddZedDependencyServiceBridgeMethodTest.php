@@ -34,7 +34,7 @@ class AddZedDependencyServiceBridgeMethodTest extends Unit
     public function testAddsZedDependencyServiceBridgeMethods(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
@@ -71,7 +71,7 @@ class AddZedDependencyServiceBridgeMethodTest extends Unit
     public function testAddsZedDependencyServiceBridgeMethodOnlyOnce(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
@@ -80,7 +80,7 @@ class AddZedDependencyServiceBridgeMethodTest extends Unit
         $this->tester->assertClassHasMethod(ClassName::ZED_SERVICE_BRIDGE, 'methodWithStringArgument');
 
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',

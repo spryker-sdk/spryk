@@ -2,7 +2,7 @@ spryk: template
 description: "Unit Test configuration"
 
 arguments:
-  module:
+  moduleName:
     value: FooBar
 
   organization:
@@ -12,7 +12,7 @@ arguments:
     value: ZedBusinessFactory.php.twig
 
   targetFilename:
-    value: "{{ module }}BusinessFactory.php"
+    value: "{{ moduleName }}BusinessFactory.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Business/"

@@ -30,7 +30,7 @@ class AddZedBusinessTestSuiteTest extends Unit
     public function testAddsZedBusinessTestSuiteConfiguration(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertDirectoryExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business');

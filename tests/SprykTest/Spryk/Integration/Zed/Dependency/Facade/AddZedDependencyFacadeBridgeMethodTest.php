@@ -34,7 +34,7 @@ class AddZedDependencyFacadeBridgeMethodTest extends Unit
     public function testAddsZedDependencyFacadeBridgeMethods(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
@@ -71,7 +71,7 @@ class AddZedDependencyFacadeBridgeMethodTest extends Unit
     public function testAddsZedDependencyFacadeBridgeMethodOnlyOnce(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
@@ -80,7 +80,7 @@ class AddZedDependencyFacadeBridgeMethodTest extends Unit
         $this->tester->assertClassHasMethod(ClassName::ZED_FACADE_BRIDGE, 'methodWithStringArgument');
 
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',

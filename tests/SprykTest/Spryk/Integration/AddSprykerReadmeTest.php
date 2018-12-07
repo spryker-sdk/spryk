@@ -30,7 +30,7 @@ class AddSprykerReadmeTest extends Unit
     public function testAddsReadmeFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'README.md');
