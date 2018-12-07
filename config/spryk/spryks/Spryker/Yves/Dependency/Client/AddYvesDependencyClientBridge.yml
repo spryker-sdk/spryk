@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *moduleName*To*dependentModule*ClientBridge."
+description: "Adds a new *moduleName* To*dependentModule*ClientBridge."
 
 arguments:
   moduleName: ~

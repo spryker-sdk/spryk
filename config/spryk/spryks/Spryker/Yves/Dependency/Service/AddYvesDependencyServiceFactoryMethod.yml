@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a Service dependency method to the *moduleName*Factory."
+description: "Adds a Service dependency method to the *moduleName* Factory."
 
 arguments:
 

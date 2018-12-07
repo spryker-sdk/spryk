@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a new method to the *moduleName*EntityManager."
+description: "Adds a new method to the *moduleName* EntityManager."
 
 arguments:
 

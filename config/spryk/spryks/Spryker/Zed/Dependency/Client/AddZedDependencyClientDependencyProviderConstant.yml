@@ -1,5 +1,5 @@
 spryk: constant
-description: "Adds a Client dependency constant to the *moduleName*DependencyProvider."
+description: "Adds a Client dependency constant to the *moduleName* DependencyProvider."
 
 arguments:
   moduleName:

@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a new test method to the *moduleName*FacadeTest."
+description: "Adds a new test method to the *moduleName* FacadeTest."
 
 arguments:
 

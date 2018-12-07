@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *moduleName*To*dependentModule*FacadeInterface."
+description: "Adds a new *moduleName* To*dependentModule*FacadeInterface."
 
 arguments:
   moduleName:
