@@ -17,4 +17,4 @@ arguments:
     default: "{{ moduleName }}/src/{{ organization }}/Client/{{ moduleName }}/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddSprykerModule

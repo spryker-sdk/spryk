@@ -27,7 +27,7 @@ arguments:
     default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Dependency/Facade/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddSprykerModule
 
 postSpryks:
   - AddZedDependencyFacadeInterface

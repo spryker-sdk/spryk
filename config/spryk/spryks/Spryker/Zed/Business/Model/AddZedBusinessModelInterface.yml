@@ -26,7 +26,7 @@ arguments:
     default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Business/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddSprykerModule
   - AddZedBusinessModel:
       arguments:
         subDirectory:

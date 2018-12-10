@@ -17,7 +17,7 @@ use Codeception\Test\Unit;
  * @group CreateSprykerModuleTest
  * Add your own group annotations below this line
  */
-class CreateSprykerModuleTest extends Unit
+class AddSprykerModuleTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester
@@ -27,7 +27,7 @@ class CreateSprykerModuleTest extends Unit
     /**
      * @return void
      */
-    public function testCreatesModule(): void
+    public function testAddsModule(): void
     {
         $this->tester->run($this, [
             '--moduleName' => 'FooBar',

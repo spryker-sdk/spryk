@@ -17,4 +17,4 @@ arguments:
     default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Communication/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddSprykerModule

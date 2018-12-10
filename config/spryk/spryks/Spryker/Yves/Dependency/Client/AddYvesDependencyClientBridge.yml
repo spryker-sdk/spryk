@@ -23,7 +23,7 @@ arguments:
     default: "{{ moduleName }}/src/{{ organization }}/Yves/{{ moduleName }}/Dependency/Client/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddSprykerModule
 
 postSpryks:
   - AddYvesDependencyClientInterface
