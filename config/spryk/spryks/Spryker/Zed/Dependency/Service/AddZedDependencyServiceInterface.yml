@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *module*To*dependentModule*ServiceInterface."
+description: "Adds a new *moduleName*To*dependentModule*ServiceInterface."
 
 arguments:
-  module:
+  moduleName:
     moduleFilter:
       application: Zed
 
@@ -17,10 +17,10 @@ arguments:
     value: Zed/Dependency/Service/ZedDependencyServiceInterface.php.twig
 
   targetFilename:
-    value: "{{ module }}To{{ dependentModule }}ServiceInterface.php"
+    value: "{{ moduleName }}To{{ dependentModule }}ServiceInterface.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Service/"
+    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Dependency/Service/"
 
 preSpryks:
   - AddZedDependencyServiceBridge

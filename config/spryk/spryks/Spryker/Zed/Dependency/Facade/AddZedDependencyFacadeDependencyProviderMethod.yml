@@ -1,8 +1,8 @@
 spryk: method
-description: "Adds a facade dependency method to the *module*DependencyProvider."
+description: "Adds a facade dependency method to the *moduleName*DependencyProvider."
 
 arguments:
-  module:
+  moduleName:
     moduleFilter:
       application: Zed
 
@@ -20,7 +20,7 @@ arguments:
     value: Zed/Dependency/Facade/ZedDependencyFacadeDependencyProviderMethod.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+    value: "{{ organization }}\\Zed\\{{ moduleName }}\\{{ moduleName }}DependencyProvider"
 
 preSpryks:
   - AddZedDependencyProvider

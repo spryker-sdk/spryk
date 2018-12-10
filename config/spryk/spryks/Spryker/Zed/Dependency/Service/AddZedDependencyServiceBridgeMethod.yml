@@ -1,9 +1,9 @@
 spryk: bridgeMethods
-description: "Adds a new method to the *module* dependency Service bridge."
+description: "Adds a new method to the *moduleName* dependency Service bridge."
 priority: 1
 
 arguments:
-  module:
+  moduleName:
     moduleFilter:
       application: Zed
 
@@ -19,7 +19,7 @@ arguments:
     choiceLoader: ServiceMethodChoiceLoader
     isMultiple: true
     typeOptions:
-      - module
+      - moduleName
       - choiceLoader
 
   template:
@@ -32,7 +32,7 @@ arguments:
     value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
 
   target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
+    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Dependency\\Service\\{{ moduleName }}To{{ dependentModule }}ServiceBridge"
 
 preSpryks:
   - AddZedDependencyServiceBridge

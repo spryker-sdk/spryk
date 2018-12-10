@@ -1,8 +1,8 @@
 spryk: navigation
-description: "Adds a new navigation node entry tho the *module* navigation.xml."
+description: "Adds a new navigation node entry tho the *moduleName* navigation.xml."
 
 arguments:
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -17,7 +17,7 @@ arguments:
       - RemoveActionSuffixCallback
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/navigation.xml"
+    value: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Communication/navigation.xml"
 
 preSpryks:
   - AddZedNavigationSchema

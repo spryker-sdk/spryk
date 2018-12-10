@@ -33,7 +33,7 @@ class AddYvesDependencyServiceInterfaceTest extends Unit
     public function testAddsYvesDependencyServiceInterface(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

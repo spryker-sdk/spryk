@@ -34,7 +34,7 @@ class AddYvesDependencyClientDependencyProviderMethodTest extends Unit
     public function testAddsDependencyClientMethodToDependencyProvider(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

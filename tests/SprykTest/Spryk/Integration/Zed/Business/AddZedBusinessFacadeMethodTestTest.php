@@ -32,7 +32,7 @@ class AddZedBusinessFacadeMethodTestTest extends Unit
     public function testAddsTestMethodToFacadeTest(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--method' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',

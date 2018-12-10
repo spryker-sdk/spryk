@@ -30,7 +30,7 @@ class AddZedBusinessModelInterfaceMethodTest extends Unit
     public function testAddsMethodToBusinessModelInterface(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
             '--method' => 'addSomething',
             '--input' => 'string $foo',

@@ -32,7 +32,7 @@ class AddZedConfigMethodTest extends Unit
     public function testAddsZedConfigMethod(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--method' => 'getConfigValue',
             '--input' => 'string $foo',
             '--output' => 'string',

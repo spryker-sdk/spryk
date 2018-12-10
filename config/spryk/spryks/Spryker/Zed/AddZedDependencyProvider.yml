@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *module*DependencyProvider to the Zed application."
+description: "Adds a new *moduleName*DependencyProvider to the Zed application."
 
 arguments:
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Zed/ZedDependencyProvider.php.twig
 
   targetFilename:
-    value: "{{ module }}DependencyProvider.php"
+    value: "{{ moduleName }}DependencyProvider.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/"
+    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/"
 
 preSpryks:
   - AddSprykerModule

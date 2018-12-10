@@ -1,8 +1,8 @@
 spryk: method
-description: "Adds a Client dependency method to the *module*BusinessFactory."
+description: "Adds a Client dependency method to the *moduleName*BusinessFactory."
 
 arguments:
-  module:
+  moduleName:
     moduleFilter:
       application: Zed
 
@@ -20,7 +20,7 @@ arguments:
     value: Zed/Dependency/Client/ZedDependencyClientBusinessFactoryMethod.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
+    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Business\\{{ moduleName }}BusinessFactory"
 
 preSpryks:
   - AddZedBusinessFactory

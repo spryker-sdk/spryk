@@ -1,9 +1,9 @@
 spryk: method
-description: "Adds a new Interface method to the *Module*ClientInterface."
+description: "Adds a new Interface method to the *moduleName*ClientInterface."
 
 arguments:
 
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -19,7 +19,7 @@ arguments:
     value: Common/InterfaceMethod.php.twig
 
   target:
-    value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}ClientInterface"
+    value: "{{ organization }}\\Client\\{{ moduleName }}\\{{ moduleName }}ClientInterface"
 
 preSpryks:
   - AddClientInterface

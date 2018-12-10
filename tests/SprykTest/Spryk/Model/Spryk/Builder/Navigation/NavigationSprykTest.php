@@ -25,7 +25,7 @@ use Spryker\Spryk\Style\SprykStyleInterface;
 class NavigationSprykTest extends Unit
 {
     public const TARGET_PATH_VALUE = 'emptyFile';
-    public const MODULE = 'module';
+    public const MODULE = 'moduleName';
     public const CONTROLLER = 'controller';
     public const ACTION = 'action';
 

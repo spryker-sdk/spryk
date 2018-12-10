@@ -1,8 +1,8 @@
 spryk: update-yml
-description: "Updates the *module* test configuration and adds the suite configuration for Business tests."
+description: "Updates the *moduleName* test configuration and adds the suite configuration for Business tests."
 
 arguments:
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -17,7 +17,7 @@ arguments:
     value: suites
 
   targetPath:
-    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/codeception.yml"
+    value: "{{ moduleName }}/tests/{{ organization }}Test/Zed/{{ moduleName }}/codeception.yml"
 
 preSpryks:
   - AddZedTestCodeceptionConfiguration

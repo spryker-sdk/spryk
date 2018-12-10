@@ -32,7 +32,7 @@ class AddZedCommunicationConsoleTest extends Unit
     public function testAddsZedConsole(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--className' => 'FooBar',
             '--consoleCommand' => 'spryker:spryker',
         ]);

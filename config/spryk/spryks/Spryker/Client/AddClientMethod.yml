@@ -1,10 +1,10 @@
 spryk: method
-description: "Adds a new method to the *Module*Client."
+description: "Adds a new method to the *moduleName*Client."
 priority: 1
 
 arguments:
 
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -17,7 +17,7 @@ arguments:
     value: Common/Method.php.twig
 
   target:
-    value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}Client"
+    value: "{{ organization }}\\Client\\{{ moduleName }}\\{{ moduleName }}Client"
 
 preSpryks:
   - AddClient

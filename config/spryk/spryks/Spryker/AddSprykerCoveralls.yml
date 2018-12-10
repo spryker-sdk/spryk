@@ -2,7 +2,7 @@ spryk: template
 description: "Adds a new .coveralls.yml to the Modules root."
 
 arguments:
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -16,7 +16,7 @@ arguments:
       value: .coveralls.yml
 
   targetPath:
-    default: "{{ module }}/"
+    default: "{{ moduleName }}/"
 
 preSpryks:
   - AddSprykerModule

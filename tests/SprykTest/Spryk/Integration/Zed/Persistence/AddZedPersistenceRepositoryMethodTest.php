@@ -33,7 +33,7 @@ class AddZedPersistenceRepositoryMethodTest extends Unit
     public function testAddsZedPersistenceRepositoryMethod(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--method' => 'doSomething',
             '--input' => 'string $fooBar',
             '--output' => 'array',

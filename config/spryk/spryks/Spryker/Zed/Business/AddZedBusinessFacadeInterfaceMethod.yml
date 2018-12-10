@@ -1,9 +1,9 @@
 spryk: method
-description: "Adds a new method to the *module*FacadeInterface."
+description: "Adds a new method to the *moduleName*FacadeInterface."
 
 arguments:
 
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -29,7 +29,7 @@ arguments:
     value: Common/InterfaceMethod.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}FacadeInterface"
+    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Business\\{{ moduleName }}FacadeInterface"
 
 preSpryks:
   - AddZedBusinessFacadeInterface

@@ -1,12 +1,12 @@
 spryk: template
-description: "Adds a new twig file to the *module* Presentation layer."
+description: "Adds a new twig file to the *moduleName*Presentation layer."
 
 config:
   noRender: true
 
 arguments:
 
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -27,7 +27,7 @@ arguments:
     value: "{{ method | removeActionSuffix | dasherize | lcfirst }}.twig"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"
+    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"
 
 preSpryks:
   - AddZedCommunicationControllerAction

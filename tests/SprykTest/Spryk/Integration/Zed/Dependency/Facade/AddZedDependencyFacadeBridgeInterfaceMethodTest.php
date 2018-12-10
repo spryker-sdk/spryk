@@ -34,7 +34,7 @@ class AddZedDependencyFacadeBridgeInterfaceMethodTest extends Unit
     public function testAddsZedDependencyFacadeInterfaceMethod(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',

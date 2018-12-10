@@ -1,9 +1,9 @@
 spryk: method
-description: "Adds a new method to the Zed *module*Config."
+description: "Adds a new method to the Zed *moduleName*Config."
 
 arguments:
 
-  module: ~
+  moduleName: ~
 
   organization:
     default: Spryker
@@ -16,7 +16,7 @@ arguments:
     value: Common/Method.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
+    value: "{{ organization }}\\Zed\\{{ moduleName }}\\{{ moduleName }}Config"
 
 preSpryks:
   - AddZedConfig

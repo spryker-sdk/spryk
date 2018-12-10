@@ -30,7 +30,7 @@ class AddZedBusinessModelInterfaceTest extends Unit
     public function testAddsZedBusinessModelInterface(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--subDirectory' => 'Foo',
             '--className' => 'Bar',
         ]);

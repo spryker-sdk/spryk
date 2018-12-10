@@ -34,7 +34,7 @@ class AddYvesDependencyClientFactoryMethodTest extends Unit
     public function testAddsYvesDependencyClientDependencyMethodToFactory(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

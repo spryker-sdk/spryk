@@ -1,9 +1,9 @@
 spryk: bridgeMethods
-description: "Adds a new method to the *module* dependency Client bridge."
+description: "Adds a new method to the *moduleName* dependency Client bridge."
 
 arguments:
 
-  module: ~
+  moduleName: ~
   organization:
     default: Spryker
 
@@ -14,7 +14,7 @@ arguments:
     choiceLoader: ClientMethodChoiceLoader
     isMultiple: true
     typeOptions:
-      - module
+      - moduleName
       - choiceLoader
 
   template:
@@ -27,7 +27,7 @@ arguments:
     value: "{{ organization }}\\Client\\{{ dependentModule }}\\{{ dependentModule }}ClientInterface"
 
   target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Client\\{{ module }}To{{ dependentModule }}ClientInterface"
+    value: "{{ organization }}\\Yves\\{{ moduleName }}\\Dependency\\Client\\{{ moduleName }}To{{ dependentModule }}ClientInterface"
 
 preSpryks:
   - AddYvesDependencyClientInterface

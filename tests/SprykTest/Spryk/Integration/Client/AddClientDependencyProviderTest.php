@@ -31,7 +31,7 @@ class AddClientDependencyProviderTest extends Unit
     public function testAddsClientDependencyProviderFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarDependencyProvider.php');

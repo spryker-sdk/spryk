@@ -34,7 +34,7 @@ class AddZedDependencyClientDependencyProviderConstantTest extends Unit
     public function testAddsDependencyClientConstantToDependencyProvider(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--name' => 'CLIENT_ZIP_ZAP',
             '--value' => 'zip zap client',

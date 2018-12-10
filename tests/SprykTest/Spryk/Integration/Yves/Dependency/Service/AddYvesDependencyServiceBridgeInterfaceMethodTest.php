@@ -34,7 +34,7 @@ class AddYvesDependencyServiceBridgeInterfaceMethodTest extends Unit
     public function testAddsYvesDependencyServiceInterfaceMethod(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',

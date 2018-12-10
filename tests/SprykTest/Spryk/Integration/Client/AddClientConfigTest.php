@@ -31,7 +31,7 @@ class AddClientConfigTest extends Unit
     public function testAddsClientConfig(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarConfig.php');

@@ -30,7 +30,7 @@ class AddSprykerCoverallsTest extends Unit
     public function testAddsCoverallsFile(): void
     {
         $this->tester->run($this, [
-            '--module' => 'FooBar',
+            '--moduleName' => 'FooBar',
             '--organization' => 'Spryker',
             '--repositoryToken' => 'uzf78t67832fe76923f764f3249f329f)&/vuzf76&/R',
         ]);
