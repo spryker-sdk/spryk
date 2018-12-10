@@ -27,7 +27,7 @@ arguments:
     default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Service/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddSprykerModule
 
 postSpryks:
   - AddZedDependencyServiceInterface

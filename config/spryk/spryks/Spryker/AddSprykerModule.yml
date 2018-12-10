@@ -1,5 +1,5 @@
 spryk: structure
-description: "Creates a new *module* structure."
+description: "Adds a new *module* structure."
 priority: 1
 
 arguments:

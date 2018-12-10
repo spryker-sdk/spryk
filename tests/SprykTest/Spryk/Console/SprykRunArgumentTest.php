@@ -76,7 +76,7 @@ class SprykRunArgumentTest extends Unit
 
         $arguments = [
             'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => 'CreateModule',
+            SprykRunConsole::ARGUMENT_SPRYK => 'AddModule',
         ];
 
         $tester->setInputs(['FooBar', 'Spryker', static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER]);
@@ -84,7 +84,7 @@ class SprykRunArgumentTest extends Unit
 
         $output = $tester->getDisplay();
 
-        static::assertRegExp('/Enter value for CreateModule.module argument/', $output);
+        static::assertRegExp('/Enter value for AddModule.module argument/', $output);
         static::assertRegExp('/Enter value for AddReadme.module argument \[FooBar\]/', $output);
     }
 }
