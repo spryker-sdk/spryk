@@ -4,7 +4,6 @@ description: "Adds a new spy_*targetModule*.schema.xml to the Zed application."
 arguments:
   moduleName: ~
   targetModule: ~
-  tableName: ~
 
   organization:
     default: Spryker
