@@ -32,7 +32,7 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
     public function testAddsZedTestSuiteToCodeceptionConfiguration(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
@@ -43,8 +43,8 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
      */
     public function testAddsZedTestSuiteToCodeceptionConfigurationOnlyOnce(): void
     {
-        $this->tester->run($this, ['--moduleName' => 'FooBar']);
-        $this->tester->run($this, ['--moduleName' => 'FooBar']);
+        $this->tester->run($this, ['--module' => 'FooBar']);
+        $this->tester->run($this, ['--module' => 'FooBar']);
 
         $configurationFilePath = $this->tester->getModuleDirectory() . 'codeception.yml';
         static::assertFileExists($configurationFilePath);

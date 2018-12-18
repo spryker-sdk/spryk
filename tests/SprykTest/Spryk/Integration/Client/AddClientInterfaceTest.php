@@ -33,7 +33,7 @@ class AddClientInterfaceTest extends Unit
     public function testAddsClientInterfaceFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClientInterface.php');

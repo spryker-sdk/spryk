@@ -31,7 +31,7 @@ class AddZedConfigTest extends Unit
     public function testAddsZedConfigFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/FooBarConfig.php');

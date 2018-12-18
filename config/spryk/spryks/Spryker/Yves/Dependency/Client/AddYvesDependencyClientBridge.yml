@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName*To*dependentModule*ClientBridge."
+description: "Adds a new *module*To*dependentModule*ClientBridge."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -17,10 +17,10 @@ arguments:
     value: Yves/Dependency/Client/YvesDependencyClientBridge.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}To{{ dependentModule }}ClientBridge.php"
+    value: "{{ module }}To{{ dependentModule }}ClientBridge.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Yves/{{ moduleName }}/Dependency/Client/"
+    default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
 
 preSpryks:
   - AddSprykerModule

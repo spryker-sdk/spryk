@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName*Config to the Zed application."
+description: "Adds a new *module*Config to the Zed application."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Zed/ZedConfig.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}Config.php"
+    value: "{{ module }}Config.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/"
 
 preSpryks:
   - AddSprykerModule

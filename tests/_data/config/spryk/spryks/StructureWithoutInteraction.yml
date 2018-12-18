@@ -3,7 +3,7 @@ description: "Unit Test configuration"
 
 arguments:
 
-  moduleName:
+  module:
     value: FooBar
 
   directories:
@@ -12,4 +12,4 @@ arguments:
       - secondDirectory/
 
   targetPath:
-    value: "{{ moduleName }}/"
+    value: "{{ module }}/"

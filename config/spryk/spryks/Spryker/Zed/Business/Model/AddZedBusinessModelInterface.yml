@@ -2,7 +2,7 @@ spryk: template
 description: "Adds a new Business model interface to the Zed application."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -23,7 +23,7 @@ arguments:
     callback: ZedBusinessModelInterfaceTargetFilenameCallback
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Business/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
   - AddSprykerModule

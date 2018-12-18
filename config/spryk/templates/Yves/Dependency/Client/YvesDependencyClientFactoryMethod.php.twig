@@ -1,8 +1,8 @@
 
     /**
-     * @return \{{ organization }}\Yves\{{ moduleName }}\Dependency\Client\{{ moduleName }}To{{ dependentModule }}ClientInterface
+     * @return \{{ organization }}\Yves\{{ module }}\Dependency\Client\{{ module }}To{{ dependentModule }}ClientInterface
      */
-    public function {{ method }}(): \{{ organization }}\Yves\{{ moduleName }}\Dependency\Client\{{ moduleName }}To{{ dependentModule }}ClientInterface
+    public function {{ method }}(): \{{ organization }}\Yves\{{ module }}\Dependency\Client\{{ module }}To{{ dependentModule }}ClientInterface
     {
-        return $this->getProvidedDependency(\{{ organization }}\Yves\{{ moduleName}}\{{ moduleName}}DependencyProvider::CLIENT_{{ dependentModule | underscored | upper }});
+        return $this->getProvidedDependency(\{{ organization }}\Yves\{{ module}}\{{ module}}DependencyProvider::CLIENT_{{ dependentModule | underscored | upper }});
     }

@@ -7,7 +7,7 @@ layer: Business
 priority: 1
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -20,7 +20,7 @@ arguments:
   constructorArguments:
     type: ZedBusinessDependency
     typeOptions:
-        - moduleName
+        - module
         - spryk
     isOptional: true
     isMultiple: true
@@ -36,7 +36,7 @@ arguments:
     callback: ZedBusinessModelTargetFilenameCallback
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Business/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
   - AddSprykerModule

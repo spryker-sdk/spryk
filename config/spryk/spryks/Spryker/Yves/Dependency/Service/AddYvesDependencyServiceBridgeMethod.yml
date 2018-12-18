@@ -1,10 +1,10 @@
 spryk: bridgeMethods
-description: "Adds a new method to the *moduleName* dependency Service bridge."
+description: "Adds a new method to the *module* dependency Service bridge."
 priority: 1
 
 arguments:
 
-  moduleName: ~
+  module: ~
   organization:
     default: Spryker
 
@@ -15,7 +15,7 @@ arguments:
     choiceLoader: ServiceMethodChoiceLoader
     isMultiple: true
     typeOptions:
-      - moduleName
+      - module
       - choiceLoader
 
   template:
@@ -28,7 +28,7 @@ arguments:
     value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
 
   target:
-    value: "{{ organization }}\\Yves\\{{ moduleName }}\\Dependency\\Service\\{{ moduleName }}To{{ dependentModule }}ServiceBridge"
+    value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
 
 preSpryks:
   - AddYvesDependencyServiceBridge

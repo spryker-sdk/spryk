@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName*FacadeTest."
+description: "Adds a new *module*FacadeTest."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Zed/Business/ZedBusinessFacadeTest.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}FacadeTest.php"
+    value: "{{ module }}FacadeTest.php"
 
   targetPath:
-    default: "{{ moduleName }}/tests/{{ organization }}Test/Zed/{{ moduleName }}/Business/"
+    default: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/Business/"
 
 preSpryks:
   - AddZedBusinessTestSuite

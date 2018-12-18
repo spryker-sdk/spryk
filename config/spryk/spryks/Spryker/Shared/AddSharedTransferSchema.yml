@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName* .transfer.xml to the Shared application."
+description: "Adds a new *module*.transfer.xml to the Shared application."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Shared/transfer.xml.twig
 
   targetFilename:
-    value: "{{ moduleName | underscored }}.transfer.xml"
+    value: "{{ module | underscored }}.transfer.xml"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Shared/{{ moduleName }}/Transfer/"
+    default: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/Transfer/"
 
 preSpryks:
   - AddSprykerModule

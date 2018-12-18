@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName*Repository to the Zed application."
+description: "Adds a new *module*Repository to the Zed application."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Zed/Persistence/ZedPersistenceRepository.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}Repository.php"
+    value: "{{ module }}Repository.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Persistence/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
 
 preSpryks:
   - AddSprykerModule

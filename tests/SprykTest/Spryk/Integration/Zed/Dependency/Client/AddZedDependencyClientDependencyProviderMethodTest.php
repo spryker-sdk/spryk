@@ -34,7 +34,7 @@ class AddZedDependencyClientDependencyProviderMethodTest extends Unit
     public function testAddsDependencyClientMethodToDependencyProvider(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

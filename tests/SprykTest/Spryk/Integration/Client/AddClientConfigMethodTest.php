@@ -32,7 +32,7 @@ class AddClientConfigMethodTest extends Unit
     public function testAddsClientConfigMethod(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--method' => 'getConfigValue',
             '--input' => 'string $foo',
             '--output' => 'string',

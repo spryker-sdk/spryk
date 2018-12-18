@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName*To*dependentModule*ClientInterface."
+description: "Adds a new *module*To*dependentModule*ClientInterface."
 
 arguments:
-  moduleName:
+  module:
     moduleFilter:
       application: Zed
 
@@ -17,10 +17,10 @@ arguments:
     value: Zed/Dependency/Client/ZedDependencyClientInterface.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}To{{ dependentModule }}ClientInterface.php"
+    value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Dependency/Client/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Client/"
 
 preSpryks:
   - AddZedDependencyClientBridge

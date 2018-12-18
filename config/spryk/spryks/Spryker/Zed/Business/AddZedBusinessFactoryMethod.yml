@@ -1,9 +1,9 @@
 spryk: method
-description: "Adds a method to the *moduleName*BusinessFactory."
+description: "Adds a method to the *module*BusinessFactory."
 
 arguments:
 
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -25,7 +25,7 @@ arguments:
     value: Zed/Business/MethodBusinessFactory.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Business\\{{ moduleName }}BusinessFactory"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
 
 preSpryks:
   - AddZedBusinessFactory

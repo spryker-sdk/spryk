@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName*ClientDependencyProvider to the Client application."
+description: "Adds a new *Module*ClientDependencyProvider to the Client application."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Client/ClientDependencyProvider.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}DependencyProvider.php"
+    value: "{{ module }}DependencyProvider.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Client/{{ moduleName }}/"
+    default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
   - AddSprykerModule

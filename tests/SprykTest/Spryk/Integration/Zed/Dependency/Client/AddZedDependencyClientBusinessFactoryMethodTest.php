@@ -34,7 +34,7 @@ class AddZedDependencyClientBusinessFactoryMethodTest extends Unit
     public function testAddsZedDependencyClientDependencyMethodToBusinessFactory(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

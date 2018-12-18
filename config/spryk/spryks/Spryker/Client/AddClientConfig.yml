@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName*Config to the Client application."
+description: "Adds a new *module*Config to the Client application."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Client/ClientConfig.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}Config.php"
+    value: "{{ module }}Config.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Client/{{ moduleName }}/"
+    default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
   - AddSprykerModule

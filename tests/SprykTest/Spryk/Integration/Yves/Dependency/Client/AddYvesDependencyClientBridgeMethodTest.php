@@ -34,7 +34,7 @@ class AddYvesDependencyClientBridgeMethodTest extends Unit
     public function testAddsYvesDependencyClientBridgeMethods(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
@@ -71,7 +71,7 @@ class AddYvesDependencyClientBridgeMethodTest extends Unit
     public function testAddsYvesDependencyClientBridgeMethodOnlyOnce(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
@@ -80,7 +80,7 @@ class AddYvesDependencyClientBridgeMethodTest extends Unit
         $this->tester->assertClassHasMethod(ClassName::YVES_CLIENT_BRIDGE, 'methodWithStringArgument');
 
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',

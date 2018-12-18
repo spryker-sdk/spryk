@@ -30,7 +30,7 @@ class AddSprykerGitignoreTest extends Unit
     public function testAddsGitignoreFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 

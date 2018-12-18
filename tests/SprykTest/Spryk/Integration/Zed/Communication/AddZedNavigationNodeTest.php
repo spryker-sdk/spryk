@@ -33,7 +33,7 @@ class AddZedNavigationNodeTest extends Unit
     public function testAddsZedNavigationSchemaFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'index',
         ]);
@@ -62,7 +62,7 @@ class AddZedNavigationNodeTest extends Unit
         file_put_contents($pathToNavigationSchema, $navigationSchemaContent);
 
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'index',
         ]);
@@ -81,7 +81,7 @@ class AddZedNavigationNodeTest extends Unit
     public function testAddsZedNavigationSchemaFileWithFullyQualifiedNames(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--controller' => ClassName::ZED_CONTROLLER,
             '--method' => 'indexAction',
         ]);

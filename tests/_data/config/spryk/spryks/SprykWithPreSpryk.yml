@@ -3,14 +3,14 @@ description: "Unit Test configuration"
 
 arguments:
 
-  moduleName:
+  module:
     value: FooBar
 
   template:
     value: README.md.twig
 
   targetPath:
-    value: "{{ moduleName }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - StructureWithoutInteraction

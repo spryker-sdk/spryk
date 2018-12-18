@@ -2,7 +2,7 @@ spryk: update-yml
 description: "Adds the include for the Zed test suite to the codeception.yml."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -14,10 +14,10 @@ arguments:
     value: include
 
   content:
-    value: "tests/SprykerTest/Zed/{{ moduleName }}"
+    value: "tests/SprykerTest/Zed/{{ module }}"
 
   targetPath:
-    value: "{{ moduleName }}/codeception.yml"
+    value: "{{ module }}/codeception.yml"
 
 preSpryks:
   - AddSprykerCodeceptionConfiguration

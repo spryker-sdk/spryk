@@ -30,7 +30,7 @@ class AddSprykerLicenseTest extends Unit
     public function testAddsLicenseFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 

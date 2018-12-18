@@ -34,7 +34,7 @@ class AddZedDependencyFacadeDependencyProviderConstantTest extends Unit
     public function testAddsDependencyFacadeConstantToDependencyProvider(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--name' => 'FACADE_ZIP_ZAP',
             '--value' => 'zip zap facade',

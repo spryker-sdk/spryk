@@ -1,8 +1,8 @@
 spryk: bridgeMethods
-description: "Adds a new method to the *moduleName* dependency Client bridge."
+description: "Adds a new method to the *module* dependency Client bridge."
 
 arguments:
-  moduleName:
+  module:
     moduleFilter:
       application: Zed
 
@@ -18,7 +18,7 @@ arguments:
     choiceLoader: ClientMethodChoiceLoader
     isMultiple: true
     typeOptions:
-      - moduleName
+      - module
       - choiceLoader
 
   template:
@@ -31,7 +31,7 @@ arguments:
     value: "{{ organization }}\\Client\\{{ dependentModule }}\\{{ dependentModule }}ClientInterface"
 
   target:
-    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Dependency\\Client\\{{ moduleName }}To{{ dependentModule }}ClientInterface"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Client\\{{ module }}To{{ dependentModule }}ClientInterface"
 
 preSpryks:
   - AddZedDependencyClientInterface

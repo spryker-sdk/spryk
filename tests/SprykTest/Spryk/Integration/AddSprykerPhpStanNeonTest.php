@@ -30,7 +30,7 @@ class AddSprykerPhpStanNeonTest extends Unit
     public function testAddsPhpStanNeonFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 

@@ -31,7 +31,7 @@ class AddYvesDependencyProviderTest extends Unit
     public function testAddsYvesFactoryFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/FooBarDependencyProvider.php');

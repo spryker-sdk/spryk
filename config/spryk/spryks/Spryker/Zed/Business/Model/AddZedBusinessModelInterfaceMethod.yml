@@ -3,7 +3,7 @@ description: "Adds a new method to the *target* business model interface."
 
 arguments:
 
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker

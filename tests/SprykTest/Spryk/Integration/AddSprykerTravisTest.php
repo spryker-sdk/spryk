@@ -30,7 +30,7 @@ class AddSprykerTravisTest extends Unit
     public function testAddsTravisFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 

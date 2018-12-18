@@ -2,7 +2,7 @@ spryk: template
 description: "Unit Test configuration"
 
 arguments:
-  moduleName:
+  module:
     value: FooBar
 
   organization:
@@ -12,10 +12,10 @@ arguments:
     value: Facade.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}Facade.php"
+    value: "{{ module }}Facade.php"
 
   targetPath:
-    value: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Business/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 postSpryks:
   - AddFacadeInterface

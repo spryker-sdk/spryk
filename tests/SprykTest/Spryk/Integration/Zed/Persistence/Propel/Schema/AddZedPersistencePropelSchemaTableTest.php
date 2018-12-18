@@ -34,7 +34,7 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
     public function testAddsZedPersistencePropelSchemaTable(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--targetModule' => 'FooBar',
             '--tableName' => 'spy_foo_bar',
         ]);
@@ -48,13 +48,13 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
     public function testAddsZedPersistencePropelSchemaTableOnlyOnce(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--targetModule' => 'FooBar',
             '--tableName' => 'spy_foo_bar',
         ]);
 
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--targetModule' => 'FooBar',
             '--tableName' => 'spy_foo_bar',
         ]);

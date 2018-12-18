@@ -31,7 +31,7 @@ class AddZedBusinessTestSuiteConfigurationTest extends Unit
     public function testAddsZedBusinessTestSuiteConfiguration(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
         ]);
 
         $targetFile = $this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/codeception.yml';

@@ -1,9 +1,9 @@
 spryk: method
-description: "Adds a new method to the *moduleName*EntityManager."
+description: "Adds a new method to the *module*EntityManager."
 
 arguments:
 
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -16,7 +16,7 @@ arguments:
     value: Common/Method.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Persistence\\{{ moduleName }}EntityManager"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}EntityManager"
 
 preSpryks:
   - AddZedPersistenceEntityManager

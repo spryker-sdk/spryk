@@ -8,7 +8,7 @@ priority: 1
 
 arguments:
 
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -17,7 +17,7 @@ arguments:
     type: ClassNameChoice
     choiceLoader: ZedBusinessModelChoiceLoader
     typeOptions:
-      - moduleName
+      - module
       - spryk
       - choiceLoader
 

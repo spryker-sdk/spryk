@@ -3,10 +3,10 @@ description: "Unit Test configuration"
 
 arguments:
 
-  moduleName: ~
+  module: ~
 
   template:
     value: composer-with-filter.json.twig
 
   targetPath:
-    value: "{{ moduleName }}/"
+    value: "{{ module }}/"

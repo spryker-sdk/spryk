@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName*DependencyProvider to the Yves application."
+description: "Adds a new *module*DependencyProvider to the Yves application."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Yves/YvesDependencyProvider.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}DependencyProvider.php"
+    value: "{{ module }}DependencyProvider.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Yves/{{ moduleName }}/"
+    default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
 
 preSpryks:
   - AddSprykerModule

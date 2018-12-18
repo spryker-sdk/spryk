@@ -2,7 +2,7 @@ spryk: template
 description: "Adds a new Console command to the Zed application."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -18,7 +18,7 @@ arguments:
     value: "{{ className }}Console.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Zed/{{ moduleName }}/Communication/Console/"
+    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Console/"
 
 preSpryks:
   - AddSprykerModule

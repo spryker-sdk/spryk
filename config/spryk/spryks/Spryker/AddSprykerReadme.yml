@@ -2,7 +2,7 @@ spryk: template
 description: "Adds a new README.md to the Modules root."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -11,7 +11,7 @@ arguments:
     value: README.md.twig
 
   targetPath:
-    default: "{{ moduleName }}/"
+    default: "{{ module }}/"
 
 preSpryks:
   - AddSprykerModule

@@ -43,7 +43,7 @@ class SprykConfigurationLoaderTest extends Unit
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        static::assertSame('vendor/spryker/spryker/Bundles/%moduleName%/src/', $sprykConfiguration['arguments']['replaceDefault']['default']);
+        static::assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration['arguments']['replaceDefault']['default']);
     }
 
     /**
@@ -53,7 +53,7 @@ class SprykConfigurationLoaderTest extends Unit
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        static::assertSame('vendor/spryker/spryker/Bundles/%moduleName%/src/', $sprykConfiguration['arguments']['replaceValue']['value']);
+        static::assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration['arguments']['replaceValue']['value']);
     }
 
     /**
@@ -63,7 +63,7 @@ class SprykConfigurationLoaderTest extends Unit
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        static::assertSame('vendor/spryker/spryker/Bundles/%moduleName%/src/foo-bar/', $sprykConfiguration['postSpryks'][0]['FooBarSpryk']['arguments']['replaceValue']['value']);
+        static::assertSame('vendor/spryker/spryker/Bundles/%module%/src/foo-bar/', $sprykConfiguration['postSpryks'][0]['FooBarSpryk']['arguments']['replaceValue']['value']);
     }
 
     /**

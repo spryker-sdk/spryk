@@ -30,7 +30,7 @@ class AddSprykerScrutinizerTest extends Unit
     public function testAddsScrutinizerFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 

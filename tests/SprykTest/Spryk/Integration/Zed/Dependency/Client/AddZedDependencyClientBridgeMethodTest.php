@@ -34,7 +34,7 @@ class AddZedDependencyClientBridgeMethodTest extends Unit
     public function testAddsZedDependencyClientBridgeMethods(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
@@ -71,7 +71,7 @@ class AddZedDependencyClientBridgeMethodTest extends Unit
     public function testAddsZedDependencyClientBridgeMethodOnlyOnce(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
@@ -80,7 +80,7 @@ class AddZedDependencyClientBridgeMethodTest extends Unit
         $this->tester->assertClassHasMethod(ClassName::ZED_CLIENT_BRIDGE, 'methodWithStringArgument');
 
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',

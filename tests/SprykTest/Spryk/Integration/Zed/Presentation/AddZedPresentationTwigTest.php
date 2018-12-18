@@ -33,7 +33,7 @@ class AddZedPresentationTwigTest extends Unit
     public function testAddsZedViewFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--controller' => 'Index',
             '--method' => 'index',
         ]);
@@ -47,7 +47,7 @@ class AddZedPresentationTwigTest extends Unit
     public function testAddsZedViewFileWithFullyQualifiedNames(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--controller' => ClassName::ZED_CONTROLLER,
             '--method' => 'indexAction',
         ]);

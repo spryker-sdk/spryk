@@ -3,7 +3,7 @@ description: "Unit Test configuration"
 
 arguments:
 
-  moduleName:
+  module:
     value: FooBar
 
   organization:
@@ -29,7 +29,7 @@ arguments:
     value: InterfaceMethod.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Business\\{{ moduleName }}FacadeInterface"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}FacadeInterface"
 
 preSpryks:
   - AddFacadeInterface

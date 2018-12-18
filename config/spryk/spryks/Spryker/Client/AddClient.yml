@@ -1,9 +1,9 @@
 spryk: template
-description: "Adds a new *moduleName*Client to the Client application."
+description: "Adds a new *Module*Client to the Client application."
 priority: 1
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -12,10 +12,10 @@ arguments:
     value: Client/Client.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}Client.php"
+    value: "{{ module }}Client.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Client/{{ moduleName }}/"
+    default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
   - AddSprykerModule

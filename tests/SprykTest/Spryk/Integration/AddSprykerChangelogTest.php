@@ -30,7 +30,7 @@ class AddSprykerChangelogTest extends Unit
     public function testAddsChangeLogFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');

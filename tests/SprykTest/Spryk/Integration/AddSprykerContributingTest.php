@@ -30,7 +30,7 @@ class AddSprykerContributingTest extends Unit
     public function testAddsContributingFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 

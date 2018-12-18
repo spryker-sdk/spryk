@@ -33,7 +33,7 @@ class AddYvesDependencyClientInterfaceTest extends Unit
     public function testAddsYvesDependencyFacadeInterface(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

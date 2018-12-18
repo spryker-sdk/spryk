@@ -1,8 +1,8 @@
 spryk: template
-description: "Adds a new *moduleName*Config to the Yves application."
+description: "Adds a new *module*Config to the Yves application."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -11,10 +11,10 @@ arguments:
     value: Yves/YvesConfig.php.twig
 
   targetFilename:
-    value: "{{ moduleName }}Config.php"
+    value: "{{ module }}Config.php"
 
   targetPath:
-    default: "{{ moduleName }}/src/{{ organization }}/Yves/{{ moduleName }}/"
+    default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
 
 preSpryks:
   - AddSprykerModule

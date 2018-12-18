@@ -32,7 +32,7 @@ class AddClientMethodTest extends Unit
     public function testAddsMethodToClient(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--method' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',

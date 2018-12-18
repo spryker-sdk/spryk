@@ -33,7 +33,7 @@ class AddClientFactoryTest extends Unit
     public function testAddsClientFactoryFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarFactory.php');

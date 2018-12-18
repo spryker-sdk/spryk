@@ -2,7 +2,7 @@ spryk: template
 description: "Adds a new .gitattributes to the Modules root."
 
 arguments:
-  moduleName: ~
+  module: ~
 
   organization:
     default: Spryker
@@ -14,7 +14,7 @@ arguments:
     value: .gitattributes
 
   targetPath:
-    default: "{{ moduleName }}/"
+    default: "{{ module }}/"
 
 preSpryks:
   - AddSprykerModule

@@ -34,7 +34,7 @@ class AddZedDependencyClientBridgeInterfaceMethodTest extends Unit
     public function testAddsZedDependencyClientInterfaceMethods(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',

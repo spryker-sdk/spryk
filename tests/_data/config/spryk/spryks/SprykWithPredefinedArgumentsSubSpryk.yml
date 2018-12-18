@@ -3,7 +3,7 @@ description: "Unit Test configuration"
 
 arguments:
 
-  moduleName:
+  module:
     value: FooBar
 
   directories:
@@ -11,10 +11,10 @@ arguments:
       - src/
 
   targetPath:
-    value: "{{ moduleName }}/"
+    value: "{{ module }}/"
 
   templateTargetPath:
-    value: "{{ moduleName }}/sub-directory/"
+    value: "{{ module }}/sub-directory/"
 
 postSpryks:
    - TemplateWithoutInteraction:

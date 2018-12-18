@@ -30,7 +30,7 @@ class AddSprykerPhpStanJsonTest extends Unit
     public function testAddsPhpStanJsonFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 

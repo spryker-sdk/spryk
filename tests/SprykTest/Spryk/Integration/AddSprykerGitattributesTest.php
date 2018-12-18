@@ -30,7 +30,7 @@ class AddSprykerGitattributesTest extends Unit
     public function testAddsGitattributesFile(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 

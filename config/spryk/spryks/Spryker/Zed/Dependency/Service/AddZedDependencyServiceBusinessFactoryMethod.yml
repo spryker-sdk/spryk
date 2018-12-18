@@ -1,8 +1,8 @@
 spryk: method
-description: "Adds a Service dependency method to the *moduleName*BusinessFactory."
+description: "Adds a Service dependency method to the *module*BusinessFactory."
 
 arguments:
-  moduleName:
+  module:
     moduleFilter:
       application: Zed
 
@@ -20,7 +20,7 @@ arguments:
     value: Zed/Dependency/Service/ZedDependencyServiceBusinessFactoryMethod.php.twig
 
   target:
-    value: "{{ organization }}\\Zed\\{{ moduleName }}\\Business\\{{ moduleName }}BusinessFactory"
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
 
 preSpryks:
   - AddZedBusinessFactory

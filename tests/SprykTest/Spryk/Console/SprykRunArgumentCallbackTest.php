@@ -37,7 +37,7 @@ class SprykRunArgumentCallbackTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddZedBusinessFactoryMethod',
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
             '--output' => 'Spryker',
         ];
@@ -58,7 +58,7 @@ class SprykRunArgumentCallbackTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddZedBusinessFactoryMethodWithUndefinedCallback',
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ];
 

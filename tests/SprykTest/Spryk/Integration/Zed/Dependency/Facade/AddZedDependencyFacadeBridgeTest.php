@@ -34,7 +34,7 @@ class AddZedDependencyFacadeBridgeTest extends Unit
     public function testAddsZedDependencyFacadeBridge(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 
@@ -47,7 +47,7 @@ class AddZedDependencyFacadeBridgeTest extends Unit
     public function testAddsGetterToFactory(): void
     {
         $this->tester->run($this, [
-            '--moduleName' => 'FooBar',
+            '--module' => 'FooBar',
             '--dependentModule' => 'ZipZap',
         ]);
 

@@ -1,8 +1,8 @@
 spryk: constant
-description: "Adds a Service dependency constant to the *moduleName*DependencyProvider."
+description: "Adds a Service dependency constant to the *module*DependencyProvider."
 
 arguments:
-  moduleName:
+  module:
     moduleFilter:
       application: Zed
 
@@ -19,7 +19,7 @@ arguments:
     value: "public"
 
   target:
-    value: "{{ organization }}\\Zed\\{{ moduleName }}\\{{ moduleName }}DependencyProvider"
+    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
   - AddZedDependencyProvider
