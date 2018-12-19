@@ -62,7 +62,7 @@ class AddSprykerToolingTest extends Unit
                 'priority' => 2,
             ],
             'code-sniffer' => [
-                'level' => 1,
+                'level' => 2,
             ],
         ];
     }
