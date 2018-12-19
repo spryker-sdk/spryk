@@ -47,24 +47,9 @@ class AddSprykerToolingTest extends Unit
      *
      * @return void
      */
-    public function testChecksToolingConfigParams(array $toolingConfig): void
+    public function testChecksToolingConfigHasCodeSnifferBlock(array $toolingConfig): void
     {
-        static::assertEquals($this->getDefaultToolingConfig(), $toolingConfig);
-    }
-
-    /**
-     * @return array
-     */
-    protected function getDefaultToolingConfig(): array
-    {
-        return [
-            'architecture-sniffer' => [
-                'priority' => 2,
-            ],
-            'code-sniffer' => [
-                'level' => 2,
-            ],
-        ];
+        static::assertArrayHasKey('code-sniffer', $toolingConfig);
     }
 
     /**
