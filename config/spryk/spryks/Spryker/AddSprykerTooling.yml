@@ -14,4 +14,4 @@ arguments:
     default: "{{ module }}/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddSprykerModule
