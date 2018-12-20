@@ -18,7 +18,7 @@ arguments:
     default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
-  - AddSprykerModule
+  - AddModule
 
 postSpryks:
   - AddClientDependencyProvider

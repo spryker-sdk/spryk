@@ -17,4 +17,4 @@ arguments:
     default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
 
 preSpryks:
-  - AddSprykerModule
+  - AddModule

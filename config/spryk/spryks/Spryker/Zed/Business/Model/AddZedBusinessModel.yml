@@ -39,7 +39,7 @@ arguments:
     default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
-  - AddSprykerModule
+  - AddModule
 
 postSpryks:
   - AddZedBusinessModelInterface
