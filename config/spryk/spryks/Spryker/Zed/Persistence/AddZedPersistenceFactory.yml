@@ -17,5 +17,5 @@ arguments:
     default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddModule
 

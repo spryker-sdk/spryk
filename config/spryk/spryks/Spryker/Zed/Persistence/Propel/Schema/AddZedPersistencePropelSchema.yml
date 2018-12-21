@@ -4,7 +4,6 @@ description: "Adds a new spy_*targetModule*.schema.xml to the Zed application."
 arguments:
   module: ~
   targetModule: ~
-  tableName: ~
 
   organization:
     default: Spryker
@@ -19,4 +18,4 @@ arguments:
     default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddModule

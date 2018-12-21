@@ -17,7 +17,7 @@ arguments:
     default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddModule
 
 postSpryks:
   - AddZedBusinessFacade

@@ -15,10 +15,10 @@ use Spryker\Spryk\Console\SprykRunConsole;
  * @group SprykerTest
  * @group Spryk
  * @group Console
- * @group SprykRunCreateModuleTest
+ * @group SprykRunAddModuleTest
  * Add your own group annotations below this line
  */
-class SprykRunCreateModuleTest extends Unit
+class SprykRunAddModuleTest extends Unit
 {
     public const KEY_STROKE_ENTER = "\x0D";
 
@@ -37,7 +37,7 @@ class SprykRunCreateModuleTest extends Unit
 
         $arguments = [
             'command' => $command->getName(),
-            SprykRunConsole::ARGUMENT_SPRYK => 'CreateModule',
+            SprykRunConsole::ARGUMENT_SPRYK => 'AddModule',
             '-n' => true,
         ];
 

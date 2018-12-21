@@ -17,4 +17,4 @@ arguments:
     default: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/Transfer/"
 
 preSpryks:
-  - CreateSprykerModule
+  - AddModule
