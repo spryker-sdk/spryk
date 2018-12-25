@@ -14,10 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerPhpStanNeonTest
+ * @group AddSprykerLicenseTest
  * Add your own group annotations below this line
  */
-class AddSprykerPhpStanNeonTest extends Unit
+class AddModuleLicenseTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester
@@ -27,13 +27,13 @@ class AddSprykerPhpStanNeonTest extends Unit
     /**
      * @return void
      */
-    public function testAddsPhpStanNeonFile(): void
+    public function testAddsLicenseFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'phpstan.neon');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'LICENSE');
     }
 }
