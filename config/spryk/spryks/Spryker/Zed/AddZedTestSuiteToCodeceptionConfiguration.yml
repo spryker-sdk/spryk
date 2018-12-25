@@ -14,7 +14,7 @@ arguments:
     value: include
 
   content:
-    value: "tests/SprykerTest/Zed/{{ module }}"
+    value: "tests/{{ organization }}Test/Zed/{{ module }}"
 
   targetPath:
     value: "{{ module }}/codeception.yml"
