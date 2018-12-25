@@ -1,5 +1,6 @@
 spryk: template
 description: "Adds a new Abstract*tableName*Query class to Zed's persistence layer."
+mode: both
 
 arguments:
   module: ~

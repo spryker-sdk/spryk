@@ -1,5 +1,6 @@
 spryk: template
 description: "Add the Zed *module* test suite configuration without any suite."
+mode: both
 
 arguments:
   module: ~

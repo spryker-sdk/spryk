@@ -1,5 +1,7 @@
 spryk: template
 description: "Adds a new tooling.yml to the Modules root."
+mode: both
+#todo: need check
 
 arguments:
   module: ~
