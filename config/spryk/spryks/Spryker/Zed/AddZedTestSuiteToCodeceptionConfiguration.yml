@@ -20,4 +20,4 @@ arguments:
     value: "{{ module }}/codeception.yml"
 
 preSpryks:
-  - AddSprykerCodeceptionConfiguration
+  - AddModuleCodeceptionConfiguration

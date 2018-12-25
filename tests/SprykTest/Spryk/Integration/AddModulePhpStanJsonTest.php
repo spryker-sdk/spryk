@@ -14,10 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerScrutinizerTest
+ * @group AddSprykerPhpStanJsonTest
  * Add your own group annotations below this line
  */
-class AddSprykerScrutinizerTest extends Unit
+class AddModulePhpStanJsonTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester
@@ -27,13 +27,13 @@ class AddSprykerScrutinizerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsScrutinizerFile(): void
+    public function testAddsPhpStanJsonFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . '.scrutinizer.yml');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'phpstan.json');
     }
 }

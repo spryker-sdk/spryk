@@ -18,7 +18,7 @@ use Symfony\Component\Yaml\Yaml;
  * @group AddSprykerToolingTest
  * Add your own group annotations below this line
  */
-class AddSprykerToolingTest extends Unit
+class AddModuleToolingTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester

@@ -14,10 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerGitignoreTest
+ * @group AddSprykerChangelogTest
  * Add your own group annotations below this line
  */
-class AddSprykerGitignoreTest extends Unit
+class AddModuleChangelogTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester
@@ -27,13 +27,12 @@ class AddSprykerGitignoreTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGitignoreFile(): void
+    public function testAddsChangeLogFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . '.gitignore');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
     }
 }

@@ -17,7 +17,7 @@ arguments:
     value: codeception.yml
 
 preSpryks:
-  - AddSprykerCodeceptionConfiguration
+  - AddModuleCodeceptionConfiguration
 
 postSpryks:
   - AddZedTestSuiteToCodeceptionConfiguration
