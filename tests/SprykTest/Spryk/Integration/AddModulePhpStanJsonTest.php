@@ -14,7 +14,7 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerPhpStanJsonTest
+ * @group AddModulePhpStanJsonTest
  * Add your own group annotations below this line
  */
 class AddModulePhpStanJsonTest extends Unit

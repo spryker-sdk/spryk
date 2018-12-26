@@ -14,7 +14,7 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerTravisTest
+ * @group AddModuleTravisTest
  * Add your own group annotations below this line
  */
 class AddModuleTravisTest extends Unit

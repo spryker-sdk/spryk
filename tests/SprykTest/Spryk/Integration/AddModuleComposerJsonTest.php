@@ -14,7 +14,7 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerComposerJsonTest
+ * @group AddModuleComposerJsonTest
  * Add your own group annotations below this line
  */
 class AddModuleComposerJsonTest extends Unit

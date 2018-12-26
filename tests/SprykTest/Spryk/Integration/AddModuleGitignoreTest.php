@@ -14,7 +14,7 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerGitignoreTest
+ * @group AddModuleGitignoreTest
  * Add your own group annotations below this line
  */
 class AddModuleGitignoreTest extends Unit
