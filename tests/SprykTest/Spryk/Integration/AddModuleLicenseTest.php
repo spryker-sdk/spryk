@@ -14,10 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerComposerJsonTest
+ * @group AddModuleLicenseTest
  * Add your own group annotations below this line
  */
-class AddSprykerComposerJsonTest extends Unit
+class AddModuleLicenseTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester
@@ -27,12 +27,13 @@ class AddSprykerComposerJsonTest extends Unit
     /**
      * @return void
      */
-    public function testAddsComposerJsonFile(): void
+    public function testAddsLicenseFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'composer.json');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'LICENSE');
     }
 }
