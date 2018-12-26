@@ -14,10 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerChangelogTest
+ * @group AddModuleCodeceptionConfigurationTest
  * Add your own group annotations below this line
  */
-class AddSprykerChangelogTest extends Unit
+class AddModuleCodeceptionConfigurationTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester
@@ -27,12 +27,12 @@ class AddSprykerChangelogTest extends Unit
     /**
      * @return void
      */
-    public function testAddsChangeLogFile(): void
+    public function testAddsCodeceptionConfigFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
     }
 }

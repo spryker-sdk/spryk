@@ -15,10 +15,10 @@ use Symfony\Component\Yaml\Yaml;
  * @group SprykerTest
  * @group Spryk
  * @group Integration
- * @group AddSprykerToolingTest
+ * @group AddModuleToolingTest
  * Add your own group annotations below this line
  */
-class AddSprykerToolingTest extends Unit
+class AddModuleToolingTest extends Unit
 {
     /**
      * @var \SprykTest\SprykIntegrationTester

@@ -17,14 +17,14 @@ arguments:
       - "src/{{ organization }}/"
 
 postSpryks:
-  - AddSprykerReadme
-  - AddSprykerComposerJson
-  - AddSprykerLicense
-  - AddSprykerContributing
-  - AddSprykerChangelog
-  - AddSprykerTravis
-  - AddSprykerGitattributes
-  - AddSprykerGitignore
-  - AddSprykerTooling
-  - AddSprykerPhpStanJson
-  - AddSprykerPhpStanNeon
+  - AddModuleReadme
+  - AddModuleComposerJson
+  - AddModuleLicense
+  - AddModuleContributing
+  - AddModuleChangelog
+  - AddModuleTravis
+  - AddModuleGitattributes
+  - AddModuleGitignore
+  - AddModuleTooling
+  - AddModulePhpStanJson
+  - AddModulePhpStanNeon
