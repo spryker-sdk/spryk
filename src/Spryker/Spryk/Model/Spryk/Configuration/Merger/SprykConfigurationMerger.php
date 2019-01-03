@@ -42,6 +42,7 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         $rootConfiguration = $this->configurationFinder->find($this->rootSprykName);
         $rootConfiguration = Yaml::parse($rootConfiguration->getContents());
 
+        $sprykDefinition = $this->buildMode($sprykDefinition, $rootConfiguration);
         $sprykDefinition = $this->doMerge($rootConfiguration, $sprykDefinition);
         $sprykDefinition = $this->doMergeSubSpryks($rootConfiguration, $sprykDefinition);
 
@@ -56,6 +57,7 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
      */
     protected function doMerge(array $rootConfiguration, array $sprykDefinition): array
     {
+        $rootConfiguration = $this->buildRootConfigByMode($rootConfiguration, $sprykDefinition['mode']);
         $sprykDefinition['arguments'] = $this->mergeArguments(
             $sprykDefinition['arguments'],
             $rootConfiguration['arguments']
@@ -192,5 +194,41 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         }
 
         return $mergedArguments;
+    }
+
+    /**
+     * @param array $sprykDefinition
+     * @param array $rootConfiguration
+     *
+     * @return array
+     */
+    protected function buildMode(array $sprykDefinition, array $rootConfiguration): array
+    {
+        if (!isset($sprykDefinition['mode'])) {
+            $sprykDefinition['mode'] = $rootConfiguration['mode'];
+        }
+
+        return $sprykDefinition;
+    }
+
+    /**
+     * @param array $rootConfiguration
+     * @param string $sprykMode
+     *
+     * @return array
+     */
+    protected function buildRootConfigByMode(array $rootConfiguration, string $sprykMode): array
+    {
+        $rootArguments = $rootConfiguration['arguments'];
+
+        $mode = $sprykMode;
+
+        if (!isset($rootConfiguration[$mode])) {
+            $mode = 'core';
+        }
+
+        $rootConfiguration['arguments'] = array_merge($rootArguments, $rootConfiguration[$mode]['arguments']);
+
+        return $rootConfiguration;
     }
 }

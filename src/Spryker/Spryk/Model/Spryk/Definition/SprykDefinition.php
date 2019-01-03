@@ -52,6 +52,11 @@ class SprykDefinition implements SprykDefinitionInterface
     protected $postSpryks = [];
 
     /**
+     * @var string|null
+     */
+    protected $mode;
+
+    /**
      * @return string
      */
     public function getBuilder(): string
@@ -167,6 +172,26 @@ class SprykDefinition implements SprykDefinitionInterface
     public function setPostSpryks(array $postSpryks): SprykDefinitionInterface
     {
         $this->postSpryks = $postSpryks;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMode(): ?string
+    {
+        return $this->mode;
+    }
+
+    /**
+     * @param string $mode
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     */
+    public function setMode(string $mode): SprykDefinitionInterface
+    {
+        $this->mode = $mode;
 
         return $this;
     }

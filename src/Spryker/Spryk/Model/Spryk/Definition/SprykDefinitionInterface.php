@@ -82,4 +82,16 @@ interface SprykDefinitionInterface
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
     public function setPostSpryks(array $postSpryks): self;
+
+    /**
+     * @return string|null
+     */
+    public function getMode(): ?string;
+
+    /**
+     * @param string $mode
+     *
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     */
+    public function setMode(string $mode): self;
 }

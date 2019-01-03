@@ -36,4 +36,9 @@ interface ArgumentCollectionInterface
      * @return \Spryker\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface[]
      */
     public function getArguments(): array;
+
+    /**
+     * @return array
+     */
+    public function getArgumentsAsArray(): array;
 }

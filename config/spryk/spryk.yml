@@ -1,7 +1,17 @@
+mode: "core"
+
 arguments:
   repository:
     value: "spryker/{{ organization | dasherize }}"
 
-  targetPath:
-    value: "vendor/{{ repository }}/Bundles/"
-    type: prepend
+core:
+  arguments:
+    targetPath:
+      value: "vendor/{{ repository }}/Bundles/"
+      type: prepend
+
+project:
+  arguments:
+    targetPath:
+      value: "src/{{ organization }}/{{ layer }}/"
+      type: prepend
