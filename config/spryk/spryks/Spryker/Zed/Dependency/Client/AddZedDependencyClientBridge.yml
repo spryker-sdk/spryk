@@ -1,5 +1,6 @@
 spryk: template
 description: "Adds a new *module*To*dependentModule*ClientBridge."
+mode: both
 
 arguments:
   module:

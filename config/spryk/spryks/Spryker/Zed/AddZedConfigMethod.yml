@@ -1,5 +1,6 @@
 spryk: method
 description: "Adds a new method to the Zed *module*Config."
+mode: both
 
 arguments:
 

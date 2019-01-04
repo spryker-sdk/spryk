@@ -1,5 +1,6 @@
 spryk: template
 description: "Adds a new .scrutinizer.yml to the Modules root."
+mode: core
 
 arguments:
   module: ~
