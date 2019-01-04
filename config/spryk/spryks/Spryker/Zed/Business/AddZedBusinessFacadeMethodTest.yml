@@ -1,5 +1,6 @@
 spryk: method
 description: "Adds a new test method to the *module*FacadeTest."
+mode: both
 
 arguments:
 

@@ -1,5 +1,6 @@
 spryk: update-yml
 description: "Updates the *module* test configuration and adds the suite configuration for Business tests."
+mode: both
 
 arguments:
   module: ~

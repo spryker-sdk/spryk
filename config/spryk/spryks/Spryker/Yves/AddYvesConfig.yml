@@ -1,5 +1,6 @@
 spryk: template
 description: "Adds a new *module*Config to the Yves application."
+mode: both
 
 arguments:
   module: ~

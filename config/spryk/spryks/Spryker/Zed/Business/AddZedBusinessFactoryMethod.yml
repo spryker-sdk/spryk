@@ -1,5 +1,6 @@
 spryk: method
 description: "Adds a method to the *module*BusinessFactory."
+mode: both
 
 arguments:
 

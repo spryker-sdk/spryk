@@ -1,6 +1,7 @@
 spryk: structure
 description: "Adds a new *module* structure."
 priority: 1
+mode: both
 
 arguments:
   module:

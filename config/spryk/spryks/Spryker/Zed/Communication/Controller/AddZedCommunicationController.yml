@@ -1,5 +1,6 @@
 spryk: template
 description: "Adds a new Controller to the Zed application."
+mode: both
 
 arguments:
   module: ~
