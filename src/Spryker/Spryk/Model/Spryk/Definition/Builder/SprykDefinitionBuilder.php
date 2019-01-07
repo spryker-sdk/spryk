@@ -249,7 +249,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
      */
     protected function getMode(array $sprykConfiguration): string
     {
-        return $sprykConfiguration[static::NAME_SPRYK_CONFIG_MODE];
+        return $sprykConfiguration[static::NAME_SPRYK_CONFIG_MODE] ?? 'core';
     }
 
     /**
