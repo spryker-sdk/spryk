@@ -69,6 +69,10 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
 
         $sprykConfiguration = $this->buildMode($sprykConfiguration, $sprykMode);
 
+        if ($sprykMode !== null && $sprykConfiguration['mode'] !== $sprykMode) {
+            return [];
+        }
+
         $this->configurationValidate($sprykConfiguration);
 
         $sprykConfiguration = $this->configurationMerger->merge($sprykConfiguration);
@@ -108,16 +112,10 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
             $sprykConfiguration['mode'] = $defaultMode;
         }
 
-        if ($sprykMode === null) {
-            return $sprykConfiguration;
-        }
-
-        if ($sprykConfiguration['mode'] === 'both' || $sprykConfiguration['mode'] === $sprykMode) {
+        if ($sprykMode !== null && $sprykConfiguration['mode'] === 'both') {
             $sprykConfiguration['mode'] = $sprykMode;
-
-            return $sprykConfiguration;
         }
 
-        return [];
+        return $sprykConfiguration;
     }
 }
