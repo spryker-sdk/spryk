@@ -204,9 +204,11 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
      */
     protected function buildMode(array $sprykDefinition, array $rootConfiguration): array
     {
-        if (!isset($sprykDefinition['mode'])) {
-            $sprykDefinition['mode'] = $rootConfiguration['mode'];
+        if (isset($sprykDefinition['mode'])) {
+            return $sprykDefinition;
         }
+
+        $sprykDefinition['mode'] = $rootConfiguration['mode'] ?? 'core'; //todo: to const
 
         return $sprykDefinition;
     }
@@ -224,7 +226,7 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         $mode = $sprykMode;
 
         if (!isset($rootConfiguration[$mode])) {
-            $mode = 'core';
+            return $rootConfiguration;
         }
 
         $rootConfiguration['arguments'] = array_merge($rootArguments, $rootConfiguration[$mode]['arguments']);
