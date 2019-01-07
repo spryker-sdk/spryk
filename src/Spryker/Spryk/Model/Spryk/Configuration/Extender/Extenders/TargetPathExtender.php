@@ -18,14 +18,11 @@ class TargetPathExtender extends AbstractExtender implements SprykConfigurationE
      */
     public function extend(array $sprykConfig): array
     {
-        //todo: rewrite
-        if (!$this->isProject($sprykConfig)) {
+        if ($this->isBoth($sprykConfig)) {
             return $sprykConfig;
         }
 
-//        $developmentLayerName = $this->getDevelopmentLayer($sprykConfig);
-//todo: check
-        if (/*$developmentLayerName === null || */$this->isBoth($sprykConfig)) {
+        if ($this->isCore($sprykConfig)) {
             return $sprykConfig;
         }
 

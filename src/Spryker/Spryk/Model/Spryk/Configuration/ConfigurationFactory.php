@@ -99,11 +99,11 @@ class ConfigurationFactory
     protected function getConfigurationExtenders(): array
     {
         return [
+            $this->createDevelopmentLayerExtender(),
             $this->createTargetPathExtender(),
             $this->createOrganizationExtender(),
             $this->createDirectoriesExtender(),
             $this->createApplicationLayerExtender(),
-            $this->createDevelopmentLayerExtender(),
         ];
     }
 
