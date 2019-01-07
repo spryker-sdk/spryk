@@ -17,7 +17,7 @@ class ConfigurationValidator implements ConfigurationValidatorInterface
     /**
      * @var string[]
      */
-    protected $errorMessageBug = [];
+    protected $errorMessages = [];
 
     /**
      * @param \Spryker\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface[] $rules
@@ -36,10 +36,10 @@ class ConfigurationValidator implements ConfigurationValidatorInterface
     {
         foreach ($this->rules as $rule) {
             if (!$rule->validate($sprykConfig)) {
-                $this->errorMessageBug[] = $rule->getErrorMessage();
+                $this->errorMessages[] = $rule->getErrorMessage();
             }
         }
 
-        return $this->errorMessageBug;
+        return $this->errorMessages;
     }
 }

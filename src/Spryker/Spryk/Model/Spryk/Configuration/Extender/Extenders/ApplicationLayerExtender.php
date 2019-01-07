@@ -73,11 +73,15 @@ class ApplicationLayerExtender extends AbstractExtender implements SprykConfigur
             $targetPath = array_shift($values);
         }
 
-        if (strpos($targetPath, static::NAME_PLACEHOLDER_LAYER)) {
+        if ((bool)strpos($targetPath, static::NAME_PLACEHOLDER_LAYER)) {
             return static::NAME_APPLICATION_LAYER_ZED;
         }
 
         $applicationLayer = strstr($targetPath, static::NAME_PLACEHOLDER_MODULE, true);
+
+        if ($applicationLayer === false) {
+            return static::NAME_APPLICATION_LAYER_ZED;
+        }
 
         $applicationLayer = trim($applicationLayer, DIRECTORY_SEPARATOR);
         $applicationLayer = explode(DIRECTORY_SEPARATOR, $applicationLayer);

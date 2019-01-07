@@ -40,7 +40,7 @@ class DevelopmentLayerRule implements ConfigurationValidatorRuleInterface
             return true;
         }
 
-        if (in_array($sprykConfig[static::NAME_CONFIG_MODE], $this->availableDevelopmentLayers)) {
+        if (in_array($sprykConfig[static::NAME_CONFIG_MODE], $this->availableDevelopmentLayers, true)) {
             return true;
         }
 

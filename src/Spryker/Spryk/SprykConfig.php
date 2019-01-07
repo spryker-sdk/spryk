@@ -91,7 +91,7 @@ class SprykConfig
      */
     public function getCoreNamespaces(): array
     {
-        return $this->getConfig()->get(KernelConstants::CORE_NAMESPACES, []);
+        return Config::get(KernelConstants::CORE_NAMESPACES, []);
     }
 
     /**
@@ -99,7 +99,7 @@ class SprykConfig
      */
     public function getProjectNamespace(): ?string
     {
-        return $this->getConfig()->get(KernelConstants::PROJECT_NAMESPACE);
+        return Config::get(KernelConstants::PROJECT_NAMESPACE);
     }
 
     /**
@@ -107,14 +107,6 @@ class SprykConfig
      */
     public function getProjectNamespaces(): array
     {
-        return $this->getConfig()->get(KernelConstants::PROJECT_NAMESPACES, []);
-    }
-
-    /**
-     * @return \Spryker\Shared\Config\Config
-     */
-    protected function getConfig(): Config
-    {
-        return Config::getInstance();
+        return Config::get(KernelConstants::PROJECT_NAMESPACES, []);
     }
 }

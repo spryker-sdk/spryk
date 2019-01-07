@@ -34,7 +34,7 @@ class DirectoriesExtender extends AbstractExtender implements SprykConfiguration
     {
         $arguments = $this->getArguments($sprykConfig);
 
-        if (!$arguments) {
+        if ($arguments === []) {
             return $sprykConfig;
         }
 

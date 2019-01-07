@@ -58,6 +58,10 @@ class SprykExecutor implements SprykExecutorInterface
 
         $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
 
+        if ($sprykDefinition === null) {
+            return;
+        }
+
         $this->buildSpryk($sprykDefinition, $style);
     }
 

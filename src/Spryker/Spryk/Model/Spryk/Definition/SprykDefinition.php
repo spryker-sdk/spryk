@@ -187,7 +187,7 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @param string $mode
      *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     * @return $this
      */
     public function setMode(string $mode): SprykDefinitionInterface
     {

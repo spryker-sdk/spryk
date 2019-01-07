@@ -26,9 +26,19 @@ class TargetPathExtender extends AbstractExtender implements SprykConfigurationE
             return $sprykConfig;
         }
 
+        return $this->buildProjectPath($sprykConfig);
+    }
+
+    /**
+     * @param array $sprykConfig
+     *
+     * @return array
+     */
+    protected function buildProjectPath(array $sprykConfig): array
+    {
         $arguments = $this->getArguments($sprykConfig);
 
-        if (!$arguments) {
+        if ($arguments === []) {
             return $sprykConfig;
         }
 
@@ -38,7 +48,9 @@ class TargetPathExtender extends AbstractExtender implements SprykConfigurationE
 
         $targetPath = $arguments['targetPath']['default'];
 
-        preg_match('/\/src\/.+/', $targetPath, $result);
+        $pathPattern = sprintf('/\%1$ssrc\%1$s.+/', DIRECTORY_SEPARATOR);
+
+        preg_match($pathPattern, $targetPath, $result);
 
         if ($result !== []) {
             $targetPath = ltrim(array_shift($result), DIRECTORY_SEPARATOR);
