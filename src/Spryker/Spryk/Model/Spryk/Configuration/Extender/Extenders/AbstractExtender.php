@@ -48,7 +48,7 @@ abstract class AbstractExtender
      */
     protected function getArguments(array $sprykConfig): array
     {
-        return $sprykConfig[static::ARGUMENTS] ?? [];//todo: refactoring
+        return $sprykConfig[static::ARGUMENTS] ?? [];
     }
 
     /**

@@ -16,6 +16,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
 {
+    protected const NAME_MODE_DEFAULT = 'core';
+
     /**
      * @var \Spryker\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinderInterface
      */
@@ -65,18 +67,7 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
         $sprykConfiguration = $this->configurationFinder->find($sprykName);
         $sprykConfiguration = Yaml::parse($sprykConfiguration->getContents());
 
-        if ($sprykMode !== null) {
-//todo: refactoring
-            if (!isset($sprykConfiguration['mode'])) {
-                $sprykConfiguration['mode'] = 'core'; //todo: check
-            }
-
-            if ($sprykConfiguration['mode'] !== 'both' && $sprykConfiguration['mode'] !== $sprykMode) {
-                return [];
-            }
-
-            $sprykConfiguration['mode'] = $sprykMode;
-        }
+        $sprykConfiguration = $this->buildMode($sprykConfiguration, $sprykMode);
 
         $this->configurationValidate($sprykConfiguration);
 
@@ -96,10 +87,37 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
     {
         $validationErrorMessages = $this->configurationValidator->validate($sprykConfiguration);
 
-        if (!$validationErrorMessages) {
+        if ($validationErrorMessages === []) {
             return;
         }
 
         throw new SprykConfigNotValid(implode(PHP_EOL, $validationErrorMessages));
+    }
+
+    /**
+     * @param array $sprykConfiguration
+     * @param string|null $sprykMode
+     *
+     * @return array
+     */
+    protected function buildMode(array $sprykConfiguration, ?string $sprykMode = null): array
+    {
+        $defaultMode = static::NAME_MODE_DEFAULT;
+
+        if (!isset($sprykConfiguration['mode'])) {
+            $sprykConfiguration['mode'] = $defaultMode;
+        }
+
+        if ($sprykMode === null) {
+            return $sprykConfiguration;
+        }
+
+        if ($sprykConfiguration['mode'] === 'both' || $sprykConfiguration['mode'] === $sprykMode) {
+            $sprykConfiguration['mode'] = $sprykMode;
+
+            return $sprykConfiguration;
+        }
+
+        return [];
     }
 }
