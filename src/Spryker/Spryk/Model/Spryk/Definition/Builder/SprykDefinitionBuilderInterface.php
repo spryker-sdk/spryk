@@ -16,9 +16,9 @@ interface SprykDefinitionBuilderInterface
      * @param string $sprykName
      * @param array|null $preDefinedDefinition
      *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface|null
      */
-    public function buildDefinition(string $sprykName, ?array $preDefinedDefinition = null): SprykDefinitionInterface;
+    public function buildDefinition(string $sprykName, ?array $preDefinedDefinition = null): ?SprykDefinitionInterface;
 
     /**
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style

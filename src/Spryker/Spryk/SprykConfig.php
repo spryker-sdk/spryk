@@ -7,11 +7,18 @@
 
 namespace Spryker\Spryk;
 
+use Spryker\Shared\Config\Config;
+use Spryker\Shared\Kernel\KernelConstants;
+
 /**
  * @codeCoverageIgnore
  */
 class SprykConfig
 {
+    protected const NAME_DEVELOPMENT_LAYER_CORE = 'core';
+    protected const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
+    protected const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
+
     /**
      * @return string[]
      */
@@ -65,5 +72,41 @@ class SprykConfig
     public function getRootDirectory(): string
     {
         return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAvailableDevelopmentLayers(): array
+    {
+        return [
+            static::NAME_DEVELOPMENT_LAYER_CORE,
+            static::NAME_DEVELOPMENT_LAYER_PROJECT,
+            static::NAME_DEVELOPMENT_LAYER_BOTH,
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getCoreNamespaces(): array
+    {
+        return Config::get(KernelConstants::CORE_NAMESPACES, []);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getProjectNamespace(): ?string
+    {
+        return Config::get(KernelConstants::PROJECT_NAMESPACE);
+    }
+
+    /**
+     * @return array
+     */
+    public function getProjectNamespaces(): array
+    {
+        return Config::get(KernelConstants::PROJECT_NAMESPACES, []);
     }
 }
