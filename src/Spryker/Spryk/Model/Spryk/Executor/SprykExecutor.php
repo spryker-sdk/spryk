@@ -58,11 +58,9 @@ class SprykExecutor implements SprykExecutorInterface
 
         $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
 
-        if ($sprykDefinition === null) {
-            return;
+        if ($this->shouldBuild($sprykDefinition)) {
+            $this->buildSpryk($sprykDefinition, $style);
         }
-
-        $this->buildSpryk($sprykDefinition, $style);
     }
 
     /**
@@ -184,5 +182,21 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         return true;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return bool
+     */
+    protected function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
+    {
+        foreach ($sprykDefinition->getPreSpryks() as $preSpryk) {
+            if ($preSpryk->getMode() === $sprykDefinition->getMode()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

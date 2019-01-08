@@ -62,13 +62,20 @@ class ApplicationLayerExtender extends AbstractExtender implements SprykConfigur
      */
     protected function getApplicationLayer(array $arguments): ?string
     {
-        if (!isset($arguments['targetPath']['default'])) {
+        //todo: refactoring
+        if (!isset($arguments['targetPath'])) {
             return null;
         }
 
-        $targetPath = $arguments['targetPath']['default'];
+        $targetPath = $arguments['targetPath']['default'] ?? $arguments['targetPath']['value'];
 
-        if (is_array($targetPath)) {
+//        if (!isset($arguments['targetPath']['default'])) {
+//            return null;
+//        }
+//
+//        $targetPath = $arguments['targetPath']['default'];
+
+        if (is_array($targetPath)) { //todo: check
             $values = array_column($targetPath, 'value');
             $targetPath = array_shift($values);
         }
