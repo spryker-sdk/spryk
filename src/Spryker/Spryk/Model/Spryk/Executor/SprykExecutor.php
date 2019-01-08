@@ -191,7 +191,13 @@ class SprykExecutor implements SprykExecutorInterface
      */
     protected function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        foreach ($sprykDefinition->getPreSpryks() as $preSpryk) {
+        $preSpryks = $sprykDefinition->getPreSpryks();
+
+        if (count($preSpryks) === 0) {
+            return true;
+        }
+
+        foreach ($preSpryks as $preSpryk) {
             if ($preSpryk->getMode() === $sprykDefinition->getMode()) {
                 return true;
             }
