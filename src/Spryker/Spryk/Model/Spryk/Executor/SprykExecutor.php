@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Model\Spryk\Executor;
 
+use Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
@@ -198,15 +199,39 @@ class SprykExecutor implements SprykExecutorInterface
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
      * @return string
+     * @throws \Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException
      */
     protected function getSprykDefinitionMode(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): string
     {
-        $sprykMode = $style->getInput()->getOption('mode');
+        $sprykModeArgument = $style->getInput()->getOption('mode');
+        $sprykModeDefinition = $sprykDefinition->getMode();
 
-        if (!$sprykMode) {
-            return $sprykDefinition->getMode();
+        if (!$sprykModeArgument) {
+            return $sprykModeDefinition;
         }
 
-        return $sprykMode;
+        $this->validationModes($sprykModeArgument, $sprykDefinition);
+
+        return $sprykModeArgument;
+    }
+
+    /**
+     * @param string $sprykModeArgument
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return void
+     * @throws \Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException
+     */
+    protected function validationModes(string $sprykModeArgument, SprykDefinitionInterface $sprykDefinition): void
+    {
+        $errorMessage = '`%s` spryk support `%s` development layer only.';
+
+        $sprykModeDefinition = $sprykDefinition->getMode();
+
+        if ($sprykModeArgument !== $sprykModeDefinition) {
+            throw new SprykWrongDevelopmentLayerException(
+                sprintf($errorMessage, $sprykDefinition->getSprykName(), strtoupper($sprykModeDefinition))
+            );
+        }
     }
 }
