@@ -76,9 +76,9 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
      * @param string $sprykName
      * @param array|null $preDefinedDefinition
      *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface|null
+     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function buildDefinition(string $sprykName, ?array $preDefinedDefinition = null): ?SprykDefinitionInterface
+    public function buildDefinition(string $sprykName, ?array $preDefinedDefinition = null): SprykDefinitionInterface
     {
         if ($this->calledSpryk === null) {
             $this->calledSpryk = $sprykName;
@@ -86,10 +86,6 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
         if (!isset($this->definitionCollection[$sprykName])) {
             $sprykConfiguration = $this->loadConfig($sprykName);
-
-            if ($sprykConfiguration === []) {
-                return null;
-            }
 
             $arguments = $this->mergeArguments($sprykConfiguration[static::ARGUMENTS], $preDefinedDefinition);
             $argumentCollection = $this->argumentResolver->resolve($arguments, $sprykName, $this->style);

@@ -52,7 +52,7 @@ class SprykDefinition implements SprykDefinitionInterface
     protected $postSpryks = [];
 
     /**
-     * @var string|null
+     * @var string
      */
     protected $mode;
 
@@ -177,9 +177,9 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getMode(): ?string
+    public function getMode(): string
     {
         return $this->mode;
     }

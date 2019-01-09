@@ -1,6 +1,6 @@
 spryk: update-yml
 description: "Adds the include for the Zed test suite to the codeception.yml."
-mode: both
+mode: core
 
 arguments:
   module: ~

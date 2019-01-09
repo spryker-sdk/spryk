@@ -7,6 +7,7 @@
 
 namespace Spryker\Spryk\Model\Spryk\Executor;
 
+use Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
@@ -35,6 +36,11 @@ class SprykExecutor implements SprykExecutorInterface
     protected $includeOptionalSubSpryks = [];
 
     /**
+     * @var string
+     */
+    protected $mainSprykDefinitionMode;
+
+    /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface $definitionBuilder
      * @param \Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface $sprykBuilderCollection
      */
@@ -58,9 +64,7 @@ class SprykExecutor implements SprykExecutorInterface
 
         $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
 
-        if ($sprykDefinition === null) {
-            return;
-        }
+        $this->mainSprykDefinitionMode = $this->getSprykDefinitionMode($sprykDefinition, $style);
 
         $this->buildSpryk($sprykDefinition, $style);
     }
@@ -73,6 +77,10 @@ class SprykExecutor implements SprykExecutorInterface
      */
     protected function buildSpryk(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
+        if ($sprykDefinition->getMode() !== $this->mainSprykDefinitionMode) {
+            return;
+        }
+
         $style->startSpryk($sprykDefinition);
 
         $this->executePreSpryks($sprykDefinition, $style);
@@ -184,5 +192,46 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         return true;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @throws \Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException
+     *
+     * @return string
+     */
+    protected function getSprykDefinitionMode(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): string
+    {
+        if (!$this->isValidModes($sprykDefinition, $style)) {
+            $errorMessage = '`%s` spryk support `%s` development layer only.';
+
+            throw new SprykWrongDevelopmentLayerException(
+                sprintf($errorMessage, $sprykDefinition->getSprykName(), strtoupper($sprykDefinition->getMode()))
+            );
+        }
+
+        $sprykMode = $style->getInput()->getOption('mode');
+
+        return is_string($sprykMode) ? $sprykMode : $sprykDefinition->getMode();
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return bool
+     */
+    protected function isValidModes(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): bool
+    {
+        $sprykModeArgument = $style->getInput()->getOption('mode');
+        $sprykModeDefinition = $sprykDefinition->getMode();
+
+        if ($sprykModeArgument === false || $sprykModeArgument === null) {
+            return true;
+        }
+
+        return $sprykModeArgument === $sprykModeDefinition;
     }
 }

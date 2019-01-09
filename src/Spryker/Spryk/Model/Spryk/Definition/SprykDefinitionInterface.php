@@ -84,9 +84,9 @@ interface SprykDefinitionInterface
     public function setPostSpryks(array $postSpryks): self;
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getMode(): ?string;
+    public function getMode(): string;
 
     /**
      * @param string $mode

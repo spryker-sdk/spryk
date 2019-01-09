@@ -69,10 +69,6 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
 
         $sprykConfiguration = $this->buildMode($sprykConfiguration, $sprykMode);
 
-        if ($sprykMode !== null && $sprykConfiguration['mode'] !== $sprykMode) {
-            return [];
-        }
-
         $this->configurationValidate($sprykConfiguration);
 
         $sprykConfiguration = $this->configurationMerger->merge($sprykConfiguration);
