@@ -198,40 +198,40 @@ class SprykExecutor implements SprykExecutorInterface
      * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \Spryker\Spryk\Style\SprykStyleInterface $style
      *
-     * @return string
      * @throws \Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException
+     *
+     * @return string
      */
     protected function getSprykDefinitionMode(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): string
+    {
+        if (!$this->isValidModes($sprykDefinition, $style)) {
+            $errorMessage = '`%s` spryk support `%s` development layer only.';
+
+            throw new SprykWrongDevelopmentLayerException(
+                sprintf($errorMessage, $sprykDefinition->getSprykName(), strtoupper($sprykDefinition->getMode()))
+            );
+        }
+
+        $sprykMode = $style->getInput()->getOption('mode');
+
+        return is_string($sprykMode) ? $sprykMode : $sprykDefinition->getMode();
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return bool
+     */
+    protected function isValidModes(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): bool
     {
         $sprykModeArgument = $style->getInput()->getOption('mode');
         $sprykModeDefinition = $sprykDefinition->getMode();
 
-        if (!$sprykModeArgument) {
-            return $sprykModeDefinition;
+        if ($sprykModeArgument === false || $sprykModeArgument === null) {
+            return true;
         }
 
-        $this->validationModes($sprykModeArgument, $sprykDefinition);
-
-        return $sprykModeArgument;
-    }
-
-    /**
-     * @param string $sprykModeArgument
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return void
-     * @throws \Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException
-     */
-    protected function validationModes(string $sprykModeArgument, SprykDefinitionInterface $sprykDefinition): void
-    {
-        $errorMessage = '`%s` spryk support `%s` development layer only.';
-
-        $sprykModeDefinition = $sprykDefinition->getMode();
-
-        if ($sprykModeArgument !== $sprykModeDefinition) {
-            throw new SprykWrongDevelopmentLayerException(
-                sprintf($errorMessage, $sprykDefinition->getSprykName(), strtoupper($sprykModeDefinition))
-            );
-        }
+        return $sprykModeArgument === $sprykModeDefinition;
     }
 }
