@@ -63,7 +63,8 @@ class SprykExecutor implements SprykExecutorInterface
 
         $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
 
-        $this->mainSprykDefinitionMode = $sprykDefinition->getMode();
+        $this->mainSprykDefinitionMode = $this->getSprykDefinitionMode($sprykDefinition, $style);
+
         $this->buildSpryk($sprykDefinition, $style);
     }
 
@@ -190,5 +191,22 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         return true;
+    }
+
+    /**
+     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \Spryker\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return string
+     */
+    protected function getSprykDefinitionMode(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): string
+    {
+        $sprykMode = $style->getInput()->getOption('mode');
+
+        if (!$sprykMode) {
+            return $sprykDefinition->getMode();
+        }
+
+        return $sprykMode;
     }
 }

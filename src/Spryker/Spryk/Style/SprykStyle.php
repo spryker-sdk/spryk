@@ -190,4 +190,12 @@ class SprykStyle implements SprykStyleInterface
     {
         $this->output->writeln($messages, $options);
     }
+
+    /**
+     * @return \Symfony\Component\Console\Input\InputInterface
+     */
+    public function getInput(): InputInterface
+    {
+        return $this->input;
+    }
 }

@@ -8,6 +8,7 @@
 namespace Spryker\Spryk\Style;
 
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Question\Question;
 
 interface SprykStyleInterface
@@ -85,4 +86,9 @@ interface SprykStyleInterface
      * @return void
      */
     public function report(string $message): void;
+
+    /**
+     * @return \Symfony\Component\Console\Input\InputInterface
+     */
+    public function getInput(): InputInterface;
 }
