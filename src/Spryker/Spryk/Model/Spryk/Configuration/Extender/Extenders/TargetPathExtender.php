@@ -48,15 +48,11 @@ class TargetPathExtender extends AbstractExtender implements SprykConfigurationE
 
         $hasTargetPathDefault = isset($arguments['targetPath']['default']);
 
-        $targetPath = $hasTargetPathDefault ? $arguments['targetPath']['default'] : $arguments['targetPath']['value'];
+        $targetPath = $hasTargetPathDefault
+            ? $arguments['targetPath']['default']
+            : $arguments['targetPath']['value'];
 
-        $pathPattern = sprintf('/\%1$ssrc\%1$s.+|\%1$stests\%1$s.+/', DIRECTORY_SEPARATOR);
-
-        preg_match($pathPattern, $targetPath, $result);
-
-        if ($result !== []) {
-            $targetPath = ltrim(array_shift($result), DIRECTORY_SEPARATOR);
-        }
+        $targetPath = $this->buildTargetPath($targetPath);
 
         if ($hasTargetPathDefault) {
             $arguments['targetPath']['default'] = $targetPath;
@@ -67,5 +63,23 @@ class TargetPathExtender extends AbstractExtender implements SprykConfigurationE
         $sprykConfig = $this->setArguments($arguments, $sprykConfig);
 
         return $sprykConfig;
+    }
+
+    /**
+     * @param string $targetPath
+     *
+     * @return string
+     */
+    protected function buildTargetPath(string $targetPath): string
+    {
+        $pathPattern = sprintf('/\%1$ssrc\%1$s.+|\%1$stests\%1$s.+/', DIRECTORY_SEPARATOR);
+
+        preg_match($pathPattern, $targetPath, $result);
+
+        if ($result === []) {
+            return $targetPath;
+        }
+
+        return ltrim(array_shift($result), DIRECTORY_SEPARATOR);
     }
 }
