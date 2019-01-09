@@ -35,6 +35,11 @@ class SprykExecutor implements SprykExecutorInterface
     protected $includeOptionalSubSpryks = [];
 
     /**
+     * @var string
+     */
+    protected $mainSprykDefinitionMode;
+
+    /**
      * @param \Spryker\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface $definitionBuilder
      * @param \Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface $sprykBuilderCollection
      */
@@ -58,9 +63,8 @@ class SprykExecutor implements SprykExecutorInterface
 
         $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
 
-        if ($this->shouldBuild($sprykDefinition)) {
-            $this->buildSpryk($sprykDefinition, $style);
-        }
+        $this->mainSprykDefinitionMode = $sprykDefinition->getMode();
+        $this->buildSpryk($sprykDefinition, $style);
     }
 
     /**
@@ -71,6 +75,10 @@ class SprykExecutor implements SprykExecutorInterface
      */
     protected function buildSpryk(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
+        if ($sprykDefinition->getMode() !== $this->mainSprykDefinitionMode) {
+            return;
+        }
+
         $style->startSpryk($sprykDefinition);
 
         $this->executePreSpryks($sprykDefinition, $style);
@@ -182,27 +190,5 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         return true;
-    }
-
-    /**
-     * @param \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return bool
-     */
-    protected function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
-    {
-        $preSpryks = $sprykDefinition->getPreSpryks();
-
-        if (count($preSpryks) === 0) {
-            return true;
-        }
-
-        foreach ($preSpryks as $preSpryk) {
-            if ($preSpryk->getMode() === $sprykDefinition->getMode()) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

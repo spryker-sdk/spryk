@@ -42,13 +42,15 @@ class TargetPathExtender extends AbstractExtender implements SprykConfigurationE
             return $sprykConfig;
         }
 
-        if (!isset($arguments['targetPath']['default'])) {
+        if (!isset($arguments['targetPath'])) {
             return $sprykConfig;
         }
 
-        $targetPath = $arguments['targetPath']['default'];
+        $hasTargetPathDefault = isset($arguments['targetPath']['default']);
 
-        $pathPattern = sprintf('/\%1$ssrc\%1$s.+/', DIRECTORY_SEPARATOR);
+        $targetPath = $hasTargetPathDefault ? $arguments['targetPath']['default'] : $arguments['targetPath']['value'];
+
+        $pathPattern = sprintf('/\%1$ssrc\%1$s.+|\%1$stests\%1$s.+/', DIRECTORY_SEPARATOR);
 
         preg_match($pathPattern, $targetPath, $result);
 
@@ -56,7 +58,11 @@ class TargetPathExtender extends AbstractExtender implements SprykConfigurationE
             $targetPath = ltrim(array_shift($result), DIRECTORY_SEPARATOR);
         }
 
-        $arguments['targetPath']['default'] = $targetPath;
+        if ($hasTargetPathDefault) {
+            $arguments['targetPath']['default'] = $targetPath;
+        } else {
+            $arguments['targetPath']['value'] = $targetPath;
+        }
 
         $sprykConfig = $this->setArguments($arguments, $sprykConfig);
 
