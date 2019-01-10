@@ -1,5 +1,6 @@
 spryk: navigation
 description: "Adds a new navigation node entry tho the *module* navigation.xml."
+mode: both
 
 arguments:
   module: ~

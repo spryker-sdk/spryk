@@ -1,6 +1,7 @@
 spryk: structure
 description: "Adds a new *module* structure."
 priority: 1
+mode: both
 
 arguments:
   module:
@@ -17,14 +18,14 @@ arguments:
       - "src/{{ organization }}/"
 
 postSpryks:
-  - AddSprykerReadme
-  - AddSprykerComposerJson
-  - AddSprykerLicense
-  - AddSprykerContributing
-  - AddSprykerChangelog
-  - AddSprykerTravis
-  - AddSprykerGitattributes
-  - AddSprykerGitignore
-  - AddSprykerTooling
-  - AddSprykerPhpStanJson
-  - AddSprykerPhpStanNeon
+  - AddModuleReadme
+  - AddModuleComposerJson
+  - AddModuleLicense
+  - AddModuleContributing
+  - AddModuleChangelog
+  - AddModuleTravis
+  - AddModuleGitattributes
+  - AddModuleGitignore
+  - AddModuleTooling
+  - AddModulePhpStanJson
+  - AddModulePhpStanNeon

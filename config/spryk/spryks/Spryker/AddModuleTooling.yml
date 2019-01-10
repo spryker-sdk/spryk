@@ -1,0 +1,19 @@
+spryk: template
+description: "Adds a new tooling.yml to the Modules root."
+mode: both
+# todo: only core?
+
+arguments:
+  module: ~
+
+  organization:
+    default: Spryker
+
+  template:
+    value: tooling.yml.twig
+
+  targetPath:
+    default: "{{ module }}/"
+
+preSpryks:
+  - AddModule

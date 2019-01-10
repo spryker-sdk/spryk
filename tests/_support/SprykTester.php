@@ -8,9 +8,11 @@
 namespace SprykTest;
 
 use Codeception\Actor;
+use Spryker\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtender;
 use Spryker\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
 use Spryker\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoader;
 use Spryker\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
+use Spryker\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidator;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Argument;
 use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
 use Spryker\Spryk\Model\Spryk\Definition\SprykDefinition;
@@ -64,7 +66,12 @@ class SprykTester extends Actor
         $configurationMerger = new SprykConfigurationMerger($configurationFinder);
 
         $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/spryks/']);
-        $configurationLoader = new SprykConfigurationLoader($configurationFinder, $configurationMerger);
+        $configurationLoader = new SprykConfigurationLoader(
+            $configurationFinder,
+            $configurationMerger,
+            new SprykConfigurationExtender([]),
+            new ConfigurationValidator([])
+        );
 
         return $configurationLoader->loadSpryk('SprykDefinition');
     }

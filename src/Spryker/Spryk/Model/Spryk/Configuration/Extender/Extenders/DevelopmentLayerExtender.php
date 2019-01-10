@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Spryker\Spryk\Model\Spryk\Configuration\Extender\Extenders;
+
+use Spryker\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
+
+class DevelopmentLayerExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
+{
+    /**
+     * @param array $sprykConfig
+     *
+     * @return array
+     */
+    public function extend(array $sprykConfig): array
+    {
+        if (!$this->isProject($sprykConfig)) {
+            return $sprykConfig;
+        }
+
+        return $this->buildModeArgument($sprykConfig);
+    }
+
+    /**
+     * @param array $sprykConfig
+     *
+     * @return array
+     */
+    protected function buildModeArgument(array $sprykConfig): array
+    {
+        if ($this->isBoth($sprykConfig)) {
+            $sprykConfig['arguments']['mode']['default'] = 'core';
+
+            return $sprykConfig;
+        }
+
+        $sprykConfig['arguments']['mode']['value'] = $this->getDevelopmentLayer($sprykConfig);
+
+        return $sprykConfig;
+    }
+}

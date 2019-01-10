@@ -172,7 +172,7 @@ class SprykFactory
      *
      * @return $this
      */
-    public function setConfig(SprykConfig $config): self
+    public function setConfig(SprykConfig $config)
     {
         $this->config = $config;
 

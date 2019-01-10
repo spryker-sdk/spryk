@@ -62,4 +62,18 @@ class ArgumentCollection implements ArgumentCollectionInterface
     {
         return $this->arguments;
     }
+
+    /**
+     * @return array
+     */
+    public function getArgumentsAsArray(): array
+    {
+        $result = [];
+
+        foreach ($this->arguments as $argument) {
+            $result[$argument->getName()]['value'] = $argument->getValue();
+        }
+
+        return $result;
+    }
 }

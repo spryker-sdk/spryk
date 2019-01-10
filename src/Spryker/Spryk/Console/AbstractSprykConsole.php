@@ -35,7 +35,7 @@ abstract class AbstractSprykConsole extends Command
      *
      * @return $this
      */
-    public function setFacade(SprykFacadeInterface $facade): self
+    public function setFacade(SprykFacadeInterface $facade)
     {
         $this->facade = $facade;
 

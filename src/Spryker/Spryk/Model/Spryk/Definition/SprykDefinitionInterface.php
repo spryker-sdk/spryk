@@ -40,7 +40,7 @@ interface SprykDefinitionInterface
      *
      * @return $this
      */
-    public function setConfig(array $config): self;
+    public function setConfig(array $config);
 
     /**
      * @return array
@@ -82,4 +82,16 @@ interface SprykDefinitionInterface
      * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
     public function setPostSpryks(array $postSpryks): self;
+
+    /**
+     * @return string
+     */
+    public function getMode(): string;
+
+    /**
+     * @param string $mode
+     *
+     * @return $this
+     */
+    public function setMode(string $mode);
 }

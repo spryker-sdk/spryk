@@ -1,0 +1,18 @@
+spryk: template
+description: "Adds a new CHANGELOG.md to the Modules root."
+mode: core
+
+arguments:
+  module: ~
+
+  organization:
+    default: Spryker
+
+  template:
+    value: CHANGELOG.md.twig
+
+  targetPath:
+    default: "{{ module }}/"
+
+preSpryks:
+  - AddModule

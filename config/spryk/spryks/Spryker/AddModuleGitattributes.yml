@@ -1,0 +1,21 @@
+spryk: template
+description: "Adds a new .gitattributes to the Modules root."
+mode: core
+
+arguments:
+  module: ~
+
+  organization:
+    default: Spryker
+
+  template:
+    value: gitattributes.twig
+
+  targetFilename:
+    value: .gitattributes
+
+  targetPath:
+    default: "{{ module }}/"
+
+preSpryks:
+  - AddModule
