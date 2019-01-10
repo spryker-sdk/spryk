@@ -40,7 +40,7 @@ interface SprykDefinitionInterface
      *
      * @return $this
      */
-    public function setConfig(array $config): self;
+    public function setConfig(array $config);
 
     /**
      * @return array
@@ -93,5 +93,5 @@ interface SprykDefinitionInterface
      *
      * @return $this
      */
-    public function setMode(string $mode): self;
+    public function setMode(string $mode);
 }
