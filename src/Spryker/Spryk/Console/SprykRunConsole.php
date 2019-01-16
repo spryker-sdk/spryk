@@ -43,19 +43,10 @@ class SprykRunConsole extends AbstractSprykConsole
      */
     protected function configure()
     {
-        $sprykArguments = $this->getSprykArguments();
         $this->setName('spryk:run')
             ->setDescription('Runs a Spryk build process.')
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
             ->addOption(static::OPTION_INCLUDE_OPTIONALS, static::OPTION_INCLUDE_OPTIONALS_SHORT, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Name(s) of the Spryks which are marked as optional but should be build.');
-
-        foreach ($sprykArguments as $argumentName => $argumentDefinition) {
-            $inputOption = InputOption::VALUE_REQUIRED;
-            if (isset($argumentDefinition['multiline']) || isset($argumentDefinition['isMultiple'])) {
-                $inputOption = InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY;
-            }
-            $this->addOption($argumentName, null, $inputOption, $argumentDefinition['description']);
-        }
     }
 
     /**
