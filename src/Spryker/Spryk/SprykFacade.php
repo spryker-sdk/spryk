@@ -69,7 +69,7 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function buildArgumentList(array $sprykDefinitions): array
     {
-        return $this->factory->createArgumentsListBuilder()->buildArgumentList($sprykDefinitions);
+        return $this->getFactory()->createArgumentsListBuilder()->buildArgumentList($sprykDefinitions);
     }
 
     /**
