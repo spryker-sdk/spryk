@@ -7,6 +7,12 @@
 
 namespace Spryker\Spryk;
 
+use Spryker\Spryk\Model\Spryk\ArgumentList\Builder\ArgumentListBuilder;
+use Spryker\Spryk\Model\Spryk\ArgumentList\Builder\ArgumentListBuilderInterface;
+use Spryker\Spryk\Model\Spryk\ArgumentList\Dumper\ArgumentListDumper;
+use Spryker\Spryk\Model\Spryk\ArgumentList\Dumper\ArgumentListDumperInterface;
+use Spryker\Spryk\Model\Spryk\ArgumentList\Generator\ArgumentListGenerator;
+use Spryker\Spryk\Model\Spryk\ArgumentList\Generator\ArgumentListGeneratorInterface;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollection;
 use Spryker\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use Spryker\Spryk\Model\Spryk\Builder\SprykBuilderFactory;
@@ -177,5 +183,29 @@ class SprykFactory
         $this->config = $config;
 
         return $this;
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\ArgumentList\Builder\ArgumentListBuilderInterface
+     */
+    public function createArgumentsListBuilder(): ArgumentListBuilderInterface
+    {
+        return new ArgumentListBuilder();
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\ArgumentList\Generator\ArgumentListGeneratorInterface
+     */
+    public function createArgumentListGenerator(): ArgumentListGeneratorInterface
+    {
+        return new ArgumentListGenerator($this->getConfig()->getArgumentListFilePath());
+    }
+
+    /**
+     * @return \Spryker\Spryk\Model\Spryk\ArgumentList\Dumper\ArgumentListDumperInterface
+     */
+    public function createArgumentListDumper(): ArgumentListDumperInterface
+    {
+        return new ArgumentListDumper($this->getConfig()->getArgumentListFilePath());
     }
 }

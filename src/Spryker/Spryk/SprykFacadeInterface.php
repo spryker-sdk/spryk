@@ -31,4 +31,23 @@ interface SprykFacadeInterface
      * @return \Spryker\Spryk\SprykFacadeInterface
      */
     public function setFactory(SprykFactory $factory): self;
+
+    /**
+     * @param array $sprykDefinitions
+     *
+     * @return array
+     */
+    public function buildArgumentList(array $sprykDefinitions): array;
+
+    /**
+     * @param array $argumentsList
+     *
+     * @return int
+     */
+    public function generateArgumentList(array $argumentsList): int;
+
+    /**
+     * @return array
+     */
+    public function dumpArgumentList(): array;
 }

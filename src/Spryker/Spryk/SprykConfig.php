@@ -19,6 +19,9 @@ class SprykConfig
     protected const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
     protected const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
 
+    protected const NAME_DIRECTORY_GENERATED = 'generated';
+    protected const NAME_FILE_ARGUMENT_LIST = 'spryk_argument_list.yml';
+
     /**
      * @return string[]
      */
@@ -108,5 +111,25 @@ class SprykConfig
     public function getProjectNamespaces(): array
     {
         return Config::get(KernelConstants::PROJECT_NAMESPACES, []);
+    }
+
+    /**
+     * @return string
+     */
+    public function getArgumentListFilePath(): string
+    {
+        $generatedDirectory = $this->getRootDirectory()
+            . implode(DIRECTORY_SEPARATOR, [
+                'vendor',
+                'spryker',
+                'spryk',
+                static::NAME_DIRECTORY_GENERATED,
+            ]);
+
+        if (!file_exists($generatedDirectory)) {
+            $generatedDirectory = $this->getRootDirectory() . static::NAME_DIRECTORY_GENERATED;
+        }
+
+        return realpath($generatedDirectory) . DIRECTORY_SEPARATOR . static::NAME_FILE_ARGUMENT_LIST;
     }
 }

@@ -1,0 +1,3203 @@
+###
+# This file collected all spryks arguments and generated with spryk:build command.
+###
+-
+  name: module
+  mode: 2
+  description: 'module argument'
+-
+  name: organization
+  mode: 2
+  description: 'organization argument'
+-
+  name: template
+  mode: 2
+  description: 'template argument'
+-
+  name: targetFilename
+  mode: 2
+  description: 'targetFilename argument'
+-
+  name: targetPath
+  mode: 2
+  description: 'targetPath argument'
+-
+  name: repository
+  mode: 2
+  description: 'repository argument'
+-
+  name: afterElement
+  mode: 2
+  description: 'afterElement argument'
+-
+  name: addToElement
+  mode: 2
+  description: 'addToElement argument'
+-
+  name: content
+  mode: 2
+  description: 'content argument'
+-
+  name: mode
+  mode: 2
+  description: 'mode argument'
+-
+  name: directories
+  mode: 2
+  description: 'directories argument'
+-
+  name: subDirectory
+  mode: 2
+  description: 'subDirectory argument'
+-
+  name: className
+  mode: 2
+  description: 'className argument'
+-
+  name: method
+  mode: 2
+  description: 'method argument'
+-
+  name: dependencyMethods
+  mode: 10
+  description: 'dependencyMethods argument'
+-
+  name: target
+  mode: 2
+  description: 'target argument'
+-
+  name: input
+  mode: 2
+  description: 'input argument'
+-
+  name: output
+  mode: 2
+  description: 'output argument'
+-
+  name: interfaceName
+  mode: 2
+  description: 'interfaceName argument'
+-
+  name: constructorArguments
+  mode: 10
+  description: 'constructorArguments argument'
+-
+  name: facadeMethod
+  mode: 2
+  description: 'facadeMethod argument'
+-
+  name: comment
+  mode: 10
+  description: 'comment argument'
+-
+  name: annotations
+  mode: 2
+  description: 'annotations argument'
+-
+  name: body
+  mode: 2
+  description: 'body argument'
+-
+  name: specification
+  mode: 10
+  description: 'specification argument'
+-
+  name: dependentModule
+  mode: 2
+  description: 'dependentModule argument'
+-
+  name: name
+  mode: 2
+  description: 'name argument'
+-
+  name: value
+  mode: 2
+  description: 'value argument'
+-
+  name: visibility
+  mode: 2
+  description: 'visibility argument'
+-
+  name: methods
+  mode: 10
+  description: 'methods argument'
+-
+  name: dependencyType
+  mode: 2
+  description: 'dependencyType argument'
+-
+  name: sourceClass
+  mode: 2
+  description: 'sourceClass argument'
+-
+  name: dependentModuleOrganization
+  mode: 2
+  description: 'dependentModuleOrganization argument'
+-
+  name: targetModule
+  mode: 2
+  description: 'targetModule argument'
+-
+  name: tableName
+  mode: 2
+  description: 'tableName argument'
+-
+  name: controller
+  mode: 2
+  description: 'controller argument'
+-
+  name: consoleCommand
+  mode: 2
+  description: 'consoleCommand argument'
+-
+  name: repositoryToken
+  mode: 2
+  description: 'repositoryToken argument'
+-
+  name: AddZedDependencyProvider.module
+  mode: 2
+  description: 'AddZedDependencyProvider module argument'
+-
+  name: AddZedDependencyProvider.organization
+  mode: 2
+  description: 'AddZedDependencyProvider organization argument'
+-
+  name: AddZedDependencyProvider.template
+  mode: 2
+  description: 'AddZedDependencyProvider template argument'
+-
+  name: AddZedDependencyProvider.targetFilename
+  mode: 2
+  description: 'AddZedDependencyProvider targetFilename argument'
+-
+  name: AddZedDependencyProvider.targetPath
+  mode: 2
+  description: 'AddZedDependencyProvider targetPath argument'
+-
+  name: AddZedDependencyProvider.repository
+  mode: 2
+  description: 'AddZedDependencyProvider repository argument'
+-
+  name: AddZedTestSuiteToCodeceptionConfiguration.module
+  mode: 2
+  description: 'AddZedTestSuiteToCodeceptionConfiguration module argument'
+-
+  name: AddZedTestSuiteToCodeceptionConfiguration.organization
+  mode: 2
+  description: 'AddZedTestSuiteToCodeceptionConfiguration organization argument'
+-
+  name: AddZedTestSuiteToCodeceptionConfiguration.afterElement
+  mode: 2
+  description: 'AddZedTestSuiteToCodeceptionConfiguration afterElement argument'
+-
+  name: AddZedTestSuiteToCodeceptionConfiguration.addToElement
+  mode: 2
+  description: 'AddZedTestSuiteToCodeceptionConfiguration addToElement argument'
+-
+  name: AddZedTestSuiteToCodeceptionConfiguration.content
+  mode: 2
+  description: 'AddZedTestSuiteToCodeceptionConfiguration content argument'
+-
+  name: AddZedTestSuiteToCodeceptionConfiguration.targetPath
+  mode: 2
+  description: 'AddZedTestSuiteToCodeceptionConfiguration targetPath argument'
+-
+  name: AddZedTestSuiteToCodeceptionConfiguration.repository
+  mode: 2
+  description: 'AddZedTestSuiteToCodeceptionConfiguration repository argument'
+-
+  name: AddZedTestSuiteToCodeceptionConfiguration.mode
+  mode: 2
+  description: 'AddZedTestSuiteToCodeceptionConfiguration mode argument'
+-
+  name: AddZedBusinessTestSuite.module
+  mode: 2
+  description: 'AddZedBusinessTestSuite module argument'
+-
+  name: AddZedBusinessTestSuite.organization
+  mode: 2
+  description: 'AddZedBusinessTestSuite organization argument'
+-
+  name: AddZedBusinessTestSuite.targetPath
+  mode: 2
+  description: 'AddZedBusinessTestSuite targetPath argument'
+-
+  name: AddZedBusinessTestSuite.directories
+  mode: 2
+  description: 'AddZedBusinessTestSuite directories argument'
+-
+  name: AddZedBusinessTestSuite.repository
+  mode: 2
+  description: 'AddZedBusinessTestSuite repository argument'
+-
+  name: AddZedBusinessFactoryMethod.module
+  mode: 2
+  description: 'AddZedBusinessFactoryMethod module argument'
+-
+  name: AddZedBusinessFactoryMethod.organization
+  mode: 2
+  description: 'AddZedBusinessFactoryMethod organization argument'
+-
+  name: AddZedBusinessFactoryMethod.subDirectory
+  mode: 2
+  description: 'AddZedBusinessFactoryMethod subDirectory argument'
+-
+  name: AddZedBusinessFactoryMethod.className
+  mode: 2
+  description: 'AddZedBusinessFactoryMethod className argument'
+-
+  name: AddZedBusinessFactoryMethod.method
+  mode: 2
+  description: 'AddZedBusinessFactoryMethod method argument'
+-
+  name: AddZedBusinessFactoryMethod.dependencyMethods
+  mode: 2
+  description: 'AddZedBusinessFactoryMethod dependencyMethods argument'
+-
+  name: AddZedBusinessFactoryMethod.template
+  mode: 2
+  description: 'AddZedBusinessFactoryMethod template argument'
+-
+  name: AddZedBusinessFactoryMethod.target
+  mode: 2
+  description: 'AddZedBusinessFactoryMethod target argument'
+-
+  name: AddZedBusinessFactoryMethod.repository
+  mode: 2
+  description: 'AddZedBusinessFactoryMethod repository argument'
+-
+  name: AddZedBusinessFactory.module
+  mode: 2
+  description: 'AddZedBusinessFactory module argument'
+-
+  name: AddZedBusinessFactory.organization
+  mode: 2
+  description: 'AddZedBusinessFactory organization argument'
+-
+  name: AddZedBusinessFactory.template
+  mode: 2
+  description: 'AddZedBusinessFactory template argument'
+-
+  name: AddZedBusinessFactory.targetFilename
+  mode: 2
+  description: 'AddZedBusinessFactory targetFilename argument'
+-
+  name: AddZedBusinessFactory.targetPath
+  mode: 2
+  description: 'AddZedBusinessFactory targetPath argument'
+-
+  name: AddZedBusinessFactory.repository
+  mode: 2
+  description: 'AddZedBusinessFactory repository argument'
+-
+  name: AddZedBusinessTestSuiteConfiguration.module
+  mode: 2
+  description: 'AddZedBusinessTestSuiteConfiguration module argument'
+-
+  name: AddZedBusinessTestSuiteConfiguration.organization
+  mode: 2
+  description: 'AddZedBusinessTestSuiteConfiguration organization argument'
+-
+  name: AddZedBusinessTestSuiteConfiguration.template
+  mode: 2
+  description: 'AddZedBusinessTestSuiteConfiguration template argument'
+-
+  name: AddZedBusinessTestSuiteConfiguration.afterElement
+  mode: 2
+  description: 'AddZedBusinessTestSuiteConfiguration afterElement argument'
+-
+  name: AddZedBusinessTestSuiteConfiguration.addToElement
+  mode: 2
+  description: 'AddZedBusinessTestSuiteConfiguration addToElement argument'
+-
+  name: AddZedBusinessTestSuiteConfiguration.targetPath
+  mode: 2
+  description: 'AddZedBusinessTestSuiteConfiguration targetPath argument'
+-
+  name: AddZedBusinessTestSuiteConfiguration.repository
+  mode: 2
+  description: 'AddZedBusinessTestSuiteConfiguration repository argument'
+-
+  name: AddZedBusinessFacadeInterface.module
+  mode: 2
+  description: 'AddZedBusinessFacadeInterface module argument'
+-
+  name: AddZedBusinessFacadeInterface.organization
+  mode: 2
+  description: 'AddZedBusinessFacadeInterface organization argument'
+-
+  name: AddZedBusinessFacadeInterface.template
+  mode: 2
+  description: 'AddZedBusinessFacadeInterface template argument'
+-
+  name: AddZedBusinessFacadeInterface.targetFilename
+  mode: 2
+  description: 'AddZedBusinessFacadeInterface targetFilename argument'
+-
+  name: AddZedBusinessFacadeInterface.targetPath
+  mode: 2
+  description: 'AddZedBusinessFacadeInterface targetPath argument'
+-
+  name: AddZedBusinessFacadeInterface.repository
+  mode: 2
+  description: 'AddZedBusinessFacadeInterface repository argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.module
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod module argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.organization
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod organization argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.className
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod className argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.method
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod method argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.input
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod input argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.output
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod output argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.template
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod template argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.target
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod target argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.repository
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod repository argument'
+-
+  name: AddZedBusinessModelInterface.module
+  mode: 2
+  description: 'AddZedBusinessModelInterface module argument'
+-
+  name: AddZedBusinessModelInterface.organization
+  mode: 2
+  description: 'AddZedBusinessModelInterface organization argument'
+-
+  name: AddZedBusinessModelInterface.subDirectory
+  mode: 2
+  description: 'AddZedBusinessModelInterface subDirectory argument'
+-
+  name: AddZedBusinessModelInterface.className
+  mode: 2
+  description: 'AddZedBusinessModelInterface className argument'
+-
+  name: AddZedBusinessModelInterface.interfaceName
+  mode: 2
+  description: 'AddZedBusinessModelInterface interfaceName argument'
+-
+  name: AddZedBusinessModelInterface.template
+  mode: 2
+  description: 'AddZedBusinessModelInterface template argument'
+-
+  name: AddZedBusinessModelInterface.targetFilename
+  mode: 2
+  description: 'AddZedBusinessModelInterface targetFilename argument'
+-
+  name: AddZedBusinessModelInterface.targetPath
+  mode: 2
+  description: 'AddZedBusinessModelInterface targetPath argument'
+-
+  name: AddZedBusinessModelInterface.repository
+  mode: 2
+  description: 'AddZedBusinessModelInterface repository argument'
+-
+  name: AddZedBusinessModel.module
+  mode: 2
+  description: 'AddZedBusinessModel module argument'
+-
+  name: AddZedBusinessModel.organization
+  mode: 2
+  description: 'AddZedBusinessModel organization argument'
+-
+  name: AddZedBusinessModel.subDirectory
+  mode: 2
+  description: 'AddZedBusinessModel subDirectory argument'
+-
+  name: AddZedBusinessModel.className
+  mode: 2
+  description: 'AddZedBusinessModel className argument'
+-
+  name: AddZedBusinessModel.constructorArguments
+  mode: 2
+  description: 'AddZedBusinessModel constructorArguments argument'
+-
+  name: AddZedBusinessModel.interfaceName
+  mode: 2
+  description: 'AddZedBusinessModel interfaceName argument'
+-
+  name: AddZedBusinessModel.template
+  mode: 2
+  description: 'AddZedBusinessModel template argument'
+-
+  name: AddZedBusinessModel.targetFilename
+  mode: 2
+  description: 'AddZedBusinessModel targetFilename argument'
+-
+  name: AddZedBusinessModel.targetPath
+  mode: 2
+  description: 'AddZedBusinessModel targetPath argument'
+-
+  name: AddZedBusinessModel.repository
+  mode: 2
+  description: 'AddZedBusinessModel repository argument'
+-
+  name: AddZedBusinessModelMethod.module
+  mode: 2
+  description: 'AddZedBusinessModelMethod module argument'
+-
+  name: AddZedBusinessModelMethod.organization
+  mode: 2
+  description: 'AddZedBusinessModelMethod organization argument'
+-
+  name: AddZedBusinessModelMethod.className
+  mode: 2
+  description: 'AddZedBusinessModelMethod className argument'
+-
+  name: AddZedBusinessModelMethod.method
+  mode: 2
+  description: 'AddZedBusinessModelMethod method argument'
+-
+  name: AddZedBusinessModelMethod.input
+  mode: 2
+  description: 'AddZedBusinessModelMethod input argument'
+-
+  name: AddZedBusinessModelMethod.output
+  mode: 2
+  description: 'AddZedBusinessModelMethod output argument'
+-
+  name: AddZedBusinessModelMethod.facadeMethod
+  mode: 2
+  description: 'AddZedBusinessModelMethod facadeMethod argument'
+-
+  name: AddZedBusinessModelMethod.template
+  mode: 2
+  description: 'AddZedBusinessModelMethod template argument'
+-
+  name: AddZedBusinessModelMethod.target
+  mode: 2
+  description: 'AddZedBusinessModelMethod target argument'
+-
+  name: AddZedBusinessModelMethod.repository
+  mode: 2
+  description: 'AddZedBusinessModelMethod repository argument'
+-
+  name: AddZedBusinessFacadeTest.module
+  mode: 2
+  description: 'AddZedBusinessFacadeTest module argument'
+-
+  name: AddZedBusinessFacadeTest.organization
+  mode: 2
+  description: 'AddZedBusinessFacadeTest organization argument'
+-
+  name: AddZedBusinessFacadeTest.template
+  mode: 2
+  description: 'AddZedBusinessFacadeTest template argument'
+-
+  name: AddZedBusinessFacadeTest.targetFilename
+  mode: 2
+  description: 'AddZedBusinessFacadeTest targetFilename argument'
+-
+  name: AddZedBusinessFacadeTest.targetPath
+  mode: 2
+  description: 'AddZedBusinessFacadeTest targetPath argument'
+-
+  name: AddZedBusinessFacadeTest.repository
+  mode: 2
+  description: 'AddZedBusinessFacadeTest repository argument'
+-
+  name: AddZedBusinessFacadeMethod.module
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod module argument'
+-
+  name: AddZedBusinessFacadeMethod.organization
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod organization argument'
+-
+  name: AddZedBusinessFacadeMethod.comment
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod comment argument'
+-
+  name: AddZedBusinessFacadeMethod.method
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod method argument'
+-
+  name: AddZedBusinessFacadeMethod.input
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod input argument'
+-
+  name: AddZedBusinessFacadeMethod.output
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod output argument'
+-
+  name: AddZedBusinessFacadeMethod.annotations
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod annotations argument'
+-
+  name: AddZedBusinessFacadeMethod.template
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod template argument'
+-
+  name: AddZedBusinessFacadeMethod.target
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod target argument'
+-
+  name: AddZedBusinessFacadeMethod.repository
+  mode: 2
+  description: 'AddZedBusinessFacadeMethod repository argument'
+-
+  name: AddZedBusinessFacadeMethodTest.module
+  mode: 2
+  description: 'AddZedBusinessFacadeMethodTest module argument'
+-
+  name: AddZedBusinessFacadeMethodTest.organization
+  mode: 2
+  description: 'AddZedBusinessFacadeMethodTest organization argument'
+-
+  name: AddZedBusinessFacadeMethodTest.method
+  mode: 2
+  description: 'AddZedBusinessFacadeMethodTest method argument'
+-
+  name: AddZedBusinessFacadeMethodTest.body
+  mode: 2
+  description: 'AddZedBusinessFacadeMethodTest body argument'
+-
+  name: AddZedBusinessFacadeMethodTest.output
+  mode: 2
+  description: 'AddZedBusinessFacadeMethodTest output argument'
+-
+  name: AddZedBusinessFacadeMethodTest.template
+  mode: 2
+  description: 'AddZedBusinessFacadeMethodTest template argument'
+-
+  name: AddZedBusinessFacadeMethodTest.target
+  mode: 2
+  description: 'AddZedBusinessFacadeMethodTest target argument'
+-
+  name: AddZedBusinessFacadeMethodTest.repository
+  mode: 2
+  description: 'AddZedBusinessFacadeMethodTest repository argument'
+-
+  name: AddZedBusinessFacade.module
+  mode: 2
+  description: 'AddZedBusinessFacade module argument'
+-
+  name: AddZedBusinessFacade.organization
+  mode: 2
+  description: 'AddZedBusinessFacade organization argument'
+-
+  name: AddZedBusinessFacade.template
+  mode: 2
+  description: 'AddZedBusinessFacade template argument'
+-
+  name: AddZedBusinessFacade.targetFilename
+  mode: 2
+  description: 'AddZedBusinessFacade targetFilename argument'
+-
+  name: AddZedBusinessFacade.targetPath
+  mode: 2
+  description: 'AddZedBusinessFacade targetPath argument'
+-
+  name: AddZedBusinessFacade.repository
+  mode: 2
+  description: 'AddZedBusinessFacade repository argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.module
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod module argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.organization
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod organization argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.specification
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod specification argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.method
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod method argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.input
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod input argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.output
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod output argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.annotations
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod annotations argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.template
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod template argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.target
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod target argument'
+-
+  name: AddZedBusinessFacadeInterfaceMethod.repository
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod repository argument'
+-
+  name: AddZedTestCodeceptionConfiguration.module
+  mode: 2
+  description: 'AddZedTestCodeceptionConfiguration module argument'
+-
+  name: AddZedTestCodeceptionConfiguration.organization
+  mode: 2
+  description: 'AddZedTestCodeceptionConfiguration organization argument'
+-
+  name: AddZedTestCodeceptionConfiguration.template
+  mode: 2
+  description: 'AddZedTestCodeceptionConfiguration template argument'
+-
+  name: AddZedTestCodeceptionConfiguration.targetPath
+  mode: 2
+  description: 'AddZedTestCodeceptionConfiguration targetPath argument'
+-
+  name: AddZedTestCodeceptionConfiguration.targetFilename
+  mode: 2
+  description: 'AddZedTestCodeceptionConfiguration targetFilename argument'
+-
+  name: AddZedTestCodeceptionConfiguration.repository
+  mode: 2
+  description: 'AddZedTestCodeceptionConfiguration repository argument'
+-
+  name: AddZedConfig.module
+  mode: 2
+  description: 'AddZedConfig module argument'
+-
+  name: AddZedConfig.organization
+  mode: 2
+  description: 'AddZedConfig organization argument'
+-
+  name: AddZedConfig.template
+  mode: 2
+  description: 'AddZedConfig template argument'
+-
+  name: AddZedConfig.targetFilename
+  mode: 2
+  description: 'AddZedConfig targetFilename argument'
+-
+  name: AddZedConfig.targetPath
+  mode: 2
+  description: 'AddZedConfig targetPath argument'
+-
+  name: AddZedConfig.repository
+  mode: 2
+  description: 'AddZedConfig repository argument'
+-
+  name: AddZedDependencyFacadeInterface.module
+  mode: 2
+  description: 'AddZedDependencyFacadeInterface module argument'
+-
+  name: AddZedDependencyFacadeInterface.dependentModule
+  mode: 2
+  description: 'AddZedDependencyFacadeInterface dependentModule argument'
+-
+  name: AddZedDependencyFacadeInterface.organization
+  mode: 2
+  description: 'AddZedDependencyFacadeInterface organization argument'
+-
+  name: AddZedDependencyFacadeInterface.template
+  mode: 2
+  description: 'AddZedDependencyFacadeInterface template argument'
+-
+  name: AddZedDependencyFacadeInterface.targetFilename
+  mode: 2
+  description: 'AddZedDependencyFacadeInterface targetFilename argument'
+-
+  name: AddZedDependencyFacadeInterface.targetPath
+  mode: 2
+  description: 'AddZedDependencyFacadeInterface targetPath argument'
+-
+  name: AddZedDependencyFacadeInterface.repository
+  mode: 2
+  description: 'AddZedDependencyFacadeInterface repository argument'
+-
+  name: AddZedDependencyFacadeBusinessFactoryMethod.module
+  mode: 2
+  description: 'AddZedDependencyFacadeBusinessFactoryMethod module argument'
+-
+  name: AddZedDependencyFacadeBusinessFactoryMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyFacadeBusinessFactoryMethod dependentModule argument'
+-
+  name: AddZedDependencyFacadeBusinessFactoryMethod.organization
+  mode: 2
+  description: 'AddZedDependencyFacadeBusinessFactoryMethod organization argument'
+-
+  name: AddZedDependencyFacadeBusinessFactoryMethod.method
+  mode: 2
+  description: 'AddZedDependencyFacadeBusinessFactoryMethod method argument'
+-
+  name: AddZedDependencyFacadeBusinessFactoryMethod.template
+  mode: 2
+  description: 'AddZedDependencyFacadeBusinessFactoryMethod template argument'
+-
+  name: AddZedDependencyFacadeBusinessFactoryMethod.target
+  mode: 2
+  description: 'AddZedDependencyFacadeBusinessFactoryMethod target argument'
+-
+  name: AddZedDependencyFacadeBusinessFactoryMethod.repository
+  mode: 2
+  description: 'AddZedDependencyFacadeBusinessFactoryMethod repository argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderMethod.module
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderMethod module argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderMethod dependentModule argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderMethod.organization
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderMethod organization argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderMethod.method
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderMethod method argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderMethod.template
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderMethod template argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderMethod.target
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderMethod target argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderMethod.repository
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderMethod repository argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderConstant.module
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderConstant module argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderConstant.dependentModule
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderConstant dependentModule argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderConstant.organization
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderConstant organization argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderConstant.name
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderConstant name argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderConstant.value
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderConstant value argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderConstant.visibility
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderConstant visibility argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderConstant.target
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderConstant target argument'
+-
+  name: AddZedDependencyFacadeDependencyProviderConstant.repository
+  mode: 2
+  description: 'AddZedDependencyFacadeDependencyProviderConstant repository argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.module
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod module argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.organization
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod organization argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod dependentModule argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.methods
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod methods argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.template
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod template argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.dependencyType
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod dependencyType argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.sourceClass
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod sourceClass argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.target
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod target argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.repository
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod repository argument'
+-
+  name: AddZedDependencyFacadeBridgeMethod.mode
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeMethod mode argument'
+-
+  name: AddZedDependencyFacadeBridge.module
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge module argument'
+-
+  name: AddZedDependencyFacadeBridge.organization
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge organization argument'
+-
+  name: AddZedDependencyFacadeBridge.dependentModule
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge dependentModule argument'
+-
+  name: AddZedDependencyFacadeBridge.dependentModuleOrganization
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge dependentModuleOrganization argument'
+-
+  name: AddZedDependencyFacadeBridge.template
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge template argument'
+-
+  name: AddZedDependencyFacadeBridge.targetFilename
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge targetFilename argument'
+-
+  name: AddZedDependencyFacadeBridge.targetPath
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge targetPath argument'
+-
+  name: AddZedDependencyFacadeBridge.repository
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge repository argument'
+-
+  name: AddZedDependencyFacadeBridge.mode
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge mode argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.module
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod module argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.organization
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod organization argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod dependentModule argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.methods
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod methods argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.template
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod template argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.dependencyType
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod dependencyType argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.sourceClass
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod sourceClass argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.target
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod target argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.repository
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod repository argument'
+-
+  name: AddZedDependencyFacadeBridgeInterfaceMethod.mode
+  mode: 2
+  description: 'AddZedDependencyFacadeBridgeInterfaceMethod mode argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.module
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod module argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.organization
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod organization argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod dependentModule argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.methods
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod methods argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.template
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod template argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.dependencyType
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod dependencyType argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.sourceClass
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod sourceClass argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.target
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod target argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.repository
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod repository argument'
+-
+  name: AddZedDependencyServiceBridgeInterfaceMethod.mode
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeInterfaceMethod mode argument'
+-
+  name: AddZedDependencyServiceDependencyProviderConstant.module
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderConstant module argument'
+-
+  name: AddZedDependencyServiceDependencyProviderConstant.dependentModule
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderConstant dependentModule argument'
+-
+  name: AddZedDependencyServiceDependencyProviderConstant.organization
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderConstant organization argument'
+-
+  name: AddZedDependencyServiceDependencyProviderConstant.name
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderConstant name argument'
+-
+  name: AddZedDependencyServiceDependencyProviderConstant.value
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderConstant value argument'
+-
+  name: AddZedDependencyServiceDependencyProviderConstant.visibility
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderConstant visibility argument'
+-
+  name: AddZedDependencyServiceDependencyProviderConstant.target
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderConstant target argument'
+-
+  name: AddZedDependencyServiceDependencyProviderConstant.repository
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderConstant repository argument'
+-
+  name: AddZedDependencyServiceInterface.module
+  mode: 2
+  description: 'AddZedDependencyServiceInterface module argument'
+-
+  name: AddZedDependencyServiceInterface.dependentModule
+  mode: 2
+  description: 'AddZedDependencyServiceInterface dependentModule argument'
+-
+  name: AddZedDependencyServiceInterface.organization
+  mode: 2
+  description: 'AddZedDependencyServiceInterface organization argument'
+-
+  name: AddZedDependencyServiceInterface.template
+  mode: 2
+  description: 'AddZedDependencyServiceInterface template argument'
+-
+  name: AddZedDependencyServiceInterface.targetFilename
+  mode: 2
+  description: 'AddZedDependencyServiceInterface targetFilename argument'
+-
+  name: AddZedDependencyServiceInterface.targetPath
+  mode: 2
+  description: 'AddZedDependencyServiceInterface targetPath argument'
+-
+  name: AddZedDependencyServiceInterface.repository
+  mode: 2
+  description: 'AddZedDependencyServiceInterface repository argument'
+-
+  name: AddZedDependencyServiceDependencyProviderMethod.module
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderMethod module argument'
+-
+  name: AddZedDependencyServiceDependencyProviderMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderMethod dependentModule argument'
+-
+  name: AddZedDependencyServiceDependencyProviderMethod.organization
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderMethod organization argument'
+-
+  name: AddZedDependencyServiceDependencyProviderMethod.method
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderMethod method argument'
+-
+  name: AddZedDependencyServiceDependencyProviderMethod.template
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderMethod template argument'
+-
+  name: AddZedDependencyServiceDependencyProviderMethod.target
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderMethod target argument'
+-
+  name: AddZedDependencyServiceDependencyProviderMethod.repository
+  mode: 2
+  description: 'AddZedDependencyServiceDependencyProviderMethod repository argument'
+-
+  name: AddZedDependencyServiceBridge.module
+  mode: 2
+  description: 'AddZedDependencyServiceBridge module argument'
+-
+  name: AddZedDependencyServiceBridge.organization
+  mode: 2
+  description: 'AddZedDependencyServiceBridge organization argument'
+-
+  name: AddZedDependencyServiceBridge.dependentModule
+  mode: 2
+  description: 'AddZedDependencyServiceBridge dependentModule argument'
+-
+  name: AddZedDependencyServiceBridge.dependentModuleOrganization
+  mode: 2
+  description: 'AddZedDependencyServiceBridge dependentModuleOrganization argument'
+-
+  name: AddZedDependencyServiceBridge.template
+  mode: 2
+  description: 'AddZedDependencyServiceBridge template argument'
+-
+  name: AddZedDependencyServiceBridge.targetFilename
+  mode: 2
+  description: 'AddZedDependencyServiceBridge targetFilename argument'
+-
+  name: AddZedDependencyServiceBridge.targetPath
+  mode: 2
+  description: 'AddZedDependencyServiceBridge targetPath argument'
+-
+  name: AddZedDependencyServiceBridge.repository
+  mode: 2
+  description: 'AddZedDependencyServiceBridge repository argument'
+-
+  name: AddZedDependencyServiceBridge.mode
+  mode: 2
+  description: 'AddZedDependencyServiceBridge mode argument'
+-
+  name: AddZedDependencyServiceBusinessFactoryMethod.module
+  mode: 2
+  description: 'AddZedDependencyServiceBusinessFactoryMethod module argument'
+-
+  name: AddZedDependencyServiceBusinessFactoryMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyServiceBusinessFactoryMethod dependentModule argument'
+-
+  name: AddZedDependencyServiceBusinessFactoryMethod.organization
+  mode: 2
+  description: 'AddZedDependencyServiceBusinessFactoryMethod organization argument'
+-
+  name: AddZedDependencyServiceBusinessFactoryMethod.method
+  mode: 2
+  description: 'AddZedDependencyServiceBusinessFactoryMethod method argument'
+-
+  name: AddZedDependencyServiceBusinessFactoryMethod.template
+  mode: 2
+  description: 'AddZedDependencyServiceBusinessFactoryMethod template argument'
+-
+  name: AddZedDependencyServiceBusinessFactoryMethod.target
+  mode: 2
+  description: 'AddZedDependencyServiceBusinessFactoryMethod target argument'
+-
+  name: AddZedDependencyServiceBusinessFactoryMethod.repository
+  mode: 2
+  description: 'AddZedDependencyServiceBusinessFactoryMethod repository argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.module
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod module argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.organization
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod organization argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod dependentModule argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.methods
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod methods argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.template
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod template argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.dependencyType
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod dependencyType argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.sourceClass
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod sourceClass argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.target
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod target argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.repository
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod repository argument'
+-
+  name: AddZedDependencyServiceBridgeMethod.mode
+  mode: 2
+  description: 'AddZedDependencyServiceBridgeMethod mode argument'
+-
+  name: AddZedDependencyClientDependencyProviderConstant.module
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderConstant module argument'
+-
+  name: AddZedDependencyClientDependencyProviderConstant.dependentModule
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderConstant dependentModule argument'
+-
+  name: AddZedDependencyClientDependencyProviderConstant.organization
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderConstant organization argument'
+-
+  name: AddZedDependencyClientDependencyProviderConstant.name
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderConstant name argument'
+-
+  name: AddZedDependencyClientDependencyProviderConstant.value
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderConstant value argument'
+-
+  name: AddZedDependencyClientDependencyProviderConstant.visibility
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderConstant visibility argument'
+-
+  name: AddZedDependencyClientDependencyProviderConstant.target
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderConstant target argument'
+-
+  name: AddZedDependencyClientDependencyProviderConstant.repository
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderConstant repository argument'
+-
+  name: AddZedDependencyClientBusinessFactoryMethod.module
+  mode: 2
+  description: 'AddZedDependencyClientBusinessFactoryMethod module argument'
+-
+  name: AddZedDependencyClientBusinessFactoryMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyClientBusinessFactoryMethod dependentModule argument'
+-
+  name: AddZedDependencyClientBusinessFactoryMethod.organization
+  mode: 2
+  description: 'AddZedDependencyClientBusinessFactoryMethod organization argument'
+-
+  name: AddZedDependencyClientBusinessFactoryMethod.method
+  mode: 2
+  description: 'AddZedDependencyClientBusinessFactoryMethod method argument'
+-
+  name: AddZedDependencyClientBusinessFactoryMethod.template
+  mode: 2
+  description: 'AddZedDependencyClientBusinessFactoryMethod template argument'
+-
+  name: AddZedDependencyClientBusinessFactoryMethod.target
+  mode: 2
+  description: 'AddZedDependencyClientBusinessFactoryMethod target argument'
+-
+  name: AddZedDependencyClientBusinessFactoryMethod.repository
+  mode: 2
+  description: 'AddZedDependencyClientBusinessFactoryMethod repository argument'
+-
+  name: AddZedDependencyClientDependencyProviderMethod.module
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderMethod module argument'
+-
+  name: AddZedDependencyClientDependencyProviderMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderMethod dependentModule argument'
+-
+  name: AddZedDependencyClientDependencyProviderMethod.organization
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderMethod organization argument'
+-
+  name: AddZedDependencyClientDependencyProviderMethod.method
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderMethod method argument'
+-
+  name: AddZedDependencyClientDependencyProviderMethod.template
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderMethod template argument'
+-
+  name: AddZedDependencyClientDependencyProviderMethod.target
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderMethod target argument'
+-
+  name: AddZedDependencyClientDependencyProviderMethod.repository
+  mode: 2
+  description: 'AddZedDependencyClientDependencyProviderMethod repository argument'
+-
+  name: AddZedDependencyClientInterface.module
+  mode: 2
+  description: 'AddZedDependencyClientInterface module argument'
+-
+  name: AddZedDependencyClientInterface.dependentModule
+  mode: 2
+  description: 'AddZedDependencyClientInterface dependentModule argument'
+-
+  name: AddZedDependencyClientInterface.organization
+  mode: 2
+  description: 'AddZedDependencyClientInterface organization argument'
+-
+  name: AddZedDependencyClientInterface.template
+  mode: 2
+  description: 'AddZedDependencyClientInterface template argument'
+-
+  name: AddZedDependencyClientInterface.targetFilename
+  mode: 2
+  description: 'AddZedDependencyClientInterface targetFilename argument'
+-
+  name: AddZedDependencyClientInterface.targetPath
+  mode: 2
+  description: 'AddZedDependencyClientInterface targetPath argument'
+-
+  name: AddZedDependencyClientInterface.repository
+  mode: 2
+  description: 'AddZedDependencyClientInterface repository argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.module
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod module argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.organization
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod organization argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod dependentModule argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.methods
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod methods argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.template
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod template argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.dependencyType
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod dependencyType argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.sourceClass
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod sourceClass argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.target
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod target argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.repository
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod repository argument'
+-
+  name: AddZedDependencyClientBridgeInterfaceMethod.mode
+  mode: 2
+  description: 'AddZedDependencyClientBridgeInterfaceMethod mode argument'
+-
+  name: AddZedDependencyClientBridge.module
+  mode: 2
+  description: 'AddZedDependencyClientBridge module argument'
+-
+  name: AddZedDependencyClientBridge.organization
+  mode: 2
+  description: 'AddZedDependencyClientBridge organization argument'
+-
+  name: AddZedDependencyClientBridge.dependentModule
+  mode: 2
+  description: 'AddZedDependencyClientBridge dependentModule argument'
+-
+  name: AddZedDependencyClientBridge.dependentModuleOrganization
+  mode: 2
+  description: 'AddZedDependencyClientBridge dependentModuleOrganization argument'
+-
+  name: AddZedDependencyClientBridge.template
+  mode: 2
+  description: 'AddZedDependencyClientBridge template argument'
+-
+  name: AddZedDependencyClientBridge.targetFilename
+  mode: 2
+  description: 'AddZedDependencyClientBridge targetFilename argument'
+-
+  name: AddZedDependencyClientBridge.targetPath
+  mode: 2
+  description: 'AddZedDependencyClientBridge targetPath argument'
+-
+  name: AddZedDependencyClientBridge.repository
+  mode: 2
+  description: 'AddZedDependencyClientBridge repository argument'
+-
+  name: AddZedDependencyClientBridge.mode
+  mode: 2
+  description: 'AddZedDependencyClientBridge mode argument'
+-
+  name: AddZedDependencyClientBridgeMethod.module
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod module argument'
+-
+  name: AddZedDependencyClientBridgeMethod.organization
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod organization argument'
+-
+  name: AddZedDependencyClientBridgeMethod.dependentModule
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod dependentModule argument'
+-
+  name: AddZedDependencyClientBridgeMethod.methods
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod methods argument'
+-
+  name: AddZedDependencyClientBridgeMethod.template
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod template argument'
+-
+  name: AddZedDependencyClientBridgeMethod.dependencyType
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod dependencyType argument'
+-
+  name: AddZedDependencyClientBridgeMethod.sourceClass
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod sourceClass argument'
+-
+  name: AddZedDependencyClientBridgeMethod.target
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod target argument'
+-
+  name: AddZedDependencyClientBridgeMethod.repository
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod repository argument'
+-
+  name: AddZedDependencyClientBridgeMethod.mode
+  mode: 2
+  description: 'AddZedDependencyClientBridgeMethod mode argument'
+-
+  name: AddZedPersistenceEntityManagerMethod.module
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerMethod module argument'
+-
+  name: AddZedPersistenceEntityManagerMethod.organization
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerMethod organization argument'
+-
+  name: AddZedPersistenceEntityManagerMethod.method
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerMethod method argument'
+-
+  name: AddZedPersistenceEntityManagerMethod.input
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerMethod input argument'
+-
+  name: AddZedPersistenceEntityManagerMethod.output
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerMethod output argument'
+-
+  name: AddZedPersistenceEntityManagerMethod.template
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerMethod template argument'
+-
+  name: AddZedPersistenceEntityManagerMethod.target
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerMethod target argument'
+-
+  name: AddZedPersistenceEntityManagerMethod.repository
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerMethod repository argument'
+-
+  name: AddZedPersistenceEntityManagerInterfaceMethod.module
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterfaceMethod module argument'
+-
+  name: AddZedPersistenceEntityManagerInterfaceMethod.organization
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterfaceMethod organization argument'
+-
+  name: AddZedPersistenceEntityManagerInterfaceMethod.method
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterfaceMethod method argument'
+-
+  name: AddZedPersistenceEntityManagerInterfaceMethod.input
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterfaceMethod input argument'
+-
+  name: AddZedPersistenceEntityManagerInterfaceMethod.output
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterfaceMethod output argument'
+-
+  name: AddZedPersistenceEntityManagerInterfaceMethod.template
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterfaceMethod template argument'
+-
+  name: AddZedPersistenceEntityManagerInterfaceMethod.target
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterfaceMethod target argument'
+-
+  name: AddZedPersistenceEntityManagerInterfaceMethod.repository
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterfaceMethod repository argument'
+-
+  name: AddZedPersistenceFactory.module
+  mode: 2
+  description: 'AddZedPersistenceFactory module argument'
+-
+  name: AddZedPersistenceFactory.organization
+  mode: 2
+  description: 'AddZedPersistenceFactory organization argument'
+-
+  name: AddZedPersistenceFactory.template
+  mode: 2
+  description: 'AddZedPersistenceFactory template argument'
+-
+  name: AddZedPersistenceFactory.targetFilename
+  mode: 2
+  description: 'AddZedPersistenceFactory targetFilename argument'
+-
+  name: AddZedPersistenceFactory.targetPath
+  mode: 2
+  description: 'AddZedPersistenceFactory targetPath argument'
+-
+  name: AddZedPersistenceFactory.repository
+  mode: 2
+  description: 'AddZedPersistenceFactory repository argument'
+-
+  name: AddZedPersistenceRepositoryMethod.module
+  mode: 2
+  description: 'AddZedPersistenceRepositoryMethod module argument'
+-
+  name: AddZedPersistenceRepositoryMethod.organization
+  mode: 2
+  description: 'AddZedPersistenceRepositoryMethod organization argument'
+-
+  name: AddZedPersistenceRepositoryMethod.method
+  mode: 2
+  description: 'AddZedPersistenceRepositoryMethod method argument'
+-
+  name: AddZedPersistenceRepositoryMethod.input
+  mode: 2
+  description: 'AddZedPersistenceRepositoryMethod input argument'
+-
+  name: AddZedPersistenceRepositoryMethod.output
+  mode: 2
+  description: 'AddZedPersistenceRepositoryMethod output argument'
+-
+  name: AddZedPersistenceRepositoryMethod.template
+  mode: 2
+  description: 'AddZedPersistenceRepositoryMethod template argument'
+-
+  name: AddZedPersistenceRepositoryMethod.target
+  mode: 2
+  description: 'AddZedPersistenceRepositoryMethod target argument'
+-
+  name: AddZedPersistenceRepositoryMethod.repository
+  mode: 2
+  description: 'AddZedPersistenceRepositoryMethod repository argument'
+-
+  name: AddZedPersistenceEntityManagerInterface.module
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterface module argument'
+-
+  name: AddZedPersistenceEntityManagerInterface.organization
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterface organization argument'
+-
+  name: AddZedPersistenceEntityManagerInterface.template
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterface template argument'
+-
+  name: AddZedPersistenceEntityManagerInterface.targetFilename
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterface targetFilename argument'
+-
+  name: AddZedPersistenceEntityManagerInterface.targetPath
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterface targetPath argument'
+-
+  name: AddZedPersistenceEntityManagerInterface.repository
+  mode: 2
+  description: 'AddZedPersistenceEntityManagerInterface repository argument'
+-
+  name: AddZedPersistenceRepositoryInterfaceMethod.module
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterfaceMethod module argument'
+-
+  name: AddZedPersistenceRepositoryInterfaceMethod.organization
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterfaceMethod organization argument'
+-
+  name: AddZedPersistenceRepositoryInterfaceMethod.method
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterfaceMethod method argument'
+-
+  name: AddZedPersistenceRepositoryInterfaceMethod.input
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterfaceMethod input argument'
+-
+  name: AddZedPersistenceRepositoryInterfaceMethod.output
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterfaceMethod output argument'
+-
+  name: AddZedPersistenceRepositoryInterfaceMethod.template
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterfaceMethod template argument'
+-
+  name: AddZedPersistenceRepositoryInterfaceMethod.target
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterfaceMethod target argument'
+-
+  name: AddZedPersistenceRepositoryInterfaceMethod.repository
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterfaceMethod repository argument'
+-
+  name: AddZedPersistencePropelAbstractQuery.module
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractQuery module argument'
+-
+  name: AddZedPersistencePropelAbstractQuery.targetModule
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractQuery targetModule argument'
+-
+  name: AddZedPersistencePropelAbstractQuery.tableName
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractQuery tableName argument'
+-
+  name: AddZedPersistencePropelAbstractQuery.organization
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractQuery organization argument'
+-
+  name: AddZedPersistencePropelAbstractQuery.template
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractQuery template argument'
+-
+  name: AddZedPersistencePropelAbstractQuery.targetFilename
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractQuery targetFilename argument'
+-
+  name: AddZedPersistencePropelAbstractQuery.targetPath
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractQuery targetPath argument'
+-
+  name: AddZedPersistencePropelAbstractQuery.repository
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractQuery repository argument'
+-
+  name: AddZedPersistencePropelSchemaTable.module
+  mode: 2
+  description: 'AddZedPersistencePropelSchemaTable module argument'
+-
+  name: AddZedPersistencePropelSchemaTable.targetModule
+  mode: 2
+  description: 'AddZedPersistencePropelSchemaTable targetModule argument'
+-
+  name: AddZedPersistencePropelSchemaTable.tableName
+  mode: 2
+  description: 'AddZedPersistencePropelSchemaTable tableName argument'
+-
+  name: AddZedPersistencePropelSchemaTable.organization
+  mode: 2
+  description: 'AddZedPersistencePropelSchemaTable organization argument'
+-
+  name: AddZedPersistencePropelSchemaTable.targetPath
+  mode: 2
+  description: 'AddZedPersistencePropelSchemaTable targetPath argument'
+-
+  name: AddZedPersistencePropelSchemaTable.repository
+  mode: 2
+  description: 'AddZedPersistencePropelSchemaTable repository argument'
+-
+  name: AddZedPersistencePropelSchema.module
+  mode: 2
+  description: 'AddZedPersistencePropelSchema module argument'
+-
+  name: AddZedPersistencePropelSchema.targetModule
+  mode: 2
+  description: 'AddZedPersistencePropelSchema targetModule argument'
+-
+  name: AddZedPersistencePropelSchema.organization
+  mode: 2
+  description: 'AddZedPersistencePropelSchema organization argument'
+-
+  name: AddZedPersistencePropelSchema.template
+  mode: 2
+  description: 'AddZedPersistencePropelSchema template argument'
+-
+  name: AddZedPersistencePropelSchema.targetFilename
+  mode: 2
+  description: 'AddZedPersistencePropelSchema targetFilename argument'
+-
+  name: AddZedPersistencePropelSchema.targetPath
+  mode: 2
+  description: 'AddZedPersistencePropelSchema targetPath argument'
+-
+  name: AddZedPersistencePropelSchema.repository
+  mode: 2
+  description: 'AddZedPersistencePropelSchema repository argument'
+-
+  name: AddZedPersistencePropelAbstractEntity.module
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractEntity module argument'
+-
+  name: AddZedPersistencePropelAbstractEntity.targetModule
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractEntity targetModule argument'
+-
+  name: AddZedPersistencePropelAbstractEntity.tableName
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractEntity tableName argument'
+-
+  name: AddZedPersistencePropelAbstractEntity.organization
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractEntity organization argument'
+-
+  name: AddZedPersistencePropelAbstractEntity.template
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractEntity template argument'
+-
+  name: AddZedPersistencePropelAbstractEntity.targetFilename
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractEntity targetFilename argument'
+-
+  name: AddZedPersistencePropelAbstractEntity.targetPath
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractEntity targetPath argument'
+-
+  name: AddZedPersistencePropelAbstractEntity.repository
+  mode: 2
+  description: 'AddZedPersistencePropelAbstractEntity repository argument'
+-
+  name: AddZedPersistenceEntityManager.module
+  mode: 2
+  description: 'AddZedPersistenceEntityManager module argument'
+-
+  name: AddZedPersistenceEntityManager.organization
+  mode: 2
+  description: 'AddZedPersistenceEntityManager organization argument'
+-
+  name: AddZedPersistenceEntityManager.template
+  mode: 2
+  description: 'AddZedPersistenceEntityManager template argument'
+-
+  name: AddZedPersistenceEntityManager.targetFilename
+  mode: 2
+  description: 'AddZedPersistenceEntityManager targetFilename argument'
+-
+  name: AddZedPersistenceEntityManager.targetPath
+  mode: 2
+  description: 'AddZedPersistenceEntityManager targetPath argument'
+-
+  name: AddZedPersistenceEntityManager.repository
+  mode: 2
+  description: 'AddZedPersistenceEntityManager repository argument'
+-
+  name: AddZedPersistenceRepositoryInterface.module
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterface module argument'
+-
+  name: AddZedPersistenceRepositoryInterface.organization
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterface organization argument'
+-
+  name: AddZedPersistenceRepositoryInterface.template
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterface template argument'
+-
+  name: AddZedPersistenceRepositoryInterface.targetFilename
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterface targetFilename argument'
+-
+  name: AddZedPersistenceRepositoryInterface.targetPath
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterface targetPath argument'
+-
+  name: AddZedPersistenceRepositoryInterface.repository
+  mode: 2
+  description: 'AddZedPersistenceRepositoryInterface repository argument'
+-
+  name: AddZedPersistenceRepository.module
+  mode: 2
+  description: 'AddZedPersistenceRepository module argument'
+-
+  name: AddZedPersistenceRepository.organization
+  mode: 2
+  description: 'AddZedPersistenceRepository organization argument'
+-
+  name: AddZedPersistenceRepository.template
+  mode: 2
+  description: 'AddZedPersistenceRepository template argument'
+-
+  name: AddZedPersistenceRepository.targetFilename
+  mode: 2
+  description: 'AddZedPersistenceRepository targetFilename argument'
+-
+  name: AddZedPersistenceRepository.targetPath
+  mode: 2
+  description: 'AddZedPersistenceRepository targetPath argument'
+-
+  name: AddZedPersistenceRepository.repository
+  mode: 2
+  description: 'AddZedPersistenceRepository repository argument'
+-
+  name: AddZedConfigMethod.module
+  mode: 2
+  description: 'AddZedConfigMethod module argument'
+-
+  name: AddZedConfigMethod.organization
+  mode: 2
+  description: 'AddZedConfigMethod organization argument'
+-
+  name: AddZedConfigMethod.method
+  mode: 2
+  description: 'AddZedConfigMethod method argument'
+-
+  name: AddZedConfigMethod.input
+  mode: 2
+  description: 'AddZedConfigMethod input argument'
+-
+  name: AddZedConfigMethod.output
+  mode: 2
+  description: 'AddZedConfigMethod output argument'
+-
+  name: AddZedConfigMethod.template
+  mode: 2
+  description: 'AddZedConfigMethod template argument'
+-
+  name: AddZedConfigMethod.target
+  mode: 2
+  description: 'AddZedConfigMethod target argument'
+-
+  name: AddZedConfigMethod.repository
+  mode: 2
+  description: 'AddZedConfigMethod repository argument'
+-
+  name: AddZedCommunicationFactory.module
+  mode: 2
+  description: 'AddZedCommunicationFactory module argument'
+-
+  name: AddZedCommunicationFactory.organization
+  mode: 2
+  description: 'AddZedCommunicationFactory organization argument'
+-
+  name: AddZedCommunicationFactory.template
+  mode: 2
+  description: 'AddZedCommunicationFactory template argument'
+-
+  name: AddZedCommunicationFactory.targetFilename
+  mode: 2
+  description: 'AddZedCommunicationFactory targetFilename argument'
+-
+  name: AddZedCommunicationFactory.targetPath
+  mode: 2
+  description: 'AddZedCommunicationFactory targetPath argument'
+-
+  name: AddZedCommunicationFactory.repository
+  mode: 2
+  description: 'AddZedCommunicationFactory repository argument'
+-
+  name: AddZedNavigationSchema.module
+  mode: 2
+  description: 'AddZedNavigationSchema module argument'
+-
+  name: AddZedNavigationSchema.organization
+  mode: 2
+  description: 'AddZedNavigationSchema organization argument'
+-
+  name: AddZedNavigationSchema.template
+  mode: 2
+  description: 'AddZedNavigationSchema template argument'
+-
+  name: AddZedNavigationSchema.targetPath
+  mode: 2
+  description: 'AddZedNavigationSchema targetPath argument'
+-
+  name: AddZedNavigationSchema.repository
+  mode: 2
+  description: 'AddZedNavigationSchema repository argument'
+-
+  name: AddZedCommunicationController.module
+  mode: 2
+  description: 'AddZedCommunicationController module argument'
+-
+  name: AddZedCommunicationController.organization
+  mode: 2
+  description: 'AddZedCommunicationController organization argument'
+-
+  name: AddZedCommunicationController.controller
+  mode: 2
+  description: 'AddZedCommunicationController controller argument'
+-
+  name: AddZedCommunicationController.template
+  mode: 2
+  description: 'AddZedCommunicationController template argument'
+-
+  name: AddZedCommunicationController.targetFilename
+  mode: 2
+  description: 'AddZedCommunicationController targetFilename argument'
+-
+  name: AddZedCommunicationController.targetPath
+  mode: 2
+  description: 'AddZedCommunicationController targetPath argument'
+-
+  name: AddZedCommunicationController.repository
+  mode: 2
+  description: 'AddZedCommunicationController repository argument'
+-
+  name: AddZedCommunicationControllerAction.module
+  mode: 2
+  description: 'AddZedCommunicationControllerAction module argument'
+-
+  name: AddZedCommunicationControllerAction.organization
+  mode: 2
+  description: 'AddZedCommunicationControllerAction organization argument'
+-
+  name: AddZedCommunicationControllerAction.controller
+  mode: 2
+  description: 'AddZedCommunicationControllerAction controller argument'
+-
+  name: AddZedCommunicationControllerAction.method
+  mode: 2
+  description: 'AddZedCommunicationControllerAction method argument'
+-
+  name: AddZedCommunicationControllerAction.output
+  mode: 2
+  description: 'AddZedCommunicationControllerAction output argument'
+-
+  name: AddZedCommunicationControllerAction.template
+  mode: 2
+  description: 'AddZedCommunicationControllerAction template argument'
+-
+  name: AddZedCommunicationControllerAction.target
+  mode: 2
+  description: 'AddZedCommunicationControllerAction target argument'
+-
+  name: AddZedCommunicationControllerAction.repository
+  mode: 2
+  description: 'AddZedCommunicationControllerAction repository argument'
+-
+  name: AddZedCommunicationConsole.module
+  mode: 2
+  description: 'AddZedCommunicationConsole module argument'
+-
+  name: AddZedCommunicationConsole.organization
+  mode: 2
+  description: 'AddZedCommunicationConsole organization argument'
+-
+  name: AddZedCommunicationConsole.className
+  mode: 2
+  description: 'AddZedCommunicationConsole className argument'
+-
+  name: AddZedCommunicationConsole.consoleCommand
+  mode: 2
+  description: 'AddZedCommunicationConsole consoleCommand argument'
+-
+  name: AddZedCommunicationConsole.template
+  mode: 2
+  description: 'AddZedCommunicationConsole template argument'
+-
+  name: AddZedCommunicationConsole.targetFilename
+  mode: 2
+  description: 'AddZedCommunicationConsole targetFilename argument'
+-
+  name: AddZedCommunicationConsole.targetPath
+  mode: 2
+  description: 'AddZedCommunicationConsole targetPath argument'
+-
+  name: AddZedCommunicationConsole.repository
+  mode: 2
+  description: 'AddZedCommunicationConsole repository argument'
+-
+  name: AddZedNavigationNode.module
+  mode: 2
+  description: 'AddZedNavigationNode module argument'
+-
+  name: AddZedNavigationNode.organization
+  mode: 2
+  description: 'AddZedNavigationNode organization argument'
+-
+  name: AddZedNavigationNode.controller
+  mode: 2
+  description: 'AddZedNavigationNode controller argument'
+-
+  name: AddZedNavigationNode.method
+  mode: 2
+  description: 'AddZedNavigationNode method argument'
+-
+  name: AddZedNavigationNode.targetPath
+  mode: 2
+  description: 'AddZedNavigationNode targetPath argument'
+-
+  name: AddZedNavigationNode.repository
+  mode: 2
+  description: 'AddZedNavigationNode repository argument'
+-
+  name: AddZedPresentationTwig.module
+  mode: 2
+  description: 'AddZedPresentationTwig module argument'
+-
+  name: AddZedPresentationTwig.organization
+  mode: 2
+  description: 'AddZedPresentationTwig organization argument'
+-
+  name: AddZedPresentationTwig.controller
+  mode: 2
+  description: 'AddZedPresentationTwig controller argument'
+-
+  name: AddZedPresentationTwig.method
+  mode: 2
+  description: 'AddZedPresentationTwig method argument'
+-
+  name: AddZedPresentationTwig.template
+  mode: 2
+  description: 'AddZedPresentationTwig template argument'
+-
+  name: AddZedPresentationTwig.targetFilename
+  mode: 2
+  description: 'AddZedPresentationTwig targetFilename argument'
+-
+  name: AddZedPresentationTwig.targetPath
+  mode: 2
+  description: 'AddZedPresentationTwig targetPath argument'
+-
+  name: AddZedPresentationTwig.repository
+  mode: 2
+  description: 'AddZedPresentationTwig repository argument'
+-
+  name: AddModuleGitignore.module
+  mode: 2
+  description: 'AddModuleGitignore module argument'
+-
+  name: AddModuleGitignore.organization
+  mode: 2
+  description: 'AddModuleGitignore organization argument'
+-
+  name: AddModuleGitignore.template
+  mode: 2
+  description: 'AddModuleGitignore template argument'
+-
+  name: AddModuleGitignore.targetFilename
+  mode: 2
+  description: 'AddModuleGitignore targetFilename argument'
+-
+  name: AddModuleGitignore.targetPath
+  mode: 2
+  description: 'AddModuleGitignore targetPath argument'
+-
+  name: AddModuleGitignore.repository
+  mode: 2
+  description: 'AddModuleGitignore repository argument'
+-
+  name: AddModuleGitignore.mode
+  mode: 2
+  description: 'AddModuleGitignore mode argument'
+-
+  name: AddModulePhpStanJson.module
+  mode: 2
+  description: 'AddModulePhpStanJson module argument'
+-
+  name: AddModulePhpStanJson.organization
+  mode: 2
+  description: 'AddModulePhpStanJson organization argument'
+-
+  name: AddModulePhpStanJson.template
+  mode: 2
+  description: 'AddModulePhpStanJson template argument'
+-
+  name: AddModulePhpStanJson.targetPath
+  mode: 2
+  description: 'AddModulePhpStanJson targetPath argument'
+-
+  name: AddModulePhpStanJson.repository
+  mode: 2
+  description: 'AddModulePhpStanJson repository argument'
+-
+  name: AddModulePhpStanJson.mode
+  mode: 2
+  description: 'AddModulePhpStanJson mode argument'
+-
+  name: AddYvesConfig.module
+  mode: 2
+  description: 'AddYvesConfig module argument'
+-
+  name: AddYvesConfig.organization
+  mode: 2
+  description: 'AddYvesConfig organization argument'
+-
+  name: AddYvesConfig.template
+  mode: 2
+  description: 'AddYvesConfig template argument'
+-
+  name: AddYvesConfig.targetFilename
+  mode: 2
+  description: 'AddYvesConfig targetFilename argument'
+-
+  name: AddYvesConfig.targetPath
+  mode: 2
+  description: 'AddYvesConfig targetPath argument'
+-
+  name: AddYvesConfig.repository
+  mode: 2
+  description: 'AddYvesConfig repository argument'
+-
+  name: AddYvesDependencyServiceFactoryMethod.module
+  mode: 2
+  description: 'AddYvesDependencyServiceFactoryMethod module argument'
+-
+  name: AddYvesDependencyServiceFactoryMethod.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyServiceFactoryMethod dependentModule argument'
+-
+  name: AddYvesDependencyServiceFactoryMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceFactoryMethod organization argument'
+-
+  name: AddYvesDependencyServiceFactoryMethod.method
+  mode: 2
+  description: 'AddYvesDependencyServiceFactoryMethod method argument'
+-
+  name: AddYvesDependencyServiceFactoryMethod.template
+  mode: 2
+  description: 'AddYvesDependencyServiceFactoryMethod template argument'
+-
+  name: AddYvesDependencyServiceFactoryMethod.target
+  mode: 2
+  description: 'AddYvesDependencyServiceFactoryMethod target argument'
+-
+  name: AddYvesDependencyServiceFactoryMethod.repository
+  mode: 2
+  description: 'AddYvesDependencyServiceFactoryMethod repository argument'
+-
+  name: AddYvesDependencyServiceInterface.module
+  mode: 2
+  description: 'AddYvesDependencyServiceInterface module argument'
+-
+  name: AddYvesDependencyServiceInterface.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyServiceInterface dependentModule argument'
+-
+  name: AddYvesDependencyServiceInterface.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceInterface organization argument'
+-
+  name: AddYvesDependencyServiceInterface.template
+  mode: 2
+  description: 'AddYvesDependencyServiceInterface template argument'
+-
+  name: AddYvesDependencyServiceInterface.targetFilename
+  mode: 2
+  description: 'AddYvesDependencyServiceInterface targetFilename argument'
+-
+  name: AddYvesDependencyServiceInterface.targetPath
+  mode: 2
+  description: 'AddYvesDependencyServiceInterface targetPath argument'
+-
+  name: AddYvesDependencyServiceInterface.repository
+  mode: 2
+  description: 'AddYvesDependencyServiceInterface repository argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.module
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod module argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod organization argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod dependentModule argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.methods
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod methods argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.template
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod template argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.dependencyType
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod dependencyType argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.sourceClass
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod sourceClass argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.target
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod target argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.repository
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod repository argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.mode
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod mode argument'
+-
+  name: AddYvesDependencyServiceBridge.module
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge module argument'
+-
+  name: AddYvesDependencyServiceBridge.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge organization argument'
+-
+  name: AddYvesDependencyServiceBridge.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge dependentModule argument'
+-
+  name: AddYvesDependencyServiceBridge.dependentModuleOrganization
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge dependentModuleOrganization argument'
+-
+  name: AddYvesDependencyServiceBridge.template
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge template argument'
+-
+  name: AddYvesDependencyServiceBridge.targetFilename
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge targetFilename argument'
+-
+  name: AddYvesDependencyServiceBridge.targetPath
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge targetPath argument'
+-
+  name: AddYvesDependencyServiceBridge.repository
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge repository argument'
+-
+  name: AddYvesDependencyServiceBridge.mode
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge mode argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.module
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod module argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod organization argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod dependentModule argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.methods
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod methods argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.template
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod template argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.dependencyType
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod dependencyType argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.sourceClass
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod sourceClass argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.target
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod target argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.repository
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod repository argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.mode
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod mode argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderMethod.module
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderMethod module argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderMethod.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderMethod dependentModule argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderMethod organization argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderMethod.method
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderMethod method argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderMethod.template
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderMethod template argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderMethod.target
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderMethod target argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderMethod.repository
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderMethod repository argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderConstant.module
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderConstant module argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderConstant.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderConstant dependentModule argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderConstant.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderConstant organization argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderConstant.name
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderConstant name argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderConstant.value
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderConstant value argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderConstant.visibility
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderConstant visibility argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderConstant.target
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderConstant target argument'
+-
+  name: AddYvesDependencyServiceDependencyProviderConstant.repository
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderConstant repository argument'
+-
+  name: AddYvesDependencyClientDependencyProviderMethod.module
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderMethod module argument'
+-
+  name: AddYvesDependencyClientDependencyProviderMethod.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderMethod dependentModule argument'
+-
+  name: AddYvesDependencyClientDependencyProviderMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderMethod organization argument'
+-
+  name: AddYvesDependencyClientDependencyProviderMethod.method
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderMethod method argument'
+-
+  name: AddYvesDependencyClientDependencyProviderMethod.template
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderMethod template argument'
+-
+  name: AddYvesDependencyClientDependencyProviderMethod.target
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderMethod target argument'
+-
+  name: AddYvesDependencyClientDependencyProviderMethod.repository
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderMethod repository argument'
+-
+  name: AddYvesDependencyClientBridge.module
+  mode: 2
+  description: 'AddYvesDependencyClientBridge module argument'
+-
+  name: AddYvesDependencyClientBridge.organization
+  mode: 2
+  description: 'AddYvesDependencyClientBridge organization argument'
+-
+  name: AddYvesDependencyClientBridge.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyClientBridge dependentModule argument'
+-
+  name: AddYvesDependencyClientBridge.dependentModuleOrganization
+  mode: 2
+  description: 'AddYvesDependencyClientBridge dependentModuleOrganization argument'
+-
+  name: AddYvesDependencyClientBridge.template
+  mode: 2
+  description: 'AddYvesDependencyClientBridge template argument'
+-
+  name: AddYvesDependencyClientBridge.targetFilename
+  mode: 2
+  description: 'AddYvesDependencyClientBridge targetFilename argument'
+-
+  name: AddYvesDependencyClientBridge.targetPath
+  mode: 2
+  description: 'AddYvesDependencyClientBridge targetPath argument'
+-
+  name: AddYvesDependencyClientBridge.repository
+  mode: 2
+  description: 'AddYvesDependencyClientBridge repository argument'
+-
+  name: AddYvesDependencyClientBridge.mode
+  mode: 2
+  description: 'AddYvesDependencyClientBridge mode argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.module
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod module argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod organization argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod dependentModule argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.methods
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod methods argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.template
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod template argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.dependencyType
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod dependencyType argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.sourceClass
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod sourceClass argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.target
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod target argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.repository
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod repository argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.mode
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod mode argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.module
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod module argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod organization argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod dependentModule argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.methods
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod methods argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.template
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod template argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.dependencyType
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod dependencyType argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.sourceClass
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod sourceClass argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.target
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod target argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.repository
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod repository argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.mode
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod mode argument'
+-
+  name: AddYvesDependencyClientInterface.module
+  mode: 2
+  description: 'AddYvesDependencyClientInterface module argument'
+-
+  name: AddYvesDependencyClientInterface.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyClientInterface dependentModule argument'
+-
+  name: AddYvesDependencyClientInterface.organization
+  mode: 2
+  description: 'AddYvesDependencyClientInterface organization argument'
+-
+  name: AddYvesDependencyClientInterface.template
+  mode: 2
+  description: 'AddYvesDependencyClientInterface template argument'
+-
+  name: AddYvesDependencyClientInterface.targetFilename
+  mode: 2
+  description: 'AddYvesDependencyClientInterface targetFilename argument'
+-
+  name: AddYvesDependencyClientInterface.targetPath
+  mode: 2
+  description: 'AddYvesDependencyClientInterface targetPath argument'
+-
+  name: AddYvesDependencyClientInterface.repository
+  mode: 2
+  description: 'AddYvesDependencyClientInterface repository argument'
+-
+  name: AddYvesDependencyClientFactoryMethod.module
+  mode: 2
+  description: 'AddYvesDependencyClientFactoryMethod module argument'
+-
+  name: AddYvesDependencyClientFactoryMethod.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyClientFactoryMethod dependentModule argument'
+-
+  name: AddYvesDependencyClientFactoryMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyClientFactoryMethod organization argument'
+-
+  name: AddYvesDependencyClientFactoryMethod.method
+  mode: 2
+  description: 'AddYvesDependencyClientFactoryMethod method argument'
+-
+  name: AddYvesDependencyClientFactoryMethod.template
+  mode: 2
+  description: 'AddYvesDependencyClientFactoryMethod template argument'
+-
+  name: AddYvesDependencyClientFactoryMethod.target
+  mode: 2
+  description: 'AddYvesDependencyClientFactoryMethod target argument'
+-
+  name: AddYvesDependencyClientFactoryMethod.repository
+  mode: 2
+  description: 'AddYvesDependencyClientFactoryMethod repository argument'
+-
+  name: AddYvesDependencyClientDependencyProviderConstant.module
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderConstant module argument'
+-
+  name: AddYvesDependencyClientDependencyProviderConstant.dependentModule
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderConstant dependentModule argument'
+-
+  name: AddYvesDependencyClientDependencyProviderConstant.organization
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderConstant organization argument'
+-
+  name: AddYvesDependencyClientDependencyProviderConstant.name
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderConstant name argument'
+-
+  name: AddYvesDependencyClientDependencyProviderConstant.value
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderConstant value argument'
+-
+  name: AddYvesDependencyClientDependencyProviderConstant.visibility
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderConstant visibility argument'
+-
+  name: AddYvesDependencyClientDependencyProviderConstant.target
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderConstant target argument'
+-
+  name: AddYvesDependencyClientDependencyProviderConstant.repository
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderConstant repository argument'
+-
+  name: AddYvesDependencyProvider.module
+  mode: 2
+  description: 'AddYvesDependencyProvider module argument'
+-
+  name: AddYvesDependencyProvider.organization
+  mode: 2
+  description: 'AddYvesDependencyProvider organization argument'
+-
+  name: AddYvesDependencyProvider.template
+  mode: 2
+  description: 'AddYvesDependencyProvider template argument'
+-
+  name: AddYvesDependencyProvider.targetFilename
+  mode: 2
+  description: 'AddYvesDependencyProvider targetFilename argument'
+-
+  name: AddYvesDependencyProvider.targetPath
+  mode: 2
+  description: 'AddYvesDependencyProvider targetPath argument'
+-
+  name: AddYvesDependencyProvider.repository
+  mode: 2
+  description: 'AddYvesDependencyProvider repository argument'
+-
+  name: AddYvesConfigMethod.module
+  mode: 2
+  description: 'AddYvesConfigMethod module argument'
+-
+  name: AddYvesConfigMethod.organization
+  mode: 2
+  description: 'AddYvesConfigMethod organization argument'
+-
+  name: AddYvesConfigMethod.method
+  mode: 2
+  description: 'AddYvesConfigMethod method argument'
+-
+  name: AddYvesConfigMethod.input
+  mode: 2
+  description: 'AddYvesConfigMethod input argument'
+-
+  name: AddYvesConfigMethod.output
+  mode: 2
+  description: 'AddYvesConfigMethod output argument'
+-
+  name: AddYvesConfigMethod.template
+  mode: 2
+  description: 'AddYvesConfigMethod template argument'
+-
+  name: AddYvesConfigMethod.target
+  mode: 2
+  description: 'AddYvesConfigMethod target argument'
+-
+  name: AddYvesConfigMethod.repository
+  mode: 2
+  description: 'AddYvesConfigMethod repository argument'
+-
+  name: AddYvesFactory.module
+  mode: 2
+  description: 'AddYvesFactory module argument'
+-
+  name: AddYvesFactory.organization
+  mode: 2
+  description: 'AddYvesFactory organization argument'
+-
+  name: AddYvesFactory.template
+  mode: 2
+  description: 'AddYvesFactory template argument'
+-
+  name: AddYvesFactory.targetFilename
+  mode: 2
+  description: 'AddYvesFactory targetFilename argument'
+-
+  name: AddYvesFactory.targetPath
+  mode: 2
+  description: 'AddYvesFactory targetPath argument'
+-
+  name: AddYvesFactory.repository
+  mode: 2
+  description: 'AddYvesFactory repository argument'
+-
+  name: AddModuleCoveralls.module
+  mode: 2
+  description: 'AddModuleCoveralls module argument'
+-
+  name: AddModuleCoveralls.organization
+  mode: 2
+  description: 'AddModuleCoveralls organization argument'
+-
+  name: AddModuleCoveralls.repositoryToken
+  mode: 2
+  description: 'AddModuleCoveralls repositoryToken argument'
+-
+  name: AddModuleCoveralls.template
+  mode: 2
+  description: 'AddModuleCoveralls template argument'
+-
+  name: AddModuleCoveralls.targetFilename
+  mode: 2
+  description: 'AddModuleCoveralls targetFilename argument'
+-
+  name: AddModuleCoveralls.targetPath
+  mode: 2
+  description: 'AddModuleCoveralls targetPath argument'
+-
+  name: AddModuleCoveralls.repository
+  mode: 2
+  description: 'AddModuleCoveralls repository argument'
+-
+  name: AddModuleCoveralls.mode
+  mode: 2
+  description: 'AddModuleCoveralls mode argument'
+-
+  name: AddModuleChangelog.module
+  mode: 2
+  description: 'AddModuleChangelog module argument'
+-
+  name: AddModuleChangelog.organization
+  mode: 2
+  description: 'AddModuleChangelog organization argument'
+-
+  name: AddModuleChangelog.template
+  mode: 2
+  description: 'AddModuleChangelog template argument'
+-
+  name: AddModuleChangelog.targetPath
+  mode: 2
+  description: 'AddModuleChangelog targetPath argument'
+-
+  name: AddModuleChangelog.repository
+  mode: 2
+  description: 'AddModuleChangelog repository argument'
+-
+  name: AddModuleChangelog.mode
+  mode: 2
+  description: 'AddModuleChangelog mode argument'
+-
+  name: AddModuleScrutinizer.module
+  mode: 2
+  description: 'AddModuleScrutinizer module argument'
+-
+  name: AddModuleScrutinizer.organization
+  mode: 2
+  description: 'AddModuleScrutinizer organization argument'
+-
+  name: AddModuleScrutinizer.template
+  mode: 2
+  description: 'AddModuleScrutinizer template argument'
+-
+  name: AddModuleScrutinizer.targetFilename
+  mode: 2
+  description: 'AddModuleScrutinizer targetFilename argument'
+-
+  name: AddModuleScrutinizer.targetPath
+  mode: 2
+  description: 'AddModuleScrutinizer targetPath argument'
+-
+  name: AddModuleScrutinizer.repository
+  mode: 2
+  description: 'AddModuleScrutinizer repository argument'
+-
+  name: AddModuleScrutinizer.mode
+  mode: 2
+  description: 'AddModuleScrutinizer mode argument'
+-
+  name: AddModule.module
+  mode: 2
+  description: 'AddModule module argument'
+-
+  name: AddModule.organization
+  mode: 2
+  description: 'AddModule organization argument'
+-
+  name: AddModule.targetPath
+  mode: 2
+  description: 'AddModule targetPath argument'
+-
+  name: AddModule.directories
+  mode: 2
+  description: 'AddModule directories argument'
+-
+  name: AddModule.repository
+  mode: 2
+  description: 'AddModule repository argument'
+-
+  name: AddSharedTransferSchema.module
+  mode: 2
+  description: 'AddSharedTransferSchema module argument'
+-
+  name: AddSharedTransferSchema.organization
+  mode: 2
+  description: 'AddSharedTransferSchema organization argument'
+-
+  name: AddSharedTransferSchema.template
+  mode: 2
+  description: 'AddSharedTransferSchema template argument'
+-
+  name: AddSharedTransferSchema.targetFilename
+  mode: 2
+  description: 'AddSharedTransferSchema targetFilename argument'
+-
+  name: AddSharedTransferSchema.targetPath
+  mode: 2
+  description: 'AddSharedTransferSchema targetPath argument'
+-
+  name: AddSharedTransferSchema.repository
+  mode: 2
+  description: 'AddSharedTransferSchema repository argument'
+-
+  name: AddSharedConstantsInterface.module
+  mode: 2
+  description: 'AddSharedConstantsInterface module argument'
+-
+  name: AddSharedConstantsInterface.organization
+  mode: 2
+  description: 'AddSharedConstantsInterface organization argument'
+-
+  name: AddSharedConstantsInterface.template
+  mode: 2
+  description: 'AddSharedConstantsInterface template argument'
+-
+  name: AddSharedConstantsInterface.targetFilename
+  mode: 2
+  description: 'AddSharedConstantsInterface targetFilename argument'
+-
+  name: AddSharedConstantsInterface.targetPath
+  mode: 2
+  description: 'AddSharedConstantsInterface targetPath argument'
+-
+  name: AddSharedConstantsInterface.repository
+  mode: 2
+  description: 'AddSharedConstantsInterface repository argument'
+-
+  name: AddModuleCodeceptionConfiguration.module
+  mode: 2
+  description: 'AddModuleCodeceptionConfiguration module argument'
+-
+  name: AddModuleCodeceptionConfiguration.organization
+  mode: 2
+  description: 'AddModuleCodeceptionConfiguration organization argument'
+-
+  name: AddModuleCodeceptionConfiguration.template
+  mode: 2
+  description: 'AddModuleCodeceptionConfiguration template argument'
+-
+  name: AddModuleCodeceptionConfiguration.targetPath
+  mode: 2
+  description: 'AddModuleCodeceptionConfiguration targetPath argument'
+-
+  name: AddModuleCodeceptionConfiguration.repository
+  mode: 2
+  description: 'AddModuleCodeceptionConfiguration repository argument'
+-
+  name: AddModuleCodeceptionConfiguration.mode
+  mode: 2
+  description: 'AddModuleCodeceptionConfiguration mode argument'
+-
+  name: AddModuleTooling.module
+  mode: 2
+  description: 'AddModuleTooling module argument'
+-
+  name: AddModuleTooling.organization
+  mode: 2
+  description: 'AddModuleTooling organization argument'
+-
+  name: AddModuleTooling.template
+  mode: 2
+  description: 'AddModuleTooling template argument'
+-
+  name: AddModuleTooling.targetPath
+  mode: 2
+  description: 'AddModuleTooling targetPath argument'
+-
+  name: AddModuleTooling.repository
+  mode: 2
+  description: 'AddModuleTooling repository argument'
+-
+  name: AddModuleReadme.module
+  mode: 2
+  description: 'AddModuleReadme module argument'
+-
+  name: AddModuleReadme.organization
+  mode: 2
+  description: 'AddModuleReadme organization argument'
+-
+  name: AddModuleReadme.template
+  mode: 2
+  description: 'AddModuleReadme template argument'
+-
+  name: AddModuleReadme.targetPath
+  mode: 2
+  description: 'AddModuleReadme targetPath argument'
+-
+  name: AddModuleReadme.repository
+  mode: 2
+  description: 'AddModuleReadme repository argument'
+-
+  name: AddModuleReadme.mode
+  mode: 2
+  description: 'AddModuleReadme mode argument'
+-
+  name: AddModuleTravis.module
+  mode: 2
+  description: 'AddModuleTravis module argument'
+-
+  name: AddModuleTravis.organization
+  mode: 2
+  description: 'AddModuleTravis organization argument'
+-
+  name: AddModuleTravis.template
+  mode: 2
+  description: 'AddModuleTravis template argument'
+-
+  name: AddModuleTravis.targetFilename
+  mode: 2
+  description: 'AddModuleTravis targetFilename argument'
+-
+  name: AddModuleTravis.targetPath
+  mode: 2
+  description: 'AddModuleTravis targetPath argument'
+-
+  name: AddModuleTravis.repository
+  mode: 2
+  description: 'AddModuleTravis repository argument'
+-
+  name: AddModuleTravis.mode
+  mode: 2
+  description: 'AddModuleTravis mode argument'
+-
+  name: AddModuleContributing.module
+  mode: 2
+  description: 'AddModuleContributing module argument'
+-
+  name: AddModuleContributing.organization
+  mode: 2
+  description: 'AddModuleContributing organization argument'
+-
+  name: AddModuleContributing.template
+  mode: 2
+  description: 'AddModuleContributing template argument'
+-
+  name: AddModuleContributing.targetPath
+  mode: 2
+  description: 'AddModuleContributing targetPath argument'
+-
+  name: AddModuleContributing.repository
+  mode: 2
+  description: 'AddModuleContributing repository argument'
+-
+  name: AddModuleContributing.mode
+  mode: 2
+  description: 'AddModuleContributing mode argument'
+-
+  name: AddModuleComposerJson.module
+  mode: 2
+  description: 'AddModuleComposerJson module argument'
+-
+  name: AddModuleComposerJson.organization
+  mode: 2
+  description: 'AddModuleComposerJson organization argument'
+-
+  name: AddModuleComposerJson.template
+  mode: 2
+  description: 'AddModuleComposerJson template argument'
+-
+  name: AddModuleComposerJson.targetPath
+  mode: 2
+  description: 'AddModuleComposerJson targetPath argument'
+-
+  name: AddModuleComposerJson.repository
+  mode: 2
+  description: 'AddModuleComposerJson repository argument'
+-
+  name: AddModuleComposerJson.mode
+  mode: 2
+  description: 'AddModuleComposerJson mode argument'
+-
+  name: AddModuleGitattributes.module
+  mode: 2
+  description: 'AddModuleGitattributes module argument'
+-
+  name: AddModuleGitattributes.organization
+  mode: 2
+  description: 'AddModuleGitattributes organization argument'
+-
+  name: AddModuleGitattributes.template
+  mode: 2
+  description: 'AddModuleGitattributes template argument'
+-
+  name: AddModuleGitattributes.targetFilename
+  mode: 2
+  description: 'AddModuleGitattributes targetFilename argument'
+-
+  name: AddModuleGitattributes.targetPath
+  mode: 2
+  description: 'AddModuleGitattributes targetPath argument'
+-
+  name: AddModuleGitattributes.repository
+  mode: 2
+  description: 'AddModuleGitattributes repository argument'
+-
+  name: AddModuleGitattributes.mode
+  mode: 2
+  description: 'AddModuleGitattributes mode argument'
+-
+  name: AddModulePhpStanNeon.module
+  mode: 2
+  description: 'AddModulePhpStanNeon module argument'
+-
+  name: AddModulePhpStanNeon.organization
+  mode: 2
+  description: 'AddModulePhpStanNeon organization argument'
+-
+  name: AddModulePhpStanNeon.template
+  mode: 2
+  description: 'AddModulePhpStanNeon template argument'
+-
+  name: AddModulePhpStanNeon.targetPath
+  mode: 2
+  description: 'AddModulePhpStanNeon targetPath argument'
+-
+  name: AddModulePhpStanNeon.repository
+  mode: 2
+  description: 'AddModulePhpStanNeon repository argument'
+-
+  name: AddModulePhpStanNeon.mode
+  mode: 2
+  description: 'AddModulePhpStanNeon mode argument'
+-
+  name: AddClientFactory.module
+  mode: 2
+  description: 'AddClientFactory module argument'
+-
+  name: AddClientFactory.organization
+  mode: 2
+  description: 'AddClientFactory organization argument'
+-
+  name: AddClientFactory.template
+  mode: 2
+  description: 'AddClientFactory template argument'
+-
+  name: AddClientFactory.targetFilename
+  mode: 2
+  description: 'AddClientFactory targetFilename argument'
+-
+  name: AddClientFactory.targetPath
+  mode: 2
+  description: 'AddClientFactory targetPath argument'
+-
+  name: AddClientFactory.repository
+  mode: 2
+  description: 'AddClientFactory repository argument'
+-
+  name: AddClientConfig.module
+  mode: 2
+  description: 'AddClientConfig module argument'
+-
+  name: AddClientConfig.organization
+  mode: 2
+  description: 'AddClientConfig organization argument'
+-
+  name: AddClientConfig.template
+  mode: 2
+  description: 'AddClientConfig template argument'
+-
+  name: AddClientConfig.targetFilename
+  mode: 2
+  description: 'AddClientConfig targetFilename argument'
+-
+  name: AddClientConfig.targetPath
+  mode: 2
+  description: 'AddClientConfig targetPath argument'
+-
+  name: AddClientConfig.repository
+  mode: 2
+  description: 'AddClientConfig repository argument'
+-
+  name: AddClient.module
+  mode: 2
+  description: 'AddClient module argument'
+-
+  name: AddClient.organization
+  mode: 2
+  description: 'AddClient organization argument'
+-
+  name: AddClient.template
+  mode: 2
+  description: 'AddClient template argument'
+-
+  name: AddClient.targetFilename
+  mode: 2
+  description: 'AddClient targetFilename argument'
+-
+  name: AddClient.targetPath
+  mode: 2
+  description: 'AddClient targetPath argument'
+-
+  name: AddClient.repository
+  mode: 2
+  description: 'AddClient repository argument'
+-
+  name: AddClientMethod.module
+  mode: 2
+  description: 'AddClientMethod module argument'
+-
+  name: AddClientMethod.organization
+  mode: 2
+  description: 'AddClientMethod organization argument'
+-
+  name: AddClientMethod.method
+  mode: 2
+  description: 'AddClientMethod method argument'
+-
+  name: AddClientMethod.input
+  mode: 2
+  description: 'AddClientMethod input argument'
+-
+  name: AddClientMethod.output
+  mode: 2
+  description: 'AddClientMethod output argument'
+-
+  name: AddClientMethod.template
+  mode: 2
+  description: 'AddClientMethod template argument'
+-
+  name: AddClientMethod.target
+  mode: 2
+  description: 'AddClientMethod target argument'
+-
+  name: AddClientMethod.repository
+  mode: 2
+  description: 'AddClientMethod repository argument'
+-
+  name: AddClientDependencyProvider.module
+  mode: 2
+  description: 'AddClientDependencyProvider module argument'
+-
+  name: AddClientDependencyProvider.organization
+  mode: 2
+  description: 'AddClientDependencyProvider organization argument'
+-
+  name: AddClientDependencyProvider.template
+  mode: 2
+  description: 'AddClientDependencyProvider template argument'
+-
+  name: AddClientDependencyProvider.targetFilename
+  mode: 2
+  description: 'AddClientDependencyProvider targetFilename argument'
+-
+  name: AddClientDependencyProvider.targetPath
+  mode: 2
+  description: 'AddClientDependencyProvider targetPath argument'
+-
+  name: AddClientDependencyProvider.repository
+  mode: 2
+  description: 'AddClientDependencyProvider repository argument'
+-
+  name: AddClientConfigMethod.module
+  mode: 2
+  description: 'AddClientConfigMethod module argument'
+-
+  name: AddClientConfigMethod.organization
+  mode: 2
+  description: 'AddClientConfigMethod organization argument'
+-
+  name: AddClientConfigMethod.comment
+  mode: 2
+  description: 'AddClientConfigMethod comment argument'
+-
+  name: AddClientConfigMethod.method
+  mode: 2
+  description: 'AddClientConfigMethod method argument'
+-
+  name: AddClientConfigMethod.input
+  mode: 2
+  description: 'AddClientConfigMethod input argument'
+-
+  name: AddClientConfigMethod.output
+  mode: 2
+  description: 'AddClientConfigMethod output argument'
+-
+  name: AddClientConfigMethod.template
+  mode: 2
+  description: 'AddClientConfigMethod template argument'
+-
+  name: AddClientConfigMethod.target
+  mode: 2
+  description: 'AddClientConfigMethod target argument'
+-
+  name: AddClientConfigMethod.repository
+  mode: 2
+  description: 'AddClientConfigMethod repository argument'
+-
+  name: AddClientInterface.module
+  mode: 2
+  description: 'AddClientInterface module argument'
+-
+  name: AddClientInterface.organization
+  mode: 2
+  description: 'AddClientInterface organization argument'
+-
+  name: AddClientInterface.template
+  mode: 2
+  description: 'AddClientInterface template argument'
+-
+  name: AddClientInterface.targetFilename
+  mode: 2
+  description: 'AddClientInterface targetFilename argument'
+-
+  name: AddClientInterface.targetPath
+  mode: 2
+  description: 'AddClientInterface targetPath argument'
+-
+  name: AddClientInterface.repository
+  mode: 2
+  description: 'AddClientInterface repository argument'
+-
+  name: AddClientInterfaceMethod.module
+  mode: 2
+  description: 'AddClientInterfaceMethod module argument'
+-
+  name: AddClientInterfaceMethod.organization
+  mode: 2
+  description: 'AddClientInterfaceMethod organization argument'
+-
+  name: AddClientInterfaceMethod.method
+  mode: 2
+  description: 'AddClientInterfaceMethod method argument'
+-
+  name: AddClientInterfaceMethod.input
+  mode: 2
+  description: 'AddClientInterfaceMethod input argument'
+-
+  name: AddClientInterfaceMethod.output
+  mode: 2
+  description: 'AddClientInterfaceMethod output argument'
+-
+  name: AddClientInterfaceMethod.specification
+  mode: 2
+  description: 'AddClientInterfaceMethod specification argument'
+-
+  name: AddClientInterfaceMethod.template
+  mode: 2
+  description: 'AddClientInterfaceMethod template argument'
+-
+  name: AddClientInterfaceMethod.target
+  mode: 2
+  description: 'AddClientInterfaceMethod target argument'
+-
+  name: AddClientInterfaceMethod.repository
+  mode: 2
+  description: 'AddClientInterfaceMethod repository argument'
+-
+  name: AddModuleLicense.module
+  mode: 2
+  description: 'AddModuleLicense module argument'
+-
+  name: AddModuleLicense.organization
+  mode: 2
+  description: 'AddModuleLicense organization argument'
+-
+  name: AddModuleLicense.template
+  mode: 2
+  description: 'AddModuleLicense template argument'
+-
+  name: AddModuleLicense.targetPath
+  mode: 2
+  description: 'AddModuleLicense targetPath argument'
+-
+  name: AddModuleLicense.repository
+  mode: 2
+  description: 'AddModuleLicense repository argument'
+-
+  name: AddModuleLicense.mode
+  mode: 2
+  description: 'AddModuleLicense mode argument'

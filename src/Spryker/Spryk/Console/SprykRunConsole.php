@@ -47,6 +47,15 @@ class SprykRunConsole extends AbstractSprykConsole
             ->setDescription('Runs a Spryk build process.')
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
             ->addOption(static::OPTION_INCLUDE_OPTIONALS, static::OPTION_INCLUDE_OPTIONALS_SHORT, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Name(s) of the Spryks which are marked as optional but should be build.');
+
+        foreach ($this->getSprykArguments() as $argumentDefinition) {
+            $this->addOption(
+                $argumentDefinition['name'],
+                null,
+                $argumentDefinition['mode'],
+                $argumentDefinition['description']
+            );
+        }
     }
 
     /**
@@ -55,84 +64,10 @@ class SprykRunConsole extends AbstractSprykConsole
     protected function getSprykArguments(): array
     {
         if (static::$argumentsList === null) {
-            static::$argumentsList = $this->buildArgumentList();
+            static::$argumentsList = $this->getFacade()->dumpArgumentList();
         }
 
         return static::$argumentsList;
-    }
-
-    /**
-     * @return array
-     */
-    protected function buildArgumentList(): array
-    {
-        $standardArguments = [];
-        $sprykArguments = [];
-        foreach ($this->getSprykDefinitions() as $sprykName => $sprykDefinition) {
-            $standardArguments += $this->buildStandardArgumentList($sprykDefinition['arguments']);
-            $sprykArguments += $this->buildSprykArgumentList($sprykName, $sprykDefinition['arguments']);
-        }
-
-        return $standardArguments + $sprykArguments;
-    }
-
-    /**
-     * @param array $arguments
-     *
-     * @return array
-     */
-    protected function buildStandardArgumentList(array $arguments): array
-    {
-        $standardArguments = [];
-        foreach ($arguments as $argumentName => $argumentDefinition) {
-            $argumentDefinition['name'] = $argumentName;
-            $argumentDefinition['description'] = sprintf('%s argument', $argumentName);
-
-            $standardArguments[$argumentName] = $argumentDefinition;
-        }
-
-        return $standardArguments;
-    }
-
-    /**
-     * @param string $sprykName
-     * @param array $arguments
-     *
-     * @return array
-     */
-    protected function buildSprykArgumentList(string $sprykName, array $arguments): array
-    {
-        $sprykArguments = [];
-        foreach ($arguments as $argumentName => $argumentDefinition) {
-            $sprykArguments[$sprykName . '.' . $argumentName] = [
-                'name' => $argumentName,
-                'description' => sprintf('%s %s argument', $sprykName, $argumentName),
-            ];
-        }
-
-        return $sprykArguments;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getSprykDefinitions(): array
-    {
-        $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
-
-        return $this->filterValueArguments($sprykDefinitions);
-    }
-
-    /**
-     * @param array $sprykDefinitions
-     *
-     * @return array
-     */
-    protected function filterValueArguments(array $sprykDefinitions): array
-    {
-        return array_filter($sprykDefinitions, function ($argumentDefinition) {
-            return (!isset($argumentDefinition['value']));
-        });
     }
 
     /**
