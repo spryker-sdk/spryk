@@ -8,6 +8,7 @@
 namespace SprykTest\Spryk\Integration\Yves\Dependency\Service;
 
 use Codeception\Test\Unit;
+use Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException;
 use SprykTest\Module\ClassName;
 
 /**
@@ -44,6 +45,25 @@ class AddYvesDependencyServiceBridgeTest extends Unit
     /**
      * @return void
      */
+    public function testAddsYvesDependencyServiceBridgeOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getModuleDirectory('FooBar', 'Yves')
+            . 'Dependency/Service/FooBarToZipZapServiceBridge.php'
+        );
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsGetterToFactory(): void
     {
         $this->tester->run($this, [
@@ -52,5 +72,21 @@ class AddYvesDependencyServiceBridgeTest extends Unit
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::YVES_FACTORY, 'getZipZapService');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsGetterToFactoryOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_FACTORY, 'getZipZapService');
     }
 }

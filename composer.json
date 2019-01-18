@@ -46,9 +46,9 @@
       "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
       "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
       "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
-      "Pyz\\Shared\\FooBar\\": "tests/_data/src/Spryker/Shared/FooBar/",
-      "Pyz\\Yves\\FooBar\\": "tests/_data/src/Spryker/Yves/FooBar/",
-      "Pyz\\Zed\\FooBar\\": "tests/_data/src/Spryker/Zed/FooBar/"
+      "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
+      "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
+      "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/"
     }
   },
   "minimum-stability": "dev",

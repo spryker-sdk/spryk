@@ -40,4 +40,18 @@ class AddYvesDependencyClientDependencyProviderMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::YVES_DEPENDENCY_PROVIDER, 'addZipZapClient');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsDependencyClientMethodToDependencyProviderOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_DEPENDENCY_PROVIDER, 'addZipZapClient');
+    }
 }
