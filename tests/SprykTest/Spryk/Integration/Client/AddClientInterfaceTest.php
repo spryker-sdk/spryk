@@ -38,4 +38,20 @@ class AddClientInterfaceTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClientInterface.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsClientInterfaceFileOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getProjectModuleDirectory('FooBar', 'Client')
+            . 'FooBarClientInterface.php'
+        );
+    }
 }

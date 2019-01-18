@@ -103,12 +103,13 @@ class SprykIntegrationTester extends Actor
 
     /**
      * @param string $module
+     * @param string $layer
      *
      * @return string
      */
-    public function getProjectModuleDirectory(string $module = 'FooBar'): string
+    public function getProjectModuleDirectory(string $module = 'FooBar', string $layer = 'Zed'): string
     {
-        return sprintf('%s/tests/_data/src/Pyz/Zed/%s/', $this->getRootDirectory(), $module);
+        return sprintf('%s/tests/_data/src/Pyz/%s/%s/', $this->getRootDirectory(), $layer, $module);
     }
 
     /**
