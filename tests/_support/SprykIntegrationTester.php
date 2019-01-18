@@ -102,6 +102,16 @@ class SprykIntegrationTester extends Actor
     }
 
     /**
+     * @param string $module
+     *
+     * @return string
+     */
+    public function getProjectModuleDirectory(string $module = 'FooBar'): string
+    {
+        return sprintf('%s/tests/_data/src/Pyz/Zed/%s/', $this->getRootDirectory(), $module);
+    }
+
+    /**
      * @return \Spryker\Spryk\SprykFacade
      */
     protected function getFacadeWithMockedConfig(): SprykFacade
@@ -134,6 +144,15 @@ class SprykIntegrationTester extends Actor
             },
             'getTemplateDirectories' => function () {
                 return [$this->getRootDirectory() . DIRECTORY_SEPARATOR . 'config/spryk/templates/'];
+            },
+            'getCoreNamespaces' => function () {
+                return ['Spryker'];
+            },
+            'getProjectNamespace' => function () {
+                return 'Pyz';
+            },
+            'getProjectNamespaces' => function () {
+                return ['Pyz'];
             },
         ]);
 
