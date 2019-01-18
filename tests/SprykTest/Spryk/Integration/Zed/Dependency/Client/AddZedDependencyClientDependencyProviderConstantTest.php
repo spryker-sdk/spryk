@@ -48,4 +48,26 @@ class AddZedDependencyClientDependencyProviderConstantTest extends Unit
             'public'
         );
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsDependencyClientConstantToDependencyProviderOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--name' => 'CLIENT_ZIP_ZAP',
+            '--value' => 'zip zap client',
+            '--visibility' => 'public',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasConstant(
+            ClassName::PROJECT_ZED_DEPENDENCY_PROVIDER,
+            'CLIENT_ZIP_ZAP',
+            'zip zap client',
+            'public'
+        );
+    }
 }

@@ -41,4 +41,20 @@ class AddZedPersistenceRepositoryMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'doSomething');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedPersistenceRepositoryMethodOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--method' => 'doSomething',
+            '--input' => 'string $fooBar',
+            '--output' => 'array',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_REPOSITORY, 'doSomething');
+    }
 }

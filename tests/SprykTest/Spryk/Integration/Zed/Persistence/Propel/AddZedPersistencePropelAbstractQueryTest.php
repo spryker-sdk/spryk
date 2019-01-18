@@ -40,4 +40,22 @@ class AddZedPersistencePropelAbstractQueryTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/AbstractSpyFooBarQuery.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedPersistenceAbstractQueryFileOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--targetModule' => 'FooBar',
+            '--tableName' => 'spy_foo_bar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getProjectModuleDirectory()
+            . 'Persistence/Propel/AbstractSpyFooBarQuery.php'
+        );
+    }
 }

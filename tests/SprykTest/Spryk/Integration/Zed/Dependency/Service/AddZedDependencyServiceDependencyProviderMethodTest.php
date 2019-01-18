@@ -40,4 +40,18 @@ class AddZedDependencyServiceDependencyProviderMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::ZED_DEPENDENCY_PROVIDER, 'addZipZapService');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsDependencyServiceMethodToDependencyProviderOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_DEPENDENCY_PROVIDER, 'addZipZapService');
+    }
 }

@@ -44,4 +44,25 @@ class AddZedBusinessTestSuiteConfigurationTest extends Unit
         $suitesConfiguration = $configuration['suites'];
         static::assertArrayHasKey('Business', $suitesConfiguration);
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedBusinessTestSuiteConfigurationOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        $targetFile = $this->tester->getProjectTestDirectory() . 'codeception.yml';
+        static::assertFileExists($targetFile);
+
+        $fileContent = file_get_contents($targetFile);
+        $configuration = Yaml::parse(($fileContent) ?: '');
+        static::assertArrayHasKey('suites', $configuration);
+
+        $suitesConfiguration = $configuration['suites'];
+        static::assertArrayHasKey('Business', $suitesConfiguration);
+    }
 }

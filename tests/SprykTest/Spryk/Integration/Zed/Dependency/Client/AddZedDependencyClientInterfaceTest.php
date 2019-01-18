@@ -39,4 +39,21 @@ class AddZedDependencyClientInterfaceTest extends Unit
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Dependency/Client/FooBarToZipZapClientInterface.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedDependencyFacadeInterfaceOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        $this->assertFileExists(
+            $this->tester->getProjectModuleDirectory()
+            . 'Dependency/Client/FooBarToZipZapClientInterface.php'
+        );
+    }
 }

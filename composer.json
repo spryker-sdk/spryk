@@ -48,7 +48,8 @@
       "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
       "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
       "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
-      "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/"
+      "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
+      "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
     }
   },
   "minimum-stability": "dev",

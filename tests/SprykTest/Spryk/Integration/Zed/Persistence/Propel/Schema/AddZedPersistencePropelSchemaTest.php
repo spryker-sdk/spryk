@@ -40,4 +40,21 @@ class AddZedPersistencePropelSchemaTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/Schema/spy_foo_bar.schema.xml');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedPersistencePropelSchemaFileOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--targetModule' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getProjectModuleDirectory()
+            . 'Persistence/Propel/Schema/spy_foo_bar.schema.xml'
+        );
+    }
 }

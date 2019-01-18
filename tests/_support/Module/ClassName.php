@@ -106,6 +106,7 @@ interface ClassName
     public const PROJECT_ZED_SERVICE_BRIDGE_INTERFACE = 'Pyz\Zed\FooBar\Dependency\Service\FooBarToZipZapServiceInterface';
 
     public const PROJECT_ZED_FACADE = 'Pyz\Zed\FooBar\Business\FooBarFacade';
+    public const PROJECT_ZED_FACADE_TEST = 'PyzTest\Zed\FooBar\Business\FooBarFacadeTest';
     public const PROJECT_ZED_FACADE_INTERFACE = 'Pyz\Zed\FooBar\Business\FooBarFacadeInterface';
 
     public const PROJECT_ZED_REPOSITORY = 'Pyz\Zed\FooBar\Persistence\FooBarRepository';

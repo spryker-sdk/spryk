@@ -45,6 +45,25 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
     /**
      * @return void
      */
+    public function testAddsZedPersistencePropelSchemaTableOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--targetModule' => 'FooBar',
+            '--tableName' => 'spy_foo_bar',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertTableCount(
+            1,
+            $this->tester->getProjectModuleDirectory() . 'Persistence/Propel/Schema/spy_foo_bar.schema.xml',
+            'spy_foo_bar'
+        );
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsZedPersistencePropelSchemaTableOnlyOnce(): void
     {
         $this->tester->run($this, [
@@ -60,5 +79,31 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
         ]);
 
         $this->tester->assertTableCount(1, $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/Schema/spy_foo_bar.schema.xml', 'spy_foo_bar');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedPersistencePropelSchemaTableOnlyOnceOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--targetModule' => 'FooBar',
+            '--tableName' => 'spy_foo_bar',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--targetModule' => 'FooBar',
+            '--tableName' => 'spy_foo_bar',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertTableCount(
+            1,
+            $this->tester->getProjectModuleDirectory() . 'Persistence/Propel/Schema/spy_foo_bar.schema.xml',
+            'spy_foo_bar'
+        );
     }
 }

@@ -40,4 +40,18 @@ class AddZedDependencyFacadeBusinessFactoryMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::ZED_BUSINESS_FACTORY, 'getZipZapFacade');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedDependencyFacadeDependencyMethodToBusinessFactoryOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_BUSINESS_FACTORY, 'getZipZapFacade');
+    }
 }

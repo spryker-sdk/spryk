@@ -45,6 +45,21 @@ class AddZedCommunicationControllerActionTest extends Unit
     /**
      * @return void
      */
+    public function testAddsZedControllerMethodOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => 'Index',
+            '--method' => 'index',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_CONTROLLER, 'indexAction');
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsZedControllerMethodAndReplacesActionSuffix(): void
     {
         $this->tester->run($this, [
@@ -54,6 +69,21 @@ class AddZedCommunicationControllerActionTest extends Unit
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::ZED_CONTROLLER, 'indexAction');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedControllerMethodAndReplacesActionSuffixOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => 'IndexController',
+            '--method' => 'indexAction',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_CONTROLLER, 'indexAction');
     }
 
     /**
@@ -73,6 +103,23 @@ class AddZedCommunicationControllerActionTest extends Unit
     }
 
     /**
+     * @group single
+     *
+     * @return void
+     */
+    public function testAddsZedControllerMethodToFullyQualifiedControllerClassNameOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => ClassName::PROJECT_ZED_CONTROLLER,
+            '--method' => 'indexAction',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_CONTROLLER, 'indexAction');
+    }
+
+    /**
      * @return void
      */
     public function testAddsViewFileForControllerAction(): void
@@ -89,6 +136,21 @@ class AddZedCommunicationControllerActionTest extends Unit
     /**
      * @return void
      */
+    public function testAddsViewFileForControllerActionOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => 'Index',
+            '--method' => 'indexAction',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Presentation/Index/index.twig');
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsNavigationNodeEntryToNavigationSchema(): void
     {
         $this->tester->run($this, [
@@ -98,5 +160,20 @@ class AddZedCommunicationControllerActionTest extends Unit
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsNavigationNodeEntryToNavigationSchemaOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => 'Index',
+            '--method' => 'indexAction',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Presentation/Index/index.twig');
     }
 }

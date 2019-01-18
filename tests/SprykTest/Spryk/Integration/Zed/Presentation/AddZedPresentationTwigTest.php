@@ -44,6 +44,24 @@ class AddZedPresentationTwigTest extends Unit
     /**
      * @return void
      */
+    public function testAddsZedViewFileOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => 'Index',
+            '--method' => 'index',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getProjectModuleDirectory()
+            . 'Presentation/Index/index.twig'
+        );
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsZedViewFileWithFullyQualifiedNames(): void
     {
         $this->tester->run($this, [
@@ -53,5 +71,23 @@ class AddZedPresentationTwigTest extends Unit
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedViewFileWithFullyQualifiedNamesOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => ClassName::ZED_CONTROLLER,
+            '--method' => 'indexAction',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getProjectModuleDirectory()
+            . 'Presentation/Index/index.twig'
+        );
     }
 }

@@ -113,6 +113,17 @@ class SprykIntegrationTester extends Actor
     }
 
     /**
+     * @param string $module
+     * @param string $layer
+     *
+     * @return string
+     */
+    public function getProjectTestDirectory(string $module = 'FooBar', string $layer = 'Zed'): string
+    {
+        return sprintf('%s/tests/_data/tests/PyzTest/%s/%s/', $this->getRootDirectory(), $layer, $module);
+    }
+
+    /**
      * @return \Spryker\Spryk\SprykFacade
      */
     protected function getFacadeWithMockedConfig(): SprykFacade

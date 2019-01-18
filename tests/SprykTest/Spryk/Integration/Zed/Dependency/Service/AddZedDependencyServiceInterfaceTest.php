@@ -39,4 +39,21 @@ class AddZedDependencyServiceInterfaceTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Dependency/Service/FooBarToZipZapServiceInterface.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedDependencyServiceInterfaceOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getProjectModuleDirectory()
+            . 'Dependency/Service/FooBarToZipZapServiceInterface.php'
+        );
+    }
 }

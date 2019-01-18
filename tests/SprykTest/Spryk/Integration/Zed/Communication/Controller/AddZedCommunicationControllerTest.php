@@ -44,6 +44,20 @@ class AddZedCommunicationControllerTest extends Unit
     /**
      * @return void
      */
+    public function testAddsZedControllerFileOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => 'Index',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Controller/IndexController.php');
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsZedControllerFileFromFullyQualifiedControllerClassName(): void
     {
         $this->tester->run($this, [
@@ -57,6 +71,20 @@ class AddZedCommunicationControllerTest extends Unit
     /**
      * @return void
      */
+    public function testAddsZedControllerFileFromFullyQualifiedControllerClassNameOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => ClassName::PROJECT_ZED_CONTROLLER,
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Controller/IndexController.php');
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsZedControllerFileAndRemovesControllerSuffix(): void
     {
         $this->tester->run($this, [
@@ -65,5 +93,19 @@ class AddZedCommunicationControllerTest extends Unit
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedControllerFileAndRemovesControllerSuffixOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--controller' => 'IndexController',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Controller/IndexController.php');
     }
 }

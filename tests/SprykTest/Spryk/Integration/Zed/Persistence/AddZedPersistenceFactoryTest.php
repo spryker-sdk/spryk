@@ -37,4 +37,20 @@ class AddZedPersistenceFactoryTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarPersistenceFactory.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedPersistenceFactoryFileOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getProjectModuleDirectory()
+            . 'Persistence/FooBarPersistenceFactory.php'
+        );
+    }
 }
