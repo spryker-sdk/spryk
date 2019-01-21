@@ -8,6 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException;
 
 /**
  * Auto-generated group annotations
@@ -34,5 +35,20 @@ class AddModuleChangelogTest extends Unit
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsChangeLogFileOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'CHANGELOG.md');
     }
 }

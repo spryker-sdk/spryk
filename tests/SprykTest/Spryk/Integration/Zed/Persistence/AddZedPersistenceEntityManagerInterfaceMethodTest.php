@@ -41,4 +41,20 @@ class AddZedPersistenceEntityManagerInterfaceMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::ZED_ENTITY_MANAGER_INTERFACE, 'doSomething');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedPersistenceRepositoryInterfaceMethodOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--method' => 'doSomething',
+            '--input' => 'string $fooBar',
+            '--output' => 'array',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_ENTITY_MANAGER_INTERFACE, 'doSomething');
+    }
 }

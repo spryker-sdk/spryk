@@ -42,6 +42,22 @@ class AddZedBusinessFactoryMethodTest extends Unit
     /**
      * @return void
      */
+    public function testAddsMethodToBusinessFactoryOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--subDirectory' => 'Foo',
+            '--className' => 'Bar',
+            '--output' => 'Pyz\Zed\FooBar\Business\Foo\Bar',
+            '--mode' => 'project',
+        ]);
+        $expectedBody = 'return new \Pyz\Zed\FooBar\Business\Foo\Bar();';
+        $this->tester->assertMethodBody('Pyz\Zed\FooBar\Business\FooBarBusinessFactory', 'createBar', $expectedBody);
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsMethodWithBodyToBusinessFactory(): void
     {
         $this->tester->run($this, [
@@ -57,5 +73,26 @@ class AddZedBusinessFactoryMethodTest extends Unit
 
         $expectedBody = 'return new \Spryker\Zed\FooBar\Business\Foo\Bar($this->createZip(), $this->createZap());';
         $this->tester->assertMethodBody('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createBar', $expectedBody);
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsMethodWithBodyToBusinessFactoryOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--subDirectory' => 'Foo',
+            '--className' => 'Bar',
+            '--dependencyMethods' => [
+                'createZip',
+                'createZap',
+            ],
+            '--output' => 'Pyz\Zed\FooBar\Business\Foo\Bar',
+            '--mode' => 'project',
+        ]);
+
+        $expectedBody = 'return new \Pyz\Zed\FooBar\Business\Foo\Bar($this->createZip(), $this->createZap());';
+        $this->tester->assertMethodBody('Pyz\Zed\FooBar\Business\FooBarBusinessFactory', 'createBar', $expectedBody);
     }
 }

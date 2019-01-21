@@ -39,4 +39,19 @@ class AddZedCommunicationConsoleTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Console/FooBarConsole.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedConsoleOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--className' => 'FooBar',
+            '--consoleCommand' => 'spryker:spryker',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Console/FooBarConsole.php');
+    }
 }

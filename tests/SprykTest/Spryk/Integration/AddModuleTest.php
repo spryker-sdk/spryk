@@ -35,4 +35,17 @@ class AddModuleTest extends Unit
 
         static::assertDirectoryExists($this->tester->getModuleDirectory() . 'src');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsModuleOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertDirectoryExists($this->tester->getProjectModuleDirectory());
+    }
 }

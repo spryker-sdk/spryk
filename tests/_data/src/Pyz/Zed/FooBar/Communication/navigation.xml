@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+  <foo-bar>
+    <label>FooBar</label>
+    <title>FooBar</title>
+    <pages>
+      <foo-bar>
+        <label>FooBar</label>
+        <title>FooBar</title>
+        <bundle>foo-bar</bundle>
+        <controller>index</controller>
+        <action>index</action>
+      </foo-bar>
+    </pages>
+  </foo-bar>
+</config>

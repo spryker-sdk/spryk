@@ -39,4 +39,24 @@ class AddZedBusinessModelInterfaceMethodTest extends Unit
 
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Foo\BarInterface', 'addSomething');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsMethodToBusinessModelInterfaceOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--className' => 'Pyz\Zed\FooBar\Business\Foo\Bar',
+            '--method' => 'addSomething',
+            '--input' => 'string $foo',
+            '--output' => 'bool',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(
+            'Pyz\Zed\FooBar\Business\Foo\BarInterface',
+            'addSomething'
+        );
+    }
 }

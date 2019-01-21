@@ -8,6 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException;
 
 /**
  * Auto-generated group annotations
@@ -35,5 +36,21 @@ class AddModulePhpStanJsonTest extends Unit
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'phpstan.json');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsPhpStanJsonFileOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--organization' => 'Spryker',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'phpstan.json');
     }
 }

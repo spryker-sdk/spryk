@@ -8,6 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException;
 
 /**
  * Auto-generated group annotations
@@ -31,6 +32,21 @@ class AddModuleCodeceptionConfigurationTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+        ]);
+
+        static::assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsCodeceptionConfigFileOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');

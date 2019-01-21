@@ -37,4 +37,19 @@ class AddZedBusinessModelInterfaceTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/BarInterface.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedBusinessModelInterfaceOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--subDirectory' => 'Foo',
+            '--className' => 'Bar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Business/Foo/BarInterface.php');
+    }
 }

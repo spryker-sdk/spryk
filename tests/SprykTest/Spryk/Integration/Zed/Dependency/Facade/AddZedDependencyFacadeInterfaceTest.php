@@ -39,4 +39,21 @@ class AddZedDependencyFacadeInterfaceTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Dependency/Facade/FooBarToZipZapFacadeInterface.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedDependencyFacadeInterfaceOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getProjectModuleDirectory()
+            . 'Dependency/Facade/FooBarToZipZapFacadeInterface.php'
+        );
+    }
 }

@@ -40,4 +40,20 @@ class AddClientInterfaceMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::CLIENT_INTERFACE, 'addSomething');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsMethodToClientOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--method' => 'addSomething',
+            '--input' => 'string $something',
+            '--output' => 'bool',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_INTERFACE, 'addSomething');
+    }
 }

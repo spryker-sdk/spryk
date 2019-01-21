@@ -8,6 +8,7 @@
 namespace SprykTest\Spryk\Integration\Zed;
 
 use Codeception\Test\Unit;
+use Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -41,12 +42,52 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
     /**
      * @return void
      */
+    public function testAddsZedTestSuiteToCodeceptionConfigurationOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectTestDirectory() . 'codeception.yml');
+    }
+
+    /**
+     * @return void
+     */
     public function testAddsZedTestSuiteToCodeceptionConfigurationOnlyOnce(): void
     {
         $this->tester->run($this, ['--module' => 'FooBar']);
         $this->tester->run($this, ['--module' => 'FooBar']);
 
         $configurationFilePath = $this->tester->getModuleDirectory() . 'codeception.yml';
+        static::assertFileExists($configurationFilePath);
+
+        $fileContent = file_get_contents($configurationFilePath);
+
+        $yaml = Yaml::parse(($fileContent) ?: '');
+        static::assertCount(1, $yaml['include']);
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedTestSuiteToCodeceptionConfigurationOnlyOnceOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        $configurationFilePath = $this->tester->getProjectTestDirectory() . 'codeception.yml';
         static::assertFileExists($configurationFilePath);
 
         $fileContent = file_get_contents($configurationFilePath);

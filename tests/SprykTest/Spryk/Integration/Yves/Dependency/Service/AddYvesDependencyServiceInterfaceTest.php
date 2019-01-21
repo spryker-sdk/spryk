@@ -39,4 +39,21 @@ class AddYvesDependencyServiceInterfaceTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Dependency/Service/FooBarToZipZapServiceInterface.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsYvesDependencyServiceInterfaceOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists(
+            $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
+            . 'Dependency/Service/FooBarToZipZapServiceInterface.php'
+        );
+    }
 }

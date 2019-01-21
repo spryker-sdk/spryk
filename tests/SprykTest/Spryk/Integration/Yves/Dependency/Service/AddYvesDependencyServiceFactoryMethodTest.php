@@ -40,4 +40,18 @@ class AddYvesDependencyServiceFactoryMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::YVES_FACTORY, 'getZipZapService');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsYvesDependencyServiceDependencyMethodToFactoryOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_FACTORY, 'getZipZapService');
+    }
 }

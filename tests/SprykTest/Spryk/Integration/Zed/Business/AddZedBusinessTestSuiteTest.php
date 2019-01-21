@@ -35,4 +35,17 @@ class AddZedBusinessTestSuiteTest extends Unit
 
         static::assertDirectoryExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedBusinessTestSuiteConfigurationOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertDirectoryExists($this->tester->getProjectTestDirectory());
+    }
 }

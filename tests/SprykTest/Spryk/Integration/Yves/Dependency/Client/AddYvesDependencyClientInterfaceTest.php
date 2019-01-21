@@ -39,4 +39,21 @@ class AddYvesDependencyClientInterfaceTest extends Unit
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Dependency/Client/FooBarToZipZapClientInterface.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsYvesDependencyFacadeInterfaceOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+        ]);
+
+        $this->assertFileExists(
+            $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
+            . 'Dependency/Client/FooBarToZipZapClientInterface.php'
+        );
+    }
 }

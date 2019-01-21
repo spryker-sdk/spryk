@@ -35,4 +35,17 @@ class AddZedBusinessFactoryTest extends Unit
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/FooBarBusinessFactory.php');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedBusinessFactoryFileOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Business/FooBarBusinessFactory.php');
+    }
 }

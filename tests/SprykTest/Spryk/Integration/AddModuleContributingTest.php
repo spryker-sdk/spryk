@@ -8,6 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException;
 
 /**
  * Auto-generated group annotations
@@ -35,5 +36,20 @@ class AddModuleContributingTest extends Unit
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'CONTRIBUTING.md');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsContributingFileOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'CONTRIBUTING.md');
     }
 }

@@ -8,6 +8,7 @@
 namespace SprykTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use Spryker\Spryk\Exception\SprykWrongDevelopmentLayerException;
 
 /**
  * Auto-generated group annotations
@@ -35,5 +36,21 @@ class AddModuleScrutinizerTest extends Unit
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . '.scrutinizer.yml');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsScrutinizerFileOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--organization' => 'Spryker',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory() . '.scrutinizer.yml');
     }
 }

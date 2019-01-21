@@ -40,4 +40,20 @@ class AddZedConfigMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::ZED_CONFIG, 'getConfigValue');
     }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedConfigMethodOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--method' => 'getConfigValue',
+            '--input' => 'string $foo',
+            '--output' => 'string',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_CONFIG, 'getConfigValue');
+    }
 }
