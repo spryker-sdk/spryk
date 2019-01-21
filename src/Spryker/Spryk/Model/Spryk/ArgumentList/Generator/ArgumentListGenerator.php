@@ -8,6 +8,7 @@
 namespace Spryker\Spryk\Model\Spryk\ArgumentList\Generator;
 
 use Spryker\Spryk\Exception\FileGenerationException;
+use Spryker\Spryk\Model\Spryk\ArgumentList\Builder\ArgumentListBuilderInterface;
 use Symfony\Component\Yaml\Yaml;
 
 class ArgumentListGenerator implements ArgumentListGeneratorInterface
@@ -18,11 +19,20 @@ class ArgumentListGenerator implements ArgumentListGeneratorInterface
     protected $argumentListFilePath;
 
     /**
-     * @param string $argumentListFilePath
+     * @var \Spryker\Spryk\Model\Spryk\ArgumentList\Builder\ArgumentListBuilderInterface
      */
-    public function __construct(string $argumentListFilePath)
-    {
+    protected $argumentListBuilder;
+
+    /**
+     * @param string $argumentListFilePath
+     * @param \Spryker\Spryk\Model\Spryk\ArgumentList\Builder\ArgumentListBuilderInterface $argumentListBuilder
+     */
+    public function __construct(
+        string $argumentListFilePath,
+        ArgumentListBuilderInterface $argumentListBuilder
+    ) {
         $this->argumentListFilePath = $argumentListFilePath;
+        $this->argumentListBuilder = $argumentListBuilder;
     }
 
     /**
@@ -34,6 +44,8 @@ class ArgumentListGenerator implements ArgumentListGeneratorInterface
      */
     public function generateArgumentList(array $sprykDefinitions): int
     {
+        $sprykDefinitions = $this->argumentListBuilder->buildArgumentList($sprykDefinitions);
+
         $dataDump = Yaml::dump($sprykDefinitions, 2, 2);
         $dataDump = $this->getFileDescriptionComment() . $dataDump;
 

@@ -33,13 +33,6 @@ interface SprykFacadeInterface
     public function setFactory(SprykFactory $factory): self;
 
     /**
-     * @param array $sprykDefinitions
-     *
-     * @return array
-     */
-    public function buildArgumentList(array $sprykDefinitions): array;
-
-    /**
      * @param array $argumentsList
      *
      * @return int
@@ -49,5 +42,5 @@ interface SprykFacadeInterface
     /**
      * @return array
      */
-    public function dumpArgumentList(): array;
+    public function getCachedArgumentList(): array;
 }

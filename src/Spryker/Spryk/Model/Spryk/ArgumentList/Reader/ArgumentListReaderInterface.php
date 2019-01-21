@@ -5,12 +5,12 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Spryk\Model\Spryk\ArgumentList\Dumper;
+namespace Spryker\Spryk\Model\Spryk\ArgumentList\Reader;
 
-interface ArgumentListDumperInterface
+interface ArgumentListReaderInterface
 {
     /**
      * @return array
      */
-    public function dumpArgumentList(): array;
+    public function getCachedArgumentList(): array;
 }

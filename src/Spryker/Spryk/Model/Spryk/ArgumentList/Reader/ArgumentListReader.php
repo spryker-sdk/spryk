@@ -5,11 +5,11 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Spryk\Model\Spryk\ArgumentList\Dumper;
+namespace Spryker\Spryk\Model\Spryk\ArgumentList\Reader;
 
 use Symfony\Component\Yaml\Yaml;
 
-class ArgumentListDumper implements ArgumentListDumperInterface
+class ArgumentListReader implements ArgumentListReaderInterface
 {
     /**
      * @var string
@@ -27,12 +27,8 @@ class ArgumentListDumper implements ArgumentListDumperInterface
     /**
      * @return array
      */
-    public function dumpArgumentList(): array
+    public function getCachedArgumentList(): array
     {
-        if (!file_exists($this->argumentListFilePath)) {
-            return [];
-        }
-
         $argumentList = Yaml::parseFile($this->argumentListFilePath);
 
         if ($argumentList === null) {

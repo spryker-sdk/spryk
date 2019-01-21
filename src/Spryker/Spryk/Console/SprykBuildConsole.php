@@ -18,7 +18,7 @@ class SprykBuildConsole extends AbstractSprykConsole
     protected function configure(): void
     {
         $this->setName('spryk:build')
-            ->setDescription('Build a list of all Spryk definitions.');
+            ->setDescription('Builds a cache for all possible Spryk arguments.');
     }
 
     /**
@@ -31,12 +31,11 @@ class SprykBuildConsole extends AbstractSprykConsole
     {
         $output->writeln('Getting all Spryk definitions...');
         $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
-        $output->writeln(count($sprykDefinitions) . ' has been founded.');
 
-        $output->writeln('Building argument list ...');
-        $sprykArgumentList = $this->getFacade()->buildArgumentList($sprykDefinitions);
+        $output->writeln(sprintf('Found "%s" Spryk definitions.', count($sprykDefinitions)));
 
-        $this->getFacade()->generateArgumentList($sprykArgumentList);
+        $output->writeln('Generating argument list ...');
+        $this->getFacade()->generateArgumentList($sprykDefinitions);
         $output->writeln('Argument list has been generated.');
     }
 }

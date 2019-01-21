@@ -63,16 +63,6 @@ class SprykFacade implements SprykFacadeInterface
     }
 
     /**
-     * @param array $sprykDefinitions
-     *
-     * @return array
-     */
-    public function buildArgumentList(array $sprykDefinitions): array
-    {
-        return $this->getFactory()->createArgumentsListBuilder()->buildArgumentList($sprykDefinitions);
-    }
-
-    /**
      * @param array $argumentsList
      *
      * @return int
@@ -85,8 +75,8 @@ class SprykFacade implements SprykFacadeInterface
     /**
      * @return array
      */
-    public function dumpArgumentList(): array
+    public function getCachedArgumentList(): array
     {
-        return $this->getFactory()->createArgumentListDumper()->dumpArgumentList();
+        return $this->getFactory()->createArgumentListReader()->getCachedArgumentList();
     }
 }
