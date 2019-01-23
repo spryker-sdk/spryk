@@ -209,6 +209,10 @@ class SprykFactory
      */
     public function createArgumentListReader(): ArgumentListReaderInterface
     {
-        return new ArgumentListReader($this->getConfig()->getArgumentListFilePath());
+        return new ArgumentListReader(
+            $this->getConfig()->getArgumentListFilePath(),
+            $this->createArgumentsListBuilder(),
+            $this->createSprykDefinitionDumper()
+        );
     }
 }
