@@ -61,4 +61,22 @@ class SprykFacade implements SprykFacadeInterface
 
         return $this;
     }
+
+    /**
+     * @param array $argumentsList
+     *
+     * @return int
+     */
+    public function generateArgumentList(array $argumentsList): int
+    {
+        return $this->getFactory()->createArgumentListGenerator()->generateArgumentList($argumentsList);
+    }
+
+    /**
+     * @return array
+     */
+    public function getCachedArgumentList(): array
+    {
+        return $this->getFactory()->createArgumentListReader()->getCachedArgumentList();
+    }
 }
