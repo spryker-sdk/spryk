@@ -1,5 +1,5 @@
 {
-  "name": "spryker/spryk",
+  "name": "spryker-sdk/spryk",
   "description": "Spryker Spryk build tool",
   "license": "MIT",
   "require": {
