@@ -12,5 +12,5 @@ interface ArgumentListReaderInterface
     /**
      * @return array
      */
-    public function getCachedArgumentList(): array;
+    public function getArgumentList(): array;
 }

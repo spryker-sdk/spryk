@@ -64,7 +64,7 @@ class SprykRunConsole extends AbstractSprykConsole
     protected function getSprykArguments(): array
     {
         if (static::$argumentsList === null) {
-            static::$argumentsList = $this->getFacade()->getCachedArgumentList();
+            static::$argumentsList = $this->getFacade()->getArgumentList();
         }
 
         return static::$argumentsList;

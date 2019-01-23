@@ -42,5 +42,5 @@ interface SprykFacadeInterface
     /**
      * @return array
      */
-    public function getCachedArgumentList(): array;
+    public function getArgumentList(): array;
 }
