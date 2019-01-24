@@ -5,18 +5,18 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykTest;
+namespace SprykerSdkTest;
 
 use Codeception\Actor;
-use Spryker\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtender;
-use Spryker\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
-use Spryker\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoader;
-use Spryker\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
-use Spryker\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidator;
-use Spryker\Spryk\Model\Spryk\Definition\Argument\Argument;
-use Spryker\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
-use Spryker\Spryk\Model\Spryk\Definition\SprykDefinition;
-use Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtender;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoader;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidator;
+use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Argument;
+use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
+use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition;
+use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 
 /**
  * Inherited Methods
@@ -79,7 +79,7 @@ class SprykTester extends Actor
     /**
      * @param array $arguments
      *
-     * @return \Spryker\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
     public function getSprykDefinition(array $arguments): SprykDefinitionInterface
     {

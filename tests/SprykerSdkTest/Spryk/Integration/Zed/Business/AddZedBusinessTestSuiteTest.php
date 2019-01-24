@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace SprykerSdkTest\Spryk\Integration;
+
+use Codeception\Test\Unit;
+
+/**
+ * Auto-generated group annotations
+ * @group SprykerSdkTest
+ * @group Spryk
+ * @group Integration
+ * @group AddZedBusinessTestSuiteTest
+ * Add your own group annotations below this line
+ */
+class AddZedBusinessTestSuiteTest extends Unit
+{
+    /**
+     * @var \SprykerSdkTest\SprykIntegrationTester
+     */
+    protected $tester;
+
+    /**
+     * @return void
+     */
+    public function testAddsZedBusinessTestSuiteConfiguration(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+        ]);
+
+        static::assertDirectoryExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedBusinessTestSuiteConfigurationOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        static::assertDirectoryExists($this->tester->getProjectTestDirectory());
+    }
+}
