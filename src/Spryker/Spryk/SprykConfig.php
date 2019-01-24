@@ -22,6 +22,9 @@ class SprykConfig
     protected const NAME_DIRECTORY_GENERATED = 'generated';
     protected const NAME_FILE_ARGUMENT_LIST = 'spryk_argument_list.yml';
 
+    protected const NAME_ORGANIZATION = 'spryker-sdk';
+    protected const NAME_PACKAGE = 'spryk';
+
     /**
      * @return string[]
      */
@@ -57,7 +60,7 @@ class SprykConfig
 
         $directories = [];
         $projectSprykDirectory = realpath($this->getRootDirectory() . 'config/spryk/' . $subDirectory);
-        $sprykModuleDirectory = realpath($this->getRootDirectory() . 'vendor/spryker/spryk/config/spryk/' . $subDirectory);
+        $sprykModuleDirectory = realpath($this->getSprykCorePath() . $subDirectory);
 
         if ($projectSprykDirectory !== false) {
             $directories[] = $projectSprykDirectory . DIRECTORY_SEPARATOR;
@@ -118,18 +121,29 @@ class SprykConfig
      */
     public function getArgumentListFilePath(): string
     {
-        $generatedDirectory = $this->getRootDirectory()
-            . implode(DIRECTORY_SEPARATOR, [
-                'vendor',
-                'spryker',
-                'spryk',
-                static::NAME_DIRECTORY_GENERATED,
-            ]);
+        $generatedDirectory = $this->getSprykCorePath() . static::NAME_DIRECTORY_GENERATED;
 
         if (!file_exists($generatedDirectory)) {
             $generatedDirectory = $this->getRootDirectory() . static::NAME_DIRECTORY_GENERATED;
         }
 
         return realpath($generatedDirectory) . DIRECTORY_SEPARATOR . static::NAME_FILE_ARGUMENT_LIST;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getSprykCorePath(): string
+    {
+        $sprykRelativePath = implode(DIRECTORY_SEPARATOR, [
+            'vendor',
+            static::NAME_ORGANIZATION,
+            static::NAME_PACKAGE,
+        ]);
+
+        return $this->getRootDirectory()
+            . DIRECTORY_SEPARATOR
+            . $sprykRelativePath
+            . DIRECTORY_SEPARATOR;
     }
 }
