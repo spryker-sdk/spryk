@@ -60,7 +60,7 @@ class SprykConfig
 
         $directories = [];
         $projectSprykDirectory = realpath($this->getRootDirectory() . 'config/spryk/' . $subDirectory);
-        $sprykModuleDirectory = realpath($this->getSprykCorePath() . $subDirectory);
+        $sprykModuleDirectory = realpath($this->getSprykCorePath() . 'config/spryk/' . $subDirectory);
 
         if ($projectSprykDirectory !== false) {
             $directories[] = $projectSprykDirectory . DIRECTORY_SEPARATOR;
@@ -141,9 +141,6 @@ class SprykConfig
             static::NAME_PACKAGE,
         ]);
 
-        return $this->getRootDirectory()
-            . DIRECTORY_SEPARATOR
-            . $sprykRelativePath
-            . DIRECTORY_SEPARATOR;
+        return $this->getRootDirectory() . $sprykRelativePath . DIRECTORY_SEPARATOR;
     }
 }
