@@ -13,7 +13,7 @@ https://spryker.atlassian.net/wiki/spaces/CORE/pages/188481752/Spryks
 
 ## Installation
 
-Run `composer require --dev spryker-sdk/spryk` and The tool will be installed.
+Run `composer require --dev spryker-sdk/spryk`
 
 # What are Spryks?
 
