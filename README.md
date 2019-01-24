@@ -13,21 +13,7 @@ https://spryker.atlassian.net/wiki/spaces/CORE/pages/188481752/Spryks
 
 ## Installation
 
-Add the private repository to your project's composer.json.
-
-```
-"repositories": [
-    ...
-    {
-        "type": "git",
-        "url": "git@github.com:spryker-sdk/spryk.git"
-    }
-    ...
-],
-```
-
-Now you can run `composer require --dev spryker-sdk/spryk` and The tool will be installed.
-
+Run `composer require --dev spryker-sdk/spryk` and The tool will be installed.
 
 # What are Spryks?
 
