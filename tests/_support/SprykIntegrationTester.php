@@ -5,15 +5,15 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykTest;
+namespace SprykerSdkTest;
 
 use Codeception\Actor;
 use Codeception\Stub;
 use Codeception\Test\Unit;
-use Spryker\Spryk\Console\SprykRunConsole;
-use Spryker\Spryk\SprykConfig;
-use Spryker\Spryk\SprykFacade;
-use Spryker\Spryk\SprykFactory;
+use SprykerSdk\Spryk\Console\SprykRunConsole;
+use SprykerSdk\Spryk\SprykConfig;
+use SprykerSdk\Spryk\SprykFacade;
+use SprykerSdk\Spryk\SprykFactory;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -72,7 +72,7 @@ class SprykIntegrationTester extends Actor
     }
 
     /**
-     * @param \Spryker\Spryk\Console\SprykRunConsole $command
+     * @param \SprykerSdk\Spryk\Console\SprykRunConsole $command
      * @param string $sprykName
      *
      * @return \Symfony\Component\Console\Tester\CommandTester
@@ -124,7 +124,7 @@ class SprykIntegrationTester extends Actor
     }
 
     /**
-     * @return \Spryker\Spryk\SprykFacade
+     * @return \SprykerSdk\Spryk\SprykFacade
      */
     protected function getFacadeWithMockedConfig(): SprykFacade
     {
@@ -140,7 +140,7 @@ class SprykIntegrationTester extends Actor
     }
 
     /**
-     * @return object|\Spryker\Spryk\SprykConfig
+     * @return object|\SprykerSdk\Spryk\SprykConfig
      */
     protected function getSprykConfigMock()
     {

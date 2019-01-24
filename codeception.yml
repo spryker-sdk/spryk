@@ -1,4 +1,4 @@
-namespace: SprykTest
+namespace: SprykerSdkTest
 actor: Tester
 
 paths:
@@ -18,37 +18,37 @@ settings:
 coverage:
     enabled: true
     remote: true
-    whitelist: { include: ['src/Spryker/*.php'] }
+    whitelist: { include: ['src/SprykerSdk/*.php'] }
 
 suites:
     Spryk:
-        path: SprykTest/Spryk/Model
+        path: SprykerSdkTest/Spryk/Model
         class_name: SprykTester
         modules:
             enabled:
                 - Asserts
 
     Console:
-        path: SprykTest/Spryk/Console
+        path: SprykerSdkTest/Spryk/Console
         class_name: SprykConsoleTester
         modules:
             enabled:
                 - Asserts
-                - SprykTest\Module\AssertionModule
-                - SprykTest\Module\ConsoleEnvironmentModule
-                - SprykTest\Module\CleanUpModule:
+                - SprykerSdkTest\Module\AssertionModule
+                - SprykerSdkTest\Module\ConsoleEnvironmentModule
+                - SprykerSdkTest\Module\CleanUpModule:
                     rootDirectory: 'tests/_data/'
 
     Integration:
-        path: SprykTest/Spryk/Integration
+        path: SprykerSdkTest/Spryk/Integration
         class_name: SprykIntegrationTester
         extensions:
-            enabled: [SprykTest\Extension\MissingSprykExecutionExtension]
+            enabled: [SprykerSdkTest\Extension\MissingSprykExecutionExtension]
 
         modules:
             enabled:
                 - Asserts
-                - SprykTest\Module\AssertionModule
-                - SprykTest\Module\CleanUpModule:
+                - SprykerSdkTest\Module\AssertionModule
+                - SprykerSdkTest\Module\CleanUpModule:
                     rootDirectory: 'tests/_data/'
-                - SprykTest\Module\IntegrationModule
+                - SprykerSdkTest\Module\IntegrationModule

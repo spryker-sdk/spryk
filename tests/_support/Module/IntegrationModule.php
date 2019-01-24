@@ -5,11 +5,11 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykTest\Module;
+namespace SprykerSdkTest\Module;
 
 use Codeception\Module;
 use Codeception\Step;
-use Spryker\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
+use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 
 class IntegrationModule extends Module
 {
