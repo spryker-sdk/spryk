@@ -60,11 +60,7 @@ class SprykConfig
 
         $directories = [];
         $projectSprykDirectory = realpath($this->getRootDirectory() . 'config/spryk/' . $subDirectory);
-        $sprykModuleDirectory = realpath(
-            $this->getRootDirectory()
-            . $this->getSprykCorePath()
-            . $subDirectory
-        );
+        $sprykModuleDirectory = realpath($this->getSprykCorePath() . $subDirectory);
 
         if ($projectSprykDirectory !== false) {
             $directories[] = $projectSprykDirectory . DIRECTORY_SEPARATOR;
