@@ -121,7 +121,7 @@ class SprykConfig
      */
     public function getArgumentListFilePath(): string
     {
-        $generatedDirectory = $this->getSprykCorePath() . DIRECTORY_SEPARATOR . static::NAME_DIRECTORY_GENERATED;
+        $generatedDirectory = $this->getSprykCorePath() . static::NAME_DIRECTORY_GENERATED;
 
         if (!file_exists($generatedDirectory)) {
             $generatedDirectory = $this->getRootDirectory() . static::NAME_DIRECTORY_GENERATED;
