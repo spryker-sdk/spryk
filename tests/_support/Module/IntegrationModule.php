@@ -19,13 +19,6 @@ class IntegrationModule extends Module
     protected static $executedSpryks = [];
 
     /**
-     * @var array
-     */
-    protected $config = [
-        'developmentMode' => 'core',
-    ];
-
-    /**
      * @param string $spryk
      *
      * @return $this
@@ -53,13 +46,5 @@ class IntegrationModule extends Module
     public function _afterStep(Step $step): void
     {
         OptionsContainer::clearOptions();
-    }
-
-    /**
-     * @return string
-     */
-    public function getDevelopmentMode(): string
-    {
-        return $this->config['developmentMode'];
     }
 }
