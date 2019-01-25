@@ -54,6 +54,8 @@ class SprykIntegrationTester extends Actor
             SprykRunConsole::ARGUMENT_SPRYK => $sprykName,
         ];
 
+        $arguments = $this->addDevelopmentModeFromConfig($arguments);
+
         $tester->execute($arguments, ['interactive' => false]);
     }
 
@@ -177,5 +179,21 @@ class SprykIntegrationTester extends Actor
     protected function getRootDirectory(): string
     {
         return realpath(__DIR__ . '/../../');
+    }
+
+    /**
+     * @param array $arguments
+     *
+     * @return array
+     */
+    protected function addDevelopmentModeFromConfig(array $arguments): array
+    {
+        if (isset($arguments['--mode'])) {
+            return $arguments;
+        }
+
+        $arguments['--mode'] = $this->getDevelopmentMode();
+
+        return $arguments;
     }
 }
