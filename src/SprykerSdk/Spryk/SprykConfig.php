@@ -133,6 +133,14 @@ class SprykConfig
     /**
      * @return string
      */
+    public function getDefaultDevelopmentMode(): string
+    {
+        return static::NAME_DEVELOPMENT_LAYER_PROJECT;
+    }
+
+    /**
+     * @return string
+     */
     protected function getSprykCorePath(): string
     {
         $sprykRelativePath = implode(DIRECTORY_SEPARATOR, [

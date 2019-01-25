@@ -16,8 +16,6 @@ use Symfony\Component\Yaml\Yaml;
 
 class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
 {
-    protected const NAME_MODE_DEFAULT = 'core';
-
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinderInterface
      */
@@ -39,21 +37,29 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
     protected $configurationValidator;
 
     /**
+     * @var string
+     */
+    protected $defaultDevelopmentMode;
+
+    /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinderInterface $configurationFinder
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMergerInterface $configurationMerger
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface $configurationExtender
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidatorInterface $configurationValidator
+     * @param string $defaultDevelopmentMode
      */
     public function __construct(
         SprykConfigurationFinderInterface $configurationFinder,
         SprykConfigurationMergerInterface $configurationMerger,
         SprykConfigurationExtenderInterface $configurationExtender,
-        ConfigurationValidatorInterface $configurationValidator
+        ConfigurationValidatorInterface $configurationValidator,
+        string $defaultDevelopmentMode
     ) {
         $this->configurationFinder = $configurationFinder;
         $this->configurationMerger = $configurationMerger;
         $this->configurationExtender = $configurationExtender;
         $this->configurationValidator = $configurationValidator;
+        $this->defaultDevelopmentMode = $defaultDevelopmentMode;
     }
 
     /**
@@ -102,10 +108,8 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
      */
     protected function buildMode(array $sprykConfiguration, ?string $sprykMode = null): array
     {
-        $defaultMode = static::NAME_MODE_DEFAULT;
-
         if (!isset($sprykConfiguration['mode'])) {
-            $sprykConfiguration['mode'] = $defaultMode;
+            $sprykConfiguration['mode'] = $this->defaultDevelopmentMode;
         }
 
         if ($sprykMode !== null && $sprykConfiguration['mode'] === 'both') {
