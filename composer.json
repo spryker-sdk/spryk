@@ -1,5 +1,6 @@
 {
   "name": "spryker-sdk/spryk",
+  "type": "library",
   "description": "Spryk module",
   "license": "proprietary",
   "require": {
