@@ -1,6 +1,6 @@
 {
   "name": "spryker-sdk/spryk",
-  "description": "Spryker Spryk build tool",
+  "description": "Spryk module",
   "license": "MIT",
   "require": {
     "php": ">=7.1",
