@@ -26,9 +26,9 @@ class SprykDumpConsole extends AbstractSprykConsole
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      *
-     * @return void
+     * @return int|null
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
         $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
         $sprykDefinitions = $this->formatForTable($sprykDefinitions);
@@ -40,6 +40,8 @@ class SprykDumpConsole extends AbstractSprykConsole
             ->setHeaders(['Spryk name', 'Description'])
             ->setRows($sprykDefinitions);
         $table->render();
+
+        return null;
     }
 
     /**

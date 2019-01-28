@@ -99,7 +99,7 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @param array $config
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     * @return $this
      */
     public function setConfig(array $config): SprykDefinitionInterface
     {
