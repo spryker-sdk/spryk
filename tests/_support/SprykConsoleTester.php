@@ -89,6 +89,9 @@ class SprykConsoleTester extends Actor
             'getTemplateDirectories' => function () {
                 return [$this->getRootDirectory() . 'config/spryk/templates/'];
             },
+            'getDefaultDevelopmentMode' => function () {
+                return $this->getDevelopmentMode();
+            },
         ]);
 
         return $sprykConfig;
