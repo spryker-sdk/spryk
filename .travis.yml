@@ -21,9 +21,7 @@ matrix:
     fast_finish: true
 
 before_script:
-  - composer install
   - phpenv config-add ci/travis.php.ini
-  - composer remove --dev spryker/git-hook
   - if [[ $PREFER_LOWEST != 1 ]]; then composer update --no-interaction; fi;
   - if [[ $PREFER_LOWEST == 1 ]]; then composer update --prefer-lowest --no-interaction --prefer-dist --prefer-stable ; fi;
 
