@@ -1,7 +1,8 @@
 {
   "name": "spryker-sdk/spryk",
-  "description": "Spryker Spryk build tool",
-  "license": "MIT",
+  "type": "library",
+  "description": "Spryk module",
+  "license": "proprietary",
   "require": {
     "php": ">=7.1",
     "twig/twig": "^1.34 || ^2.0.0",
