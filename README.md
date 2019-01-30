@@ -14,6 +14,51 @@ https://spryker.atlassian.net/wiki/spaces/CORE/pages/188481752/Spryks
 
 Run `composer require --dev spryker-sdk/spryk`
 
+## How to use Spryks?
+
+Currently we support two ways to work with Spryks.
+
+1. Console based.
+2. Ui based.
+
+### Spryk Console
+
+The console tool for working with Spryks is written with Symfony's Console component. To work with the Spryk Console you need to add it to your `ConsoleDependencyProvider`:
+
+```
+namespace Pyz\Zed\Console;
+
+use SprykerSdk\Spryk\Console\SprykDumpConsole;
+use SprykerSdk\Spryk\Console\SprykRunConsole;
+ 
+class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
+{
+    protected function getConsoleCommands(Container $container)
+    {
+        if (Environment::isDevelopment()) {
+            $commands[] = new SprykRunConsole();
+            $commands[] = new SprykDumpConsole();
+        }
+        ...
+ 
+    }
+}
+```
+
+Currently available commands are `SprykDumpConsole` and `SprykRunConsole`. 
+
+To get a list of all available spryks run `vendor/bin/console spryk:dump`. 
+To execute one Spryk run `vendor/bin/console spryk:run {SPRYK NAME}`.
+
+When you run a Spryk, the console will ask you for all needed arguments to build the Spryk. You also have the ability to pass all known arguments on the console by using `--{argument name}={argument value}`.
+
+
+### SprykGui
+
+We also provide a [UI](https://github.com/spryker/spryk-gui) built inside the Zed application to use Spryks UI based. For the UI you need to run `composer require --dev spryker-sdk/spryk-gui`
+
+When the SprykGui module is installed you can navigation to it inside Zed. The first page you see contains a list of all available Spryks. After you clicked on of the Spryks a form will be displayed and will give you the ability to enter all argument values the Spryk needs to run.
+
 # What are Spryks?
 
 Spryks are some sort of code generators for Spryker. Writing code is often a very repetitive task and you often need to write a lot code just to follow Spryker's clean and complex architecture.
@@ -44,32 +89,6 @@ A structure Spryk creates directory structure you define. The CreateSprykerModul
 The method Spryk is able to add methods to a specified target e.g. `Spryker\Zed\FooBar\Business\FooBarFacade` it needs some more arguments to fullfill the task as the prior mentioned Spryks. 
 
 To get an idea what your Spryk needs take a look into the already existing Spryks.  
-
-## How to use Spryks?
-
-Currently we support two ways to work with Spryks.
-
-1. Console based.
-2. Ui based.
-
-### Spryk Console
-
-The console tool for working with Spryks is written with Symfony's Console component. To work with the Spryk Console you need to add it to your `ConsoleDependencyProvider`.
-
-Currently available commands are `SprykDumpConsole` and `SprykRunConsole`. 
-
-To get a list of all available spryks run `vendor/bin/console spryk:dump`. 
-To execute one Spryk run `vendor/bin/console spryk:run {SPRYK NAME}`.
-
-When you run a Spryk, the console will ask you for all needed arguments to build the Spryk. You also have the ability to pass all known arguments on the console by using `--{argument name}={argument value}`.
-
-
-### SprykGui
-
-We also provide a [UI](https://github.com/spryker/spryk-gui) built inside the Zed application to use Spryks UI based. For the UI you need to run `composer require --dev spryker-sdk/spryk-gui`
-
-When the SprykGui module is installed you can navigation to it inside Zed. The first page you see contains a list of all available Spryks. After you clicked on of the Spryks a form will be displayed and will give you the ability to enter all argument values the Spryk needs to run.
-
 
 # How to create a Spryk?
 
