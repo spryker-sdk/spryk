@@ -5,7 +5,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/spryker/spryk/badge.svg?branch=master&t=2ga4h9)](https://coveralls.io/github/spryker/spryk?branch=master)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
-[![PHPStan](https://img.shields.io/badge/PHPStan-L7-green.svg)](https://github.com/phpstan/phpstan)
 
 ## Documentation
 
@@ -67,7 +66,7 @@ When you run a Spryk, the console will ask you for all needed arguments to build
 
 ### SprykGui
 
-We also provide a UI build inside the Zed application to build Spryks UI based. For the UI you need to run `composer require --dev spryker-sdk/spryk-gui`
+We also provide a [UI](https://github.com/spryker/spryk-gui) built inside the Zed application to use Spryks UI based. For the UI you need to run `composer require --dev spryker-sdk/spryk-gui`
 
 When the SprykGui module is installed you can navigation to it inside Zed. The first page you see contains a list of all available Spryks. After you clicked on of the Spryks a form will be displayed and will give you the ability to enter all argument values the Spryk needs to run.
 
@@ -83,6 +82,3 @@ When this is done run the Integration tests with `vendor/bin/codecept run Integr
 You need to add your Spryk definition file into `vendor/spryker-sdk/spryk/config/spryk/spryks` when you added your new Spryk definition file re-run the tests. Now it dependends on the spryk type you choosed for your Spryk definition what comes next.
 
 If you selected the template Spryk you will most likely see the error that the defined template file could not be found. In this case you need to add your template to `vendor/spryker-sdk/spryk/config/spryk/templates` when this is done re-run your tests. Now you should see a green test.
-
-   
-
