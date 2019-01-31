@@ -204,7 +204,7 @@ class MethodSpryk implements SprykBuilderInterface
     protected function getReflection(SprykDefinitionInterface $sprykDefinition)
     {
         $betterReflection = new BetterReflection();
-
+//dd($sprykDefinition);
         return $betterReflection->classReflector()->reflect($this->getTargetArgument($sprykDefinition));
     }
 

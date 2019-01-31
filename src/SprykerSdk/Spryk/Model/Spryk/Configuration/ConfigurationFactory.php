@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\ApplicationLayerExtender;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\ArgumentInheritanceExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DevelopmentLayerExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DirectoriesExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\OrganizationExtender;
@@ -105,6 +106,7 @@ class ConfigurationFactory
             $this->createOrganizationExtender(),
             $this->createDirectoriesExtender(),
             $this->createApplicationLayerExtender(),
+            $this->createArgumentInheritanceExtender(),
         ];
     }
 
@@ -156,6 +158,14 @@ class ConfigurationFactory
     protected function createDevelopmentLayerExtender(): SprykConfigurationExtenderInterface
     {
         return new DevelopmentLayerExtender($this->config);
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface
+     */
+    protected function createArgumentInheritanceExtender(): SprykConfigurationExtenderInterface
+    {
+        return new ArgumentInheritanceExtender($this->config);
     }
 
     /**
