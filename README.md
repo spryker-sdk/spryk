@@ -29,6 +29,7 @@ The console tool for working with Spryks is written with Symfony's Console compo
 namespace Pyz\Zed\Console;
 
 use SprykerSdk\Spryk\Console\SprykDumpConsole;
+use SprykerSdk\Spryk\Console\SprykBuildConsole;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
  
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
@@ -37,6 +38,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         if (Environment::isDevelopment()) {
             $commands[] = new SprykRunConsole();
+            $commands[] = new SprykBuildConsole();
             $commands[] = new SprykDumpConsole();
         }
         ...
@@ -49,6 +51,7 @@ Currently available commands are `SprykDumpConsole` and `SprykRunConsole`.
 
 To get a list of all available spryks run `vendor/bin/console spryk:dump`. 
 To execute one Spryk run `vendor/bin/console spryk:run {SPRYK NAME}`.
+To optimize searching of configurations run `vendor/bin/console spryk:build`.
 
 When you run a Spryk, the console will ask you for all needed arguments to build the Spryk. You also have the ability to pass all known arguments on the console by using `--{argument name}={argument value}`.
 
