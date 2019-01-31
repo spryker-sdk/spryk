@@ -54,7 +54,7 @@ When you run a Spryk, the console will ask you for all needed arguments to build
 
 ### SprykGui
 
-We also provide a [UI](https://github.com/spryker/spryk-gui) built inside the Zed application to use Spryks UI based. For the UI you need to run `composer require --dev spryker-sdk/spryk-gui`
+We also provide a [UI](https://github.com/spryker-sdk/spryk-gui) built inside the Zed application to use Spryks UI based. For the UI you need to run `composer require --dev spryker-sdk/spryk-gui`
 
 When the SprykGui module is installed you can navigation to it inside Zed. The first page you see contains a list of all available Spryks. After you clicked on of the Spryks a form will be displayed and will give you the ability to enter all argument values the Spryk needs to run.
 
