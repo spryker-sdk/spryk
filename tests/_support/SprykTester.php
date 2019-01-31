@@ -70,7 +70,8 @@ class SprykTester extends Actor
             $configurationFinder,
             $configurationMerger,
             new SprykConfigurationExtender([]),
-            new ConfigurationValidator([])
+            new ConfigurationValidator([]),
+            $this->getDevelopmentMode()
         );
 
         return $configurationLoader->loadSpryk('SprykDefinition');

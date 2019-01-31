@@ -43,4 +43,12 @@ interface SprykFacadeInterface
      * @return array
      */
     public function getArgumentList(): array;
+
+    /**
+     * @param string $sprykName
+     * @param string|null $sprykMode
+     *
+     * @return array
+     */
+    public function getSprykDefinition(string $sprykName, ?string $sprykMode = null): array;
 }
