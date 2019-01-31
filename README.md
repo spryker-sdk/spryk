@@ -6,10 +6,6 @@
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 
-## Documentation
-
-https://spryker.atlassian.net/wiki/spaces/CORE/pages/188481752/Spryks
-
 ## Installation
 
 Run `composer require --dev spryker-sdk/spryk`
