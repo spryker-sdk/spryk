@@ -25,6 +25,11 @@ class SprykConfig
     protected const NAME_ORGANIZATION = 'spryker-sdk';
     protected const NAME_PACKAGE = 'spryk';
 
+    protected const KEY_SPRYK_NOT_INHERITABLE_NAMES = 'sprykNames';
+    protected const KEY_SPRYK_NOT_INHERITABLE_TYPES = 'sprykTypes';
+    protected const KEY_SPRYK_NOT_INHERITABLE_DEFAULT = 'default';
+    protected const TOKEN_SPRYK_NOT_INHERITABLE_ARGUMENT_ALL = '*';
+
     /**
      * @return string[]
      */
@@ -150,5 +155,47 @@ class SprykConfig
         ]);
 
         return $this->getRootDirectory() . $sprykRelativePath . DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * @return array
+     */
+    public function getNotInheritableArgumentList(): array
+    {
+        return [
+            static::KEY_SPRYK_NOT_INHERITABLE_NAMES => [
+                'AddModule' => [
+                    'className',
+                    'subDirectory',
+                ],
+            ],
+            static::KEY_SPRYK_NOT_INHERITABLE_TYPES => [
+                'method' => [
+                    'targetPath',
+                    'className',
+                    'subDirectory',
+                ],
+                'schema' => [
+                    'targetPath',
+                    'className',
+                    'subDirectory',
+                ],
+                'bridgeMethods' => [
+                    'targetPath',
+                    'className',
+                    'subDirectory',
+                ],
+                'update-yml' => [
+                    'targetPath',
+                    'className',
+                    'subDirectory',
+                ],
+            ],
+            static::KEY_SPRYK_NOT_INHERITABLE_DEFAULT => [
+                'targetPath',
+                'className',
+                'subDirectory',
+            ],
+        ];
     }
 }

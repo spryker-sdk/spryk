@@ -78,6 +78,7 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
         $this->configurationValidate($sprykConfiguration);
 
         $sprykConfiguration = $this->configurationMerger->merge($sprykConfiguration);
+        $sprykConfiguration['sprykName'] = $sprykName;
 
         return $this->configurationExtender->extend($sprykConfiguration);
     }

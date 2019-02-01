@@ -145,11 +145,9 @@ class ArgumentResolver implements ArgumentResolverInterface
      */
     protected function canInherit(string $argumentName, array $argumentDefinition): bool
     {
-        if (!isset($argumentDefinition['inherit'])) {
-            return false;
-        }
+        $sprykArgumentInherit = $argumentDefinition['inherit'] ?? true;
 
-        return (bool)$argumentDefinition['inherit'] && $this->resolvedArgumentCollection->hasArgument($argumentName);
+        return (bool)$sprykArgumentInherit && $this->resolvedArgumentCollection->hasArgument($argumentName);
     }
 
     /**
