@@ -10,6 +10,7 @@ namespace SprykerSdk\Spryk\Console;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 use SprykerSdk\Spryk\Style\SprykStyle;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
+use Symfony\Component\Console\Command\HelpCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -22,6 +23,8 @@ class SprykRunConsole extends AbstractSprykConsole
 
     public const OPTION_INCLUDE_OPTIONALS = 'include-optional';
     public const OPTION_INCLUDE_OPTIONALS_SHORT = 'i';
+
+    public const OPTION_SPRYK_HELP = 'spryk-help';
 
     /**
      * @var array|null
@@ -46,7 +49,8 @@ class SprykRunConsole extends AbstractSprykConsole
         $this->setName('spryk:run')
             ->setDescription('Runs a Spryk build process.')
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
-            ->addOption(static::OPTION_INCLUDE_OPTIONALS, static::OPTION_INCLUDE_OPTIONALS_SHORT, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Name(s) of the Spryks which are marked as optional but should be build.');
+            ->addOption(static::OPTION_INCLUDE_OPTIONALS, static::OPTION_INCLUDE_OPTIONALS_SHORT, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Name(s) of the Spryks which are marked as optional but should be build.')
+            ->addOption(static::OPTION_SPRYK_HELP, null, InputOption::VALUE_NONE);
 
         foreach ($this->getSprykArguments() as $argumentDefinition) {
             $this->addOption(
@@ -81,6 +85,12 @@ class SprykRunConsole extends AbstractSprykConsole
         $this->input = $input;
         $this->output = $this->createOutput($input, $output);
 
+        if ($input->getOption(static::OPTION_SPRYK_HELP)) {
+            $this->getSprykHelp($input);
+
+            return;
+        }
+
         OptionsContainer::setOptions($input->getOptions());
 
         $sprykName = $this->getSprykName($input);
@@ -113,5 +123,29 @@ class SprykRunConsole extends AbstractSprykConsole
     protected function getSprykName(InputInterface $input): string
     {
         return current((array)$input->getArgument(static::ARGUMENT_SPRYK));
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     *
+     * @return void
+     */
+    protected function getSprykHelp(InputInterface $input): void
+    {
+        $sprykArgument = $input->getArgument(static::ARGUMENT_SPRYK);
+        $this->output->report('Spryk `' . $sprykArgument . '` Argument list:');
+
+
+        $allOptions = $input->getOptions();
+        $allOptions = array_keys($allOptions);
+
+        $sprykArgumentPattern = '/' . $sprykArgument . '\./';
+        $sprykArguments = preg_grep($sprykArgumentPattern, $allOptions);
+
+        foreach ($sprykArguments as $sprykArgument) {
+            $sprykArgument = preg_replace($sprykArgumentPattern, '', $sprykArgument);
+
+            $this->output->report(' - ' . $sprykArgument);
+        }
     }
 }
