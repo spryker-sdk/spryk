@@ -13,6 +13,7 @@ arguments:
     default: Spryker
 
   dependentModule:
+    inherit: true
     moduleFilter:
       application: Service
 

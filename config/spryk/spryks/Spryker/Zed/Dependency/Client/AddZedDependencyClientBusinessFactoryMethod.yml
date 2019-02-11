@@ -9,6 +9,7 @@ arguments:
       application: Zed
 
   dependentModule:
+    inherit: true
     moduleFilter:
       application: Client
 
