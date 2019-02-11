@@ -11,6 +11,7 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use SprykerSdk\Spryk\SprykConfig;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class SprykExecutor implements SprykExecutorInterface
@@ -31,9 +32,9 @@ class SprykExecutor implements SprykExecutorInterface
     protected $executedSpryks = [];
 
     /**
-     * @var string[]
+     * @var array
      */
-    protected $includeOptionalSubSpryks = [];
+    protected $options = [];
 
     /**
      * @var string
@@ -52,15 +53,15 @@ class SprykExecutor implements SprykExecutorInterface
 
     /**
      * @param string $sprykName
-     * @param string[] $includeOptionalSubSpryks
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
+     * @param array $options
      *
      * @return void
      */
-    public function execute(string $sprykName, array $includeOptionalSubSpryks, SprykStyleInterface $style): void
+    public function execute(string $sprykName, SprykStyleInterface $style, array $options): void
     {
         $this->definitionBuilder->setStyle($style);
-        $this->includeOptionalSubSpryks = $includeOptionalSubSpryks;
+        $this->options = $options;
 
         $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
 
@@ -187,7 +188,7 @@ class SprykExecutor implements SprykExecutorInterface
             return false;
         }
 
-        if (isset($sprykDefinition->getConfig()['isOptional']) && !in_array($sprykDefinition->getSprykName(), $this->includeOptionalSubSpryks, true)) {
+        if (isset($sprykDefinition->getConfig()['isOptional']) && !in_array($sprykDefinition->getSprykName(), $this->options[SprykConfig::OPTION_INCLUDE_OPTIONALS], true)) {
             return false;
         }
 

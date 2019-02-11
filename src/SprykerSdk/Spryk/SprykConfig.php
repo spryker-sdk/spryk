@@ -25,6 +25,8 @@ class SprykConfig
     protected const NAME_ORGANIZATION = 'spryker-sdk';
     protected const NAME_PACKAGE = 'spryk';
 
+    public const OPTION_INCLUDE_OPTIONALS = 'include-optional';
+
     /**
      * @return string[]
      */
