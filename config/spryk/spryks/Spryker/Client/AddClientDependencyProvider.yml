@@ -3,9 +3,11 @@ description: "Adds a new *Module*ClientDependencyProvider to the Client applicat
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:

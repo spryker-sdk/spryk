@@ -4,6 +4,7 @@ mode: both
 
 arguments:
   module:
+    inherit: true
     moduleFilter:
       application: Zed
 
@@ -12,6 +13,7 @@ arguments:
       application: Client
 
   organization:
+    inherit: true
     default: Spryker
 
   name: ~

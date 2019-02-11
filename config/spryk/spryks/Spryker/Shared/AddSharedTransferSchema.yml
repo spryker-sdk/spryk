@@ -3,9 +3,11 @@ description: "Adds a new *module*.transfer.xml to the Shared application."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:

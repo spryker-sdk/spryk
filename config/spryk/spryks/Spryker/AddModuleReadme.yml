@@ -3,9 +3,11 @@ description: "Adds a new README.md to the Modules root."
 mode: core
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:

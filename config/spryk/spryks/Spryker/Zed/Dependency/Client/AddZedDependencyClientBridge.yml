@@ -8,6 +8,7 @@ arguments:
       application: Zed
 
   organization:
+    inherit: true
     default: Spryker
 
   dependentModule:

@@ -3,9 +3,11 @@ description: "Adds a new *module*FacadeInterface to the Zed application."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:

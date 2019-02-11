@@ -3,9 +3,11 @@ description: "Add the Zed *module* test suite configuration without any suite."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:

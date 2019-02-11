@@ -7,9 +7,11 @@ config:
 
 arguments:
 
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   controller:

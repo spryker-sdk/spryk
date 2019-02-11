@@ -3,9 +3,11 @@ description: "Adds a new *module*To*dependentModule*ClientBridge."
 mode: core
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   dependentModule: ~

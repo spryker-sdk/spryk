@@ -3,11 +3,13 @@ description: "Adds a new table to the spy_*targetModule*.schema.xml."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
   targetModule: ~
   tableName: ~
 
   organization:
+    inherit: true
     default: Spryker
 
   targetPath:

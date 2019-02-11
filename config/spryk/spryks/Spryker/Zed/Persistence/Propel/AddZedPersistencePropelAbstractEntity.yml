@@ -3,11 +3,13 @@ description: "Adds a new Abstract*tableName* class to Zed's persistence layer."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
   targetModule: ~
   tableName: ~
 
   organization:
+    inherit: true
     default: Spryker
 
   template:

@@ -4,10 +4,12 @@ mode: core
 
 arguments:
   module:
+    inherit: true
     moduleFilter:
       application: Zed
 
   organization:
+    inherit: true
     default: Spryker
 
   dependentModule:

@@ -12,6 +12,7 @@ arguments:
       application: Service
 
   organization:
+    inherit: true
     default: Spryker
 
   method:

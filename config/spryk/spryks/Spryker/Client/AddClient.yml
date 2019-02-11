@@ -4,9 +4,11 @@ priority: 1
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:

@@ -3,10 +3,12 @@ description: "Adds a new spy_*targetModule*.schema.xml to the Zed application."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
   targetModule: ~
 
   organization:
+    inherit: true
     default: Spryker
 
   template:

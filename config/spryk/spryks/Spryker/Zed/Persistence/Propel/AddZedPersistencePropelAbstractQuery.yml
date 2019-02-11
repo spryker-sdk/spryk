@@ -3,11 +3,13 @@ description: "Adds a new Abstract*tableName*Query class to Zed's persistence lay
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
   targetModule: ~
   tableName: ~
 
   organization:
+    inherit: true
     default: Spryker
 
   template:
