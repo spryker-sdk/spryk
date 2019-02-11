@@ -14,7 +14,7 @@ arguments:
     value: LICENSE.twig
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule

@@ -22,7 +22,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ServiceInterface.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Service/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Service/"
 
 preSpryks:
   - AddZedDependencyServiceBridge

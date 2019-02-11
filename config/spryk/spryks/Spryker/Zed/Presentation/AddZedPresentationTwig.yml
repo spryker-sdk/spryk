@@ -30,7 +30,7 @@ arguments:
     value: "{{ method | removeActionSuffix | dasherize | lcfirst }}.twig"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"
 
 preSpryks:
   - AddZedCommunicationControllerAction

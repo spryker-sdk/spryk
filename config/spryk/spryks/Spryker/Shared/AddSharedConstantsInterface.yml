@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}Constants.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/"
+    value: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/"
 
 preSpryks:
   - AddModule

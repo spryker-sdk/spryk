@@ -17,7 +17,7 @@ arguments:
     value: "{{ module | underscored }}.transfer.xml"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/Transfer/"
+    value: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/Transfer/"
 
 preSpryks:
   - AddModule

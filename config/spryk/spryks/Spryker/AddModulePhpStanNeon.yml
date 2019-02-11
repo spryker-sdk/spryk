@@ -14,7 +14,7 @@ arguments:
     value: phpstan.neon.twig
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule

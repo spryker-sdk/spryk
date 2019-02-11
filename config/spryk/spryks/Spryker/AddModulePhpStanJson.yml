@@ -14,7 +14,7 @@ arguments:
     value: phpstan.json.twig
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule

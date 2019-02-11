@@ -17,7 +17,7 @@ arguments:
     value: .scrutinizer.yml
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule

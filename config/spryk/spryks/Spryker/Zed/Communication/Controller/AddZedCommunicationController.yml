@@ -22,7 +22,7 @@ arguments:
     value: "{{ controller | classNameShort | ensureControllerSuffix }}.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
 
 preSpryks:
   - AddModule

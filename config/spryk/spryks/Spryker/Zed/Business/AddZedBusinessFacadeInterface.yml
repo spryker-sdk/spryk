@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}FacadeInterface.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
   - AddZedBusinessFacade

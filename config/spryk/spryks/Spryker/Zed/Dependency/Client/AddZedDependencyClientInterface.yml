@@ -23,7 +23,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Client/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Client/"
 
 preSpryks:
   - AddZedDependencyClientBridge

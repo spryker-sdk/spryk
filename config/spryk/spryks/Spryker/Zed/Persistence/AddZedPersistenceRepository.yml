@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}Repository.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
 
 preSpryks:
   - AddModule

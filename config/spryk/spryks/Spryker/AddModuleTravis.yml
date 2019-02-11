@@ -17,7 +17,7 @@ arguments:
     value: .travis.yml
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule

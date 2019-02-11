@@ -14,7 +14,7 @@ arguments:
     value: CONTRIBUTING.md.twig
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule

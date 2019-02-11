@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}Factory.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
+    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
 
 preSpryks:
   - AddModule

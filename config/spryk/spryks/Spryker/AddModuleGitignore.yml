@@ -17,7 +17,7 @@ arguments:
     value: .gitignore
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule

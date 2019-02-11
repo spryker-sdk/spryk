@@ -23,7 +23,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ServiceBridge.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
+    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
 
 preSpryks:
   - AddModule

@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
   directories:
     value:

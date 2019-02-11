@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}ClientInterface.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
+    value: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
   - AddClient

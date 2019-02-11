@@ -19,7 +19,7 @@ arguments:
       value: .coveralls.yml
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule
