@@ -98,6 +98,11 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
             $sprykConfiguration = $this->loadConfig($sprykName);
 
             $arguments = $this->mergeArguments($sprykConfiguration[static::ARGUMENTS], $preDefinedDefinition);
+
+            if ($this->mode === null && isset($arguments['mode']['value'])) {
+                $this->mode = $arguments['mode']['value'];
+            }
+
             $argumentCollection = $this->argumentResolver->resolve($arguments, $sprykName, $this->style);
 
             $sprykDefinition = $this->createDefinition($sprykName, $sprykConfiguration[static::SPRYK_BUILDER_NAME]);
@@ -274,7 +279,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
         $argumentCollection = $this->argumentResolver->resolve([
             static::NAME_SPRYK_CONFIG_MODE => [
-                'default' => $this->defaultDevelopmentMode,
+                'default' => $this->mode,
             ],
         ], $sprykName, $this->style);
 
