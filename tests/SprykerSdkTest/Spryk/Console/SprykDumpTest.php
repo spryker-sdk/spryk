@@ -30,7 +30,7 @@ class SprykDumpTest extends Unit
      */
     public function testDumpsAllSpryks()
     {
-        $command = new SprykDumpConsole();
+        $command = $this->createSprykDumpConsole();
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
@@ -40,6 +40,33 @@ class SprykDumpTest extends Unit
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();
-        static::assertRegExp('/List of all Spryk definitions/', $output);
+        $this->assertRegExp('/List of all Spryk definitions/', $output);
+    }
+
+    /**
+     * @return void
+     */
+    public function testDumpsSpecficSpryk()
+    {
+        $command = $this->createSprykDumpConsole();
+        $tester = $this->tester->getConsoleTester($command);
+
+        $arguments = [
+            'command' => $command->getName(),
+            SprykDumpConsole::ARGUMENT_SPRYK => 'AddModule',
+        ];
+
+        $tester->execute($arguments);
+
+        $output = $tester->getDisplay();
+        $this->assertRegExp('/List of all "AddModule" options/', $output);
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Console\SprykDumpConsole
+     */
+    protected function createSprykDumpConsole(): SprykDumpConsole
+    {
+        return new SprykDumpConsole();
     }
 }
