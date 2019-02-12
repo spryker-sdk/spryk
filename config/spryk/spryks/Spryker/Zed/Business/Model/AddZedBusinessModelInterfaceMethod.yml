@@ -13,9 +13,15 @@ arguments:
 
   className: ~
 
-  method: ~
-  input: ~
-  output: ~
+  method:
+    inherit: true
+
+  input:
+    inherit: true
+
+  output:
+    inherit: true
+
 
   template:
     value: Common/InterfaceMethod.php.twig
