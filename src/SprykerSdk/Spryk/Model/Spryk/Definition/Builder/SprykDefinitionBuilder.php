@@ -279,7 +279,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
         $argumentCollection = $this->argumentResolver->resolve([
             static::NAME_SPRYK_CONFIG_MODE => [
-                'default' => $this->mode,
+                'default' => $this->mode ?? $this->defaultDevelopmentMode,
             ],
         ], $sprykName, $this->style);
 
