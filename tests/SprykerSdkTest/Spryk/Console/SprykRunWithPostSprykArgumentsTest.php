@@ -36,7 +36,7 @@ class SprykRunWithPostSprykArgumentsTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'SprykWithPredefinedArgumentsSubSpryk',
-            '-i' => ['TemplateWithoutInteraction'],
+            '--' . SprykRunConsole::OPTION_INCLUDE_OPTIONALS => ['TemplateWithoutInteraction'],
         ];
 
         $tester->execute($arguments);

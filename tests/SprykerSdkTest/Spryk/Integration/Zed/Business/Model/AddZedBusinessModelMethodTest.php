@@ -68,7 +68,7 @@ class AddZedBusinessModelMethodTest extends Unit
             '--method' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
-            '-i' => [
+            '--include-optional' => [
                 'AddZedBusinessFacadeMethod',
             ],
         ]);
@@ -88,7 +88,7 @@ class AddZedBusinessModelMethodTest extends Unit
             '--method' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
-            '-i' => [
+            '--include-optional' => [
                 'AddZedBusinessFacadeMethod',
             ],
             '--mode' => 'project',
@@ -110,7 +110,7 @@ class AddZedBusinessModelMethodTest extends Unit
             '--facadeMethod' => 'addSomethingDifferent',
             '--input' => 'string $foo',
             '--output' => 'bool',
-            '-i' => [
+            '--include-optional' => [
                 'AddZedBusinessFacadeMethod',
             ],
         ]);
@@ -131,7 +131,7 @@ class AddZedBusinessModelMethodTest extends Unit
             '--facadeMethod' => 'addSomethingDifferent',
             '--input' => 'string $foo',
             '--output' => 'bool',
-            '-i' => [
+            '--include-optional' => [
                 'AddZedBusinessFacadeMethod',
             ],
             '--mode' => 'project',
