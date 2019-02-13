@@ -38,45 +38,66 @@ class SprykDumpConsole extends AbstractSprykConsole
      */
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
-        $spryk = current((array)$input->getArgument(static::ARGUMENT_SPRYK));
-        if ($spryk !== false) {
-            $sprykDefinition = $this->getFacade()->getSprykDefinition($spryk);
-            $tableRows = $this->formatOptionsTable($sprykDefinition['arguments']);
-            $output->writeln(
-                (new FormatterHelper())
-                    ->formatBlock(sprintf('List of all "%s" options:', $spryk), 'info')
-            );
-
-            $this->printTable($output, $tableRows, ['Option']);
-
-            $optionalSpryks = $this->getOptionalSpryks($sprykDefinition);
-            if ($optionalSpryks === []) {
-                $output->writeln(
-                    (new FormatterHelper())
-                        ->formatBlock('Optional Spryks:', 'info')
-                );
-
-                $this->printTable($output, $optionalSpryks, ['Spryk']);
-            }
+        $sprykName = current((array)$input->getArgument(static::ARGUMENT_SPRYK));
+        if ($sprykName !== false) {
+            $this->dumpSprykOptions($output, $sprykName);
 
             return;
         }
 
-        $sprykDefinition = $this->getFacade()->getSprykDefinitions();
-        $sprykDefinition = $this->formatSpryksTable($sprykDefinition);
-
-        $output->writeln('List of all Spryk definitions:');
-        $this->printTable($output, $sprykDefinition, ['Spryk name', 'Description']);
+        $this->dumpAllSpryks($output);
     }
 
     /**
      * @param \Symfony\Component\Console\Output\OutputInterface $output
-     * @param array $tableContent
-     * @param array $header
      *
      * @return void
      */
-    protected function printTable(OutputInterface $output, array $tableContent, array $header): void
+    protected function dumpAllSpryks(OutputInterface $output): void
+    {
+        $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
+        $sprykDefinitions = $this->formatSpryksTable($sprykDefinitions);
+
+        $output->writeln('List of all Spryk definitions:');
+        $this->printTable($output, ['Spryk name', 'Description'], $sprykDefinitions);
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param string $sprykName
+     *
+     * @return void
+     */
+    protected function dumpSprykOptions(OutputInterface $output, string $sprykName): void
+    {
+        $sprykDefinition = $this->getFacade()->getSprykDefinition($sprykName);
+        $tableRows = $this->formatOptionsTable($sprykDefinition['arguments']);
+        $output->writeln(
+            (new FormatterHelper())
+                ->formatBlock(sprintf('List of all "%s" options:', $sprykName), 'info')
+        );
+
+        $this->printTable($output, ['Option'], $tableRows);
+
+        $optionalSpryks = $this->getOptionalSpryks($sprykDefinition);
+        if ($optionalSpryks !== []) {
+            $output->writeln(
+                (new FormatterHelper())
+                    ->formatBlock('Optional Spryks:', 'info')
+            );
+
+            $this->printTable($output, ['Spryk'], $optionalSpryks);
+        }
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param array $header
+     * @param array $tableContent
+     *
+     * @return void
+     */
+    protected function printTable(OutputInterface $output, array $header, array $tableContent): void
     {
         (new Table($output))
             ->setHeaders($header)
@@ -128,15 +149,11 @@ class SprykDumpConsole extends AbstractSprykConsole
     protected function getOptionalSpryks(array $sprykDefinition): array
     {
         $optionalSpryks = [];
-        /** @var array $postAndPreSpryks */
-        $postAndPreSpryks = ($sprykDefinition['preSpryks'] ?? []) + ($sprykDefinition['postSpryks'] ?? []);
-        foreach ($postAndPreSpryks as $sprykDefinition) {
-            if (!is_array($sprykDefinition)) {
-                continue;
-            }
-
-            foreach ($sprykDefinition as $sprykName => $subSprykDefinition) {
-                if (!isset($subSprykDefinition['isOptional']) || $subSprykDefinition['isOptional'] !== true) {
+        $postAndPreSpryks = $this->getPostAndPreSpryks($sprykDefinition);
+        $postAndPreSpryks = $this->filterEmptySprykDefinitions($postAndPreSpryks);
+        foreach ($postAndPreSpryks as $sprykDefinitions) {
+            foreach ($sprykDefinitions as $sprykName => $sprykDefinition) {
+                if (!$this->isOptionalSpryk($sprykDefinition)) {
                     continue;
                 }
 
@@ -145,5 +162,35 @@ class SprykDumpConsole extends AbstractSprykConsole
         }
 
         return $optionalSpryks;
+    }
+
+    /**
+     * @param array $sprykDefinition
+     *
+     * @return array
+     */
+    protected function getPostAndPreSpryks(array $sprykDefinition): array
+    {
+        return ($sprykDefinition['preSpryks'] ?? []) + ($sprykDefinition['postSpryks'] ?? []);
+    }
+
+    /**
+     * @param array $sprykDefinitions
+     *
+     * @return array
+     */
+    protected function filterEmptySprykDefinitions(array $sprykDefinitions): array
+    {
+        return array_filter($sprykDefinitions, 'is_array');
+    }
+
+    /**
+     * @param array $sprykDefinition
+     *
+     * @return bool
+     */
+    protected function isOptionalSpryk(array $sprykDefinition): bool
+    {
+        return isset($sprykDefinition['isOptional']) && $sprykDefinition['isOptional'] === true;
     }
 }

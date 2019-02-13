@@ -123,6 +123,6 @@ class SprykRunConsole extends AbstractSprykConsole
      */
     protected function getHelpText(): string
     {
-        return 'Use `console spryk:dump <info>{sprykName}</info>` to get the options of a specific Spryk.';
+        return 'Use `console spryk:dump <info>{SPRYK NAME}</info>` to get the options of a specific Spryk.';
     }
 }
