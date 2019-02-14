@@ -4,14 +4,22 @@ mode: both
 
 arguments:
 
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
-  method: ~
-  input: ~
-  output: ~
+  method:
+    inherit: true
+
+  input:
+    inherit: true
+
+  output:
+    inherit: true
+
 
   specification:
     multiline: true

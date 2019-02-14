@@ -9,9 +9,11 @@ priority: 1
 
 arguments:
 
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   className:

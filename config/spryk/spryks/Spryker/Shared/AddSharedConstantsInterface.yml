@@ -3,9 +3,11 @@ description: "Adds a new *module*ConstantsInterface to the Shared application."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:
@@ -15,7 +17,7 @@ arguments:
     value: "{{ module }}Constants.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/"
+    value: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/"
 
 preSpryks:
   - AddModule

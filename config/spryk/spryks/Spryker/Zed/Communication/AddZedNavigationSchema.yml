@@ -3,16 +3,18 @@ description: "Adds a new navigation.xml to the Zed application."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:
     value: Zed/Communication/navigation.xml.twig
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/"
 
 preSpryks:
   - AddModule

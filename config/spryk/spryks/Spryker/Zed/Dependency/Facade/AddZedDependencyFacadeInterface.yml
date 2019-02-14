@@ -8,10 +8,12 @@ arguments:
       application: Zed
 
   dependentModule:
+    inherit: true
     moduleFilter:
       application: Zed
 
   organization:
+    inherit: true
     default: Spryker
 
   template:
@@ -21,7 +23,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}FacadeInterface.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Facade/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Facade/"
 
 preSpryks:
   - AddZedDependencyFacadeBridge

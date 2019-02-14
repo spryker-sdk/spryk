@@ -4,16 +4,24 @@ mode: both
 
 arguments:
 
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   className: ~
 
-  method: ~
-  input: ~
-  output: ~
+  method:
+    inherit: true
+
+  input:
+    inherit: true
+
+  output:
+    inherit: true
+
 
   template:
     value: Common/InterfaceMethod.php.twig

@@ -4,9 +4,11 @@ priority: 1
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:
@@ -16,7 +18,7 @@ arguments:
     value: "{{ module }}Client.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
+    value: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
   - AddModule

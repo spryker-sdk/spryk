@@ -8,9 +8,11 @@ arguments:
       application: Zed
 
   organization:
+    inherit: true
     default: Spryker
 
   dependentModule:
+    inherit: true
     moduleFilter:
       application: Client
 
@@ -25,7 +27,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ClientBridge.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Client/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Client/"
 
 preSpryks:
   - AddModule

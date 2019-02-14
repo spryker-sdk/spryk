@@ -3,9 +3,11 @@ description: "Adds a new Controller to the Zed application."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   controller:
@@ -20,7 +22,7 @@ arguments:
     value: "{{ controller | classNameShort | ensureControllerSuffix }}.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
 
 preSpryks:
   - AddModule

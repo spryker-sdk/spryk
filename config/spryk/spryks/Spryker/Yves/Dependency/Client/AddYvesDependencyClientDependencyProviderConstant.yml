@@ -4,10 +4,12 @@ mode: both
 
 arguments:
 
-  module: ~
+  module:
+    inherit: true
   dependentModule: ~
 
   organization:
+    inherit: true
     default: Spryker
 
   name: ~
