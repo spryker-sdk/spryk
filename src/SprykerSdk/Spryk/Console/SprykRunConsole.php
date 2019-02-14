@@ -45,6 +45,7 @@ class SprykRunConsole extends AbstractSprykConsole
     {
         $this->setName('spryk:run')
             ->setDescription('Runs a Spryk build process.')
+            ->setHelp($this->getHelpText())
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
             ->addOption(static::OPTION_INCLUDE_OPTIONALS, static::OPTION_INCLUDE_OPTIONALS_SHORT, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Name(s) of the Spryks which are marked as optional but should be build.');
 
@@ -67,16 +68,18 @@ class SprykRunConsole extends AbstractSprykConsole
             static::$argumentsList = $this->getFacade()->getArgumentList();
         }
 
-        return static::$argumentsList;
+        return array_filter(static::$argumentsList, function (array $argumentDefinition) {
+            return strpos($argumentDefinition['name'], '.') === false;
+        });
     }
 
     /**
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      *
-     * @return void
+     * @return int|null
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
         $this->input = $input;
         $this->output = $this->createOutput($input, $output);
@@ -89,6 +92,8 @@ class SprykRunConsole extends AbstractSprykConsole
             (array)OptionsContainer::getOption(static::OPTION_INCLUDE_OPTIONALS),
             $this->output
         );
+
+        return static::CODE_SUCCESS;
     }
 
     /**
@@ -113,5 +118,13 @@ class SprykRunConsole extends AbstractSprykConsole
     protected function getSprykName(InputInterface $input): string
     {
         return current((array)$input->getArgument(static::ARGUMENT_SPRYK));
+    }
+
+    /**
+     * @return string
+     */
+    protected function getHelpText(): string
+    {
+        return 'Use `console spryk:dump <info>{SPRYK NAME}</info>` to get the options of a specific Spryk.';
     }
 }
