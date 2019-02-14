@@ -25,6 +25,8 @@
     "phpstan/phpstan": "^0.10.0",
     "phpstan/phpstan-phpunit": "^0.10.0",
     "phpstan/phpstan-strict-rules": "^0.10.0",
+    "spryker/code-sniffer": "*",
+    "spryker/testify": "*",
     "symfony/var-dumper": "^4.0.9"
   },
   "autoload": {
