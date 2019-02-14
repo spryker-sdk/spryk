@@ -77,9 +77,9 @@ class SprykRunConsole extends AbstractSprykConsole
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      *
-     * @return void
+     * @return int|null
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
         $this->input = $input;
         $this->output = $this->createOutput($input, $output);
@@ -92,6 +92,8 @@ class SprykRunConsole extends AbstractSprykConsole
             (array)OptionsContainer::getOption(static::OPTION_INCLUDE_OPTIONALS),
             $this->output
         );
+
+        return static::CODE_SUCCESS;
     }
 
     /**
