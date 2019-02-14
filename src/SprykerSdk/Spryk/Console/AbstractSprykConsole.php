@@ -13,6 +13,9 @@ use Symfony\Component\Console\Command\Command;
 
 abstract class AbstractSprykConsole extends Command
 {
+    protected const CODE_SUCCESS = 0;
+    protected const CODE_ERROR = 1;
+
     /**
      * @var \SprykerSdk\Spryk\SprykFacadeInterface|null
      */
