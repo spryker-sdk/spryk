@@ -27,6 +27,11 @@
     "phpstan/phpstan-strict-rules": "^0.10.0",
     "symfony/var-dumper": "^4.0.9"
   },
+  "autoload": {
+    "psr-4": {
+      "SprykerSdk\\": "src/SprykerSdk/"
+    }
+  },
   "autoload-dev": {
     "psr-4": {
       "SprykerSdkTest\\": "tests/SprykerSdkTest/",
