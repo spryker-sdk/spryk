@@ -37,10 +37,24 @@
   "autoload-dev": {
     "psr-4": {
       "SprykerSdkTest\\": "tests/SprykerSdkTest/",
+      "SprykerSdkTest\\Module\\": "tests/_support/Module/",
       "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
       "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
       "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
-      "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/"
+      "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
+      "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
+      "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
+      "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
+      "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
+      "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
+      "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
+      "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
+      "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
+      "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
+      "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
+      "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
+      "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
+      "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
     }
   },
   "minimum-stability": "dev",
