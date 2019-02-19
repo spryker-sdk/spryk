@@ -70,6 +70,11 @@
     "cs-fix": "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignore='/Fixtures/'",
     "phpstan": "phpstan analyse -l 7 -c phpstan.neon src/"
   },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.x-dev"
+    }
+  },
   "config": {
     "use-include-path": true,
     "process-timeout": 600,
