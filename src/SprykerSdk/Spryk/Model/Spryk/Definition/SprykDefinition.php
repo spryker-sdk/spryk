@@ -101,7 +101,7 @@ class SprykDefinition implements SprykDefinitionInterface
      *
      * @return $this
      */
-    public function setConfig(array $config): SprykDefinitionInterface
+    public function setConfig(array $config)
     {
         $this->config = $config;
 
@@ -189,7 +189,7 @@ class SprykDefinition implements SprykDefinitionInterface
      *
      * @return $this
      */
-    public function setMode(string $mode): SprykDefinitionInterface
+    public function setMode(string $mode)
     {
         $this->mode = $mode;
 
