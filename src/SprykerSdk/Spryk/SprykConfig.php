@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MIT License
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -128,6 +128,14 @@ class SprykConfig
         }
 
         return realpath($generatedDirectory) . DIRECTORY_SEPARATOR . static::NAME_FILE_ARGUMENT_LIST;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultDevelopmentMode(): string
+    {
+        return static::NAME_DEVELOPMENT_LAYER_PROJECT;
     }
 
     /**

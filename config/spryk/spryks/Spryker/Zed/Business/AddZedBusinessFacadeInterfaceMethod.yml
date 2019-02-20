@@ -4,9 +4,11 @@ mode: both
 
 arguments:
 
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   specification:
@@ -16,10 +18,12 @@ arguments:
     inherit: true
 
   input:
+    inherit: true
     isOptional: true
     isMultiple: true
 
   output:
+    inherit: true
     isOptional: true
 
   annotations:

@@ -3,9 +3,11 @@ description: "Adds a new .travis.yml to the Modules root."
 mode: core
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:
@@ -15,7 +17,7 @@ arguments:
     value: .travis.yml
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule

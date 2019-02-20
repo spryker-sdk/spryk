@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MIT License
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -38,6 +38,6 @@ class SprykBuildConsole extends AbstractSprykConsole
         $this->getFacade()->generateArgumentList($sprykDefinitions);
         $output->writeln('Argument list has been generated.');
 
-        return null;
+        return static::CODE_SUCCESS;
     }
 }

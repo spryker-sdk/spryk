@@ -5,15 +5,59 @@
 [![Coverage Status](https://coveralls.io/repos/github/spryker/spryk/badge.svg?branch=master&t=2ga4h9)](https://coveralls.io/github/spryker/spryk?branch=master)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
-[![PHPStan](https://img.shields.io/badge/PHPStan-L7-green.svg)](https://github.com/phpstan/phpstan)
-
-## Documentation
-
-https://spryker.atlassian.net/wiki/spaces/CORE/pages/188481752/Spryks
 
 ## Installation
 
 Run `composer require --dev spryker-sdk/spryk`
+
+## How to use Spryks?
+
+Currently we support two ways to work with Spryks.
+
+1. Console based.
+2. Ui based.
+
+### Spryk Console
+
+The console tool for working with Spryks is written with Symfony's Console component. To work with the Spryk Console you need to add it to your `ConsoleDependencyProvider`:
+
+```
+namespace Pyz\Zed\Console;
+
+use SprykerSdk\Spryk\Console\SprykDumpConsole;
+use SprykerSdk\Spryk\Console\SprykBuildConsole;
+use SprykerSdk\Spryk\Console\SprykRunConsole;
+ 
+class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
+{
+    protected function getConsoleCommands(Container $container)
+    {
+        if (Environment::isDevelopment()) {
+            $commands[] = new SprykRunConsole();
+            $commands[] = new SprykBuildConsole();
+            $commands[] = new SprykDumpConsole();
+        }
+        ...
+ 
+    }
+}
+```
+
+Currently available commands are `SprykDumpConsole` and `SprykRunConsole`. 
+
+1. To get a list of all available spryks run `vendor/bin/console spryk:dump`. 
+2. To get a list of all options available for a specific spryk run `vendor/bin/console spryk:dump {SPRYK NAME}`. 
+3. To execute one Spryk run `vendor/bin/console spryk:run {SPRYK NAME}`.
+4. To optimize searching of configurations run `vendor/bin/console spryk:build`.
+
+When you run a Spryk, the console will ask you for all needed arguments to build the Spryk. You also have the ability to pass all known arguments on the console by using `--{argument name}={argument value}`.
+
+
+### SprykGui
+
+We also provide a [UI](https://github.com/spryker-sdk/spryk-gui) built inside the Zed application to use Spryks UI based. For the UI you need to run `composer require --dev spryker-sdk/spryk-gui`
+
+When the SprykGui module is installed you can navigation to it inside Zed. The first page you see contains a list of all available Spryks. After you clicked on of the Spryks a form will be displayed and will give you the ability to enter all argument values the Spryk needs to run.
 
 # What are Spryks?
 
@@ -46,32 +90,6 @@ The method Spryk is able to add methods to a specified target e.g. `Spryker\Zed\
 
 To get an idea what your Spryk needs take a look into the already existing Spryks.  
 
-## How to use Spryks?
-
-Currently we support two ways to work with Spryks.
-
-1. Console based.
-2. Ui based.
-
-### Spryk Console
-
-The console tool for working with Spryks is written with Symfony's Console component. To work with the Spryk Console you need to add it to your `ConsoleDependencyProvider`.
-
-Currently available commands are `SprykDumpConsole` and `SprykRunConsole`. 
-
-To get a list of all available spryks run `vendor/bin/console spryk:dump`. 
-To execute one Spryk run `vendor/bin/console spryk:run {SPRYK NAME}`.
-
-When you run a Spryk, the console will ask you for all needed arguments to build the Spryk. You also have the ability to pass all known arguments on the console by using `--{argument name}={argument value}`.
-
-
-### SprykGui
-
-We also provide a UI build inside the Zed application to build Spryks UI based. For the UI you need to run `composer require --dev spryker-sdk/spryk-gui`
-
-When the SprykGui module is installed you can navigation to it inside Zed. The first page you see contains a list of all available Spryks. After you clicked on of the Spryks a form will be displayed and will give you the ability to enter all argument values the Spryk needs to run.
-
-
 # How to create a Spryk?
 
 In most cases it is very easy to create a Spryk. As the whole Spryk Tool is covered by tests you also have to start by adding a test for the Spryk you want to create.
@@ -83,6 +101,3 @@ When this is done run the Integration tests with `vendor/bin/codecept run Integr
 You need to add your Spryk definition file into `vendor/spryker-sdk/spryk/config/spryk/spryks` when you added your new Spryk definition file re-run the tests. Now it dependends on the spryk type you choosed for your Spryk definition what comes next.
 
 If you selected the template Spryk you will most likely see the error that the defined template file could not be found. In this case you need to add your template to `vendor/spryker-sdk/spryk/config/spryk/templates` when this is done re-run your tests. Now you should see a green test.
-
-   
-

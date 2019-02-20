@@ -8,10 +8,12 @@ arguments:
       application: Zed
 
   dependentModule:
+    inherit: true
     moduleFilter:
       application: Service
 
   organization:
+    inherit: true
     default: Spryker
 
   name: ~

@@ -3,9 +3,11 @@ description: "Adds a new *module*PersistenceFactory to the Zed application."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:
@@ -15,7 +17,7 @@ arguments:
     value: "{{ module }}PersistenceFactory.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
 
 preSpryks:
   - AddModule

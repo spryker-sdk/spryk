@@ -16,5 +16,7 @@ codeception.yml export-ignore
 .editorconfig export-ignore
 .gitattributes export-ignore
 .gitignore export-ignore
-phpstan.json
-phpstan.neon
+phpstan.json export-ignore
+phpstan.neon export-ignore
+ci/ export-ignore
+tests/ export-ignore

@@ -4,14 +4,17 @@ mode: both
 
 arguments:
   module:
+    inherit: true
     moduleFilter:
       application: Zed
 
   dependentModule:
+    inherit: true
     moduleFilter:
       application: Client
 
   organization:
+    inherit: true
     default: Spryker
 
   method:

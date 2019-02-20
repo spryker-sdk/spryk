@@ -3,9 +3,11 @@ description: "Adds a new .coveralls.yml to the Modules root."
 mode: core
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   repositoryToken: ~
@@ -17,7 +19,7 @@ arguments:
       value: .coveralls.yml
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
 preSpryks:
   - AddModule

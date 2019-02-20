@@ -27,6 +27,8 @@ suites:
         modules:
             enabled:
                 - Asserts
+                - SprykerSdkTest\Module\DevelopmentModeModule:
+                    developmentMode: 'core'
 
     Console:
         path: SprykerSdkTest/Spryk/Console
@@ -38,6 +40,8 @@ suites:
                 - SprykerSdkTest\Module\ConsoleEnvironmentModule
                 - SprykerSdkTest\Module\CleanUpModule:
                     rootDirectory: 'tests/_data/'
+                - SprykerSdkTest\Module\DevelopmentModeModule:
+                      developmentMode: 'core'
 
     Integration:
         path: SprykerSdkTest/Spryk/Integration
@@ -52,3 +56,5 @@ suites:
                 - SprykerSdkTest\Module\CleanUpModule:
                     rootDirectory: 'tests/_data/'
                 - SprykerSdkTest\Module\IntegrationModule
+                - SprykerSdkTest\Module\DevelopmentModeModule:
+                    developmentMode: 'core'

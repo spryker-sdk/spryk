@@ -3,9 +3,11 @@ description: "Adds a new *module*Factory to the Yves application."
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:
@@ -15,7 +17,7 @@ arguments:
     value: "{{ module }}Factory.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
+    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
 
 preSpryks:
   - AddModule

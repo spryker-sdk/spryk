@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MIT License
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -53,6 +53,8 @@ class SprykIntegrationTester extends Actor
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => $sprykName,
         ];
+
+        $arguments = $this->addDevelopmentModeFromConfig($arguments);
 
         $tester->execute($arguments, ['interactive' => false]);
     }
@@ -177,5 +179,21 @@ class SprykIntegrationTester extends Actor
     protected function getRootDirectory(): string
     {
         return realpath(__DIR__ . '/../../');
+    }
+
+    /**
+     * @param array $arguments
+     *
+     * @return array
+     */
+    protected function addDevelopmentModeFromConfig(array $arguments): array
+    {
+        if (isset($arguments['--mode'])) {
+            return $arguments;
+        }
+
+        $arguments['--mode'] = $this->getDevelopmentMode();
+
+        return $arguments;
     }
 }

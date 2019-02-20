@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MIT License
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -9,7 +9,7 @@ namespace SprykerSdkTest;
 
 use Codeception\Actor;
 use Codeception\Stub;
-use SprykerSdk\Spryk\Console\SprykRunConsole;
+use SprykerSdk\Spryk\Console\AbstractSprykConsole;
 use SprykerSdk\Spryk\SprykConfig;
 use SprykerSdk\Spryk\SprykFacade;
 use SprykerSdk\Spryk\SprykFactory;
@@ -43,7 +43,7 @@ class SprykConsoleTester extends Actor
      */
     public function getConsoleTester(Command $command)
     {
-        if ($command instanceof SprykRunConsole) {
+        if ($command instanceof AbstractSprykConsole) {
             $command->setFacade($this->getFacadeWithMockedConfig());
         }
 
@@ -88,6 +88,9 @@ class SprykConsoleTester extends Actor
             },
             'getTemplateDirectories' => function () {
                 return [$this->getRootDirectory() . 'config/spryk/templates/'];
+            },
+            'getDefaultDevelopmentMode' => function () {
+                return $this->getDevelopmentMode();
             },
         ]);
 

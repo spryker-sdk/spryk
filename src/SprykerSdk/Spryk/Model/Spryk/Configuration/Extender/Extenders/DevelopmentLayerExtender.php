@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MIT License
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -33,7 +33,7 @@ class DevelopmentLayerExtender extends AbstractExtender implements SprykConfigur
     protected function buildModeArgument(array $sprykConfig): array
     {
         if ($this->isBoth($sprykConfig)) {
-            $sprykConfig['arguments']['mode']['default'] = 'core';
+            $sprykConfig['arguments']['mode']['default'] = $this->config->getDefaultDevelopmentMode();
 
             return $sprykConfig;
         }

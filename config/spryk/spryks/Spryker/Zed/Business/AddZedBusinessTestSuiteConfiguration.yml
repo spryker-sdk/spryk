@@ -3,9 +3,11 @@ description: "Updates the *module* test configuration and adds the suite configu
 mode: both
 
 arguments:
-  module: ~
+  module:
+    inherit: true
 
   organization:
+    inherit: true
     default: Spryker
 
   template:

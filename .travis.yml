@@ -4,7 +4,7 @@ sudo: false
 
 php:
   - 7.1
-  - 7.2
+  - 7.3
 
 env:
   global:
@@ -22,7 +22,6 @@ matrix:
 
 before_script:
   - phpenv config-add ci/travis.php.ini
-  - composer remove --dev spryker/git-hook
   - if [[ $PREFER_LOWEST != 1 ]]; then composer update --no-interaction; fi;
   - if [[ $PREFER_LOWEST == 1 ]]; then composer update --prefer-lowest --no-interaction --prefer-dist --prefer-stable ; fi;
 

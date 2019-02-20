@@ -5,13 +5,15 @@ mode: both
 
 arguments:
   module:
+    inherit: true
     type: NewModuleType
 
   organization:
+    inherit: true
     default: Spryker
 
   targetPath:
-    default: "{{ module }}/"
+    value: "{{ module }}/"
 
   directories:
     value:

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MIT License
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -49,7 +49,8 @@ class ConfigurationFactory
             $this->createConfigurationFinder($this->config->getSprykDirectories()),
             $this->createConfigurationMerger(),
             $this->createConfigurationExtender(),
-            $this->createConfigurationValidator()
+            $this->createConfigurationValidator(),
+            $this->getConfig()->getDefaultDevelopmentMode()
         );
     }
 
@@ -155,5 +156,17 @@ class ConfigurationFactory
     protected function createDevelopmentLayerExtender(): SprykConfigurationExtenderInterface
     {
         return new DevelopmentLayerExtender($this->config);
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\SprykConfig
+     */
+    public function getConfig(): SprykConfig
+    {
+        if ($this->config === null) {
+            $this->config = new SprykConfig();
+        }
+
+        return $this->config;
     }
 }

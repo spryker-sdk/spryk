@@ -4,14 +4,17 @@ mode: both
 
 arguments:
   module:
+    inherit: true
     moduleFilter:
       application: Zed
 
   dependentModule:
+    inherit: true
     moduleFilter:
       application: Client
 
   organization:
+    inherit: true
     default: Spryker
 
   template:
@@ -21,7 +24,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
 
   targetPath:
-    default: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Client/"
+    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Client/"
 
 preSpryks:
   - AddZedDependencyClientBridge
