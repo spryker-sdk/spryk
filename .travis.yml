@@ -20,9 +20,12 @@ matrix:
 
     fast_finish: true
 
+before_install:
+  - composer global require hirak/prestissimo
+
 before_script:
   - phpenv config-add ci/travis.php.ini
-  - if [[ $PREFER_LOWEST != 1 ]]; then composer update --no-interaction; fi;
+  - if [[ $PREFER_LOWEST != 1 ]]; then composer install --no-interaction; fi;
   - if [[ $PREFER_LOWEST == 1 ]]; then composer update --prefer-lowest --no-interaction --prefer-dist --prefer-stable ; fi;
 
 script:
@@ -32,6 +35,11 @@ script:
 
 notifications:
     email: false
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
 
 after_success:
     - travis_retry php vendor/bin/coveralls
