@@ -67,9 +67,9 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @param string $builder
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     * @return $this
      */
-    public function setBuilder(string $builder): SprykDefinitionInterface
+    public function setBuilder(string $builder)
     {
         $this->builder = $builder;
 
@@ -87,9 +87,9 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @param string $sprykSprykName
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     * @return $this
      */
-    public function setSprykName(string $sprykSprykName): SprykDefinitionInterface
+    public function setSprykName(string $sprykSprykName)
     {
         $this->sprykName = $sprykSprykName;
 
@@ -127,9 +127,9 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     * @return $this
      */
-    public function setArgumentCollection(ArgumentCollectionInterface $argumentCollection): SprykDefinitionInterface
+    public function setArgumentCollection(ArgumentCollectionInterface $argumentCollection)
     {
         $this->argumentCollection = $argumentCollection;
 
@@ -147,9 +147,9 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[] $preSpryks
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     * @return $this
      */
-    public function setPreSpryks(array $preSpryks): SprykDefinitionInterface
+    public function setPreSpryks(array $preSpryks)
     {
         $this->preSpryks = $preSpryks;
 
@@ -167,9 +167,9 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[] $postSpryks
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
+     * @return $this
      */
-    public function setPostSpryks(array $postSpryks): SprykDefinitionInterface
+    public function setPostSpryks(array $postSpryks)
     {
         $this->postSpryks = $postSpryks;
 
