@@ -162,8 +162,8 @@ class SprykDumpConsole extends AbstractSprykConsole
         $preAndPostSpryks = $this->filterSprykDefinitions($preAndPostSpryks);
 
         $flattenPreAndPostSpryks = array_reduce($preAndPostSpryks, 'array_merge', []);
-        foreach ($flattenPreAndPostSpryks as $sprykName => $sprykDefinition) {
-            if (!$this->isOptionalSpryk($sprykDefinition)) {
+        foreach ($flattenPreAndPostSpryks as $sprykName => $flattenPreAndPostSpryk) {
+            if (!$this->isOptionalSpryk($flattenPreAndPostSpryk)) {
                 continue;
             }
 
