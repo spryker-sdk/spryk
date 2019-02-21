@@ -8,7 +8,11 @@
 
 ## Installation
 
-Run `composer require --dev spryker-sdk/spryk`
+```
+composer require --dev spryker-sdk/spryk
+```
+
+This is a development only "require-dev" module. Please make sure you include it as such.
 
 ## How to use Spryks?
 
