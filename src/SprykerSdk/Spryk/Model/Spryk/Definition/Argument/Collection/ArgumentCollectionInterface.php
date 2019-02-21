@@ -14,9 +14,9 @@ interface ArgumentCollectionInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface $argument
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
+     * @return $this
      */
-    public function addArgument(ArgumentInterface $argument): self;
+    public function addArgument(ArgumentInterface $argument);
 
     /**
      * @param string $name

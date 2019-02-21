@@ -22,7 +22,7 @@ class ArgumentCollection implements ArgumentCollectionInterface
      *
      * @return $this
      */
-    public function addArgument(ArgumentInterface $argument): ArgumentCollectionInterface
+    public function addArgument(ArgumentInterface $argument)
     {
         $this->arguments[$argument->getName()] = $argument;
 
