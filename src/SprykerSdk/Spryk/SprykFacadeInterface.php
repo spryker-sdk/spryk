@@ -28,9 +28,9 @@ interface SprykFacadeInterface
     /**
      * @param \SprykerSdk\Spryk\SprykFactory $factory
      *
-     * @return \SprykerSdk\Spryk\SprykFacadeInterface
+     * @return $this
      */
-    public function setFactory(SprykFactory $factory): self;
+    public function setFactory(SprykFactory $factory);
 
     /**
      * @param array $argumentsList
