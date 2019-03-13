@@ -1,0 +1,23 @@
+spryk: constant
+description: "Adds a Resource type to the *module*Config."
+mode: both
+
+arguments:
+
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  name: ~
+  value: ~
+  visibility:
+    value: "public"
+
+  target:
+    value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}Config"
+
+preSpryks:
+  - AddGlueConfig

@@ -1,0 +1,23 @@
+spryk: template
+description: "Adds a new *module*DependencyProvider to the Glue application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  template:
+    value: Glue/GlueDependencyProvider.php.twig
+
+  targetFilename:
+    value: "{{ module }}DependencyProvider.php"
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/"
+
+preSpryks:
+  - AddModule

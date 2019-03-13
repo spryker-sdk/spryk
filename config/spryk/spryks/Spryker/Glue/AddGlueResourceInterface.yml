@@ -1,0 +1,35 @@
+spryk: template
+description: "Adds a new Resource interface to the Glue application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  className:
+    inherit: true
+
+  interfaceName:
+    inherit: true
+    default: "{{ className }}Interface"
+
+  template:
+    value: Glue/GlueResourceInterface.php.twig
+
+  targetFilename:
+    callbackOnly: true
+    callback: GlueResourceInterfaceTargetFilename
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/"
+
+preSpryks:
+  - AddModule
+#  - AddGlueResource:
+#      arguments:
+#        className:
+#          callback: ClassNameShortCallback

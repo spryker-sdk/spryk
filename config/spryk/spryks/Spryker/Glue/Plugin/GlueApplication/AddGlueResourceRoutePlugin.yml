@@ -1,0 +1,57 @@
+spryk: template
+description: "Adds a new *resourceType*ResourceRoutePlugin to the Glue application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  template:
+    value: Glue/Plugin/GlueApplication/GlueResourceRoutePlugin.php.twig
+
+  resourceType:
+    inherit: true
+
+  modelName:
+    inherit: true
+
+  targetFilename:
+    value: "{{ resourceType | dashToCamelCase }}ResourceRoutePlugin.php"
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
+
+preSpryks:
+  - AddModule
+  - AddSharedRestAttributesTransfer:
+      arguments:
+        name:
+          value: "{{ modelName | dashToCamelCase }}"
+          callback:
+            - EnsureRestAttributesTransferAffix
+  - AddGlueConfigResourceTypeConstant:
+      arguments:
+        name:
+          value: "RESOURCE_{{ resourceType | dashToUnderscore | upper }}"
+        value:
+          value:  "{{ resourceType | dasherize }}"
+        visibility:
+          value:  "public"
+  - AddGlueConfigResourceControllerConstant:
+      arguments:
+        name:
+          value: "CONTROLLER_RESOURCE_{{ resourceType | dashToUnderscore | upper }}"
+        value:
+          value:  "{{ resourceType | dasherize }}-resource"
+        visibility:
+          value:  "public"
+  - AddGlueControllerAction:
+      arguments:
+        method:
+          value: "{{ resourceRouteMethod }}"
+        controller:
+          value: "{{ resourceType | dashToCamelCase }}Resource"

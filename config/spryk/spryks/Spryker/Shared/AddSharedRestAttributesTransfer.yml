@@ -1,0 +1,23 @@
+spryk: transfer
+description: "Adds a new Rest*resourceType*AttributesTransfer definition to the Shared application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  name:
+    inherit: true
+    callback:
+      - EnsureRestAttributesTransferAffix
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/Transfer/{{ module | underscored }}.transfer.xml"
+
+preSpryks:
+  - AddModule
+  - AddSharedTransferSchema

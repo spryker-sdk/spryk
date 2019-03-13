@@ -1,0 +1,46 @@
+spryk: resourceRoute
+description: "Adds a new GET Resource to the Glue application."
+mode: both
+
+application: Glue
+
+priority: 1
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  resourceType:
+    inherit: true
+
+  resourceRouteMethod:
+    inherit: true
+
+  method:
+    value: "configure"
+
+  template:
+    value: Glue/GlueRouteResource.php.twig
+
+  target:
+    value: "{{ organization }}\\Glue\\{{ module }}\\Plugin\\GlueApplication\\{{ resourceType | dashToCamelCase }}ResourceRoutePlugin"
+
+preSpryks:
+  - AddModule
+  - AddGlueFactory
+  - AddGlueResourceRoutePlugin
+
+postSpryks:
+  - AddGlueProcessorModel:
+      arguments:
+        subDirectory:
+          value: "{{ modelName }}"
+        className:
+          value: "{{ modelName }}{{ modelSuffix }}"
+        interfaceName:
+          value: "{{ modelName }}{{ modelSuffix }}Interface"
+
