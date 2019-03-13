@@ -1,4 +1,4 @@
-# Spryker Spryk
+# Spryk Module
 
 [![Build Status](https://travis-ci.com/spryker/spryk.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/spryk)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/spryk/badges/quality-score.png?b=master&s=ebca747a3c5798a911ff1beaae498b6101af74f6)](https://scrutinizer-ci.com/g/spryker/spryk/?branch=master)
