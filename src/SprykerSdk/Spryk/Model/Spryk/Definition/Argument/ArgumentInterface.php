@@ -12,9 +12,9 @@ interface ArgumentInterface
     /**
      * @param string $name
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
+     * @return $this
      */
-    public function setName(string $name): self;
+    public function setName(string $name);
 
     /**
      * @return string
@@ -24,9 +24,9 @@ interface ArgumentInterface
     /**
      * @param mixed $value
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
+     * @return $this
      */
-    public function setValue($value): self;
+    public function setValue($value);
 
     /**
      * @return mixed
@@ -36,9 +36,9 @@ interface ArgumentInterface
     /**
      * @param array $callbacks
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
+     * @return $this
      */
-    public function setCallbacks(array $callbacks): self;
+    public function setCallbacks(array $callbacks);
 
     /**
      * @return string[]
