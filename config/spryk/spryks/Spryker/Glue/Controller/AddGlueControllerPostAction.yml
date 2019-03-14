@@ -1,0 +1,33 @@
+spryk: method
+description: "Adds a new action to the Glue controller."
+mode: both
+
+arguments:
+
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  controller:
+    callback:
+      - ClassNameShortCallback
+      - EnsureControllerSuffixCallback
+
+  method:
+    callback: EnsureActionSuffixCallback
+
+  resourceType:
+    inherit: true
+
+  template:
+    value: Glue/Controller/MethodPostGlueController.php.twig
+
+  target:
+    value: "{{ organization }}\\Glue\\{{ module }}\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"
+
+preSpryks:
+  - AddGlueController
+

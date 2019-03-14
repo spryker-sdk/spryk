@@ -1,0 +1,52 @@
+spryk: structure
+description: "Adds a new POST Resource to the Glue application."
+mode: both
+
+application: Glue
+
+priority: 1
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  resourceType:
+    inherit: true
+
+  modelName:
+    inherit: true
+    default: "{{ resourceType }}"
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/"
+
+  directories:
+    value:
+      - ""
+
+preSpryks:
+  - AddModule
+
+postSpryks:
+  - AddGlueResource:
+      arguments:
+        className:
+          value: "{{ modelName | dashToCamelCase }}Resource"
+        interfaceName:
+          value: "{{ modelName | dashToCamelCase }}ResourceInterface"
+  - AddGlueResourceRoute:
+      arguments:
+        modelSuffix:
+          value: "Creator"
+        resourceRouteMethod:
+          value: "post"
+  - AddGlueControllerPostAction:
+      arguments:
+        method:
+          value: "{{ resourceRouteMethod }}"
+        controller:
+          value: "{{ modelName | dashToCamelCase }}Resource"
