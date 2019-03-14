@@ -107,26 +107,23 @@ You need to add your Spryk definition file into `config/spryk/spryks` on project
 ```
 project OR package root directory
 │
-└─── config
-│   └─── ...
-│   └─── spryk
-│   │    └─── spryks
+└─── config/
+│   └─── spryk/
+│   │    └─── spryks/
 │   │         │   ...
 │   │         │   spryk-name.yml
 │   │         │   ...
 │   └─── ...
 ```
 
-If you selected the template Spryk you will most likely see the error that the defined template file could not be found. In this case you need to add your template to `config/spryk/templates` on project or core layer:
+If you selected the template Spryk, you will most likely see the error that the defined template file could not be found. In this case you need to add your template to `config/spryk/templates/` on project or core layer:
 
 ```
 project OR package root directory
 │
-└─── config
-│   └─── ...
-│   └─── spryk
-│   │    └─── spryks
-│   │    └─── templates
+└─── config/
+│   └─── spryk/
+│   │    └─── templates/
 │   │         │   ...
 │   │         │   template-name.twig
 │   │         │   ...
