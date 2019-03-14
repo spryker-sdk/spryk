@@ -49,7 +49,7 @@ class TransferSpryk implements SprykBuilderInterface
      */
     public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        return true;
+        return !$this->transferDefined($sprykDefinition);
     }
 
     /**
@@ -180,5 +180,22 @@ class TransferSpryk implements SprykBuilderInterface
             ->attach(new DashToCamelCase());
 
         return $filterChain;
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return bool
+     */
+    protected function transferDefined(SprykDefinitionInterface $sprykDefinition): bool
+    {
+        $xml = $this->getXml($sprykDefinition);
+        $dashToCamelCaseFilter = $this->getDashToCamelCase();
+        $transferName = $dashToCamelCaseFilter->filter($this->getArgumentName($sprykDefinition));
+
+        return preg_match(
+            sprintf('/<transfer (.*)?name="%s"/', $transferName),
+            $xml->asXML()
+        );
     }
 }

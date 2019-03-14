@@ -33,7 +33,7 @@ preSpryks:
           value: "{{ modelName | dashToCamelCase }}"
           callback:
             - EnsureRestAttributesTransferAffix
-  - AddGlueConfigResourceTypeConstant:
+  - AddGlueConfigConstant:
       arguments:
         name:
           value: "RESOURCE_{{ resourceType | dashToUnderscore | upper }}"
@@ -41,7 +41,7 @@ preSpryks:
           value:  "{{ resourceType | dasherize }}"
         visibility:
           value:  "public"
-  - AddGlueConfigResourceControllerConstant:
+  - AddGlueConfigConstant:
       arguments:
         name:
           value: "CONTROLLER_RESOURCE_{{ resourceType | dashToUnderscore | upper }}"
@@ -49,9 +49,3 @@ preSpryks:
           value:  "{{ resourceType | dasherize }}-resource"
         visibility:
           value:  "public"
-  - AddGlueControllerAction:
-      arguments:
-        method:
-          value: "{{ resourceRouteMethod }}"
-        controller:
-          value: "{{ resourceType | dashToCamelCase }}Resource"

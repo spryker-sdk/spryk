@@ -35,12 +35,18 @@ postSpryks:
   - AddGlueResource:
       arguments:
         className:
-          value: "{{ resourceType | dashToCamelCase }}Resource"
+          value: "{{ modelName | dashToCamelCase }}Resource"
         interfaceName:
-          value: "{{ resourceType | dashToCamelCase }}ResourceInterface"
+          value: "{{ modelName | dashToCamelCase }}ResourceInterface"
   - AddGlueResourceRoute:
       arguments:
         modelSuffix:
           value: "Reader"
         resourceRouteMethod:
           value: "get"
+  - AddGlueControllerGetAction:
+      arguments:
+        method:
+          value: "{{ resourceRouteMethod }}"
+        controller:
+          value: "{{ modelName | dashToCamelCase }}Resource"
