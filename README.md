@@ -102,7 +102,7 @@ If you only need to add a new Spryk configuration you will start by adding an In
 
 When this is done run the Integration tests with `vendor/bin/codecept run Integration -g {YOUR TEST GROUP}` and see the test failing. You will get a message that the Spryk definition was not found by the given name, so add the definition file for you new Spryk. 
 
-You need to add your Spryk definition file into `config/spryk/spryks` on project or core layer:
+You need to add your Spryk definition file into `config/spryk/spryks/` on project or core level:
 
 ```
 project OR package root directory
@@ -116,7 +116,7 @@ project OR package root directory
 │   └─── ...
 ```
 
-If you selected the template Spryk, you will most likely see the error that the defined template file could not be found. In this case you need to add your template to `config/spryk/templates/` on project or core layer:
+If you selected the template Spryk, you will most likely see the error that the defined template file could not be found. In this case you need to add your template to `config/spryk/templates/` on project or core level:
 
 ```
 project OR package root directory
