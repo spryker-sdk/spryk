@@ -72,7 +72,8 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "0.1.x-dev"
+      "dev-master": "0.1.x-dev",
+      "dev-feature/glue-5642/glue-5715-add-get-resource": "0.1.x-dev"
     }
   },
   "config": {
