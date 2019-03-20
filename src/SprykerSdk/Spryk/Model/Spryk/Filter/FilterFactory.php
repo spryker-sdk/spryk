@@ -21,6 +21,7 @@ class FilterFactory
             $this->createCamelBackFilter(),
             $this->createClassNameShortFilter(),
             $this->createEnsureControllerSuffixFilter(),
+            $this->createEnsureConsoleSuffixFilter(),
             $this->createRemoveControllerSuffixFilter(),
             $this->createRemoveActionSuffixFilter(),
             $this->createDasherizeFilter(),
@@ -61,6 +62,14 @@ class FilterFactory
     public function createEnsureControllerSuffixFilter(): FilterInterface
     {
         return new EnsureControllerSuffixFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createEnsureConsoleSuffixFilter(): FilterInterface
+    {
+        return new EnsureConsoleSuffixFilter();
     }
 
     /**

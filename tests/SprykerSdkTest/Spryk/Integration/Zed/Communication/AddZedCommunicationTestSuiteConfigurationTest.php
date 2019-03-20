@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace SprykerSdkTest\Spryk\Integration;
+
+use Codeception\Test\Unit;
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Auto-generated group annotations
+ * @group SprykerSdkTest
+ * @group Spryk
+ * @group Integration
+ * @group AddZedCommunicationTestSuiteConfigurationTest
+ * Add your own group annotations below this line
+ */
+class AddZedCommunicationTestSuiteConfigurationTest extends Unit
+{
+    /**
+     * @var \SprykerSdkTest\SprykIntegrationTester
+     */
+    protected $tester;
+
+    /**
+     * @return void
+     */
+    public function testAddsZedCommunicationTestSuiteConfiguration(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+        ]);
+
+        $targetFile = $this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/codeception.yml';
+        static::assertFileExists($targetFile);
+
+        $fileContent = file_get_contents($targetFile);
+        $configuration = Yaml::parse(($fileContent) ?: '');
+        static::assertArrayHasKey('suites', $configuration);
+
+        $suitesConfiguration = $configuration['suites'];
+        static::assertArrayHasKey('Communication', $suitesConfiguration);
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsZedCommunicationTestSuiteConfigurationOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
+
+        $targetFile = $this->tester->getProjectTestDirectory() . 'codeception.yml';
+        static::assertFileExists($targetFile);
+
+        $fileContent = file_get_contents($targetFile);
+        $configuration = Yaml::parse(($fileContent) ?: '');
+        static::assertArrayHasKey('suites', $configuration);
+
+        $suitesConfiguration = $configuration['suites'];
+        static::assertArrayHasKey('Communication', $suitesConfiguration);
+    }
+}

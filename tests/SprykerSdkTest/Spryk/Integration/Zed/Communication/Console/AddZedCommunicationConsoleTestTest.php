@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Console;
 
 use Codeception\Test\Unit;
 
@@ -14,11 +14,12 @@ use Codeception\Test\Unit;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group Facade
- * @group AddZedBusinessFacadeTestTest
+ * @group Zed
+ * @group Console
+ * @group AddZedCommunicationConsoleTestTest
  * Add your own group annotations below this line
  */
-class AddZedBusinessFacadeTestTest extends Unit
+class AddZedCommunicationConsoleTestTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -28,25 +29,27 @@ class AddZedBusinessFacadeTestTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedBusinessFacadeTest(): void
+    public function testAddsZedConsoleTest(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--className' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business/FooBarFacadeTest.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication/Console/FooBarConsoleTest.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsZedBusinessFacadeTestOnProjectLayer(): void
+    public function testAddsZedConsoleTestOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--className' => 'FooBar',
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectTestDirectory() . 'Business/FooBarFacadeTest.php');
+        static::assertFileExists($this->tester->getProjectTestDirectory() . 'Communication/Console/FooBarConsoleTest.php');
     }
 }

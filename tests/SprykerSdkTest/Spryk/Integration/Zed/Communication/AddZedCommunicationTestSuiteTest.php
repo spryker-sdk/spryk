@@ -14,11 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group Facade
- * @group AddZedBusinessFacadeTestTest
+ * @group AddZedCommunicationTestSuiteTest
  * Add your own group annotations below this line
  */
-class AddZedBusinessFacadeTestTest extends Unit
+class AddZedCommunicationTestSuiteTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -28,25 +27,25 @@ class AddZedBusinessFacadeTestTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedBusinessFacadeTest(): void
+    public function testAddsZedCommunicationTestSuiteConfiguration(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business/FooBarFacadeTest.php');
+        static::assertDirectoryExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication');
     }
 
     /**
      * @return void
      */
-    public function testAddsZedBusinessFacadeTestOnProjectLayer(): void
+    public function testAddsZedCommunicationTestSuiteConfigurationOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectTestDirectory() . 'Business/FooBarFacadeTest.php');
+        static::assertDirectoryExists($this->tester->getProjectTestDirectory());
     }
 }
