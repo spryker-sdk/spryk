@@ -35,14 +35,14 @@ class AddZedCommunicationTestSuiteConfigurationTest extends Unit
         ]);
 
         $targetFile = $this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/codeception.yml';
-        static::assertFileExists($targetFile);
+        $this->assertFileExists($targetFile);
 
         $fileContent = file_get_contents($targetFile);
         $configuration = Yaml::parse(($fileContent) ?: '');
-        static::assertArrayHasKey('suites', $configuration);
+        $this->assertArrayHasKey('suites', $configuration);
 
         $suitesConfiguration = $configuration['suites'];
-        static::assertArrayHasKey('Communication', $suitesConfiguration);
+        $this->assertArrayHasKey('Communication', $suitesConfiguration);
     }
 
     /**
@@ -56,13 +56,13 @@ class AddZedCommunicationTestSuiteConfigurationTest extends Unit
         ]);
 
         $targetFile = $this->tester->getProjectTestDirectory() . 'codeception.yml';
-        static::assertFileExists($targetFile);
+        $this->assertFileExists($targetFile);
 
         $fileContent = file_get_contents($targetFile);
         $configuration = Yaml::parse(($fileContent) ?: '');
-        static::assertArrayHasKey('suites', $configuration);
+        $this->assertArrayHasKey('suites', $configuration);
 
         $suitesConfiguration = $configuration['suites'];
-        static::assertArrayHasKey('Communication', $suitesConfiguration);
+        $this->assertArrayHasKey('Communication', $suitesConfiguration);
     }
 }

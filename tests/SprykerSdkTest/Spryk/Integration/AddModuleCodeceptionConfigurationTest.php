@@ -34,7 +34,7 @@ class AddModuleCodeceptionConfigurationTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
     }
 
     /**
@@ -49,6 +49,6 @@ class AddModuleCodeceptionConfigurationTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
     }
 }

@@ -38,7 +38,7 @@ class AddZedPersistencePropelAbstractQueryTest extends Unit
             '--tableName' => 'spy_foo_bar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/AbstractSpyFooBarQuery.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/AbstractSpyFooBarQuery.php');
     }
 
     /**
@@ -53,7 +53,7 @@ class AddZedPersistencePropelAbstractQueryTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
             . 'Persistence/Propel/AbstractSpyFooBarQuery.php'
         );

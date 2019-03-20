@@ -36,7 +36,7 @@ class AddZedCommunicationConsoleTestTest extends Unit
             '--className' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication/Console/FooBarConsoleTest.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication/Console/FooBarConsoleTest.php');
     }
 
     /**
@@ -50,6 +50,6 @@ class AddZedCommunicationConsoleTestTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectTestDirectory() . 'Communication/Console/FooBarConsoleTest.php');
+        $this->assertFileExists($this->tester->getProjectTestDirectory() . 'Communication/Console/FooBarConsoleTest.php');
     }
 }

@@ -34,7 +34,7 @@ class AddModuleChangelogTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
     }
 
     /**
@@ -49,6 +49,6 @@ class AddModuleChangelogTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'CHANGELOG.md');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'CHANGELOG.md');
     }
 }

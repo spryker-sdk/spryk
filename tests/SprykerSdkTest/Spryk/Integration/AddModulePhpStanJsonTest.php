@@ -35,7 +35,7 @@ class AddModulePhpStanJsonTest extends Unit
             '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'phpstan.json');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'phpstan.json');
     }
 
     /**
@@ -51,6 +51,6 @@ class AddModulePhpStanJsonTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'phpstan.json');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'phpstan.json');
     }
 }

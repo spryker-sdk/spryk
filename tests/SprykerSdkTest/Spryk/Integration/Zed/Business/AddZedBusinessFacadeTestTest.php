@@ -34,7 +34,7 @@ class AddZedBusinessFacadeTestTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business/FooBarFacadeTest.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business/FooBarFacadeTest.php');
     }
 
     /**
@@ -47,6 +47,6 @@ class AddZedBusinessFacadeTestTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectTestDirectory() . 'Business/FooBarFacadeTest.php');
+        $this->assertFileExists($this->tester->getProjectTestDirectory() . 'Business/FooBarFacadeTest.php');
     }
 }

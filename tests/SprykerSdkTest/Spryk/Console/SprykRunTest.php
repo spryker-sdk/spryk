@@ -44,7 +44,7 @@ class SprykRunTest extends Unit
         $tester->execute($arguments, ['verbosity' => OutputInterface::VERBOSITY_VERBOSE]);
 
         $output = $tester->getDisplay();
-        static::assertRegExp('/Build StructureWithoutInteraction Spryk/', $output);
+        $this->assertRegExp('/Build StructureWithoutInteraction Spryk/', $output);
     }
 
     /**
@@ -96,7 +96,7 @@ class SprykRunTest extends Unit
 
         $tester->execute($arguments);
 
-        static::assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json');
-        static::assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
+        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json');
+        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
     }
 }

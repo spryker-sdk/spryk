@@ -33,7 +33,7 @@ class AddModuleTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertDirectoryExists($this->tester->getModuleDirectory() . 'src');
+        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src');
     }
 
     /**
@@ -46,6 +46,6 @@ class AddModuleTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertDirectoryExists($this->tester->getProjectModuleDirectory());
+        $this->assertDirectoryExists($this->tester->getProjectModuleDirectory());
     }
 }

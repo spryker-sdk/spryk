@@ -34,7 +34,7 @@ class AddModuleComposerJsonTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'composer.json');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'composer.json');
     }
 
     /**
@@ -49,6 +49,6 @@ class AddModuleComposerJsonTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'composer.json');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'composer.json');
     }
 }

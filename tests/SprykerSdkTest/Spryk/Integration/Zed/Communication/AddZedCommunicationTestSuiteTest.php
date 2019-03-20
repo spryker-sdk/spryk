@@ -33,7 +33,7 @@ class AddZedCommunicationTestSuiteTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertDirectoryExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication');
+        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication');
     }
 
     /**
@@ -46,6 +46,6 @@ class AddZedCommunicationTestSuiteTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertDirectoryExists($this->tester->getProjectTestDirectory());
+        $this->assertDirectoryExists($this->tester->getProjectTestDirectory());
     }
 }
