@@ -28,25 +28,25 @@ class AddZedBusinessFacadeTestTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedBusinessFacade(): void
+    public function testAddsZedBusinessFacadeTest(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business/FooBarFacadeTest.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business/FooBarFacadeTest.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsZedBusinessFacadeOnProjectLayer(): void
+    public function testAddsZedBusinessFacadeTestOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectTestDirectory() . 'Business/FooBarFacadeTest.php');
+        $this->assertFileExists($this->tester->getProjectTestDirectory() . 'Business/FooBarFacadeTest.php');
     }
 }

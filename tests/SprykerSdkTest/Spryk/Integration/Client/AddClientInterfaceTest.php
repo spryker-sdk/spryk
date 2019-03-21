@@ -36,7 +36,7 @@ class AddClientInterfaceTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClientInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClientInterface.php');
     }
 
     /**
@@ -49,7 +49,7 @@ class AddClientInterfaceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Client')
             . 'FooBarClientInterface.php'
         );

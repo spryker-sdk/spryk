@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Console;
 
 use Codeception\Test\Unit;
 
@@ -15,10 +15,11 @@ use Codeception\Test\Unit;
  * @group Spryk
  * @group Integration
  * @group Zed
- * @group AddZedDependencyProviderTest
+ * @group Console
+ * @group AddZedCommunicationConsoleTestTest
  * Add your own group annotations below this line
  */
-class AddZedDependencyProviderTest extends Unit
+class AddZedCommunicationConsoleTestTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -28,25 +29,27 @@ class AddZedDependencyProviderTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyProvider(): void
+    public function testAddsZedConsoleTest(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--className' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/FooBarDependencyProvider.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication/Console/FooBarConsoleTest.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsZedDependencyProviderOnProjectLayer(): void
+    public function testAddsZedConsoleTestOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--className' => 'FooBar',
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'FooBarDependencyProvider.php');
+        $this->assertFileExists($this->tester->getProjectTestDirectory() . 'Communication/Console/FooBarConsoleTest.php');
     }
 }

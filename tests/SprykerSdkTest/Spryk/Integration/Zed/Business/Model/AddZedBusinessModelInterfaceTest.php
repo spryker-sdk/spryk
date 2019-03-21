@@ -35,7 +35,7 @@ class AddZedBusinessModelInterfaceTest extends Unit
             '--className' => 'Bar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/BarInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/BarInterface.php');
     }
 
     /**
@@ -50,6 +50,6 @@ class AddZedBusinessModelInterfaceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Business/Foo/BarInterface.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Business/Foo/BarInterface.php');
     }
 }

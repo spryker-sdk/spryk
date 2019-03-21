@@ -1,0 +1,26 @@
+spryk: update-yml
+description: "Updates the *module* test configuration and adds the suite configuration for Communication tests."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  template:
+    value: Zed/Communication/ZedCommunicationTestSuiteCodeceptionConfiguration.yml.twig
+
+  afterElement:
+    value: coverage
+
+  addToElement:
+    value: suites
+
+  targetPath:
+    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/codeception.yml"
+
+preSpryks:
+  - AddZedTestCodeceptionConfiguration

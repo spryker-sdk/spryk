@@ -35,7 +35,7 @@ class AddZedPersistenceRepositoryInterfaceTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarRepositoryInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarRepositoryInterface.php');
     }
 
     /**
@@ -48,7 +48,7 @@ class AddZedPersistenceRepositoryInterfaceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
             . 'Persistence/FooBarRepositoryInterface.php'
         );

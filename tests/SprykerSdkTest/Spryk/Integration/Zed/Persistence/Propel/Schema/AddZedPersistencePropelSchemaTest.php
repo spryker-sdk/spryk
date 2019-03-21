@@ -38,7 +38,7 @@ class AddZedPersistencePropelSchemaTest extends Unit
             '--targetModule' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/Schema/spy_foo_bar.schema.xml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/Schema/spy_foo_bar.schema.xml');
     }
 
     /**
@@ -52,7 +52,7 @@ class AddZedPersistencePropelSchemaTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
             . 'Persistence/Propel/Schema/spy_foo_bar.schema.xml'
         );

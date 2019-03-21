@@ -35,7 +35,7 @@ class AddModuleTravisTest extends Unit
             '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . '.travis.yml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . '.travis.yml');
     }
 
     /**
@@ -51,6 +51,6 @@ class AddModuleTravisTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . '.travis.yml');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.travis.yml');
     }
 }

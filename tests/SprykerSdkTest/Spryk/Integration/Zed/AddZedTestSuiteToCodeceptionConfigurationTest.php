@@ -36,7 +36,7 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
     }
 
     /**
@@ -51,7 +51,7 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectTestDirectory() . 'codeception.yml');
+        $this->assertFileExists($this->tester->getProjectTestDirectory() . 'codeception.yml');
     }
 
     /**
@@ -63,12 +63,12 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
         $this->tester->run($this, ['--module' => 'FooBar']);
 
         $configurationFilePath = $this->tester->getModuleDirectory() . 'codeception.yml';
-        static::assertFileExists($configurationFilePath);
+        $this->assertFileExists($configurationFilePath);
 
         $fileContent = file_get_contents($configurationFilePath);
 
         $yaml = Yaml::parse(($fileContent) ?: '');
-        static::assertCount(1, $yaml['include']);
+        $this->assertCount(1, $yaml['include']);
     }
 
     /**
@@ -88,11 +88,11 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
         ]);
 
         $configurationFilePath = $this->tester->getProjectTestDirectory() . 'codeception.yml';
-        static::assertFileExists($configurationFilePath);
+        $this->assertFileExists($configurationFilePath);
 
         $fileContent = file_get_contents($configurationFilePath);
 
         $yaml = Yaml::parse(($fileContent) ?: '');
-        static::assertCount(1, $yaml['include']);
+        $this->assertCount(1, $yaml['include']);
     }
 }

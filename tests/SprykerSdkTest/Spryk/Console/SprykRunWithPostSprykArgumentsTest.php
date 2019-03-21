@@ -41,8 +41,8 @@ class SprykRunWithPostSprykArgumentsTest extends Unit
 
         $tester->execute($arguments);
 
-        static::assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
+        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
 
-        static::assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/sub-directory/README.md');
+        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/sub-directory/README.md');
     }
 }

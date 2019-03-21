@@ -1,0 +1,29 @@
+spryk: template
+description: "Adds a new ConsoleTest to the Zed application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  className:
+    inherit: true
+
+  template:
+    value: Zed/Communication/ZedCommunicationConsoleTest.php.twig
+
+  targetFilename:
+    value: "{{ className }}ConsoleTest.php"
+
+  targetPath:
+    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/Communication/Console/"
+
+preSpryks:
+  - AddModule
+
+postSpryks:
+  - AddZedCommunicationTestSuite

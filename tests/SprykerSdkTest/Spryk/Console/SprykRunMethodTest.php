@@ -41,11 +41,11 @@ class SprykRunMethodTest extends Unit
         $tester->execute($arguments);
 
         $targetFile = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacade.php';
-        static::assertFileExists($targetFile);
+        $this->assertFileExists($targetFile);
         $fileContent = file_get_contents($targetFile);
         $fileContent = ($fileContent) ?: '';
 
-        static::assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
+        $this->assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
     }
 
     /**
@@ -65,11 +65,11 @@ class SprykRunMethodTest extends Unit
         $tester->execute($arguments);
 
         $targetFile = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacade.php';
-        static::assertFileExists($targetFile);
+        $this->assertFileExists($targetFile);
         $fileContent = file_get_contents($targetFile);
         $fileContent = ($fileContent) ?: '';
 
-        static::assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
+        $this->assertRegExp('/public function/', $fileContent, 'Expected that method was added to target but was not.');
     }
 
     /**

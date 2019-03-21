@@ -15,10 +15,10 @@ use Symfony\Component\Yaml\Yaml;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddZedBusinessTestSuiteConfigurationTest
+ * @group AddZedCommunicationTestSuiteConfigurationTest
  * Add your own group annotations below this line
  */
-class AddZedBusinessTestSuiteConfigurationTest extends Unit
+class AddZedCommunicationTestSuiteConfigurationTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -28,7 +28,7 @@ class AddZedBusinessTestSuiteConfigurationTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedBusinessTestSuiteConfiguration(): void
+    public function testAddsZedCommunicationTestSuiteConfiguration(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -42,13 +42,13 @@ class AddZedBusinessTestSuiteConfigurationTest extends Unit
         $this->assertArrayHasKey('suites', $configuration);
 
         $suitesConfiguration = $configuration['suites'];
-        $this->assertArrayHasKey('Business', $suitesConfiguration);
+        $this->assertArrayHasKey('Communication', $suitesConfiguration);
     }
 
     /**
      * @return void
      */
-    public function testAddsZedBusinessTestSuiteConfigurationOnProjectLayer(): void
+    public function testAddsZedCommunicationTestSuiteConfigurationOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -63,6 +63,6 @@ class AddZedBusinessTestSuiteConfigurationTest extends Unit
         $this->assertArrayHasKey('suites', $configuration);
 
         $suitesConfiguration = $configuration['suites'];
-        $this->assertArrayHasKey('Business', $suitesConfiguration);
+        $this->assertArrayHasKey('Communication', $suitesConfiguration);
     }
 }
