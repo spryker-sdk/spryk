@@ -1,0 +1,26 @@
+
+
+    /**
+     *
+     * @Glue({
+     *     "patch": {
+     *          "summary": [
+     *              "Deletes {{ resourceType }}."
+     *          ],
+     *          "parameters": [{
+     *              "name": "Accept-Language",
+     *              "in": "header"
+     *          }],
+     *          "responses": {
+     *              "404": "{{ resourceType | dashToCamelCase }} not found."
+     *          }
+     *     }
+     * })
+     *
+     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
+     *
+     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
+     */
+    public function {{ method }}(\Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest): \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
+    {
+    }
