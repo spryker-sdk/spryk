@@ -23,7 +23,7 @@ interface SprykDefinitionBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface
+     * @return $this
      */
-    public function setStyle(SprykStyleInterface $style): self;
+    public function setStyle(SprykStyleInterface $style);
 }

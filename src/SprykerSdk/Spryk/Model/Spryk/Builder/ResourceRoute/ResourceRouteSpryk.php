@@ -78,8 +78,9 @@ class ResourceRouteSpryk implements SprykBuilderInterface
 
         $this->putTargetFileContent($sprykDefinition, $targetFileContent);
 
-        $style->report(sprintf(
-            'Added resource route declaration to "%s".',
+        $style->report(
+            sprintf(
+                'Added resource route declaration to "%s".',
                 $this->getTargetArgument($sprykDefinition)
             )
         );

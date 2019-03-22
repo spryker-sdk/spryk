@@ -192,10 +192,9 @@ class TransferSpryk implements SprykBuilderInterface
         $xml = $this->getXml($sprykDefinition);
         $dashToCamelCaseFilter = $this->getDashToCamelCase();
         $transferName = $dashToCamelCaseFilter->filter($this->getArgumentName($sprykDefinition));
+        /** @var string $transferPattern */
+        $transferPattern = sprintf('/<transfer (.*)?name="%s"/', $transferName);
 
-        return preg_match(
-            sprintf('/<transfer (.*)?name="%s"/', $transferName),
-            $xml->asXML()
-        );
+        return (bool)preg_match($transferPattern, $xml->asXML());
     }
 }

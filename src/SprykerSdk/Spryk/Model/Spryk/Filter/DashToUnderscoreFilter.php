@@ -8,7 +8,6 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
 use Zend\Filter\FilterChain;
-use Zend\Filter\Word\DashToCamelCase;
 use Zend\Filter\Word\DashToUnderscore;
 
 class DashToUnderscoreFilter implements FilterInterface
