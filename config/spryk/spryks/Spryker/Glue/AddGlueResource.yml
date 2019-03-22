@@ -16,6 +16,7 @@ arguments:
 
   className:
     inherit: true
+    callback: EnsureResourceSuffix
 
   interfaceName:
     inherit: true

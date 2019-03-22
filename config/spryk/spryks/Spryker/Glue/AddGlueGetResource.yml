@@ -35,9 +35,10 @@ postSpryks:
   - AddGlueResource:
       arguments:
         className:
-          value: "{{ modelName | dashToCamelCase }}Resource"
+          value: "{{ modelName | dashToCamelCase }}"
+          callback: EnsureResourceSuffix
         interfaceName:
-          value: "{{ modelName | dashToCamelCase }}ResourceInterface"
+          value: "{{ className | dashToCamelCase }}Interface"
   - AddGlueResourceRoute:
       arguments:
         modelSuffix:
