@@ -48,5 +48,6 @@ postSpryks:
       arguments:
         method:
           value: "{{ resourceRouteMethod }}"
+          callback: EnsureActionSuffixCallback
         controller:
           value: "{{ modelName | dashToCamelCase }}Resource"

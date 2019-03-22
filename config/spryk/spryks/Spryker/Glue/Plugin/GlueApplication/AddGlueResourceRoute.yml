@@ -22,6 +22,7 @@ arguments:
 
   method:
     value: "configure"
+    callback: EnsureActionSuffixCallback
 
   template:
     value: Glue/GlueRouteResource.php.twig
@@ -43,4 +44,3 @@ postSpryks:
           value: "{{ modelName }}{{ modelSuffix }}"
         interfaceName:
           value: "{{ modelName }}{{ modelSuffix }}Interface"
-

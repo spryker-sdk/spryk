@@ -46,4 +46,3 @@ preSpryks:
 postSpryks:
   - AddGlueProcessorModelInterface
   - AddGlueFactoryMethod
-

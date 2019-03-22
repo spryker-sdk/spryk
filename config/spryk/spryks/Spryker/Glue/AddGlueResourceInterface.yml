@@ -29,7 +29,3 @@ arguments:
 
 preSpryks:
   - AddModule
-#  - AddGlueResource:
-#      arguments:
-#        className:
-#          callback: ClassNameShortCallback
