@@ -8,7 +8,6 @@
 namespace SprykerSdkTest\Spryk\Integration\Glue\Plugin\GlueApplication;
 
 use Codeception\Test\Unit;
-use Roave\BetterReflection\BetterReflection;
 
 /**
  * Auto-generated group annotations
@@ -18,10 +17,10 @@ use Roave\BetterReflection\BetterReflection;
  * @group Glue
  * @group Plugin
  * @group GlueApplication
- * @group AddGlueResourceRouteTest
+ * @group AddGlueResourceRoutePluginTest
  * Add your own group annotations below this line
  */
-class AddGlueResourceRouteTest extends Unit
+class AddGlueResourceRoutePluginTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -36,16 +35,12 @@ class AddGlueResourceRouteTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
-            '--resourceRouteMethod' => 'get',
             '--modelName' => 'FooBar',
             '--modelSuffix' => 'Reader',
             '--mode' => 'core',
         ]);
 
-        $this->assertRouteAdded(
-            '\Spryker\Glue\FooBar\Plugin\GlueApplication\FooBarsResourceRoutePlugin',
-            'get'
-        );
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
     }
 
     /**
@@ -55,28 +50,12 @@ class AddGlueResourceRouteTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--resourceRouteMethod' => 'get',
             '--resourceType' => 'foo-bars',
             '--modelName' => 'FooBar',
             '--modelSuffix' => 'Reader',
             '--mode' => 'project',
         ]);
 
-        $this->assertRouteAdded(
-            '\Pyz\Glue\FooBar\Plugin\GlueApplication\FooBarsResourceRoutePlugin',
-            'get'
-        );
-    }
-
-    /**
-     * @return void
-     */
-    protected function assertRouteAdded(string $className, string $resourceRouteMethod): void
-    {
-        $reflection = new BetterReflection();
-        $classReflection = $reflection->classReflector()->reflect($className);
-        $methodReflection = $classReflection->getMethod('configure');
-
-        $this->assertContains('->add' . ucfirst($resourceRouteMethod) . '(', $methodReflection->getBodyCode());
+        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
     }
 }
