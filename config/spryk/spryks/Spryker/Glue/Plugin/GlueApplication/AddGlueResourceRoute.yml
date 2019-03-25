@@ -20,9 +20,11 @@ arguments:
   resourceRouteMethod:
     inherit: true
 
+  modelSuffix:
+    inherit: true
+
   method:
     value: "configure"
-    callback: EnsureActionSuffixCallback
 
   template:
     value: Glue/GlueRouteResource.php.twig

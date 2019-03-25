@@ -46,6 +46,7 @@
       "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
       "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
       "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
+      "Spryker\\Glue\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Glue/FooBar/",
       "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
       "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
       "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
@@ -54,6 +55,7 @@
       "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
       "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
       "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
+      "Pyz\\Glue\\FooBar\\": "tests/_data/src/Pyz/Glue/FooBar/",
       "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
     }
   },
