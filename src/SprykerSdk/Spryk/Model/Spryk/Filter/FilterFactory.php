@@ -28,6 +28,8 @@ class FilterFactory
             $this->createCamelCaseFilter(),
             $this->createLowerCaseFirstFilter(),
             $this->createCamelCaseToWhitespaceFilter(),
+            $this->createDashToCamelCaseFilter(),
+            $this->createDashToUnderscoreFilter(),
         ];
     }
 
@@ -117,5 +119,21 @@ class FilterFactory
     public function createCamelCaseToWhitespaceFilter(): FilterInterface
     {
         return new CamelCaseToWhitespaceFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createDashToCamelCaseFilter(): FilterInterface
+    {
+        return new DashToCamelCaseFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createDashToUnderscoreFilter(): FilterInterface
+    {
+        return new DashToUnderscoreFilter();
     }
 }

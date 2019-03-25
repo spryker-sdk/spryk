@@ -40,6 +40,14 @@ class CallbackFactory
             $this->createRemoveControllerSuffixCallback(),
             $this->createEnsureActionSuffixCallback(),
             $this->createRemoveActionSuffixCallback(),
+            $this->createEnsureRestAttributesTransferAffixCallback(),
+            $this->createGlueProcessorModelTargetFilenameCallback(),
+            $this->createGlueProcessorModelInterfaceTargetFilenameCallback(),
+            $this->createGlueProcessorModelSubDirectoryCallback(),
+            $this->createGlueProcessorFactoryMethodNameCallback(),
+            $this->createGlueResourceInterfaceTargetFilenameCallback(),
+            $this->createGlueResourceTargetFilenameCallback(),
+            $this->createEnsureResourceSuffixCallback(),
         ]);
     }
 
@@ -121,5 +129,69 @@ class CallbackFactory
     public function createRemoveActionSuffixCallback(): CallbackInterface
     {
         return new RemoveActionSuffixCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createEnsureRestAttributesTransferAffixCallback(): CallbackInterface
+    {
+        return new EnsureRestAttributesTransferAffixCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createGlueProcessorModelTargetFilenameCallback(): CallbackInterface
+    {
+        return new GlueProcessorModelTargetFilenameCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createGlueProcessorModelInterfaceTargetFilenameCallback(): CallbackInterface
+    {
+        return new GlueProcessorModelInterfaceTargetFilenameCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createGlueProcessorModelSubDirectoryCallback(): CallbackInterface
+    {
+        return new GlueProcessorModelSubDirectoryCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createGlueProcessorFactoryMethodNameCallback(): CallbackInterface
+    {
+        return new GlueProcessorFactoryMethodNameCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createGlueResourceInterfaceTargetFilenameCallback(): CallbackInterface
+    {
+        return new GlueResourceInterfaceTargetFilenameCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createGlueResourceTargetFilenameCallback(): CallbackInterface
+    {
+        return new GlueResourceTargetFilenameCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createEnsureResourceSuffixCallback(): CallbackInterface
+    {
+        return new EnsureResourceSuffixCallback();
     }
 }

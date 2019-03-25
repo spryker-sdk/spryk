@@ -15,12 +15,14 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection\ReflectionHelperInter
 use SprykerSdk\Spryk\Model\Spryk\Builder\Constant\ConstantSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Navigation\NavigationSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\ResourceRoute\ResourceRouteSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Schema\SchemaSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\UpdateYmlSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Transfer\TransferSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Filter\FilterFactory;
 use SprykerSdk\Spryk\SprykConfig;
 
@@ -68,6 +70,8 @@ class SprykBuilderFactory
             $this->createNavigationSpryk(),
             $this->createSchemaSpryk(),
             $this->createBridgeMethodsSpryk(),
+            $this->createTransferSpryk(),
+            $this->createResourceRouteSpryk(),
         ];
     }
 
@@ -162,6 +166,26 @@ class SprykBuilderFactory
             $this->createTemplateRenderer(),
             $this->createReflectionHelper(),
             $this->createMethodHelper()
+        );
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createTransferSpryk(): SprykBuilderInterface
+    {
+        return new TransferSpryk(
+            $this->getConfig()->getRootDirectory()
+        );
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createResourceRouteSpryk(): SprykBuilderInterface
+    {
+        return new ResourceRouteSpryk(
+            $this->createTemplateRenderer()
         );
     }
 
