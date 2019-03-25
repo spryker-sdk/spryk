@@ -28,6 +28,11 @@ class AddGlueFactoryMethodTest extends Unit
     /**
      * @dataProvider getFactoryMethodData
      *
+     * @param array $params
+     * @param string $className
+     * @param string $methodName
+     * @param string $expectedBody
+     *
      * @return void
      */
     public function testAddsGlueFactoryMethod(

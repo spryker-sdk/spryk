@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Glue;
+namespace SprykerSdkTest\Spryk\Integration\Glue\Controller;
 
 use Codeception\Test\Unit;
 
@@ -15,10 +15,11 @@ use Codeception\Test\Unit;
  * @group Spryk
  * @group Integration
  * @group Glue
- * @group AddGlueResourceRouteTest
+ * @group Controller
+ * @group AddGlueControllerActionTest
  * Add your own group annotations below this line
  */
-class AddGlueResourceRouteTest extends Unit
+class AddGlueControllerGetActionTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -28,28 +29,28 @@ class AddGlueResourceRouteTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResource(): void
-    {
+    public function testAddsGlueControllerAction(): void {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Bar',
-            '--mode' => 'core',
+            '--controller' => 'Bar',
+            '--resourceType' => 'foo-bars',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/BarResource.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsGlueResourceOnProjectLayer(): void
+    public function testAddsGlueControllerOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Bar',
+            '--controller' => 'Bar',
+            '--resourceType' => 'foo-bars',
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'BarResource.php');
+        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Controller/BarController.php');
     }
 }
