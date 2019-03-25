@@ -154,13 +154,17 @@
   mode: 2
   description: 'resourceType argument'
 -
-  name: modelName
-  mode: 2
-  description: 'modelName argument'
--
   name: resourceRouteMethod
   mode: 2
   description: 'resourceRouteMethod argument'
+-
+  name: modelSuffix
+  mode: 2
+  description: 'modelSuffix argument'
+-
+  name: modelName
+  mode: 2
+  description: 'modelName argument'
 -
   name: repositoryToken
   mode: 2
@@ -2030,34 +2034,6 @@
   mode: 2
   description: 'AddGlueResourceInterface repository argument'
 -
-  name: AddGlueDeleteResource.module
-  mode: 2
-  description: 'AddGlueDeleteResource module argument'
--
-  name: AddGlueDeleteResource.organization
-  mode: 2
-  description: 'AddGlueDeleteResource organization argument'
--
-  name: AddGlueDeleteResource.resourceType
-  mode: 2
-  description: 'AddGlueDeleteResource resourceType argument'
--
-  name: AddGlueDeleteResource.modelName
-  mode: 2
-  description: 'AddGlueDeleteResource modelName argument'
--
-  name: AddGlueDeleteResource.targetPath
-  mode: 2
-  description: 'AddGlueDeleteResource targetPath argument'
--
-  name: AddGlueDeleteResource.directories
-  mode: 2
-  description: 'AddGlueDeleteResource directories argument'
--
-  name: AddGlueDeleteResource.repository
-  mode: 2
-  description: 'AddGlueDeleteResource repository argument'
--
   name: AddGlueProcessorModel.module
   mode: 2
   description: 'AddGlueProcessorModel module argument'
@@ -2149,6 +2125,10 @@
   name: AddGlueResourceRoute.resourceRouteMethod
   mode: 2
   description: 'AddGlueResourceRoute resourceRouteMethod argument'
+-
+  name: AddGlueResourceRoute.modelSuffix
+  mode: 2
+  description: 'AddGlueResourceRoute modelSuffix argument'
 -
   name: AddGlueResourceRoute.method
   mode: 2
@@ -2289,38 +2269,6 @@
   name: AddGlueControllerAction.repository
   mode: 2
   description: 'AddGlueControllerAction repository argument'
--
-  name: AddGlueControllerDeleteAction.module
-  mode: 2
-  description: 'AddGlueControllerDeleteAction module argument'
--
-  name: AddGlueControllerDeleteAction.organization
-  mode: 2
-  description: 'AddGlueControllerDeleteAction organization argument'
--
-  name: AddGlueControllerDeleteAction.controller
-  mode: 2
-  description: 'AddGlueControllerDeleteAction controller argument'
--
-  name: AddGlueControllerDeleteAction.method
-  mode: 2
-  description: 'AddGlueControllerDeleteAction method argument'
--
-  name: AddGlueControllerDeleteAction.resourceType
-  mode: 2
-  description: 'AddGlueControllerDeleteAction resourceType argument'
--
-  name: AddGlueControllerDeleteAction.template
-  mode: 2
-  description: 'AddGlueControllerDeleteAction template argument'
--
-  name: AddGlueControllerDeleteAction.target
-  mode: 2
-  description: 'AddGlueControllerDeleteAction target argument'
--
-  name: AddGlueControllerDeleteAction.repository
-  mode: 2
-  description: 'AddGlueControllerDeleteAction repository argument'
 -
   name: AddGlueControllerGetAction.module
   mode: 2

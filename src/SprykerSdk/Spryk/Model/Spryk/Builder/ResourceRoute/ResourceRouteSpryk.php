@@ -20,6 +20,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
     public const ARGUMENT_TARGET = 'target';
     public const ARGUMENT_TEMPLATE = 'template';
     public const ARGUMENT_METHOD_NAME = 'method';
+    protected const ARGUMENT_RESOURCE_ROUTE_METHOD = 'resourceRouteMethod';
 
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
@@ -213,14 +214,27 @@ class ResourceRouteSpryk implements SprykBuilderInterface
     protected function isRouteDeclared(SprykDefinitionInterface $sprykDefinition): bool
     {
         $reflectionClass = $this->getReflection($sprykDefinition);
-
         $reflectionMethod = $reflectionClass->getMethod($this->getMethodName($sprykDefinition));
         $methodBody = $reflectionMethod->getBodyCode();
+        $resourceRouteMethod = $this->getResourceRouteMethod($sprykDefinition);
 
-        if (strpos($methodBody, '->add' . ucfirst($sprykDefinition->getArgumentCollection()->getArgument('resourceRouteMethod')) . '(') !== false) {
+        if (strpos($methodBody, '->add' . ucfirst($resourceRouteMethod) . '(') !== false) {
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return string
+     */
+    protected function getResourceRouteMethod(SprykDefinitionInterface $sprykDefinition): string
+    {
+        return $sprykDefinition
+            ->getArgumentCollection()
+            ->getArgument(static::ARGUMENT_RESOURCE_ROUTE_METHOD)
+            ->getValue();
     }
 }
