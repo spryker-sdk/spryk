@@ -48,6 +48,7 @@ class CallbackFactory
             $this->createGlueResourceInterfaceTargetFilenameCallback(),
             $this->createGlueResourceTargetFilenameCallback(),
             $this->createEnsureResourceSuffixCallback(),
+            $this->createEnsureInterfaceSuffixCallback(),
         ]);
     }
 
@@ -193,5 +194,13 @@ class CallbackFactory
     public function createEnsureResourceSuffixCallback(): CallbackInterface
     {
         return new EnsureResourceSuffixCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createEnsureInterfaceSuffixCallback(): CallbackInterface
+    {
+        return new EnsureInterfaceSuffixCallback();
     }
 }

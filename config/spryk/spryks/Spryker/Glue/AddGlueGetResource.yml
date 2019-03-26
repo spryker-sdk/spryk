@@ -35,10 +35,13 @@ postSpryks:
   - AddGlueResource:
       arguments:
         className:
-          value: "{{ modelName | dashToCamelCase }}"
+          value: "{{ resourceType | dashToCamelCase }}"
           callback: EnsureResourceSuffix
         interfaceName:
-          value: "{{ className | dashToCamelCase }}Interface"
+          value: "{{ resourceType | dashToCamelCase }}"
+          callback:
+            - EnsureResourceSuffix
+            - EnsureInterfaceSuffix
   - AddGlueResourceRoute:
       arguments:
         modelSuffix:
@@ -51,4 +54,10 @@ postSpryks:
           value: "{{ resourceRouteMethod }}"
           callback: EnsureActionSuffixCallback
         controller:
-          value: "{{ modelName | dashToCamelCase }}Resource"
+          value: "{{ resourceType | dashToCamelCase }}"
+          callback: EnsureResourceSuffix
+        target:
+          value: "{{ organization }}\\Glue\\{{ module }}\\Controller\\{{ resourceType | dashToCamelCase }}"
+          callback:
+            - EnsureResourceSuffix
+            - EnsureControllerSuffixCallback

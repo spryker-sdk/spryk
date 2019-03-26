@@ -45,4 +45,6 @@ postSpryks:
         className:
           value: "{{ modelName }}{{ modelSuffix }}"
         interfaceName:
-          value: "{{ modelName }}{{ modelSuffix }}Interface"
+          value: "{{ modelName }}{{ modelSuffix }}"
+          callback:
+            - EnsureInterfaceSuffix
