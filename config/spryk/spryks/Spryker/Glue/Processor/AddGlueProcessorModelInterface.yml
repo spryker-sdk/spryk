@@ -33,10 +33,3 @@ arguments:
 
 preSpryks:
   - AddModule
-  - AddGlueProcessorModel:
-      arguments:
-        subDirectory:
-          callback: GlueProcessorModelSubDirectory
-
-        className:
-          callback: ClassNameShortCallback

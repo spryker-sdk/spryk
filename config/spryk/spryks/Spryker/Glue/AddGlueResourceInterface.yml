@@ -2,6 +2,10 @@ spryk: template
 description: "Adds a new Resource interface to the Glue application."
 mode: both
 
+application: Glue
+
+priority: 1
+
 arguments:
   module:
     inherit: true
@@ -12,6 +16,7 @@ arguments:
 
   className:
     inherit: true
+    callback: EnsureResourceSuffix
 
   interfaceName:
     inherit: true
@@ -29,7 +34,3 @@ arguments:
 
 preSpryks:
   - AddModule
-#  - AddGlueResource:
-#      arguments:
-#        className:
-#          callback: ClassNameShortCallback
