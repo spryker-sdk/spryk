@@ -28,7 +28,7 @@ class AddGlueGetResourceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueFactory(): void
+    public function testAddGlueGetResourceWillAddResourceRoutePluginAndResource(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -38,13 +38,13 @@ class AddGlueGetResourceTest extends Unit
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarResource.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarsResource.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsGlueFactoryOnProjectLayer(): void
+    public function testAddGlueGetResourceWillAddResourceRoutePluginAndResourceOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -54,6 +54,6 @@ class AddGlueGetResourceTest extends Unit
         ]);
 
         static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
-        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'FooBarResource.php');
+        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'FooBarsResource.php');
     }
 }
