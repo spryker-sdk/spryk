@@ -150,6 +150,22 @@
   mode: 2
   description: 'consoleCommand argument'
 -
+  name: resourceType
+  mode: 2
+  description: 'resourceType argument'
+-
+  name: resourceRouteMethod
+  mode: 2
+  description: 'resourceRouteMethod argument'
+-
+  name: modelSuffix
+  mode: 2
+  description: 'modelSuffix argument'
+-
+  name: modelName
+  mode: 2
+  description: 'modelName argument'
+-
   name: repositoryToken
   mode: 2
   description: 'repositoryToken argument'
@@ -1986,6 +2002,470 @@
   mode: 2
   description: 'AddZedPresentationTwig repository argument'
 -
+  name: AddGlueResourceInterface.module
+  mode: 2
+  description: 'AddGlueResourceInterface module argument'
+-
+  name: AddGlueResourceInterface.organization
+  mode: 2
+  description: 'AddGlueResourceInterface organization argument'
+-
+  name: AddGlueResourceInterface.className
+  mode: 2
+  description: 'AddGlueResourceInterface className argument'
+-
+  name: AddGlueResourceInterface.interfaceName
+  mode: 2
+  description: 'AddGlueResourceInterface interfaceName argument'
+-
+  name: AddGlueResourceInterface.template
+  mode: 2
+  description: 'AddGlueResourceInterface template argument'
+-
+  name: AddGlueResourceInterface.targetFilename
+  mode: 2
+  description: 'AddGlueResourceInterface targetFilename argument'
+-
+  name: AddGlueResourceInterface.targetPath
+  mode: 2
+  description: 'AddGlueResourceInterface targetPath argument'
+-
+  name: AddGlueResourceInterface.repository
+  mode: 2
+  description: 'AddGlueResourceInterface repository argument'
+-
+  name: AddGlueProcessorModel.module
+  mode: 2
+  description: 'AddGlueProcessorModel module argument'
+-
+  name: AddGlueProcessorModel.organization
+  mode: 2
+  description: 'AddGlueProcessorModel organization argument'
+-
+  name: AddGlueProcessorModel.subDirectory
+  mode: 2
+  description: 'AddGlueProcessorModel subDirectory argument'
+-
+  name: AddGlueProcessorModel.className
+  mode: 2
+  description: 'AddGlueProcessorModel className argument'
+-
+  name: AddGlueProcessorModel.constructorArguments
+  mode: 2
+  description: 'AddGlueProcessorModel constructorArguments argument'
+-
+  name: AddGlueProcessorModel.interfaceName
+  mode: 2
+  description: 'AddGlueProcessorModel interfaceName argument'
+-
+  name: AddGlueProcessorModel.template
+  mode: 2
+  description: 'AddGlueProcessorModel template argument'
+-
+  name: AddGlueProcessorModel.targetFilename
+  mode: 2
+  description: 'AddGlueProcessorModel targetFilename argument'
+-
+  name: AddGlueProcessorModel.targetPath
+  mode: 2
+  description: 'AddGlueProcessorModel targetPath argument'
+-
+  name: AddGlueProcessorModel.repository
+  mode: 2
+  description: 'AddGlueProcessorModel repository argument'
+-
+  name: AddGlueProcessorModelInterface.module
+  mode: 2
+  description: 'AddGlueProcessorModelInterface module argument'
+-
+  name: AddGlueProcessorModelInterface.organization
+  mode: 2
+  description: 'AddGlueProcessorModelInterface organization argument'
+-
+  name: AddGlueProcessorModelInterface.subDirectory
+  mode: 2
+  description: 'AddGlueProcessorModelInterface subDirectory argument'
+-
+  name: AddGlueProcessorModelInterface.className
+  mode: 2
+  description: 'AddGlueProcessorModelInterface className argument'
+-
+  name: AddGlueProcessorModelInterface.interfaceName
+  mode: 2
+  description: 'AddGlueProcessorModelInterface interfaceName argument'
+-
+  name: AddGlueProcessorModelInterface.template
+  mode: 2
+  description: 'AddGlueProcessorModelInterface template argument'
+-
+  name: AddGlueProcessorModelInterface.targetFilename
+  mode: 2
+  description: 'AddGlueProcessorModelInterface targetFilename argument'
+-
+  name: AddGlueProcessorModelInterface.targetPath
+  mode: 2
+  description: 'AddGlueProcessorModelInterface targetPath argument'
+-
+  name: AddGlueProcessorModelInterface.repository
+  mode: 2
+  description: 'AddGlueProcessorModelInterface repository argument'
+-
+  name: AddGlueResourceRoute.module
+  mode: 2
+  description: 'AddGlueResourceRoute module argument'
+-
+  name: AddGlueResourceRoute.organization
+  mode: 2
+  description: 'AddGlueResourceRoute organization argument'
+-
+  name: AddGlueResourceRoute.resourceType
+  mode: 2
+  description: 'AddGlueResourceRoute resourceType argument'
+-
+  name: AddGlueResourceRoute.resourceRouteMethod
+  mode: 2
+  description: 'AddGlueResourceRoute resourceRouteMethod argument'
+-
+  name: AddGlueResourceRoute.modelSuffix
+  mode: 2
+  description: 'AddGlueResourceRoute modelSuffix argument'
+-
+  name: AddGlueResourceRoute.method
+  mode: 2
+  description: 'AddGlueResourceRoute method argument'
+-
+  name: AddGlueResourceRoute.template
+  mode: 2
+  description: 'AddGlueResourceRoute template argument'
+-
+  name: AddGlueResourceRoute.target
+  mode: 2
+  description: 'AddGlueResourceRoute target argument'
+-
+  name: AddGlueResourceRoute.repository
+  mode: 2
+  description: 'AddGlueResourceRoute repository argument'
+-
+  name: AddGlueResourceRoutePlugin.module
+  mode: 2
+  description: 'AddGlueResourceRoutePlugin module argument'
+-
+  name: AddGlueResourceRoutePlugin.organization
+  mode: 2
+  description: 'AddGlueResourceRoutePlugin organization argument'
+-
+  name: AddGlueResourceRoutePlugin.template
+  mode: 2
+  description: 'AddGlueResourceRoutePlugin template argument'
+-
+  name: AddGlueResourceRoutePlugin.resourceType
+  mode: 2
+  description: 'AddGlueResourceRoutePlugin resourceType argument'
+-
+  name: AddGlueResourceRoutePlugin.modelName
+  mode: 2
+  description: 'AddGlueResourceRoutePlugin modelName argument'
+-
+  name: AddGlueResourceRoutePlugin.targetFilename
+  mode: 2
+  description: 'AddGlueResourceRoutePlugin targetFilename argument'
+-
+  name: AddGlueResourceRoutePlugin.targetPath
+  mode: 2
+  description: 'AddGlueResourceRoutePlugin targetPath argument'
+-
+  name: AddGlueResourceRoutePlugin.repository
+  mode: 2
+  description: 'AddGlueResourceRoutePlugin repository argument'
+-
+  name: AddGlueConfig.module
+  mode: 2
+  description: 'AddGlueConfig module argument'
+-
+  name: AddGlueConfig.organization
+  mode: 2
+  description: 'AddGlueConfig organization argument'
+-
+  name: AddGlueConfig.template
+  mode: 2
+  description: 'AddGlueConfig template argument'
+-
+  name: AddGlueConfig.targetFilename
+  mode: 2
+  description: 'AddGlueConfig targetFilename argument'
+-
+  name: AddGlueConfig.targetPath
+  mode: 2
+  description: 'AddGlueConfig targetPath argument'
+-
+  name: AddGlueConfig.repository
+  mode: 2
+  description: 'AddGlueConfig repository argument'
+-
+  name: AddGlueFactoryMethod.module
+  mode: 2
+  description: 'AddGlueFactoryMethod module argument'
+-
+  name: AddGlueFactoryMethod.organization
+  mode: 2
+  description: 'AddGlueFactoryMethod organization argument'
+-
+  name: AddGlueFactoryMethod.subDirectory
+  mode: 2
+  description: 'AddGlueFactoryMethod subDirectory argument'
+-
+  name: AddGlueFactoryMethod.className
+  mode: 2
+  description: 'AddGlueFactoryMethod className argument'
+-
+  name: AddGlueFactoryMethod.method
+  mode: 2
+  description: 'AddGlueFactoryMethod method argument'
+-
+  name: AddGlueFactoryMethod.dependencyMethods
+  mode: 2
+  description: 'AddGlueFactoryMethod dependencyMethods argument'
+-
+  name: AddGlueFactoryMethod.template
+  mode: 2
+  description: 'AddGlueFactoryMethod template argument'
+-
+  name: AddGlueFactoryMethod.target
+  mode: 2
+  description: 'AddGlueFactoryMethod target argument'
+-
+  name: AddGlueFactoryMethod.repository
+  mode: 2
+  description: 'AddGlueFactoryMethod repository argument'
+-
+  name: AddGlueControllerAction.module
+  mode: 2
+  description: 'AddGlueControllerAction module argument'
+-
+  name: AddGlueControllerAction.organization
+  mode: 2
+  description: 'AddGlueControllerAction organization argument'
+-
+  name: AddGlueControllerAction.controller
+  mode: 2
+  description: 'AddGlueControllerAction controller argument'
+-
+  name: AddGlueControllerAction.method
+  mode: 2
+  description: 'AddGlueControllerAction method argument'
+-
+  name: AddGlueControllerAction.resourceType
+  mode: 2
+  description: 'AddGlueControllerAction resourceType argument'
+-
+  name: AddGlueControllerAction.template
+  mode: 2
+  description: 'AddGlueControllerAction template argument'
+-
+  name: AddGlueControllerAction.target
+  mode: 2
+  description: 'AddGlueControllerAction target argument'
+-
+  name: AddGlueControllerAction.repository
+  mode: 2
+  description: 'AddGlueControllerAction repository argument'
+-
+  name: AddGlueControllerGetAction.module
+  mode: 2
+  description: 'AddGlueControllerGetAction module argument'
+-
+  name: AddGlueControllerGetAction.organization
+  mode: 2
+  description: 'AddGlueControllerGetAction organization argument'
+-
+  name: AddGlueControllerGetAction.controller
+  mode: 2
+  description: 'AddGlueControllerGetAction controller argument'
+-
+  name: AddGlueControllerGetAction.method
+  mode: 2
+  description: 'AddGlueControllerGetAction method argument'
+-
+  name: AddGlueControllerGetAction.resourceType
+  mode: 2
+  description: 'AddGlueControllerGetAction resourceType argument'
+-
+  name: AddGlueControllerGetAction.template
+  mode: 2
+  description: 'AddGlueControllerGetAction template argument'
+-
+  name: AddGlueControllerGetAction.target
+  mode: 2
+  description: 'AddGlueControllerGetAction target argument'
+-
+  name: AddGlueControllerGetAction.repository
+  mode: 2
+  description: 'AddGlueControllerGetAction repository argument'
+-
+  name: AddGlueController.module
+  mode: 2
+  description: 'AddGlueController module argument'
+-
+  name: AddGlueController.organization
+  mode: 2
+  description: 'AddGlueController organization argument'
+-
+  name: AddGlueController.controller
+  mode: 2
+  description: 'AddGlueController controller argument'
+-
+  name: AddGlueController.template
+  mode: 2
+  description: 'AddGlueController template argument'
+-
+  name: AddGlueController.targetFilename
+  mode: 2
+  description: 'AddGlueController targetFilename argument'
+-
+  name: AddGlueController.targetPath
+  mode: 2
+  description: 'AddGlueController targetPath argument'
+-
+  name: AddGlueController.repository
+  mode: 2
+  description: 'AddGlueController repository argument'
+-
+  name: AddGlueGetResource.module
+  mode: 2
+  description: 'AddGlueGetResource module argument'
+-
+  name: AddGlueGetResource.organization
+  mode: 2
+  description: 'AddGlueGetResource organization argument'
+-
+  name: AddGlueGetResource.resourceType
+  mode: 2
+  description: 'AddGlueGetResource resourceType argument'
+-
+  name: AddGlueGetResource.modelName
+  mode: 2
+  description: 'AddGlueGetResource modelName argument'
+-
+  name: AddGlueGetResource.targetPath
+  mode: 2
+  description: 'AddGlueGetResource targetPath argument'
+-
+  name: AddGlueGetResource.directories
+  mode: 2
+  description: 'AddGlueGetResource directories argument'
+-
+  name: AddGlueGetResource.repository
+  mode: 2
+  description: 'AddGlueGetResource repository argument'
+-
+  name: AddGlueFactory.module
+  mode: 2
+  description: 'AddGlueFactory module argument'
+-
+  name: AddGlueFactory.organization
+  mode: 2
+  description: 'AddGlueFactory organization argument'
+-
+  name: AddGlueFactory.template
+  mode: 2
+  description: 'AddGlueFactory template argument'
+-
+  name: AddGlueFactory.targetFilename
+  mode: 2
+  description: 'AddGlueFactory targetFilename argument'
+-
+  name: AddGlueFactory.targetPath
+  mode: 2
+  description: 'AddGlueFactory targetPath argument'
+-
+  name: AddGlueFactory.repository
+  mode: 2
+  description: 'AddGlueFactory repository argument'
+-
+  name: AddGlueDependencyProvider.module
+  mode: 2
+  description: 'AddGlueDependencyProvider module argument'
+-
+  name: AddGlueDependencyProvider.organization
+  mode: 2
+  description: 'AddGlueDependencyProvider organization argument'
+-
+  name: AddGlueDependencyProvider.template
+  mode: 2
+  description: 'AddGlueDependencyProvider template argument'
+-
+  name: AddGlueDependencyProvider.targetFilename
+  mode: 2
+  description: 'AddGlueDependencyProvider targetFilename argument'
+-
+  name: AddGlueDependencyProvider.targetPath
+  mode: 2
+  description: 'AddGlueDependencyProvider targetPath argument'
+-
+  name: AddGlueDependencyProvider.repository
+  mode: 2
+  description: 'AddGlueDependencyProvider repository argument'
+-
+  name: AddGlueConfigConstant.module
+  mode: 2
+  description: 'AddGlueConfigConstant module argument'
+-
+  name: AddGlueConfigConstant.organization
+  mode: 2
+  description: 'AddGlueConfigConstant organization argument'
+-
+  name: AddGlueConfigConstant.name
+  mode: 2
+  description: 'AddGlueConfigConstant name argument'
+-
+  name: AddGlueConfigConstant.value
+  mode: 2
+  description: 'AddGlueConfigConstant value argument'
+-
+  name: AddGlueConfigConstant.visibility
+  mode: 2
+  description: 'AddGlueConfigConstant visibility argument'
+-
+  name: AddGlueConfigConstant.target
+  mode: 2
+  description: 'AddGlueConfigConstant target argument'
+-
+  name: AddGlueConfigConstant.repository
+  mode: 2
+  description: 'AddGlueConfigConstant repository argument'
+-
+  name: AddGlueResource.module
+  mode: 2
+  description: 'AddGlueResource module argument'
+-
+  name: AddGlueResource.organization
+  mode: 2
+  description: 'AddGlueResource organization argument'
+-
+  name: AddGlueResource.className
+  mode: 2
+  description: 'AddGlueResource className argument'
+-
+  name: AddGlueResource.interfaceName
+  mode: 2
+  description: 'AddGlueResource interfaceName argument'
+-
+  name: AddGlueResource.template
+  mode: 2
+  description: 'AddGlueResource template argument'
+-
+  name: AddGlueResource.targetFilename
+  mode: 2
+  description: 'AddGlueResource targetFilename argument'
+-
+  name: AddGlueResource.targetPath
+  mode: 2
+  description: 'AddGlueResource targetPath argument'
+-
+  name: AddGlueResource.repository
+  mode: 2
+  description: 'AddGlueResource repository argument'
+-
   name: AddModuleGitignore.module
   mode: 2
   description: 'AddModuleGitignore module argument'
@@ -2733,6 +3213,26 @@
   name: AddSharedTransferSchema.repository
   mode: 2
   description: 'AddSharedTransferSchema repository argument'
+-
+  name: AddSharedRestAttributesTransfer.module
+  mode: 2
+  description: 'AddSharedRestAttributesTransfer module argument'
+-
+  name: AddSharedRestAttributesTransfer.organization
+  mode: 2
+  description: 'AddSharedRestAttributesTransfer organization argument'
+-
+  name: AddSharedRestAttributesTransfer.name
+  mode: 2
+  description: 'AddSharedRestAttributesTransfer name argument'
+-
+  name: AddSharedRestAttributesTransfer.targetPath
+  mode: 2
+  description: 'AddSharedRestAttributesTransfer targetPath argument'
+-
+  name: AddSharedRestAttributesTransfer.repository
+  mode: 2
+  description: 'AddSharedRestAttributesTransfer repository argument'
 -
   name: AddSharedConstantsInterface.module
   mode: 2

@@ -7,6 +7,7 @@
     "php": ">=7.1",
     "roave/better-reflection": "^2.0 || ^3.0",
     "spryker/config": "^3.0.0",
+    "spryker/glue-application-extension": "^1.1",
     "spryker/kernel": "^3.17.0",
     "spryker/symfony": "^3.0.0",
     "spryker/twig": "^3.0.0",
@@ -46,6 +47,7 @@
       "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
       "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
       "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
+      "Spryker\\Glue\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Glue/FooBar/",
       "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
       "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
       "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
@@ -54,6 +56,7 @@
       "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
       "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
       "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
+      "Pyz\\Glue\\FooBar\\": "tests/_data/src/Pyz/Glue/FooBar/",
       "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
     }
   },
@@ -73,7 +76,8 @@
   "extra": {
     "branch-alias": {
       "dev-master": "0.1.x-dev",
-      "dev-feature/glue-5642/glue-5715-add-get-resource": "0.1.x-dev"
+      "dev-feature/glue-5642/glue-5715-add-get-resource": "0.1.x-dev",
+      "dev-feature/glue-5642/glue-5717-add-post-resource": "0.1.x-dev"
     }
   },
   "config": {
