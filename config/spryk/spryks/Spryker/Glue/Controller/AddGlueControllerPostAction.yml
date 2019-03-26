@@ -17,6 +17,7 @@ arguments:
       - EnsureControllerSuffixCallback
 
   method:
+    default: "post"
     callback: EnsureActionSuffixCallback
 
   resourceType:
