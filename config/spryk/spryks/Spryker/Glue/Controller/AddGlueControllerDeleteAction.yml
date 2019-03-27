@@ -28,7 +28,7 @@ arguments:
 
   modelSuffix:
     inherit: true
-    default: "Reader"
+    default: "Deleter"
 
   template:
     value: Glue/Controller/MethodDeleteGlueController.php.twig
