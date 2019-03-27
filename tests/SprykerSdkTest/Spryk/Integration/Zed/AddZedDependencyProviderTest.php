@@ -34,7 +34,7 @@ class AddZedDependencyProviderTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/FooBarDependencyProvider.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/FooBarDependencyProvider.php');
     }
 
     /**
@@ -47,6 +47,6 @@ class AddZedDependencyProviderTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'FooBarDependencyProvider.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'FooBarDependencyProvider.php');
     }
 }

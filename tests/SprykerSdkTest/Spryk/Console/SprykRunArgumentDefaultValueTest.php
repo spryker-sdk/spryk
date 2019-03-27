@@ -44,8 +44,8 @@ class SprykRunArgumentDefaultValueTest extends Unit
 
         $output = $tester->getDisplay();
         $expectedOutput = 'Enter value for StructureWithDefaultArgumentValue.targetPath argument [vendor/spryker/spryker/Bundles/{{ module }}/]';
-        static::assertRegExp('#' . preg_quote($expectedOutput) . '#', $output);
+        $this->assertRegExp('#' . preg_quote($expectedOutput) . '#', $output);
 
-        static::assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
+        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
     }
 }

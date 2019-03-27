@@ -38,7 +38,7 @@ class AddZedCommunicationControllerTest extends Unit
             '--controller' => 'Index',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
     }
 
     /**
@@ -52,7 +52,7 @@ class AddZedCommunicationControllerTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Controller/IndexController.php');
     }
 
     /**
@@ -65,7 +65,7 @@ class AddZedCommunicationControllerTest extends Unit
             '--controller' => ClassName::ZED_CONTROLLER,
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
     }
 
     /**
@@ -79,7 +79,7 @@ class AddZedCommunicationControllerTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Controller/IndexController.php');
     }
 
     /**
@@ -92,7 +92,7 @@ class AddZedCommunicationControllerTest extends Unit
             '--controller' => 'IndexController',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
     }
 
     /**
@@ -106,6 +106,6 @@ class AddZedCommunicationControllerTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Controller/IndexController.php');
     }
 }

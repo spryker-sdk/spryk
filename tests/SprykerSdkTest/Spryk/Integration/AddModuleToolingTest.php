@@ -35,7 +35,7 @@ class AddModuleToolingTest extends Unit
             '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->getToolingFilePath());
+        $this->assertFileExists($this->getToolingFilePath());
 
         return $this->getToolingConfigByFilePath($this->getToolingFilePath());
     }
@@ -50,7 +50,7 @@ class AddModuleToolingTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'tooling.yml');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'tooling.yml');
     }
 
     /**
@@ -62,7 +62,7 @@ class AddModuleToolingTest extends Unit
      */
     public function testChecksToolingConfigHasCodeSnifferBlock(array $toolingConfig): void
     {
-        static::assertArrayHasKey('code-sniffer', $toolingConfig);
+        $this->assertArrayHasKey('code-sniffer', $toolingConfig);
     }
 
     /**

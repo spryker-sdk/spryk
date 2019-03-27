@@ -36,7 +36,7 @@ class AddModuleCoverallsTest extends Unit
             '--repositoryToken' => 'uzf78t67832fe76923f764f3249f329f)&/vuzf76&/R',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . '.coveralls.yml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . '.coveralls.yml');
     }
 
     /**
@@ -53,6 +53,6 @@ class AddModuleCoverallsTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . '.coveralls.yml');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.coveralls.yml');
     }
 }
