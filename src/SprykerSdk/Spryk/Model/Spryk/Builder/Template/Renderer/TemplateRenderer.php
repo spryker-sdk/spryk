@@ -83,7 +83,7 @@ class TemplateRenderer implements TemplateRendererInterface
     }
 
     /**
-     * @return \Twig_LoaderInterface
+     * @return \Twig\Loader\LoaderInterface
      */
     protected function getLoader()
     {

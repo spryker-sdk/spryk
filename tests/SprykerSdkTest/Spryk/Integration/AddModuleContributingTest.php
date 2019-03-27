@@ -35,7 +35,7 @@ class AddModuleContributingTest extends Unit
             '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'CONTRIBUTING.md');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'CONTRIBUTING.md');
     }
 
     /**
@@ -50,6 +50,6 @@ class AddModuleContributingTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'CONTRIBUTING.md');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'CONTRIBUTING.md');
     }
 }

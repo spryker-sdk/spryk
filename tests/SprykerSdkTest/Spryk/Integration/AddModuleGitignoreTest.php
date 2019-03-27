@@ -35,7 +35,7 @@ class AddModuleGitignoreTest extends Unit
             '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . '.gitignore');
+        $this->assertFileExists($this->tester->getModuleDirectory() . '.gitignore');
     }
 
     /**
@@ -51,6 +51,6 @@ class AddModuleGitignoreTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . '.gitignore');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.gitignore');
     }
 }

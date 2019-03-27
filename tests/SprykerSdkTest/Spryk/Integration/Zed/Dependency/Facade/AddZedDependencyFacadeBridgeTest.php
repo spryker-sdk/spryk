@@ -39,7 +39,7 @@ class AddZedDependencyFacadeBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Dependency/Facade/FooBarToZipZapFacadeBridge.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Dependency/Facade/FooBarToZipZapFacadeBridge.php');
     }
 
     /**
@@ -55,7 +55,7 @@ class AddZedDependencyFacadeBridgeTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
             . 'Dependency/Facade/FooBarToZipZapFacadeBridge.php'
         );

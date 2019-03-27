@@ -130,7 +130,7 @@ class AddZedCommunicationControllerActionTest extends Unit
             '--method' => 'indexAction',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
     }
 
     /**
@@ -145,7 +145,7 @@ class AddZedCommunicationControllerActionTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Presentation/Index/index.twig');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Presentation/Index/index.twig');
     }
 
     /**
@@ -159,7 +159,7 @@ class AddZedCommunicationControllerActionTest extends Unit
             '--method' => 'indexAction',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
     }
 
     /**
@@ -174,6 +174,6 @@ class AddZedCommunicationControllerActionTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Presentation/Index/index.twig');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Presentation/Index/index.twig');
     }
 }

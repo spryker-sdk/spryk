@@ -27,9 +27,9 @@ class Argument implements ArgumentInterface
     /**
      * @param string $name
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
+     * @return $this
      */
-    public function setName(string $name): ArgumentInterface
+    public function setName(string $name)
     {
         $this->name = $name;
 
@@ -55,9 +55,9 @@ class Argument implements ArgumentInterface
     /**
      * @param mixed $value
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
+     * @return $this
      */
-    public function setValue($value): ArgumentInterface
+    public function setValue($value)
     {
         $this->value = $value;
 
@@ -75,9 +75,9 @@ class Argument implements ArgumentInterface
     /**
      * @param array $callbacks
      *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface
+     * @return $this
      */
-    public function setCallbacks(array $callbacks): ArgumentInterface
+    public function setCallbacks(array $callbacks)
     {
         $this->callbacks = $callbacks;
 

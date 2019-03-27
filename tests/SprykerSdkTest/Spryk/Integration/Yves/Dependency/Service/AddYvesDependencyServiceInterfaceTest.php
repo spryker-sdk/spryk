@@ -37,7 +37,7 @@ class AddYvesDependencyServiceInterfaceTest extends Unit
             '--dependentModule' => 'ZipZap',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Dependency/Service/FooBarToZipZapServiceInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Dependency/Service/FooBarToZipZapServiceInterface.php');
     }
 
     /**
@@ -51,7 +51,7 @@ class AddYvesDependencyServiceInterfaceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
             . 'Dependency/Service/FooBarToZipZapServiceInterface.php'
         );

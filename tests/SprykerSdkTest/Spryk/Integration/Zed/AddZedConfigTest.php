@@ -34,7 +34,7 @@ class AddZedConfigTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/FooBarConfig.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/FooBarConfig.php');
     }
 
     /**
@@ -47,6 +47,6 @@ class AddZedConfigTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'FooBarConfig.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'FooBarConfig.php');
     }
 }

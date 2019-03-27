@@ -84,9 +84,9 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
         $facadeInterfaceContent = file_get_contents($pathToFacadeInterface);
         $facadeInterfaceContent = ($facadeInterfaceContent) ?: '';
 
-        static::assertRegExp('/\* Specification:/', $facadeInterfaceContent);
-        static::assertRegExp('/\* - First specification line./', $facadeInterfaceContent);
-        static::assertRegExp('/\* - Second specification line./', $facadeInterfaceContent);
+        $this->assertRegExp('/\* Specification:/', $facadeInterfaceContent);
+        $this->assertRegExp('/\* - First specification line./', $facadeInterfaceContent);
+        $this->assertRegExp('/\* - Second specification line./', $facadeInterfaceContent);
     }
 
     /**
@@ -111,8 +111,8 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
         $facadeInterfaceContent = file_get_contents($pathToFacadeInterface);
         $facadeInterfaceContent = ($facadeInterfaceContent) ?: '';
 
-        static::assertRegExp('/\* Specification:/', $facadeInterfaceContent);
-        static::assertRegExp('/\* - First specification line./', $facadeInterfaceContent);
-        static::assertRegExp('/\* - Second specification line./', $facadeInterfaceContent);
+        $this->assertRegExp('/\* Specification:/', $facadeInterfaceContent);
+        $this->assertRegExp('/\* - First specification line./', $facadeInterfaceContent);
+        $this->assertRegExp('/\* - Second specification line./', $facadeInterfaceContent);
     }
 }

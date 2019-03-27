@@ -53,9 +53,9 @@ class SprykFacade implements SprykFacadeInterface
     /**
      * @param \SprykerSdk\Spryk\SprykFactory $factory
      *
-     * @return \SprykerSdk\Spryk\SprykFacadeInterface
+     * @return $this
      */
-    public function setFactory(SprykFactory $factory): SprykFacadeInterface
+    public function setFactory(SprykFactory $factory)
     {
         $this->factory = $factory;
 

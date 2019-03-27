@@ -37,7 +37,7 @@ class AddZedDependencyServiceInterfaceTest extends Unit
             '--dependentModule' => 'ZipZap',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Dependency/Service/FooBarToZipZapServiceInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Dependency/Service/FooBarToZipZapServiceInterface.php');
     }
 
     /**
@@ -51,7 +51,7 @@ class AddZedDependencyServiceInterfaceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
             . 'Dependency/Service/FooBarToZipZapServiceInterface.php'
         );
