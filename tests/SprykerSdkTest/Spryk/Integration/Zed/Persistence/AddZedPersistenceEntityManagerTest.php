@@ -35,7 +35,7 @@ class AddZedPersistenceEntityManagerTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarEntityManager.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/FooBarEntityManager.php');
     }
 
     /**
@@ -48,7 +48,7 @@ class AddZedPersistenceEntityManagerTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
             . 'Persistence/FooBarEntityManager.php'
         );

@@ -39,7 +39,7 @@ class AddZedBusinessModelTest extends Unit
             ],
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/Bar.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/Bar.php');
     }
 
     /**
@@ -58,7 +58,7 @@ class AddZedBusinessModelTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Business/Foo/Bar.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Business/Foo/Bar.php');
     }
 
     /**

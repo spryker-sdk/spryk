@@ -40,6 +40,7 @@ class SprykDumpTest extends Unit
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();
+
         $this->assertRegExp('/List of all Spryk definitions/', $output);
     }
 

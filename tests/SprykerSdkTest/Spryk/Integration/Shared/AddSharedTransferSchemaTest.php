@@ -33,7 +33,7 @@ class AddSharedTransferSchemaTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml');
     }
 
     /**
@@ -46,7 +46,7 @@ class AddSharedTransferSchemaTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Shared')
             . 'Transfer/foo_bar.transfer.xml'
         );

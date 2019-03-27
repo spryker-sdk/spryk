@@ -36,7 +36,7 @@ class AddClientFactoryTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarFactory.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarFactory.php');
     }
 
     /**
@@ -49,7 +49,7 @@ class AddClientFactoryTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Client')
             . 'FooBarFactory.php'
         );

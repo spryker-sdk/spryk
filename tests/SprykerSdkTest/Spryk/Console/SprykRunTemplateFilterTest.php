@@ -41,10 +41,10 @@ class SprykRunTemplateFilterTest extends Unit
         $tester->setInputs(['FooBar']);
         $tester->execute($arguments);
 
-        static::assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer-with-filter.json');
+        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer-with-filter.json');
         $fileContent = file_get_contents($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer-with-filter.json');
         $fileContent = ($fileContent) ?: '';
 
-        static::assertRegExp('/"name": "spryker\/foo-bar"/', $fileContent);
+        $this->assertRegExp('/"name": "spryker\/foo-bar"/', $fileContent);
     }
 }
