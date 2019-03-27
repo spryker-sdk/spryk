@@ -23,6 +23,14 @@ arguments:
   resourceType:
     inherit: true
 
+  modelName:
+    inherit: true
+    default: "{{ resourceType }}"
+
+  modelSuffix:
+    inherit: true
+    default: "Reader"
+
   template:
     value: Glue/Controller/MethodPostGlueController.php.twig
 
@@ -32,3 +40,12 @@ arguments:
 preSpryks:
   - AddGlueController
 
+postSpryks:
+  - AddGlueProcessorModelMethod:
+      arguments:
+        input:
+          value: "RestRequestInterface $restRequest"
+        output:
+          value: "RestResponseInterface"
+        method:
+          value: "create{{ modelName }}"
