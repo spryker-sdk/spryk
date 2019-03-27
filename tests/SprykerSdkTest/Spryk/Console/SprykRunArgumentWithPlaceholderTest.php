@@ -40,6 +40,6 @@ class SprykRunArgumentWithPlaceholderTest extends Unit
 
         $tester->execute($arguments);
 
-        static::assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
+        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
     }
 }

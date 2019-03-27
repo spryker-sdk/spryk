@@ -35,7 +35,7 @@ class AddZedCommunicationFactoryTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/FooBarCommunicationFactory.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/FooBarCommunicationFactory.php');
     }
 
     /**
@@ -48,6 +48,6 @@ class AddZedCommunicationFactoryTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/FooBarCommunicationFactory.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/FooBarCommunicationFactory.php');
     }
 }

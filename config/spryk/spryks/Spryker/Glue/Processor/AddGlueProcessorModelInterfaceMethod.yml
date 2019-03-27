@@ -1,0 +1,45 @@
+spryk: method
+description: "Adds a new method to the *target* processor model interface."
+mode: both
+
+arguments:
+
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  className: ~
+
+  method:
+    inherit: true
+
+  input:
+    inherit: true
+
+  output:
+    inherit: true
+
+
+  template:
+    value: Common/InterfaceMethod.php.twig
+
+  target:
+    value: '{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory }}{% endif %}\{{ modelName }}{{modelSuffix}}Interface'
+
+  sprykIdentifier:
+    inherit: true
+
+preSpryks:
+  - AddGlueProcessorModel:
+      arguments:
+        subDirectory:
+          callback: GlueProcessorModelSubDirectory
+
+        className:
+          callback: ClassNameShortCallback
+
+postSpryks:
+  - AddGlueProcessorModelMethod

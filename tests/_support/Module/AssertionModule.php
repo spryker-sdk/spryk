@@ -182,12 +182,12 @@ class AssertionModule extends Module
      */
     public function assertTableCount(int $count, string $pathToSchemaFile, string $tableName): void
     {
-        static::assertFileExists($pathToSchemaFile, 'Expected schema file does not exists.');
+        $this->assertFileExists($pathToSchemaFile, 'Expected schema file does not exists.');
 
         $simpleXmlElement = simplexml_load_file($pathToSchemaFile);
 
         if ($simpleXmlElement === false) {
-            static::assertTrue($simpleXmlElement, 'Unable to load schema from file.');
+            $this->assertTrue($simpleXmlElement, 'Unable to load schema from file.');
 
             return;
         }
@@ -195,11 +195,11 @@ class AssertionModule extends Module
         $tableXmlElements = $simpleXmlElement->xpath('//table[@name="' . $tableName . '"]');
 
         if ($tableXmlElements === false) {
-            static::assertTrue($tableXmlElements, 'Expected table not founf in schema.');
+            $this->assertTrue($tableXmlElements, 'Expected table not founf in schema.');
 
             return;
         }
 
-        static::assertCount($count, $tableXmlElements, 'Expected table not found in schema.');
+        $this->assertCount($count, $tableXmlElements, 'Expected table not found in schema.');
     }
 }

@@ -37,7 +37,7 @@ class AddZedDependencyFacadeInterfaceTest extends Unit
             '--dependentModule' => 'ZipZap',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Dependency/Facade/FooBarToZipZapFacadeInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Dependency/Facade/FooBarToZipZapFacadeInterface.php');
     }
 
     /**
@@ -51,7 +51,7 @@ class AddZedDependencyFacadeInterfaceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
             . 'Dependency/Facade/FooBarToZipZapFacadeInterface.php'
         );

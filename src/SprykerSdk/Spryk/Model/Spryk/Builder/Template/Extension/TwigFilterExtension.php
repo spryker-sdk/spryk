@@ -8,7 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Template\Extension;
 
 use Twig\Extension\AbstractExtension;
-use Twig_SimpleFilter;
+use Twig\TwigFilter;
 
 class TwigFilterExtension extends AbstractExtension
 {
@@ -26,13 +26,13 @@ class TwigFilterExtension extends AbstractExtension
     }
 
     /**
-     * @return \Twig_SimpleFilter[]
+     * @return \Twig\TwigFilter[]
      */
     public function getFilters(): array
     {
         $filters = [];
         foreach ($this->filters as $filter) {
-            $filters[] = new Twig_SimpleFilter($filter->getName(), function (string $value) use ($filter) {
+            $filters[] = new TwigFilter($filter->getName(), function (string $value) use ($filter) {
                 return $filter->filter($value);
             });
         }

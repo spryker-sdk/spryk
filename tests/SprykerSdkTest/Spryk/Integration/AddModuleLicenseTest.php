@@ -35,7 +35,7 @@ class AddModuleLicenseTest extends Unit
             '--organization' => 'Spryker',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'LICENSE');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'LICENSE');
     }
 
     /**
@@ -51,6 +51,6 @@ class AddModuleLicenseTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory() . 'LICENSE');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'LICENSE');
     }
 }
