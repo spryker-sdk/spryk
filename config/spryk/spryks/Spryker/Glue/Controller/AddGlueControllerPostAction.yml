@@ -29,7 +29,7 @@ arguments:
 
   modelSuffix:
     inherit: true
-    default: "Reader"
+    default: "Creator"
 
   template:
     value: Glue/Controller/MethodPostGlueController.php.twig
