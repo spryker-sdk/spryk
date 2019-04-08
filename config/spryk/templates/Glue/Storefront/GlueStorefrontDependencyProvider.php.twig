@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+namespace Pyz\Glue\{{ module }};
+
+use Spryker\Glue\GlueRestApi\Plugin\Application\GlueRestApiResourceBuilderApplicationPlugin;
+use Spryker\Glue\Kernel\BackOffice\AbstractGlueBackOfficeBundleDependencyProvider;
+use Spryker\Glue\Kernel\BackOffice\GlueBackOfficeContainer;
+use Spryker\Shared\Kernel\ContainerInterface;
+
+class StoresBackOfficeRestApiDependencyProvider extends AbstractGlueBackOfficeBundleDependencyProvider
+{
+    public const SERVICE_RESOURCE_BUILDER = GlueRestApiResourceBuilderApplicationPlugin::RESOURCE_BUILDER;
+
+    /**
+     * @param \Spryker\Shared\Kernel\ContainerInterface $container
+     *
+     * @return \Spryker\Glue\Kernel\BackOffice\GlueBackOfficeContainer
+     */
+    public function provideDependencies(ContainerInterface $container): GlueBackOfficeContainer
+    {
+        $container = parent::provideDependencies($container);
+
+        return $container;
+    }
+}
