@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new Glue Storefront Resource Interface."
+description: "Adds a new Glue resource interface."
 mode: both
 
 arguments:
@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Glue/Storefront/GlueStorefrontResourceInterface.php.twig
+    value: Glue/GlueResourceInterface.php.twig
 
   targetFilename:
     value: "{{ module }}ResourceInterface.php"

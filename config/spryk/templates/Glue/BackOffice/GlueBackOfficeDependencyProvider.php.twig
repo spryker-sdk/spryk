@@ -8,20 +8,20 @@
 namespace {{ organization }}\Glue\{{ module }};
 
 use Spryker\Glue\GlueRestApi\Plugin\Application\GlueRestApiResourceBuilderApplicationPlugin;
-use Spryker\Glue\Kernel\Storefront\AbstractGlueStorefrontBundleDependencyProvider;
-use Spryker\Glue\Kernel\Storefront\GlueStorefrontContainer;
+use Spryker\Glue\Kernel\BackOffice\AbstractGlueBackOfficeBundleDependencyProvider;
+use Spryker\Glue\Kernel\BackOffice\GlueBackOfficeContainer;
 use Spryker\Shared\Kernel\ContainerInterface;
 
-class {{ module }}DependencyProvider extends AbstractGlueStorefrontBundleDependencyProvider
+class {{ module }}DependencyProvider extends AbstractGlueBackOfficeBundleDependencyProvider
 {
     public const SERVICE_RESOURCE_BUILDER = GlueRestApiResourceBuilderApplicationPlugin::RESOURCE_BUILDER;
 
     /**
      * @param \Spryker\Shared\Kernel\ContainerInterface $container
      *
-     * @return \Spryker\Glue\Kernel\Storefront\GlueStorefrontContainer
+     * @return \Spryker\Glue\Kernel\BackOffice\GlueBackOfficeContainer
      */
-    public function provideDependencies(ContainerInterface $container): GlueStorefrontContainer
+    public function provideDependencies(ContainerInterface $container): GlueBackOfficeContainer
     {
         $container = parent::provideDependencies($container);
 

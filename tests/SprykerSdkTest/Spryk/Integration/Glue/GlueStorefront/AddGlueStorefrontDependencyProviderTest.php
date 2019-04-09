@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
- */
-
 namespace SprykerSdkTest\Spryk\Integration\Glue\GlueStorefront;
 
 use Codeception\Test\Unit;
@@ -16,10 +11,10 @@ use Codeception\Test\Unit;
  * @group Integration
  * @group Glue
  * @group GlueStorefront
- * @group AddGlueStorefrontResourceInterfaceTest
+ * @group AddGlueStorefrontDependencyProviderTest
  * Add your own group annotations below this line
  */
-class AddGlueStorefrontResourceInterfaceTest extends Unit
+class AddGlueStorefrontDependencyProviderTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,25 +24,25 @@ class AddGlueStorefrontResourceInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueStorefrontResourceInterface(): void
+    public function testAddsGlueStorefrontDependencyProvider(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarResourceInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarDependencyProvider.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsGlueStorefrontResourceInterfaceOnProjectLayer(): void
+    public function testAddsGlueStorefrontDependencyProviderOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'FooBarResourceInterface.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'FooBarDependencyProvider.php');
     }
 }

@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new Glue storefront factory"
+description: "Adds a new Glue back office factory"
 mode: both
 
 arguments:
@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Glue/Storefront/GlueStorefrontFactory.php.twig
+    value: Glue/BackOffice/GlueBackOfficeFactory.php.twig
 
   targetFilename:
     value: "{{ module }}Factory.php"

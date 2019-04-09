@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ organization }}\Glue\{{ module }}\Plugin\GlueStorefront;
+
+use Spryker\Glue\GlueRestApi\Rest\JsonApi\RestResourceCollectionInterface;
+use Spryker\Glue\GlueRestApi\Rest\Request\Data\RestRequest;
+use Spryker\Glue\GlueRestApi\Rest\ResourceRelationship\ResourceRelationshipInterface;
+use Spryker\Glue\Kernel\AbstractPlugin;
+
+/**
+ * @method \{{ organization }}\Glue\{{ module }}\{{ module }}ResourceInterface getResource()
+ */
+class {{ pluginName }} extends AbstractPlugin implements ResourceRelationshipInterface
+{
+    /**
+     * @return string
+     */
+    public function getRelationshipKey(): string
+    {
+        return '';
+    }
+
+    /**
+     * @param array $keys
+     * @param \Spryker\Glue\GlueRestApi\Rest\Request\Data\RestRequest $restRequest
+     *
+     * @return \Spryker\Glue\GlueRestApi\Rest\JsonApi\RestResourceCollectionInterface
+     */
+    public function fetchRelationshipData(array $keys, RestRequest $restRequest): RestResourceCollectionInterface
+    {
+
+    }
+}

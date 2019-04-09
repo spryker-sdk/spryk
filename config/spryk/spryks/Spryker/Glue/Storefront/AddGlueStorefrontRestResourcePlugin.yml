@@ -1,0 +1,29 @@
+spryk: template
+description: "Adds a new Glue storefront rest resource plugin."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  pluginName: ~
+  className: ~
+
+  template:
+    value: Glue/Storefront/GlueStorefrontRestResourcePlugin.php.twig
+
+  targetFilename:
+    value: "{{ pluginName }}.php"
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueStorefront"
+
+preSpryks:
+  - AddGlueStorefrontResource
+
+postSpryks:
+  - AddGlueController

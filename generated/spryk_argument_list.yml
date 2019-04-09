@@ -62,6 +62,14 @@
   mode: 10
   description: 'specification argument'
 -
+  name: className
+  mode: 2
+  description: 'className argument'
+-
+  name: pluginName
+  mode: 2
+  description: 'pluginName argument'
+-
   name: dependentModule
   mode: 2
   description: 'dependentModule argument'
@@ -117,10 +125,6 @@
   name: subDirectory
   mode: 2
   description: 'subDirectory argument'
--
-  name: className
-  mode: 2
-  description: 'className argument'
 -
   name: dependencyMethods
   mode: 10
@@ -753,6 +757,290 @@
   name: AddClientMethod.repository
   mode: 2
   description: 'AddClientMethod repository argument'
+-
+  name: AddGlueConfig.module
+  mode: 2
+  description: 'AddGlueConfig module argument'
+-
+  name: AddGlueConfig.organization
+  mode: 2
+  description: 'AddGlueConfig organization argument'
+-
+  name: AddGlueConfig.template
+  mode: 2
+  description: 'AddGlueConfig template argument'
+-
+  name: AddGlueConfig.targetFilename
+  mode: 2
+  description: 'AddGlueConfig targetFilename argument'
+-
+  name: AddGlueConfig.targetPath
+  mode: 2
+  description: 'AddGlueConfig targetPath argument'
+-
+  name: AddGlueConfig.repository
+  mode: 2
+  description: 'AddGlueConfig repository argument'
+-
+  name: AddGlueController.module
+  mode: 2
+  description: 'AddGlueController module argument'
+-
+  name: AddGlueController.organization
+  mode: 2
+  description: 'AddGlueController organization argument'
+-
+  name: AddGlueController.className
+  mode: 2
+  description: 'AddGlueController className argument'
+-
+  name: AddGlueController.template
+  mode: 2
+  description: 'AddGlueController template argument'
+-
+  name: AddGlueController.targetFilename
+  mode: 2
+  description: 'AddGlueController targetFilename argument'
+-
+  name: AddGlueController.targetPath
+  mode: 2
+  description: 'AddGlueController targetPath argument'
+-
+  name: AddGlueController.repository
+  mode: 2
+  description: 'AddGlueController repository argument'
+-
+  name: AddGlueResourceInterface.module
+  mode: 2
+  description: 'AddGlueResourceInterface module argument'
+-
+  name: AddGlueResourceInterface.organization
+  mode: 2
+  description: 'AddGlueResourceInterface organization argument'
+-
+  name: AddGlueResourceInterface.template
+  mode: 2
+  description: 'AddGlueResourceInterface template argument'
+-
+  name: AddGlueResourceInterface.targetFilename
+  mode: 2
+  description: 'AddGlueResourceInterface targetFilename argument'
+-
+  name: AddGlueResourceInterface.targetPath
+  mode: 2
+  description: 'AddGlueResourceInterface targetPath argument'
+-
+  name: AddGlueResourceInterface.repository
+  mode: 2
+  description: 'AddGlueResourceInterface repository argument'
+-
+  name: AddGlueBackOfficeDependencyProvider.module
+  mode: 2
+  description: 'AddGlueBackOfficeDependencyProvider module argument'
+-
+  name: AddGlueBackOfficeDependencyProvider.organization
+  mode: 2
+  description: 'AddGlueBackOfficeDependencyProvider organization argument'
+-
+  name: AddGlueBackOfficeDependencyProvider.template
+  mode: 2
+  description: 'AddGlueBackOfficeDependencyProvider template argument'
+-
+  name: AddGlueBackOfficeDependencyProvider.targetFilename
+  mode: 2
+  description: 'AddGlueBackOfficeDependencyProvider targetFilename argument'
+-
+  name: AddGlueBackOfficeDependencyProvider.targetPath
+  mode: 2
+  description: 'AddGlueBackOfficeDependencyProvider targetPath argument'
+-
+  name: AddGlueBackOfficeDependencyProvider.repository
+  mode: 2
+  description: 'AddGlueBackOfficeDependencyProvider repository argument'
+-
+  name: AddGlueBackOfficeFactory.module
+  mode: 2
+  description: 'AddGlueBackOfficeFactory module argument'
+-
+  name: AddGlueBackOfficeFactory.organization
+  mode: 2
+  description: 'AddGlueBackOfficeFactory organization argument'
+-
+  name: AddGlueBackOfficeFactory.template
+  mode: 2
+  description: 'AddGlueBackOfficeFactory template argument'
+-
+  name: AddGlueBackOfficeFactory.targetFilename
+  mode: 2
+  description: 'AddGlueBackOfficeFactory targetFilename argument'
+-
+  name: AddGlueBackOfficeFactory.targetPath
+  mode: 2
+  description: 'AddGlueBackOfficeFactory targetPath argument'
+-
+  name: AddGlueBackOfficeFactory.repository
+  mode: 2
+  description: 'AddGlueBackOfficeFactory repository argument'
+-
+  name: AddGlueBackOfficeResource.module
+  mode: 2
+  description: 'AddGlueBackOfficeResource module argument'
+-
+  name: AddGlueBackOfficeResource.organization
+  mode: 2
+  description: 'AddGlueBackOfficeResource organization argument'
+-
+  name: AddGlueBackOfficeResource.template
+  mode: 2
+  description: 'AddGlueBackOfficeResource template argument'
+-
+  name: AddGlueBackOfficeResource.targetFilename
+  mode: 2
+  description: 'AddGlueBackOfficeResource targetFilename argument'
+-
+  name: AddGlueBackOfficeResource.targetPath
+  mode: 2
+  description: 'AddGlueBackOfficeResource targetPath argument'
+-
+  name: AddGlueBackOfficeResource.repository
+  mode: 2
+  description: 'AddGlueBackOfficeResource repository argument'
+-
+  name: AddGlueBackOfficeRestResourcePlugin.module
+  mode: 2
+  description: 'AddGlueBackOfficeRestResourcePlugin module argument'
+-
+  name: AddGlueBackOfficeRestResourcePlugin.organization
+  mode: 2
+  description: 'AddGlueBackOfficeRestResourcePlugin organization argument'
+-
+  name: AddGlueBackOfficeRestResourcePlugin.pluginName
+  mode: 2
+  description: 'AddGlueBackOfficeRestResourcePlugin pluginName argument'
+-
+  name: AddGlueBackOfficeRestResourcePlugin.className
+  mode: 2
+  description: 'AddGlueBackOfficeRestResourcePlugin className argument'
+-
+  name: AddGlueBackOfficeRestResourcePlugin.template
+  mode: 2
+  description: 'AddGlueBackOfficeRestResourcePlugin template argument'
+-
+  name: AddGlueBackOfficeRestResourcePlugin.targetFilename
+  mode: 2
+  description: 'AddGlueBackOfficeRestResourcePlugin targetFilename argument'
+-
+  name: AddGlueBackOfficeRestResourcePlugin.targetPath
+  mode: 2
+  description: 'AddGlueBackOfficeRestResourcePlugin targetPath argument'
+-
+  name: AddGlueBackOfficeRestResourcePlugin.repository
+  mode: 2
+  description: 'AddGlueBackOfficeRestResourcePlugin repository argument'
+-
+  name: AddGlueStorefrontDependencyProvider.module
+  mode: 2
+  description: 'AddGlueStorefrontDependencyProvider module argument'
+-
+  name: AddGlueStorefrontDependencyProvider.organization
+  mode: 2
+  description: 'AddGlueStorefrontDependencyProvider organization argument'
+-
+  name: AddGlueStorefrontDependencyProvider.template
+  mode: 2
+  description: 'AddGlueStorefrontDependencyProvider template argument'
+-
+  name: AddGlueStorefrontDependencyProvider.targetFilename
+  mode: 2
+  description: 'AddGlueStorefrontDependencyProvider targetFilename argument'
+-
+  name: AddGlueStorefrontDependencyProvider.targetPath
+  mode: 2
+  description: 'AddGlueStorefrontDependencyProvider targetPath argument'
+-
+  name: AddGlueStorefrontDependencyProvider.repository
+  mode: 2
+  description: 'AddGlueStorefrontDependencyProvider repository argument'
+-
+  name: AddGlueStorefrontFactory.module
+  mode: 2
+  description: 'AddGlueStorefrontFactory module argument'
+-
+  name: AddGlueStorefrontFactory.organization
+  mode: 2
+  description: 'AddGlueStorefrontFactory organization argument'
+-
+  name: AddGlueStorefrontFactory.template
+  mode: 2
+  description: 'AddGlueStorefrontFactory template argument'
+-
+  name: AddGlueStorefrontFactory.targetFilename
+  mode: 2
+  description: 'AddGlueStorefrontFactory targetFilename argument'
+-
+  name: AddGlueStorefrontFactory.targetPath
+  mode: 2
+  description: 'AddGlueStorefrontFactory targetPath argument'
+-
+  name: AddGlueStorefrontFactory.repository
+  mode: 2
+  description: 'AddGlueStorefrontFactory repository argument'
+-
+  name: AddGlueStorefrontResource.module
+  mode: 2
+  description: 'AddGlueStorefrontResource module argument'
+-
+  name: AddGlueStorefrontResource.organization
+  mode: 2
+  description: 'AddGlueStorefrontResource organization argument'
+-
+  name: AddGlueStorefrontResource.template
+  mode: 2
+  description: 'AddGlueStorefrontResource template argument'
+-
+  name: AddGlueStorefrontResource.targetFilename
+  mode: 2
+  description: 'AddGlueStorefrontResource targetFilename argument'
+-
+  name: AddGlueStorefrontResource.targetPath
+  mode: 2
+  description: 'AddGlueStorefrontResource targetPath argument'
+-
+  name: AddGlueStorefrontResource.repository
+  mode: 2
+  description: 'AddGlueStorefrontResource repository argument'
+-
+  name: AddGlueStorefrontRestResourcePlugin.module
+  mode: 2
+  description: 'AddGlueStorefrontRestResourcePlugin module argument'
+-
+  name: AddGlueStorefrontRestResourcePlugin.organization
+  mode: 2
+  description: 'AddGlueStorefrontRestResourcePlugin organization argument'
+-
+  name: AddGlueStorefrontRestResourcePlugin.pluginName
+  mode: 2
+  description: 'AddGlueStorefrontRestResourcePlugin pluginName argument'
+-
+  name: AddGlueStorefrontRestResourcePlugin.className
+  mode: 2
+  description: 'AddGlueStorefrontRestResourcePlugin className argument'
+-
+  name: AddGlueStorefrontRestResourcePlugin.template
+  mode: 2
+  description: 'AddGlueStorefrontRestResourcePlugin template argument'
+-
+  name: AddGlueStorefrontRestResourcePlugin.targetFilename
+  mode: 2
+  description: 'AddGlueStorefrontRestResourcePlugin targetFilename argument'
+-
+  name: AddGlueStorefrontRestResourcePlugin.targetPath
+  mode: 2
+  description: 'AddGlueStorefrontRestResourcePlugin targetPath argument'
+-
+  name: AddGlueStorefrontRestResourcePlugin.repository
+  mode: 2
+  description: 'AddGlueStorefrontRestResourcePlugin repository argument'
 -
   name: AddSharedConstantsInterface.module
   mode: 2

@@ -26,6 +26,24 @@ class CleanUpModule extends Module
      */
     public function _before(TestInterface $test): void
     {
+        $this->removeCreatedFiles();
+    }
+
+    /**
+     * @param \Codeception\TestInterface $test
+     *
+     * @return void
+     */
+    public function _after(TestInterface $test): void
+    {
+        $this->removeCreatedFiles();
+    }
+
+    /**
+     * @return void
+     */
+    protected function removeCreatedFiles(): void
+    {
         if (!is_dir($this->getRootDirectory())) {
             return;
         }

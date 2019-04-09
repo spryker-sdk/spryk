@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new Glue storefront resource."
+description: "Adds a new Glue back office resource."
 mode: both
 
 arguments:
@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Glue/Storefront/GlueStorefrontResource.php.twig
+    value: Glue/BackOffice/GlueBackOfficeResource.php.twig
 
   targetFilename:
     value: "{{ module }}Resource.php"
@@ -23,7 +23,7 @@ preSpryks:
   - AddGlueResourceInterface
 
 postSpryks:
-  - AddGlueStorefrontFactory
-  - AddGlueStorefrontDependencyProvider
+  - AddGlueBackOfficeFactory
+  - AddGlueBackOfficeDependencyProvider
   - AddSharedTransferSchema
   - AddGlueConfig

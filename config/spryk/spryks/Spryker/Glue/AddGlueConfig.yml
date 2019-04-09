@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new Glue storefront *module*DependencyProvider"
+description: "Adds a new Glue *module*Config."
 mode: both
 
 arguments:
@@ -11,10 +11,10 @@ arguments:
     default: Spryker
 
   template:
-    value: Glue/Storefront/GlueStorefrontDependencyProvider.php.twig
+    value: Glue/GlueConfig.php.twig
 
   targetFilename:
-    value: "{{ module }}DependencyProvider.php"
+    value: "{{ module }}Config.php"
 
   targetPath:
     value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/"

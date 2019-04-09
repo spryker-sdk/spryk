@@ -1,0 +1,25 @@
+spryk: template
+description: "Adds a new Glue back office rest resource relationship plugin."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  pluginName: ~
+
+  template:
+    value: Glue/BackOffice/GlueBackOfficeRestResourceRelationshipPlugin.php.twig
+
+  targetFilename:
+    value: "{{ pluginName }}.php"
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueBackOffice"
+
+preSpryks:
+  - AddGlueBackOfficeResource
