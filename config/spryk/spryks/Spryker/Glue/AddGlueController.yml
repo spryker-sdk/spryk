@@ -19,7 +19,7 @@ arguments:
     value: "{{ className }}.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Controller"
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Controller/"
 
 preSpryks:
   - AddModule

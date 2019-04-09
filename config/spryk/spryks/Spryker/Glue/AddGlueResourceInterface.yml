@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}ResourceInterface.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}"
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/"
 
 preSpryks:
   - AddModule

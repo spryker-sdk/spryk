@@ -20,7 +20,7 @@ arguments:
     value: "{{ pluginName }}.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueStorefront"
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueStorefront/"
 
 preSpryks:
   - AddGlueStorefrontResource
