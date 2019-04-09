@@ -45,7 +45,7 @@ class AddGlueBackOfficeResourceTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBarBackOffice',
-            '--mode' => 'project'
+            '--mode' => 'project',
         ]);
 
         $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBarBackOffice', 'Glue') . 'FooBarBackOfficeResource.php');

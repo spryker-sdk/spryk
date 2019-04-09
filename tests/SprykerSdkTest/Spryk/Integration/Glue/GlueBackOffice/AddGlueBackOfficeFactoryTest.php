@@ -8,7 +8,6 @@
 namespace SprykerSdkTest\Spryk\Integration\Glue\GlueBackOffice;
 
 use Codeception\Test\Unit;
-use Spryker\Glue\Kernel\BackOffice\AbstractGlueBackOfficeFactory;
 
 /**
  * Auto-generated group annotations

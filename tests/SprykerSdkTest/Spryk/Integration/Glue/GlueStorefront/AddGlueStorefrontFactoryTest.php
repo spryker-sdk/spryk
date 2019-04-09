@@ -8,7 +8,6 @@
 namespace SprykerSdkTest\Spryk\Integration\Glue\GlueStorefront;
 
 use Codeception\Test\Unit;
-use Spryker\Glue\Kernel\Storefront\AbstractGlueStorefrontFactory;
 
 /**
  * Auto-generated group annotations

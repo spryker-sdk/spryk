@@ -45,7 +45,7 @@ class AddGlueStorefrontResourceTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--mode' => 'project'
+            '--mode' => 'project',
         ]);
 
         $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'FooBarResource.php');
