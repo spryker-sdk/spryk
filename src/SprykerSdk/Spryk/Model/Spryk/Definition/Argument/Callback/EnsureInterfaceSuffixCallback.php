@@ -12,13 +12,14 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 class EnsureInterfaceSuffixCallback implements CallbackInterface
 {
     public const INTERFACE_SUFFIX = 'Interface';
+    protected const CALLBACK_NAME = 'EnsureInterfaceSuffix';
 
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'EnsureInterfaceSuffix';
+        return static::CALLBACK_NAME;
     }
 
     /**
@@ -29,6 +30,8 @@ class EnsureInterfaceSuffixCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
+        $value = (string)$value;
+
         if (mb_substr($value, - mb_strlen(static::INTERFACE_SUFFIX)) !== static::INTERFACE_SUFFIX) {
             $value = $value . static::INTERFACE_SUFFIX;
         }

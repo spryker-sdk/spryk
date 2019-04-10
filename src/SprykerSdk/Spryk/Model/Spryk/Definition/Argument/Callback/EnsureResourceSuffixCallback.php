@@ -12,13 +12,14 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 class EnsureResourceSuffixCallback implements CallbackInterface
 {
     public const RESOURCE_SUFFIX = 'Resource';
+    protected const CALLBACK_NAME = 'EnsureResourceSuffix';
 
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'EnsureResourceSuffix';
+        return static::CALLBACK_NAME;
     }
 
     /**
@@ -29,6 +30,8 @@ class EnsureResourceSuffixCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
+        $value = (string)$value;
+
         if (mb_substr($value, - mb_strlen(static::RESOURCE_SUFFIX)) !== static::RESOURCE_SUFFIX) {
             $value = $value . static::RESOURCE_SUFFIX;
         }

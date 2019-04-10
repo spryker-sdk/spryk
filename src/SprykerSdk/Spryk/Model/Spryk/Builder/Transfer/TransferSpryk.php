@@ -20,6 +20,7 @@ class TransferSpryk implements SprykBuilderInterface
 {
     public const ARGUMENT_TARGET_PATH = 'targetPath';
     public const ARGUMENT_NAME = 'name';
+    protected const SPRYK_NAME = 'transfer';
 
     /**
      * @var string
@@ -39,7 +40,7 @@ class TransferSpryk implements SprykBuilderInterface
      */
     public function getName(): string
     {
-        return 'transfer';
+        return static::SPRYK_NAME;
     }
 
     /**
@@ -49,7 +50,7 @@ class TransferSpryk implements SprykBuilderInterface
      */
     public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        return !$this->transferDefined($sprykDefinition);
+        return !$this->isTransferDefined($sprykDefinition);
     }
 
     /**
@@ -187,12 +188,11 @@ class TransferSpryk implements SprykBuilderInterface
      *
      * @return bool
      */
-    protected function transferDefined(SprykDefinitionInterface $sprykDefinition): bool
+    protected function isTransferDefined(SprykDefinitionInterface $sprykDefinition): bool
     {
         $xml = $this->getXml($sprykDefinition);
         $dashToCamelCaseFilter = $this->getDashToCamelCase();
         $transferName = $dashToCamelCaseFilter->filter($this->getArgumentName($sprykDefinition));
-        /** @var string $transferPattern */
         $transferPattern = sprintf('/<transfer (.*)?name="%s"/', $transferName);
 
         return (bool)preg_match($transferPattern, $xml->asXML());

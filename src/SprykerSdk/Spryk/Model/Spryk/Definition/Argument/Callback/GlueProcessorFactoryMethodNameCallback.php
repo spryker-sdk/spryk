@@ -11,12 +11,14 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 
 class GlueProcessorFactoryMethodNameCallback implements CallbackInterface
 {
+    protected const CALLBACK_NAME = 'GlueProcessorFactoryMethodName';
+
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'GlueProcessorFactoryMethodName';
+        return static::CALLBACK_NAME;
     }
 
     /**
@@ -27,7 +29,7 @@ class GlueProcessorFactoryMethodNameCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
-        $className = $argumentCollection->getArgument('className')->getValue();
+        $className = (string)$argumentCollection->getArgument('className')->getValue();
         $classNameFragments = explode('\\', $className);
 
         return 'create' . array_pop($classNameFragments);

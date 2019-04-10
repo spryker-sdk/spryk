@@ -21,6 +21,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
     public const ARGUMENT_TEMPLATE = 'template';
     public const ARGUMENT_METHOD_NAME = 'method';
     protected const ARGUMENT_RESOURCE_ROUTE_METHOD = 'resourceRouteMethod';
+    protected const SPRYK_NAME = 'resourceRoute';
 
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
@@ -40,7 +41,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
      */
     public function getName(): string
     {
-        return 'resourceRoute';
+        return static::SPRYK_NAME;
     }
 
     /**
@@ -50,7 +51,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
      */
     public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        return (!$this->isRouteDeclared($sprykDefinition));
+        return !$this->isRouteDeclared($sprykDefinition);
     }
 
     /**
@@ -160,7 +161,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
     {
         $targetFilename = $this->getTargetFileNameFromReflectionClass($sprykDefinition);
 
-        if ($targetFilename === null) {
+        if (!$targetFilename) {
             throw new ReflectionException('Filename is not expected to be null!');
         }
 

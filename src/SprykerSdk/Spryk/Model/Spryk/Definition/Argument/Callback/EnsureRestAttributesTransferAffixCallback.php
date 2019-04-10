@@ -13,13 +13,14 @@ class EnsureRestAttributesTransferAffixCallback implements CallbackInterface
 {
     public const ACTION_PREFIX = 'Rest';
     public const ACTION_SUFFIX = 'Attributes';
+    protected const CALLBACK_NAME = 'EnsureRestAttributesTransferAffix';
 
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'EnsureRestAttributesTransferAffix';
+        return self::CALLBACK_NAME;
     }
 
     /**
@@ -30,6 +31,8 @@ class EnsureRestAttributesTransferAffixCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
+        $value = (string)$value;
+
         return sprintf(
             '%s%s%s',
             static::ACTION_PREFIX,

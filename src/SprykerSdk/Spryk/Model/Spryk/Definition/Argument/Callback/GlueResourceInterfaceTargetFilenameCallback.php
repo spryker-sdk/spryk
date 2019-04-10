@@ -11,12 +11,14 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 
 class GlueResourceInterfaceTargetFilenameCallback implements CallbackInterface
 {
+    protected const CALLBACK_NAME = 'GlueResourceInterfaceTargetFilename';
+
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'GlueResourceInterfaceTargetFilename';
+        return static::CALLBACK_NAME;
     }
 
     /**
@@ -27,7 +29,7 @@ class GlueResourceInterfaceTargetFilenameCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
-        $className = $argumentCollection->getArgument('className')->getValue();
+        $className = (string)$argumentCollection->getArgument('className')->getValue();
         if (strpos($className, '\\') !== false) {
             $classNameFragments = explode('\\', $className);
 

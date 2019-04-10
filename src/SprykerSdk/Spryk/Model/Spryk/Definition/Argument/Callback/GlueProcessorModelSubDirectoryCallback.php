@@ -11,12 +11,14 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 
 class GlueProcessorModelSubDirectoryCallback implements CallbackInterface
 {
+    protected const CALLBACK_NAME = 'GlueProcessorModelSubDirectory';
+
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'GlueProcessorModelSubDirectory';
+        return static::CALLBACK_NAME;
     }
 
     /**
@@ -27,7 +29,7 @@ class GlueProcessorModelSubDirectoryCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
-        $className = $argumentCollection->getArgument('className')->getValue();
+        $className = (string)$argumentCollection->getArgument('className')->getValue();
         $subDirectory = null;
         if (strpos($className, '\\') !== false) {
             $classNameFragments = explode('\\', $className);

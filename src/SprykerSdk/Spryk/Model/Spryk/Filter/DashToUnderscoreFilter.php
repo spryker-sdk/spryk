@@ -12,12 +12,14 @@ use Zend\Filter\Word\DashToUnderscore;
 
 class DashToUnderscoreFilter implements FilterInterface
 {
+    protected const FILTER_NAME = 'dashToUnderscore';
+
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'dashToUnderscore';
+        return static::FILTER_NAME;
     }
 
     /**
