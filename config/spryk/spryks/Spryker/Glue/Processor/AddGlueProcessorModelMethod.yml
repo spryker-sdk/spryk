@@ -18,7 +18,17 @@ arguments:
   className:
     inherit: true
 
-  method: ~
+  subDirectory:
+    inherit: true
+
+  method:
+    inherit: true
+
+  modelName:
+    inherit: true
+
+  modelSuffix:
+    inherit: true
 
   input:
     isOptional: true
@@ -32,9 +42,6 @@ arguments:
 
   target:
     value: '{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory }}{% endif %}\{{ modelName }}{{modelSuffix}}'
-
-  sprykIdentifier:
-    inherit: true
 
 preSpryks:
   - AddGlueProcessorModel:

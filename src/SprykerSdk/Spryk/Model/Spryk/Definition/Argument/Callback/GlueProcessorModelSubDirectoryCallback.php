@@ -30,15 +30,22 @@ class GlueProcessorModelSubDirectoryCallback implements CallbackInterface
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
         $className = (string)$argumentCollection->getArgument('className')->getValue();
-        $subDirectory = null;
-        if (strpos($className, '\\') !== false) {
-            $classNameFragments = explode('\\', $className);
-            $positionOfBusiness = (int)array_search('Processor', $classNameFragments, true);
-            $requiredSubDirectoryFragments = array_slice($classNameFragments, $positionOfBusiness + 1);
-            array_pop($requiredSubDirectoryFragments);
-            $subDirectory = implode(DIRECTORY_SEPARATOR, $requiredSubDirectoryFragments);
+        if (strpos($className, '\\') === false) {
+            return null;
         }
 
-        return $subDirectory;
+        $classNameFragments = explode('\\', $className);
+        $positionOfProcessor = array_search('Processor', $classNameFragments, true);
+        if ($positionOfProcessor === false) {
+            return null;
+        }
+
+        $requiredSubDirectoryFragments = array_slice(
+            $classNameFragments,
+            $positionOfProcessor + 1,
+            count($classNameFragments)
+        );
+
+        return implode(DIRECTORY_SEPARATOR, $requiredSubDirectoryFragments);
     }
 }

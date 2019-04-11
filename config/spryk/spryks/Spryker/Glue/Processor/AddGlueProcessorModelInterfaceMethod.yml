@@ -11,7 +11,17 @@ arguments:
     inherit: true
     default: Spryker
 
-  className: ~
+  className:
+    inherit: true
+
+  modelName:
+    inherit: true
+
+  subDirectory:
+    inherit: true
+
+  modelSuffix:
+    inherit: true
 
   method:
     inherit: true
@@ -29,17 +39,11 @@ arguments:
   target:
     value: '{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory }}{% endif %}\{{ modelName }}{{modelSuffix}}Interface'
 
-  sprykIdentifier:
-    inherit: true
-
 preSpryks:
   - AddGlueProcessorModel:
       arguments:
         subDirectory:
           callback: GlueProcessorModelSubDirectory
-
-        className:
-          callback: ClassNameShortCallback
 
 postSpryks:
   - AddGlueProcessorModelMethod

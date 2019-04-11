@@ -43,9 +43,9 @@ postSpryks:
   - AddGlueProcessorModelMethod:
       arguments:
         input:
-          value: "RestRequestInterface $restRequest"
+          value: "\Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest"
         output:
-          value: "RestResponseInterface"
+          value: "\Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface"
         method:
           value: "delete{{ modelName }}"
 
