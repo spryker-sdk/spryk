@@ -41,6 +41,7 @@
       "SprykerSdkTest\\Module\\": "tests/_support/Module/",
       "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
       "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
+      "Spryker\\Glue\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Glue/Kernel/",
       "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
       "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
       "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
