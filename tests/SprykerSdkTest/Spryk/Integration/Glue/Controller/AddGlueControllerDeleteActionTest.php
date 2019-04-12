@@ -17,10 +17,10 @@ use SprykerSdkTest\Module\ClassName;
  * @group Integration
  * @group Glue
  * @group Controller
- * @group AddGlueControllerActionTest
+ * @group AddGlueControllerDeleteActionTest
  * Add your own group annotations below this line
  */
-class AddGlueControllerGetActionTest extends Unit
+class AddGlueControllerDeleteActionTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -36,15 +36,15 @@ class AddGlueControllerGetActionTest extends Unit
             '--controller' => 'Bar',
             '--resourceType' => 'foo-bars',
             '--modelName' => 'FooBar',
-            '--modelSuffix' => 'Reader',
+            '--modelSuffix' => 'Deleter',
             '--subDirectory' => 'FooBar',
-            '--className' => 'FooBarReader',
-            '--method' => 'getAction',
+            '--className' => 'FooBarDeleter',
+            '--method' => 'deleteAction',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
-        $this->tester->assertClassHasMethod(ClassName::GLUE_CONTROLLER, 'getAction');
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/FooBar/FooBarReader.php');
+        $this->tester->assertClassHasMethod(ClassName::GLUE_CONTROLLER, 'deleteAction');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/FooBar/FooBarDeleter.php');
     }
 
     /**
@@ -57,15 +57,16 @@ class AddGlueControllerGetActionTest extends Unit
             '--controller' => 'Bar',
             '--resourceType' => 'foo-bars',
             '--modelName' => 'FooBar',
-            '--modelSuffix' => 'Reader',
+            '--modelSuffix' => 'Deleter',
             '--subDirectory' => 'FooBar',
-            '--className' => 'FooBarReader',
-            '--method' => 'getAction',
+            '--className' => 'FooBarDeleter',
+            '--method' => 'deleteAction',
             '--mode' => 'project',
         ]);
 
+
         static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Controller/BarController.php');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_CONTROLLER, 'getAction');
-        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/FooBar/FooBarReader.php');
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_CONTROLLER, 'deleteAction');
+        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/FooBar/FooBarDeleter.php');
     }
 }

@@ -23,6 +23,9 @@ arguments:
   modelSuffix:
     inherit: true
 
+  modelName:
+    inherit: true
+
   method:
     value: "configure"
 

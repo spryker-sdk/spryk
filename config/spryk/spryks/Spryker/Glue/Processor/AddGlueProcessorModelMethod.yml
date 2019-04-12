@@ -44,10 +44,7 @@ arguments:
     value: '{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory }}{% endif %}\{{ modelName }}{{modelSuffix}}'
 
 preSpryks:
-  - AddGlueProcessorModel:
-      arguments:
-        subDirectory:
-          callback: GlueProcessorModelSubDirectory
+  - AddGlueProcessorModel
 
 postSpryks:
   - AddGlueProcessorModelInterfaceMethod

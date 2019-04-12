@@ -8,7 +8,7 @@
 namespace SprykerSdkTest\Spryk\Integration\Glue\Controller;
 
 use Codeception\Test\Unit;
-use Roave\BetterReflection\BetterReflection;
+use SprykerSdkTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -35,12 +35,16 @@ class AddGlueControllerPostActionTest extends Unit
             '--module' => 'FooBar',
             '--controller' => 'Bar',
             '--resourceType' => 'foo-bars',
+            '--modelName' => 'FooBar',
+            '--modelSuffix' => 'Writer',
+            '--subDirectory' => 'FooBar',
+            '--className' => 'FooBarWriter',
+            '--method' => 'postAction',
         ]);
 
-        $this->tester->assertClassHasMethod(
-            'Spryker\Glue\FooBar\Controller\BarController',
-            'postAction'
-        );
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
+        $this->tester->assertClassHasMethod(ClassName::GLUE_CONTROLLER, 'postAction');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/FooBar/FooBarWriter.php');
     }
 
     /**
@@ -52,12 +56,17 @@ class AddGlueControllerPostActionTest extends Unit
             '--module' => 'FooBar',
             '--controller' => 'Bar',
             '--resourceType' => 'foo-bars',
+            '--modelName' => 'FooBar',
+            '--modelSuffix' => 'Writer',
+            '--subDirectory' => 'FooBar',
+            '--className' => 'FooBarWriter',
+            '--method' => 'postAction',
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertClassHasMethod(
-            '\Pyz\Glue\FooBar\Controller\BarController',
-            'postAction'
-        );
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Controller/BarController.php');
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_CONTROLLER, 'postAction');
+        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/FooBar/FooBarWriter.php');
     }
 }

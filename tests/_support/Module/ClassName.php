@@ -45,7 +45,7 @@ interface ClassName
     public const ZED_BUSINESS_FACTORY = 'Spryker\Zed\FooBar\Business\FooBarBusinessFactory';
     public const ZED_DEPENDENCY_PROVIDER = 'Spryker\Zed\FooBar\FooBarDependencyProvider';
 
-    public const GLUE_CONTROLLER = 'Spryker\Glue\FooBar\Controller\IndexController';
+    public const GLUE_CONTROLLER = 'Spryker\Glue\FooBar\Controller\BarController';
     public const GLUE_CONFIG = 'Spryker\Glue\FooBar\FooBarConfig';
     public const GLUE_BUSINESS_FACTORY = 'Spryker\Glue\FooBar\FooBarFactory';
     public const GLUE_DEPENDENCY_PROVIDER = 'Spryker\Glue\FooBar\FooBarDependencyProvider';
@@ -103,7 +103,7 @@ interface ClassName
     public const PROJECT_ZED_BUSINESS_FACTORY = 'Pyz\Zed\FooBar\Business\FooBarBusinessFactory';
     public const PROJECT_ZED_DEPENDENCY_PROVIDER = 'Pyz\Zed\FooBar\FooBarDependencyProvider';
 
-    public const PROJECT_GLUE_CONTROLLER = 'Pyz\Glue\FooBar\Controller\IndexController';
+    public const PROJECT_GLUE_CONTROLLER = 'Pyz\Glue\FooBar\Controller\BarController';
     public const PROJECT_GLUE_CONFIG = 'Pyz\Glue\FooBar\FooBarConfig';
     public const PROJECT_GLUE_BUSINESS_FACTORY = 'Pyz\Glue\FooBar\FooBarFactory';
     public const PROJECT_GLUE_DEPENDENCY_PROVIDER = 'Pyz\Glue\FooBar\FooBarDependencyProvider';
