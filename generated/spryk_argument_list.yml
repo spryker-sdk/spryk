@@ -154,6 +154,14 @@
   mode: 2
   description: 'repositoryToken argument'
 -
+  name: toModule
+  mode: 2
+  description: 'toModule argument'
+-
+  name: toOrganization
+  mode: 2
+  description: 'toOrganization argument'
+-
   name: AddZedDependencyProvider.module
   mode: 2
   description: 'AddZedDependencyProvider module argument'
@@ -1838,6 +1846,54 @@
   mode: 2
   description: 'AddZedNavigationSchema repository argument'
 -
+  name: AddZedCommunicationTestSuite.module
+  mode: 2
+  description: 'AddZedCommunicationTestSuite module argument'
+-
+  name: AddZedCommunicationTestSuite.organization
+  mode: 2
+  description: 'AddZedCommunicationTestSuite organization argument'
+-
+  name: AddZedCommunicationTestSuite.targetPath
+  mode: 2
+  description: 'AddZedCommunicationTestSuite targetPath argument'
+-
+  name: AddZedCommunicationTestSuite.directories
+  mode: 2
+  description: 'AddZedCommunicationTestSuite directories argument'
+-
+  name: AddZedCommunicationTestSuite.repository
+  mode: 2
+  description: 'AddZedCommunicationTestSuite repository argument'
+-
+  name: AddZedCommunicationTestSuiteConfiguration.module
+  mode: 2
+  description: 'AddZedCommunicationTestSuiteConfiguration module argument'
+-
+  name: AddZedCommunicationTestSuiteConfiguration.organization
+  mode: 2
+  description: 'AddZedCommunicationTestSuiteConfiguration organization argument'
+-
+  name: AddZedCommunicationTestSuiteConfiguration.template
+  mode: 2
+  description: 'AddZedCommunicationTestSuiteConfiguration template argument'
+-
+  name: AddZedCommunicationTestSuiteConfiguration.afterElement
+  mode: 2
+  description: 'AddZedCommunicationTestSuiteConfiguration afterElement argument'
+-
+  name: AddZedCommunicationTestSuiteConfiguration.addToElement
+  mode: 2
+  description: 'AddZedCommunicationTestSuiteConfiguration addToElement argument'
+-
+  name: AddZedCommunicationTestSuiteConfiguration.targetPath
+  mode: 2
+  description: 'AddZedCommunicationTestSuiteConfiguration targetPath argument'
+-
+  name: AddZedCommunicationTestSuiteConfiguration.repository
+  mode: 2
+  description: 'AddZedCommunicationTestSuiteConfiguration repository argument'
+-
   name: AddZedCommunicationController.module
   mode: 2
   description: 'AddZedCommunicationController module argument'
@@ -1897,6 +1953,34 @@
   name: AddZedCommunicationControllerAction.repository
   mode: 2
   description: 'AddZedCommunicationControllerAction repository argument'
+-
+  name: AddZedCommunicationConsoleTest.module
+  mode: 2
+  description: 'AddZedCommunicationConsoleTest module argument'
+-
+  name: AddZedCommunicationConsoleTest.organization
+  mode: 2
+  description: 'AddZedCommunicationConsoleTest organization argument'
+-
+  name: AddZedCommunicationConsoleTest.className
+  mode: 2
+  description: 'AddZedCommunicationConsoleTest className argument'
+-
+  name: AddZedCommunicationConsoleTest.template
+  mode: 2
+  description: 'AddZedCommunicationConsoleTest template argument'
+-
+  name: AddZedCommunicationConsoleTest.targetFilename
+  mode: 2
+  description: 'AddZedCommunicationConsoleTest targetFilename argument'
+-
+  name: AddZedCommunicationConsoleTest.targetPath
+  mode: 2
+  description: 'AddZedCommunicationConsoleTest targetPath argument'
+-
+  name: AddZedCommunicationConsoleTest.repository
+  mode: 2
+  description: 'AddZedCommunicationConsoleTest repository argument'
 -
   name: AddZedCommunicationConsole.module
   mode: 2
@@ -2637,6 +2721,34 @@
   name: AddModuleCoveralls.mode
   mode: 2
   description: 'AddModuleCoveralls mode argument'
+-
+  name: CopyModule.module
+  mode: 2
+  description: 'CopyModule module argument'
+-
+  name: CopyModule.organization
+  mode: 2
+  description: 'CopyModule organization argument'
+-
+  name: CopyModule.toModule
+  mode: 2
+  description: 'CopyModule toModule argument'
+-
+  name: CopyModule.toOrganization
+  mode: 2
+  description: 'CopyModule toOrganization argument'
+-
+  name: CopyModule.targetPath
+  mode: 2
+  description: 'CopyModule targetPath argument'
+-
+  name: CopyModule.directories
+  mode: 2
+  description: 'CopyModule directories argument'
+-
+  name: CopyModule.repository
+  mode: 2
+  description: 'CopyModule repository argument'
 -
   name: AddModuleChangelog.module
   mode: 2
