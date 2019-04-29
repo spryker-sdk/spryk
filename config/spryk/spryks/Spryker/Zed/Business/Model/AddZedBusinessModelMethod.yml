@@ -24,6 +24,10 @@ arguments:
       - spryk
       - choiceLoader
 
+  subDirectory:
+    inherit: true
+    isOptional: true
+
   method: ~
 
   input:
@@ -41,6 +45,9 @@ arguments:
 
   target:
     value: "{{ className }}"
+
+  fallbackTarget:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | trimTrailingBackslash }}\\{{ className }}"
 
 preSpryks:
   - AddZedBusinessModel:

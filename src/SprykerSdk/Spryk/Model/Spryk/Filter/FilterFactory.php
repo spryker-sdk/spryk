@@ -29,6 +29,7 @@ class FilterFactory
             $this->createCamelCaseFilter(),
             $this->createLowerCaseFirstFilter(),
             $this->createCamelCaseToWhitespaceFilter(),
+            $this->createTrimTrailingBackslashFilter(),
         ];
     }
 
@@ -126,5 +127,13 @@ class FilterFactory
     public function createCamelCaseToWhitespaceFilter(): FilterInterface
     {
         return new CamelCaseToWhitespaceFilter();
+    }
+
+    /**
+     * @return FilterInterface
+     */
+    public function createTrimTrailingBackslashFilter(): FilterInterface
+    {
+        return new TrimTrailingBackslashFilter();
     }
 }

@@ -95,6 +95,10 @@ class ArgumentResolver implements ArgumentResolverInterface
         }
 
         if (isset($argumentDefinition['callbackOnly'])) {
+            if ($this->isValueKnownForArgument($argumentName, $argumentDefinition)) {
+                $argument->setValue($this->getKnownValueForArgument($argumentName, $argumentDefinition));
+            }
+
             return $argument;
         }
 
@@ -119,7 +123,9 @@ class ArgumentResolver implements ArgumentResolverInterface
 
         $defaultValue = $this->getDefaultValue($argumentName, $argumentDefinition);
 
-        return $this->askForArgumentValue($argumentName, $sprykName, $defaultValue);
+        $allowEmptyInput = (isset($argumentDefinition['isOptional']) && $argumentDefinition['isOptional']) ? true : false;
+
+        return $this->askForArgumentValue($argumentName, $sprykName, $defaultValue, $allowEmptyInput);
     }
 
     /**
@@ -193,12 +199,23 @@ class ArgumentResolver implements ArgumentResolverInterface
      * @param string $argument
      * @param string $sprykName
      * @param string|int|null $default
+     * @param bool|null $allowEmpty
      *
      * @return string|int|null
      */
-    protected function askForArgumentValue(string $argument, string $sprykName, $default = null)
+    protected function askForArgumentValue(string $argument, string $sprykName, $default = null, ?bool $allowEmpty)
     {
         $question = new Question(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $default);
+
+        if ($allowEmpty) {
+            $question->setValidator(function ($value) {
+                if ($value === null){
+                    return '';
+                }
+
+                return $value;
+            });
+        }
 
         return $this->style->askQuestion($question);
     }

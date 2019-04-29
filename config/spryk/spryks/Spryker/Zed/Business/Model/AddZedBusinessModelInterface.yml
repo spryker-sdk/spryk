@@ -11,9 +11,11 @@ arguments:
     default: Spryker
 
   subDirectory:
+    inherit: true
     isOptional: true
 
-  className: ~
+  className:
+    inherit: true
 
   interfaceName:
     default: "{{ className }}Interface"

@@ -24,6 +24,10 @@ class ArgumentCollection implements ArgumentCollectionInterface
      */
     public function addArgument(ArgumentInterface $argument)
     {
+        if (isset($this->arguments[$argument->getName()]) && $argument->getValue() === null) {
+            return $this;
+        }
+
         $this->arguments[$argument->getName()] = $argument;
 
         return $this;

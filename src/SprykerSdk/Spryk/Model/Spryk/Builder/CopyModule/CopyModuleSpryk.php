@@ -7,7 +7,6 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\CopyModule;
 
-use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Filter\DasherizeFilter;
@@ -92,7 +91,11 @@ class CopyModuleSpryk implements SprykBuilderInterface
         $sourcePaths = array_filter($sourcePaths, 'glob');
 
         $finder = new Finder();
-        $finder->in($sourcePaths)->files()->ignoreDotFiles(false);
+        $finder
+            ->files()
+            ->in($sourcePaths)
+            ->ignoreDotFiles(false)
+            ->exclude('tests/_output');
 
         return $finder;
     }
@@ -135,14 +138,13 @@ class CopyModuleSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param SplFileInfo $fileInfo
-     * @param SprykDefinitionInterface $sprykDefinition
+     * @param \Symfony\Component\Finder\SplFileInfo $fileInfo
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return string
      */
     protected function buildTargetPath(SplFileInfo $fileInfo, SprykDefinitionInterface $sprykDefinition): string
     {
-        $searchAndReplaceMap = $this->buildSearchAndReplaceMapForFileName($sprykDefinition);
         $module = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_MODULE);
 
         $sourcePathRelative = ($fileInfo->getRelativePath()) ? $fileInfo->getRelativePath() . DIRECTORY_SEPARATOR : '';
@@ -152,17 +154,49 @@ class CopyModuleSpryk implements SprykBuilderInterface
             $targetPath = rtrim($targetPath, DIRECTORY_SEPARATOR) . 'Extension' . DIRECTORY_SEPARATOR;
         }
 
-        $targetPath .= str_replace(array_keys($searchAndReplaceMap), array_values($searchAndReplaceMap), $sourcePathRelative) . $fileInfo->getFilename();
+        $fileName = $this->renameFile($fileInfo->getFilename(), $sprykDefinition);
+
+        $searchAndReplaceMap = $this->buildSearchAndReplaceMapForFilePath($sprykDefinition);
+        $targetPath .= str_replace(array_keys($searchAndReplaceMap), array_values($searchAndReplaceMap), $sourcePathRelative) . $fileName;
 
         return $targetPath;
     }
 
     /**
-     * @param SprykDefinitionInterface $sprykDefinition
+     * @param string $fileName
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return string
+     */
+    protected function renameFile(string $fileName, SprykDefinitionInterface $sprykDefinition): string
+    {
+        $module = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_MODULE);
+        $toModule = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_TO_MODULE);
+
+        $searchAndReplace = [
+            sprintf('/%sConfig.php/', $module) => sprintf('%sConfig.php', $toModule),
+            sprintf('/%sConstants.php/', $module) => sprintf('%sConstants.php', $toModule),
+            sprintf('/%sFacade.php/', $module) => sprintf('%sFacade.php', $toModule),
+            sprintf('/%sFactory.php/', $module) => sprintf('%sFactory.php', $toModule),
+            sprintf('/%sCommunicationFactory.php/', $module) => sprintf('%sCommunicationFactory.php', $toModule),
+            sprintf('/%sBusinessFactory.php/', $module) => sprintf('%sBusinessFactory.php', $toModule),
+            sprintf('/%sPersistenceFactory.php/', $module) => sprintf('%sPersistenceFactory.php', $toModule),
+            sprintf('/%sDependencyProvider.php/', $module) => sprintf('%sDependencyProvider.php', $toModule),
+            sprintf('/%s(\w+)TesterActions.php/', $module) => sprintf('%s${1}TesterActions.php', $toModule),
+            sprintf('/%s(\w+)Tester.php/', $module) => sprintf('%s${1}Tester.php', $toModule),
+        ];
+
+        $fileName = preg_replace(array_keys($searchAndReplace), array_values($searchAndReplace), $fileName);
+
+        return $fileName;
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return array
      */
-    protected function buildSearchAndReplaceMapForFileName(SprykDefinitionInterface $sprykDefinition): array
+    protected function buildSearchAndReplaceMapForFilePath(SprykDefinitionInterface $sprykDefinition): array
     {
         $organization = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_ORGANIZATION);
         $module = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_MODULE);
@@ -172,6 +206,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
 
         return [
             sprintf('/%s/', $organization) => sprintf('/%s/', $toOrganization),
+            sprintf('/%sTest/', $organization) => sprintf('/%sTest/', $toOrganization),
             sprintf('/%s/', $module) => sprintf('/%s/', $toModule),
             sprintf('/%sExtension/', $module) => sprintf('/%sExtension/', $toModule),
         ];
@@ -191,7 +226,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param SprykDefinitionInterface $sprykDefinition
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return array
      */
@@ -216,6 +251,16 @@ class CopyModuleSpryk implements SprykBuilderInterface
             sprintf('/"src\/%s/', $organization) => sprintf('"src/%s', $toOrganization),
             sprintf('/%s\s/', $module) => sprintf('%s ', $toModule),
             sprintf('/%sExtension\s/', $module) => sprintf('%sExtension ', $toModule),
+            sprintf('/%sConfig.php/', $module) => sprintf('%sConfig.php', $toModule),
+            sprintf('/%sConstants.php/', $module) => sprintf('%sConstants.php', $toModule),
+            sprintf('/%sFacade.php/', $module) => sprintf('%sFacade.php', $toModule),
+            sprintf('/%sFactory.php/', $module) => sprintf('%sFactory.php', $toModule),
+            sprintf('/%sCommunicationFactory.php/', $module) => sprintf('%sCommunicationFactory.php', $toModule),
+            sprintf('/%sBusinessFactory.php/', $module) => sprintf('%sBusinessFactory.php', $toModule),
+            sprintf('/%sPersistenceFactory.php/', $module) => sprintf('%sPersistenceFactory.php', $toModule),
+            sprintf('/%sDependencyProvider.php/', $module) => sprintf('%sDependencyProvider.php', $toModule),
+            sprintf('/%s(\w+)TesterActions.php/', $module) => sprintf('%s${1}TesterActions.php', $toModule),
+            sprintf('/%s(\w+)Tester.php/', $module) => sprintf('%s${1}Tester.php', $toModule),
         ];
     }
 

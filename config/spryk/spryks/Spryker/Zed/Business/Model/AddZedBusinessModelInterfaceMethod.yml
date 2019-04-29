@@ -13,6 +13,10 @@ arguments:
 
   className: ~
 
+  subDirectory:
+    inherit: true
+    isOptional: true
+
   method:
     inherit: true
 
@@ -22,12 +26,14 @@ arguments:
   output:
     inherit: true
 
-
   template:
     value: Common/InterfaceMethod.php.twig
 
   target:
     value: "{{ className }}Interface"
+
+  fallbackTarget:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | trimTrailingBackslash }}\\{{ className }}Interface"
 
 preSpryks:
   - AddZedBusinessModel:

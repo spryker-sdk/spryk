@@ -9,6 +9,7 @@ namespace SprykerSdk\Spryk\Model\Spryk\Builder\Method;
 
 use Roave\BetterReflection\BetterReflection;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
+use SprykerSdk\Spryk\Exception\NotAFullyQualifiedClassNameException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
@@ -22,6 +23,7 @@ class MethodSpryk implements SprykBuilderInterface
     public const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
     public const ARGUMENT_TEMPLATE = 'template';
     public const ARGUMENT_METHOD_NAME = 'method';
+    public const ARGUMENT_FALLBACK_TARGET = 'fallbackTarget';
 
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
@@ -205,7 +207,46 @@ class MethodSpryk implements SprykBuilderInterface
     {
         $betterReflection = new BetterReflection();
 
-        return $betterReflection->classReflector()->reflect($this->getTargetArgument($sprykDefinition));
+        $targetClassName = $this->getTargetClassName($sprykDefinition);
+        $this->assertFullyQualifiedClassName($targetClassName);
+
+        return $betterReflection->classReflector()->reflect($targetClassName);
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return string
+     */
+    protected function getTargetClassName(SprykDefinitionInterface $sprykDefinition): string
+    {
+        $className = $this->getTargetArgument($sprykDefinition);
+        if (strpos($className, '\\') === false && $sprykDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_FALLBACK_TARGET)) {
+            return $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_FALLBACK_TARGET);
+        }
+
+        return $className;
+    }
+
+    /**
+     * @param string $className
+     *
+     * @throws \SprykerSdk\Spryk\Exception\NotAFullyQualifiedClassNameException
+     *
+     * @return void
+     */
+    protected function assertFullyQualifiedClassName(string $className)
+    {
+        if (strpos($className, '\\') === false) {
+            throw new NotAFullyQualifiedClassNameException(sprintf(
+                'Expected a fully qualified class name for reflection but got "%s". ' .
+                'Make sure you pass a fully qualified class name or use the "%s" argument with a value like "%s" in your spryk ' .
+                'to be able to compute the fully qualified class name from the given arguments.',
+                $className,
+                static::ARGUMENT_FALLBACK_TARGET,
+                '{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | trimTrailingBackslash }}\\{{ className }}'
+            ));
+        }
     }
 
     /**
