@@ -46,8 +46,8 @@ arguments:
   target:
     value: "{{ className }}"
 
-  fallbackTarget:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | trimTrailingBackslash }}\\{{ className }}"
+  fqcnPattern:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}"
 
 preSpryks:
   - AddZedBusinessModel:

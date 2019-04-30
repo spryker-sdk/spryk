@@ -29,7 +29,7 @@ class FilterFactory
             $this->createCamelCaseFilter(),
             $this->createLowerCaseFirstFilter(),
             $this->createCamelCaseToWhitespaceFilter(),
-            $this->createTrimTrailingBackslashFilter(),
+            $this->createConvertToClassNameFragmentFilter(),
         ];
     }
 
@@ -130,10 +130,10 @@ class FilterFactory
     }
 
     /**
-     * @return FilterInterface
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
      */
-    public function createTrimTrailingBackslashFilter(): FilterInterface
+    public function createConvertToClassNameFragmentFilter(): FilterInterface
     {
-        return new TrimTrailingBackslashFilter();
+        return new ConvertToClassNameFragmentFilter();
     }
 }

@@ -23,7 +23,7 @@ class MethodSpryk implements SprykBuilderInterface
     public const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
     public const ARGUMENT_TEMPLATE = 'template';
     public const ARGUMENT_METHOD_NAME = 'method';
-    public const ARGUMENT_FALLBACK_TARGET = 'fallbackTarget';
+    public const ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN = 'fqcnPattern';
 
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
@@ -205,10 +205,12 @@ class MethodSpryk implements SprykBuilderInterface
      */
     protected function getReflection(SprykDefinitionInterface $sprykDefinition)
     {
-        $betterReflection = new BetterReflection();
-
         $targetClassName = $this->getTargetClassName($sprykDefinition);
         $this->assertFullyQualifiedClassName($targetClassName);
+
+        $targetClassName = str_replace(DIRECTORY_SEPARATOR, '\\', $targetClassName);
+
+        $betterReflection = new BetterReflection();
 
         return $betterReflection->classReflector()->reflect($targetClassName);
     }
@@ -221,9 +223,12 @@ class MethodSpryk implements SprykBuilderInterface
     protected function getTargetClassName(SprykDefinitionInterface $sprykDefinition): string
     {
         $className = $this->getTargetArgument($sprykDefinition);
-        if (strpos($className, '\\') === false && $sprykDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_FALLBACK_TARGET)) {
-            return $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_FALLBACK_TARGET);
+        if (strpos($className, '\\') === false && $sprykDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN)) {
+            $className = $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN);
         }
+        $className = str_replace(DIRECTORY_SEPARATOR, '\\', $className);
+
+        $this->assertFullyQualifiedClassName($className);
 
         return $className;
     }
@@ -240,11 +245,12 @@ class MethodSpryk implements SprykBuilderInterface
         if (strpos($className, '\\') === false) {
             throw new NotAFullyQualifiedClassNameException(sprintf(
                 'Expected a fully qualified class name for reflection but got "%s". ' .
-                'Make sure you pass a fully qualified class name or use the "%s" argument with a value like "%s" in your spryk ' .
+                'Make sure you pass a fully qualified class name in the "%s" argument or use the "%s" argument with a value like "%s" in your spryk ' .
                 'to be able to compute the fully qualified class name from the given arguments.',
                 $className,
-                static::ARGUMENT_FALLBACK_TARGET,
-                '{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | trimTrailingBackslash }}\\{{ className }}'
+                static::ARGUMENT_TARGET,
+                static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN,
+                '{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}'
             ));
         }
     }
