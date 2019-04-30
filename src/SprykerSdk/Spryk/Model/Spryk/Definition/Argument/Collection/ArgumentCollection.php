@@ -24,7 +24,8 @@ class ArgumentCollection implements ArgumentCollectionInterface
      */
     public function addArgument(ArgumentInterface $argument)
     {
-        if (isset($this->arguments[$argument->getName()]) && $argument->getValue() === null) {
+        // Do not override the first found argument.
+        if (isset($this->arguments[$argument->getName()])) {
             return $this;
         }
 
