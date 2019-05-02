@@ -154,7 +154,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
         $sourcePathRelative = ($fileInfo->getRelativePath() !== '') ? $fileInfo->getRelativePath() . DIRECTORY_SEPARATOR : '';
         $targetPath = $this->getTargetPath($sprykDefinition);
 
-        if (preg_match(sprintf('/\/%sExtension\//', $module), $fileInfo->getPathname()) !== false) {
+        if (strpos($fileInfo->getPathname(), sprintf('/%sExtension/', $module)) !== false) {
             $targetPath = rtrim($targetPath, DIRECTORY_SEPARATOR) . 'Extension' . DIRECTORY_SEPARATOR;
         }
 
