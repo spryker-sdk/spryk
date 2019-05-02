@@ -85,9 +85,11 @@ class CopyModuleSpryk implements SprykBuilderInterface
      */
     protected function getSourceFiles(SprykDefinitionInterface $sprykDefinition): Finder
     {
+        $moduleName = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_MODULE);
+
         $sourcePaths = [
             $this->getSourcePath($sprykDefinition),
-            rtrim($this->getSourcePath($sprykDefinition), DIRECTORY_SEPARATOR) . 'Extension',
+            str_replace($moduleName, $moduleName . 'Extension', $this->getSourcePath($sprykDefinition)),
         ];
 
         $preGlob = $sourcePaths;
