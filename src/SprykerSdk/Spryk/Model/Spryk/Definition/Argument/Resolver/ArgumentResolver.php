@@ -123,7 +123,7 @@ class ArgumentResolver implements ArgumentResolverInterface
 
         $defaultValue = $this->getDefaultValue($argumentName, $argumentDefinition);
 
-        $allowEmptyInput = (isset($argumentDefinition['isOptional']) && $argumentDefinition['isOptional']) ? true : false;
+        $allowEmptyInput = (isset($argumentDefinition['isOptional']) && ($argumentDefinition['isOptional'] === true)) ? true : false;
 
         return $this->askForArgumentValue($argumentName, $sprykName, $defaultValue, $allowEmptyInput);
     }
@@ -162,7 +162,7 @@ class ArgumentResolver implements ArgumentResolverInterface
      */
     protected function getKnownValueForArgument(string $argumentName, array $argumentDefinition)
     {
-        if (isset($argumentDefinition['value']) && (!OptionsContainer::hasOption($argumentName) || empty(OptionsContainer::getOption($argumentName)))) {
+        if (isset($argumentDefinition['value']) && !$this->issetNonEmptyOption($argumentName)) {
             return $argumentDefinition['value'];
         }
 
@@ -171,6 +171,26 @@ class ArgumentResolver implements ArgumentResolverInterface
         }
 
         return OptionsContainer::getOption($argumentName);
+    }
+
+    /**
+     * @param string $argumentName
+     *
+     * @return bool
+     */
+    protected function issetNonEmptyOption(string $argumentName): bool
+    {
+        if (!OptionsContainer::hasOption($argumentName)) {
+            return false;
+        }
+
+        $optionValue = OptionsContainer::getOption($argumentName);
+
+        if ($optionValue === '' || (is_array($optionValue) && count($optionValue) === 0)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -207,7 +227,7 @@ class ArgumentResolver implements ArgumentResolverInterface
     {
         $question = new Question(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $default);
 
-        if ($allowEmpty) {
+        if ($allowEmpty === true) {
             $question->setValidator(function ($value) {
                 if ($value === null){
                     return '';

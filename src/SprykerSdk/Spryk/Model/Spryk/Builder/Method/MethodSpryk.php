@@ -175,7 +175,7 @@ class MethodSpryk implements SprykBuilderInterface
         }
 
         throw new ArgumentNotFoundException(sprintf(
-            'Could not find method argument value. You need to add on of "%S" as method argument to your spryk "%s".',
+            'Could not find method argument value. You need to add on of "%s" as method argument to your spryk "%s".',
             implode(', ', static::ARGUMENT_METHOD_NAME_CANDIDATES),
             $sprykDefinition->getSprykName()
         ));
@@ -257,7 +257,7 @@ class MethodSpryk implements SprykBuilderInterface
     {
         $className = $this->getTargetArgument($sprykDefinition);
         if (strpos($className, '\\') === false && $sprykDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN)) {
-            $className = $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN);
+            $className = $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN)->getValue();
         }
         $className = str_replace(DIRECTORY_SEPARATOR, '\\', $className);
 

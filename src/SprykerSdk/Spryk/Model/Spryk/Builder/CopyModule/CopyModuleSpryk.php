@@ -7,9 +7,10 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\CopyModule;
 
+use SprykerSdk\Spryk\Exception\SprykException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
-use SprykerSdk\Spryk\Model\Spryk\Filter\DasherizeFilter;
+use SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface;
 use SprykerSdk\Spryk\SprykConfig;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 use Symfony\Component\Finder\Finder;
@@ -31,15 +32,15 @@ class CopyModuleSpryk implements SprykBuilderInterface
     protected $config;
 
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Filter\DasherizeFilter
+     * @var \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
      */
     protected $dasherizeFilter;
 
     /**
      * @param \SprykerSdk\Spryk\SprykConfig $config
-     * @param \SprykerSdk\Spryk\Model\Spryk\Filter\DasherizeFilter $dasherizeFilter
+     * @param \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface $dasherizeFilter
      */
-    public function __construct(SprykConfig $config, DasherizeFilter $dasherizeFilter)
+    public function __construct(SprykConfig $config, FilterInterface $dasherizeFilter)
     {
         $this->config = $config;
         $this->dasherizeFilter = $dasherizeFilter;
@@ -147,10 +148,10 @@ class CopyModuleSpryk implements SprykBuilderInterface
     {
         $module = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_MODULE);
 
-        $sourcePathRelative = ($fileInfo->getRelativePath()) ? $fileInfo->getRelativePath() . DIRECTORY_SEPARATOR : '';
+        $sourcePathRelative = ($fileInfo->getRelativePath() !== '') ? $fileInfo->getRelativePath() . DIRECTORY_SEPARATOR : '';
         $targetPath = $this->getTargetPath($sprykDefinition);
 
-        if (preg_match(sprintf('/\/%sExtension\//', $module), $fileInfo->getPathname())) {
+        if (preg_match(sprintf('/\/%sExtension\//', $module), $fileInfo->getPathname()) !== false) {
             $targetPath = rtrim($targetPath, DIRECTORY_SEPARATOR) . 'Extension' . DIRECTORY_SEPARATOR;
         }
 
@@ -165,6 +166,8 @@ class CopyModuleSpryk implements SprykBuilderInterface
     /**
      * @param string $fileName
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @throws \SprykerSdk\Spryk\Exception\SprykException
      *
      * @return string
      */
@@ -187,6 +190,9 @@ class CopyModuleSpryk implements SprykBuilderInterface
         ];
 
         $fileName = preg_replace(array_keys($searchAndReplace), array_values($searchAndReplace), $fileName);
+        if ($fileName === null) {
+            throw new SprykException('There was an error while replacing file name fragments.');
+        }
 
         return $fileName;
     }
@@ -216,13 +222,21 @@ class CopyModuleSpryk implements SprykBuilderInterface
      * @param string $content
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
+     * @throws \SprykerSdk\Spryk\Exception\SprykException
+     *
      * @return string
      */
     protected function prepareTargetFileContent(string $content, SprykDefinitionInterface $sprykDefinition): string
     {
         $searchAndReplaceMap = $this->buildSearchAndReplaceMapForFileContent($sprykDefinition);
 
-        return preg_replace(array_keys($searchAndReplaceMap), array_values($searchAndReplaceMap), $content);
+        $content = preg_replace(array_keys($searchAndReplaceMap), array_values($searchAndReplaceMap), $content);
+
+        if ($content === null) {
+            throw new SprykException('There was an error while replacing file content fragments.');
+        }
+
+        return $content;
     }
 
     /**
