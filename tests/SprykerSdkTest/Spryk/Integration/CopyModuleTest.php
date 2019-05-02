@@ -34,8 +34,8 @@ class CopyModuleTest extends Unit
             '--module' => 'ZipZap',
             '--toOrganization' => 'SprykerShop',
             '--toModule' => 'BarFoo',
-            '--sourcePath' => codecept_root_dir('tests/_support/Fixtures/vendor/spryker/{{ organization | dasherize }}/Bundles/{{ module }}/'),
-            '--targetFilePath' => codecept_data_dir('Copied/vendor/spryker/{{ toOrganization | dasherize }}/Bundles/{{ toModule }}//'),
+            '--sourcePath' => codecept_root_dir('tests/_support/Fixtures/vendor/spryker/{{ organization | dasherize }}/Bundles/src/{{ module }}/'),
+            '--targetFilePath' => codecept_data_dir('Copied/vendor/spryker/{{ toOrganization | dasherize }}/Bundles/src/{{ toModule }}//'),
         ]);
 
         // To complex to test, need to have to much files created
