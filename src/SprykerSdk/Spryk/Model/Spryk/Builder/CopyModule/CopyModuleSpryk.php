@@ -89,7 +89,13 @@ class CopyModuleSpryk implements SprykBuilderInterface
             $this->getSourcePath($sprykDefinition),
             rtrim($this->getSourcePath($sprykDefinition), DIRECTORY_SEPARATOR) . 'Extension',
         ];
+
+        $preGlob = $sourcePaths;
         $sourcePaths = array_filter($sourcePaths, 'glob');
+
+        if (count($sourcePaths) === 0) {
+            throw new \Exception(sprintf('Directories not valid: "%s"', implode(', ', $preGlob)));
+        }
 
         $finder = new Finder();
         $finder

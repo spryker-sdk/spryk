@@ -11,14 +11,17 @@ env:
 
 matrix:
   include:
-  - php: 7.1
-    env: PREFER_LOWEST=1
+#  - php: 7.1
+#    env: PREFER_LOWEST=1
+#
+#  - php: 7.3
+#    env: COVERAGE=1 DEFAULT=0
+#
+#  - php: 7.2
+#    env: CHECKS=1 DEFAULT=0
 
   - php: 7.3
-    env: COVERAGE=1 DEFAULT=0
-
-  - php: 7.2
-    env: CHECKS=1 DEFAULT=0
+    env: DEFAULT=0
 
     fast_finish: true
 
@@ -32,7 +35,7 @@ before_script:
   - if [[ $PREFER_LOWEST == 1 ]]; then composer update --prefer-lowest --no-interaction --prefer-dist --prefer-stable; fi;
 
 script:
-  - if [[ $DEFAULT == 1 ]]; then vendor/bin/codecept run; fi
+  - if [[ $DEFAULT == 1 ]]; then vendor/bin/codecept run -g CopyModuleTest; fi
   - if [[ $COVERAGE == 1 ]]; then vendor/bin/codecept run --coverage-xml; fi
 
   - if [[ $CHECKS == 1 ]]; then composer phpstan ; fi
