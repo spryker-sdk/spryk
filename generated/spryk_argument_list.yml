@@ -54,9 +54,9 @@
   mode: 2
   description: 'className argument'
 -
-  name: method
+  name: factoryMethod
   mode: 2
-  description: 'method argument'
+  description: 'factoryMethod argument'
 -
   name: dependencyMethods
   mode: 10
@@ -66,6 +66,10 @@
   mode: 2
   description: 'target argument'
 -
+  name: modelMethod
+  mode: 2
+  description: 'modelMethod argument'
+-
   name: input
   mode: 2
   description: 'input argument'
@@ -73,6 +77,10 @@
   name: output
   mode: 2
   description: 'output argument'
+-
+  name: fqcnPattern
+  mode: 2
+  description: 'fqcnPattern argument'
 -
   name: interfaceName
   mode: 2
@@ -106,6 +114,10 @@
   mode: 2
   description: 'dependentModule argument'
 -
+  name: providerMethod
+  mode: 2
+  description: 'providerMethod argument'
+-
   name: name
   mode: 2
   description: 'name argument'
@@ -134,6 +146,14 @@
   mode: 2
   description: 'dependentModuleOrganization argument'
 -
+  name: entityManagerMethod
+  mode: 2
+  description: 'entityManagerMethod argument'
+-
+  name: repositoryMethod
+  mode: 2
+  description: 'repositoryMethod argument'
+-
   name: targetModule
   mode: 2
   description: 'targetModule argument'
@@ -142,9 +162,17 @@
   mode: 2
   description: 'tableName argument'
 -
+  name: configMethod
+  mode: 2
+  description: 'configMethod argument'
+-
   name: controller
   mode: 2
   description: 'controller argument'
+-
+  name: controllerMethod
+  mode: 2
+  description: 'controllerMethod argument'
 -
   name: consoleCommand
   mode: 2
@@ -161,6 +189,18 @@
   name: toOrganization
   mode: 2
   description: 'toOrganization argument'
+-
+  name: sourcePath
+  mode: 2
+  description: 'sourcePath argument'
+-
+  name: targetFilePath
+  mode: 2
+  description: 'targetFilePath argument'
+-
+  name: clientMethod
+  mode: 2
+  description: 'clientMethod argument'
 -
   name: AddZedDependencyProvider.module
   mode: 2
@@ -254,9 +294,9 @@
   mode: 2
   description: 'AddZedBusinessFactoryMethod className argument'
 -
-  name: AddZedBusinessFactoryMethod.method
+  name: AddZedBusinessFactoryMethod.factoryMethod
   mode: 2
-  description: 'AddZedBusinessFactoryMethod method argument'
+  description: 'AddZedBusinessFactoryMethod factoryMethod argument'
 -
   name: AddZedBusinessFactoryMethod.dependencyMethods
   mode: 2
@@ -362,9 +402,13 @@
   mode: 2
   description: 'AddZedBusinessModelInterfaceMethod className argument'
 -
-  name: AddZedBusinessModelInterfaceMethod.method
+  name: AddZedBusinessModelInterfaceMethod.subDirectory
   mode: 2
-  description: 'AddZedBusinessModelInterfaceMethod method argument'
+  description: 'AddZedBusinessModelInterfaceMethod subDirectory argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.modelMethod
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod modelMethod argument'
 -
   name: AddZedBusinessModelInterfaceMethod.input
   mode: 2
@@ -381,6 +425,10 @@
   name: AddZedBusinessModelInterfaceMethod.target
   mode: 2
   description: 'AddZedBusinessModelInterfaceMethod target argument'
+-
+  name: AddZedBusinessModelInterfaceMethod.fqcnPattern
+  mode: 2
+  description: 'AddZedBusinessModelInterfaceMethod fqcnPattern argument'
 -
   name: AddZedBusinessModelInterfaceMethod.repository
   mode: 2
@@ -474,9 +522,13 @@
   mode: 2
   description: 'AddZedBusinessModelMethod className argument'
 -
-  name: AddZedBusinessModelMethod.method
+  name: AddZedBusinessModelMethod.subDirectory
   mode: 2
-  description: 'AddZedBusinessModelMethod method argument'
+  description: 'AddZedBusinessModelMethod subDirectory argument'
+-
+  name: AddZedBusinessModelMethod.modelMethod
+  mode: 2
+  description: 'AddZedBusinessModelMethod modelMethod argument'
 -
   name: AddZedBusinessModelMethod.input
   mode: 2
@@ -497,6 +549,10 @@
   name: AddZedBusinessModelMethod.target
   mode: 2
   description: 'AddZedBusinessModelMethod target argument'
+-
+  name: AddZedBusinessModelMethod.fqcnPattern
+  mode: 2
+  description: 'AddZedBusinessModelMethod fqcnPattern argument'
 -
   name: AddZedBusinessModelMethod.repository
   mode: 2
@@ -538,9 +594,9 @@
   mode: 2
   description: 'AddZedBusinessFacadeMethod comment argument'
 -
-  name: AddZedBusinessFacadeMethod.method
+  name: AddZedBusinessFacadeMethod.facadeMethod
   mode: 2
-  description: 'AddZedBusinessFacadeMethod method argument'
+  description: 'AddZedBusinessFacadeMethod facadeMethod argument'
 -
   name: AddZedBusinessFacadeMethod.input
   mode: 2
@@ -574,9 +630,9 @@
   mode: 2
   description: 'AddZedBusinessFacadeMethodTest organization argument'
 -
-  name: AddZedBusinessFacadeMethodTest.method
+  name: AddZedBusinessFacadeMethodTest.facadeMethod
   mode: 2
-  description: 'AddZedBusinessFacadeMethodTest method argument'
+  description: 'AddZedBusinessFacadeMethodTest facadeMethod argument'
 -
   name: AddZedBusinessFacadeMethodTest.body
   mode: 2
@@ -634,9 +690,9 @@
   mode: 2
   description: 'AddZedBusinessFacadeInterfaceMethod specification argument'
 -
-  name: AddZedBusinessFacadeInterfaceMethod.method
+  name: AddZedBusinessFacadeInterfaceMethod.facadeMethod
   mode: 2
-  description: 'AddZedBusinessFacadeInterfaceMethod method argument'
+  description: 'AddZedBusinessFacadeInterfaceMethod facadeMethod argument'
 -
   name: AddZedBusinessFacadeInterfaceMethod.input
   mode: 2
@@ -750,9 +806,9 @@
   mode: 2
   description: 'AddZedDependencyFacadeBusinessFactoryMethod organization argument'
 -
-  name: AddZedDependencyFacadeBusinessFactoryMethod.method
+  name: AddZedDependencyFacadeBusinessFactoryMethod.factoryMethod
   mode: 2
-  description: 'AddZedDependencyFacadeBusinessFactoryMethod method argument'
+  description: 'AddZedDependencyFacadeBusinessFactoryMethod factoryMethod argument'
 -
   name: AddZedDependencyFacadeBusinessFactoryMethod.template
   mode: 2
@@ -778,9 +834,9 @@
   mode: 2
   description: 'AddZedDependencyFacadeDependencyProviderMethod organization argument'
 -
-  name: AddZedDependencyFacadeDependencyProviderMethod.method
+  name: AddZedDependencyFacadeDependencyProviderMethod.providerMethod
   mode: 2
-  description: 'AddZedDependencyFacadeDependencyProviderMethod method argument'
+  description: 'AddZedDependencyFacadeDependencyProviderMethod providerMethod argument'
 -
   name: AddZedDependencyFacadeDependencyProviderMethod.template
   mode: 2
@@ -1054,9 +1110,9 @@
   mode: 2
   description: 'AddZedDependencyServiceDependencyProviderMethod organization argument'
 -
-  name: AddZedDependencyServiceDependencyProviderMethod.method
+  name: AddZedDependencyServiceDependencyProviderMethod.providerMethod
   mode: 2
-  description: 'AddZedDependencyServiceDependencyProviderMethod method argument'
+  description: 'AddZedDependencyServiceDependencyProviderMethod providerMethod argument'
 -
   name: AddZedDependencyServiceDependencyProviderMethod.template
   mode: 2
@@ -1118,9 +1174,9 @@
   mode: 2
   description: 'AddZedDependencyServiceBusinessFactoryMethod organization argument'
 -
-  name: AddZedDependencyServiceBusinessFactoryMethod.method
+  name: AddZedDependencyServiceBusinessFactoryMethod.factoryMethod
   mode: 2
-  description: 'AddZedDependencyServiceBusinessFactoryMethod method argument'
+  description: 'AddZedDependencyServiceBusinessFactoryMethod factoryMethod argument'
 -
   name: AddZedDependencyServiceBusinessFactoryMethod.template
   mode: 2
@@ -1218,9 +1274,9 @@
   mode: 2
   description: 'AddZedDependencyClientBusinessFactoryMethod organization argument'
 -
-  name: AddZedDependencyClientBusinessFactoryMethod.method
+  name: AddZedDependencyClientBusinessFactoryMethod.factoryMethod
   mode: 2
-  description: 'AddZedDependencyClientBusinessFactoryMethod method argument'
+  description: 'AddZedDependencyClientBusinessFactoryMethod factoryMethod argument'
 -
   name: AddZedDependencyClientBusinessFactoryMethod.template
   mode: 2
@@ -1246,9 +1302,9 @@
   mode: 2
   description: 'AddZedDependencyClientDependencyProviderMethod organization argument'
 -
-  name: AddZedDependencyClientDependencyProviderMethod.method
+  name: AddZedDependencyClientDependencyProviderMethod.providerMethod
   mode: 2
-  description: 'AddZedDependencyClientDependencyProviderMethod method argument'
+  description: 'AddZedDependencyClientDependencyProviderMethod providerMethod argument'
 -
   name: AddZedDependencyClientDependencyProviderMethod.template
   mode: 2
@@ -1414,9 +1470,9 @@
   mode: 2
   description: 'AddZedPersistenceEntityManagerMethod organization argument'
 -
-  name: AddZedPersistenceEntityManagerMethod.method
+  name: AddZedPersistenceEntityManagerMethod.entityManagerMethod
   mode: 2
-  description: 'AddZedPersistenceEntityManagerMethod method argument'
+  description: 'AddZedPersistenceEntityManagerMethod entityManagerMethod argument'
 -
   name: AddZedPersistenceEntityManagerMethod.input
   mode: 2
@@ -1446,9 +1502,9 @@
   mode: 2
   description: 'AddZedPersistenceEntityManagerInterfaceMethod organization argument'
 -
-  name: AddZedPersistenceEntityManagerInterfaceMethod.method
+  name: AddZedPersistenceEntityManagerInterfaceMethod.entityManagerMethod
   mode: 2
-  description: 'AddZedPersistenceEntityManagerInterfaceMethod method argument'
+  description: 'AddZedPersistenceEntityManagerInterfaceMethod entityManagerMethod argument'
 -
   name: AddZedPersistenceEntityManagerInterfaceMethod.input
   mode: 2
@@ -1502,9 +1558,9 @@
   mode: 2
   description: 'AddZedPersistenceRepositoryMethod organization argument'
 -
-  name: AddZedPersistenceRepositoryMethod.method
+  name: AddZedPersistenceRepositoryMethod.repositoryMethod
   mode: 2
-  description: 'AddZedPersistenceRepositoryMethod method argument'
+  description: 'AddZedPersistenceRepositoryMethod repositoryMethod argument'
 -
   name: AddZedPersistenceRepositoryMethod.input
   mode: 2
@@ -1558,9 +1614,9 @@
   mode: 2
   description: 'AddZedPersistenceRepositoryInterfaceMethod organization argument'
 -
-  name: AddZedPersistenceRepositoryInterfaceMethod.method
+  name: AddZedPersistenceRepositoryInterfaceMethod.repositoryMethod
   mode: 2
-  description: 'AddZedPersistenceRepositoryInterfaceMethod method argument'
+  description: 'AddZedPersistenceRepositoryInterfaceMethod repositoryMethod argument'
 -
   name: AddZedPersistenceRepositoryInterfaceMethod.input
   mode: 2
@@ -1778,9 +1834,9 @@
   mode: 2
   description: 'AddZedConfigMethod organization argument'
 -
-  name: AddZedConfigMethod.method
+  name: AddZedConfigMethod.configMethod
   mode: 2
-  description: 'AddZedConfigMethod method argument'
+  description: 'AddZedConfigMethod configMethod argument'
 -
   name: AddZedConfigMethod.input
   mode: 2
@@ -1934,9 +1990,9 @@
   mode: 2
   description: 'AddZedCommunicationControllerAction controller argument'
 -
-  name: AddZedCommunicationControllerAction.method
+  name: AddZedCommunicationControllerAction.controllerMethod
   mode: 2
-  description: 'AddZedCommunicationControllerAction method argument'
+  description: 'AddZedCommunicationControllerAction controllerMethod argument'
 -
   name: AddZedCommunicationControllerAction.output
   mode: 2
@@ -2026,9 +2082,9 @@
   mode: 2
   description: 'AddZedNavigationNode controller argument'
 -
-  name: AddZedNavigationNode.method
+  name: AddZedNavigationNode.controllerMethod
   mode: 2
-  description: 'AddZedNavigationNode method argument'
+  description: 'AddZedNavigationNode controllerMethod argument'
 -
   name: AddZedNavigationNode.targetPath
   mode: 2
@@ -2050,9 +2106,9 @@
   mode: 2
   description: 'AddZedPresentationTwig controller argument'
 -
-  name: AddZedPresentationTwig.method
+  name: AddZedPresentationTwig.controllerMethod
   mode: 2
-  description: 'AddZedPresentationTwig method argument'
+  description: 'AddZedPresentationTwig controllerMethod argument'
 -
   name: AddZedPresentationTwig.template
   mode: 2
@@ -2158,9 +2214,9 @@
   mode: 2
   description: 'AddYvesDependencyServiceFactoryMethod organization argument'
 -
-  name: AddYvesDependencyServiceFactoryMethod.method
+  name: AddYvesDependencyServiceFactoryMethod.factoryMethod
   mode: 2
-  description: 'AddYvesDependencyServiceFactoryMethod method argument'
+  description: 'AddYvesDependencyServiceFactoryMethod factoryMethod argument'
 -
   name: AddYvesDependencyServiceFactoryMethod.template
   mode: 2
@@ -2330,9 +2386,9 @@
   mode: 2
   description: 'AddYvesDependencyServiceDependencyProviderMethod organization argument'
 -
-  name: AddYvesDependencyServiceDependencyProviderMethod.method
+  name: AddYvesDependencyServiceDependencyProviderMethod.providerMethod
   mode: 2
-  description: 'AddYvesDependencyServiceDependencyProviderMethod method argument'
+  description: 'AddYvesDependencyServiceDependencyProviderMethod providerMethod argument'
 -
   name: AddYvesDependencyServiceDependencyProviderMethod.template
   mode: 2
@@ -2390,9 +2446,9 @@
   mode: 2
   description: 'AddYvesDependencyClientDependencyProviderMethod organization argument'
 -
-  name: AddYvesDependencyClientDependencyProviderMethod.method
+  name: AddYvesDependencyClientDependencyProviderMethod.providerMethod
   mode: 2
-  description: 'AddYvesDependencyClientDependencyProviderMethod method argument'
+  description: 'AddYvesDependencyClientDependencyProviderMethod providerMethod argument'
 -
   name: AddYvesDependencyClientDependencyProviderMethod.template
   mode: 2
@@ -2562,9 +2618,9 @@
   mode: 2
   description: 'AddYvesDependencyClientFactoryMethod organization argument'
 -
-  name: AddYvesDependencyClientFactoryMethod.method
+  name: AddYvesDependencyClientFactoryMethod.factoryMethod
   mode: 2
-  description: 'AddYvesDependencyClientFactoryMethod method argument'
+  description: 'AddYvesDependencyClientFactoryMethod factoryMethod argument'
 -
   name: AddYvesDependencyClientFactoryMethod.template
   mode: 2
@@ -2642,9 +2698,9 @@
   mode: 2
   description: 'AddYvesConfigMethod organization argument'
 -
-  name: AddYvesConfigMethod.method
+  name: AddYvesConfigMethod.configMethod
   mode: 2
-  description: 'AddYvesConfigMethod method argument'
+  description: 'AddYvesConfigMethod configMethod argument'
 -
   name: AddYvesConfigMethod.input
   mode: 2
@@ -2738,17 +2794,21 @@
   mode: 2
   description: 'CopyModule toOrganization argument'
 -
-  name: CopyModule.targetPath
+  name: CopyModule.sourcePath
   mode: 2
-  description: 'CopyModule targetPath argument'
+  description: 'CopyModule sourcePath argument'
 -
-  name: CopyModule.directories
+  name: CopyModule.targetFilePath
   mode: 2
-  description: 'CopyModule directories argument'
+  description: 'CopyModule targetFilePath argument'
 -
   name: CopyModule.repository
   mode: 2
   description: 'CopyModule repository argument'
+-
+  name: CopyModule.mode
+  mode: 2
+  description: 'CopyModule mode argument'
 -
   name: AddModuleChangelog.module
   mode: 2
@@ -3146,9 +3206,9 @@
   mode: 2
   description: 'AddClientMethod organization argument'
 -
-  name: AddClientMethod.method
+  name: AddClientMethod.clientMethod
   mode: 2
-  description: 'AddClientMethod method argument'
+  description: 'AddClientMethod clientMethod argument'
 -
   name: AddClientMethod.input
   mode: 2
@@ -3206,9 +3266,9 @@
   mode: 2
   description: 'AddClientConfigMethod comment argument'
 -
-  name: AddClientConfigMethod.method
+  name: AddClientConfigMethod.configMethod
   mode: 2
-  description: 'AddClientConfigMethod method argument'
+  description: 'AddClientConfigMethod configMethod argument'
 -
   name: AddClientConfigMethod.input
   mode: 2
@@ -3262,9 +3322,9 @@
   mode: 2
   description: 'AddClientInterfaceMethod organization argument'
 -
-  name: AddClientInterfaceMethod.method
+  name: AddClientInterfaceMethod.clientMethod
   mode: 2
-  description: 'AddClientInterfaceMethod method argument'
+  description: 'AddClientInterfaceMethod clientMethod argument'
 -
   name: AddClientInterfaceMethod.input
   mode: 2

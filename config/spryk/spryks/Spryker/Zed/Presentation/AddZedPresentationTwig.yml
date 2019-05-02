@@ -19,7 +19,7 @@ arguments:
       - ClassNameShortCallback
       - RemoveControllerSuffixCallback
 
-  method:
+  controllerMethod:
     callback:
       - RemoveActionSuffixCallback
 
@@ -27,7 +27,7 @@ arguments:
     value: Zed/Presentation/ZedPresentationTwig.twig
 
   targetFilename:
-    value: "{{ method | removeActionSuffix | dasherize | lcfirst }}.twig"
+    value: "{{ controllerMethod | removeActionSuffix | dasherize | lcfirst }}.twig"
 
   targetPath:
     value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"

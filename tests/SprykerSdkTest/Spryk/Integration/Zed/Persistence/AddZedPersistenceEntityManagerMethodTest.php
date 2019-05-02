@@ -30,11 +30,11 @@ class AddZedPersistenceEntityManagerMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedPersistenceRepositoryMethod(): void
+    public function testAddsZedPersistenceEntitityManagerMethodMethod(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'doSomething',
+            '--entityManagerMethod' => 'doSomething',
             '--input' => 'string $fooBar',
             '--output' => 'array',
         ]);
@@ -45,11 +45,11 @@ class AddZedPersistenceEntityManagerMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedPersistenceRepositoryMethodOnProjectLayer(): void
+    public function testAddsZedPersistenceEntityManagerMethodOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'doSomething',
+            '--entityManagerMethod' => 'doSomething',
             '--input' => 'string $fooBar',
             '--output' => 'array',
             '--mode' => 'project',

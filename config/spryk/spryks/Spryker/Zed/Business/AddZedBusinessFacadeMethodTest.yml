@@ -11,7 +11,7 @@ arguments:
     inherit: true
     default: Spryker
 
-  method:
+  facadeMethod:
     inherit: true
     callback:
       - ZedTestMethodNameCallback

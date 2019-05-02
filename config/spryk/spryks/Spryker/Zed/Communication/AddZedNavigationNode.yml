@@ -15,7 +15,7 @@ arguments:
       - ClassNameShortCallback
       - RemoveControllerSuffixCallback
 
-  method:
+  controllerMethod:
     callback:
       - RemoveActionSuffixCallback
 

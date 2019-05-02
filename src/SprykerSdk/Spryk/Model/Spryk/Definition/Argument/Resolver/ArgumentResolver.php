@@ -162,7 +162,7 @@ class ArgumentResolver implements ArgumentResolverInterface
      */
     protected function getKnownValueForArgument(string $argumentName, array $argumentDefinition)
     {
-        if (isset($argumentDefinition['value'])) {
+        if (isset($argumentDefinition['value']) && !OptionsContainer::hasOption($argumentName) || empty(OptionsContainer::getOption($argumentName))) {
             return $argumentDefinition['value'];
         }
 

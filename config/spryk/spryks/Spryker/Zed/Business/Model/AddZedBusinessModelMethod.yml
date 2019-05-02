@@ -28,7 +28,7 @@ arguments:
     inherit: true
     isOptional: true
 
-  method: ~
+  modelMethod: ~
 
   input:
     isOptional: true
@@ -38,7 +38,7 @@ arguments:
     isOptional: true
 
   facadeMethod:
-    default: "{{ method }}"
+    default: "{{ modelMethod }}"
 
   template:
     value: Common/Method.php.twig
@@ -62,6 +62,3 @@ postSpryks:
   - AddZedBusinessModelInterfaceMethod
   - AddZedBusinessFacadeMethod:
       isOptional: true
-      arguments:
-        method:
-          value: "{{ facadeMethod }}"

@@ -17,7 +17,7 @@ arguments:
     inherit: true
     isOptional: true
 
-  method:
+  modelMethod:
     inherit: true
 
   input:

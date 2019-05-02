@@ -12,7 +12,7 @@ arguments:
     inherit: true
     default: Spryker
 
-  method: ~
+  clientMethod: ~
   input: ~
   output: ~
 
