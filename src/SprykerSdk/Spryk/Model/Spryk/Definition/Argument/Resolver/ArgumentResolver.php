@@ -223,13 +223,13 @@ class ArgumentResolver implements ArgumentResolverInterface
      *
      * @return string|int|null
      */
-    protected function askForArgumentValue(string $argument, string $sprykName, $default = null, ?bool $allowEmpty)
+    protected function askForArgumentValue(string $argument, string $sprykName, $default, ?bool $allowEmpty)
     {
         $question = new Question(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $default);
 
         if ($allowEmpty === true) {
             $question->setValidator(function ($value) {
-                if ($value === null){
+                if ($value === null) {
                     return '';
                 }
 

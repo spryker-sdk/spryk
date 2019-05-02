@@ -7,9 +7,6 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
-use Zend\Filter\FilterChain;
-use Zend\Filter\Word\UnderscoreToCamelCase;
-
 class ConvertToClassNameFragmentFilter implements FilterInterface
 {
     /**
