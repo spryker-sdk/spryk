@@ -3,7 +3,6 @@ description: "Adds a method to the *module*Factory."
 mode: both
 
 arguments:
-
   module:
     inherit: true
 

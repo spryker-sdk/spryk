@@ -7,7 +7,6 @@ application: Glue
 priority: 1
 
 arguments:
-
   module:
     inherit: true
 
@@ -20,6 +19,7 @@ arguments:
 
   subDirectory:
     inherit: true
+    isOptional: true
 
   method:
     inherit: true

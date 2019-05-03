@@ -3,7 +3,6 @@ description: "Adds a new method to the *target* processor model interface."
 mode: both
 
 arguments:
-
   module:
     inherit: true
 
@@ -19,6 +18,7 @@ arguments:
 
   subDirectory:
     inherit: true
+    isOptional: true
 
   modelSuffix:
     inherit: true
@@ -31,7 +31,6 @@ arguments:
 
   output:
     inherit: true
-
 
   template:
     value: Common/InterfaceMethod.php.twig

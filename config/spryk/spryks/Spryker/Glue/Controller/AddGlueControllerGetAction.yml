@@ -3,7 +3,6 @@ description: "Adds a new action to the Glue controller."
 mode: both
 
 arguments:
-
   module:
     inherit: true
 
@@ -32,6 +31,7 @@ arguments:
 
   subDirectory:
     inherit: true
+    isOptional: true
 
   template:
     value: Glue/Controller/MethodGetGlueController.php.twig

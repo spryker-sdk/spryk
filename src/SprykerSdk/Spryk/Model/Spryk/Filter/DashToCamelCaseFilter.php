@@ -12,12 +12,14 @@ use Zend\Filter\Word\DashToCamelCase;
 
 class DashToCamelCaseFilter implements FilterInterface
 {
+    protected const FILTER_NAME = 'dashToCamelCase';
+
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'dashToCamelCase';
+        return static::FILTER_NAME;
     }
 
     /**

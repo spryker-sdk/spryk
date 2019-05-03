@@ -3,7 +3,6 @@ description: "Adds a Resource type to the *module*Config."
 mode: both
 
 arguments:
-
   module:
     inherit: true
 

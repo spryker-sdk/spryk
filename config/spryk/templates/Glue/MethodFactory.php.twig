@@ -1,26 +1,31 @@
+{% if subDirectory %}
+    {% set subDirectory = '\\' ~ subDirectory | replace({"/": "\\"}) %}
+{% else %}
+    {% set subDirectory = '' %}
+{% endif %}
 
 {% if not dependencyMethods.value %}
-    /**
-     * @return \{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory | replace({"/": "\\"}) }}{% endif %}\{{ className }}Interface
+/**
+     * @return \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
      */
-    public function {{ method }}(): \{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory | replace({"/": "\\"}) }}{% endif %}\{{ className }}Interface
+    public function {{ method }}(): \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
     {
-        return new \{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory | replace({"/": "\\"}) }}{% endif %}\{{ className }}();
+        return new \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}();
     }
 {% else %}
-    /**
-    * @return \{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory | replace({"/": "\\"}) }}{% endif %}\{{ className }}Interface
+/**
+    * @return \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
     */
-    public function {{ method }}(): \{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory | replace({"/": "\\"}) }}{% endif %}\{{ className }}Interface
+    public function {{ method }}(): \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
     {
-        return new \{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory | replace({"/": "\\"}) }}{% endif %}\{{ className }}(
+        return new \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}(
         {% for dependencyMethod in dependencyMethods.value -%}
             {%- spaceless -%}
-                {% set endofline = '' %}
+                {% set endOfLine = '' %}
                 {% if not loop.last %}
-                    {% set endofline = ',' %}
+                    {% set endOfLine = ',' %}
                 {% endif %}
-                {% set line = '    $this->' ~ dependencyMethod ~ '()' ~ endofline %}
+                {% set line = '    $this->' ~ dependencyMethod ~ '()' ~ endOfLine %}
             {%- endspaceless -%}
             {{ line | raw }}
         {% endfor -%}
