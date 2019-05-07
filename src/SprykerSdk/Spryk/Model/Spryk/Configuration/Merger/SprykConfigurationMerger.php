@@ -34,15 +34,16 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
 
     /**
      * @param array $sprykDefinition
+     * @param string|null $currentMode
      *
      * @return array
      */
-    public function merge(array $sprykDefinition): array
+    public function merge(array $sprykDefinition, ?string $currentMode): array
     {
         $rootConfiguration = $this->configurationFinder->find($this->rootSprykName);
         $rootConfiguration = Yaml::parse($rootConfiguration->getContents());
 
-        $sprykDefinition = $this->doMerge($rootConfiguration, $sprykDefinition);
+        $sprykDefinition = $this->doMerge($rootConfiguration, $sprykDefinition, $currentMode);
         $sprykDefinition = $this->doMergeSubSpryks($rootConfiguration, $sprykDefinition);
 
         return $sprykDefinition;
@@ -50,13 +51,13 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
 
     /**
      * @param array $rootConfiguration
-     * @param array $sprykDefinition
+     * @param string|null $currentMode
      *
      * @return array
      */
-    protected function doMerge(array $rootConfiguration, array $sprykDefinition): array
+    protected function doMerge(array $rootConfiguration, array $sprykDefinition, ?string $currentMode): array
     {
-        $rootConfiguration = $this->buildRootConfigByMode($rootConfiguration, $sprykDefinition['mode']);
+        $rootConfiguration = $this->buildRootConfigByMode($rootConfiguration, $currentMode);
         $sprykDefinition['arguments'] = $this->mergeArguments(
             $sprykDefinition['arguments'],
             $rootConfiguration['arguments']
@@ -197,21 +198,19 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
 
     /**
      * @param array $rootConfiguration
-     * @param string $sprykMode
+     * @param string $currentMode
      *
      * @return array
      */
-    protected function buildRootConfigByMode(array $rootConfiguration, string $sprykMode): array
+    protected function buildRootConfigByMode(array $rootConfiguration, ?string $currentMode): array
     {
         $rootArguments = $rootConfiguration['arguments'];
 
-        $mode = $sprykMode;
-
-        if (!isset($rootConfiguration[$mode])) {
+        if ($currentMode === null || !isset($rootConfiguration[$currentMode])) {
             return $rootConfiguration;
         }
 
-        $rootConfiguration['arguments'] = array_merge($rootArguments, $rootConfiguration[$mode]['arguments']);
+        $rootConfiguration['arguments'] = array_merge($rootArguments, $rootConfiguration[$currentMode]['arguments']);
 
         return $rootConfiguration;
     }

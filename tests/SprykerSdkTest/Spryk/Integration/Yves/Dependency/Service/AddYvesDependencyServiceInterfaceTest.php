@@ -43,7 +43,7 @@ class AddYvesDependencyServiceInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyServiceInterfaceOnProjectLayer(): void
+    public function testAddsYvesDependencyServiceInterfaceOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

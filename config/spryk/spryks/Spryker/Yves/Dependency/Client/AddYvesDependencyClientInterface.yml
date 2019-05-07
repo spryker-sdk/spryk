@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new *module*To*dependentModule*ClientInterface."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -18,7 +18,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
+    value: "src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
 
 preSpryks:
   - AddYvesDependencyClientBridge

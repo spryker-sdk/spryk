@@ -44,7 +44,7 @@ class AddClientConfigMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientConfigMethodOnProjectLayer(): void
+    public function testAddsClientConfigMethodOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

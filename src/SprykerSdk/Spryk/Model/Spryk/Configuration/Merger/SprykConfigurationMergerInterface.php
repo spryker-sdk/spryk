@@ -11,8 +11,9 @@ interface SprykConfigurationMergerInterface
 {
     /**
      * @param array $sprykDefinition
+     * @param string|null $currentMode
      *
      * @return array
      */
-    public function merge(array $sprykDefinition): array;
+    public function merge(array $sprykDefinition, ?string $currentMode): array;
 }

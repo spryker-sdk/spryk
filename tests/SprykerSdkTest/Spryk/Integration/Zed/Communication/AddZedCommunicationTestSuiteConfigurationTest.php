@@ -48,7 +48,7 @@ class AddZedCommunicationTestSuiteConfigurationTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedCommunicationTestSuiteConfigurationOnProjectLayer(): void
+    public function testAddsZedCommunicationTestSuiteConfigurationOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

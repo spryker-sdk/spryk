@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new LICENSE to the Modules root."
-mode: core
+mode: "core|sdk|eco"
 
 arguments:
   module:
@@ -14,7 +14,7 @@ arguments:
     value: LICENSE.twig
 
   targetPath:
-    value: "{{ module }}/"
+    value: ""
 
 preSpryks:
   - AddModule

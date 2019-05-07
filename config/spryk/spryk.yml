@@ -7,13 +7,26 @@ core:
     mode:
       value: "core"
     targetPath:
-      value: "vendor/{{ repository }}/Bundles/"
+      value: "vendor/{{ repository }}/Bundles/{{ module }}/"
+      type: prepend
+
+sdk:
+  arguments:
+    mode:
+      value: "sdk"
+    targetPath:
+      value: "vendor/spryker-sdk/{{ module | dasherize }}/"
+      type: prepend
+
+eco:
+  arguments:
+    mode:
+      value: "eco"
+    targetPath:
+      value: "vendor/spryker-eco/{{ module | dasherize }}/"
       type: prepend
 
 project:
   arguments:
     mode:
       value: "project"
-    targetPath:
-      value: "src/{{ organization }}/{{ layer }}/"
-      type: prepend

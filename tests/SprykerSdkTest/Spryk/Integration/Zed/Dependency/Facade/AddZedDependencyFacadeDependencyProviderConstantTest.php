@@ -52,7 +52,7 @@ class AddZedDependencyFacadeDependencyProviderConstantTest extends Unit
     /**
      * @return void
      */
-    public function testAddsDependencyFacadeConstantToDependencyProviderOnProjectLayer(): void
+    public function testAddsDependencyFacadeConstantToDependencyProviderOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

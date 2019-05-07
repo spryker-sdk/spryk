@@ -44,7 +44,7 @@ class AddZedPresentationTwigTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedViewFileOnProjectLayer(): void
+    public function testAddsZedViewFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -76,7 +76,7 @@ class AddZedPresentationTwigTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedViewFileWithFullyQualifiedNamesOnProjectLayer(): void
+    public function testAddsZedViewFileWithFullyQualifiedNamesOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

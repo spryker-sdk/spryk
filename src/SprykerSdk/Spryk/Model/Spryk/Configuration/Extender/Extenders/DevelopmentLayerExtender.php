@@ -32,7 +32,7 @@ class DevelopmentLayerExtender extends AbstractExtender implements SprykConfigur
      */
     protected function buildModeArgument(array $sprykConfig): array
     {
-        if ($this->isBoth($sprykConfig)) {
+        if ($this->isAll($sprykConfig)) {
             $sprykConfig['arguments']['mode']['default'] = $this->config->getDefaultDevelopmentMode();
 
             return $sprykConfig;

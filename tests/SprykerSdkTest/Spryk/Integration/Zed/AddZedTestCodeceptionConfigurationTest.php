@@ -40,7 +40,7 @@ class AddZedTestCodeceptionConfigurationTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedTestCodeceptionConfigurationOnProjectLayer(): void
+    public function testAddsZedTestCodeceptionConfigurationOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

@@ -1,6 +1,6 @@
 spryk: template
 description: "Add the Zed *module* test suite configuration without any suite."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -14,7 +14,7 @@ arguments:
     value: Zed/ZedTestCodeceptionConfiguration.yml.twig
 
   targetPath:
-    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/"
+    value: "tests/{{ organization }}Test/Zed/{{ module }}/"
 
   targetFilename:
     value: codeception.yml

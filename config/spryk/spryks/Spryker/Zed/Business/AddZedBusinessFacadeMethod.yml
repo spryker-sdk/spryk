@@ -1,6 +1,6 @@
 spryk: method
 description: "Adds a new method to the *module*Facade."
-mode: both
+mode: "all"
 
 arguments:
 

@@ -48,7 +48,8 @@ class SprykFactory
     {
         return new SprykExecutor(
             $this->createSprykDefinitionBuilder(),
-            $this->createSprykBuilderCollection()
+            $this->createSprykBuilderCollection(),
+            $this->getConfig()
         );
     }
 

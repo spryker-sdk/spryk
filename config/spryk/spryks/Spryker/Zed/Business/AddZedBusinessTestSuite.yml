@@ -1,6 +1,6 @@
 spryk: structure
 description: "Adds a new *module* Business test suite directory."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   targetPath:
-    value: "{{ module }}/"
+    value: ""
 
   directories:
     value:

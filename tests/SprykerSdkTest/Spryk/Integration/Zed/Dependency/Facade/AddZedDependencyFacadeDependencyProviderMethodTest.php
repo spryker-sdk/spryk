@@ -44,7 +44,7 @@ class AddZedDependencyFacadeDependencyProviderMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsDependencyFacadeMethodToDependencyProviderOnProjectLayer(): void
+    public function testAddsDependencyFacadeMethodToDependencyProviderOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

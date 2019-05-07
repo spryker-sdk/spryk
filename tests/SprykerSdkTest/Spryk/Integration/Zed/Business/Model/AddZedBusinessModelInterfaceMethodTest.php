@@ -44,7 +44,7 @@ class AddZedBusinessModelInterfaceMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodToBusinessModelInterfaceOnProjectLayer(): void
+    public function testAddsMethodToBusinessModelInterfaceOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

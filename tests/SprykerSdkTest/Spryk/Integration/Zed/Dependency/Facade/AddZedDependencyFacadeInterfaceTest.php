@@ -43,7 +43,7 @@ class AddZedDependencyFacadeInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyFacadeInterfaceOnProjectLayer(): void
+    public function testAddsZedDependencyFacadeInterfaceOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

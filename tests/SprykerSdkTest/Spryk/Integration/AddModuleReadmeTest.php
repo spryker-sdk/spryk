@@ -40,7 +40,7 @@ class AddModuleReadmeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsReadmeFileOnProjectLayer(): void
+    public function testTryToAddReadmeFileOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -48,7 +48,5 @@ class AddModuleReadmeTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'README.md');
     }
 }

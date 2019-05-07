@@ -69,7 +69,7 @@ class AddYvesDependencyServiceBridgeMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyServiceBridgeMethodsOnProjectLayer(): void
+    public function testTryToAddYvesDependencyServiceBridgeMethodsOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -91,19 +91,6 @@ class AddYvesDependencyServiceBridgeMethodTest extends Unit
             ],
             '--mode' => 'project',
         ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithStringArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithArrayArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodReturnsVoid');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithTransferInputAndTransferOutput');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithDefaultNull');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithDefaultArray');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithoutMethodReturnType');
-        $this->tester->assertClassNotContains(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithoutMethodReturnType(): void');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithoutDocBlockReturnType');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithMultipleReturn');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithMultipleReturnAndNullable');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithNullableReturn');
     }
 
     /**
@@ -133,7 +120,7 @@ class AddYvesDependencyServiceBridgeMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyServiceBridgeMethodOnlyOnceOnProjectLayer(): void
+    public function testTryToAddYvesDependencyServiceBridgeMethodOnlyOnceOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -145,16 +132,5 @@ class AddYvesDependencyServiceBridgeMethodTest extends Unit
             ],
             '--mode' => 'project',
         ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithStringArgument');
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-            '--mode' => 'project',
-        ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE, 'methodWithStringArgument');
     }
 }

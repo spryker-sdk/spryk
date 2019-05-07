@@ -40,7 +40,7 @@ class AddYvesFactoryTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesFactoryFileOnProjectLayer(): void
+    public function testAddsYvesFactoryFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

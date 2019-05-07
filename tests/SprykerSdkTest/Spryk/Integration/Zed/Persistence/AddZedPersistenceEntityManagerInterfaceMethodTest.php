@@ -45,7 +45,7 @@ class AddZedPersistenceEntityManagerInterfaceMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedPersistenceRepositoryInterfaceMethodOnProjectLayer(): void
+    public function testAddsZedPersistenceRepositoryInterfaceMethodOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

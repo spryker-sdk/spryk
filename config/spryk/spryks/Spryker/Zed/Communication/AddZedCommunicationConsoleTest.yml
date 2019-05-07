@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new ConsoleTest to the Zed application."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -20,7 +20,7 @@ arguments:
     value: "{{ className }}ConsoleTest.php"
 
   targetPath:
-    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/Communication/Console/"
+    value: "tests/{{ organization }}Test/Zed/{{ module }}/Communication/Console/"
 
 preSpryks:
   - AddModule

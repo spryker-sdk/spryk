@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new .gitattributes to the Modules root."
-mode: core
+mode: "core|sdk|eco"
 
 arguments:
   module:
@@ -17,7 +17,7 @@ arguments:
     value: .gitattributes
 
   targetPath:
-    value: "{{ module }}/"
+    value: ""
 
 preSpryks:
   - AddModule

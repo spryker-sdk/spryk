@@ -43,7 +43,7 @@ class AddZedDependencyServiceInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyServiceInterfaceOnProjectLayer(): void
+    public function testAddsZedDependencyServiceInterfaceOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

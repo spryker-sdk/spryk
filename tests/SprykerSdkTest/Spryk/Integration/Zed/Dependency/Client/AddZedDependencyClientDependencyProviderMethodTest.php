@@ -44,7 +44,7 @@ class AddZedDependencyClientDependencyProviderMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsDependencyClientMethodToDependencyProviderOnProjectLayer(): void
+    public function testAddsDependencyClientMethodToDependencyProviderOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

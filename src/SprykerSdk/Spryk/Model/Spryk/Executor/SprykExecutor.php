@@ -11,6 +11,7 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use SprykerSdk\Spryk\SprykConfig;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class SprykExecutor implements SprykExecutorInterface
@@ -38,16 +39,23 @@ class SprykExecutor implements SprykExecutorInterface
     /**
      * @var string
      */
-    protected $mainSprykDefinitionMode;
+    protected $currentMode;
+
+    /**
+     * @var \SprykerSdk\Spryk\SprykConfig
+     */
+    protected $config;
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface $definitionBuilder
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface $sprykBuilderCollection
+     * @param \SprykerSdk\Spryk\SprykConfig $sprykBuilderCollection
      */
-    public function __construct(SprykDefinitionBuilderInterface $definitionBuilder, SprykBuilderCollectionInterface $sprykBuilderCollection)
+    public function __construct(SprykDefinitionBuilderInterface $definitionBuilder, SprykBuilderCollectionInterface $sprykBuilderCollection, SprykConfig $sprykConfig)
     {
         $this->definitionBuilder = $definitionBuilder;
         $this->sprykBuilderCollection = $sprykBuilderCollection;
+        $this->config = $sprykConfig;
     }
 
     /**
@@ -62,11 +70,34 @@ class SprykExecutor implements SprykExecutorInterface
         $this->definitionBuilder->setStyle($style);
         $this->includeOptionalSubSpryks = $includeOptionalSubSpryks;
 
-        $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
+        $this->currentMode = $this->getCurrentMode($style);
+        $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName, $this->currentMode);
 
-        $this->mainSprykDefinitionMode = $this->getSprykDefinitionMode($sprykDefinition, $style);
+        if (!$this->isModeValid($sprykDefinition, $this->currentMode)) {
+            throw new SprykWrongDevelopmentLayerException(sprintf(
+                'Current spryk "%s" can only be executed in the mode "%s", current mode is "%s"',
+                $sprykName,
+                implode(', ', $sprykDefinition->getMode()),
+                $this->currentMode
+            ));
+        }
 
         $this->buildSpryk($sprykDefinition, $style);
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
+     *
+     * @return string
+     */
+    protected function getCurrentMode(SprykStyleInterface $style): string
+    {
+        $currentMode = $style->getInput()->getOption('mode');
+        if ($currentMode) {
+            return $currentMode;
+        }
+
+        return $this->config->getDefaultDevelopmentMode();
     }
 
     /**
@@ -77,7 +108,7 @@ class SprykExecutor implements SprykExecutorInterface
      */
     protected function buildSpryk(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        if ($sprykDefinition->getMode() !== $this->mainSprykDefinitionMode) {
+        if (!in_array($this->currentMode, $sprykDefinition->getMode())) {
             return;
         }
 
@@ -204,17 +235,15 @@ class SprykExecutor implements SprykExecutorInterface
      */
     protected function getSprykDefinitionMode(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): string
     {
-        if (!$this->isValidModes($sprykDefinition, $style)) {
+        if (!$this->isModeValid($sprykDefinition, $style)) {
             $errorMessage = '`%s` spryk support `%s` development layer only.';
 
             throw new SprykWrongDevelopmentLayerException(
-                sprintf($errorMessage, $sprykDefinition->getSprykName(), strtoupper($sprykDefinition->getMode()))
+                sprintf($errorMessage, $sprykDefinition->getSprykName(), implode(', ', $sprykDefinition->getMode()))
             );
         }
 
-        $sprykMode = $style->getInput()->getOption('mode');
-
-        return is_string($sprykMode) ? $sprykMode : $sprykDefinition->getMode();
+        return $this->getCurrentMode($style);
     }
 
     /**
@@ -223,15 +252,10 @@ class SprykExecutor implements SprykExecutorInterface
      *
      * @return bool
      */
-    protected function isValidModes(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): bool
+    protected function isModeValid(SprykDefinitionInterface $sprykDefinition, string $currentMode): bool
     {
-        $sprykModeArgument = $style->getInput()->getOption('mode');
         $sprykModeDefinition = $sprykDefinition->getMode();
 
-        if ($sprykModeArgument === false || $sprykModeArgument === null) {
-            return true;
-        }
-
-        return $sprykModeArgument === $sprykModeDefinition;
+        return in_array($currentMode, $sprykModeDefinition);
     }
 }

@@ -64,20 +64,20 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
 
     /**
      * @param string $sprykName
-     * @param string|null $sprykMode
+     * @param string|null $currentMode
      *
      * @return array
      */
-    public function loadSpryk(string $sprykName, ?string $sprykMode = null): array
+    public function loadSpryk(string $sprykName, ?string $currentMode = null): array
     {
         $sprykConfiguration = $this->configurationFinder->find($sprykName);
         $sprykConfiguration = Yaml::parse($sprykConfiguration->getContents());
 
-        $sprykConfiguration = $this->buildMode($sprykConfiguration, $sprykMode);
+        $sprykConfiguration = $this->buildMode($sprykConfiguration, $currentMode);
 
         $this->configurationValidate($sprykConfiguration);
 
-        $sprykConfiguration = $this->configurationMerger->merge($sprykConfiguration);
+        $sprykConfiguration = $this->configurationMerger->merge($sprykConfiguration, $currentMode);
 
         return $this->configurationExtender->extend($sprykConfiguration);
     }
@@ -102,18 +102,18 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
 
     /**
      * @param array $sprykConfiguration
-     * @param string|null $sprykMode
+     * @param string|null $currentMode
      *
      * @return array
      */
-    protected function buildMode(array $sprykConfiguration, ?string $sprykMode = null): array
+    protected function buildMode(array $sprykConfiguration, ?string $currentMode = null): array
     {
         if (!isset($sprykConfiguration['mode'])) {
             $sprykConfiguration['mode'] = $this->defaultDevelopmentMode;
         }
 
-        if ($sprykMode !== null && $sprykConfiguration['mode'] === 'both') {
-            $sprykConfiguration['mode'] = $sprykMode;
+        if ($currentMode !== null && $sprykConfiguration['mode'] === 'all') {
+            $sprykConfiguration['mode'] = $currentMode;
         }
 
         return $sprykConfiguration;

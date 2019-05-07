@@ -44,7 +44,7 @@ class AddZedDependencyClientBusinessFactoryMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyClientDependencyMethodToBusinessFactoryOnProjectLayer(): void
+    public function testAddsZedDependencyClientDependencyMethodToBusinessFactoryOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

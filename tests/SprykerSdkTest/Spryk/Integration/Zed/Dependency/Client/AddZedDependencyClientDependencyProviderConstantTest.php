@@ -52,7 +52,7 @@ class AddZedDependencyClientDependencyProviderConstantTest extends Unit
     /**
      * @return void
      */
-    public function testAddsDependencyClientConstantToDependencyProviderOnProjectLayer(): void
+    public function testAddsDependencyClientConstantToDependencyProviderOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

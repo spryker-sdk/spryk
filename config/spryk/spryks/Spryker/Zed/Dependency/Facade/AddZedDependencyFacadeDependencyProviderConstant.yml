@@ -1,6 +1,6 @@
 spryk: constant
 description: "Adds a facade dependency constant to the *module*DependencyProvider."
-mode: both
+mode: "all"
 
 arguments:
   module:

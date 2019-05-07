@@ -40,7 +40,7 @@ class AddZedConfigTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedConfigFileOnProjectLayer(): void
+    public function testAddsZedConfigFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

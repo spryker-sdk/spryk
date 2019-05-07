@@ -1,7 +1,7 @@
 spryk: copyModule
 description: "Copies a *module*."
 priority: 1
-mode: core
+mode: "core|sdk|eco"
 
 arguments:
 

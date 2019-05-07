@@ -1,6 +1,6 @@
 spryk: method
 description: "Adds a new method to the *target* business model."
-mode: both
+mode: "all"
 
 application: Zed
 layer: Business

@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new *module*BusinessFactory to the Zed application."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}BusinessFactory.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+    value: "src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
   - AddModule

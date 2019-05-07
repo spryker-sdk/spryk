@@ -40,7 +40,7 @@ class AddClientDependencyProviderTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientDependencyProviderFileOnProjectLayer(): void
+    public function testAddsClientDependencyProviderFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

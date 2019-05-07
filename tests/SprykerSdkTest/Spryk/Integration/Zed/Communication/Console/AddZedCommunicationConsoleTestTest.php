@@ -42,7 +42,7 @@ class AddZedCommunicationConsoleTestTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedConsoleTestOnProjectLayer(): void
+    public function testAddsZedConsoleTestOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

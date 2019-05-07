@@ -45,7 +45,7 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedPersistencePropelSchemaTableOnProjectLayer(): void
+    public function testAddsZedPersistencePropelSchemaTableOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -84,7 +84,7 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedPersistencePropelSchemaTableOnlyOnceOnProjectLayer(): void
+    public function testAddsZedPersistencePropelSchemaTableOnlyOnceOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

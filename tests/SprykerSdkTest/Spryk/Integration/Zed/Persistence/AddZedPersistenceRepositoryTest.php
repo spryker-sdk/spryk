@@ -41,7 +41,7 @@ class AddZedPersistenceRepositoryTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedRepositoryFileOnProjectLayer(): void
+    public function testAddsZedRepositoryFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

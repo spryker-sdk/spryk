@@ -39,7 +39,7 @@ class AddZedBusinessTestSuiteTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedBusinessTestSuiteConfigurationOnProjectLayer(): void
+    public function testAddsZedBusinessTestSuiteConfigurationOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

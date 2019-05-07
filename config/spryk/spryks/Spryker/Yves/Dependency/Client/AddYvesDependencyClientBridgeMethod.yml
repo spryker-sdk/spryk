@@ -1,7 +1,7 @@
 spryk: bridgeMethods
 description: "Adds a new method to the *module* dependency Client bridge."
 priority: 1
-mode: core
+mode: "core|sdk|eco"
 
 arguments:
 

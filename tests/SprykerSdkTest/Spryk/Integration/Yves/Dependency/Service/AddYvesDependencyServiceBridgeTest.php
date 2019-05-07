@@ -45,7 +45,7 @@ class AddYvesDependencyServiceBridgeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyServiceBridgeOnProjectLayer(): void
+    public function testAddYvesDependencyServiceBridgeOnProjectLayerThrowsExeption(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -54,11 +54,6 @@ class AddYvesDependencyServiceBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists(
-            $this->tester->getModuleDirectory('FooBar', 'Yves')
-            . 'Dependency/Service/FooBarToZipZapServiceBridge.php'
-        );
     }
 
     /**
@@ -77,7 +72,7 @@ class AddYvesDependencyServiceBridgeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGetterToFactoryOnProjectLayer(): void
+    public function testAddGetterToFactoryOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -86,7 +81,5 @@ class AddYvesDependencyServiceBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_FACTORY, 'getZipZapService');
     }
 }

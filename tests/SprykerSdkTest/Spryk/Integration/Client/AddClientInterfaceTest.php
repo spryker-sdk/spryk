@@ -42,7 +42,7 @@ class AddClientInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientInterfaceFileOnProjectLayer(): void
+    public function testAddsClientInterfaceFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

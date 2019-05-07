@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new .travis.yml to the Modules root."
-mode: core
+mode: "core|sdk|eco"
 
 arguments:
   module:
@@ -17,7 +17,7 @@ arguments:
     value: .travis.yml
 
   targetPath:
-    value: "{{ module }}/"
+    value: ""
 
 preSpryks:
   - AddModule

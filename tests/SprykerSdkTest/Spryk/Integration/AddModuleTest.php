@@ -8,6 +8,7 @@
 namespace SprykerSdkTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
 
 /**
  * Auto-generated group annotations
@@ -39,13 +40,13 @@ class AddModuleTest extends Unit
     /**
      * @return void
      */
-    public function testAddsModuleOnProjectLayer(): void
+    public function testTryToAddModuleOnProjectLevelThrowsException(): void
     {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertDirectoryExists($this->tester->getProjectModuleDirectory());
     }
 }

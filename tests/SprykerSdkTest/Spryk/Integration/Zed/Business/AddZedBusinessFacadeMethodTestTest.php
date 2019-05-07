@@ -44,7 +44,7 @@ class AddZedBusinessFacadeMethodTestTest extends Unit
     /**
      * @return void
      */
-    public function testAddsTestMethodToFacadeTestOnProjectLayer(): void
+    public function testAddsTestMethodToFacadeTestOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

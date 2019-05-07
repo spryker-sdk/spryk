@@ -41,7 +41,7 @@ class AddZedPersistenceFactoryTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedPersistenceFactoryFileOnProjectLayer(): void
+    public function testAddsZedPersistenceFactoryFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

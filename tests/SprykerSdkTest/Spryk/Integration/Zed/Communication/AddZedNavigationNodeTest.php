@@ -52,7 +52,7 @@ class AddZedNavigationNodeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedNavigationSchemaFileOnProjectLayer(): void
+    public function testAddsZedNavigationSchemaFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -102,7 +102,7 @@ class AddZedNavigationNodeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsNodeToSchemaFileToFirstNodeOnProjectLayer(): void
+    public function testAddsNodeToSchemaFileToFirstNodeOnProjectLevel(): void
     {
         $pathToNavigationSchema = $this->tester->getProjectModuleDirectory() . 'Communication/navigation.xml';
         if (!is_dir(dirname($pathToNavigationSchema))) {
@@ -151,7 +151,7 @@ class AddZedNavigationNodeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedNavigationSchemaFileWithFullyQualifiedNamesOnProjectLayer(): void
+    public function testAddsZedNavigationSchemaFileWithFullyQualifiedNamesOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

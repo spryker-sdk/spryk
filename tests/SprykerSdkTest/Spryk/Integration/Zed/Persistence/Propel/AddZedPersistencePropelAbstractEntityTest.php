@@ -44,7 +44,7 @@ class AddZedPersistencePropelAbstractEntityTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedPersistenceAbstractEntityFileOnProjectLayer(): void
+    public function testAddsZedPersistenceAbstractEntityFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

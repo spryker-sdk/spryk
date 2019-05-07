@@ -1,6 +1,6 @@
 spryk: method
 description: "Adds a new method to the Yves *module*Config."
-mode: both
+mode: "all"
 
 arguments:
 

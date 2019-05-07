@@ -13,20 +13,20 @@ abstract class AbstractExtender
 {
     protected const ARGUMENTS = 'arguments';
 
-    protected const NAME_ARGUMENT_LAYER = 'layer';
+    protected const NAME_ARGUMENT_APPLICATION = 'application';
     protected const NAME_ARGUMENT_MODE = 'mode';
 
     protected const NAME_ARGUMENT_DEFAULT = 'default';
 
-    protected const NAME_PLACEHOLDER_MODULE = '{{ module }}';
-    protected const NAME_PLACEHOLDER_LAYER = '{{ layer }}';
     protected const NAME_PLACEHOLDER_ORGANISATION = '{{ organization }}';
+    protected const NAME_PLACEHOLDER_APPLICATION = '{{ application }}';
+    protected const NAME_PLACEHOLDER_MODULE = '{{ module }}';
 
     protected const NAME_APPLICATION_LAYER_ZED = 'Zed';
 
     protected const NAME_DEVELOPMENT_LAYER_CORE = 'core';
     protected const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
-    protected const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
+    protected const NAME_DEVELOPMENT_LAYER_ALL = 'all';
 
     /**
      * @var \SprykerSdk\Spryk\SprykConfig
@@ -67,11 +67,11 @@ abstract class AbstractExtender
     /**
      * @param array $sprykConfig
      *
-     * @return string|null
+     * @return array
      */
-    protected function getDevelopmentLayer(array $sprykConfig): ?string
+    protected function getDevelopmentLayer(array $sprykConfig): array
     {
-        return $sprykConfig[static::NAME_ARGUMENT_MODE] ?? null;
+        return isset($sprykConfig[static::NAME_ARGUMENT_MODE]) ? explode('|', $sprykConfig[static::NAME_ARGUMENT_MODE]) : [];
     }
 
     /**
@@ -81,7 +81,7 @@ abstract class AbstractExtender
      */
     protected function isProject(array $sprykConfig): bool
     {
-        return $this->getDevelopmentLayer($sprykConfig) === static::NAME_DEVELOPMENT_LAYER_PROJECT;
+        return in_array(static::NAME_DEVELOPMENT_LAYER_PROJECT, $this->getDevelopmentLayer($sprykConfig));
     }
 
     /**
@@ -89,18 +89,8 @@ abstract class AbstractExtender
      *
      * @return bool
      */
-    protected function isCore(array $sprykConfig): bool
+    protected function isAll(array $sprykConfig): bool
     {
-        return $this->getDevelopmentLayer($sprykConfig) === static::NAME_DEVELOPMENT_LAYER_CORE;
-    }
-
-    /**
-     * @param array $sprykConfig
-     *
-     * @return bool
-     */
-    protected function isBoth(array $sprykConfig): bool
-    {
-        return $this->getDevelopmentLayer($sprykConfig) === static::NAME_DEVELOPMENT_LAYER_BOTH;
+        return $this->getDevelopmentLayer($sprykConfig) === static::NAME_DEVELOPMENT_LAYER_ALL;
     }
 }

@@ -44,7 +44,7 @@ class AddZedPersistencePropelSchemaTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedPersistencePropelSchemaFileOnProjectLayer(): void
+    public function testAddsZedPersistencePropelSchemaFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

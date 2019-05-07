@@ -47,7 +47,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodToFacadeInterfaceOnProjectLayer(): void
+    public function testAddsMethodToFacadeInterfaceOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -92,7 +92,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsCommentFacadeInterfaceOnProjectLayer(): void
+    public function testAddsCommentFacadeInterfaceOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

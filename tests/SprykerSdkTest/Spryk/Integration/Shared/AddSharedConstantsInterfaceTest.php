@@ -39,7 +39,7 @@ class AddSharedConstantsInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsSharedConstantsInterfaceFileOnProjectLayer(): void
+    public function testAddsSharedConstantsInterfaceFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

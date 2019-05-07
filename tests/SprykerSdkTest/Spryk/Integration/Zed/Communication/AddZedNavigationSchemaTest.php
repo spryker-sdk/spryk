@@ -41,7 +41,7 @@ class AddZedNavigationSchemaTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedNavigationSchemaFileOnProjectLayer(): void
+    public function testAddsZedNavigationSchemaFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

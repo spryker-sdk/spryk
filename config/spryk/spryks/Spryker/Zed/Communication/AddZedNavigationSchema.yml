@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new navigation.xml to the Zed application."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -14,7 +14,7 @@ arguments:
     value: Zed/Communication/navigation.xml.twig
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/"
+    value: "src/{{ organization }}/Zed/{{ module }}/Communication/"
 
 preSpryks:
   - AddModule

@@ -42,7 +42,7 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedTestSuiteToCodeceptionConfigurationOnProjectLayer(): void
+    public function testTryToAddZedTestSuiteToCodeceptionConfigurationOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -50,8 +50,6 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectTestDirectory() . 'codeception.yml');
     }
 
     /**
@@ -74,7 +72,7 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedTestSuiteToCodeceptionConfigurationOnlyOnceOnProjectLayer(): void
+    public function testTryToAddZedTestSuiteToCodeceptionConfigurationOnlyOnceOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -82,17 +80,5 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--mode' => 'project',
-        ]);
-
-        $configurationFilePath = $this->tester->getProjectTestDirectory() . 'codeception.yml';
-        $this->assertFileExists($configurationFilePath);
-
-        $fileContent = file_get_contents($configurationFilePath);
-
-        $yaml = Yaml::parse(($fileContent) ?: '');
-        $this->assertCount(1, $yaml['include']);
     }
 }

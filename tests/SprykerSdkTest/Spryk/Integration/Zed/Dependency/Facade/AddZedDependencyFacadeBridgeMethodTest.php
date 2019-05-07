@@ -69,7 +69,7 @@ class AddZedDependencyFacadeBridgeMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyFacadeBridgeMethodsOnProjectLayer(): void
+    public function testTryToAddZedDependencyFacadeBridgeMethodsOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -91,19 +91,6 @@ class AddZedDependencyFacadeBridgeMethodTest extends Unit
             ],
             '--mode' => 'project',
         ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithStringArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithArrayArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodReturnsVoid');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithTransferInputAndTransferOutput');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithDefaultNull');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithDefaultArray');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithoutMethodReturnType');
-        $this->tester->assertClassNotContains(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithoutMethodReturnType(): void');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithoutDocBlockReturnType');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithMultipleReturn');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithMultipleReturnAndNullable');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithNullableReturn');
     }
 
     /**
@@ -133,7 +120,7 @@ class AddZedDependencyFacadeBridgeMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyFacadeBridgeMethodOnlyOnceOnProjectLayer(): void
+    public function testTryToAddZedDependencyFacadeBridgeMethodOnlyOnceOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -145,16 +132,5 @@ class AddZedDependencyFacadeBridgeMethodTest extends Unit
             ],
             '--mode' => 'project',
         ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithStringArgument');
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-            '--mode' => 'project',
-        ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_FACADE_BRIDGE, 'methodWithStringArgument');
     }
 }

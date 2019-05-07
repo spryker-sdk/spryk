@@ -39,7 +39,7 @@ class AddSharedTransferSchemaTest extends Unit
     /**
      * @return void
      */
-    public function testAddsSharedTransferSchemaFileOnProjectLayer(): void
+    public function testAddsSharedTransferSchemaFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

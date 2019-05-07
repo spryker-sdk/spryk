@@ -44,7 +44,7 @@ class AddClientInterfaceMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodToClientOnProjectLayer(): void
+    public function testAddsMethodToClientOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

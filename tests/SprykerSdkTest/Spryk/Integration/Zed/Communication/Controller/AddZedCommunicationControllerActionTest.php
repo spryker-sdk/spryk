@@ -45,7 +45,7 @@ class AddZedCommunicationControllerActionTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedControllerMethodOnProjectLayer(): void
+    public function testAddsZedControllerMethodOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -74,7 +74,7 @@ class AddZedCommunicationControllerActionTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedControllerMethodAndReplacesActionSuffixOnProjectLayer(): void
+    public function testAddsZedControllerMethodAndReplacesActionSuffixOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -107,7 +107,7 @@ class AddZedCommunicationControllerActionTest extends Unit
      *
      * @return void
      */
-    public function testAddsZedControllerMethodToFullyQualifiedControllerClassNameOnProjectLayer(): void
+    public function testAddsZedControllerMethodToFullyQualifiedControllerClassNameOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -136,7 +136,7 @@ class AddZedCommunicationControllerActionTest extends Unit
     /**
      * @return void
      */
-    public function testAddsViewFileForControllerActionOnProjectLayer(): void
+    public function testAddsViewFileForControllerActionOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -165,7 +165,7 @@ class AddZedCommunicationControllerActionTest extends Unit
     /**
      * @return void
      */
-    public function testAddsNavigationNodeEntryToNavigationSchemaOnProjectLayer(): void
+    public function testAddsNavigationNodeEntryToNavigationSchemaOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

@@ -44,7 +44,7 @@ class AddZedCommunicationControllerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedControllerFileOnProjectLayer(): void
+    public function testAddsZedControllerFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -71,7 +71,7 @@ class AddZedCommunicationControllerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedControllerFileFromFullyQualifiedControllerClassNameOnProjectLayer(): void
+    public function testAddsZedControllerFileFromFullyQualifiedControllerClassNameOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -98,7 +98,7 @@ class AddZedCommunicationControllerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedControllerFileAndRemovesControllerSuffixOnProjectLayer(): void
+    public function testAddsZedControllerFileAndRemovesControllerSuffixOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new *module*To*dependentModule*ClientBridge."
-mode: core
+mode: "core|sdk|eco"
 
 arguments:
   module:
@@ -23,7 +23,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ClientBridge.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
+    value: "src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
 
 preSpryks:
   - AddModule

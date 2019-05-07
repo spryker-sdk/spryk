@@ -8,6 +8,7 @@
 namespace SprykerSdkTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -43,14 +44,14 @@ class AddModuleToolingTest extends Unit
     /**
      * @return void
      */
-    public function testAddsToolingFileOnProjectLayer(): void
+    public function testTryToAddToolingFileOnProjectLevelThrowsException(): void
     {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'tooling.yml');
     }
 
     /**

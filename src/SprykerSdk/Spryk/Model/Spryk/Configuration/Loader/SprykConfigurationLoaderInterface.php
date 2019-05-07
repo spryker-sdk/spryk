@@ -11,9 +11,9 @@ interface SprykConfigurationLoaderInterface
 {
     /**
      * @param string $sprykName
-     * @param string|null $sprykMode
+     * @param string|null $currentMode
      *
      * @return array
      */
-    public function loadSpryk(string $sprykName, ?string $sprykMode = null): array;
+    public function loadSpryk(string $sprykName, ?string $currentMode = null): array;
 }

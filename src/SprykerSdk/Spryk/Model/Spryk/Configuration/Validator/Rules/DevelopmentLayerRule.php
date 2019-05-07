@@ -40,8 +40,11 @@ class DevelopmentLayerRule implements ConfigurationValidatorRuleInterface
             return true;
         }
 
-        if (in_array($sprykConfig[static::NAME_CONFIG_MODE], $this->availableDevelopmentLayers, true)) {
-            return true;
+        $configModes = explode('|', $sprykConfig[static::NAME_CONFIG_MODE]);
+        foreach ($configModes as $configMode) {
+            if (in_array($configMode, $this->availableDevelopmentLayers, true)) {
+                return true;
+            }
         }
 
         $this->buildErrorMessage($sprykConfig[static::NAME_CONFIG_MODE]);
@@ -64,7 +67,7 @@ class DevelopmentLayerRule implements ConfigurationValidatorRuleInterface
      */
     protected function buildErrorMessage(string $value): void
     {
-        $template = 'Development layer `%s` is unavailable. Please set `mode` one of: %s.';
+        $template = 'Development layer `%s` is unavailable. Please set `mode` to one of: %s.';
         $availableDevelopmentLayers = implode(', ', $this->availableDevelopmentLayers);
 
         $this->errorMessage = sprintf($template, $value, $availableDevelopmentLayers);

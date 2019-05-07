@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new Abstract*tableName*Query class to Zed's persistence layer."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -19,7 +19,7 @@ arguments:
     value: "Abstract{{ tableName | camelCased }}Query.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/"
+    value: "src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/"
 
 preSpryks:
   - AddZedPersistencePropelSchemaTable

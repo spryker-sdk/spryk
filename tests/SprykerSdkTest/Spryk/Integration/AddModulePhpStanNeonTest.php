@@ -41,7 +41,7 @@ class AddModulePhpStanNeonTest extends Unit
     /**
      * @return void
      */
-    public function testAddsPhpStanNeonFileOnProjectLayer(): void
+    public function testTryToAddPhpStanNeonFileOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -50,7 +50,5 @@ class AddModulePhpStanNeonTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'phpstan.neon');
     }
 }

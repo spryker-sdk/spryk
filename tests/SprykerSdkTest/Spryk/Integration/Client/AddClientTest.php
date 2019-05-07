@@ -40,7 +40,7 @@ class AddClientTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientFileOnProjectLayer(): void
+    public function testAddsClientFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

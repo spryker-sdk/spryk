@@ -44,7 +44,7 @@ class AddZedBusinessModelMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodToBusinessModelOnProjectLayer(): void
+    public function testAddsMethodToBusinessModelOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -83,7 +83,7 @@ class AddZedBusinessModelMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsFacadeMethodWhenSubSprykIsIncludedOnProjectLayer(): void
+    public function testAddsFacadeMethodWhenSubSprykIsIncludedOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -127,7 +127,7 @@ class AddZedBusinessModelMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsFacadeMethodWithDifferentNameOnProjectLayer(): void
+    public function testAddsFacadeMethodWithDifferentNameOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

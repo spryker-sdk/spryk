@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new *module*To*dependentModule*ServiceBridge."
-mode: core
+mode: "core|sdk|eco"
 
 arguments:
   module:
@@ -10,11 +10,13 @@ arguments:
     inherit: true
     default: Spryker
 
+  application:
+    value: Yves
+
   dependentModule: ~
 
   dependentModuleOrganization:
     default: Spryker
-
 
   template:
     value: Yves/Dependency/Service/YvesDependencyServiceBridge.php.twig
@@ -23,7 +25,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ServiceBridge.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
+    value: "src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
 
 preSpryks:
   - AddModule

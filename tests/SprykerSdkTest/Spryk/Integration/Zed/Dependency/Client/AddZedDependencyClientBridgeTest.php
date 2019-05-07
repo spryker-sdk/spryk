@@ -45,7 +45,7 @@ class AddZedDependencyClientBridgeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyClientBridgeOnProjectLayer(): void
+    public function testTryToAddZedDependencyClientBridgeOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -54,11 +54,6 @@ class AddZedDependencyClientBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists(
-            $this->tester->getProjectModuleDirectory()
-            . 'Dependency/Client/FooBarToZipZapClientBridge.php'
-        );
     }
 
     /**
@@ -77,7 +72,7 @@ class AddZedDependencyClientBridgeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGetterToFactoryOnProjectLayer(): void
+    public function testTryToAddGetterToFactoryOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -86,7 +81,5 @@ class AddZedDependencyClientBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_BUSINESS_FACTORY, 'getZipZapClient');
     }
 }

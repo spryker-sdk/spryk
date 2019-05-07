@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new *module*FacadeTest."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}FacadeTest.php"
 
   targetPath:
-    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/Business/"
+    value: "tests/{{ organization }}Test/Zed/{{ module }}/Business/"
 
 preSpryks:
   - AddZedBusinessTestSuite

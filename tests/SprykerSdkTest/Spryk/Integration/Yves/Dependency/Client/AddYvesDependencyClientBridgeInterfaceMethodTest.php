@@ -65,7 +65,7 @@ class AddYvesDependencyClientBridgeInterfaceMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyClientInterfaceMethodsOnProjectLayer(): void
+    public function testTryToAddYvesDependencyClientInterfaceMethodsOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -86,15 +86,5 @@ class AddYvesDependencyClientBridgeInterfaceMethodTest extends Unit
             ],
             '--mode' => 'project',
         ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodWithStringArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodWithArrayArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodReturnsVoid');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodWithTransferInputAndTransferOutput');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodWithDefaultNull');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodWithDefaultArray');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodWithoutDocBlockReturnType');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodWithMultipleReturn');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodWithMultipleReturnAndNullable');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE_INTERFACE, 'methodWithNullableReturn');
     }
 }

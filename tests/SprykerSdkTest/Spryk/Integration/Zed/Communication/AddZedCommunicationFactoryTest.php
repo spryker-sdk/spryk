@@ -41,7 +41,7 @@ class AddZedCommunicationFactoryTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedCommunicationFactoryFileOnProjectLayer(): void
+    public function testAddsZedCommunicationFactoryFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

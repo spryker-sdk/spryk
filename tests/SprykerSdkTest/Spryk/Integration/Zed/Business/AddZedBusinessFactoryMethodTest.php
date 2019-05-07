@@ -42,7 +42,7 @@ class AddZedBusinessFactoryMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodToBusinessFactoryOnProjectLayer(): void
+    public function testAddsMethodToBusinessFactoryOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -78,7 +78,7 @@ class AddZedBusinessFactoryMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodWithBodyToBusinessFactoryOnProjectLayer(): void
+    public function testAddsMethodWithBodyToBusinessFactoryOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

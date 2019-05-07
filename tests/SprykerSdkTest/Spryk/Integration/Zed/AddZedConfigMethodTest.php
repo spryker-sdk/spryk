@@ -44,7 +44,7 @@ class AddZedConfigMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedConfigMethodOnProjectLayer(): void
+    public function testAddsZedConfigMethodOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

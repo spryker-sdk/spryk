@@ -16,8 +16,10 @@ use Spryker\Shared\Kernel\KernelConstants;
 class SprykConfig
 {
     protected const NAME_DEVELOPMENT_LAYER_CORE = 'core';
+    protected const NAME_DEVELOPMENT_LAYER_SDK = 'sdk';
+    protected const NAME_DEVELOPMENT_LAYER_ECO = 'eco';
     protected const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
-    protected const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
+    protected const NAME_DEVELOPMENT_LAYER_ALL = 'all';
 
     protected const NAME_DIRECTORY_GENERATED = 'generated';
     protected const NAME_FILE_ARGUMENT_LIST = 'spryk_argument_list.yml';
@@ -87,8 +89,10 @@ class SprykConfig
     {
         return [
             static::NAME_DEVELOPMENT_LAYER_CORE,
+            static::NAME_DEVELOPMENT_LAYER_SDK,
+            static::NAME_DEVELOPMENT_LAYER_ECO,
             static::NAME_DEVELOPMENT_LAYER_PROJECT,
-            static::NAME_DEVELOPMENT_LAYER_BOTH,
+            static::NAME_DEVELOPMENT_LAYER_ALL,
         ];
     }
 

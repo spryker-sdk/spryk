@@ -44,7 +44,7 @@ class AddYvesDependencyClientFactoryMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyClientDependencyMethodToFactoryOnProjectLayer(): void
+    public function testAddsYvesDependencyClientDependencyMethodToFactoryOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

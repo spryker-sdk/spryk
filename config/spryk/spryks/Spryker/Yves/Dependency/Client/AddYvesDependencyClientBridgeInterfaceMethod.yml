@@ -1,6 +1,6 @@
 spryk: bridgeMethods
 description: "Adds a new method to the *module* dependency Client bridge."
-mode: core
+mode: "core|sdk|eco"
 
 arguments:
 

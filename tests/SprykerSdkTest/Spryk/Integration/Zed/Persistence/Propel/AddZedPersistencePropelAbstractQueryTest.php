@@ -44,7 +44,7 @@ class AddZedPersistencePropelAbstractQueryTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedPersistenceAbstractQueryFileOnProjectLayer(): void
+    public function testAddsZedPersistenceAbstractQueryFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

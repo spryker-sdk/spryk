@@ -45,7 +45,7 @@ class AddZedBusinessModelTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedBusinessModelOnProjectLayer(): void
+    public function testAddsZedBusinessModelOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -82,7 +82,7 @@ class AddZedBusinessModelTest extends Unit
     /**
      * @return void
      */
-    public function testAddsConstructorOnProjectLayer(): void
+    public function testAddsConstructorOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -115,7 +115,7 @@ class AddZedBusinessModelTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMethodToZedBusinessFactoryOnProjectLayer(): void
+    public function testAddsMethodToZedBusinessFactoryOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -153,7 +153,7 @@ class AddZedBusinessModelTest extends Unit
     /**
      * @return void
      */
-    public function testInjectsDependenciesInBusinessFactoryMethodOnProjectLayer(): void
+    public function testInjectsDependenciesInBusinessFactoryMethodOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

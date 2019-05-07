@@ -41,7 +41,7 @@ class AddZedPersistenceEntityManagerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedEntityManagerFileOnProjectLayer(): void
+    public function testAddsZedEntityManagerFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

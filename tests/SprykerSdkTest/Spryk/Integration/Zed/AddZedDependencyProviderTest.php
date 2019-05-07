@@ -40,7 +40,7 @@ class AddZedDependencyProviderTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyProviderOnProjectLayer(): void
+    public function testAddsZedDependencyProviderOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

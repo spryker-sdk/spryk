@@ -1,6 +1,6 @@
 spryk: constant
 description: "Adds a Service dependency constant to the *module*DependencyProvider."
-mode: both
+mode: "all"
 
 arguments:
 

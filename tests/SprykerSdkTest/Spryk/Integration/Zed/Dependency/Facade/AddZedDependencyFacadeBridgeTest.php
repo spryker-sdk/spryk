@@ -45,7 +45,7 @@ class AddZedDependencyFacadeBridgeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyFacadeBridgeOnProjectLayer(): void
+    public function testTryToAddZedDependencyFacadeBridgeOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -54,11 +54,6 @@ class AddZedDependencyFacadeBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists(
-            $this->tester->getProjectModuleDirectory()
-            . 'Dependency/Facade/FooBarToZipZapFacadeBridge.php'
-        );
     }
 
     /**
@@ -77,7 +72,7 @@ class AddZedDependencyFacadeBridgeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGetterToFactoryOnProjectLayer(): void
+    public function testTryToAddGetterToFactoryOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -86,7 +81,5 @@ class AddZedDependencyFacadeBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_BUSINESS_FACTORY, 'getZipZapFacade');
     }
 }

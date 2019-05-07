@@ -41,7 +41,7 @@ class AddModuleScrutinizerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsScrutinizerFileOnProjectLayer(): void
+    public function testTryToAddScrutinizerFileOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -50,7 +50,5 @@ class AddModuleScrutinizerTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.scrutinizer.yml');
     }
 }

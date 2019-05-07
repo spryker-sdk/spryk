@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new *module*.transfer.xml to the Shared application."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -17,7 +17,7 @@ arguments:
     value: "{{ module | underscored }}.transfer.xml"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/Transfer/"
+    value: "src/{{ organization }}/Shared/{{ module }}/Transfer/"
 
 preSpryks:
   - AddModule

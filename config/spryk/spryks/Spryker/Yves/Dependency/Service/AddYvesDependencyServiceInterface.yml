@@ -1,6 +1,6 @@
 spryk: template
 description: "Adds a new *module*To*dependentModule*ServiceInterface."
-mode: both
+mode: "all"
 
 arguments:
   module:
@@ -18,7 +18,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ServiceInterface.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
+    value: "src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
 
 preSpryks:
   - AddYvesDependencyServiceBridge

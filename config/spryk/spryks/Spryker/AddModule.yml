@@ -1,7 +1,7 @@
 spryk: structure
 description: "Adds a new *module* structure."
 priority: 1
-mode: both
+mode: "core|sdk|eco"
 
 arguments:
   module:
@@ -13,7 +13,7 @@ arguments:
     default: Spryker
 
   targetPath:
-    value: "{{ module }}/"
+    value: ""
 
   directories:
     value:

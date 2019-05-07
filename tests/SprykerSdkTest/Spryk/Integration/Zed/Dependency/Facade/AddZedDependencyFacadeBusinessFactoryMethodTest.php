@@ -44,7 +44,7 @@ class AddZedDependencyFacadeBusinessFactoryMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyFacadeDependencyMethodToBusinessFactoryOnProjectLayer(): void
+    public function testAddsZedDependencyFacadeDependencyMethodToBusinessFactoryOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

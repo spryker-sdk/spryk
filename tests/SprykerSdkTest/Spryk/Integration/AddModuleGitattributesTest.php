@@ -41,7 +41,7 @@ class AddModuleGitattributesTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGitattributesFileOnProjectLayer(): void
+    public function testTryToAddGitattributesFileOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -50,7 +50,5 @@ class AddModuleGitattributesTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.gitattributes');
     }
 }

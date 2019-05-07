@@ -43,7 +43,7 @@ class AddYvesDependencyClientInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyFacadeInterfaceOnProjectLayer(): void
+    public function testAddsYvesDependencyFacadeInterfaceOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

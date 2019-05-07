@@ -41,7 +41,7 @@ class AddModuleTravisTest extends Unit
     /**
      * @return void
      */
-    public function testAddsTravisFileOnProjectLayer(): void
+    public function testTryToAddTravisFileOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -50,7 +50,5 @@ class AddModuleTravisTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.travis.yml');
     }
 }

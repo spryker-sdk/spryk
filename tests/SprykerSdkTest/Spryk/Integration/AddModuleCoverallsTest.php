@@ -42,7 +42,7 @@ class AddModuleCoverallsTest extends Unit
     /**
      * @return void
      */
-    public function testAddsCoverallsFileOnProjectLayer(): void
+    public function testTryToAddCoverallsFileOnProjectLevelThrowsException(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -52,7 +52,5 @@ class AddModuleCoverallsTest extends Unit
             '--repositoryToken' => 'uzf78t67832fe76923f764f3249f329f)&/vuzf76&/R',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.coveralls.yml');
     }
 }

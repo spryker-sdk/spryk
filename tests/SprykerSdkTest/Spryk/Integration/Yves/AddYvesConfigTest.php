@@ -39,7 +39,7 @@ class AddYvesConfigTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesConfigFileOnProjectLayer(): void
+    public function testAddsYvesConfigFileOnProjectLevel(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
