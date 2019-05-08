@@ -219,11 +219,11 @@ class ArgumentResolver implements ArgumentResolverInterface
      * @param string $argument
      * @param string $sprykName
      * @param string|int|null $default
-     * @param bool|null $allowEmpty
+     * @param bool $allowEmpty
      *
      * @return string|int|null
      */
-    protected function askForArgumentValue(string $argument, string $sprykName, $default, ?bool $allowEmpty)
+    protected function askForArgumentValue(string $argument, string $sprykName, $default, bool $allowEmpty = false)
     {
         $question = new Question(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $default);
 
