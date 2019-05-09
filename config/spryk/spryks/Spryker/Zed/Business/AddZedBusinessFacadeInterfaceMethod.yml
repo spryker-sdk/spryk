@@ -14,7 +14,7 @@ arguments:
   specification:
     multiline: true
 
-  method:
+  facadeMethod:
     inherit: true
 
   input:

@@ -16,7 +16,7 @@ arguments:
     inherit: true
     default: Spryker
 
-  method:
+  factoryMethod:
     value: "get{{ dependentModule }}Facade"
 
   template:

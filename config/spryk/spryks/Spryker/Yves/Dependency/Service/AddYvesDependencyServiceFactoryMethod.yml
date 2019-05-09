@@ -12,7 +12,7 @@ arguments:
     inherit: true
     default: Spryker
 
-  method:
+  factoryMethod:
     value: "get{{ dependentModule }}Service"
 
   template:

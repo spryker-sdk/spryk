@@ -129,7 +129,7 @@ class Superseder implements SupersederInterface
     {
         $value = $argument->getValue();
 
-        if ($this->argumentHasPlaceholder($value)) {
+        if ($value !== null && $this->argumentHasPlaceholder($value)) {
             $this->resolveArgument($argument, $sprykArguments, $resolvedArguments);
         }
 

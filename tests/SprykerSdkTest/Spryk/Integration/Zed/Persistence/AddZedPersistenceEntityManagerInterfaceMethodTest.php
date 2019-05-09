@@ -34,7 +34,7 @@ class AddZedPersistenceEntityManagerInterfaceMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'doSomething',
+            '--entityManagerMethod' => 'doSomething',
             '--input' => 'string $fooBar',
             '--output' => 'array',
         ]);
@@ -49,7 +49,7 @@ class AddZedPersistenceEntityManagerInterfaceMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'doSomething',
+            '--entityManagerMethod' => 'doSomething',
             '--input' => 'string $fooBar',
             '--output' => 'array',
             '--mode' => 'project',

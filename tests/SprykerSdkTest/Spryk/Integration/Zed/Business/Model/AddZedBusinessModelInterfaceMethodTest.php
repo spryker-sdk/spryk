@@ -31,8 +31,9 @@ class AddZedBusinessModelInterfaceMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
-            '--method' => 'addSomething',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--modelMethod' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
         ]);
@@ -47,8 +48,9 @@ class AddZedBusinessModelInterfaceMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Pyz\Zed\FooBar\Business\Foo\Bar',
-            '--method' => 'addSomething',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--modelMethod' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
             '--mode' => 'project',

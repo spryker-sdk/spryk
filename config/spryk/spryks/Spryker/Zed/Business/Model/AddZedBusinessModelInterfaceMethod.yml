@@ -13,7 +13,11 @@ arguments:
 
   className: ~
 
-  method:
+  subDirectory:
+    inherit: true
+    isOptional: true
+
+  modelMethod:
     inherit: true
 
   input:
@@ -22,12 +26,14 @@ arguments:
   output:
     inherit: true
 
-
   template:
     value: Common/InterfaceMethod.php.twig
 
   target:
     value: "{{ className }}Interface"
+
+  fqcnPattern:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}Interface"
 
 preSpryks:
   - AddZedBusinessModel:

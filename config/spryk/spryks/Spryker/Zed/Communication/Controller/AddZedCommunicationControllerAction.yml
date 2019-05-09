@@ -22,7 +22,7 @@ arguments:
       - spryk
       - choiceLoader
 
-  method:
+  controllerMethod:
     callback: EnsureActionSuffixCallback
 
   output:

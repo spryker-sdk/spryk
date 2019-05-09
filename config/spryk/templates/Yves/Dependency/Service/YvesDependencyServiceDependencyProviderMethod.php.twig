@@ -2,7 +2,7 @@
     /**
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function {{ method }}(\Spryker\Yves\Kernel\Container $container): \Spryker\Yves\Kernel\Container
+    protected function {{ providerMethod }}(\Spryker\Yves\Kernel\Container $container): \Spryker\Yves\Kernel\Container
     {
         $container[static::SERVICE_{{ dependentModule | underscored | upper }}] = function (\Spryker\Yves\Kernel\Container $container) {
             ${{ module | lcfirst }}To{{ dependentModule }}ServiceBridge = new \{{ organization }}\Yves\{{ module }}\Dependency\Service\{{ module }}To{{ dependentModule }}ServiceBridge(
