@@ -19,8 +19,6 @@ arguments:
     inherit: true
     default: Spryker
 
-  sourcePath:
-    value: "vendor/spryker/{{ organization | dasherize }}/Bundles/{{ module }}/"
+  sourcePath: ~
 
-  targetFilePath:
-    value: "vendor/spryker/{{ toOrganization | dasherize }}/Bundles/{{ toModule }}/"
+  targetPath: ~

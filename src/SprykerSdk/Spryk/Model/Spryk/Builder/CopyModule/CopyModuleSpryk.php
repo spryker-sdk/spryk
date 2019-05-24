@@ -22,7 +22,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
     protected const ARGUMENT_ORGANIZATION = 'organization';
     protected const ARGUMENT_MODULE = 'module';
 
-    protected const ARGUMENT_TARGET_PATH = 'targetFilePath';
+    protected const ARGUMENT_TARGET_PATH = 'targetPath';
     protected const ARGUMENT_TO_ORGANIZATION = 'toOrganization';
     protected const ARGUMENT_TO_MODULE = 'toModule';
 
@@ -288,7 +288,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
      */
     protected function getTargetPath(SprykDefinitionInterface $sprykDefinition): string
     {
-        return $this->config->getRootDirectory() . $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_TARGET_PATH);
+        return rtrim($this->config->getRootDirectory() . $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_TARGET_PATH), '/') . '/';
     }
 
     /**
