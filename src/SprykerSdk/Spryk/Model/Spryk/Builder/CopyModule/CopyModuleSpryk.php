@@ -261,7 +261,9 @@ class CopyModuleSpryk implements SprykBuilderInterface
 
         return [
             sprintf('/%s\\\\(\w+)\\\\%s(?=[\\\\;])/', $organization, $module) => sprintf('%s\\\\${1}\\\\%s', $toOrganization, $toModule),
+            sprintf('/%sTest\\\\(\w+)\\\\%s(?=[\\\\;])/', $organization, $module) => sprintf('%sTest\\\\${1}\\\\%s', $toOrganization, $toModule),
             sprintf('/%s\\\\(\w+)\\\\%sExtension(?=[\\\\;])/', $organization, $module) => sprintf('%s\\\\${1}\\\\%sExtension', $toOrganization, $toModule),
+            sprintf('/%sTest\\\\(\w+)\\\\%sExtension(?=[\\\\;])/', $organization, $module) => sprintf('%sTest\\\\${1}\\\\%sExtension', $toOrganization, $toModule),
             sprintf('/%s\/%s(?=[\"\.\)\/\n])/', $organizationDashed, $moduleDashed) => sprintf('%s/%s', $toOrganizationDashed, $toModuleDashed),
             sprintf('/%s\/%s-extension(?=[\"\.\)\/\n])/', $organizationDashed, $moduleDashed) => sprintf('%s/%s-extension', $toOrganizationDashed, $toModuleDashed),
             sprintf('/"%s\\\\/', $organization) => sprintf('"%s\\', $toOrganization),
@@ -278,6 +280,8 @@ class CopyModuleSpryk implements SprykBuilderInterface
             sprintf('/%sDependencyProvider.php/', $module) => sprintf('%sDependencyProvider.php', $toModule),
             sprintf('/%s(\w+)TesterActions.php/', $module) => sprintf('%s${1}TesterActions.php', $toModule),
             sprintf('/%s(\w+)Tester.php/', $module) => sprintf('%s${1}Tester.php', $toModule),
+            sprintf('/@group %s/', $organization) => sprintf('@group %s', $toOrganization),
+            sprintf('/@group %s/', $module) => sprintf('@group %s', $toModule),
         ];
     }
 
