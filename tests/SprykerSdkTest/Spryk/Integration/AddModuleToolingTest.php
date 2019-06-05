@@ -41,19 +41,6 @@ class AddModuleToolingTest extends Unit
     }
 
     /**
-     * @return void
-     */
-    public function testAddsToolingFileOnProjectLayer(): void
-    {
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--mode' => 'project',
-        ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'tooling.yml');
-    }
-
-    /**
      * @depends testAddsToolingFile
      *
      * @param array $toolingConfig
