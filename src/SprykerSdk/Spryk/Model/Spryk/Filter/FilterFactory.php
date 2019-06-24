@@ -31,6 +31,7 @@ class FilterFactory
             $this->createCamelCaseToWhitespaceFilter(),
             $this->createDashToCamelCaseFilter(),
             $this->createDashToUnderscoreFilter(),
+            $this->createSingularizeFilter(),
         ];
     }
 
@@ -144,5 +145,13 @@ class FilterFactory
     public function createDashToUnderscoreFilter(): FilterInterface
     {
         return new DashToUnderscoreFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createSingularizeFilter(): FilterInterface
+    {
+        return new SingularizeFilter();
     }
 }

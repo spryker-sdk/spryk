@@ -1,51 +1,70 @@
 spryk: template
-description: "Adds a new *resourceType*ResourceRelationshipPlugin to the Glue application."
+description: "Adds a new *resourceTypeByRelationshipParameter*ResourceRelationshipPlugin to the Glue application."
 mode: both
 
 arguments:
-    module:
-        inherit: true
+  module:
+    inherit: true
 
-    organization:
-        inherit: true
-        default: Spryker
+  organization:
+    inherit: true
+    default: Spryker
 
-    template:
-        value: Glue/Plugin/GlueApplication/GlueResourceRoutePlugin.php.twig
+  template:
+    value: Glue/Plugin/GlueApplication/GlueResourceRelationshipPlugin.php.twig
 
-    resourceType:
-        inherit: true
+  resourceType:
+    inherit: true
 
-    field:
-        inherit: true
+  relationshipParameter:
+    inherit: true
 
-    targetFilename:
-        value: "{{ resourceType | dashToCamelCase }}By{{ field | dashToCamelCase }}ResourceRelationshipPlugin.php"
+  pluginClassName:
+    value: "{{ resourceType | dashToCamelCase | singularize }}By{{ relationshipParameter | dashToCamelCase }}ResourceRelationshipPlugin"
 
-    targetPath:
-        value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
+  expanderClassName:
+    value: "{{ resourceType | dashToCamelCase | singularize }}By{{ relationshipParameter | dashToCamelCase }}Expander"
+
+  targetFilename:
+    value: "{{ pluginClassName }}.php"
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
 
 preSpryks:
-    - AddModule
-    - AddSharedRestAttributesTransfer:
-          arguments:
-              name:
-                  value: "{{ modelName | dashToCamelCase }}"
-                  callback:
-                      - EnsureRestAttributesTransferAffix
-    - AddGlueConfigConstant:
-          arguments:
-              name:
-                  value: "RESOURCE_{{ resourceType | dashToUnderscore | upper }}"
-              value:
-                  value:  "{{ resourceType | dasherize }}"
-              visibility:
-                  value:  "public"
-    - AddGlueConfigConstant:
-          arguments:
-              name:
-                  value: "CONTROLLER_RESOURCE_{{ resourceType | dashToUnderscore | upper }}"
-              value:
-                  value:  "{{ resourceType | dasherize }}-resource"
-              visibility:
-                  value:  "public"
+  - AddModule
+  - AddSharedRestAttributesTransfer:
+      arguments:
+        name:
+          value: "{{ resourceType | dashToCamelCase }}"
+          callback:
+            - EnsureRestAttributesTransferAffix
+
+  - AddGlueConfigConstant:
+      arguments:
+        name:
+          value: "RESOURCE_{{ resourceType | dashToUnderscore | upper }}"
+        value:
+          value:  "{{ resourceType | dasherize }}"
+        visibility:
+          value:  "public"
+
+  - AddGlueFactoryMethod:
+      arguments:
+        subDirectory:
+          value: "Expander"
+        className:
+          value: "{{ expanderClassName }}"
+
+  - AddGlueProcessorModelMethod:
+      arguments:
+        subDirectory:
+          value: "Expander"
+        modelSuffix:
+          value: "Expander"
+        method:
+          value: "addResourceRelationships"
+        input:
+          value: "array $resources, \\Spryker\\Glue\\GlueApplication\\Rest\\Request\\Data\\RestRequestInterface $restRequest"
+        output:
+          value: "array"

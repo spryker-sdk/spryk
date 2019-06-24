@@ -41,6 +41,8 @@ preSpryks:
 postSpryks:
   - AddGlueProcessorModelMethod:
       arguments:
+        className:
+          value: "{{ modelName }}{{ modelSuffix }}"
         input:
           value: "\\Spryker\\Glue\\GlueApplication\\Rest\\Request\\Data\\RestRequestInterface $restRequest"
         output:

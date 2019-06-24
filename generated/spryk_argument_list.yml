@@ -158,13 +158,25 @@
   mode: 2
   description: 'modelName argument'
 -
+  name: resourceRouteMethod
+  mode: 2
+  description: 'resourceRouteMethod argument'
+-
   name: modelSuffix
   mode: 2
   description: 'modelSuffix argument'
 -
-  name: resourceRouteMethod
+  name: relationshipParameter
   mode: 2
-  description: 'resourceRouteMethod argument'
+  description: 'relationshipParameter argument'
+-
+  name: pluginClassName
+  mode: 2
+  description: 'pluginClassName argument'
+-
+  name: expanderClassName
+  mode: 2
+  description: 'expanderClassName argument'
 -
   name: field
   mode: 2
@@ -2194,17 +2206,9 @@
   mode: 2
   description: 'AddGlueProcessorModelInterfaceMethod className argument'
 -
-  name: AddGlueProcessorModelInterfaceMethod.modelName
-  mode: 2
-  description: 'AddGlueProcessorModelInterfaceMethod modelName argument'
--
   name: AddGlueProcessorModelInterfaceMethod.subDirectory
   mode: 2
   description: 'AddGlueProcessorModelInterfaceMethod subDirectory argument'
--
-  name: AddGlueProcessorModelInterfaceMethod.modelSuffix
-  mode: 2
-  description: 'AddGlueProcessorModelInterfaceMethod modelSuffix argument'
 -
   name: AddGlueProcessorModelInterfaceMethod.method
   mode: 2
@@ -2281,18 +2285,6 @@
   name: AddGlueProcessorModelMethod.subDirectory
   mode: 2
   description: 'AddGlueProcessorModelMethod subDirectory argument'
--
-  name: AddGlueProcessorModelMethod.method
-  mode: 2
-  description: 'AddGlueProcessorModelMethod method argument'
--
-  name: AddGlueProcessorModelMethod.modelName
-  mode: 2
-  description: 'AddGlueProcessorModelMethod modelName argument'
--
-  name: AddGlueProcessorModelMethod.modelSuffix
-  mode: 2
-  description: 'AddGlueProcessorModelMethod modelSuffix argument'
 -
   name: AddGlueProcessorModelMethod.input
   mode: 2
@@ -2430,9 +2422,17 @@
   mode: 2
   description: 'AddGlueResourceRelationshipPlugin resourceType argument'
 -
-  name: AddGlueResourceRelationshipPlugin.field
+  name: AddGlueResourceRelationshipPlugin.relationshipParameter
   mode: 2
-  description: 'AddGlueResourceRelationshipPlugin field argument'
+  description: 'AddGlueResourceRelationshipPlugin relationshipParameter argument'
+-
+  name: AddGlueResourceRelationshipPlugin.pluginClassName
+  mode: 2
+  description: 'AddGlueResourceRelationshipPlugin pluginClassName argument'
+-
+  name: AddGlueResourceRelationshipPlugin.expanderClassName
+  mode: 2
+  description: 'AddGlueResourceRelationshipPlugin expanderClassName argument'
 -
   name: AddGlueResourceRelationshipPlugin.targetFilename
   mode: 2
@@ -2857,6 +2857,34 @@
   name: AddGlueResourceRelationship.repository
   mode: 2
   description: 'AddGlueResourceRelationship repository argument'
+-
+  name: AddValidation.module
+  mode: 2
+  description: 'AddValidation module argument'
+-
+  name: AddValidation.organization
+  mode: 2
+  description: 'AddValidation organization argument'
+-
+  name: AddValidation.template
+  mode: 2
+  description: 'AddValidation template argument'
+-
+  name: AddValidation.resourceType
+  mode: 2
+  description: 'AddValidation resourceType argument'
+-
+  name: AddValidation.targetFilename
+  mode: 2
+  description: 'AddValidation targetFilename argument'
+-
+  name: AddValidation.targetPath
+  mode: 2
+  description: 'AddValidation targetPath argument'
+-
+  name: AddValidation.repository
+  mode: 2
+  description: 'AddValidation repository argument'
 -
   name: AddGlueResource.module
   mode: 2

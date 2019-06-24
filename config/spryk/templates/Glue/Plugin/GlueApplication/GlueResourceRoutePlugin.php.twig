@@ -51,7 +51,7 @@ class {{ resourceType | dashToCamelCase }}ResourceRoutePlugin extends AbstractPl
      */
     public function getController(): string
     {
-        return {{ module }}Config::CONTROLLER_RESOURCE_{{ resourceType | dashToUnderscore | upper }};
+        return {{ resourceType | dasherize }}-resource;
     }
 
     /**

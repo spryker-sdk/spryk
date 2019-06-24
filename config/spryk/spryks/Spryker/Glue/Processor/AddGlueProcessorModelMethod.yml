@@ -21,15 +21,6 @@ arguments:
     inherit: true
     isOptional: true
 
-  method:
-    inherit: true
-
-  modelName:
-    inherit: true
-
-  modelSuffix:
-    inherit: true
-
   input:
     isOptional: true
     isMultiple: true
@@ -41,7 +32,7 @@ arguments:
     value: Common/Method.php.twig
 
   target:
-    value: '{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory }}{% endif %}\{{ modelName }}{{modelSuffix}}'
+    value: '{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory }}{% endif %}\{{ className }}'
 
 preSpryks:
   - AddGlueProcessorModel
