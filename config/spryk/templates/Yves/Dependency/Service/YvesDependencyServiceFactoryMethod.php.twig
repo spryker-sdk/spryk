@@ -2,7 +2,7 @@
     /**
      * @return \{{ organization }}\Yves\{{ module }}\Dependency\Service\{{ module }}To{{ dependentModule }}ServiceInterface
      */
-    public function {{ method }}(): \{{ organization }}\Yves\{{ module }}\Dependency\Service\{{ module }}To{{ dependentModule }}ServiceInterface
+    public function {{ factoryMethod }}(): \{{ organization }}\Yves\{{ module }}\Dependency\Service\{{ module }}To{{ dependentModule }}ServiceInterface
     {
         return $this->getProvidedDependency(\{{ organization }}\Yves\{{ module}}\{{ module}}DependencyProvider::SERVICE_{{ dependentModule | underscored | upper }});
     }

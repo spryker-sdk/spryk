@@ -3,7 +3,7 @@
     /**
      * @return \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
      */
-    public function {{ method }}(): \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    public function {{ factoryMethod }}(): \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
     {
         return new \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}();
     }
@@ -11,7 +11,7 @@
     /**
     * @return \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
     */
-    public function {{ method }}(): \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    public function {{ factoryMethod }}(): \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
     {
         return new \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}(
         {% for dependencyMethod in dependencyMethods.value -%}

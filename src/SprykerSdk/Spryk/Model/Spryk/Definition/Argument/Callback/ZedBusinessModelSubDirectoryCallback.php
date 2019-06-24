@@ -28,7 +28,7 @@ class ZedBusinessModelSubDirectoryCallback implements CallbackInterface
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
         $className = $argumentCollection->getArgument('className')->getValue();
-        $subDirectory = null;
+        $subDirectory = $value;
         if (strpos($className, '\\') !== false) {
             $classNameFragments = explode('\\', $className);
             $positionOfBusiness = (int)array_search('Business', $classNameFragments, true);

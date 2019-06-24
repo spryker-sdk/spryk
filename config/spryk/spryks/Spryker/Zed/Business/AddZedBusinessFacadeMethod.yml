@@ -14,7 +14,7 @@ arguments:
   comment:
     multiline: true
 
-  method: ~
+  facadeMethod: ~
 
   input:
     isOptional: true

@@ -32,7 +32,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'addSomething',
+            '--facadeMethod' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
             '--specification' => [
@@ -51,7 +51,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'addSomething',
+            '--facadeMethod' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
             '--specification' => [
@@ -71,7 +71,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'addSomething',
+            '--facadeMethod' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
             '--specification' => [
@@ -96,7 +96,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'addSomething',
+            '--facadeMethod' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
             '--specification' => [

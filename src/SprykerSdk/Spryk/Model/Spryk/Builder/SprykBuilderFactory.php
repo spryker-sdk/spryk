@@ -13,6 +13,7 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection\MethodHelperInterface
 use SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection\ReflectionHelper;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection\ReflectionHelperInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Constant\ConstantSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\CopyModule\CopyModuleSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Navigation\NavigationSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\ResourceRoute\ResourceRouteSpryk;
@@ -70,6 +71,7 @@ class SprykBuilderFactory
             $this->createNavigationSpryk(),
             $this->createSchemaSpryk(),
             $this->createBridgeMethodsSpryk(),
+            $this->createCopyModuleSpryk(),
             $this->createTransferSpryk(),
             $this->createResourceRouteSpryk(),
         ];
@@ -166,6 +168,17 @@ class SprykBuilderFactory
             $this->createTemplateRenderer(),
             $this->createReflectionHelper(),
             $this->createMethodHelper()
+        );
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createCopyModuleSpryk(): SprykBuilderInterface
+    {
+        return new CopyModuleSpryk(
+            $this->getConfig(),
+            $this->filterFactory->createDasherizeFilter()
         );
     }
 

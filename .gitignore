@@ -18,7 +18,7 @@ GTAGS
 .DS_Store
 
 .scrutinizer
-vendor/
+vendor/*
 composer.phar
 
 tests/_data/emptyFile
@@ -26,5 +26,6 @@ tests/_data/vendor/*
 tests/_data/src/*
 tests/_output
 tests/_support/_generated/
+!tests/_support/vendor/
 
 composer.lock

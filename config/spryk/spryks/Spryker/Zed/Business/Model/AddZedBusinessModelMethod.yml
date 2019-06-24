@@ -24,7 +24,11 @@ arguments:
       - spryk
       - choiceLoader
 
-  method: ~
+  subDirectory:
+    inherit: true
+    isOptional: true
+
+  modelMethod: ~
 
   input:
     isOptional: true
@@ -34,13 +38,16 @@ arguments:
     isOptional: true
 
   facadeMethod:
-    default: "{{ method }}"
+    default: "{{ modelMethod }}"
 
   template:
     value: Common/Method.php.twig
 
   target:
     value: "{{ className }}"
+
+  fqcnPattern:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}"
 
 preSpryks:
   - AddZedBusinessModel:
@@ -55,6 +62,3 @@ postSpryks:
   - AddZedBusinessModelInterfaceMethod
   - AddZedBusinessFacadeMethod:
       isOptional: true
-      arguments:
-        method:
-          value: "{{ facadeMethod }}"

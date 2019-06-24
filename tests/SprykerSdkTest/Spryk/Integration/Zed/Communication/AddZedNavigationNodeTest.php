@@ -35,7 +35,7 @@ class AddZedNavigationNodeTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--controllerMethod' => 'index',
         ]);
 
         $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
@@ -57,7 +57,7 @@ class AddZedNavigationNodeTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--controllerMethod' => 'index',
             '--mode' => 'project',
         ]);
 
@@ -88,7 +88,7 @@ class AddZedNavigationNodeTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--controllerMethod' => 'index',
         ]);
 
         $xmlContent = file_get_contents($pathToNavigationSchema);
@@ -114,7 +114,7 @@ class AddZedNavigationNodeTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--controllerMethod' => 'index',
             '--mode' => 'project',
         ]);
 
@@ -134,7 +134,7 @@ class AddZedNavigationNodeTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => ClassName::ZED_CONTROLLER,
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
         ]);
 
         $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
@@ -156,7 +156,7 @@ class AddZedNavigationNodeTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => ClassName::PROJECT_ZED_CONTROLLER,
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
             '--mode' => 'project',
         ]);
 

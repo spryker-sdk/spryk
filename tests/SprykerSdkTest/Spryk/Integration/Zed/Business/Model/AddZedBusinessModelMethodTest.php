@@ -31,8 +31,9 @@ class AddZedBusinessModelMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
-            '--method' => 'addSomething',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--modelMethod' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
         ]);
@@ -47,8 +48,9 @@ class AddZedBusinessModelMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Pyz\Zed\FooBar\Business\Foo\Bar',
-            '--method' => 'addSomething',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--modelMethod' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
             '--mode' => 'project',
@@ -64,8 +66,9 @@ class AddZedBusinessModelMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
-            '--method' => 'addSomething',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--modelMethod' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
             '--include-optional' => [
@@ -84,8 +87,9 @@ class AddZedBusinessModelMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Pyz\Zed\FooBar\Business\Foo\Bar',
-            '--method' => 'addSomething',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--modelMethod' => 'addSomething',
             '--input' => 'string $foo',
             '--output' => 'bool',
             '--include-optional' => [
@@ -105,8 +109,9 @@ class AddZedBusinessModelMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Spryker\Zed\FooBar\Business\Foo\Bar',
-            '--method' => 'addSomething',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--modelMethod' => 'addSomething',
             '--facadeMethod' => 'addSomethingDifferent',
             '--input' => 'string $foo',
             '--output' => 'bool',
@@ -126,8 +131,9 @@ class AddZedBusinessModelMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Pyz\Zed\FooBar\Business\Foo\Bar',
-            '--method' => 'addSomething',
+            '--className' => 'Bar',
+            '--subDirectory' => 'Foo',
+            '--modelMethod' => 'addSomething',
             '--facadeMethod' => 'addSomethingDifferent',
             '--input' => 'string $foo',
             '--output' => 'bool',
