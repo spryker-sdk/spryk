@@ -31,15 +31,12 @@ class TypedArrayFilter implements FilterInterface
 
         foreach ($initialParameters as $parameter) {
             $parameterExploded = explode(' ', $parameter);
-            if (count($parameterExploded) > 2) {
-                $filteredParameters[] = $parameter;
-                continue;
-            }
 
             if ($this->isTypedArray($parameterExploded[0])) {
-                $parameter = isset($parameterExploded[1])
-                    ? implode(' ', ['array', $parameterExploded[1]])
-                    : 'array';
+                $parameterExploded[0] = 'array';
+                $parameter = count($parameterExploded) > 1
+                    ? implode(' ', $parameterExploded)
+                    : $parameterExploded[0];
             }
 
             $filteredParameters[] = $parameter;
