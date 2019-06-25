@@ -32,6 +32,7 @@ class FilterFactory
             $this->createDashToCamelCaseFilter(),
             $this->createDashToUnderscoreFilter(),
             $this->createSingularizeFilter(),
+            $this->createTypedArrayFilter(),
         ];
     }
 
@@ -153,5 +154,13 @@ class FilterFactory
     public function createSingularizeFilter(): FilterInterface
     {
         return new SingularizeFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createTypedArrayFilter(): FilterInterface
+    {
+        return new TypedArrayFilter();
     }
 }

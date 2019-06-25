@@ -65,6 +65,6 @@ preSpryks:
         method:
           value: "addResourceRelationships"
         input:
-          value: "array $resources, \\Spryker\\Glue\\GlueApplication\\Rest\\Request\\Data\\RestRequestInterface $restRequest"
+          value: "\\Spryker\\Glue\\GlueApplication\\Rest\\JsonApi\\RestResourceInterface[] $resources, \\Spryker\\Glue\\GlueApplication\\Rest\\Request\\Data\\RestRequestInterface $restRequest"
         output:
-          value: "array"
+          value: "\\Spryker\\Glue\\GlueApplication\\Rest\\JsonApi\\RestResourceInterface[]"
