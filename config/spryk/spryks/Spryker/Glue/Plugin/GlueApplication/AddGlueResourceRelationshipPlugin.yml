@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *resourceTypeByRelationshipParameter*ResourceRelationshipPlugin to the Glue application."
+description: "Adds a new *resourceType*By*relationshipParameter*ResourceRelationshipPlugin to the Glue application."
 mode: both
 
 arguments:

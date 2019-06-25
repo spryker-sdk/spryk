@@ -1,0 +1,27 @@
+spryk: template
+description: "Adds a new *modelName*ControllerAfterActionPlugin to the Glue application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  template:
+    value: Glue/Plugin/GlueApplication/AddControllerAfterActionPlugin.php.twig
+
+  modelName:
+    inherit: true
+
+  targetFilename:
+    value: "{{ modelName | camelCased }}ControllerAfterActionPlugin.php"
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
+
+preSpryks:
+  - AddModule
+  - AddGlueFactory

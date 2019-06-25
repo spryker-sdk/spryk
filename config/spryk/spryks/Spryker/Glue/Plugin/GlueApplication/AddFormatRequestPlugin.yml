@@ -1,0 +1,27 @@
+spryk: template
+description: "Adds a new *modelName*FormatRequestPlugin to the Glue application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  template:
+    value: Glue/Plugin/GlueApplication/AddFormatRequestPlugin.php.twig
+
+  modelName:
+    inherit: true
+
+  targetFilename:
+    value: "{{ modelName | camelCased }}FormatRequestPlugin.php"
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
+
+preSpryks:
+  - AddModule
+  - AddGlueFactory
