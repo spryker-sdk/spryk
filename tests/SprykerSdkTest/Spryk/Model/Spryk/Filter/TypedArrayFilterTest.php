@@ -115,8 +115,30 @@ class TypedArrayFilterTest extends Unit
      */
     public function testMixedInputParametersWithDefaultValueShouldRenderWithThisParameters(): void
     {
-        $inputParameters = 'string[] $foo = [], ?int $bar = null';
-        $expectedResult = 'array $foo = [], ?int $bar = null';
+        $inputParameters = '?\stdClass[] $foo = [], ?int $bar = null';
+        $expectedResult = '?array $foo = [], ?int $bar = null';
+
+        $this->assertFilterResult($inputParameters, $expectedResult);
+    }
+
+    /**
+     * @return void
+     */
+    public function testTypedArrayWithNullableValueShouldConvertToArrayWithNullableValue(): void
+    {
+        $inputParameters = '?string[] $foo';
+        $expectedResult = '?array $foo';
+
+        $this->assertFilterResult($inputParameters, $expectedResult);
+    }
+
+    /**
+     * @return void
+     */
+    public function testReturnTypeHintTypedArrayWithNullableValueShouldConvertToArrayWithNullableValue(): void
+    {
+        $inputParameters = '?string[]';
+        $expectedResult = '?array';
 
         $this->assertFilterResult($inputParameters, $expectedResult);
     }

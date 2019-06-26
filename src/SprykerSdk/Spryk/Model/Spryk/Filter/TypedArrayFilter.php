@@ -30,10 +30,9 @@ class TypedArrayFilter implements FilterInterface
         $filteredParameters = [];
 
         foreach ($initialParameters as $parameter) {
-            $parameterExploded = explode(' ', $parameter);
-
+            $parameterExploded = explode(' ', $parameter, 2);
             if ($this->isTypedArray($parameterExploded[0])) {
-                $parameterExploded[0] = 'array';
+                $parameterExploded[0] = $this->convertToArrayTypeHint($parameterExploded[0]);
                 $parameter = count($parameterExploded) > 1
                     ? implode(' ', $parameterExploded)
                     : $parameterExploded[0];
@@ -53,5 +52,15 @@ class TypedArrayFilter implements FilterInterface
     protected function isTypedArray(string $value): bool
     {
         return (bool)preg_match('((.*?)\[\]$)', $value);
+    }
+
+    /**
+     * @param string $typedArray
+     *
+     * @return string
+     */
+    protected function convertToArrayTypeHint(string $typedArray): string
+    {
+        return (strpos($typedArray, '?') === 0 ? '?' : '') . 'array';
     }
 }
