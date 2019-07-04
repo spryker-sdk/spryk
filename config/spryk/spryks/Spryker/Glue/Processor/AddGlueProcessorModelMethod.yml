@@ -21,6 +21,9 @@ arguments:
     inherit: true
     isOptional: true
 
+  method:
+    inherit: true
+
   input:
     isOptional: true
     isMultiple: true

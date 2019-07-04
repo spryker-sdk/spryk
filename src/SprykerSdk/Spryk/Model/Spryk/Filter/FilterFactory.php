@@ -22,6 +22,7 @@ class FilterFactory
             $this->createClassNameShortFilter(),
             $this->createEnsureControllerSuffixFilter(),
             $this->createEnsureConsoleSuffixFilter(),
+            $this->createEnsureMapperSuffixFilter(),
             $this->createRemoveControllerSuffixFilter(),
             $this->createRemoveActionSuffixFilter(),
             $this->createDasherizeFilter(),
@@ -74,6 +75,14 @@ class FilterFactory
     public function createEnsureConsoleSuffixFilter(): FilterInterface
     {
         return new EnsureConsoleSuffixFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createEnsureMapperSuffixFilter(): FilterInterface
+    {
+        return new EnsureMapperSuffixFilter();
     }
 
     /**
