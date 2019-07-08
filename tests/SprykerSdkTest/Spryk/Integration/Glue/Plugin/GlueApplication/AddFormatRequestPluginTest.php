@@ -19,7 +19,7 @@ class AddFormatRequestPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddFormatResponseDataPlugin(): void
+    public function testAddsFormatRequestPlugin(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -33,7 +33,7 @@ class AddFormatRequestPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResourceOnProjectLayer(): void
+    public function testAddsFormatRequestPluginOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

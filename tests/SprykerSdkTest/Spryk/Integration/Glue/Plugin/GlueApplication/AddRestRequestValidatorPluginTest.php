@@ -19,7 +19,7 @@ class AddRestRequestValidatorPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddFormatResponseDataPlugin(): void
+    public function testAddsRestRequestValidatorPlugin(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -33,7 +33,7 @@ class AddRestRequestValidatorPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResourceOnProjectLayer(): void
+    public function testAddsRestRequestValidatorPluginOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

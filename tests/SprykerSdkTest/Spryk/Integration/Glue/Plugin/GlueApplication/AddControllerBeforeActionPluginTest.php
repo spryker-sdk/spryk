@@ -19,7 +19,7 @@ class AddControllerBeforeActionPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddFormatResponseDataPlugin(): void
+    public function testAddsControllerBeforeActionPlugin(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -33,7 +33,7 @@ class AddControllerBeforeActionPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResourceOnProjectLayer(): void
+    public function testAddsControllerBeforeActionPluginOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

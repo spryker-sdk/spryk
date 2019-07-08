@@ -29,7 +29,7 @@ class AddGlueBasicStructureTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueConfigConstant(): void
+    public function testAddsGlueBasicModuleStructure(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -57,7 +57,7 @@ class AddGlueBasicStructureTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueConfigConstantOnProjectLayer(): void
+    public function testAddsGlueBasicModuleStructureOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

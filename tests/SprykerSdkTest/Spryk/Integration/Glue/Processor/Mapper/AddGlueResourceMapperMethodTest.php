@@ -30,7 +30,7 @@ class AddGlueResourceMapperMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResourceMapperMethod(): void
+    public function testAddsGlueResourceMapperMethodWithDefaultFromTransferValue(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -47,7 +47,7 @@ class AddGlueResourceMapperMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResourceMapperMethodOnProjectLayer(): void
+    public function testAddsGlueResourceMapperMethodWithDefaultFromTransferValueOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -59,5 +59,39 @@ class AddGlueResourceMapperMethodTest extends Unit
         static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/Mapper/FooBarMapperInterface.php');
         static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/Mapper/FooBarMapper.php');
         $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_RESOURCE_MAPPER, 'mapRestFooBarsAttributesTransferToBarQuxTransfer');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsGlueResourceMapperMethodWithDefaultToTransferValue(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--resourceType' => 'foo-bars',
+            '--fromTransfer' => 'BarQuxTransfer',
+            '--mode' => 'core',
+        ]);
+
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapperInterface.php');
+        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapper.php');
+        $this->tester->assertClassHasMethod(ClassName::GLUE_RESOURCE_MAPPER, 'mapBarQuxTransferToRestFooBarsAttributesTransfer');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsGlueResourceMapperMethodWithDefaultToTransferValueOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--resourceType' => 'foo-bars',
+            '--fromTransfer' => 'BarQuxTransfer',
+            '--mode' => 'project',
+        ]);
+
+        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/Mapper/FooBarMapperInterface.php');
+        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/Mapper/FooBarMapper.php');
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_RESOURCE_MAPPER, 'mapBarQuxTransferToRestFooBarsAttributesTransfer');
     }
 }

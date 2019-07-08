@@ -19,7 +19,7 @@ class AddGlueResourceRelationshipPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResource(): void
+    public function testAddsGlueResourceRelationshipPlugin(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -36,7 +36,7 @@ class AddGlueResourceRelationshipPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResourceOnProjectLayer(): void
+    public function testAddsGlueResourceRelationshipPluginOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
