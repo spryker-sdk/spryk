@@ -27,7 +27,7 @@ class TypedArrayFilter implements FilterInterface
     public function filter(string $value): string
     {
         $initialParameters = preg_split('/(\s*,*\s*)*,+(\s*,*\s*)*/', $value);
-        if (!$initialParameters) {
+        if (!is_array($initialParameters)) {
             return $value;
         }
 
