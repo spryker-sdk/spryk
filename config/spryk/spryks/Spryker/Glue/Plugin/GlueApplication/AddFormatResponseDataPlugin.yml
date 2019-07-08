@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Glue/Plugin/GlueApplication/AddFormatResponseDataPlugin.php.twig
+    value: Glue/Plugin/GlueApplication/FormatResponseDataPlugin.php.twig
 
   modelName:
     inherit: true

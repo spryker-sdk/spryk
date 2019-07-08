@@ -26,7 +26,7 @@ arguments:
     isOptional: true
 
   template:
-    value: Glue/MethodFactory.php.twig
+    value: Glue/GlueFactoryMethod.php.twig
 
   target:
     value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}Factory"

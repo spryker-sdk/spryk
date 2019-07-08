@@ -23,6 +23,7 @@ arguments:
 
   toTransfer:
     inherit: true
+    default: "Rest{{ resourceType | dashToCamelCase }}AttributesTransfer"
 
   method:
     value: "map{{ fromTransfer }}To{{ toTransfer }}"
@@ -32,18 +33,16 @@ arguments:
     value: "{{ organization }}\\Glue\\{{ module }}\\Processor\\Mapper\\{{ resourceType | singularize | dashToCamelCase | ensureMapperSuffix}}"
 
   template:
-    value: Glue/Processor/Mapper/AddGlueResourceMapperMethod.php.twig
+    value: Glue/Processor/Mapper/GlueResourceMapperMethod.php.twig
 
 preSpryks:
   - AddModule
-
   - AddSharedRestAttributesTransfer:
       arguments:
         name:
           value: "{{ resourceType | dashToCamelCase }}"
           callback:
             - EnsureRestAttributesTransferAffix
-
   - AddGlueProcessorModel:
       arguments:
         className:
@@ -51,10 +50,11 @@ preSpryks:
         subDirectory:
           value: "Mapper"
 
+postSpryks:
   - AddGlueProcessorModelInterfaceMethod:
       arguments:
         method:
-          value: "map{{ fromTransfer }}to{{ toTransfer }}"
+          value: "map{{ fromTransfer }}To{{ toTransfer }}"
         subDirectory:
           value: "Mapper"
         input:

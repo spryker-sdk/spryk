@@ -8,7 +8,7 @@
 namespace {{ organization }}\Glue\{{ module }}\Plugin\GlueApplication;
 
 use Generated\Shared\Transfer\Rest{{ modelName | dashToCamelCase }}AttributesTransfer;
-use Spryker\Glue\{{ module }}\{{ module }}Config;
+use {{ organization }}\Glue\{{ module }}\{{ module }}Config;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRouteCollectionInterface;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface;
 use Spryker\Glue\Kernel\AbstractPlugin;
@@ -51,7 +51,7 @@ class {{ resourceType | dashToCamelCase }}ResourceRoutePlugin extends AbstractPl
      */
     public function getController(): string
     {
-        return {{ resourceType | dasherize }}-resource;
+        return '{{ resourceType | dasherize }}-resource';
     }
 
     /**

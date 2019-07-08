@@ -9,6 +9,7 @@
     public function map{{ fromTransfer }}To{{ toTransfer }}(
         \Generated\Shared\Transfer\{{ fromTransfer }} ${{ fromTransfer | lcfirst }},
         \Generated\Shared\Transfer\{{ toTransfer }} ${{ toTransfer | lcfirst }}
-    ): \Generated\Shared\Transfer\{{ toTransfer }} {
+    ): \Generated\Shared\Transfer\{{ toTransfer }}
+    {
         return ${{ toTransfer | lcfirst }}->fromArray(${{ fromTransfer | lcfirst }}->toArray(), true);
     }

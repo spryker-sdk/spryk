@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Glue/Plugin/GlueApplication/AddRestRequestValidatorPlugin.php.twig
+    value: Glue/Plugin/GlueApplication/RestRequestValidatorPlugin.php.twig
 
   modelName:
     inherit: true

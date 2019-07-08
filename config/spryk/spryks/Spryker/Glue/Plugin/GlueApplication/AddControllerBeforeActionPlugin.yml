@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Glue/Plugin/GlueApplication/AddControllerBeforeActionPlugin.php.twig
+    value: Glue/Plugin/GlueApplication/ControllerBeforeActionPlugin.php.twig
 
   modelName:
     inherit: true

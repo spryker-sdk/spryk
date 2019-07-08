@@ -24,7 +24,7 @@ arguments:
 
   modelName:
     inherit: true
-    default: "{{ resourceType }}"
+    default: "{{ resourceType | dashToCamelCase | singularize }}"
 
   modelSuffix:
     inherit: true
