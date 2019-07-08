@@ -9,7 +9,7 @@
     "roave/better-reflection": "^2.0 || ^3.0",
     "spryker/config": "^3.0.0",
     "spryker/glue-application-extension": "^1.1.0",
-    "spryker/kernel": "^3.17.0",
+    "spryker/kernel": "^3.22.0",
     "spryker/symfony": "^3.0.0",
     "spryker/twig": "^3.0.0",
     "spryker/zend": "^2.0.0",
