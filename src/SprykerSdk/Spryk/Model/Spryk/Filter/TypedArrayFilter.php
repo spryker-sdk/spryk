@@ -27,8 +27,11 @@ class TypedArrayFilter implements FilterInterface
     public function filter(string $value): string
     {
         $initialParameters = preg_split('/(\s*,*\s*)*,+(\s*,*\s*)*/', $value);
-        $filteredParameters = [];
+        if (!$initialParameters) {
+            return $value;
+        }
 
+        $filteredParameters = [];
         foreach ($initialParameters as $parameter) {
             $parameterExploded = explode(' ', $parameter, 2);
             if ($this->isTypedArray($parameterExploded[0])) {

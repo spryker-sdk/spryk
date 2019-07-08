@@ -29,7 +29,8 @@ class AddGlueControllerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueController(): void {
+    public function testAddsGlueController(): void
+    {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Bar',

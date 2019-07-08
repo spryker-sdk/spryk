@@ -30,7 +30,8 @@ class AddGlueControllerGetActionTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueControllerAction(): void {
+    public function testAddsGlueControllerAction(): void
+    {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Bar',
