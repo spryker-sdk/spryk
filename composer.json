@@ -51,9 +51,9 @@
       "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
       "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
       "Spryker\\Glue\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Glue/FooBar/",
-        "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Zed/ZipZap/",
-        "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Client/ZipZap/",
-        "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Service/ZipZap/",
+      "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Zed/ZipZap/",
+      "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Client/ZipZap/",
+      "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Service/ZipZap/",
       "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
       "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
       "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
@@ -82,7 +82,7 @@
   "extra": {
     "branch-alias": {
       "dev-master": "1.0.x-dev",
-        "dev-feature/glue-5642/glue-5715-add-get-resource": "0.1.x-dev"
+      "dev-feature/glue-5642/glue-5715-add-get-resource": "0.1.x-dev"
     }
   },
   "config": {
