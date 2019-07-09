@@ -69,6 +69,9 @@ class AddGlueResourceRouteTest extends Unit
     }
 
     /**
+     * @param string $className
+     * @param string $resourceRouteMethod
+     *
      * @return void
      */
     protected function assertRouteAdded(string $className, string $resourceRouteMethod): void

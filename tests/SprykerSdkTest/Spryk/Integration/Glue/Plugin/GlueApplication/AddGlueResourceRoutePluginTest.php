@@ -30,7 +30,7 @@ class AddGlueResourceRoutePluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResource(): void
+    public function testAddsGlueResourceRoutePlugin(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -46,7 +46,7 @@ class AddGlueResourceRoutePluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResourceOnProjectLayer(): void
+    public function testAddsGlueResourceRoutePluginOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',

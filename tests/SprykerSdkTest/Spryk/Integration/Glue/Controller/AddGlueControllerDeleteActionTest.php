@@ -30,7 +30,8 @@ class AddGlueControllerDeleteActionTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueControllerAction(): void {
+    public function testAddsGlueControllerAction(): void
+    {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Bar',
@@ -63,7 +64,6 @@ class AddGlueControllerDeleteActionTest extends Unit
             '--method' => 'deleteAction',
             '--mode' => 'project',
         ]);
-
 
         static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Controller/BarController.php');
         $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_CONTROLLER, 'deleteAction');

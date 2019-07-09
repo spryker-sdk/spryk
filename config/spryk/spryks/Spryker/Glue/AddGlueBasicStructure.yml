@@ -1,0 +1,39 @@
+spryk: structure
+description: "Adds a new Glue layer with basic structure."
+mode: both
+
+application: Glue
+
+priority: 1
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  resourceType:
+    inherit: true
+
+  fromTransfer:
+    inherit: true
+
+  targetPath:
+    value: "{{ module }}/"
+
+  directories:
+    value:
+      - "src/{{ organization }}/"
+
+preSpryks:
+  - AddModule
+
+postSpryks:
+  - AddGlueResourceMapperMethod
+  - AddGlueResourceRoutePlugin
+  - AddGlueController:
+      arguments:
+        controller:
+          value: "{{ resourceType | dashToCamelCase | singularize }}ResourceController"

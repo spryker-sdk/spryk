@@ -161,7 +161,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
     {
         $targetFilename = $this->getTargetFileNameFromReflectionClass($sprykDefinition);
 
-        if (!$targetFilename) {
+        if (!is_string($targetFilename)) {
             throw new ReflectionException('Filename is not expected to be null!');
         }
 

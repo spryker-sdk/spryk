@@ -18,6 +18,7 @@ arguments:
 
   modelName:
     inherit: true
+    default: "{{ resourceType | dashToCamelCase | singularize }}"
 
   targetFilename:
     value: "{{ resourceType | dashToCamelCase }}ResourceRoutePlugin.php"
@@ -39,13 +40,5 @@ preSpryks:
           value: "RESOURCE_{{ resourceType | dashToUnderscore | upper }}"
         value:
           value:  "{{ resourceType | dasherize }}"
-        visibility:
-          value:  "public"
-  - AddGlueConfigConstant:
-      arguments:
-        name:
-          value: "CONTROLLER_RESOURCE_{{ resourceType | dashToUnderscore | upper }}"
-        value:
-          value:  "{{ resourceType | dasherize }}-resource"
         visibility:
           value:  "public"

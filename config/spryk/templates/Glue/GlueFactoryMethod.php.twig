@@ -5,7 +5,7 @@
 {% endif %}
 
 {% if not dependencyMethods.value %}
-/**
+    /**
      * @return \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
      */
     public function {{ method }}(): \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
@@ -13,9 +13,9 @@
         return new \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}();
     }
 {% else %}
-/**
-    * @return \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
-    */
+    /**
+     * @return \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
+     */
     public function {{ method }}(): \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
     {
         return new \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}(

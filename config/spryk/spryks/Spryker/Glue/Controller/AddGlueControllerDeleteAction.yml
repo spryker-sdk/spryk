@@ -23,7 +23,7 @@ arguments:
 
   modelName:
     inherit: true
-    default: "{{ resourceType }}"
+    default: "{{ resourceType | dashToCamelCase | singularize }}"
 
   modelSuffix:
     inherit: true
@@ -41,6 +41,8 @@ preSpryks:
 postSpryks:
   - AddGlueProcessorModelMethod:
       arguments:
+        className:
+          value: "{{ modelName }}{{ modelSuffix }}"
         input:
           value: "\\Spryker\\Glue\\GlueApplication\\Rest\\Request\\Data\\RestRequestInterface $restRequest"
         output:

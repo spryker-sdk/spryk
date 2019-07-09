@@ -186,13 +186,33 @@
   mode: 2
   description: 'modelName argument'
 -
-  name: modelSuffix
+  name: fromTransfer
   mode: 2
-  description: 'modelSuffix argument'
+  description: 'fromTransfer argument'
+-
+  name: toTransfer
+  mode: 2
+  description: 'toTransfer argument'
 -
   name: resourceRouteMethod
   mode: 2
   description: 'resourceRouteMethod argument'
+-
+  name: modelSuffix
+  mode: 2
+  description: 'modelSuffix argument'
+-
+  name: relationshipParameter
+  mode: 2
+  description: 'relationshipParameter argument'
+-
+  name: pluginClassName
+  mode: 2
+  description: 'pluginClassName argument'
+-
+  name: expanderClassName
+  mode: 2
+  description: 'expanderClassName argument'
 -
   name: field
   mode: 2
@@ -2246,6 +2266,46 @@
   mode: 2
   description: 'AddGlueProcessorModel repository argument'
 -
+  name: AddGlueResourceMapperMethod.module
+  mode: 2
+  description: 'AddGlueResourceMapperMethod module argument'
+-
+  name: AddGlueResourceMapperMethod.organization
+  mode: 2
+  description: 'AddGlueResourceMapperMethod organization argument'
+-
+  name: AddGlueResourceMapperMethod.resourceType
+  mode: 2
+  description: 'AddGlueResourceMapperMethod resourceType argument'
+-
+  name: AddGlueResourceMapperMethod.fromTransfer
+  mode: 2
+  description: 'AddGlueResourceMapperMethod fromTransfer argument'
+-
+  name: AddGlueResourceMapperMethod.toTransfer
+  mode: 2
+  description: 'AddGlueResourceMapperMethod toTransfer argument'
+-
+  name: AddGlueResourceMapperMethod.repository
+  mode: 2
+  description: 'AddGlueResourceMapperMethod repository argument'
+-
+  name: AddGlueResourceMapper.module
+  mode: 2
+  description: 'AddGlueResourceMapper module argument'
+-
+  name: AddGlueResourceMapper.organization
+  mode: 2
+  description: 'AddGlueResourceMapper organization argument'
+-
+  name: AddGlueResourceMapper.resourceType
+  mode: 2
+  description: 'AddGlueResourceMapper resourceType argument'
+-
+  name: AddGlueResourceMapper.repository
+  mode: 2
+  description: 'AddGlueResourceMapper repository argument'
+-
   name: AddGlueProcessorModelInterfaceMethod.module
   mode: 2
   description: 'AddGlueProcessorModelInterfaceMethod module argument'
@@ -2258,17 +2318,9 @@
   mode: 2
   description: 'AddGlueProcessorModelInterfaceMethod className argument'
 -
-  name: AddGlueProcessorModelInterfaceMethod.modelName
-  mode: 2
-  description: 'AddGlueProcessorModelInterfaceMethod modelName argument'
--
   name: AddGlueProcessorModelInterfaceMethod.subDirectory
   mode: 2
   description: 'AddGlueProcessorModelInterfaceMethod subDirectory argument'
--
-  name: AddGlueProcessorModelInterfaceMethod.modelSuffix
-  mode: 2
-  description: 'AddGlueProcessorModelInterfaceMethod modelSuffix argument'
 -
   name: AddGlueProcessorModelInterfaceMethod.method
   mode: 2
@@ -2346,18 +2398,6 @@
   mode: 2
   description: 'AddGlueProcessorModelMethod subDirectory argument'
 -
-  name: AddGlueProcessorModelMethod.method
-  mode: 2
-  description: 'AddGlueProcessorModelMethod method argument'
--
-  name: AddGlueProcessorModelMethod.modelName
-  mode: 2
-  description: 'AddGlueProcessorModelMethod modelName argument'
--
-  name: AddGlueProcessorModelMethod.modelSuffix
-  mode: 2
-  description: 'AddGlueProcessorModelMethod modelSuffix argument'
--
   name: AddGlueProcessorModelMethod.input
   mode: 2
   description: 'AddGlueProcessorModelMethod input argument'
@@ -2405,6 +2445,118 @@
   name: AddGluePostResource.repository
   mode: 2
   description: 'AddGluePostResource repository argument'
+-
+  name: AddValidateHttpRequestPlugin.module
+  mode: 2
+  description: 'AddValidateHttpRequestPlugin module argument'
+-
+  name: AddValidateHttpRequestPlugin.organization
+  mode: 2
+  description: 'AddValidateHttpRequestPlugin organization argument'
+-
+  name: AddValidateHttpRequestPlugin.template
+  mode: 2
+  description: 'AddValidateHttpRequestPlugin template argument'
+-
+  name: AddValidateHttpRequestPlugin.modelName
+  mode: 2
+  description: 'AddValidateHttpRequestPlugin modelName argument'
+-
+  name: AddValidateHttpRequestPlugin.targetFilename
+  mode: 2
+  description: 'AddValidateHttpRequestPlugin targetFilename argument'
+-
+  name: AddValidateHttpRequestPlugin.targetPath
+  mode: 2
+  description: 'AddValidateHttpRequestPlugin targetPath argument'
+-
+  name: AddValidateHttpRequestPlugin.repository
+  mode: 2
+  description: 'AddValidateHttpRequestPlugin repository argument'
+-
+  name: AddFormatResponseDataPlugin.module
+  mode: 2
+  description: 'AddFormatResponseDataPlugin module argument'
+-
+  name: AddFormatResponseDataPlugin.organization
+  mode: 2
+  description: 'AddFormatResponseDataPlugin organization argument'
+-
+  name: AddFormatResponseDataPlugin.template
+  mode: 2
+  description: 'AddFormatResponseDataPlugin template argument'
+-
+  name: AddFormatResponseDataPlugin.modelName
+  mode: 2
+  description: 'AddFormatResponseDataPlugin modelName argument'
+-
+  name: AddFormatResponseDataPlugin.targetFilename
+  mode: 2
+  description: 'AddFormatResponseDataPlugin targetFilename argument'
+-
+  name: AddFormatResponseDataPlugin.targetPath
+  mode: 2
+  description: 'AddFormatResponseDataPlugin targetPath argument'
+-
+  name: AddFormatResponseDataPlugin.repository
+  mode: 2
+  description: 'AddFormatResponseDataPlugin repository argument'
+-
+  name: AddControllerBeforeActionPlugin.module
+  mode: 2
+  description: 'AddControllerBeforeActionPlugin module argument'
+-
+  name: AddControllerBeforeActionPlugin.organization
+  mode: 2
+  description: 'AddControllerBeforeActionPlugin organization argument'
+-
+  name: AddControllerBeforeActionPlugin.template
+  mode: 2
+  description: 'AddControllerBeforeActionPlugin template argument'
+-
+  name: AddControllerBeforeActionPlugin.modelName
+  mode: 2
+  description: 'AddControllerBeforeActionPlugin modelName argument'
+-
+  name: AddControllerBeforeActionPlugin.targetFilename
+  mode: 2
+  description: 'AddControllerBeforeActionPlugin targetFilename argument'
+-
+  name: AddControllerBeforeActionPlugin.targetPath
+  mode: 2
+  description: 'AddControllerBeforeActionPlugin targetPath argument'
+-
+  name: AddControllerBeforeActionPlugin.repository
+  mode: 2
+  description: 'AddControllerBeforeActionPlugin repository argument'
+-
+  name: AddControllerAfterActionPlugin.module
+  mode: 2
+  description: 'AddControllerAfterActionPlugin module argument'
+-
+  name: AddControllerAfterActionPlugin.organization
+  mode: 2
+  description: 'AddControllerAfterActionPlugin organization argument'
+-
+  name: AddControllerAfterActionPlugin.template
+  mode: 2
+  description: 'AddControllerAfterActionPlugin template argument'
+-
+  name: AddControllerAfterActionPlugin.modelName
+  mode: 2
+  description: 'AddControllerAfterActionPlugin modelName argument'
+-
+  name: AddControllerAfterActionPlugin.targetFilename
+  mode: 2
+  description: 'AddControllerAfterActionPlugin targetFilename argument'
+-
+  name: AddControllerAfterActionPlugin.targetPath
+  mode: 2
+  description: 'AddControllerAfterActionPlugin targetPath argument'
+-
+  name: AddControllerAfterActionPlugin.repository
+  mode: 2
+  description: 'AddControllerAfterActionPlugin repository argument'
 -
   name: AddGlueResourceRoute.module
   mode: 2
@@ -2494,9 +2646,17 @@
   mode: 2
   description: 'AddGlueResourceRelationshipPlugin resourceType argument'
 -
-  name: AddGlueResourceRelationshipPlugin.field
+  name: AddGlueResourceRelationshipPlugin.relationshipParameter
   mode: 2
-  description: 'AddGlueResourceRelationshipPlugin field argument'
+  description: 'AddGlueResourceRelationshipPlugin relationshipParameter argument'
+-
+  name: AddGlueResourceRelationshipPlugin.pluginClassName
+  mode: 2
+  description: 'AddGlueResourceRelationshipPlugin pluginClassName argument'
+-
+  name: AddGlueResourceRelationshipPlugin.expanderClassName
+  mode: 2
+  description: 'AddGlueResourceRelationshipPlugin expanderClassName argument'
 -
   name: AddGlueResourceRelationshipPlugin.targetFilename
   mode: 2
@@ -2509,6 +2669,90 @@
   name: AddGlueResourceRelationshipPlugin.repository
   mode: 2
   description: 'AddGlueResourceRelationshipPlugin repository argument'
+-
+  name: AddFormatRequestPlugin.module
+  mode: 2
+  description: 'AddFormatRequestPlugin module argument'
+-
+  name: AddFormatRequestPlugin.organization
+  mode: 2
+  description: 'AddFormatRequestPlugin organization argument'
+-
+  name: AddFormatRequestPlugin.template
+  mode: 2
+  description: 'AddFormatRequestPlugin template argument'
+-
+  name: AddFormatRequestPlugin.modelName
+  mode: 2
+  description: 'AddFormatRequestPlugin modelName argument'
+-
+  name: AddFormatRequestPlugin.targetFilename
+  mode: 2
+  description: 'AddFormatRequestPlugin targetFilename argument'
+-
+  name: AddFormatRequestPlugin.targetPath
+  mode: 2
+  description: 'AddFormatRequestPlugin targetPath argument'
+-
+  name: AddFormatRequestPlugin.repository
+  mode: 2
+  description: 'AddFormatRequestPlugin repository argument'
+-
+  name: AddFormatResponseHeadersPlugin.module
+  mode: 2
+  description: 'AddFormatResponseHeadersPlugin module argument'
+-
+  name: AddFormatResponseHeadersPlugin.organization
+  mode: 2
+  description: 'AddFormatResponseHeadersPlugin organization argument'
+-
+  name: AddFormatResponseHeadersPlugin.template
+  mode: 2
+  description: 'AddFormatResponseHeadersPlugin template argument'
+-
+  name: AddFormatResponseHeadersPlugin.modelName
+  mode: 2
+  description: 'AddFormatResponseHeadersPlugin modelName argument'
+-
+  name: AddFormatResponseHeadersPlugin.targetFilename
+  mode: 2
+  description: 'AddFormatResponseHeadersPlugin targetFilename argument'
+-
+  name: AddFormatResponseHeadersPlugin.targetPath
+  mode: 2
+  description: 'AddFormatResponseHeadersPlugin targetPath argument'
+-
+  name: AddFormatResponseHeadersPlugin.repository
+  mode: 2
+  description: 'AddFormatResponseHeadersPlugin repository argument'
+-
+  name: AddRestRequestValidatorPlugin.module
+  mode: 2
+  description: 'AddRestRequestValidatorPlugin module argument'
+-
+  name: AddRestRequestValidatorPlugin.organization
+  mode: 2
+  description: 'AddRestRequestValidatorPlugin organization argument'
+-
+  name: AddRestRequestValidatorPlugin.template
+  mode: 2
+  description: 'AddRestRequestValidatorPlugin template argument'
+-
+  name: AddRestRequestValidatorPlugin.modelName
+  mode: 2
+  description: 'AddRestRequestValidatorPlugin modelName argument'
+-
+  name: AddRestRequestValidatorPlugin.targetFilename
+  mode: 2
+  description: 'AddRestRequestValidatorPlugin targetFilename argument'
+-
+  name: AddRestRequestValidatorPlugin.targetPath
+  mode: 2
+  description: 'AddRestRequestValidatorPlugin targetPath argument'
+-
+  name: AddRestRequestValidatorPlugin.repository
+  mode: 2
+  description: 'AddRestRequestValidatorPlugin repository argument'
 -
   name: AddGlueConfig.module
   mode: 2
@@ -2921,6 +3165,34 @@
   name: AddGlueResourceRelationship.repository
   mode: 2
   description: 'AddGlueResourceRelationship repository argument'
+-
+  name: AddValidation.module
+  mode: 2
+  description: 'AddValidation module argument'
+-
+  name: AddValidation.organization
+  mode: 2
+  description: 'AddValidation organization argument'
+-
+  name: AddValidation.template
+  mode: 2
+  description: 'AddValidation template argument'
+-
+  name: AddValidation.resourceType
+  mode: 2
+  description: 'AddValidation resourceType argument'
+-
+  name: AddValidation.targetFilename
+  mode: 2
+  description: 'AddValidation targetFilename argument'
+-
+  name: AddValidation.targetPath
+  mode: 2
+  description: 'AddValidation targetPath argument'
+-
+  name: AddValidation.repository
+  mode: 2
+  description: 'AddValidation repository argument'
 -
   name: AddGlueResource.module
   mode: 2
