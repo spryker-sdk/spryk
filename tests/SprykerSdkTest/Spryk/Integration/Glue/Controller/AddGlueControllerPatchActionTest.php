@@ -40,7 +40,7 @@ class AddGlueControllerPatchActionTest extends Unit
             '--modelSuffix' => 'Updater',
             '--subDirectory' => 'FooBar',
             '--className' => 'FooBarUpdater',
-            '--method' => 'patchAction',
+            '--controllerMethod' => 'patchAction',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
@@ -61,7 +61,7 @@ class AddGlueControllerPatchActionTest extends Unit
             '--modelSuffix' => 'Updater',
             '--subDirectory' => 'FooBar',
             '--className' => 'FooBarUpdater',
-            '--method' => 'patchAction',
+            '--controllerMethod' => 'patchAction',
             '--mode' => 'project',
         ]);
 

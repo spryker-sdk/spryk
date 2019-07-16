@@ -15,8 +15,8 @@ arguments:
       - ClassNameShortCallback
       - EnsureControllerSuffixCallback
 
-  method:
-    default: "post"
+  controllerMethod:
+    default: "postAction"
     callback: EnsureActionSuffixCallback
 
   resourceType:
@@ -38,8 +38,6 @@ arguments:
 
 preSpryks:
   - AddGlueController
-
-postSpryks:
   - AddGlueProcessorModelMethod:
       arguments:
         className:
@@ -50,3 +48,5 @@ postSpryks:
           value: "\\Spryker\\Glue\\GlueApplication\\Rest\\JsonApi\\RestResponseInterface"
         method:
           value: "create{{ modelName }}"
+        subDirectory:
+          value: "{{ modelName }}"

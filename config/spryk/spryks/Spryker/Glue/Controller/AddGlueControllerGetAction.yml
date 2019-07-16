@@ -15,7 +15,8 @@ arguments:
       - ClassNameShortCallback
       - EnsureControllerSuffixCallback
 
-  method:
+  controllerMethod:
+    default: "getAction"
     callback: EnsureActionSuffixCallback
 
   resourceType:
@@ -29,10 +30,6 @@ arguments:
     inherit: true
     default: "Reader"
 
-  subDirectory:
-    inherit: true
-    isOptional: true
-
   template:
     value: Glue/Controller/MethodGetGlueController.php.twig
 
@@ -41,8 +38,6 @@ arguments:
 
 preSpryks:
   - AddGlueController
-
-postSpryks:
   - AddGlueProcessorModelMethod:
       arguments:
         className:
@@ -53,3 +48,5 @@ postSpryks:
           value: "\\Spryker\\Glue\\GlueApplication\\Rest\\JsonApi\\RestResponseInterface"
         method:
           value: "get{{ modelName }}"
+        subDirectory:
+          value: "{{ modelName }}"

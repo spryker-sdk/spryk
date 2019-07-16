@@ -40,7 +40,7 @@ class AddGlueControllerPostActionTest extends Unit
             '--modelSuffix' => 'Writer',
             '--subDirectory' => 'FooBar',
             '--className' => 'FooBarWriter',
-            '--method' => 'postAction',
+            '--controllerMethod' => 'postAction',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
@@ -61,7 +61,7 @@ class AddGlueControllerPostActionTest extends Unit
             '--modelSuffix' => 'Writer',
             '--subDirectory' => 'FooBar',
             '--className' => 'FooBarWriter',
-            '--method' => 'postAction',
+            '--controllerMethod' => 'postAction',
             '--mode' => 'project',
         ]);
 

@@ -40,7 +40,7 @@ class AddGlueControllerGetActionTest extends Unit
             '--modelSuffix' => 'Reader',
             '--subDirectory' => 'FooBar',
             '--className' => 'FooBarReader',
-            '--method' => 'getAction',
+            '--controllerMethod' => 'getAction',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
@@ -61,7 +61,7 @@ class AddGlueControllerGetActionTest extends Unit
             '--modelSuffix' => 'Reader',
             '--subDirectory' => 'FooBar',
             '--className' => 'FooBarReader',
-            '--method' => 'getAction',
+            '--controllerMethod' => 'getAction',
             '--mode' => 'project',
         ]);
 

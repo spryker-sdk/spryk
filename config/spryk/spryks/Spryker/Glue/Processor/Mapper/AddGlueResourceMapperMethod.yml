@@ -4,8 +4,6 @@ mode: both
 
 application: Glue
 
-priority: 1
-
 arguments:
   module:
     inherit: true
@@ -29,11 +27,11 @@ arguments:
     value: "map{{ fromTransfer }}To{{ toTransfer }}"
     inherit: true
 
-  target:
-    value: "{{ organization }}\\Glue\\{{ module }}\\Processor\\Mapper\\{{ resourceType | singularize | dashToCamelCase | ensureMapperSuffix}}"
-
   template:
     value: Glue/Processor/Mapper/GlueResourceMapperMethod.php.twig
+
+  target:
+    value: "{{ organization }}\\Glue\\{{ module }}\\Processor\\Mapper\\{{ resourceType | singularize | dashToCamelCase | ensureMapperSuffix}}"
 
 preSpryks:
   - AddModule
@@ -43,21 +41,12 @@ preSpryks:
           value: "{{ resourceType | dashToCamelCase }}"
           callback:
             - EnsureRestAttributesTransferAffix
-  - AddGlueProcessorModel:
+  - AddGlueResourceMapper:
       arguments:
         className:
           value: "{{ resourceType | singularize | dashToCamelCase }}Mapper"
         subDirectory:
           value: "Mapper"
 
-postSpryks:
-  - AddGlueProcessorModelInterfaceMethod:
-      arguments:
-        method:
-          value: "map{{ fromTransfer }}To{{ toTransfer }}"
-        subDirectory:
-          value: "Mapper"
-        input:
-          value: "\\Generated\\Shared\\Transfer\\{{ fromTransfer }} ${{ fromTransfer | lcfirst }}, \\Generated\\Shared\\Transfer\\{{ toTransfer }} ${{ toTransfer | lcfirst }}"
-        output:
-          value: "\\Generated\\Shared\\Transfer\\{{ toTransfer }}"
+postSpryk:
+  - AddGlueResourceMapperInterfaceMethod

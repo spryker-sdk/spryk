@@ -33,7 +33,4 @@ arguments:
     value: '{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory }}{% endif %}\{{ className }}Interface'
 
 preSpryks:
-  - AddGlueProcessorModel
-
-postSpryks:
-  - AddGlueProcessorModelMethod
+  - AddGlueProcessorModelInterface

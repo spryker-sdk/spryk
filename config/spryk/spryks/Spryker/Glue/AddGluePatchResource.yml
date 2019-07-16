@@ -50,7 +50,7 @@ postSpryks:
           value: "patch"
   - AddGlueControllerPatchAction:
       arguments:
-        method:
+        controllerMethod:
           value: "{{ resourceRouteMethod }}"
           callback: EnsureActionSuffixCallback
         controller:

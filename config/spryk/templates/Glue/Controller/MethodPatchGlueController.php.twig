@@ -22,7 +22,7 @@
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
      */
-    public function {{ method }}(\Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest): \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
+    public function {{ controllerMethod }}(\Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest): \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
     {
         return $this->getFactory()
             ->create{{ modelName }}{{ modelSuffix }}()

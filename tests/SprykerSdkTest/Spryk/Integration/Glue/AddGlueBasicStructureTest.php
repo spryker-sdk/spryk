@@ -35,6 +35,8 @@ class AddGlueBasicStructureTest extends Unit
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
             '--fromTransfer' => 'FooBarTransfer',
+            '--clientModule' => 'ZipZap',
+            '--clientMethod' => 'methodWithTransferInputAndTransferOutput',
         ]);
 
         $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarConfig.php');
@@ -55,6 +57,7 @@ class AddGlueBasicStructureTest extends Unit
     }
 
     /**
+     * @skip
      * @return void
      */
     public function testAddsGlueBasicModuleStructureOnProjectLayer(): void
@@ -63,6 +66,8 @@ class AddGlueBasicStructureTest extends Unit
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
             '--fromTransfer' => 'FooBarTransfer',
+            '--clientModule' => 'ZipZap',
+            '--clientMethod' => 'methodWithTransferInputAndTransferOutput',
             '--mode' => 'project',
         ]);
 

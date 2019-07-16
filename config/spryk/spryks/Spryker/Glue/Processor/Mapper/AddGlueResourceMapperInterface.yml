@@ -1,0 +1,34 @@
+spryk: template
+description: "Adds a new Resource Mapper model interface to the Glue application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  subDirectory:
+    default: Mapper
+
+  className:
+    inherit: true
+
+  interfaceName:
+    inherit: true
+    default: "{{ className }}Interface"
+
+  template:
+    value: Glue/Processor/GlueProcessorModelInterface.php.twig
+
+  targetFilename:
+    callbackOnly: true
+    callback: GlueProcessorModelInterfaceTargetFilename
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
+
+preSpryks:
+  - AddModule

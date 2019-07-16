@@ -20,6 +20,20 @@ arguments:
   fromTransfer:
     inherit: true
 
+  clientModule:
+    inherit: true
+
+  clientMethod:
+    inherit: true
+
+  clientMethodInput:
+    inherit: true
+    optional: true
+    isMultiple: true
+
+  clientMethodOutput:
+    inherit: true
+
   targetPath:
     value: "{{ module }}/"
 
@@ -31,9 +45,41 @@ preSpryks:
   - AddModule
 
 postSpryks:
-  - AddGlueResourceMapperMethod
   - AddGlueResourceRoutePlugin
   - AddGlueController:
       arguments:
         controller:
           value: "{{ resourceType | dashToCamelCase | singularize }}ResourceController"
+  - AddGlueResourceMapper:
+      arguments:
+        className:
+          value: "{{ resourceType | dashToCamelCase | singularize }}Mapper"
+        subDirectory:
+          value: "Mapper"
+  - AddGlueResourceMapperMethod
+  - AddGlueResourceMapperInterfaceMethod
+  - AddGlueResourceRestResponseBuilderModel:
+      arguments:
+        className:
+          value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilder"
+        interfaceName:
+          value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilderInterface"
+        subDirectory:
+          value: "RestResponseBuilder"
+  - AddGlueDependencyClientBridge:
+      arguments:
+        dependentModule:
+          value: "{{ clientModule }}"
+  - AddGlueDependencyClientBridgeMethod:
+      arguments:
+        dependentModule:
+          value: "{{ clientModule }}"
+        methods:
+          value: [ "{{ clientMethod }}" ]
+  - AddGlueDependencyClientBridgeInterfaceMethod:
+      arguments:
+        dependentModule:
+          value: "{{ clientModule }}"
+        methods:
+          value: [ "{{ clientMethod }}" ]
+

@@ -17,7 +17,8 @@ use SprykerSdkTest\Module\ClassName;
  * @group Integration
  * @group Glue
  * @group Processor
- * @group AddGlueProcessorModelInterfaceTest
+ * @group Mapper
+ * @group AddGlueResourceMapperMethodTest
  * Add your own group annotations below this line
  */
 class AddGlueResourceMapperMethodTest extends Unit

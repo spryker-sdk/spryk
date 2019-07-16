@@ -1,0 +1,85 @@
+spryk: template
+description: "Adds a new Processor model to the Glue application."
+mode: both
+
+application: Glue
+
+priority: 1
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  subDirectory:
+    inherit: true
+    default: RestResponseBuilder
+
+  resourceType:
+    inherit: true
+
+  className:
+    inherit: true
+    default: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilder"
+
+  interfaceName:
+    inherit: true
+    default: "{{ className }}Interface"
+
+  constructorArguments:
+    type: GlueProcessorDependency
+    typeOptions:
+      - module
+      - spryk
+    isMultiple: true
+    isOptional: true
+    value:
+      - "\\Spryker\\Glue\\GlueApplication\\Rest\\JsonApi\\RestResourceBuilderInterface $restResourceBuilder"
+      - "\\{{ module }}\\src\\{{ organization }}\\Glue\\{{ module }}\\Processor\\Mapper\\{{ resourceType | dashToCamelCase | singularize }}MapperInterface ${{ resourceType | dashToCamelCase | singularize | lcfirst }}Mapper"
+
+  template:
+    value: Glue/Processor/GlueProcessorModel.php.twig
+
+  targetFilename:
+    callbackOnly: true
+    callback: GlueProcessorModelTargetFilename
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
+
+preSpryks:
+  - AddModule
+
+postSpryks:
+  - AddGlueResourceRestResponseBuilderModelInterface:
+      arguments:
+        className:
+          default: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilder"
+        interfaceName:
+          default: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilderInterface"
+
+  - AddGlueResourceMapperInterface:
+      arguments:
+        className:
+          value: "{{ resourceType | dashToCamelCase | singularize }}Mapper"
+        interfaceName:
+          value: "{{ resourceType | dashToCamelCase | singularize }}MapperInterface"
+        subDirectory:
+          value: "Mapper"
+
+  - AddGlueResourceMapper:
+      arguments:
+        className:
+          value: "{{ resourceType | dashToCamelCase | singularize }}Mapper"
+        interfaceName:
+          value: "{{ resourceType | dashToCamelCase | singularize }}MapperInterface"
+        subDirectory:
+          value: "Mapper"
+
+  - AddGlueResourceRestResponseBuilderFactoryMethod:
+      arguments:
+        dependencyMethods:
+          value: [ "getResourceBuilder", "create{{ resourceType | dashToCamelCase | singularize }}Mapper" ]

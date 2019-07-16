@@ -50,6 +50,9 @@ interface ClassName
     public const GLUE_BUSINESS_FACTORY = 'Spryker\Glue\FooBar\FooBarFactory';
     public const GLUE_DEPENDENCY_PROVIDER = 'Spryker\Glue\FooBar\FooBarDependencyProvider';
     public const GLUE_RESOURCE_MAPPER = 'Spryker\Glue\FooBar\Processor\Mapper\FooBarMapper';
+    public const GLUE_RESOURCE_MAPPER_INTERFACE = 'Spryker\Glue\FooBar\Processor\Mapper\FooBarMapperInterface';
+    public const GLUE_CLIENT_BRIDGE = 'Spryker\Glue\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
+    public const GLUE_CLIENT_BRIDGE_INTERFACE = 'Spryker\Glue\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
 
     public const ZED_FACADE_BRIDGE = 'Spryker\Zed\FooBar\Dependency\Facade\FooBarToZipZapFacadeBridge';
     public const ZED_FACADE_BRIDGE_INTERFACE = 'Spryker\Zed\FooBar\Dependency\Facade\FooBarToZipZapFacadeInterface';
@@ -109,6 +112,9 @@ interface ClassName
     public const PROJECT_GLUE_BUSINESS_FACTORY = 'Pyz\Glue\FooBar\FooBarFactory';
     public const PROJECT_GLUE_DEPENDENCY_PROVIDER = 'Pyz\Glue\FooBar\FooBarDependencyProvider';
     public const PROJECT_GLUE_RESOURCE_MAPPER = 'Pyz\Glue\FooBar\Processor\Mapper\FooBarMapper';
+    public const PROJECT_GLUE_RESOURCE_MAPPER_INTERFACE = 'Pyz\Glue\FooBar\Processor\Mapper\FooBarMapperInterface';
+    public const PROJECT_GLUE_CLIENT_BRIDGE = 'Pyz\Glue\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
+    public const PROJECT_GLUE_CLIENT_BRIDGE_INTERFACE = 'Pyz\Glue\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
 
     public const PROJECT_ZED_FACADE_BRIDGE = 'Pyz\Zed\FooBar\Dependency\Facade\FooBarToZipZapFacadeBridge';
     public const PROJECT_ZED_FACADE_BRIDGE_INTERFACE = 'Pyz\Zed\FooBar\Dependency\Facade\FooBarToZipZapFacadeInterface';

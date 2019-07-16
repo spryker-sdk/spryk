@@ -15,7 +15,8 @@ arguments:
       - ClassNameShortCallback
       - EnsureControllerSuffixCallback
 
-  method:
+  controllerMethod:
+    default: "deleteAction"
     callback: EnsureActionSuffixCallback
 
   resourceType:
@@ -37,8 +38,6 @@ arguments:
 
 preSpryks:
   - AddGlueController
-
-postSpryks:
   - AddGlueProcessorModelMethod:
       arguments:
         className:
@@ -49,4 +48,5 @@ postSpryks:
           value: "\\Spryker\\Glue\\GlueApplication\\Rest\\JsonApi\\RestResponseInterface"
         method:
           value: "delete{{ modelName }}"
-
+        subDirectory:
+          value: "{{ modelName }}"

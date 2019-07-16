@@ -50,7 +50,7 @@ postSpryks:
           value: "get"
   - AddGlueControllerGetAction:
       arguments:
-        method:
+        controllerMethod:
           value: "{{ resourceRouteMethod }}"
           callback: EnsureActionSuffixCallback
         controller:

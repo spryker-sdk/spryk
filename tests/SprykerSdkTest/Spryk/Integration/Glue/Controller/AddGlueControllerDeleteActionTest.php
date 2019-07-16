@@ -40,7 +40,7 @@ class AddGlueControllerDeleteActionTest extends Unit
             '--modelSuffix' => 'Deleter',
             '--subDirectory' => 'FooBar',
             '--className' => 'FooBarDeleter',
-            '--method' => 'deleteAction',
+            '--controllerMethod' => 'deleteAction',
         ]);
 
         static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
@@ -61,7 +61,7 @@ class AddGlueControllerDeleteActionTest extends Unit
             '--modelSuffix' => 'Deleter',
             '--subDirectory' => 'FooBar',
             '--className' => 'FooBarDeleter',
-            '--method' => 'deleteAction',
+            '--controllerMethod' => 'deleteAction',
             '--mode' => 'project',
         ]);
 

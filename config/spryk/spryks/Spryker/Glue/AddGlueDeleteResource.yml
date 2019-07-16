@@ -29,8 +29,6 @@ arguments:
 
 preSpryks:
   - AddModule
-
-postSpryks:
   - AddGlueResource:
       arguments:
         className:
@@ -49,7 +47,7 @@ postSpryks:
           value: "delete"
   - AddGlueControllerDeleteAction:
       arguments:
-        method:
+        controllerMethod:
           value: "{{ resourceRouteMethod }}"
           callback: EnsureActionSuffixCallback
         controller:
