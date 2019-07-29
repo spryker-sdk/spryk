@@ -17,7 +17,7 @@ arguments:
     inherit: true
     default: Spryker
 
-  method:
+  providerMethod:
     value: "add{{ dependentModule }}Client"
 
   template:

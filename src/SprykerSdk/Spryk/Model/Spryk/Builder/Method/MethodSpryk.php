@@ -8,10 +8,13 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Method;
 
 use Roave\BetterReflection\BetterReflection;
+use SprykerSdk\Spryk\Exception\ArgumentNotFoundException;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
+use SprykerSdk\Spryk\Exception\NotAFullyQualifiedClassNameException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
+use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Argument;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
@@ -21,7 +24,20 @@ class MethodSpryk implements SprykBuilderInterface
     public const ARGUMENT_TARGET_PATH = 'targetPath';
     public const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
     public const ARGUMENT_TEMPLATE = 'template';
-    public const ARGUMENT_METHOD_NAME = 'method';
+    public const ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN = 'fqcnPattern';
+
+    public const ARGUMENT_METHOD_NAME_CANDIDATES = [
+        'method',
+        'controllerMethod',
+        'factoryMethod',
+        'facadeMethod',
+        'modelMethod',
+        'providerMethod',
+        'clientMethod',
+        'configMethod',
+        'entityManagerMethod',
+        'repositoryMethod',
+    ];
 
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
@@ -66,6 +82,16 @@ class MethodSpryk implements SprykBuilderInterface
 
         $templateName = $this->getTemplateName($sprykDefinition);
 
+        $argumentCollection = $sprykDefinition->getArgumentCollection();
+        $methodName = $this->getMethodName($sprykDefinition);
+
+        $methodArgument = new Argument();
+        $methodArgument
+            ->setName('method')
+            ->setValue($methodName);
+
+        $argumentCollection->addArgument($methodArgument);
+
         $methodContent = $this->renderer->render(
             $templateName,
             $sprykDefinition->getArgumentCollection()->getArguments()
@@ -82,7 +108,7 @@ class MethodSpryk implements SprykBuilderInterface
 
         $style->report(sprintf(
             'Added method "<fg=green>%s</>" to "<fg=green>%s</>"',
-            $sprykDefinition->getArgumentCollection()->getArgument('method'),
+            $this->getMethodName($sprykDefinition),
             $sprykDefinition->getArgumentCollection()->getArgument('target')
         ));
     }
@@ -134,16 +160,25 @@ class MethodSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
+     * @throws \SprykerSdk\Spryk\Exception\ArgumentNotFoundException
+     *
      * @return string
      */
     protected function getMethodName(SprykDefinitionInterface $sprykDefinition): string
     {
-        $methodName = $sprykDefinition
-            ->getArgumentCollection()
-            ->getArgument(static::ARGUMENT_METHOD_NAME)
-            ->getValue();
+        $argumentCollection = $sprykDefinition->getArgumentCollection();
 
-        return $methodName;
+        foreach (static::ARGUMENT_METHOD_NAME_CANDIDATES as $methodNameCandidate) {
+            if ($argumentCollection->hasArgument($methodNameCandidate)) {
+                return $argumentCollection->getArgument($methodNameCandidate);
+            }
+        }
+
+        throw new ArgumentNotFoundException(sprintf(
+            'Could not find method argument value. You need to add on of "%s" as method argument to your spryk "%s".',
+            implode(', ', static::ARGUMENT_METHOD_NAME_CANDIDATES),
+            $sprykDefinition->getSprykName()
+        ));
     }
 
     /**
@@ -203,9 +238,54 @@ class MethodSpryk implements SprykBuilderInterface
      */
     protected function getReflection(SprykDefinitionInterface $sprykDefinition)
     {
+        $targetClassName = $this->getTargetClassName($sprykDefinition);
+        $this->assertFullyQualifiedClassName($targetClassName);
+
+        $targetClassName = str_replace(DIRECTORY_SEPARATOR, '\\', $targetClassName);
+
         $betterReflection = new BetterReflection();
 
-        return $betterReflection->classReflector()->reflect($this->getTargetArgument($sprykDefinition));
+        return $betterReflection->classReflector()->reflect($targetClassName);
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return string
+     */
+    protected function getTargetClassName(SprykDefinitionInterface $sprykDefinition): string
+    {
+        $className = $this->getTargetArgument($sprykDefinition);
+        if (strpos($className, '\\') === false && $sprykDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN)) {
+            $className = $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN)->getValue();
+        }
+        $className = str_replace(DIRECTORY_SEPARATOR, '\\', $className);
+
+        $this->assertFullyQualifiedClassName($className);
+
+        return $className;
+    }
+
+    /**
+     * @param string $className
+     *
+     * @throws \SprykerSdk\Spryk\Exception\NotAFullyQualifiedClassNameException
+     *
+     * @return void
+     */
+    protected function assertFullyQualifiedClassName(string $className)
+    {
+        if (strpos($className, '\\') === false) {
+            throw new NotAFullyQualifiedClassNameException(sprintf(
+                'Expected a fully qualified class name for reflection but got "%s". ' .
+                'Make sure you pass a fully qualified class name in the "%s" argument or use the "%s" argument with a value like "%s" in your spryk ' .
+                'to be able to compute the fully qualified class name from the given arguments.',
+                $className,
+                static::ARGUMENT_TARGET,
+                static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN,
+                '{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}'
+            ));
+        }
     }
 
     /**

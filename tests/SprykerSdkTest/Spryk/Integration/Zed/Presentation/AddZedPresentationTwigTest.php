@@ -35,7 +35,7 @@ class AddZedPresentationTwigTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--controllerMethod' => 'index',
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
@@ -49,7 +49,7 @@ class AddZedPresentationTwigTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--controllerMethod' => 'index',
             '--mode' => 'project',
         ]);
 
@@ -67,7 +67,7 @@ class AddZedPresentationTwigTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => ClassName::ZED_CONTROLLER,
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
@@ -81,7 +81,7 @@ class AddZedPresentationTwigTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => ClassName::ZED_CONTROLLER,
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
             '--mode' => 'project',
         ]);
 

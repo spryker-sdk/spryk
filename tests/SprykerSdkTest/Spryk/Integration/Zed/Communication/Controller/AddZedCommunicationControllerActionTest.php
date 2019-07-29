@@ -36,7 +36,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--controllerMethod' => 'index',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::ZED_CONTROLLER, 'indexAction');
@@ -50,7 +50,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'index',
+            '--controllerMethod' => 'index',
             '--mode' => 'project',
         ]);
 
@@ -65,7 +65,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'IndexController',
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::ZED_CONTROLLER, 'indexAction');
@@ -79,7 +79,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'IndexController',
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
             '--mode' => 'project',
         ]);
 
@@ -96,7 +96,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => ClassName::ZED_CONTROLLER,
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::ZED_CONTROLLER, 'indexAction');
@@ -112,7 +112,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => ClassName::PROJECT_ZED_CONTROLLER,
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
             '--mode' => 'project',
         ]);
 
@@ -127,7 +127,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
@@ -141,7 +141,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
             '--mode' => 'project',
         ]);
 
@@ -156,7 +156,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
@@ -170,7 +170,7 @@ class AddZedCommunicationControllerActionTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--controller' => 'Index',
-            '--method' => 'indexAction',
+            '--controllerMethod' => 'indexAction',
             '--mode' => 'project',
         ]);
 

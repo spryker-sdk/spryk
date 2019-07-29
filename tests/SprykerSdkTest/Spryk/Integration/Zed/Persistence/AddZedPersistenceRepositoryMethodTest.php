@@ -34,7 +34,7 @@ class AddZedPersistenceRepositoryMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'doSomething',
+            '--repositoryMethod' => 'doSomething',
             '--input' => 'string $fooBar',
             '--output' => 'array',
         ]);
@@ -49,7 +49,7 @@ class AddZedPersistenceRepositoryMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'doSomething',
+            '--repositoryMethod' => 'doSomething',
             '--input' => 'string $fooBar',
             '--output' => 'array',
             '--mode' => 'project',

@@ -1,0 +1,26 @@
+spryk: copyModule
+description: "Copies a *module*."
+priority: 1
+mode: core
+
+arguments:
+
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  toModule:
+    inherit: true
+
+  toOrganization:
+    inherit: true
+    default: Spryker
+
+  sourcePath:
+    value: "vendor/spryker/{{ organization | dasherize }}/Bundles/{{ module }}/"
+
+  targetFilePath:
+    value: "vendor/spryker/{{ toOrganization | dasherize }}/Bundles/{{ toModule }}/"

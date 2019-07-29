@@ -32,7 +32,7 @@ class AddYvesConfigMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'getConfigValue',
+            '--configMethod' => 'getConfigValue',
             '--input' => 'string $foo',
             '--output' => 'string',
         ]);
@@ -47,7 +47,7 @@ class AddYvesConfigMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'getConfigValue',
+            '--configMethod' => 'getConfigValue',
             '--input' => 'string $foo',
             '--output' => 'string',
             '--mode' => 'project',

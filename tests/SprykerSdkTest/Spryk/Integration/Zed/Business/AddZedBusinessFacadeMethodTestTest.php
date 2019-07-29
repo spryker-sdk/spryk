@@ -33,7 +33,7 @@ class AddZedBusinessFacadeMethodTestTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'addSomething',
+            '--facadeMethod' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
         ]);
@@ -48,7 +48,7 @@ class AddZedBusinessFacadeMethodTestTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--method' => 'addSomething',
+            '--facadeMethod' => 'addSomething',
             '--input' => 'string $something',
             '--output' => 'bool',
             '--mode' => 'project',

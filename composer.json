@@ -7,13 +7,14 @@
     "php": ">=7.1",
     "roave/better-reflection": "^2.0 || ^3.0",
     "spryker/config": "^3.0.0",
-    "spryker/kernel": "^3.17.0",
+    "spryker/kernel": "^3.30.0",
     "spryker/symfony": "^3.0.0",
     "spryker/twig": "^3.0.0",
     "spryker/zend": "^2.0.0",
     "symfony/console": "^3.4.0 || ^4.0.0",
+    "symfony/filesystem": "^3.4.0 || ^4.0.0",
     "symfony/finder": "^3.4.0 || ^4.0.0",
-    "symfony/yaml": "^3.4.9",
+    "symfony/yaml": "^3.4.9 || ^4.0.0",
     "twig/twig": "^1.34 || ^2.0.0",
     "zendframework/zend-filter": "^2.8"
   },
@@ -46,9 +47,9 @@
       "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
       "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
       "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
-      "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
-      "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
-      "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
+      "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Zed/ZipZap/",
+      "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Client/ZipZap/",
+      "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Service/ZipZap/",
       "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
       "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
       "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
@@ -67,12 +68,12 @@
       "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
     ],
     "cs-check": "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignore=/Fixtures,tests/_data/",
-    "cs-fix": "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignore=/Fixtures,tests/_data/",
+    "cs-fix": "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignorae=/Fixtures,tests/_data/",
     "phpstan": "phpstan analyse -l 7 -c phpstan.neon src/"
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "0.1.x-dev"
+      "dev-master": "1.0.x-dev"
     }
   },
   "config": {
