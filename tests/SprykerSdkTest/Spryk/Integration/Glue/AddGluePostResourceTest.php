@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Glue\Plugin\GlueApplication;
+namespace SprykerSdkTest\Spryk\Integration\Glue;
 
 use Codeception\Test\Unit;
 
@@ -15,12 +15,10 @@ use Codeception\Test\Unit;
  * @group Spryk
  * @group Integration
  * @group Glue
- * @group Plugin
- * @group GlueApplication
- * @group AddGlueResourceRoutePluginTest
+ * @group AddGluePostResourceTest
  * Add your own group annotations below this line
  */
-class AddGlueResourceRoutePluginTest extends Unit
+class AddGluePostResourceTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -30,32 +28,32 @@ class AddGlueResourceRoutePluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResourceRoutePlugin(): void
+    public function testAddGluePatchResourceWillAddResourceRoutePluginAndResource(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
             '--modelName' => 'FooBar',
-            '--modelSuffix' => 'Reader',
             '--mode' => 'core',
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarsResource.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsGlueResourceRoutePluginOnProjectLayer(): void
+    public function testAddGlueGetResourceWillAddResourceRoutePluginAndResourceOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
             '--modelName' => 'FooBar',
-            '--modelSuffix' => 'Reader',
             '--mode' => 'project',
         ]);
 
         $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'FooBarsResource.php');
     }
 }

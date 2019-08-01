@@ -38,7 +38,7 @@ class AddGlueResourceRestResponseBuilderModelInterfaceTest extends Unit
             '--subDirectory' => 'RestResponseBuilder',
         ]);
 
-        static::assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
     }
 
     /**
@@ -53,6 +53,6 @@ class AddGlueResourceRestResponseBuilderModelInterfaceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        static::assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
     }
 }

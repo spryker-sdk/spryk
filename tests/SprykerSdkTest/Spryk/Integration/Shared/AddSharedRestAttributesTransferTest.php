@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Glue;
+namespace SprykerSdkTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
 
@@ -14,11 +14,10 @@ use Codeception\Test\Unit;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group Glue
- * @group AddGlueResourceInterfaceTest
+ * @group AddSharedRestAttributesTransferTest
  * Add your own group annotations below this line
  */
-class AddGlueResourceInterfaceTest extends Unit
+class AddSharedRestAttributesTransferTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -28,28 +27,30 @@ class AddGlueResourceInterfaceTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueResourceInterface(): void
+    public function testAddsSharedTransferSchemaFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Bar',
-            '--mode' => 'core',
+            '--name' => 'RestFooBarrAttributes',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/BarResourceInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml');
     }
 
     /**
      * @return void
      */
-    public function testAddsGlueResourceInterfaceOnProjectLayer(): void
+    public function testAddsSharedTransferSchemaFileOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--className' => 'Bar',
+            '--name' => 'RestFooBarrAttributes',
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'BarResourceInterface.php');
+        $this->assertFileExists(
+            $this->tester->getProjectModuleDirectory('FooBar', 'Shared')
+            . 'Transfer/foo_bar.transfer.xml'
+        );
     }
 }
