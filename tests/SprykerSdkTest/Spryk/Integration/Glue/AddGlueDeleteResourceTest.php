@@ -33,12 +33,10 @@ class AddGlueDeleteResourceTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
-            '--modelName' => 'FooBar',
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarsResource.php');
+        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
     }
 
     /**
@@ -49,11 +47,9 @@ class AddGlueDeleteResourceTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
-            '--modelName' => 'FooBar',
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
-        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'FooBarsResource.php');
+        $this->tester->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/FooBarsResourceRoutePlugin.php');
     }
 }

@@ -36,7 +36,7 @@ class AddGlueResourceInterfaceTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/BarResourceInterface.php');
+        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/BarResourceInterface.php');
     }
 
     /**
@@ -50,6 +50,6 @@ class AddGlueResourceInterfaceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'BarResourceInterface.php');
+        $this->tester->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'BarResourceInterface.php');
     }
 }

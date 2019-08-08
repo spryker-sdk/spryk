@@ -27,7 +27,7 @@ class AddValidationTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Validation/foo-bars.validation.yaml');
+        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Validation/foo-bars.validation.yaml');
     }
 
     /**
@@ -41,6 +41,6 @@ class AddValidationTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Validation/foo-bars.validation.yaml');
+        $this->tester->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Validation/foo-bars.validation.yaml');
     }
 }

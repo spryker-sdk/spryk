@@ -35,4 +35,5 @@ postSpryks:
           value:  "CLIENT_{{ dependentModule | underscored | upper }}"
         visibility:
           value:  "public"
+  - AddGlueDependencyClientDependencyProviderProvideDependencyCall
 

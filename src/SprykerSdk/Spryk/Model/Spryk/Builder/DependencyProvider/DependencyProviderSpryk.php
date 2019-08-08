@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdk\Spryk\Model\Spryk\Builder\ResourceRoute;
+namespace SprykerSdk\Spryk\Model\Spryk\Builder\DependencyProvider;
 
 use Roave\BetterReflection\BetterReflection;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
@@ -15,13 +15,13 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInter
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
-class ResourceRouteSpryk implements SprykBuilderInterface
+class DependencyProviderSpryk implements SprykBuilderInterface
 {
     protected const ARGUMENT_TARGET = 'target';
     protected const ARGUMENT_TEMPLATE = 'template';
-    protected const TARGET_METHOD_NAME = 'configure';
-    protected const ARGUMENT_RESOURCE_ROUTE_METHOD = 'resourceRouteMethod';
-    protected const SPRYK_NAME = 'resourceRoute';
+    protected const ARGUMENT_METHOD_NAME = 'provideDependencies';
+    protected const ARGUMENT_PROVIDER_METHOD = 'providerMethod';
+    protected const SPRYK_NAME = 'dependencyProvider';
 
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
@@ -71,8 +71,8 @@ class ResourceRouteSpryk implements SprykBuilderInterface
             $sprykDefinition->getArgumentCollection()->getArguments()
         );
 
-        $search = 'return $resourceRouteCollection;';
-        $positionOfReturnStatement = strrpos($targetFileContent, $search);
+        $search = 'return $container;';
+        $positionOfReturnStatement = strpos($targetFileContent, $search);
 
         if ($positionOfReturnStatement !== false) {
             $targetFileContent = substr_replace($targetFileContent, $methodContent, $positionOfReturnStatement, strlen($search));
@@ -82,7 +82,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
 
         $style->report(
             sprintf(
-                'Added resource route declaration to "%s".',
+                'Added provided dependency "%s" to container.',
                 $this->getTargetArgument($sprykDefinition)
             )
         );
@@ -200,15 +200,11 @@ class ResourceRouteSpryk implements SprykBuilderInterface
     protected function isRouteDeclared(SprykDefinitionInterface $sprykDefinition): bool
     {
         $reflectionClass = $this->getReflection($sprykDefinition);
-        $reflectionMethod = $reflectionClass->getMethod(static::TARGET_METHOD_NAME);
+        $reflectionMethod = $reflectionClass->getMethod(static::ARGUMENT_METHOD_NAME);
         $methodBody = $reflectionMethod->getBodyCode();
-        $resourceRouteMethod = $this->getResourceRouteMethod($sprykDefinition);
+        $providerMethod = $this->getProviderMethod($sprykDefinition);
 
-        if (strpos($methodBody, '->add' . ucfirst($resourceRouteMethod) . '(') !== false) {
-            return true;
-        }
-
-        return false;
+        return strpos($methodBody, '$container = ' . ucfirst($providerMethod) . '(') !== false;
     }
 
     /**
@@ -216,11 +212,11 @@ class ResourceRouteSpryk implements SprykBuilderInterface
      *
      * @return string
      */
-    protected function getResourceRouteMethod(SprykDefinitionInterface $sprykDefinition): string
+    protected function getProviderMethod(SprykDefinitionInterface $sprykDefinition): string
     {
         return $sprykDefinition
             ->getArgumentCollection()
-            ->getArgument(static::ARGUMENT_RESOURCE_ROUTE_METHOD)
+            ->getArgument(static::ARGUMENT_PROVIDER_METHOD)
             ->getValue();
     }
 }

@@ -9,7 +9,7 @@ namespace SprykerSdkTest\Spryk\Integration\Glue\Plugin\GlueApplication;
 
 use Codeception\Test\Unit;
 
-class AddControllerAfterActionPluginTest extends Unit
+class AddGlueRestRequestValidatorPluginTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -19,7 +19,7 @@ class AddControllerAfterActionPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsControllerAfterActionPlugin(): void
+    public function testAddsRestRequestValidatorPlugin(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -27,13 +27,13 @@ class AddControllerAfterActionPluginTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxControllerAfterActionPlugin.php');
+        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxRestRequestValidatorPlugin.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsControllerAfterActionPluginOnProjectLayer(): void
+    public function testAddsRestRequestValidatorPluginOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -41,6 +41,6 @@ class AddControllerAfterActionPluginTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxControllerAfterActionPlugin.php');
+        $this->tester->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxRestRequestValidatorPlugin.php');
     }
 }

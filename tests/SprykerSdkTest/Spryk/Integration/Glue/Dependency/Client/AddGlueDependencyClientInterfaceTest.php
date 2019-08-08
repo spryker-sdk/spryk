@@ -37,7 +37,7 @@ class AddGlueDependencyClientInterfaceTest extends Unit
             '--dependentModule' => 'ZipZap',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Dependency/Client/FooBarToZipZapClientInterface.php');
+        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Dependency/Client/FooBarToZipZapClientInterface.php');
     }
 
     /**
@@ -51,7 +51,7 @@ class AddGlueDependencyClientInterfaceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists(
+        $this->tester->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Glue')
             . 'Dependency/Client/FooBarToZipZapClientInterface.php'
         );

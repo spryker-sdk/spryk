@@ -26,14 +26,6 @@ arguments:
   clientMethod:
     inherit: true
 
-  clientMethodInput:
-    inherit: true
-    optional: true
-    isMultiple: true
-
-  clientMethodOutput:
-    inherit: true
-
   targetPath:
     value: "{{ module }}/"
 
@@ -49,7 +41,7 @@ postSpryks:
   - AddGlueController:
       arguments:
         controller:
-          value: "{{ resourceType | dashToCamelCase | singularize }}ResourceController"
+          value: "{{ resourceType | dashToCamelCase }}ResourceController"
   - AddGlueResourceMapper:
       arguments:
         className:

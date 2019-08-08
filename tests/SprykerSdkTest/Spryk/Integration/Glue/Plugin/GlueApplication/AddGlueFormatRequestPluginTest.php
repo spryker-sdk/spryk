@@ -9,7 +9,7 @@ namespace SprykerSdkTest\Spryk\Integration\Glue\Plugin\GlueApplication;
 
 use Codeception\Test\Unit;
 
-class AddFormatRequestPluginTest extends Unit
+class AddGlueFormatRequestPluginTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -27,7 +27,7 @@ class AddFormatRequestPluginTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxFormatRequestPlugin.php');
+        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxFormatRequestPlugin.php');
     }
 
     /**
@@ -41,6 +41,8 @@ class AddFormatRequestPluginTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxFormatRequestPlugin.php');
+        $this->tester->assertFileExists(
+            $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxFormatRequestPlugin.php'
+        );
     }
 }

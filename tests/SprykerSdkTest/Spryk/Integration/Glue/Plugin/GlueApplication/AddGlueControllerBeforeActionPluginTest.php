@@ -9,7 +9,7 @@ namespace SprykerSdkTest\Spryk\Integration\Glue\Plugin\GlueApplication;
 
 use Codeception\Test\Unit;
 
-class AddFormatResponseHeadersPluginTest extends Unit
+class AddGlueControllerBeforeActionPluginTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -19,7 +19,7 @@ class AddFormatResponseHeadersPluginTest extends Unit
     /**
      * @return void
      */
-    public function testAddsFormatResponseHeadersPlugin(): void
+    public function testAddsControllerBeforeActionPlugin(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -27,13 +27,13 @@ class AddFormatResponseHeadersPluginTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxFormatResponseHeadersPlugin.php');
+        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxControllerBeforeActionPlugin.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsFormatResponseHeadersPluginOnProjectLayer(): void
+    public function testAddsControllerBeforeActionPluginOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -41,6 +41,8 @@ class AddFormatResponseHeadersPluginTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxFormatResponseHeadersPlugin.php');
+        $this->tester->assertFileExists(
+            $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxControllerBeforeActionPlugin.php'
+        );
     }
 }

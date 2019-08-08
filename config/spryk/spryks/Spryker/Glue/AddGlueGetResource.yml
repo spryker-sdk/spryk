@@ -17,10 +17,6 @@ arguments:
   resourceType:
     inherit: true
 
-  modelName:
-    inherit: true
-    default: "{{ resourceType }}"
-
   targetPath:
     value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/"
 
@@ -32,16 +28,6 @@ preSpryks:
   - AddModule
 
 postSpryks:
-  - AddGlueResource:
-      arguments:
-        className:
-          value: "{{ resourceType | dashToCamelCase }}"
-          callback: EnsureResourceSuffix
-        interfaceName:
-          value: "{{ resourceType | dashToCamelCase }}"
-          callback:
-            - EnsureResourceSuffix
-            - EnsureInterfaceSuffix
   - AddGlueResourceRoute:
       arguments:
         modelSuffix:

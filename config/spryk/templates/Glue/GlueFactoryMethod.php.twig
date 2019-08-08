@@ -1,7 +1,7 @@
 {% if subDirectory is defined and subDirectory.value is not null %}
-    {% set subDirectory = '\\' ~ subDirectory | replace({"/": "\\"}) %}
+{% set subDirectory = '\\' ~ subDirectory | replace({"/": "\\"}) %}
 {% else %}
-    {% set subDirectory = '' %}
+{% set subDirectory = '' %}
 {% endif %}
 
 {% if not dependencyMethods.value %}

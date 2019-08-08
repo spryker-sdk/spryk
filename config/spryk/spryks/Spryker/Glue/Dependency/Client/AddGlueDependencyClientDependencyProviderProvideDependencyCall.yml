@@ -1,0 +1,23 @@
+spryk: dependencyProvider
+description: "Adds a Client dependency method to Container in *module*DependencyProvider."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  providerMethod:
+    inherit: true
+
+  template:
+    value: Glue/Dependency/Client/AddGlueDependencyClientDependencyProviderProvideDependencyCall.php.twig
+
+  target:
+    value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+  - AddGlueDependencyClientDependencyProviderMethod

@@ -11,8 +11,6 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 
 class EnsureRestAttributesTransferAffixCallback implements CallbackInterface
 {
-    public const ACTION_PREFIX = 'Rest';
-    public const ACTION_SUFFIX = 'Attributes';
     protected const CALLBACK_NAME = 'EnsureRestAttributesTransferAffix';
 
     /**
@@ -35,9 +33,9 @@ class EnsureRestAttributesTransferAffixCallback implements CallbackInterface
 
         return sprintf(
             '%s%s%s',
-            static::ACTION_PREFIX,
+            'Rest',
             ucfirst($value),
-            static::ACTION_SUFFIX
+            'Attributes'
         );
     }
 }

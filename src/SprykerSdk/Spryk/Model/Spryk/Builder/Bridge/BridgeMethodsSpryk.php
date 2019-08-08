@@ -216,11 +216,27 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
      */
     protected function cleanMethodDocBlock(string $docComment): string
     {
-        $docCommentWithoutExtras = preg_replace('/.+?(?=@param|@return)/ms', '/**' . PHP_EOL . "\t * ", $docComment, 1);
+        $docCommentWithoutExtras = preg_replace('/.+?(?=@param|@return)/ms', '/**' . PHP_EOL . ' * ', $docComment, 1);
 
         if ($docCommentWithoutExtras !== null) {
             $docComment = $docCommentWithoutExtras;
         }
+
+        return $this->addSpacingToDocComment($docComment);
+    }
+
+    /**
+     * @param string $docComment
+     *
+     * @return string
+     */
+    protected function addSpacingToDocComment(string $docComment): string
+    {
+        $docCommentLines = explode(PHP_EOL, $docComment);
+        array_walk($docCommentLines, function (&$docCommentLine) {
+            $docCommentLine = "\t" . $docCommentLine;
+        });
+        $docComment = implode(PHP_EOL, $docCommentLines);
 
         return str_replace("\t", str_repeat(' ', 4), $docComment);
     }

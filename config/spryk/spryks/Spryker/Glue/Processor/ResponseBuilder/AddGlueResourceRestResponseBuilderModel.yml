@@ -38,7 +38,7 @@ arguments:
     isOptional: true
     value:
       - "\\Spryker\\Glue\\GlueApplication\\Rest\\JsonApi\\RestResourceBuilderInterface $restResourceBuilder"
-      - "\\{{ module }}\\src\\{{ organization }}\\Glue\\{{ module }}\\Processor\\Mapper\\{{ resourceType | dashToCamelCase | singularize }}MapperInterface ${{ resourceType | dashToCamelCase | singularize | lcfirst }}Mapper"
+      - "\\{{ organization }}\\Glue\\{{ module }}\\Processor\\Mapper\\{{ resourceType | dashToCamelCase | singularize }}MapperInterface ${{ resourceType | dashToCamelCase | singularize | lcfirst }}Mapper"
 
   template:
     value: Glue/Processor/GlueProcessorModel.php.twig
@@ -49,7 +49,8 @@ arguments:
 
   targetPath:
     value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
-
+AddGlueResourceRestResponseBuilderModel:
+  yml:
 preSpryks:
   - AddModule
 
@@ -65,8 +66,6 @@ postSpryks:
       arguments:
         className:
           value: "{{ resourceType | dashToCamelCase | singularize }}Mapper"
-        interfaceName:
-          value: "{{ resourceType | dashToCamelCase | singularize }}MapperInterface"
         subDirectory:
           value: "Mapper"
 
@@ -74,8 +73,6 @@ postSpryks:
       arguments:
         className:
           value: "{{ resourceType | dashToCamelCase | singularize }}Mapper"
-        interfaceName:
-          value: "{{ resourceType | dashToCamelCase | singularize }}MapperInterface"
         subDirectory:
           value: "Mapper"
 

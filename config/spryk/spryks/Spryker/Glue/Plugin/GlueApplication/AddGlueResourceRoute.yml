@@ -26,9 +26,6 @@ arguments:
   modelName:
     inherit: true
 
-  method:
-    value: "configure"
-
   template:
     value: Glue/GlueRouteResource.php.twig
 

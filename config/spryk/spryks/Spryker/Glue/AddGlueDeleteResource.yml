@@ -17,9 +17,6 @@ arguments:
   resourceType:
     inherit: true
 
-  modelName:
-    inherit: true
-
   targetPath:
     value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/"
 
@@ -29,18 +26,10 @@ arguments:
 
 preSpryks:
   - AddModule
-  - AddGlueResource:
-      arguments:
-        className:
-          value: "{{ resourceType | dashToCamelCase }}"
-          callback: EnsureResourceSuffix
-        interfaceName:
-          value: "{{ resourceType | dashToCamelCase }}"
-          callback:
-            - EnsureResourceSuffix
-            - EnsureInterfaceSuffix
   - AddGlueResourceRoute:
       arguments:
+        modelName:
+          value: "{{ resourceType | dashToCamelCase | singularize }}"
         modelSuffix:
           value: "Deleter"
         resourceRouteMethod:
