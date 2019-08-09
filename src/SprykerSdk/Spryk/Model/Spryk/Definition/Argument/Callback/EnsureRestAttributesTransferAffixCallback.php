@@ -30,12 +30,38 @@ class EnsureRestAttributesTransferAffixCallback implements CallbackInterface
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
         $value = (string)$value;
+        $value = $this->ensurePrefix($value);
 
-        return sprintf(
-            '%s%s%s',
-            'Rest',
-            ucfirst($value),
-            'Attributes'
-        );
+        return $this->ensureAffix($value);
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function ensurePrefix( string $value): string
+    {
+        $prefix = 'Rest';
+        if (substr_compare($value, $prefix, 0, strlen($prefix)) === 0) {
+            return $value;
+        }
+
+        return $prefix . $value;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function ensureAffix( string $value): string
+    {
+        $affix = 'Attributes';
+        if (substr_compare($value, $affix, -strlen($affix)) === 0) {
+            return $value;
+        }
+
+        return $value . $affix;
     }
 }

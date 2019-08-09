@@ -38,18 +38,12 @@ preSpryks:
 
 postSpryks:
   - AddGlueResourceRoutePlugin
+  - AddGlueResourceMapperMethod
+  - AddGlueResourceMapperInterfaceMethod
   - AddGlueController:
       arguments:
         controller:
           value: "{{ resourceType | dashToCamelCase }}ResourceController"
-  - AddGlueResourceMapper:
-      arguments:
-        className:
-          value: "{{ resourceType | dashToCamelCase | singularize }}Mapper"
-        subDirectory:
-          value: "Mapper"
-  - AddGlueResourceMapperMethod
-  - AddGlueResourceMapperInterfaceMethod
   - AddGlueResourceRestResponseBuilderModel:
       arguments:
         className:
@@ -58,17 +52,7 @@ postSpryks:
           value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilderInterface"
         subDirectory:
           value: "RestResponseBuilder"
-  - AddGlueDependencyClientBridge:
-      arguments:
-        dependentModule:
-          value: "{{ clientModule }}"
   - AddGlueDependencyClientBridgeMethod:
-      arguments:
-        dependentModule:
-          value: "{{ clientModule }}"
-        methods:
-          value: [ "{{ clientMethod }}" ]
-  - AddGlueDependencyClientBridgeInterfaceMethod:
       arguments:
         dependentModule:
           value: "{{ clientModule }}"

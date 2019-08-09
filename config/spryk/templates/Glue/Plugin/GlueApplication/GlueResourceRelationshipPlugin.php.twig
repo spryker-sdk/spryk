@@ -7,7 +7,6 @@
 
 namespace {{ organization }}\Glue\{{ module }}\Plugin\GlueApplication;
 
-use {{ organization }}\Glue\{{ module }}\{{ module }}Config;
 use Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipPluginInterface;
 use Spryker\Glue\Kernel\AbstractPlugin;
@@ -44,6 +43,6 @@ class {{ pluginClassName }} extends AbstractPlugin implements ResourceRelationsh
      */
     public function getRelationshipResourceType(): string
     {
-        return {{ module }}Config::RESOURCE_{{ resourceType | dashToUnderscore | upper }};
+        return \{{ organization }}\Glue\{{ module }}\{{ module }}Config::RESOURCE_{{ resourceType | dashToUnderscore | upper }};
     }
 }

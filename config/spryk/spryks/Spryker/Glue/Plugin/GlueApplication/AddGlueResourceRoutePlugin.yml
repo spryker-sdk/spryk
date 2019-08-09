@@ -31,7 +31,7 @@ preSpryks:
   - AddSharedRestAttributesTransfer:
       arguments:
         name:
-          value: "{{ modelName | dashToCamelCase }}"
+          value: "{{ resourceType | dashToCamelCase }}"
           callback:
             - EnsureRestAttributesTransferAffix
   - AddGlueConfigConstant:

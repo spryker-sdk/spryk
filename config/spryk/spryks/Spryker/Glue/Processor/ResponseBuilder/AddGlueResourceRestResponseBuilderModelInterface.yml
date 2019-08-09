@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new Processor model interface to the Glue application."
+description: "Adds a new RestResponseBuilder model interface to the Glue application."
 mode: both
 
 arguments:

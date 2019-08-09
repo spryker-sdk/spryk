@@ -32,6 +32,21 @@ class GlueProcessorFactoryMethodNameCallback implements CallbackInterface
         $className = (string)$argumentCollection->getArgument('className')->getValue();
         $classNameFragments = explode('\\', $className);
 
-        return 'create' . array_pop($classNameFragments);
+        return $this->ensurePrefix(array_pop($classNameFragments));
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function ensurePrefix(string $value): string
+    {
+        $prefix = 'create';
+        if (substr_compare($value, $prefix, 0, strlen($prefix)) === 0) {
+            return $value;
+        }
+
+        return $prefix . $value;
     }
 }

@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a Client dependency method to the *module*BusinessFactory."
+description: "Adds a Client dependency method to the *module*Factory."
 mode: both
 
 arguments:

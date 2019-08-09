@@ -9,7 +9,7 @@ namespace SprykerSdkTest\Spryk\Integration\Glue\Validation;
 
 use Codeception\Test\Unit;
 
-class AddValidationTest extends Unit
+class AddGlueValidationTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester

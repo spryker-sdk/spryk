@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a new action to the Glue controller."
+description: "Adds a new delete action to the Glue controller."
 mode: both
 
 arguments:

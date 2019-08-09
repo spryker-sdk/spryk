@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *resourceType*Validation to the Glue application."
+description: "Adds a new *resourceType* Validation to the Glue application."
 mode: both
 
 arguments:
@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   template:
-    value: Glue/Validation/AddValidation.yml.twig
+    value: Glue/Validation/AddGlueValidation.yml.twig
 
   resourceType:
     inherit: true

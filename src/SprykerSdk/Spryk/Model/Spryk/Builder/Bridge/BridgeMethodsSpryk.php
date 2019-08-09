@@ -234,11 +234,10 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
     {
         $docCommentLines = explode(PHP_EOL, $docComment);
         array_walk($docCommentLines, function (&$docCommentLine) {
-            $docCommentLine = "\t" . $docCommentLine;
+            $docCommentLine = str_repeat(' ', 4) . $docCommentLine;
         });
-        $docComment = implode(PHP_EOL, $docCommentLines);
 
-        return str_replace("\t", str_repeat(' ', 4), $docComment);
+        return implode(PHP_EOL, $docCommentLines);
     }
 
     /**

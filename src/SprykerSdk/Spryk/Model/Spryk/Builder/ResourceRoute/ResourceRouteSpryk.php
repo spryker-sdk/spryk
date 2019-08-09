@@ -204,11 +204,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
         $methodBody = $reflectionMethod->getBodyCode();
         $resourceRouteMethod = $this->getResourceRouteMethod($sprykDefinition);
 
-        if (strpos($methodBody, '->add' . ucfirst($resourceRouteMethod) . '(') !== false) {
-            return true;
-        }
-
-        return false;
+        return strpos($methodBody, sprintf('->add%s(', ucfirst($resourceRouteMethod))) !== false;
     }
 
     /**

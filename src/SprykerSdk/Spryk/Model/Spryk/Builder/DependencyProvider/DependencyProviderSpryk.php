@@ -51,7 +51,7 @@ class DependencyProviderSpryk implements SprykBuilderInterface
      */
     public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        return !$this->isRouteDeclared($sprykDefinition);
+        return !$this->isDependencyDeclared($sprykDefinition);
     }
 
     /**
@@ -197,14 +197,14 @@ class DependencyProviderSpryk implements SprykBuilderInterface
      *
      * @return bool
      */
-    protected function isRouteDeclared(SprykDefinitionInterface $sprykDefinition): bool
+    protected function isDependencyDeclared(SprykDefinitionInterface $sprykDefinition): bool
     {
         $reflectionClass = $this->getReflection($sprykDefinition);
         $reflectionMethod = $reflectionClass->getMethod(static::ARGUMENT_METHOD_NAME);
         $methodBody = $reflectionMethod->getBodyCode();
         $providerMethod = $this->getProviderMethod($sprykDefinition);
 
-        return strpos($methodBody, '$container = ' . ucfirst($providerMethod) . '(') !== false;
+        return strpos($methodBody, sprintf('$container = %s(', $providerMethod)) !== false;
     }
 
     /**

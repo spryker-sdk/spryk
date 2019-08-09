@@ -1,5 +1,5 @@
 spryk: constant
-description: "Adds a Resource type to the *module*Config."
+description: "Adds a Resource type constant to the *module*Config."
 mode: both
 
 arguments:
