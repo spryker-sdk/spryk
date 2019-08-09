@@ -57,7 +57,6 @@ class AddGlueBasicStructureTest extends Unit
     }
 
     /**
-     * @skip
      * @return void
      */
     public function testAddsGlueBasicModuleStructureOnProjectLayer(): void
