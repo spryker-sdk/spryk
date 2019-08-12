@@ -62,6 +62,6 @@ class {{ resourceType | dashToCamelCase }}ResourceRoutePlugin extends AbstractPl
      */
     public function getResourceAttributesClassName(): string
     {
-        return Rest{{ modelName }}AttributesTransfer::class;
+        return Rest{{ resourceType | camelCase }}AttributesTransfer::class;
     }
 }
