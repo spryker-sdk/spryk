@@ -131,7 +131,6 @@ class AddGlueDependencyClientBridgeMethodTest extends Unit
     }
 
     /**
-     * @skip
      * @return void
      */
     public function testAddsGlueDependencyClientBridgeMethodOnlyOnceOnProjectLayer(): void

@@ -32,7 +32,7 @@ class EnsureRestAttributesTransferAffixCallback implements CallbackInterface
         $value = (string)$value;
         $value = $this->ensurePrefix($value);
 
-        return $this->ensureAffix($value);
+        return $this->ensureSuffix($value);
     }
 
     /**
@@ -40,7 +40,7 @@ class EnsureRestAttributesTransferAffixCallback implements CallbackInterface
      *
      * @return string
      */
-    protected function ensurePrefix( string $value): string
+    protected function ensurePrefix(string $value): string
     {
         $prefix = 'Rest';
         if (substr_compare($value, $prefix, 0, strlen($prefix)) === 0) {
@@ -55,13 +55,13 @@ class EnsureRestAttributesTransferAffixCallback implements CallbackInterface
      *
      * @return string
      */
-    protected function ensureAffix( string $value): string
+    protected function ensureSuffix(string $value): string
     {
-        $affix = 'Attributes';
-        if (substr_compare($value, $affix, -strlen($affix)) === 0) {
+        $suffix = 'Attributes';
+        if (substr_compare($value, $suffix, -strlen($suffix)) === 0) {
             return $value;
         }
 
-        return $value . $affix;
+        return $value . $suffix;
     }
 }
