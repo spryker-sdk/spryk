@@ -37,8 +37,6 @@ class AddGlueResourceRouteTest extends Unit
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
             '--resourceRouteMethod' => 'get',
-            '--modelName' => 'FooBar',
-            '--modelSuffix' => 'Reader',
             '--mode' => 'core',
         ]);
 
@@ -57,8 +55,6 @@ class AddGlueResourceRouteTest extends Unit
             '--module' => 'FooBar',
             '--resourceRouteMethod' => 'get',
             '--resourceType' => 'foo-bars',
-            '--modelName' => 'FooBar',
-            '--modelSuffix' => 'Reader',
             '--mode' => 'project',
         ]);
 

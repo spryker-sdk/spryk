@@ -20,12 +20,6 @@ arguments:
   resourceRouteMethod:
     inherit: true
 
-  modelSuffix:
-    inherit: true
-
-  modelName:
-    inherit: true
-
   template:
     value: Glue/GlueRouteResource.php.twig
 
@@ -34,5 +28,4 @@ arguments:
 
 preSpryks:
   - AddModule
-  - AddGlueFactory
   - AddGlueResourceRoutePlugin

@@ -10,8 +10,12 @@ arguments:
     inherit: true
     default: Spryker
 
+  dependentModule:
+    inherit: true
+
   providerMethod:
     inherit: true
+    default: "add{{ dependentModule }}Client"
 
   template:
     value: Glue/Dependency/Client/GlueDependencyClientToDependencyProvider.php.twig
