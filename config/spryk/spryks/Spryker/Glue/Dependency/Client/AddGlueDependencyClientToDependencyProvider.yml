@@ -14,7 +14,7 @@ arguments:
     inherit: true
 
   template:
-    value: Glue/Dependency/Client/GlueClientDependencyToDependencyProvider.php.twig
+    value: Glue/Dependency/Client/GlueDependencyClientToDependencyProvider.php.twig
 
   target:
     value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}DependencyProvider"
