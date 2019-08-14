@@ -33,6 +33,8 @@ class AddGlueDeleteResourceTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
+            '--clientModule' => 'ZipZap',
+            '--clientMethod' => 'methodWithTransferInputAndTransferOutput',
             '--mode' => 'core',
         ]);
 
@@ -40,6 +42,7 @@ class AddGlueDeleteResourceTest extends Unit
     }
 
     /**
+     * @skip
      * @return void
      */
     public function testAddGlueDeleteResourceWillAddResourceRoutePluginAndResourceOnProjectLayer(): void
@@ -47,6 +50,8 @@ class AddGlueDeleteResourceTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
+            '--clientModule' => 'ZipZap',
+            '--clientMethod' => 'methodWithTransferInputAndTransferOutput',
             '--mode' => 'project',
         ]);
 

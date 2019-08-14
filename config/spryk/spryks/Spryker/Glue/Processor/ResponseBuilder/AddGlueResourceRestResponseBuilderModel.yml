@@ -80,3 +80,7 @@ postSpryks:
       arguments:
         dependencyMethods:
           value: [ "getResourceBuilder", "create{{ resourceType | dashToCamelCase | singularize }}Mapper" ]
+        className:
+          value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilder"
+        subDirectory:
+          value: "RestResponseBuilder"

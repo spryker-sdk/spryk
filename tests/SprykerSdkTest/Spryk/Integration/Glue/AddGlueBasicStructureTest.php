@@ -34,9 +34,6 @@ class AddGlueBasicStructureTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
-            '--fromTransfer' => 'FooBarTransfer',
-            '--clientModule' => 'ZipZap',
-            '--clientMethod' => 'methodWithTransferInputAndTransferOutput',
         ]);
 
         $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarConfig.php');
@@ -53,7 +50,7 @@ class AddGlueBasicStructureTest extends Unit
             'public'
         );
         $this->tester->assertClassHasMethod(ClassName::GLUE_BUSINESS_FACTORY, 'createFooBarMapper');
-        $this->tester->assertClassHasMethod(ClassName::GLUE_RESOURCE_MAPPER, 'mapFooBarTransferToRestFooBarsAttributesTransfer');
+        $this->tester->assertClassHasMethod(ClassName::GLUE_BUSINESS_FACTORY, 'createFooBarRestResponseBuilder');
     }
 
     /**
@@ -84,6 +81,6 @@ class AddGlueBasicStructureTest extends Unit
             'public'
         );
         $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_BUSINESS_FACTORY, 'createFooBarMapper');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_RESOURCE_MAPPER, 'mapFooBarTransferToRestFooBarsAttributesTransfer');
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_BUSINESS_FACTORY, 'createFooBarRestResponseBuilder');
     }
 }

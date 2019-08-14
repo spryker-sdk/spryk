@@ -17,15 +17,6 @@ arguments:
   resourceType:
     inherit: true
 
-  fromTransfer:
-    inherit: true
-
-  clientModule:
-    inherit: true
-
-  clientMethod:
-    inherit: true
-
   targetPath:
     value: "{{ module }}/"
 
@@ -38,8 +29,10 @@ preSpryks:
 
 postSpryks:
   - AddGlueResourceRoutePlugin
-  - AddGlueResourceMapperMethod
-  - AddGlueResourceMapperInterfaceMethod
+  - AddGlueResourceMapper:
+      arguments:
+        className:
+          value: "{{ resourceType | dashToCamelCase | singularize }}Mapper"
   - AddGlueController:
       arguments:
         controller:
@@ -52,10 +45,4 @@ postSpryks:
           value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilderInterface"
         subDirectory:
           value: "RestResponseBuilder"
-  - AddGlueDependencyClientBridgeMethod:
-      arguments:
-        dependentModule:
-          value: "{{ clientModule }}"
-        methods:
-          value: [ "{{ clientMethod }}" ]
 

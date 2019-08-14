@@ -17,7 +17,7 @@ arguments:
   className:
     inherit: true
 
-  method:
+  factoryMethod:
     callbackOnly: true
     callback: GlueProcessorFactoryMethodName
 

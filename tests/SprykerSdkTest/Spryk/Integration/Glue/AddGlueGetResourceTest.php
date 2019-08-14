@@ -33,7 +33,8 @@ class AddGlueGetResourceTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
-            '--modelName' => 'FooBar',
+            '--clientModule' => 'ZipZap',
+            '--clientMethod' => 'methodWithTransferInputAndTransferOutput',
             '--mode' => 'core',
         ]);
 
@@ -48,7 +49,8 @@ class AddGlueGetResourceTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
-            '--modelName' => 'FooBar',
+            '--clientModule' => 'ZipZap',
+            '--clientMethod' => 'methodWithTransferInputAndTransferOutput',
             '--mode' => 'project',
         ]);
 

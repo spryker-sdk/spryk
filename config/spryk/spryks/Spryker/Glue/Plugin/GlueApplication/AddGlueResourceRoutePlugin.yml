@@ -18,7 +18,7 @@ arguments:
 
   modelName:
     inherit: true
-    default: "{{ resourceType | dashToCamelCase | singularize }}"
+    value: "{{ resourceType | dashToCamelCase | singularize }}"
 
   targetFilename:
     value: "{{ resourceType | dashToCamelCase }}ResourceRoutePlugin.php"

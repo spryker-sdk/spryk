@@ -17,6 +17,12 @@ arguments:
   resourceType:
     inherit: true
 
+  clientModule:
+    inherit: true
+
+  clientMethod:
+    inherit: true
+
   targetPath:
     value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/"
 
@@ -34,6 +40,28 @@ postSpryks:
           value: "Creator"
         resourceRouteMethod:
           value: "post"
+  - AddGlueDependencyClientBridgeMethod:
+      arguments:
+        dependentModule:
+          value: "{{ clientModule }}"
+        methods:
+          value: [ "{{ clientMethod }}" ]
+  - AddGlueFactoryMethod:
+      arguments:
+        className:
+          value: "{{ resourceType | dashToCamelCase | singularize }}Creator"
+        subDirectory:
+          value: "{{ resourceType | dashToCamelCase | singularize }}"
+        dependencyMethods:
+          value: [ "get{{ clientModule }}Client" ]
+  - AddGlueProcessorModel:
+      arguments:
+        className:
+          value: "{{ resourceType | dashToCamelCase | singularize }}Creator"
+        subDirectory:
+          value: "{{ resourceType | dashToCamelCase | singularize }}"
+        constructorArguments:
+          value: [ "\\{{ organization }}\\Glue\\{{ module }}\\Dependency\\Client\\{{ module }}To{{ clientModule }}ClientInterface ${{ clientModule | lcfirst }}Client" ]
   - AddGlueControllerPostAction:
       arguments:
         controllerMethod:

@@ -8,7 +8,7 @@
     /**
      * @return \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
      */
-    public function {{ method }}(): \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
+    public function {{ factoryMethod }}(): \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
     {
         return new \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}();
     }
@@ -16,7 +16,7 @@
     /**
      * @return \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
      */
-    public function {{ method }}(): \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
+    public function {{ factoryMethod }}(): \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}Interface
     {
         return new \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}(
         {% for dependencyMethod in dependencyMethods.value -%}
