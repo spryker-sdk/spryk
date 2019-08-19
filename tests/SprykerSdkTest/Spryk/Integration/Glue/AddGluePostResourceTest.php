@@ -8,6 +8,7 @@
 namespace SprykerSdkTest\Spryk\Integration\Glue;
 
 use Codeception\Test\Unit;
+use SprykerSdkTest\Spryk\Integration\Client\AddClientMethodTest;
 
 /**
  * Auto-generated group annotations
@@ -30,6 +31,11 @@ class AddGluePostResourceTest extends Unit
      */
     public function testAddGluePatchResourceWillAddResourceRoutePluginAndResource(): void
     {
+        $this->tester->run(new AddClientMethodTest(), [
+            '--module' => 'ZipZap',
+            '--clientMethod' => 'methodWithTransferInputAndTransferOutput'
+        ]);
+
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--resourceType' => 'foo-bars',
