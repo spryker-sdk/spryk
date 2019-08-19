@@ -31,10 +31,10 @@ class RemoveRestApiSuffixCallback implements CallbackInterface
     {
         $value = (string)$value;
 
-        if (mb_substr($value, - mb_strlen(static::RESTAPI_SUFFIX)) !== static::RESTAPI_SUFFIX) {
+        if (mb_strpos($value, static::RESTAPI_SUFFIX) === false) {
             return $value;
         }
 
-        return mb_substr($value, 0, mb_strpos(static::RESTAPI_SUFFIX));
+        return mb_substr($value, 0, mb_strlen($value) - mb_strlen(static::RESTAPI_SUFFIX));
     }
 }

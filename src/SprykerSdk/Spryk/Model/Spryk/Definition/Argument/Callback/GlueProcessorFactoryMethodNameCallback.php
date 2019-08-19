@@ -32,7 +32,7 @@ class GlueProcessorFactoryMethodNameCallback implements CallbackInterface
         $className = (string)$argumentCollection->getArgument('className')->getValue();
         $classNameFragments = explode('\\', $className);
 
-        return $this->ensurePrefix(array_pop($classNameFragments));
+        return $this->ensurePrefix((string)array_pop($classNameFragments));
     }
 
     /**
