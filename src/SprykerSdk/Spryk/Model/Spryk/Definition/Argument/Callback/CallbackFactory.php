@@ -49,6 +49,7 @@ class CallbackFactory
             $this->createGlueResourceTargetFilenameCallback(),
             $this->createEnsureResourceSuffixCallback(),
             $this->createEnsureInterfaceSuffixCallback(),
+            $this->createRemoveRestApiSuffixCallback(),
         ]);
     }
 
@@ -202,5 +203,13 @@ class CallbackFactory
     public function createEnsureInterfaceSuffixCallback(): CallbackInterface
     {
         return new EnsureInterfaceSuffixCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createRemoveRestApiSuffixCallback(): CallbackInterface
+    {
+        return new RemoveRestApiSuffixCallback();
     }
 }

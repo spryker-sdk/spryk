@@ -72,7 +72,7 @@ class TransferSpryk implements SprykBuilderInterface
             return;
         }
 
-        $transfers->addChild('transfer', PHP_EOL)
+        $transfers->addChild('transfer', ' ')
             ->addAttribute('name', $transferName);
 
         $this->prettyPrintXml($xml, $sprykDefinition);

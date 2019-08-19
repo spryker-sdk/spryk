@@ -35,6 +35,7 @@ class FilterFactory
             $this->createDashToUnderscoreFilter(),
             $this->createSingularizeFilter(),
             $this->createTypedArrayFilter(),
+            $this->createRemoveRestApiSuffixFilter(),
         ];
     }
 
@@ -180,5 +181,13 @@ class FilterFactory
     public function createTypedArrayFilter(): FilterInterface
     {
         return new TypedArrayFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createRemoveRestApiSuffixFilter(): FilterInterface
+    {
+        return new RemoveRestApiSuffixFilter();
     }
 }

@@ -1,8 +1,10 @@
-{% if subDirectory is defined and subDirectory.value is not null %}
-{% set subDirectory = '\\' ~ subDirectory | replace({"/": "\\"}) %}
-{% else %}
-{% set subDirectory = '' %}
-{% endif %}
+{%- spaceless -%}
+    {% if subDirectory is defined and subDirectory.value is not null %}
+        {% set subDirectory = '\\' ~ subDirectory | replace({"/": "\\"}) %}
+    {% else %}
+        {% set subDirectory = '' %}
+    {% endif %}
+{%- endspaceless -%}
 
 {% if not dependencyMethods.value %}
     /**

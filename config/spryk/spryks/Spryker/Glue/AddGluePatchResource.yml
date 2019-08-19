@@ -16,6 +16,7 @@ arguments:
 
   resourceType:
     inherit: true
+    default: "{{ module | removeRestApiSuffix | lower }}"
 
   clientModule:
     inherit: true

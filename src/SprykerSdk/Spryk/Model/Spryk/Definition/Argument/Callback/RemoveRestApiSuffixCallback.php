@@ -9,16 +9,16 @@ namespace SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback;
 
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 
-class EnsureInterfaceSuffixCallback implements CallbackInterface
+class RemoveRestApiSuffixCallback implements CallbackInterface
 {
-    protected const INTERFACE_SUFFIX = 'Interface';
+    protected const RESTAPI_SUFFIX = 'RestApi';
 
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'EnsureInterfaceSuffix';
+        return 'RemoveRestApiSuffix';
     }
 
     /**
@@ -31,10 +31,10 @@ class EnsureInterfaceSuffixCallback implements CallbackInterface
     {
         $value = (string)$value;
 
-        if (mb_substr($value, - mb_strlen(static::INTERFACE_SUFFIX)) !== static::INTERFACE_SUFFIX) {
-            $value = $value . static::INTERFACE_SUFFIX;
+        if (mb_substr($value, - mb_strlen(static::RESTAPI_SUFFIX)) !== static::RESTAPI_SUFFIX) {
+            return $value;
         }
 
-        return ucfirst($value);
+        return mb_substr($value, 0, mb_strpos(static::RESTAPI_SUFFIX));
     }
 }
