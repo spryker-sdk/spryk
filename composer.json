@@ -41,6 +41,7 @@
     "psr-4": {
       "SprykerSdkTest\\": "tests/SprykerSdkTest/",
       "SprykerSdkTest\\Module\\": "tests/_support/Module/",
+      "Spryker\\Glue\\GlueApplicationExtension\\": "vendor/spryker/glue-application-extension/src/Spryker/Glue/GlueApplicationExtension/",
       "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
       "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
       "Spryker\\Glue\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Glue/Kernel/",
