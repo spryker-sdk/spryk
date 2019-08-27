@@ -42,7 +42,6 @@ class AddGlueDeleteResourceTest extends Unit
     }
 
     /**
-     * @skip
      * @return void
      */
     public function testAddGlueDeleteResourceWillAddResourceRoutePluginAndResourceOnProjectLayer(): void
