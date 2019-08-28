@@ -52,4 +52,4 @@ cache:
     - $HOME/.composer/cache
 
 after_success:
-    - if [[ $COVERAGE == 1 ]]; then travis_retry php vendor/bin/coveralls; fi
+    - if [[ $COVERAGE == 1 || $GLUE == 1 ]]; then travis_retry php vendor/bin/coveralls; fi
