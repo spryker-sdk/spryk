@@ -16,7 +16,7 @@ use SprykerSdkTest\Module\ClassName;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group Zed
+ * @group Glue
  * @group Dependency
  * @group Client
  * @group AddZedDependencyClientBridgeTest

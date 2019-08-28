@@ -9,6 +9,17 @@ namespace SprykerSdkTest\Spryk\Integration\Glue\Plugin\GlueApplication;
 
 use Codeception\Test\Unit;
 
+/**
+ * Auto-generated group annotations
+ * @group SprykerSdkTest
+ * @group Spryk
+ * @group Integration
+ * @group Glue
+ * @group Plugin
+ * @group GlueApplication
+ * @group AddGlueResourceRelationshipPluginTest
+ * Add your own group annotations below this line
+ */
 class AddGlueResourceRelationshipPluginTest extends Unit
 {
     /**

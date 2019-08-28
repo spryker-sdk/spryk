@@ -38,7 +38,7 @@ script:
   - if [[ $DEFAULT == 1 ]]; then vendor/bin/codecept run -g Glue; fi
   - if [[ $DEFAULT == 1 ]]; then vendor/bin/codecept run -x Glue; fi
   - if [[ $COVERAGE == 1 ]]; then vendor/bin/codecept run -x Glue --coverage-xml; fi
-  - if [[ $COVERAGE == 1 && $GLUE == 1 ]]; then vendor/bin/codecept run -g Glue --coverage-xml; fi
+  - if [[ $GLUE == 1 ]]; then vendor/bin/codecept run -g Glue --coverage-xml; fi
 
   - if [[ $CHECKS == 1 ]]; then composer phpstan ; fi
   - if [[ $CHECKS == 1 ]]; then composer cs-check ; fi
