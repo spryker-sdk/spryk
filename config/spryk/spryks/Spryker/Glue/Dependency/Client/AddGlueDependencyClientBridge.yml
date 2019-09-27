@@ -3,18 +3,18 @@ description: "Adds a new *module*To*dependentModule*ClientBridge."
 mode: core
 
 arguments:
-  module:
-    inherit: true
-
   organization:
     inherit: true
     default: Spryker
 
-  dependentModule:
+  module:
     inherit: true
 
   dependentModuleOrganization:
     default: Spryker
+
+  dependentModule:
+    inherit: true
 
   template:
     value: Glue/Dependency/Client/GlueDependencyClientBridge.php.twig
