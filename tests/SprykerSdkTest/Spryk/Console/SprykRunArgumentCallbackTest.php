@@ -13,6 +13,7 @@ use SprykerSdk\Spryk\Exception\CallbackNotFoundException;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Console

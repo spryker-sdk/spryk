@@ -12,6 +12,7 @@ use SprykerSdk\Spryk\Model\Spryk\Filter\TypedArrayFilter;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Model

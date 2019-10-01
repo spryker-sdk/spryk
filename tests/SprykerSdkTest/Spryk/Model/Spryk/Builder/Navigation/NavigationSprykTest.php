@@ -14,6 +14,7 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Model

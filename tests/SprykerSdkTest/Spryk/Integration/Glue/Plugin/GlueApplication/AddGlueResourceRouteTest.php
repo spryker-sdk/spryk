@@ -12,6 +12,7 @@ use Roave\BetterReflection\BetterReflection;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration

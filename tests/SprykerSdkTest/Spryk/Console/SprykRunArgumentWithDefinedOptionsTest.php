@@ -13,6 +13,7 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Console

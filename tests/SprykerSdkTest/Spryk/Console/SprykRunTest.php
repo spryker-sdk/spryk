@@ -15,6 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Console

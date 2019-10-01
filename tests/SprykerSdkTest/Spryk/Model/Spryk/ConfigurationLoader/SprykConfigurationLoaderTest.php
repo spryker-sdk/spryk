@@ -11,6 +11,7 @@ use Codeception\Test\Unit;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Model

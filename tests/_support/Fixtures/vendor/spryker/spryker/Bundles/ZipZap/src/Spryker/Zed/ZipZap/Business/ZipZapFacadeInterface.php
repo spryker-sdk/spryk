@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MIT License
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -13,7 +13,7 @@ use Generated\Shared\Transfer\ZipZapTransfer;
 interface ZipZapFacadeInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -24,7 +24,7 @@ interface ZipZapFacadeInterface
     public function methodWithStringArgument(string $foo): bool;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -35,7 +35,7 @@ interface ZipZapFacadeInterface
     public function methodWithArrayArgument(array $foo): bool;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
