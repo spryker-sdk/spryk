@@ -5,9 +5,9 @@
   "license": "proprietary",
   "require": {
     "php": ">=7.1",
-    "doctrine/inflector": "^1.3.0",
     "roave/better-reflection": "^2.0 || ^3.0",
     "spryker/config": "^3.0.0",
+    "spryker/doctrine-inflector": "^1.0.0",
     "spryker/glue-application-extension": "^1.1.0",
     "spryker/kernel": "^3.30.0",
     "spryker/symfony": "^3.0.0",
@@ -30,7 +30,7 @@
     "phpstan/phpstan-strict-rules": "^0.11.0",
     "spryker/code-sniffer": "*",
     "spryker/testify": "*",
-    "symfony/var-dumper": "^4.0.9"
+    "symfony/var-dumper": "*"
   },
   "autoload": {
     "psr-4": {
