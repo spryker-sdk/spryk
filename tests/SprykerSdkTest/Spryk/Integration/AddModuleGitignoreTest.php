@@ -12,6 +12,7 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration

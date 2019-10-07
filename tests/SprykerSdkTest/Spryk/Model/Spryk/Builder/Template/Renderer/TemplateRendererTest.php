@@ -13,6 +13,7 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Model

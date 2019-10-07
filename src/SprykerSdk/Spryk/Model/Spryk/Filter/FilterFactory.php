@@ -22,6 +22,7 @@ class FilterFactory
             $this->createClassNameShortFilter(),
             $this->createEnsureControllerSuffixFilter(),
             $this->createEnsureConsoleSuffixFilter(),
+            $this->createEnsureMapperSuffixFilter(),
             $this->createRemoveControllerSuffixFilter(),
             $this->createRemoveActionSuffixFilter(),
             $this->createDasherizeFilter(),
@@ -30,6 +31,11 @@ class FilterFactory
             $this->createLowerCaseFirstFilter(),
             $this->createCamelCaseToWhitespaceFilter(),
             $this->createConvertToClassNameFragmentFilter(),
+            $this->createDashToCamelCaseFilter(),
+            $this->createDashToUnderscoreFilter(),
+            $this->createSingularizeFilter(),
+            $this->createTypedArrayFilter(),
+            $this->createRemoveRestApiSuffixFilter(),
         ];
     }
 
@@ -71,6 +77,14 @@ class FilterFactory
     public function createEnsureConsoleSuffixFilter(): FilterInterface
     {
         return new EnsureConsoleSuffixFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createEnsureMapperSuffixFilter(): FilterInterface
+    {
+        return new EnsureMapperSuffixFilter();
     }
 
     /**
@@ -135,5 +149,45 @@ class FilterFactory
     public function createConvertToClassNameFragmentFilter(): FilterInterface
     {
         return new ConvertToClassNameFragmentFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createDashToCamelCaseFilter(): FilterInterface
+    {
+        return new DashToCamelCaseFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createDashToUnderscoreFilter(): FilterInterface
+    {
+        return new DashToUnderscoreFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createSingularizeFilter(): FilterInterface
+    {
+        return new SingularizeFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createTypedArrayFilter(): FilterInterface
+    {
+        return new TypedArrayFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createRemoveRestApiSuffixFilter(): FilterInterface
+    {
+        return new RemoveRestApiSuffixFilter();
     }
 }

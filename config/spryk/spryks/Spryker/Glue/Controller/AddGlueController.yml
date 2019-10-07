@@ -1,0 +1,28 @@
+spryk: template
+description: "Adds a new Controller to the Glue application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  controller:
+    callback:
+      - ClassNameShortCallback
+      - EnsureControllerSuffixCallback
+
+  template:
+    value: Glue/Controller/GlueController.php.twig
+
+  targetFilename:
+    value: "{{ controller | classNameShort | ensureControllerSuffix }}.php"
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Controller/"
+
+preSpryks:
+  - AddModule

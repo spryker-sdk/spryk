@@ -14,14 +14,17 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection\ReflectionHelper;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection\ReflectionHelperInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Constant\ConstantSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\CopyModule\CopyModuleSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\DependencyProvider\DependencyProviderSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Navigation\NavigationSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\ResourceRoute\ResourceRouteSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Schema\SchemaSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Structure\StructureSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\UpdateYmlSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Transfer\TransferSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Filter\FilterFactory;
 use SprykerSdk\Spryk\SprykConfig;
 
@@ -70,6 +73,9 @@ class SprykBuilderFactory
             $this->createSchemaSpryk(),
             $this->createBridgeMethodsSpryk(),
             $this->createCopyModuleSpryk(),
+            $this->createTransferSpryk(),
+            $this->createResourceRouteSpryk(),
+            $this->createDependencyProviderSpryk(),
         ];
     }
 
@@ -176,6 +182,34 @@ class SprykBuilderFactory
             $this->getConfig(),
             $this->filterFactory->createDasherizeFilter()
         );
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createTransferSpryk(): SprykBuilderInterface
+    {
+        return new TransferSpryk(
+            $this->getConfig()->getRootDirectory()
+        );
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createResourceRouteSpryk(): SprykBuilderInterface
+    {
+        return new ResourceRouteSpryk(
+            $this->createTemplateRenderer()
+        );
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createDependencyProviderSpryk(): SprykBuilderInterface
+    {
+        return new DependencyProviderSpryk($this->createTemplateRenderer());
     }
 
     /**

@@ -1,0 +1,38 @@
+spryk: template
+description: "Adds a new RestResponseBuilder model interface to the Glue application."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  subDirectory:
+    default: RestResponseBuilder
+
+  resourceType:
+    inherit: true
+
+  className:
+    inherit: true
+    default: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilder"
+
+  interfaceName:
+    inherit: true
+    default: "{{ className }}Interface"
+
+  template:
+    value: Glue/Processor/GlueProcessorModelInterface.php.twig
+
+  targetFilename:
+    callbackOnly: true
+    callback: GlueProcessorModelInterfaceTargetFilename
+
+  targetPath:
+    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
+
+preSpryks:
+  - AddModule

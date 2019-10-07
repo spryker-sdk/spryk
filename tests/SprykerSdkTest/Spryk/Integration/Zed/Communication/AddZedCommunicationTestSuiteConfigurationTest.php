@@ -12,6 +12,7 @@ use Symfony\Component\Yaml\Yaml;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration

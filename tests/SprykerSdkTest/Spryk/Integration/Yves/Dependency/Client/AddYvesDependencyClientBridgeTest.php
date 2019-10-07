@@ -13,6 +13,7 @@ use SprykerSdkTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration

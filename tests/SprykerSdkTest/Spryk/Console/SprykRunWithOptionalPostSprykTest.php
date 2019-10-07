@@ -12,6 +12,7 @@ use SprykerSdk\Spryk\Console\SprykRunConsole;
 
 /**
  * Auto-generated group annotations
+ *
  * @group SprykerSdkTest
  * @group Spryk
  * @group Console
