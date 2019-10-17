@@ -96,7 +96,8 @@ class SprykBuilderFactory
     {
         return new TemplateSpryk(
             $this->createTemplateRenderer(),
-            $this->getConfig()->getRootDirectory()
+            $this->getConfig()->getRootDirectory(),
+            $this->getConfig()->getCoreNamespaces()
         );
     }
 

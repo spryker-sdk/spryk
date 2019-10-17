@@ -9,6 +9,7 @@ namespace SprykerSdk\Spryk\Model\Spryk\Builder\Template;
 
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
+use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Argument;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
@@ -17,6 +18,12 @@ class TemplateSpryk implements SprykBuilderInterface
     public const ARGUMENT_TARGET_PATH = 'targetPath';
     public const ARGUMENT_TARGET_FILE_NAME = 'targetFilename';
     public const ARGUMENT_TEMPLATE = 'template';
+
+    public const ARGUMENT_LAYER = 'layer';
+    public const ARGUMENT_MODULE = 'module';
+    public const ARGUMENT_OVERWRITE = 'overwrite';
+    public const ARGUMENT_CORE_CLASS = 'coreClass';
+    public const ARGUMENT_CORE_NAMESPACE = 'coreNamespace';
 
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
@@ -29,13 +36,23 @@ class TemplateSpryk implements SprykBuilderInterface
     protected $rootDirectory;
 
     /**
+     * @var array
+     */
+    protected $coreNamespaces;
+
+    /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
      * @param string $rootDirectory
+     * @param array $coreNamespaces
      */
-    public function __construct(TemplateRendererInterface $renderer, string $rootDirectory)
-    {
+    public function __construct(
+        TemplateRendererInterface $renderer,
+        string $rootDirectory,
+        array $coreNamespaces
+    ) {
         $this->renderer = $renderer;
         $this->rootDirectory = $rootDirectory;
+        $this->coreNamespaces = $coreNamespaces;
     }
 
     /**
@@ -68,6 +85,8 @@ class TemplateSpryk implements SprykBuilderInterface
     {
         $targetPath = $this->getTargetPath($sprykDefinition);
         $templateName = $this->getTemplateName($sprykDefinition);
+
+        $this->checkCoreExtensionToProjectLevel($sprykDefinition);
 
         $targetDirectory = dirname($targetPath);
 
@@ -181,5 +200,41 @@ class TemplateSpryk implements SprykBuilderInterface
         }
 
         return $filename;
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     */
+    protected function checkCoreExtensionToProjectLevel(SprykDefinitionInterface $sprykDefinition): void
+    {
+        foreach ($this->coreNamespaces as $coreNamespace) {
+            $coreClass = sprintf('%s\\%s\\%s\\%s',
+                $coreNamespace,
+                $sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_LAYER),
+                $sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_MODULE),
+                substr($sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_TARGET_FILE_NAME), 0, -4)
+            );
+
+            if (class_exists($coreClass) || interface_exists($coreClass)) {
+                $argumentCollection = $sprykDefinition->getArgumentCollection();
+
+                $methodArgument = (new Argument())
+                    ->setName(self::ARGUMENT_OVERWRITE)
+                    ->setValue(true);
+                $argumentCollection->addArgument($methodArgument);
+
+                $methodArgument = (new Argument())
+                    ->setName(self::ARGUMENT_CORE_CLASS)
+                    ->setValue($coreClass);
+                $argumentCollection->addArgument($methodArgument);
+
+                $methodArgument = (new Argument())
+                    ->setName(self::ARGUMENT_CORE_NAMESPACE)
+                    ->setValue($coreNamespace);
+                $argumentCollection->addArgument($methodArgument);
+
+                return;
+            }
+        }
     }
 }
