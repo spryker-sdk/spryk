@@ -7,11 +7,19 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Persistence;
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}EntityManager;
+{% else %}
 use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
+{% endif %}
 
 /**
  * @method \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}PersistenceFactory getFactory()
  */
+{% if overwrite == true %}
+class {{ module }}EntityManager extends {{ coreNamespace }}{{ module }}EntityManager implements {{ module }}EntityManagerInterface
+{% else %}
 class {{ module }}EntityManager extends AbstractEntityManager implements {{ module }}EntityManagerInterface
+{% endif %}
 {
 }

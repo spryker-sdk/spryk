@@ -7,12 +7,20 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Communication\Controller;
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}Controller;
+{% else %}
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
+{% endif %}
 
 /**
  * @method \{{ organization }}\Zed\{{ module }}\Communication\{{ module }}CommunicationFactory getFactory()
  * @method \{{ organization }}\Zed\{{ module }}\Business\{{ module }}FacadeInterface getFacade()
  */
+{% if overwrite == true %}
+class {{ module }}Controller extends {{ coreNamespace }}{{ module }}Controller
+{% else %}
 class {{ controller }} extends AbstractController
+{% endif %}
 {
 }

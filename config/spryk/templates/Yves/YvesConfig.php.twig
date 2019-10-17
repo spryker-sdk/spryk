@@ -7,8 +7,16 @@
 
 namespace {{ organization }}\Yves\{{ module }};
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}Config;
+{% else %}
 use Spryker\Yves\Kernel\AbstractBundleConfig;
+{% endif %}
 
+{% if overwrite == true %}
+class {{ module }}Config extends {{ coreNamespace }}{{ module }}Config
+{% else %}
 class {{ module }}Config extends AbstractBundleConfig
+{% endif %}
 {
 }

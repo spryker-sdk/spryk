@@ -7,11 +7,19 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Persistence;
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}Repository;
+{% else %}
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
+{% endif %}
 
 /**
  * @method \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}PersistenceFactory getFactory()
  */
+{% if overwrite == true %}
+class {{ module }}Repository extends {{ coreNamespace }}{{ module }}Repository implements {{ module }}RepositoryInterface
+{% else %}
 class {{ module }}Repository extends AbstractRepository implements {{ module }}RepositoryInterface
+{% endif %}
 {
 }

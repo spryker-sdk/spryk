@@ -7,6 +7,14 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Business;
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}FacadeInterface;
+{% endif %}
+
+{% if overwrite == true %}
+interface {{ module }}FacadeInterface extends {{ coreNamespace }}{{ module }}FacadeInterface
+{% else %}
 interface {{ module }}FacadeInterface
+{% endif %}
 {
 }

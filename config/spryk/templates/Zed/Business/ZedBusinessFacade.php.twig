@@ -7,13 +7,21 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Business;
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}Facade;
+{% else %}
 use Spryker\Zed\Kernel\Business\AbstractFacade;
+{% endif %}
 
 /**
  * @method \{{ organization }}\Zed\{{ module }}\Business\{{ module }}BusinessFactory getFactory()
  * @method \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}RepositoryInterface getRepository()
  * @method \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInterface getEntityManager()
  */
+{% if overwrite == true %}
+class {{ module }}Facade extends {{ coreNamespace }}{{ module }}Facade implements {{ module }}FacadeInterface
+{% else %}
 class {{ module }}Facade extends AbstractFacade implements {{ module }}FacadeInterface
+{% endif %}
 {
 }

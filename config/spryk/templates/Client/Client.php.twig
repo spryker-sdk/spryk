@@ -7,11 +7,19 @@
 
 namespace {{ organization }}\Client\{{ module }};
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}Client;
+{% else %}
 use Spryker\Client\Kernel\AbstractClient;
+{% endif %}
 
 /**
  * @method \{{ organization }}\Client\{{ module }}\{{ module }}Factory getFactory()
  */
+{% if overwrite == true %}
+class {{ module }}Client extends {{ coreNamespace }}{{ module }}Client implements {{ module }}ClientInterface
+{% else %}
 class {{ module }}Client extends AbstractClient implements {{ module }}ClientInterface
+{% endif %}
 {
 }

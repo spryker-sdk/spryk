@@ -7,6 +7,14 @@
 
 namespace {{ organization }}\Client\{{ module }};
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}ClientInterface;
+{% endif %}
+
+{% if overwrite == true %}
+interface {{ module }}ClientInterface extends {{ coreNamespace }}{{ module }}ClientInterface
+{% else %}
 interface {{ module }}ClientInterface
+{% endif %}
 {
 }

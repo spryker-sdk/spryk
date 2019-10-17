@@ -7,11 +7,19 @@
 
 namespace {{ organization }}\Yves\{{ module }};
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}Factory;
+{% else %}
 use Spryker\Yves\Kernel\AbstractFactory;
+{% endif %}
 
 /**
  * @method \{{ organization }}\Yves\{{ module }}\{{ module }}Config getConfig()
  */
+{% if overwrite == true %}
+class {{ module }}Factory extends {{ coreNamespace }}{{ module }}Factory
+{% else %}
 class {{ module }}Factory extends AbstractFactory
+{% endif %}
 {
 }

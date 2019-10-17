@@ -7,12 +7,20 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Communication;
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}CommunicationFactory;
+{% else %}
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
+{% endif %}
 
 /**
  * @method \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}QueryContainerInterface getQueryContainer()
  * @method \{{ organization }}\Zed\{{ module }}\{{ module }}Config getConfig()
  */
+{% if overwrite == true %}
+class {{ module }}CommunicationFactory extends {{ coreNamespace }}{{ module }}CommunicationFactory
+{% else %}
 class {{ module }}CommunicationFactory extends AbstractCommunicationFactory
+{% endif %}
 {
 }

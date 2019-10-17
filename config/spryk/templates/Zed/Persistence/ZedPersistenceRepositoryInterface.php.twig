@@ -7,6 +7,14 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Persistence;
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}RepositoryInterface;
+{% endif %}
+
+{% if overwrite == true %}
+interface {{ module }}RepositoryInterface extends {{ coreNamespace }}{{ module }}RepositoryInterface
+{% else %}
 interface {{ module }}RepositoryInterface
+{% endif %}
 {
 }
