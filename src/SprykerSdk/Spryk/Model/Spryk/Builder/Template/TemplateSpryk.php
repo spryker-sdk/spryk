@@ -19,6 +19,7 @@ class TemplateSpryk implements SprykBuilderInterface
     public const ARGUMENT_TARGET_FILE_NAME = 'targetFilename';
     public const ARGUMENT_TEMPLATE = 'template';
 
+    public const ARGUMENT_MODE = 'mode';
     public const ARGUMENT_LAYER = 'layer';
     public const ARGUMENT_MODULE = 'module';
     public const ARGUMENT_OVERWRITE = 'overwrite';
@@ -207,12 +208,16 @@ class TemplateSpryk implements SprykBuilderInterface
      */
     protected function checkCoreExtensionToProjectLevel(SprykDefinitionInterface $sprykDefinition): void
     {
+        if($sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_MODE)->getValue() === 'core') {
+            return;
+        }
+
         foreach ($this->coreNamespaces as $coreNamespace) {
             $coreClass = sprintf('%s\\%s\\%s\\%s',
                 $coreNamespace,
-                $sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_LAYER),
-                $sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_MODULE),
-                substr($sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_TARGET_FILE_NAME), 0, -4)
+                $sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_LAYER)->getValue(),
+                $sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_MODULE)->getValue(),
+                substr($sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_TARGET_FILE_NAME)->getValue(), 0, -4)
             );
 
             if (class_exists($coreClass) || interface_exists($coreClass)) {
