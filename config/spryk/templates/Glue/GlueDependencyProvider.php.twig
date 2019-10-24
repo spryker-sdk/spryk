@@ -7,10 +7,18 @@
 
 namespace {{ organization }}\Glue\{{ module }};
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}DependencyProvider;
+{% else %}
 use Spryker\Glue\Kernel\AbstractBundleDependencyProvider;
+{% endif %}
 use Spryker\Glue\Kernel\Container;
 
+{% if overwrite == true %}
+class {{ module }}DependencyProvider extends {{ coreNamespace }}{{ module }}DependencyProvider
+{% else %}
 class {{ module }}DependencyProvider extends AbstractBundleDependencyProvider
+{% endif %}
 {
     /**
      * @param \Spryker\Glue\Kernel\Container $container

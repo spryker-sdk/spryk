@@ -7,11 +7,19 @@
 
 namespace {{ organization }}\Glue\{{ module }}\Controller;
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}Controller;
+{% else %}
 use Spryker\Glue\Kernel\Controller\AbstractController;
+{% endif %}
 
 /**
  * @method \{{ organization }}\Glue\{{ module }}\{{ module }}Factory getFactory()
  */
+{% if overwrite == true %}
+class {{ module }}Controller extends {{ coreNamespace }}{{ module }}Controller
+{% else %}
 class {{ controller }} extends AbstractController
+{% endif %}
 {
 }

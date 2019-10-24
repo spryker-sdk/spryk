@@ -7,8 +7,16 @@
 
 namespace {{ organization }}\Glue\{{ module }};
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}RestApiResource;
+{% else %}
 use Spryker\Glue\Kernel\AbstractRestResource;
+{% endif %}
 
+{% if overwrite == true %}
+class {{ module }}RestApiResource extends {{ coreNamespace }}{{ module }}RestApiResource implements {{ interfaceName | classNameShort }}
+{% else %}
 class {{ className | classNameShort }} extends AbstractRestResource implements {{ interfaceName | classNameShort }}
+{% endif %}
 {
 }

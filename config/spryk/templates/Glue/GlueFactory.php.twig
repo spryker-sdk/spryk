@@ -7,8 +7,16 @@
 
 namespace {{ organization }}\Glue\{{ module }};
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}Factory;
+{% else %}
 use Spryker\Glue\Kernel\AbstractFactory;
+{% endif %}
 
+{% if overwrite == true %}
+class {{ module }}Factory extends {{ coreNamespace }}{{ module }}Factory
+{% else %}
 class {{ module }}Factory extends AbstractFactory
+{% endif %}
 {
 }

@@ -7,8 +7,16 @@
 
 namespace {{ organization }}\Glue\{{ module }};
 
+{% if overwrite == true %}
+use {{ coreClass }} as {{ coreNamespace }}{{ module }}Config;
+{% else %}
 use Spryker\Glue\Kernel\AbstractBundleConfig;
+{% endif %}
 
+{% if overwrite == true %}
+class {{ module }}Config extends {{ coreNamespace }}{{ module }}Config
+{% else %}
 class {{ module }}Config extends AbstractBundleConfig
+{% endif %}
 {
 }
