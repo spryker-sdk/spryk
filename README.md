@@ -16,8 +16,8 @@ This is a development only "require-dev" module. Please make sure you include it
 
 Currently we support two ways to work with Spryks.
 
-1. Console based.
-2. Ui based.
+1. Console based (CLI).
+2. UI based (Zed GUI).
 
 ### Spryk Console
 
