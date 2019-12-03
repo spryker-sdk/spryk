@@ -15,9 +15,9 @@ use Symfony\Component\Console\Terminal;
 
 class SprykStyle implements SprykStyleInterface
 {
-    public const MAX_LINE_LENGTH = 120;
-
     use InputHelper;
+
+    public const MAX_LINE_LENGTH = 120;
 
     /**
      * @var int
@@ -25,14 +25,14 @@ class SprykStyle implements SprykStyleInterface
     protected $lineLength;
 
     /**
-     * @var \Symfony\Component\Console\Output\OutputInterface
-     */
-    protected $output;
-
-    /**
      * @var \Symfony\Component\Console\Input\InputInterface
      */
     protected $input;
+
+    /**
+     * @var \Symfony\Component\Console\Output\OutputInterface
+     */
+    protected $output;
 
     /**
      * @param \Symfony\Component\Console\Input\InputInterface $input
@@ -40,11 +40,11 @@ class SprykStyle implements SprykStyleInterface
      */
     public function __construct(InputInterface $input, OutputInterface $output)
     {
-        $width = (new Terminal())->getWidth() ?: static::MAX_LINE_LENGTH;
-        $this->lineLength = min($width - (int)(DIRECTORY_SEPARATOR === '\\'), static::MAX_LINE_LENGTH);
-
         $this->input = $input;
         $this->output = $output;
+
+        $width = (new Terminal())->getWidth() ?: static::MAX_LINE_LENGTH;
+        $this->lineLength = min($width - (int)(DIRECTORY_SEPARATOR === '\\'), static::MAX_LINE_LENGTH);
     }
 
     /**
