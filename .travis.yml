@@ -1,9 +1,8 @@
 language: php
 
-sudo: false
-
 php:
   - 7.2
+  - 7.4
 
 env:
   global:
@@ -29,7 +28,7 @@ matrix:
     fast_finish: true
 
 before_install:
-  - if [[ $COVERAGE != 1 && $GLUE != 1 && $ZED != 1 ]]; then phpenv config-rm xdebug.ini; fi
+  - if [[ $COVERAGE != 1 && $GLUE != 1 && $ZED != 1 && ${TRAVIS_PHP_VERSION} != "7.4" ]]; then phpenv config-rm xdebug.ini; fi
   - composer global require hirak/prestissimo
   - phpenv config-add ci/travis.php.ini
 
@@ -47,13 +46,12 @@ script:
   - if [[ $CHECKS == 1 ]]; then composer phpstan ; fi
   - if [[ $CHECKS == 1 ]]; then composer cs-check ; fi
 
+after_success:
+    - if [[ $COVERAGE == 1 || $GLUE == 1 ]]; then travis_retry php vendor/bin/coveralls; fi
+
 notifications:
     email: false
 
 cache:
   directories:
-    - vendor
     - $HOME/.composer/cache
-
-after_success:
-    - if [[ $COVERAGE == 1 || $GLUE == 1 ]]; then travis_retry php vendor/bin/coveralls; fi
