@@ -34,9 +34,9 @@ class SprykDumpConsole extends AbstractSprykConsole
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      *
-     * @return int|null
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output): ?int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $sprykName = current((array)$input->getArgument(static::ARGUMENT_SPRYK));
         if ($sprykName !== false) {

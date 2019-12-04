@@ -35,6 +35,7 @@ before_install:
 before_script:
   - if [[ $PREFER_LOWEST != 1 ]]; then composer install --no-interaction; fi;
   - if [[ $PREFER_LOWEST == 1 ]]; then composer update --prefer-lowest --no-interaction --prefer-dist --prefer-stable; fi;
+  - if [[ $PREFER_LOWEST == 1 ]]; then composer require --dev dereuromark/composer-prefer-lowest; fi
 
 script:
   - if [[ $DEFAULT == 1 ]]; then vendor/bin/codecept run -g Glue; fi
@@ -43,14 +44,17 @@ script:
   - if [[ $GLUE == 1 ]]; then vendor/bin/codecept run -g Glue -x Zed --coverage-xml; fi
   - if [[ $ZED == 1 ]]; then vendor/bin/codecept run -g Zed -x Glue --coverage-xml; fi
 
-  - if [[ $CHECKS == 1 ]]; then composer phpstan ; fi
-  - if [[ $CHECKS == 1 ]]; then composer cs-check ; fi
+  - if [[ $CHECKS == 1 ]]; then composer phpstan; fi
+  - if [[ $CHECKS == 1 ]]; then composer cs-check; fi
+
+  - if [[ $PREFER_LOWEST == 1 ]]; then composer phpstan; fi
+  - if [[ $PREFER_LOWEST == 1 ]]; then vendor/bin/validate-prefer-lowest -m; fi
 
 after_success:
-    - if [[ $COVERAGE == 1 || $GLUE == 1 ]]; then travis_retry php vendor/bin/coveralls; fi
+  - if [[ $COVERAGE == 1 || $GLUE == 1 ]]; then travis_retry php vendor/bin/coveralls; fi
 
 notifications:
-    email: false
+  email: false
 
 cache:
   directories:

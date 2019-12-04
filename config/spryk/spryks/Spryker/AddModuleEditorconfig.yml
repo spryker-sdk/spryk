@@ -1,0 +1,23 @@
+spryk: template
+description: "Adds a new .editorconfig to the Modules root."
+mode: core
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  template:
+    value: editorconfig.twig
+
+  targetFilename:
+    value: .editorconfig
+
+  targetPath:
+    value: "{{ module }}/"
+
+preSpryks:
+  - AddModule
