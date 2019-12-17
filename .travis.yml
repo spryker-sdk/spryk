@@ -28,7 +28,7 @@ matrix:
     fast_finish: true
 
 before_install:
-  - if [[ $COVERAGE != 1 && $GLUE != 1 && $ZED != 1 && ${TRAVIS_PHP_VERSION} != "7.4" ]]; then phpenv config-rm xdebug.ini; fi
+  - if [[ $COVERAGE != 1 && $GLUE != 1 && $ZED != 1 ]]; then phpenv config-rm xdebug.ini; fi
   - composer global require hirak/prestissimo
   - phpenv config-add ci/travis.php.ini
 
