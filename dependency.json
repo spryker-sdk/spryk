@@ -1,5 +1,8 @@
 {
   "include": {
     "spryker/glue-application-extension": "GlueApplicationExtension is needed to create Glue API specific classes."
+  },
+  "include-dev": {
+    "spryker/console": "The `vendor/bin/zed` is referenced in the README.md."
   }
 }
