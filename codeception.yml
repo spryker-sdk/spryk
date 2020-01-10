@@ -1,15 +1,15 @@
 namespace: SprykerSdkTest
-actor: Tester
 
 paths:
-    tests: tests
-    log: tests/_output
-    data: tests/_data
-    support: tests/_support
-    envs: tests/_envs
+    tests: tests/
+    log: tests/_output/
+    data: tests/_data/
+    support: tests/_support/
+    envs: tests/_envs/
+
+bootstrap: SprykerSdkTest/_bootstrap.php
 
 settings:
-    bootstrap: _bootstrap.php
     suite_class: \PHPUnit\Framework\TestSuite
     colors: true
     memory_limit: 2048M
@@ -26,7 +26,6 @@ suites:
         class_name: SprykTester
         modules:
             enabled:
-                - Asserts
                 - SprykerSdkTest\Module\DevelopmentModeModule:
                     developmentMode: 'core'
 
