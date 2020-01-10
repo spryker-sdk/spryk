@@ -27,7 +27,6 @@ class AddZedTestCodeceptionConfigurationTest extends Unit
     protected $tester;
 
     /**
-     * @group single
      * @return void
      */
     public function testAddsZedTestCodeceptionConfiguration(): void
