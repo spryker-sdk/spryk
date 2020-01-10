@@ -39,7 +39,7 @@ class AddGlueRestRequestValidatorPluginTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxRestRequestValidatorPlugin.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxRestRequestValidatorPlugin.php');
     }
 
     /**
@@ -53,6 +53,6 @@ class AddGlueRestRequestValidatorPluginTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxRestRequestValidatorPlugin.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxRestRequestValidatorPlugin.php');
     }
 }

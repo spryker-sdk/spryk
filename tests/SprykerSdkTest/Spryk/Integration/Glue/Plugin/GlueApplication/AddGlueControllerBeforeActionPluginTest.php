@@ -39,7 +39,7 @@ class AddGlueControllerBeforeActionPluginTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxControllerBeforeActionPlugin.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxControllerBeforeActionPlugin.php');
     }
 
     /**
@@ -53,7 +53,7 @@ class AddGlueControllerBeforeActionPluginTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxControllerBeforeActionPlugin.php'
         );
     }

@@ -37,7 +37,7 @@ class AddGlueResourceTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/BarResource.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/BarResource.php');
     }
 
     /**
@@ -51,6 +51,6 @@ class AddGlueResourceTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'BarResource.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'BarResource.php');
     }
 }
