@@ -10,6 +10,7 @@ namespace SprykerTest\Spryk\Model\Spryk\Builder\Template\Renderer;
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\TwigException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 
 /**
  * Auto-generated group annotations
@@ -44,7 +45,7 @@ class TemplateRendererTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
-    protected function getTemplateRendererMock()
+    protected function getTemplateRendererMock(): TemplateRendererInterface
     {
         $mockBuilder = $this->getMockBuilder(TemplateRenderer::class)
             ->disableOriginalConstructor()

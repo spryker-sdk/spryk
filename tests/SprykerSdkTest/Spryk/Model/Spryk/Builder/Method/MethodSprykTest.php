@@ -12,6 +12,7 @@ use Roave\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 /**
@@ -76,7 +77,7 @@ class MethodSprykTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
      */
-    protected function buildMethodSprykMockWithEmptyFileNameOfReflectionClass()
+    protected function buildMethodSprykMockWithEmptyFileNameOfReflectionClass(): SprykBuilderInterface
     {
         $mockBuilder = $this->getMockBuilder(MethodSpryk::class)
             ->disableOriginalConstructor()
@@ -96,7 +97,7 @@ class MethodSprykTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
      */
-    protected function buildMethodSprykMockWithEmptyTargetFile()
+    protected function buildMethodSprykMockWithEmptyTargetFile(): SprykBuilderInterface
     {
         $mockBuilder = $this->getMockBuilder(MethodSpryk::class)
             ->disableOriginalConstructor()
@@ -116,7 +117,7 @@ class MethodSprykTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\Roave\BetterReflection\Reflection\ReflectionClass
      */
-    protected function buildReflectionClassMock()
+    protected function buildReflectionClassMock(): ReflectionClass
     {
         $mockBuilder = $this->getMockBuilder(ReflectionClass::class)
             ->disableOriginalConstructor()
@@ -131,7 +132,7 @@ class MethodSprykTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerSdk\Spryk\Style\SprykStyleInterface
      */
-    protected function getSprykStyleMock()
+    protected function getSprykStyleMock(): SprykStyleInterface
     {
         $mockBuilder = $this->getMockBuilder(SprykStyleInterface::class);
 

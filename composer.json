@@ -18,7 +18,7 @@
     "zendframework/zend-filter": "^2.8"
   },
   "require-dev": {
-    "codeception/codeception": "^3.0.0",
+    "codeception/codeception": "^4.0.0",
     "nette/finder": "^2.4.0",
     "nette/utils": "^2.5.0",
     "php-coveralls/php-coveralls": "^1.0",
