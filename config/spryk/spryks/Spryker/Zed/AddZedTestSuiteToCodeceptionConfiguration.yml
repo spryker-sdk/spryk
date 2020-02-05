@@ -11,7 +11,7 @@ arguments:
     default: Spryker
 
   afterElement:
-    value: actor
+    value: namespace
 
   addToElement:
     value: include

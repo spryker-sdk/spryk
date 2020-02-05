@@ -10,6 +10,7 @@ namespace SprykerTest\Spryk\Model\Spryk\Builder\Navigation;
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\XmlException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Navigation\NavigationSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 /**
@@ -62,7 +63,7 @@ class NavigationSprykTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
      */
-    protected function getNavigationSprykMockForFailedToLoadFromFile()
+    protected function getNavigationSprykMockForFailedToLoadFromFile(): SprykBuilderInterface
     {
         $mockBuilder = $this->getMockBuilder(NavigationSpryk::class)
             ->disableOriginalConstructor()
@@ -77,7 +78,7 @@ class NavigationSprykTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerSdk\Spryk\Style\SprykStyleInterface
      */
-    protected function getSprykStyleMock()
+    protected function getSprykStyleMock(): SprykStyleInterface
     {
         $mockBuilder = $this->getMockBuilder(SprykStyleInterface::class);
 

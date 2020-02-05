@@ -65,7 +65,7 @@ class UpdateYmlSprykTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
-    protected function getTemplateRendererMock()
+    protected function getTemplateRendererMock(): TemplateRendererInterface
     {
         $mockBuilder = $this->getMockBuilder(TemplateRendererInterface::class);
 
@@ -86,7 +86,7 @@ class UpdateYmlSprykTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerSdk\Spryk\Style\SprykStyleInterface
      */
-    protected function getSprykStyleMock()
+    protected function getSprykStyleMock(): SprykStyleInterface
     {
         $mockBuilder = $this->getMockBuilder(SprykStyleInterface::class);
 

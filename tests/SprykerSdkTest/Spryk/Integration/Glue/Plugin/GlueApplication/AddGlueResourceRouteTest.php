@@ -77,6 +77,6 @@ class AddGlueResourceRouteTest extends Unit
         $classReflection = $reflection->classReflector()->reflect($className);
         $methodReflection = $classReflection->getMethod('configure');
 
-        $this->tester->assertContains('->add' . ucfirst($resourceRouteMethod) . '(', $methodReflection->getBodyCode());
+        $this->assertStringContainsString('->add' . ucfirst($resourceRouteMethod) . '(', $methodReflection->getBodyCode());
     }
 }

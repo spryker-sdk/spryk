@@ -35,7 +35,7 @@ class AddSharedRestAttributesTransferTest extends Unit
             '--name' => 'RestFooBarrAttributes',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml');
     }
 
     /**
@@ -49,7 +49,7 @@ class AddSharedRestAttributesTransferTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Shared')
             . 'Transfer/foo_bar.transfer.xml'
         );
