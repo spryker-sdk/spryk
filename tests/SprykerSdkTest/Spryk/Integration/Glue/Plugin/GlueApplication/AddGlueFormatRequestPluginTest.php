@@ -39,7 +39,7 @@ class AddGlueFormatRequestPluginTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxFormatRequestPlugin.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/BazQuxFormatRequestPlugin.php');
     }
 
     /**
@@ -53,7 +53,7 @@ class AddGlueFormatRequestPluginTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertFileExists(
+        $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxFormatRequestPlugin.php'
         );
     }

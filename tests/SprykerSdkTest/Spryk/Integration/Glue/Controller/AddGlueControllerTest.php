@@ -37,7 +37,7 @@ class AddGlueControllerTest extends Unit
             '--controller' => 'Bar',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
     }
 
     /**
@@ -51,6 +51,6 @@ class AddGlueControllerTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Controller/BarController.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Controller/BarController.php');
     }
 }

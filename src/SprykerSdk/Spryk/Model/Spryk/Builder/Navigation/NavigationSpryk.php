@@ -73,7 +73,7 @@ class NavigationSpryk implements SprykBuilderInterface
 
         $parentNode = $xml->$module;
         if (!$parentNode) {
-            $parentNode = current($xml->children());
+            $parentNode = current((array)$xml->children());
         }
 
         $page = $parentNode->pages->addChild($module);

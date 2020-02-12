@@ -38,8 +38,8 @@ class AddGlueResourceRestResponseBuilderModelTest extends Unit
             '--resourceType' => 'foo-bar',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilder.php');
-        $this->tester->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilder.php');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
     }
 
     /**
@@ -53,7 +53,7 @@ class AddGlueResourceRestResponseBuilderModelTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/RestResponseBuilder/FooBarRestResponseBuilder.php');
-        $this->tester->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/RestResponseBuilder/FooBarRestResponseBuilder.php');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
     }
 }
