@@ -7,3 +7,7 @@ if (!defined('APPLICATION_ROOT_DIR')) {
 if (!defined('APPLICATION_ENV')) {
     define('APPLICATION_ENV', 'devtest');
 }
+
+if (!defined('APPLICATION_STORE')) {
+    define('APPLICATION_STORE', 'DE');
+}
