@@ -44,7 +44,7 @@ class TemplateSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
      * @param string $rootDirectory
-     * @param array $coreNamespaces
+     * @param string[] $coreNamespaces
      */
     public function __construct(
         TemplateRendererInterface $renderer,
@@ -205,41 +205,56 @@ class TemplateSpryk implements SprykBuilderInterface
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    protected function checkCoreExtensionToProjectLevel(SprykDefinitionInterface $sprykDefinition): void
+    protected function checkCoreExtensionToProjectLevel(SprykDefinitionInterface $sprykDefinition): SprykDefinitionInterface
     {
-        if($sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_MODE)->getValue() === 'core') {
-            return;
+        if ($sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_MODE)->getValue() === 'core') {
+            return $sprykDefinition;
         }
 
         foreach ($this->coreNamespaces as $coreNamespace) {
-            $coreClass = sprintf('%s\\%s\\%s\\%s',
-                $coreNamespace,
-                $sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_LAYER)->getValue(),
-                $sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_MODULE)->getValue(),
-                substr($sprykDefinition->getArgumentCollection()->getArgument(self::ARGUMENT_TARGET_FILE_NAME)->getValue(), 0, -4)
-            );
+            $coreClass = $this->getCoreClassFullyQualifiedName($sprykDefinition, $coreNamespace);
 
             if (class_exists($coreClass) || interface_exists($coreClass)) {
                 $argumentCollection = $sprykDefinition->getArgumentCollection();
 
-                $methodArgument = (new Argument())
-                    ->setName(self::ARGUMENT_OVERWRITE)
+                $overwriteArgument = (new Argument())
+                    ->setName(static::ARGUMENT_OVERWRITE)
                     ->setValue(true);
-                $argumentCollection->addArgument($methodArgument);
+                $argumentCollection->addArgument($overwriteArgument);
 
-                $methodArgument = (new Argument())
-                    ->setName(self::ARGUMENT_CORE_CLASS)
+                $coreClassArgument = (new Argument())
+                    ->setName(static::ARGUMENT_CORE_CLASS)
                     ->setValue($coreClass);
-                $argumentCollection->addArgument($methodArgument);
+                $argumentCollection->addArgument($coreClassArgument);
 
-                $methodArgument = (new Argument())
-                    ->setName(self::ARGUMENT_CORE_NAMESPACE)
+                $coreNamespaceArgument = (new Argument())
+                    ->setName(static::ARGUMENT_CORE_NAMESPACE)
                     ->setValue($coreNamespace);
-                $argumentCollection->addArgument($methodArgument);
+                $argumentCollection->addArgument($coreNamespaceArgument);
 
-                return;
+                break;
             }
         }
+        
+        return $sprykDefinition;
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param string $coreNamespace
+     *
+     * @return string
+     */
+    protected function getCoreClassFullyQualifiedName(SprykDefinitionInterface $sprykDefinition, string $coreNamespace): string
+    {
+        return sprintf('%s\\%s\\%s\\%s',
+            $coreNamespace,
+            $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_LAYER)->getValue(),
+            $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_MODULE)->getValue(),
+            substr($sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_TARGET_FILE_NAME)->getValue(), 0, -4)
+        );
     }
 }
