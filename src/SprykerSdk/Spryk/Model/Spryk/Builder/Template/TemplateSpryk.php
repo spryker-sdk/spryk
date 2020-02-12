@@ -238,7 +238,7 @@ class TemplateSpryk implements SprykBuilderInterface
                 break;
             }
         }
-        
+
         return $sprykDefinition;
     }
 
@@ -250,7 +250,8 @@ class TemplateSpryk implements SprykBuilderInterface
      */
     protected function getCoreClassFullyQualifiedName(SprykDefinitionInterface $sprykDefinition, string $coreNamespace): string
     {
-        return sprintf('%s\\%s\\%s\\%s',
+        return sprintf(
+            '%s\\%s\\%s\\%s',
             $coreNamespace,
             $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_LAYER)->getValue(),
             $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_MODULE)->getValue(),
