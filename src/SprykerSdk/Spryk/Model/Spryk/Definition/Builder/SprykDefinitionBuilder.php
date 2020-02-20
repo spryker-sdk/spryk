@@ -197,6 +197,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
         foreach ($preSpryks as $preSprykName) {
             if ($this->calledSpryk === $preSprykName) {
                 $preSprykDefinitions[] = $this->definitionCollection[$this->calledSpryk];
+
                 continue;
             }
 

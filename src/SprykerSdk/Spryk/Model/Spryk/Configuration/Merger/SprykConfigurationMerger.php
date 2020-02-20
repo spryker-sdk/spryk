@@ -142,6 +142,7 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         foreach ($arguments as $argumentName => $argumentDefinition) {
             if (!isset($rootArguments[$argumentName])) {
                 $mergedArguments[$argumentName] = $argumentDefinition;
+
                 continue;
             }
 
