@@ -46,18 +46,23 @@ class SprykIntegrationTester extends Actor
     public function run(Unit $testClass, array $arguments): void
     {
         $sprykName = $this->getSprykName($testClass);
+        dump($sprykName);
 
         $command = new SprykRunConsole();
         $tester = $this->getConsoleTester($command, $sprykName);
+
+        $arguments = $this->addDevelopmentModeFromConfig($arguments);
 
         $arguments += [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => $sprykName,
         ];
 
-        $arguments = $this->addDevelopmentModeFromConfig($arguments);
+
+        dump($arguments);
 
         $tester->execute($arguments, ['interactive' => false]);
+        dump($tester->getDisplay());
     }
 
     /**

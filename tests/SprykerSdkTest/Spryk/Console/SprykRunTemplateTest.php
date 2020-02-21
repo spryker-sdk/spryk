@@ -37,6 +37,7 @@ class SprykRunTemplateTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'TemplateWithoutInteraction',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments);
@@ -78,6 +79,7 @@ class SprykRunTemplateTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'TemplateWithTargetFileName',
+            '--mode' => 'core',
         ];
 
         $tester->setInputs(['FooBar']);

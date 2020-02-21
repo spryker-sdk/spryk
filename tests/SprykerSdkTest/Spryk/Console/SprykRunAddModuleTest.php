@@ -42,7 +42,16 @@ class SprykRunAddModuleTest extends Unit
             '-n' => true,
         ];
 
-        $tester->setInputs(['FooBar', 'Spryker', static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER]);
+        $tester->setInputs([
+            'project',
+            'FooBar',
+            'Spryker',
+            '/vendor/spryker/spryker/Bundles/FooBar/src',
+            static::KEY_STROKE_ENTER,
+            static::KEY_STROKE_ENTER,
+            static::KEY_STROKE_ENTER,
+            static::KEY_STROKE_ENTER,
+        ]);
         $tester->execute($arguments);
 
         $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');

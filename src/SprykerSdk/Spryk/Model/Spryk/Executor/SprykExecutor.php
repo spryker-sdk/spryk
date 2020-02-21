@@ -65,6 +65,7 @@ class SprykExecutor implements SprykExecutorInterface
         $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
 
         $this->mainSprykDefinitionMode = $this->getSprykDefinitionMode($sprykDefinition, $style);
+        dump($this->mainSprykDefinitionMode);
 
         $this->buildSpryk($sprykDefinition, $style);
     }

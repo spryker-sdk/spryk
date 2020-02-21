@@ -38,6 +38,7 @@ class SprykRunArgumentWithDefinedOptionsTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddModule',
+             '--mode' => 'core',
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
             '--targetPath' => 'vendor/spryker/spryker/Bundles/%module%/',

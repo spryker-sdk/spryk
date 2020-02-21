@@ -27,6 +27,7 @@ class AddClientTest extends Unit
     protected $tester;
 
     /**
+     * @group testAddsClientFile
      * @return void
      */
     public function testAddsClientFile(): void

@@ -1,5 +1,6 @@
 spryk: structure
 description: "Unit Test configuration"
+mode: both
 
 arguments:
   module: ~

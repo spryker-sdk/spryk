@@ -37,6 +37,7 @@ class SprykRunMethodTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddFacadeMethod',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments);
@@ -60,6 +61,7 @@ class SprykRunMethodTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddFacadeMethod',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments);
@@ -84,6 +86,7 @@ class SprykRunMethodTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddMethodWithApiTag',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments);
@@ -106,6 +109,7 @@ class SprykRunMethodTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddMethodWithApiAndInheritdocTag',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments);

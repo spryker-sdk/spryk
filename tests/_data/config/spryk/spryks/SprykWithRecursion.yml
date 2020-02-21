@@ -2,6 +2,8 @@ spryk: template
 description: "Unit Test configuration"
 
 arguments:
+  mode:
+      value: core
 
   module:
     value: FooBar

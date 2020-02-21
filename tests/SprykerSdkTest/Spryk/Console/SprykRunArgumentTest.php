@@ -80,7 +80,7 @@ class SprykRunArgumentTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => 'AddModule',
         ];
 
-        $tester->setInputs(['FooBar', 'Spryker', static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER]);
+        $tester->setInputs(['project', 'FooBar', 'Spryker', static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER]);
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();

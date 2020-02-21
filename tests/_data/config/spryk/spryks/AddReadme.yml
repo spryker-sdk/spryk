@@ -1,7 +1,10 @@
 spryk: template
 description: "Unit Test configuration"
+mode: both
 
 arguments:
+  mode: ~
+
   module: ~
 
   template:
@@ -9,6 +12,9 @@ arguments:
 
   targetPath:
     default: "{{ module }}/"
+
+  targetFilename:
+      value: Readme.md
 
 preSpryks:
   - AddModule

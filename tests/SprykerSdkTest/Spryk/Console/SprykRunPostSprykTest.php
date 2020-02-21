@@ -37,6 +37,7 @@ class SprykRunPostSprykTest extends Unit
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'SprykWithPostSpryk',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments);

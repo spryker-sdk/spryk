@@ -93,6 +93,14 @@ class SprykConsoleTester extends Actor
             'getDefaultDevelopmentMode' => function () {
                 return $this->getDevelopmentMode();
             },
+            'getCoreNamespaces' => function () {
+                return [
+                    'SprykerShop',
+                    'SprykerEco',
+                    'Spryker',
+                    'SprykerSdk',
+                ];
+            },
         ]);
 
         return $sprykConfig;

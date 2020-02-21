@@ -1,7 +1,9 @@
 spryk: method
 description: "Unit Test configuration"
+mode: both
 
 arguments:
+  mode: ~
 
   module:
     value: FooBar

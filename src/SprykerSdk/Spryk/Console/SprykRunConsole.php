@@ -75,6 +75,8 @@ class SprykRunConsole extends AbstractSprykConsole
         OptionsContainer::setOptions($input->getOptions());
 
         $sprykName = $this->getSprykName($input);
+        dump($sprykName);
+        dump((array)OptionsContainer::getOption(static::OPTION_INCLUDE_OPTIONALS));
         $this->getFacade()->executeSpryk(
             $sprykName,
             (array)OptionsContainer::getOption(static::OPTION_INCLUDE_OPTIONALS),
