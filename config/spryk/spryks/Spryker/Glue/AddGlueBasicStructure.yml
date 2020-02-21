@@ -16,7 +16,7 @@ arguments:
 
   resourceType:
     inherit: true
-    default: "{{ module | removeRestApiSuffix | lower }}"
+    default: "{{ module | removeRestApiSuffix | dasherize }}"
 
   targetPath:
     value: "{{ module }}/"
