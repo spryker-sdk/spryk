@@ -15,8 +15,8 @@ use Spryker\Shared\Kernel\KernelConstants;
  */
 class SprykConfig
 {
-    protected const NAME_DEVELOPMENT_LAYER_CORE = 'core';
-    protected const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
+    public const NAME_DEVELOPMENT_LAYER_CORE = 'core';
+    public const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
     protected const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
 
     protected const NAME_DIRECTORY_GENERATED = 'generated';

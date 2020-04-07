@@ -20,14 +20,16 @@ arguments:
             - "src/{{ organization }}/"
 
 postSpryks:
-    - AddModuleReadme
-    - AddModuleComposerJson
-    - AddModuleLicense
-    - AddModuleContributing
-    - AddModuleChangelog
-    - AddModuleTravis
-    - AddModuleGitattributes
-    - AddModuleGitignore
-    - AddModuleTooling
-    - AddModulePhpStanJson
-    - AddModulePhpStanNeon
+    - AddModule
+    - AddClient
+    - AddClientConfig
+    - AddSharedTransferSchema
+    - AddZedConfig
+    - AddZedDependencyProvider
+    - AddZedBusinessFacade
+    - AddZedCommunicationGatewayController
+    - AddZedCommunicationFactory
+    - AddZedConfig
+    - AddZedDependencyProvider
+    - AddZedPersistenceEntityManager
+    - AddZedPersistenceRepository

@@ -1,0 +1,29 @@
+spryk: structure
+description: "Adds a new *module* structure."
+priority: 1
+mode: both
+
+arguments:
+    module:
+        inherit: true
+        type: NewModuleType
+
+    organization:
+        inherit: true
+        default: SprykerShop
+
+    theme:
+        inherit: true
+        default: default
+
+    targetPath:
+        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Theme/{{ theme }}/"
+
+    directories:
+        value:
+            - "views/"
+            - "components/molecules/"
+            - "templates/"
+
+postSpryks:
+    - AddModule

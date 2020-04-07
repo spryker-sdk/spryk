@@ -23,6 +23,5 @@ preSpryks:
   - AddModule
 
 postSpryks:
-  - AddZedBusinessFacade
   - AddYvesDependencyProvider
-  - AddZedConfig
+  - AddYvesConfig

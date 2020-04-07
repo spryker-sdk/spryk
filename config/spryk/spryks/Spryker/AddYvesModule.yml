@@ -20,14 +20,9 @@ arguments:
             - "src/{{ organization }}/"
 
 postSpryks:
-    - AddModuleReadme
-    - AddModuleComposerJson
-    - AddModuleLicense
-    - AddModuleContributing
-    - AddModuleChangelog
-    - AddModuleTravis
-    - AddModuleGitattributes
-    - AddModuleGitignore
-    - AddModuleTooling
-    - AddModulePhpStanJson
-    - AddModulePhpStanNeon
+    - AddModule
+    - AddSharedTransferSchema
+    - AddYvesFactory
+    - AddYvesDependencyProvider
+    - AddYvesConfig
+    - AddYvesTheme
