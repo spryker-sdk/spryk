@@ -65,7 +65,6 @@ class OrganizationExtender extends AbstractExtender implements SprykConfiguratio
         }
 
         $coreNamespaces = $this->config->getCoreNamespaces();
-        $coreNamespaces = ['Trial'];
 
         $arguments['organization']['values'] = $coreNamespaces;
 
