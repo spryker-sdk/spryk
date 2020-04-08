@@ -19,8 +19,24 @@ define('SPRYKER_ROOT', getcwd());
 
 require_once SPRYKER_COMPOSER_INSTALL;
 
+use Spryker\Shared\Config\Application\Environment as SprykerEnvironment;
+use Spryker\Shared\ErrorHandler\ErrorHandlerEnvironment;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
 use Symfony\Component\Console\Application;
+
+defined('APPLICATION_SOURCE_DIR')
+|| define('APPLICATION_SOURCE_DIR', APPLICATION_ROOT_DIR . '/src');
+
+defined('APPLICATION_VENDOR_DIR')
+|| define('APPLICATION_VENDOR_DIR', APPLICATION_ROOT_DIR . '/vendor');
+
+defined('APPLICATION')
+|| define('APPLICATION', 'YVES');
+
+SprykerEnvironment::initialize();
+
+$errorHandlerEnvironment = new ErrorHandlerEnvironment();
+$errorHandlerEnvironment->initialize();
 
 $application = new Application();
 $application->addCommands([
