@@ -82,5 +82,9 @@
     "use-include-path": true,
     "process-timeout": 600,
     "sort-packages": true
-  }
+  },
+  "bin": [
+    "bin/spryk-run",
+    "bin/spryk-dump"
+  ]
 }
