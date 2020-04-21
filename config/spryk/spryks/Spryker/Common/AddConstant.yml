@@ -1,0 +1,22 @@
+spryk: constant
+description: "Adds a Client dependency constant to the *module*DependencyProvider."
+mode: both
+
+arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
+
+    module:
+        inherit: true
+
+    name: ~
+    value: ~
+    visibility:
+        value: "protected"
+
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\Plugin\\Router\\{{ module }}RouteProviderPlugin"
+
+preSpryks:
+    - AddYvesRouteProviderAction

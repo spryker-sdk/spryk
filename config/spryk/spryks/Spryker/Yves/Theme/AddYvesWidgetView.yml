@@ -1,14 +1,17 @@
 spryk: template
-description: "Adds a new view twig template to the Yves application."
+description: "Adds a new Widget view twig template to the Yves application."
 mode: both
 
-arguments:
-    module:
-        inherit: true
+config:
+    noRender: true
 
+arguments:
     organization:
         inherit: true
-        default: Spryker
+        default: SprykerShop
+
+    module:
+        inherit: true
 
     theme:
         inherit: true
@@ -19,13 +22,13 @@ arguments:
         default: default
 
     template:
-        value: Yves/Theme/YvesViewTwig.twig
+        value: Yves/Theme/YvesWidgetViewTwig.twig
 
     targetFilename:
         value: "{{ templateName }}.twig"
 
     targetPath:
-        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Theme/{{ theme }}/views/{{ templateName }}"
+        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Theme/{{ theme }}/views/{{ templateName }}/"
 
 preSpryks:
     - AddModule

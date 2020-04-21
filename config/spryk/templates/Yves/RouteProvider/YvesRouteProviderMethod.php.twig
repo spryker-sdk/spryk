@@ -1,0 +1,14 @@
+
+
+    /**
+     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
+     *
+     * @return \Spryker\Yves\Router\Route\RouteCollection
+     */
+    protected function add{{ controllerMethod | removeActionSuffix | ucfirst }}Route(RouteCollection $routeCollection): RouteCollection
+    {
+        $route = $this->buildRoute('/{{ module | camelCaseToDash | lowerCase }}/{{ controller | removeControllerSuffix | camelCaseToDash | lowerCase }}-{{ controllerMethod | removeActionSuffix | camelCaseToDash | lowerCase }}', '{{ module }}', '{{ controller }}', '{{ controllerMethod | lcfirst }}');
+        $routeCollection->add(static::ROUTE_{{ controllerMethod | removeActionSuffix | underscored | upper }}, $route);
+
+        return $routeCollection;
+    }

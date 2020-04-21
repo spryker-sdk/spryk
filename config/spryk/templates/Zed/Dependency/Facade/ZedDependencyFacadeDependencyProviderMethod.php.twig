@@ -4,13 +4,13 @@
      */
     protected function {{ providerMethod }}(\Spryker\Zed\Kernel\Container $container): \Spryker\Zed\Kernel\Container
     {
-        $container[static::FACADE_{{ dependentModule | underscored | upper }}] = function (\Spryker\Zed\Kernel\Container $container) {
-            ${{ module | lcfirst }}To{{ dependentModule }}FacadeBridge = new \{{ organization }}\Zed\{{ module }}\Dependency\Facade\{{ module }}To{{ dependentModule }}FacadeBridge(
+        $container->set(static::FACADE_{{ dependentModule | underscored | upper }}, function (\Spryker\Zed\Kernel\Container $container) {
+            return new \{{ organization }}\Zed\{{ module }}\Dependency\Facade\{{ module }}To{{ dependentModule }}FacadeBridge(
                 $container->getLocator()->{{ dependentModule | lcfirst }}()->facade()
             );
 
             return ${{ module | lcfirst }}To{{ dependentModule }}FacadeBridge;
-        };
+        });
 
         return $container;
     }

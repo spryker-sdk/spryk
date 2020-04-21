@@ -3,22 +3,24 @@ description: "Adds a new *module*To*dependentModule*ServiceInterface."
 mode: both
 
 arguments:
-  module:
-    inherit: true
-  dependentModule: ~
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  template:
-    value: Yves/Dependency/Service/YvesDependencyServiceInterface.php.twig
+    dependentModule:
+        inherit: true
 
-  targetFilename:
-    value: "{{ module }}To{{ dependentModule }}ServiceInterface.php"
+    template:
+        value: Yves/Dependency/Service/YvesDependencyServiceInterface.php.twig
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
+    targetFilename:
+        value: "{{ module }}To{{ dependentModule }}ServiceInterface.php"
+
+    targetPath:
+        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
 
 preSpryks:
-  - AddYvesDependencyServiceBridge
+    - AddYvesDependencyServiceBridge

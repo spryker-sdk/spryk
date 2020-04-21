@@ -1,0 +1,41 @@
+spryk: method
+description: "Adds a new action to the Yves controller."
+mode: both
+
+arguments:
+    organization:
+        inherit: true
+        default: SprykerShops
+
+    module:
+        inherit: true
+
+    controller:
+        callback:
+            - ClassNameShortCallback
+            - EnsureControllerSuffixCallback
+        type: ClassNameChoice
+        typeOptions:
+            - module
+            - spryk
+            - choiceLoader
+
+    controllerMethod:
+        callback: EnsureActionSuffixCallback
+
+    templateName:
+        value: "{{ controllerMethod | removeActionSuffix | camelCaseToDash | lowerCase }}"
+
+    template:
+        value: Yves/Controller/YvesControllerMethod.php.twig
+
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"
+
+preSpryks:
+    - AddYvesController
+
+postSpryks:
+    - AddYvesView
+    - AddYvesRouteProviderAction
+

@@ -1,27 +1,36 @@
 spryk: template
-description: "Adds a new *module*Factory to the Yves application."
+description: "Adds a new Widget to the Yves application."
 mode: both
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
+
     module:
         inherit: true
 
-    organization:
+    widget:
         inherit: true
-        default: Spryker
+
+    widgetClassName:
+        value: "{{ widget | removeWidgetSuffix }}Widget"
+
+    templateName:
+        value: "{{ widget | removeWidgetSuffix | camelCaseToDash | lowerCase }}"
 
     template:
-        value: Yves/YvesFactory.php.twig
+        value: Yves/YvesWidget.php.twig
 
     targetFilename:
-        value: "{{ module }}Factory.php"
+        value: "{{ widget | removeWidgetSuffix }}Widget.php"
 
     targetPath:
-        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
+        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Widget/"
 
 preSpryks:
     - AddModule
 
 postSpryks:
-    - AddYvesDependencyProvider
-    - AddYvesConfig
+    - AddYvesFactory
+    - AddYvesWidgetView

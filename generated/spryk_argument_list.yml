@@ -230,6 +230,18 @@
   mode: 2
   description: 'theme argument'
 -
+  name: templateName
+  mode: 2
+  description: 'templateName argument'
+-
+  name: widget
+  mode: 2
+  description: 'widget argument'
+-
+  name: widgetClassName
+  mode: 2
+  description: 'widgetClassName argument'
+-
   name: repositoryToken
   mode: 2
   description: 'repositoryToken argument'
@@ -4350,13 +4362,137 @@
   mode: 2
   description: 'AddYvesDependencyProvider repository argument'
 -
-  name: AddYvesTheme.module
+  name: AddYvesController.module
   mode: 2
-  description: 'AddYvesTheme module argument'
+  description: 'AddYvesController module argument'
+-
+  name: AddYvesController.organization
+  mode: 2
+  description: 'AddYvesController organization argument'
+-
+  name: AddYvesController.controller
+  mode: 2
+  description: 'AddYvesController controller argument'
+-
+  name: AddYvesController.template
+  mode: 2
+  description: 'AddYvesController template argument'
+-
+  name: AddYvesController.targetFilename
+  mode: 2
+  description: 'AddYvesController targetFilename argument'
+-
+  name: AddYvesController.targetPath
+  mode: 2
+  description: 'AddYvesController targetPath argument'
+-
+  name: AddYvesController.repository
+  mode: 2
+  description: 'AddYvesController repository argument'
+-
+  name: AddYvesControllerAction.module
+  mode: 2
+  description: 'AddYvesControllerAction module argument'
+-
+  name: AddYvesControllerAction.organization
+  mode: 2
+  description: 'AddYvesControllerAction organization argument'
+-
+  name: AddYvesControllerAction.controller
+  mode: 2
+  description: 'AddYvesControllerAction controller argument'
+-
+  name: AddYvesControllerAction.controllerMethod
+  mode: 2
+  description: 'AddYvesControllerAction controllerMethod argument'
+-
+  name: AddYvesControllerAction.output
+  mode: 2
+  description: 'AddYvesControllerAction output argument'
+-
+  name: AddYvesControllerAction.template
+  mode: 2
+  description: 'AddYvesControllerAction template argument'
+-
+  name: AddYvesControllerAction.target
+  mode: 2
+  description: 'AddYvesControllerAction target argument'
+-
+  name: AddYvesControllerAction.repository
+  mode: 2
+  description: 'AddYvesControllerAction repository argument'
+-
+  name: AddYvesWidgetView.organization
+  mode: 2
+  description: 'AddYvesWidgetView organization argument'
+-
+  name: AddYvesWidgetView.module
+  mode: 2
+  description: 'AddYvesWidgetView module argument'
+-
+  name: AddYvesWidgetView.theme
+  mode: 2
+  description: 'AddYvesWidgetView theme argument'
+-
+  name: AddYvesWidgetView.templateName
+  mode: 2
+  description: 'AddYvesWidgetView templateName argument'
+-
+  name: AddYvesWidgetView.template
+  mode: 2
+  description: 'AddYvesWidgetView template argument'
+-
+  name: AddYvesWidgetView.targetFilename
+  mode: 2
+  description: 'AddYvesWidgetView targetFilename argument'
+-
+  name: AddYvesWidgetView.targetPath
+  mode: 2
+  description: 'AddYvesWidgetView targetPath argument'
+-
+  name: AddYvesWidgetView.repository
+  mode: 2
+  description: 'AddYvesWidgetView repository argument'
+-
+  name: AddYvesView.organization
+  mode: 2
+  description: 'AddYvesView organization argument'
+-
+  name: AddYvesView.module
+  mode: 2
+  description: 'AddYvesView module argument'
+-
+  name: AddYvesView.theme
+  mode: 2
+  description: 'AddYvesView theme argument'
+-
+  name: AddYvesView.templateName
+  mode: 2
+  description: 'AddYvesView templateName argument'
+-
+  name: AddYvesView.template
+  mode: 2
+  description: 'AddYvesView template argument'
+-
+  name: AddYvesView.targetFilename
+  mode: 2
+  description: 'AddYvesView targetFilename argument'
+-
+  name: AddYvesView.targetPath
+  mode: 2
+  description: 'AddYvesView targetPath argument'
+-
+  name: AddYvesView.repository
+  mode: 2
+  description: 'AddYvesView repository argument'
 -
   name: AddYvesTheme.organization
   mode: 2
   description: 'AddYvesTheme organization argument'
+-
+  name: AddYvesTheme.module
+  mode: 2
+  description: 'AddYvesTheme module argument'
 -
   name: AddYvesTheme.theme
   mode: 2
@@ -4374,25 +4510,29 @@
   mode: 2
   description: 'AddYvesTheme repository argument'
 -
-  name: AddYvesComponent.module
-  mode: 2
-  description: 'AddYvesComponent module argument'
--
   name: AddYvesComponent.organization
   mode: 2
   description: 'AddYvesComponent organization argument'
+-
+  name: AddYvesComponent.module
+  mode: 2
+  description: 'AddYvesComponent module argument'
 -
   name: AddYvesComponent.theme
   mode: 2
   description: 'AddYvesComponent theme argument'
 -
+  name: AddYvesComponent.template
+  mode: 2
+  description: 'AddYvesComponent template argument'
+-
+  name: AddYvesComponent.targetFilename
+  mode: 2
+  description: 'AddYvesComponent targetFilename argument'
+-
   name: AddYvesComponent.targetPath
   mode: 2
   description: 'AddYvesComponent targetPath argument'
--
-  name: AddYvesComponent.directories
-  mode: 2
-  description: 'AddYvesComponent directories argument'
 -
   name: AddYvesComponent.repository
   mode: 2
@@ -4454,13 +4594,25 @@
   mode: 2
   description: 'AddYvesFactory repository argument'
 -
+  name: AddYvesWidget.organization
+  mode: 2
+  description: 'AddYvesWidget organization argument'
+-
   name: AddYvesWidget.module
   mode: 2
   description: 'AddYvesWidget module argument'
 -
-  name: AddYvesWidget.organization
+  name: AddYvesWidget.widget
   mode: 2
-  description: 'AddYvesWidget organization argument'
+  description: 'AddYvesWidget widget argument'
+-
+  name: AddYvesWidget.widgetClassName
+  mode: 2
+  description: 'AddYvesWidget widgetClassName argument'
+-
+  name: AddYvesWidget.templateName
+  mode: 2
+  description: 'AddYvesWidget templateName argument'
 -
   name: AddYvesWidget.template
   mode: 2
@@ -4622,13 +4774,13 @@
   mode: 2
   description: 'AddModuleScrutinizer mode argument'
 -
-  name: AddModule.module
-  mode: 2
-  description: 'AddModule module argument'
--
   name: AddModule.organization
   mode: 2
   description: 'AddModule organization argument'
+-
+  name: AddModule.module
+  mode: 2
+  description: 'AddModule module argument'
 -
   name: AddModule.targetPath
   mode: 2
@@ -4642,13 +4794,13 @@
   mode: 2
   description: 'AddModule repository argument'
 -
-  name: AddDefaultModule.module
-  mode: 2
-  description: 'AddDefaultModule module argument'
--
   name: AddDefaultModule.organization
   mode: 2
   description: 'AddDefaultModule organization argument'
+-
+  name: AddDefaultModule.module
+  mode: 2
+  description: 'AddDefaultModule module argument'
 -
   name: AddDefaultModule.targetPath
   mode: 2
@@ -4878,13 +5030,13 @@
   mode: 2
   description: 'AddModuleComposerJson mode argument'
 -
-  name: AddGuiModule.module
-  mode: 2
-  description: 'AddGuiModule module argument'
--
   name: AddGuiModule.organization
   mode: 2
   description: 'AddGuiModule organization argument'
+-
+  name: AddGuiModule.module
+  mode: 2
+  description: 'AddGuiModule module argument'
 -
   name: AddGuiModule.targetPath
   mode: 2
@@ -4926,13 +5078,13 @@
   mode: 2
   description: 'AddModuleGitattributes mode argument'
 -
-  name: AddYvesModule.module
-  mode: 2
-  description: 'AddYvesModule module argument'
--
   name: AddYvesModule.organization
   mode: 2
   description: 'AddYvesModule organization argument'
+-
+  name: AddYvesModule.module
+  mode: 2
+  description: 'AddYvesModule module argument'
 -
   name: AddYvesModule.targetPath
   mode: 2
@@ -5066,13 +5218,13 @@
   mode: 2
   description: 'AddModulePhpStanNeon mode argument'
 -
-  name: AddUtilModule.module
-  mode: 2
-  description: 'AddUtilModule module argument'
--
   name: AddUtilModule.organization
   mode: 2
   description: 'AddUtilModule organization argument'
+-
+  name: AddUtilModule.module
+  mode: 2
+  description: 'AddUtilModule module argument'
 -
   name: AddUtilModule.targetPath
   mode: 2

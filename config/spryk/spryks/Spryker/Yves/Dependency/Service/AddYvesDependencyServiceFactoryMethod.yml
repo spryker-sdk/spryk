@@ -3,33 +3,34 @@ description: "Adds a Service dependency method to the *module*Factory."
 mode: both
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  module:
-    inherit: true
-  dependentModule: ~
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    dependentModule:
+        inherit: true
 
-  factoryMethod:
-    value: "get{{ dependentModule }}Service"
+    factoryMethod:
+        value: "get{{ dependentModule }}Service"
 
-  template:
-    value: Yves/Dependency/Service/YvesDependencyServiceFactoryMethod.php.twig
+    template:
+        value: Yves/Dependency/Service/YvesDependencyServiceFactoryMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}Factory"
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}Factory"
 
 preSpryks:
-  - AddYvesFactory
+    - AddYvesFactory
 
 postSpryks:
-  - AddYvesDependencyServiceDependencyProviderConstant:
-      arguments:
-        name:
-          value: "SERVICE_{{ dependentModule | underscored | upper }}"
-        value:
-          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
-        visibility:
-          value:  "public"
+    -   AddYvesDependencyServiceDependencyProviderConstant:
+            arguments:
+                name:
+                    value: "SERVICE_{{ dependentModule | underscored | upper }}"
+                value:
+                    value:  "SERVICE_{{ dependentModule | underscored | upper }}"
+                visibility:
+                    value:  "public"
