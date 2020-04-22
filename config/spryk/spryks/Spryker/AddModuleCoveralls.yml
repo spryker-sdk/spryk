@@ -3,23 +3,21 @@ description: "Adds a new .coveralls.yml to the Modules root."
 mode: core
 
 arguments:
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  repositoryToken: ~
+    template:
+        value: coveralls.yml.twig
 
-  template:
-    value: coveralls.yml.twig
+    targetFilename:
+        value: .coveralls.yml
 
-  targetFilename:
-      value: .coveralls.yml
-
-  targetPath:
-    value: "{{ module }}/"
+    targetPath:
+        value: "{{ module }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule
