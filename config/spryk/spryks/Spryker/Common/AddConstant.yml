@@ -1,5 +1,5 @@
 spryk: constant
-description: "Adds a Client dependency constant to the *module*DependencyProvider."
+description: "Adds a constant to the target class."
 mode: both
 
 arguments:
@@ -15,8 +15,5 @@ arguments:
     visibility:
         value: "protected"
 
-    target:
-        value: "{{ organization }}\\Yves\\{{ module }}\\Plugin\\Router\\{{ module }}RouteProviderPlugin"
+    target: ~
 
-preSpryks:
-    - AddYvesRouteProviderAction
