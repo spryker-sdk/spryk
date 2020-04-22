@@ -85,6 +85,7 @@
   },
   "bin": [
     "bin/spryk-run",
-    "bin/spryk-dump"
+    "bin/spryk-dump",
+    "bin/spryk-build"
   ]
 }
