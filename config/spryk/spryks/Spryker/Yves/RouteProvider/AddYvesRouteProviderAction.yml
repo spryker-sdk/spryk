@@ -36,7 +36,6 @@ preSpryks:
     - AddYvesRouteProvider
 
 postSpryks:
-#    - AddYvesRouteProviderConstant:
     - AddConstant:
           arguments:
               name:
