@@ -32,3 +32,5 @@ postSpryks:
     - AddZedDependencyProvider
     - AddZedPersistenceEntityManager
     - AddZedPersistenceRepository
+    - AddZedTestCodeceptionConfiguration
+    - AddZedTestSuiteToCodeceptionConfiguration

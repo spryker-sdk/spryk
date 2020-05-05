@@ -129,7 +129,8 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     protected function mergeArguments(array $arguments, ?array $preDefinedDefinition = null)
     {
         if (is_array($preDefinedDefinition) && isset($preDefinedDefinition[static::ARGUMENTS])) {
-            $arguments = array_merge($arguments, $preDefinedDefinition[static::ARGUMENTS]);
+            $arguments = array_merge($preDefinedDefinition[static::ARGUMENTS], $arguments);
+            $arguments = array_replace_recursive($arguments, $preDefinedDefinition[static::ARGUMENTS]);
         }
 
         return $arguments;

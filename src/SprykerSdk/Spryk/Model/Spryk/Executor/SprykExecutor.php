@@ -9,6 +9,8 @@ namespace SprykerSdk\Spryk\Model\Spryk\Executor;
 
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
+use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
+use SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilder;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
@@ -55,14 +57,26 @@ class SprykExecutor implements SprykExecutorInterface
      * @param string[] $includeOptionalSubSpryks
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
      *
+     * @param string|null $targetModuleName
+     * @param string|null $dependentModuleName
+     *
      * @return void
      */
-    public function execute(string $sprykName, array $includeOptionalSubSpryks, SprykStyleInterface $style): void
-    {
+    public function execute(
+        string $sprykName,
+        array $includeOptionalSubSpryks,
+        SprykStyleInterface $style,
+        ?string $targetModuleName,
+        ?string $dependentModuleName
+    ): void {
         $this->definitionBuilder->setStyle($style);
         $this->includeOptionalSubSpryks = $includeOptionalSubSpryks;
 
-        $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName);
+        $sprykPreDefinition = [];
+        $sprykPreDefinition = $this->addTargetModuleParams($sprykPreDefinition, $targetModuleName);
+        $sprykPreDefinition = $this->addDependentModuleParams($sprykPreDefinition, $dependentModuleName);
+
+        $sprykDefinition = $this->definitionBuilder->buildDefinition($sprykName, $sprykPreDefinition);
 
         $this->mainSprykDefinitionMode = $this->getSprykDefinitionMode($sprykDefinition, $style);
 
@@ -233,5 +247,63 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         return $sprykModeArgument === $sprykModeDefinition;
+    }
+
+    /**
+     * @param array $sprykPreDefinition
+     * @param string|null $targetModuleName
+     *
+     * @return array
+     */
+    protected function addTargetModuleParams(array $sprykPreDefinition, ?string $targetModuleName): array
+    {
+        if (!$targetModuleName) {
+            return $sprykPreDefinition;
+        }
+
+        $explodedName = explode('.', $targetModuleName);
+        if (count($explodedName) === 1) {
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['module']['value'] = $explodedName[0];
+        }
+        if (count($explodedName) === 2) {
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['organization']['value'] = $explodedName[0];
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['module']['value'] = $explodedName[1];
+        }
+        if (count($explodedName) === 3) {
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['organization']['value'] = $explodedName[0];
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['module']['value'] = $explodedName[1];
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['layer']['value'] = $explodedName[2];
+        }
+
+        return $sprykPreDefinition;
+    }
+
+    /**
+     * @param array $sprykPreDefinition
+     * @param string|null $dependentModuleName
+     *
+     * @return array
+     */
+    protected function addDependentModuleParams(array $sprykPreDefinition, ?string $dependentModuleName): array
+    {
+        if (!$dependentModuleName) {
+            return $sprykPreDefinition;
+        }
+
+        $explodedName = explode('.', $dependentModuleName);
+        if (count($explodedName) === 1) {
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['dependentModule']['value'] = $explodedName[0];
+        }
+        if (count($explodedName) === 2) {
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['dependentModuleOrganization']['value'] = $explodedName[0];
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['dependentModule']['value'] = $explodedName[1];
+        }
+        if (count($explodedName) === 3) {
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['dependentModuleOrganization']['value'] = $explodedName[0];
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['dependentModule']['value'] = $explodedName[1];
+            $sprykPreDefinition[SprykDefinitionBuilder::ARGUMENTS]['dependentModuleLayer']['value'] = $explodedName[2];
+        }
+
+        return $sprykPreDefinition;
     }
 }
