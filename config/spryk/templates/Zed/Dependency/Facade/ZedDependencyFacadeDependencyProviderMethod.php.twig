@@ -8,8 +8,6 @@
             return new \{{ organization }}\Zed\{{ module }}\Dependency\Facade\{{ module }}To{{ dependentModule }}FacadeBridge(
                 $container->getLocator()->{{ dependentModule | lcfirst }}()->facade()
             );
-
-            return ${{ module | lcfirst }}To{{ dependentModule }}FacadeBridge;
         });
 
         return $container;
