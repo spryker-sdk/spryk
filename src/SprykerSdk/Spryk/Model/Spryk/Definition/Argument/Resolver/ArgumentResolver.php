@@ -46,8 +46,11 @@ class ArgumentResolver implements ArgumentResolverInterface
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Superseder\SupersederInterface $superseder
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface $callbackArgumentResolver
      */
-    public function __construct(ArgumentCollectionInterface $argumentCollection, SupersederInterface $superseder, CallbackArgumentResolverInterface $callbackArgumentResolver)
-    {
+    public function __construct(
+        ArgumentCollectionInterface $argumentCollection,
+        SupersederInterface $superseder,
+        CallbackArgumentResolverInterface $callbackArgumentResolver
+    ) {
         $this->argumentCollection = $argumentCollection;
         $this->resolvedArgumentCollection = clone $argumentCollection;
         $this->superseder = $superseder;
