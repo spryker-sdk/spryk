@@ -58,8 +58,11 @@ class Superseder implements SupersederInterface
      *
      * @return void
      */
-    protected function resolveArgument(ArgumentInterface $argument, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments): void
-    {
+    protected function resolveArgument(
+        ArgumentInterface $argument,
+        ArgumentCollectionInterface $sprykArguments,
+        ArgumentCollectionInterface $resolvedArguments
+    ): void {
         $argumentValue = $argument->getValue();
 
         if (!is_array($argumentValue)) {
@@ -84,8 +87,11 @@ class Superseder implements SupersederInterface
      *
      * @return string
      */
-    protected function replacePlaceholderInValue(string $argumentValue, ArgumentCollectionInterface $sprykArguments, ArgumentCollectionInterface $resolvedArguments): string
-    {
+    protected function replacePlaceholderInValue(
+        string $argumentValue,
+        ArgumentCollectionInterface $sprykArguments,
+        ArgumentCollectionInterface $resolvedArguments
+    ): string {
         preg_match_all(static::PLACEHOLDER_PATTERN, $argumentValue, $matches, PREG_SET_ORDER);
 
         if (count($matches) === 0) {
