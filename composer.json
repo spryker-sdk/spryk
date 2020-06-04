@@ -23,7 +23,7 @@
     "nette/utils": "^2.5.0",
     "php-coveralls/php-coveralls": "^1.0",
     "phpstan/phpstan": "^0.12.0",
-    "phpunit/phpunit": "^7.0.0",
+    "phpunit/phpunit": "^7.0.0 || ^8.0.0",
     "sllh/composer-versions-check": "^2.0",
     "spryker/code-sniffer": "*",
     "spryker/testify": "*"
