@@ -7,7 +7,7 @@
     "php": ">=7.2",
     "ext-dom": "*",
     "ext-simplexml": "*",
-    "roave/better-reflection": "^3.0",
+    "roave/better-reflection": "^3.0 || ^4.0",
     "spryker/config": "^3.0.0",
     "spryker/doctrine-inflector": "^1.0.0",
     "spryker/glue-application-extension": "^1.1.0",
@@ -25,7 +25,7 @@
     "nette/utils": "^2.5.0",
     "php-coveralls/php-coveralls": "^1.0",
     "phpstan/phpstan": "^0.12.0",
-    "phpunit/phpunit": "^7.0.0",
+    "phpunit/phpunit": "^7.0.0 || ^8.0.0",
     "sllh/composer-versions-check": "^2.0",
     "spryker/code-sniffer": "*",
     "spryker/testify": "*"
