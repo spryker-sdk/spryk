@@ -1,10 +1,10 @@
-{%- spaceless -%}
+{%- apply spaceless -%}
     {% if subDirectory is defined and subDirectory.value is not null %}
         {% set subDirectory = '\\' ~ subDirectory | replace({"/": "\\"}) %}
     {% else %}
         {% set subDirectory = '' %}
     {% endif %}
-{%- endspaceless -%}
+{%- endapply -%}
 
 {% if not dependencyMethods.value %}
     /**
@@ -22,13 +22,13 @@
     {
         return new \{{ organization }}\Glue\{{ module }}\Processor{{ subDirectory }}\{{ className }}(
         {% for dependencyMethod in dependencyMethods.value -%}
-            {%- spaceless -%}
+            {%- apply spaceless -%}
                 {% set endOfLine = '' %}
                 {% if not loop.last %}
                     {% set endOfLine = ',' %}
                 {% endif %}
                 {% set line = '    $this->' ~ dependencyMethod ~ '()' ~ endOfLine %}
-            {%- endspaceless -%}
+            {%- endapply -%}
             {{ line | raw }}
         {% endfor -%}
         );
