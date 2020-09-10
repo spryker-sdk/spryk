@@ -15,13 +15,13 @@
     {
         return new \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}(
         {% for dependencyMethod in dependencyMethods.value -%}
-            {%- spaceless -%}
+            {%- apply spaceless -%}
                 {% set endofline = '' %}
                 {% if not loop.last %}
                     {% set endofline = ',' %}
                 {% endif %}
                 {% set line = '    $this->' ~ dependencyMethod ~ '()' ~ endofline %}
-            {%- endspaceless -%}
+            {%- endapply -%}
             {{ line | raw }}
         {% endfor -%}
         );
