@@ -75,10 +75,6 @@ class TemplateRenderer implements TemplateRendererInterface
     {
         $loader = $this->getLoader();
 
-        if (!($loader instanceof SourceContextLoaderInterface)) {
-            throw new TwigException('Loader expected to be an instance of SourceContextLoaderInterface!');
-        }
-
         return $loader->getSourceContext($template)->getCode();
     }
 
