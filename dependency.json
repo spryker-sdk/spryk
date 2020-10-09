@@ -1,6 +1,14 @@
 {
   "include": {
-    "spryker/glue-application-extension": "GlueApplicationExtension is needed to create Glue API specific classes."
+    "spryker/glue-application-extension": "GlueApplicationExtension is needed to create Glue API specific classes.",
+    "symfony/console": "Needed instead of spryker/symfony",
+    "symfony/filesystem": "Needed instead of spryker/symfony",
+    "symfony/finder": "Needed instead of spryker/symfony",
+    "symfony/yaml": "Needed instead of spryker/symfony",
+    "twig/twig": "Needed instead of spryker/twig"
+  },
+  "include-dev": {
+    "codeception/codeception": "We need a specific version of it."
   },
   "exclude": {
     "spryker/symfony": "All dependencies are added on their own.",
