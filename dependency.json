@@ -2,7 +2,9 @@
   "include": {
     "spryker/glue-application-extension": "GlueApplicationExtension is needed to create Glue API specific classes."
   },
-  "include-dev": {
-    "codeception/codeception": "We need a specific version."
+  "exclude": {
+    "spryker/symfony": "All dependencies are added on their own.",
+    "spryker/twig": "Twig is added on it's own.",
+    "spryker/zend": "All dependencies are added on their own."
   }
 }
