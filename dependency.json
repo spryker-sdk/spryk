@@ -1,5 +1,8 @@
 {
   "include": {
     "spryker/glue-application-extension": "GlueApplicationExtension is needed to create Glue API specific classes."
+  },
+  "include-dev": {
+    "codeception/codeception": "We need a specific version."
   }
 }
