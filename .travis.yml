@@ -29,7 +29,6 @@ matrix:
 
 before_install:
   - if [[ $COVERAGE != 1 && $GLUE != 1 && $ZED != 1 ]]; then phpenv config-rm xdebug.ini; fi
-  - composer global require hirak/prestissimo
   - phpenv config-add ci/travis.php.ini
 
 before_script:
