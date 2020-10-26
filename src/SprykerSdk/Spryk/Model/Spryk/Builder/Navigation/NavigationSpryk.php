@@ -8,14 +8,14 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Navigation;
 
 use DOMDocument;
+use Laminas\Filter\FilterChain;
+use Laminas\Filter\StringToLower;
+use Laminas\Filter\Word\CamelCaseToDash;
 use SimpleXMLElement;
 use SprykerSdk\Spryk\Exception\XmlException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
-use Zend\Filter\FilterChain;
-use Zend\Filter\StringToLower;
-use Zend\Filter\Word\CamelCaseToDash;
 
 class NavigationSpryk implements SprykBuilderInterface
 {
@@ -206,7 +206,7 @@ class NavigationSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @return \Zend\Filter\FilterChain
+     * @return \Laminas\Filter\FilterChain
      */
     protected function getDasherizeFilter(): FilterChain
     {
