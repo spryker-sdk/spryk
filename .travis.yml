@@ -1,7 +1,7 @@
 language: php
 
 php:
-  - 7.2
+  - 7.3
   - 7.4
 
 env:
@@ -10,19 +10,19 @@ env:
 
 matrix:
   include:
-  - php: 7.2
+  - php: 7.3
     env: PREFER_LOWEST=1
 
   - php: 7.3
     env: COVERAGE=1 DEFAULT=0
 
-  - php: 7.3
+  - php: 7.4
     env: GLUE=1 DEFAULT=0
 
-  - php: 7.3
+  - php: 7.4
     env: ZED=1 DEFAULT=0
 
-  - php: 7.2
+  - php: 7.4
     env: CHECKS=1 DEFAULT=0
 
     fast_finish: true
