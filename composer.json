@@ -10,6 +10,7 @@
     "spryker/doctrine-inflector": "^1.0.0",
     "spryker/glue-application-extension": "^1.1.0",
     "spryker/kernel": "^3.30.0",
+    "spryker/laminas": "^1.0.0",
     "symfony/console": "^3.4.0 || ^4.0.0 || ^5.0.0",
     "symfony/filesystem": "^3.4.0 || ^4.0.0 || ^5.0.0",
     "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",

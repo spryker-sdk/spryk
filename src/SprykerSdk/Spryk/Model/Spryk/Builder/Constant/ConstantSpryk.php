@@ -7,6 +7,9 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Constant;
 
+use Laminas\Filter\FilterChain;
+use Laminas\Filter\StringToUpper;
+use Laminas\Filter\Word\CamelCaseToUnderscore;
 use Roave\BetterReflection\BetterReflection;
 use Roave\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
@@ -14,9 +17,6 @@ use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
-use Zend\Filter\FilterChain;
-use Zend\Filter\StringToUpper;
-use Zend\Filter\Word\CamelCaseToUnderscore;
 
 class ConstantSpryk implements SprykBuilderInterface
 {
