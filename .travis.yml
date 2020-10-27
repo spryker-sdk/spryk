@@ -33,7 +33,7 @@ before_install:
 
 before_script:
   - if [[ $PREFER_LOWEST != 1 ]]; then composer install --no-interaction; fi;
-  - if [[ $PREFER_LOWEST == 1 ]]; then composer update --prefer-lowest --no-interaction --prefer-dist --prefer-stable; fi;
+  - if [[ $PREFER_LOWEST == 1 ]]; then composer update --prefer-lowest --no-interaction --prefer-dist --prefer-stable -v; fi;
   - if [[ $PREFER_LOWEST == 1 ]]; then composer require --dev dereuromark/composer-prefer-lowest; fi
 
 script:
