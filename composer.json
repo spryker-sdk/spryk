@@ -19,6 +19,7 @@
   "require-dev": {
     "codeception/codeception": "^4.0.0",
     "phpstan/phpstan": "^0.12.0",
+    "phpunit/phpunit": "^6.0.0 || ^7.0.0 || ^8.0.0",
     "spryker/code-sniffer": "*",
     "spryker/testify": "^3.0.0"
   },
@@ -29,6 +30,7 @@
   },
   "autoload-dev": {
     "psr-4": {
+      "PHPUnit\\Framework\\": "vendor/phpunit/phpunit/src/ForwardCompatibility/",
       "SprykerSdkTest\\": "tests/SprykerSdkTest/",
       "SprykerSdkTest\\Module\\": "tests/_support/Module/",
       "Spryker\\Glue\\GlueApplicationExtension\\": "vendor/spryker/glue-application-extension/src/Spryker/Glue/GlueApplicationExtension/",
