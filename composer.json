@@ -5,7 +5,7 @@
   "license": "proprietary",
   "require": {
     "php": ">=7.3",
-    "roave/better-reflection": "^3.0 || ^4.0",
+    "roave/better-reflection": "^3.2 || ^4.0",
     "spryker/config": "^3.0.0",
     "spryker/doctrine-inflector": "^1.0.0",
     "spryker/glue-application-extension": "^1.1.0",
