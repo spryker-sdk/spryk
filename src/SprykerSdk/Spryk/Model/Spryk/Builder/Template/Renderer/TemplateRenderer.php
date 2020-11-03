@@ -7,11 +7,9 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer;
 
-use SprykerSdk\Spryk\Exception\TwigException;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
-use Twig\Loader\SourceContextLoaderInterface;
 
 class TemplateRenderer implements TemplateRendererInterface
 {
@@ -66,8 +64,6 @@ class TemplateRenderer implements TemplateRendererInterface
 
     /**
      * @param string $template
-     *
-     * @throws \SprykerSdk\Spryk\Exception\TwigException
      *
      * @return string
      */

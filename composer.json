@@ -4,7 +4,7 @@
   "description": "Spryk module",
   "license": "proprietary",
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.3",
     "roave/better-reflection": "^3.0 || ^4.0",
     "spryker/config": "^3.0.0",
     "spryker/doctrine-inflector": "^1.0.0",
