@@ -8,13 +8,13 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Transfer;
 
 use DOMDocument;
+use Laminas\Filter\FilterChain;
+use Laminas\Filter\Word\DashToCamelCase;
 use SimpleXMLElement;
 use SprykerSdk\Spryk\Exception\XmlException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
-use Zend\Filter\FilterChain;
-use Zend\Filter\Word\DashToCamelCase;
 
 class TransferSpryk implements SprykBuilderInterface
 {
@@ -172,7 +172,7 @@ class TransferSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @return \Zend\Filter\FilterChain
+     * @return \Laminas\Filter\FilterChain
      */
     protected function getDashToCamelCase(): FilterChain
     {

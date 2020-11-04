@@ -7,9 +7,9 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
-use Zend\Filter\FilterChain;
-use Zend\Filter\StringToLower;
-use Zend\Filter\Word\CamelCaseToUnderscore;
+use Laminas\Filter\FilterChain;
+use Laminas\Filter\StringToLower;
+use Laminas\Filter\Word\CamelCaseToUnderscore;
 
 class UnderscoreFilter implements FilterInterface
 {

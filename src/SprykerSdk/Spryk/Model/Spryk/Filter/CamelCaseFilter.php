@@ -7,8 +7,8 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
-use Zend\Filter\FilterChain;
-use Zend\Filter\Word\UnderscoreToCamelCase;
+use Laminas\Filter\FilterChain;
+use Laminas\Filter\Word\UnderscoreToCamelCase;
 
 class CamelCaseFilter implements FilterInterface
 {
