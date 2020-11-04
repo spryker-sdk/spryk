@@ -69,9 +69,13 @@ class TemplateRenderer implements TemplateRendererInterface
      */
     public function getSource(string $template): string
     {
+        /** @var \Twig\Loader\ChainLoader $loader */
         $loader = $this->getLoader();
 
-        return $loader->getSourceContext($template)->getCode();
+        /** @var \Twig\Source $source */
+        $source = $loader->getSourceContext($template);
+
+        return $source->getCode();
     }
 
     /**
