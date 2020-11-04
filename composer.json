@@ -64,7 +64,7 @@
     "post-update-cmd": [
       "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
     ],
-    "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml c src/ tests/",
+    "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
     "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
     "phpstan": "phpstan analyse -l 5 -c phpstan.neon src/"
   },
