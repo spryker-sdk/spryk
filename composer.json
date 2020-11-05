@@ -31,7 +31,6 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "PHPUnit\\Framework\\": "vendor/phpunit/phpunit/src/ForwardCompatibility/",
       "SprykerSdkTest\\": "tests/SprykerSdkTest/",
       "SprykerSdkTest\\Module\\": "tests/_support/Module/",
       "Spryker\\Glue\\GlueApplicationExtension\\": "vendor/spryker/glue-application-extension/src/Spryker/Glue/GlueApplicationExtension/",

@@ -8,7 +8,8 @@
     "twig/twig": "Needed instead of spryker/twig"
   },
   "include-dev": {
-    "codeception/codeception": "We need a specific version of it."
+    "codeception/codeception": "We need a specific version of it.",
+    "phpunit/phpunit": "We need a specific version of it."
   },
   "exclude": {
     "spryker/symfony": "All dependencies are added on their own.",
