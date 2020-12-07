@@ -54,7 +54,7 @@ jobs:
       - name: CodeStyle checks
         run: composer cs-check
 
-     - name: PHPStan checks
+      - name: PHPStan checks
         run: composer phpstan
 
  prefer-lowest:
@@ -102,8 +102,8 @@ jobs:
             vendor/bin/codecept run -x Glue
             vendor/bin/codecept run -x Glue -x Zed --coverage-xml
 
-     - name: PHPStan checks
+      - name: PHPStan checks
         run: composer phpstan
 
-     - name: Validate prefer lowest
-       run: vendor/bin/validate-prefer-lowest
+      - name: Validate prefer lowest
+        run: vendor/bin/validate-prefer-lowest
