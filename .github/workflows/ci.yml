@@ -41,13 +41,7 @@ jobs:
         with:
             path: ${{ steps.composer-cache.outputs.dir }}
             key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-            restore-keys: |
-            ${{ runner.os }}-composer-
-
-      - name: Before install
-        run: |
-            phpenv config-rm xdebug.ini
-            phpenv config-add ci/travis.php.ini
+            restore-keys: ${{ runner.os }}-composer-
 
       - name: Composer install
         run: composer install --no-interaction -o
@@ -94,17 +88,13 @@ jobs:
         with:
             path: ${{ steps.composer-cache.outputs.dir }}
             key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-            restore-keys: |
-            ${{ runner.os }}-composer-
-
-      - name: Before install
-        run: phpenv config-add ci/travis.php.ini
-
-      - name: Composer prefer-lowest
-        run: composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable -o
+            restore-keys: ${{ runner.os }}-composer-
 
       - name: Composer require dereuromark/composer-prefer-lowest package
         run: composer require --dev dereuromark/composer-prefer-lowest
+
+      - name: Composer prefer-lowest
+        run: composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable -o
 
       - name: Codecept run test
         run: |
