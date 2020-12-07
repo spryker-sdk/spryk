@@ -46,8 +46,8 @@ jobs:
 
       - name: Before install
         run: |
-          phpenv config-rm xdebug.ini
-          phpenv config-add ci/travis.php.ini
+            phpenv config-rm xdebug.ini
+            phpenv config-add ci/travis.php.ini
 
       - name: Composer install
         run: composer install --no-interaction -o
