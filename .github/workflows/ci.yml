@@ -57,7 +57,7 @@ jobs:
       - name: PHPStan checks
         run: composer phpstan
 
- prefer-lowest:
+  prefer-lowest:
     runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
