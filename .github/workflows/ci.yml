@@ -103,8 +103,5 @@ jobs:
             vendor/bin/codecept run -x Glue
             vendor/bin/codecept run -x Glue -x Zed --coverage-xml
 
-      - name: PHPStan checks
-        run: composer phpstan
-
       - name: Validate prefer lowest
         run: vendor/bin/validate-prefer-lowest
