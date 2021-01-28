@@ -1,7 +1,7 @@
 # Spryk Module
 
-[![Build Status](https://travis-ci.org/spryker-sdk/spryk.svg?branch=master)](https://travis-ci.org/spryker-sdk/spryk)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
+[![Build Status](https://github.com/spryker-sdk/spryk/workflows/CI/badge.svg?branch=master)](https://github.com/spryker-sdk/spryk/actions?query=workflow%3ACI+branch%3Amaster)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 
 ## Installation

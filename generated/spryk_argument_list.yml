@@ -226,21 +226,9 @@
   mode: 2
   description: 'modelSuffix argument'
 -
-  name: templateName
+  name: repositoryToken
   mode: 2
-  description: 'templateName argument'
--
-  name: theme
-  mode: 2
-  description: 'theme argument'
--
-  name: widget
-  mode: 2
-  description: 'widget argument'
--
-  name: widgetClassName
-  mode: 2
-  description: 'widgetClassName argument'
+  description: 'repositoryToken argument'
 -
   name: toModule
   mode: 2
