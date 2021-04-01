@@ -18,6 +18,7 @@ arguments:
       application: Client
 
   dependentModuleOrganization:
+    inherit: true
     default: Spryker
 
 

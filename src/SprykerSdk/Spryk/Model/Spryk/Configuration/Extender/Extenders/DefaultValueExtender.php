@@ -8,7 +8,6 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
-use SprykerSdk\Spryk\SprykConfig;
 
 class DefaultValueExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {

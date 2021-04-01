@@ -1,0 +1,20 @@
+spryk: transfer
+description: "Adds a new *module*.transfer.xml to the Shared application."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    name:
+        inherit: true
+
+    targetPath:
+        value: "{{ module }}/src/{{ organization }}/Shared/{{ module }}/Transfer/{{ module | underscored }}.transfer.xml"
+
+preSpryks:
+    - AddSharedTransferSchema

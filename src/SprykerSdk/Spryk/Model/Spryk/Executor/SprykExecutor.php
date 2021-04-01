@@ -9,7 +9,6 @@ namespace SprykerSdk\Spryk\Model\Spryk\Executor;
 
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
-use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilder;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
@@ -56,7 +55,6 @@ class SprykExecutor implements SprykExecutorInterface
      * @param string $sprykName
      * @param string[] $includeOptionalSubSpryks
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
-     *
      * @param string|null $targetModuleName
      * @param string|null $dependentModuleName
      *

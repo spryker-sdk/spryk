@@ -13,6 +13,9 @@ arguments:
   template:
     value: Zed/ZedConfig.php.twig
 
+  extends:
+    value: \Spryker\Zed\Kernel\AbstractBundleConfig
+
   targetFilename:
     value: "{{ module }}Config.php"
 

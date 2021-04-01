@@ -15,7 +15,6 @@ interface SprykExecutorInterface
      * @param string $sprykName
      * @param string[] $includeOptionalSubSpryks
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
-     *
      * @param string|null $targetModuleName
      * @param string|null $dependentModuleName
      *

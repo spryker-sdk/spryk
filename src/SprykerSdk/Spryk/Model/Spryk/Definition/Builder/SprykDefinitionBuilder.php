@@ -52,23 +52,23 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     protected $mode;
 
     /**
-     * @var string
+     * @var \SprykerSdk\Spryk\SprykConfig
      */
-    protected $defaultDevelopmentMode;
+    protected $config;
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface $sprykLoader
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface $argumentResolver
-     * @param string $defaultDevelopmentMode
+     * @param \SprykerSdk\Spryk\SprykConfig $config
      */
     public function __construct(
         SprykConfigurationLoaderInterface $sprykLoader,
         ArgumentResolverInterface $argumentResolver,
-        string $defaultDevelopmentMode
+        SprykConfig $config
     ) {
         $this->sprykLoader = $sprykLoader;
         $this->argumentResolver = $argumentResolver;
-        $this->defaultDevelopmentMode = $defaultDevelopmentMode;
+        $this->config = $config;
     }
 
     /**
@@ -96,6 +96,8 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
         }
 
         if (!isset($this->definitionCollection[$sprykName])) {
+            $this->resolveModeByOrganisation($preDefinedDefinition);
+
             $sprykConfiguration = $this->loadConfig($sprykName);
 
             $arguments = $this->mergeArguments($sprykConfiguration[static::ARGUMENTS], $preDefinedDefinition);
@@ -263,7 +265,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
      */
     protected function getMode(array $sprykConfiguration): string
     {
-        return $sprykConfiguration[static::NAME_SPRYK_CONFIG_MODE] ?? $this->defaultDevelopmentMode;
+        return $sprykConfiguration[static::NAME_SPRYK_CONFIG_MODE] ?? $this->config->getDefaultDevelopmentMode();
     }
 
     /**
@@ -282,11 +284,11 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
         $argumentCollection = $this->argumentResolver->resolve([
             static::NAME_SPRYK_CONFIG_MODE => [
-                'default' => $this->mode ?? $this->defaultDevelopmentMode,
+                'default' => $this->mode ?? $this->config->getDefaultDevelopmentMode(),
                 'values' => [
                     SprykConfig::NAME_DEVELOPMENT_LAYER_PROJECT,
                     SprykConfig::NAME_DEVELOPMENT_LAYER_CORE,
-                ]
+                ],
             ],
         ], $sprykName, $this->style);
 
@@ -308,5 +310,28 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
         $sprykConfiguration = $this->sprykLoader->loadSpryk($sprykName, $this->mode);
 
         return $this->resolveBothMode($sprykConfiguration, $sprykName);
+    }
+
+    /**
+     * @param array|null $preDefinedDefinition
+     *
+     * @return void
+     */
+    protected function resolveModeByOrganisation(?array $preDefinedDefinition = null): void
+    {
+        if (!isset($preDefinedDefinition[static::ARGUMENTS]['organization']['value'])) {
+            return;
+        }
+
+        $organisation = $preDefinedDefinition[static::ARGUMENTS]['organization']['value'];
+        if (in_array($organisation, $this->config->getCoreNamespaces())) {
+            $this->mode = SprykConfig::NAME_DEVELOPMENT_LAYER_CORE;
+
+            return;
+        }
+
+        if (in_array($organisation, $this->config->getProjectNamespaces())) {
+            $this->mode = SprykConfig::NAME_DEVELOPMENT_LAYER_PROJECT;
+        }
     }
 }

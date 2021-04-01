@@ -14,6 +14,10 @@
   mode: 2
   description: 'template argument'
 -
+  name: extends
+  mode: 2
+  description: 'extends argument'
+-
   name: targetFilename
   mode: 2
   description: 'targetFilename argument'
@@ -226,9 +230,21 @@
   mode: 2
   description: 'modelSuffix argument'
 -
-  name: repositoryToken
+  name: templateName
   mode: 2
-  description: 'repositoryToken argument'
+  description: 'templateName argument'
+-
+  name: theme
+  mode: 2
+  description: 'theme argument'
+-
+  name: widget
+  mode: 2
+  description: 'widget argument'
+-
+  name: widgetClassName
+  mode: 2
+  description: 'widgetClassName argument'
 -
   name: toModule
   mode: 2
@@ -246,6 +262,10 @@
   mode: 2
   description: 'targetFilePath argument'
 -
+  name: entity
+  mode: 2
+  description: 'entity argument'
+-
   name: AddZedDependencyProvider.module
   mode: 2
   description: 'AddZedDependencyProvider module argument'
@@ -257,6 +277,10 @@
   name: AddZedDependencyProvider.template
   mode: 2
   description: 'AddZedDependencyProvider template argument'
+-
+  name: AddZedDependencyProvider.extends
+  mode: 2
+  description: 'AddZedDependencyProvider extends argument'
 -
   name: AddZedDependencyProvider.targetFilename
   mode: 2
@@ -369,6 +393,10 @@
   name: AddZedBusinessFactory.template
   mode: 2
   description: 'AddZedBusinessFactory template argument'
+-
+  name: AddZedBusinessFactory.extends
+  mode: 2
+  description: 'AddZedBusinessFactory extends argument'
 -
   name: AddZedBusinessFactory.targetFilename
   mode: 2
@@ -798,6 +826,10 @@
   mode: 2
   description: 'AddZedConfig template argument'
 -
+  name: AddZedConfig.extends
+  mode: 2
+  description: 'AddZedConfig extends argument'
+-
   name: AddZedConfig.targetFilename
   mode: 2
   description: 'AddZedConfig targetFilename argument'
@@ -966,21 +998,21 @@
   mode: 2
   description: 'AddZedDependencyFacadeBridgeMethod mode argument'
 -
-  name: AddZedDependencyFacadeBridge.module
-  mode: 2
-  description: 'AddZedDependencyFacadeBridge module argument'
--
   name: AddZedDependencyFacadeBridge.organization
   mode: 2
   description: 'AddZedDependencyFacadeBridge organization argument'
 -
-  name: AddZedDependencyFacadeBridge.dependentModule
+  name: AddZedDependencyFacadeBridge.module
   mode: 2
-  description: 'AddZedDependencyFacadeBridge dependentModule argument'
+  description: 'AddZedDependencyFacadeBridge module argument'
 -
   name: AddZedDependencyFacadeBridge.dependentModuleOrganization
   mode: 2
   description: 'AddZedDependencyFacadeBridge dependentModuleOrganization argument'
+-
+  name: AddZedDependencyFacadeBridge.dependentModule
+  mode: 2
+  description: 'AddZedDependencyFacadeBridge dependentModule argument'
 -
   name: AddZedDependencyFacadeBridge.template
   mode: 2
@@ -4997,6 +5029,30 @@
   name: AddModuleTravis.mode
   mode: 2
   description: 'AddModuleTravis mode argument'
+-
+  name: AddDataImportModule.organization
+  mode: 2
+  description: 'AddDataImportModule organization argument'
+-
+  name: AddDataImportModule.module
+  mode: 2
+  description: 'AddDataImportModule module argument'
+-
+  name: AddDataImportModule.entity
+  mode: 2
+  description: 'AddDataImportModule entity argument'
+-
+  name: AddDataImportModule.targetPath
+  mode: 2
+  description: 'AddDataImportModule targetPath argument'
+-
+  name: AddDataImportModule.directories
+  mode: 2
+  description: 'AddDataImportModule directories argument'
+-
+  name: AddDataImportModule.repository
+  mode: 2
+  description: 'AddDataImportModule repository argument'
 -
   name: AddConstant.organization
   mode: 2

@@ -77,7 +77,7 @@ class TransferSpryk implements SprykBuilderInterface
 
         $this->prettyPrintXml($xml, $sprykDefinition);
 
-        $style->report(sprintf('Added rest transfer in <fg=green>%s</>', $this->getTargetPath($sprykDefinition)));
+        $style->report(sprintf('Added transfer in <fg=green>%s</>', $this->getTargetPath($sprykDefinition)));
     }
 
     /**

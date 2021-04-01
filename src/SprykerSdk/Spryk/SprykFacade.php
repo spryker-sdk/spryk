@@ -29,8 +29,8 @@ class SprykFacade implements SprykFacadeInterface
         string $sprykName,
         array $includeOptionalSubSpryks,
         SprykStyleInterface $style,
-        ?string $targetModuleName = '',
-        ?string $dependentModuleName = ''
+        ?string $targetModuleName = null,
+        ?string $dependentModuleName = null
     ): void {
         $this->getFactory()->createSprykExecutor()->execute($sprykName, $includeOptionalSubSpryks, $style, $targetModuleName, $dependentModuleName);
     }

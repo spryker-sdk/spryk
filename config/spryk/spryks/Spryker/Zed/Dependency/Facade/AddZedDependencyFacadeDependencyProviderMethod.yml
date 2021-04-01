@@ -4,6 +4,7 @@ mode: both
 
 arguments:
   module:
+    inherit: true
     moduleFilter:
       application: Zed
 
@@ -35,7 +36,7 @@ postSpryks:
         name:
           value: "FACADE_{{ dependentModule | underscored | upper }}"
         value:
-          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} facade"
+          value: "FACADE_{{ dependentModule | underscored | upper }}"
         visibility:
           value:  "public"
 

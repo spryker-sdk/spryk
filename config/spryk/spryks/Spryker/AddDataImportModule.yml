@@ -1,0 +1,89 @@
+spryk: structure
+description: "Adds a new Data Import module structure. Property entity must be in camel case."
+priority: 1
+mode: both
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+        type: NewModuleType
+
+    entity:
+        inherit: true
+
+    targetPath:
+        value: "{{ module }}/"
+
+    directories:
+        value:
+            - "src/{{ organization }}/"
+
+postSpryks:
+    - AddModule
+    - AddSharedTransferSchema
+    - AddSharedTransferDefinition:
+          arguments:
+              name:
+                  value: DataImporterConfiguration
+    - AddSharedTransferDefinition:
+          arguments:
+              name:
+                  value: DataImporterReport
+    - AddZedConfig:
+          arguments:
+              extends:
+                  value: \Spryker\Zed\DataImport\DataImportConfig
+    - AddZedDependencyProvider:
+          arguments:
+              extends:
+                  value: \Spryker\Zed\DataImport\DataImportDependencyProvider
+    - AddZedBusinessFactory:
+          arguments:
+              extends:
+                  value: \Spryker\Zed\DataImport\Business\DataImportBusinessFactory
+    - AddZedBusinessFacade
+    - AddZedConfigMethod:
+          arguments:
+              configMethod:
+                  value: "get{{ entity }}DataImporterConfiguration"
+              input:
+                  value: ""
+              output:
+                  value: \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+    - AddConstant:
+          arguments:
+              name:
+                  value: "IMPORT_TYPE_{{ entity | underscored | upperCase }}"
+              value:
+                  value: "{{ entity | dasherize }}"
+              visibility:
+                  value: "public"
+              target:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
+    - AddZedBusinessFacadeMethod:
+          arguments:
+              facadeMethod:
+                  value: "import{{ entity }}"
+              input:
+                  value: "?\\Generated\\Shared\\Transfer\\DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null"
+              output:
+                  value: \Generated\Shared\Transfer\DataImporterReportTransfer
+    - AddZedBusinessModel:
+          arguments:
+              className:
+                  value: "{{ entity }}DataImportStep"
+              subDirectory:
+                  value: "DataImportStep"
+              constructorArguments:
+                  value: ""
+              interfaceName:
+                  value: \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+    - AddZedCommunicationFactory
+    - AddZedPersistenceEntityManager
+    - AddZedPersistenceRepository
+    - AddZedTestCodeceptionConfiguration
+    - AddZedTestSuiteToCodeceptionConfiguration

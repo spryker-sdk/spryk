@@ -25,5 +25,3 @@ postSpryks:
     - AddZedConfig
     - AddZedDependencyProvider
     - AddZedCommunicationFactory
-    - AddZedConfig
-    - AddZedDependencyProvider

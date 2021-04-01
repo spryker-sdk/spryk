@@ -18,6 +18,7 @@ arguments:
     inherit: true
 
   interfaceName:
+    inherit: true
     default: "{{ className }}Interface"
 
   template:
