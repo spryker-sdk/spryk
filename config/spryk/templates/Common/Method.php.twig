@@ -1,4 +1,5 @@
 
+
     /**
      {% if comment is defined and comment.value is not empty %}
      {%- for commentLine in comment.value -%}
@@ -23,7 +24,7 @@
      {% endif -%}
      * @return {{ output }}
      */
-    public function {{ method }}({% if input.value is not empty %}{{ input.value | typedArrayConvert }}{% endif %}): {{ output | typedArrayConvert }}
+    public function {{ method }}({% if input.value is not empty %}{{ input.value | typedArrayConvert }}{% endif %}){% if output.value %}: {{ output | typedArrayConvert }}{% endif ~%}
     {
     {% if body is defined %}
     {{ body | raw }}

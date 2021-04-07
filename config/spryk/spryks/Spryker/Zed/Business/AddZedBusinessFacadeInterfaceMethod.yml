@@ -18,7 +18,6 @@ arguments:
     inherit: true
 
   input:
-    inherit: true
     isOptional: true
     isMultiple: true
 

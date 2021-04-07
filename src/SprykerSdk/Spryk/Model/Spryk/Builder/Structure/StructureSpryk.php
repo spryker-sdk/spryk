@@ -48,6 +48,7 @@ class StructureSpryk implements SprykBuilderInterface
         $directories = $this->getDirectoriesToCreate($sprykDefinition);
 
         foreach ($directories as $directory) {
+            $this->autoloadRegister($directory);
             if (!is_dir($directory)) {
                 $shouldBuild = true;
             }
@@ -72,6 +73,25 @@ class StructureSpryk implements SprykBuilderInterface
                 $style->report(sprintf('Created <fg=green>%s</>', $directory));
             }
         }
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return void
+     */
+    protected function autoloadRegister(string $path)
+    {
+        spl_autoload_register(function ($class) use ($path) {
+            if (!class_exists($class)) {
+                $pathArray = explode('\\', rtrim($class, '\\'));
+                unset($pathArray[0]);
+                $file = $path . implode(DIRECTORY_SEPARATOR, $pathArray) . '.php';
+                if (file_exists($file)) {
+                    include $file;
+                }
+            }
+        });
     }
 
     /**

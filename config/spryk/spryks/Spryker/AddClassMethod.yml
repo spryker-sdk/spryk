@@ -1,0 +1,38 @@
+spryk: method
+description: "Adds a new *module* class method."
+mode: both
+
+arguments:
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  className: ~
+
+  method: ~
+
+  input:
+      isOptional: true
+      isMultiple: true
+
+  output:
+      isOptional: true
+
+  annotations:
+    value:
+      - "{@inheritdoc}"
+      - "@api"
+
+  subDirectory: ~
+
+  template:
+    value: Common/Method.php.twig
+
+  target:
+    value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}"
+
+preSpryks:
+    - AddClass

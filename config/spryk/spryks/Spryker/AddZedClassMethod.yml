@@ -1,0 +1,42 @@
+spryk: method
+description: "Adds a new method to the *module*Facade."
+mode: both
+
+arguments:
+
+  module:
+    inherit: true
+
+  organization:
+    inherit: true
+    default: Spryker
+
+  comment:
+    multiline: true
+
+  facadeMethod: ~
+
+  input:
+    isOptional: true
+    isMultiple: true
+
+  output:
+    isOptional: true
+
+  annotations:
+    value:
+      - "{@inheritdoc}"
+      - "@api"
+
+  template:
+    value: Common/Method.php.twig
+
+  target:
+    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}Facade"
+
+preSpryks:
+  - AddZedBusinessFacade
+
+postSpryks:
+  - AddZedBusinessFacadeInterfaceMethod
+  - AddZedBusinessFacadeMethodTest

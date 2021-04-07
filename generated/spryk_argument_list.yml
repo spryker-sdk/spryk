@@ -246,6 +246,63 @@
   mode: 2
   description: 'targetFilePath argument'
 -
+  name: implementerInterfaceName
+  mode: 2
+  description: 'implementerInterfaceName argument'
+-
+  name: AddClass.module
+  mode: 2
+  description: 'AddClass module argument'
+-
+  name: AddClass.organization
+  mode: 2
+  description: 'AddClass module argument'
+-
+  name: AddClass.className
+  mode: 2
+  description: 'AddClass module argument'
+-
+  name: AddClass.implementerInterfaceName
+  mode: 2
+  description: 'AddClass module argument'
+-
+  name: AddClass.expanderClassName
+  mode: 2
+  description: 'AddClass module argument'
+-
+  name: AddClass.subDirectory
+  mode: 2
+  description: 'AddClass module argument'
+
+-
+  name: AddClassMethod.module
+  mode: 2
+  description: 'AddClassMethod module argument'
+-
+  name: AddClassMethod.organization
+  mode: 2
+  description: 'AddClassMethod module argument'
+-
+  name: AddClassMethod.className
+  mode: 2
+  description: 'AddClassMethod module argument'
+-
+  name: AddClassMethod.method
+  mode: 2
+  description: 'AddClassMethod module argument'
+-
+  name: AddClassMethod.input
+  mode: 2
+  description: 'AddClassMethod module argument'
+-
+  name: AddClassMethod.output
+  mode: 2
+  description: 'AddClassMethod module argument'
+-
+  name: AddClassMethod.subDirectory
+  mode: 2
+  description: 'AddClass module argument'
+-
   name: AddZedDependencyProvider.module
   mode: 2
   description: 'AddZedDependencyProvider module argument'
