@@ -1,0 +1,51 @@
+spryk: method
+description: "Adds a new method to the *target* business model in Data import ."
+mode: both
+
+application: Zed
+layer: Business
+
+priority: 1
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+
+    className:
+        inherit: true
+        type: ClassNameChoice
+        choiceLoader: ZedBusinessModelChoiceLoader
+        typeOptions:
+            - module
+            - spryk
+            - choiceLoader
+
+    subDirectory:
+        inherit: true
+        isOptional: true
+
+    modelMethod:
+        inherit: true
+
+    input:
+        isOptional: true
+        isMultiple: true
+
+    output:
+        isOptional: true
+
+    template:
+        value: Common/Method.php.twig
+
+    target:
+        value: "{{ className }}"
+
+    fqcnPattern:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}"
+
+preSpryks:
+    - AddDataImportZedBusinessWriterStep

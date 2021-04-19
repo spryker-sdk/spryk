@@ -5,8 +5,12 @@ mode: both
 arguments:
   module:
     inherit: true
-  targetModule: ~
-  tableName: ~
+
+  targetModule:
+    inherit: true
+
+  tableName:
+    inherit: true
 
   organization:
     inherit: true

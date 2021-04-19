@@ -41,10 +41,7 @@ postSpryks:
           arguments:
               extends:
                   value: \Spryker\Zed\DataImport\DataImportDependencyProvider
-    - AddZedBusinessFactory:
-          arguments:
-              extends:
-                  value: \Spryker\Zed\DataImport\Business\DataImportBusinessFactory
+    - AddDataImportZedBusinessFactory
     - AddZedBusinessFacade
     - AddZedConfigMethod:
           arguments:
@@ -72,17 +69,40 @@ postSpryks:
                   value: "?\\Generated\\Shared\\Transfer\\DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null"
               output:
                   value: \Generated\Shared\Transfer\DataImporterReportTransfer
-    - AddZedBusinessModel:
+              body:
+                  value: "return $this->getFactory()->get{{ entity }}DataImporter()->import($dataImporterConfigurationTransfer);"
+    - AddZedBusinessFacadeInterfaceMethod:
+          arguments:
+              facadeMethod:
+                  value: "import{{ entity }}"
+              input:
+                  value: "?\\Generated\\Shared\\Transfer\\DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null"
+              output:
+                  value: \Generated\Shared\Transfer\DataImporterReportTransfer
+    - AddDataImportZedBusinessWriterStep:
           arguments:
               className:
-                  value: "{{ entity }}DataImportStep"
+                  value: "{{ entity }}DataImportWriterStep"
               subDirectory:
                   value: "DataImportStep"
               constructorArguments:
                   value: ""
               interfaceName:
                   value: \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+    - AddDataImportZedBusinessWriterStepMethod:
+          arguments:
+              className:
+                  value: "{{ entity }}DataImportWriterStep"
+              subDirectory:
+                  value: "DataImportStep"
+              modelMethod:
+                  value: "execute"
+              input:
+                  value: "\\Spryker\\Zed\\DataImport\\Business\\Model\\DataSet\\DataSetInterface $dataSet"
+              output:
+                  value: void
     - AddZedCommunicationFactory
+    - AddDataImportPlugin
     - AddZedPersistenceEntityManager
     - AddZedPersistenceRepository
     - AddZedTestCodeceptionConfiguration

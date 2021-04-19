@@ -13,9 +13,6 @@ arguments:
   template:
     value: Zed/Business/ZedBusinessFactory.php.twig
 
-  extends:
-    value: \Spryker\Zed\Kernel\Business\AbstractBusinessFactory
-
   targetFilename:
     value: "{{ module }}BusinessFactory.php"
 
