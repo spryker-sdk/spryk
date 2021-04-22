@@ -36,7 +36,7 @@ class LevelRule implements ConfigurationValidatorRuleInterface
             return false;
         }
 
-        $this->buildErrorMessage($sprykConfig[static::LEVEL_CONFIG_NAME]);
+        $this->buildInvalidValueErrorMessage($sprykConfig[static::LEVEL_CONFIG_NAME]);
 
         if (in_array($sprykConfig[static::LEVEL_CONFIG_NAME], $this->availableLevels, true)) {
             return true;
@@ -58,7 +58,7 @@ class LevelRule implements ConfigurationValidatorRuleInterface
      *
      * @return void
      */
-    protected function buildErrorMessage(string $value): void
+    protected function buildInvalidValueErrorMessage(string $value): void
     {
         $this->errorMessage = sprintf(
             'Spryk level of %s is invalid. Please set `level` one of: %s.',
