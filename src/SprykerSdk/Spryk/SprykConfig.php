@@ -25,6 +25,10 @@ class SprykConfig
     protected const NAME_ORGANIZATION = 'spryker-sdk';
     protected const NAME_PACKAGE = 'spryk';
 
+    public const SPRYK_LEVEL_1 = 1;
+    public const SPRYK_LEVEL_2 = 2;
+    public const SPRYK_LEVEL_3 = 3;
+
     /**
      * @return string[]
      */
@@ -93,6 +97,18 @@ class SprykConfig
     }
 
     /**
+     * @return int[]
+     */
+    public function getAvailableLevels(): array
+    {
+        return [
+            static::SPRYK_LEVEL_1,
+            static::SPRYK_LEVEL_2,
+            static::SPRYK_LEVEL_3,
+        ];
+    }
+
+    /**
      * @return array
      */
     public function getCoreNamespaces(): array
@@ -136,6 +152,11 @@ class SprykConfig
     public function getDefaultDevelopmentMode(): string
     {
         return static::NAME_DEVELOPMENT_LAYER_PROJECT;
+    }
+
+    public function getDefaultLevel(): int
+    {
+        return static::SPRYK_LEVEL_3;
     }
 
     /**

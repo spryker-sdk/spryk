@@ -12,6 +12,7 @@ use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtend
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMergerInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidatorInterface;
+use SprykerSdk\Spryk\SprykConfig;
 use Symfony\Component\Yaml\Yaml;
 
 class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
@@ -37,29 +38,29 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
     protected $configurationValidator;
 
     /**
-     * @var string
+     * @var SprykConfig
      */
-    protected $defaultDevelopmentMode;
+    protected $sprykConfig;
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinderInterface $configurationFinder
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMergerInterface $configurationMerger
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface $configurationExtender
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidatorInterface $configurationValidator
-     * @param string $defaultDevelopmentMode
+     * @param SprykConfig $sprykConfig
      */
     public function __construct(
         SprykConfigurationFinderInterface $configurationFinder,
         SprykConfigurationMergerInterface $configurationMerger,
         SprykConfigurationExtenderInterface $configurationExtender,
         ConfigurationValidatorInterface $configurationValidator,
-        string $defaultDevelopmentMode
+        SprykConfig $sprykConfig
     ) {
         $this->configurationFinder = $configurationFinder;
         $this->configurationMerger = $configurationMerger;
         $this->configurationExtender = $configurationExtender;
         $this->configurationValidator = $configurationValidator;
-        $this->defaultDevelopmentMode = $defaultDevelopmentMode;
+        $this->sprykConfig = $sprykConfig;
     }
 
     /**
@@ -74,6 +75,7 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
         $sprykConfiguration = Yaml::parse($sprykConfiguration->getContents());
 
         $sprykConfiguration = $this->buildMode($sprykConfiguration, $sprykMode);
+        $sprykConfiguration = $this->buildLevel($sprykConfiguration);
 
         $this->configurationValidate($sprykConfiguration);
 
@@ -109,11 +111,25 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
     protected function buildMode(array $sprykConfiguration, ?string $sprykMode = null): array
     {
         if (!isset($sprykConfiguration['mode'])) {
-            $sprykConfiguration['mode'] = $this->defaultDevelopmentMode;
+            $sprykConfiguration['mode'] = $this->sprykConfig->getDefaultDevelopmentMode();
         }
 
         if ($sprykMode !== null && $sprykConfiguration['mode'] === 'both') {
             $sprykConfiguration['mode'] = $sprykMode;
+        }
+
+        return $sprykConfiguration;
+    }
+
+    /**
+     * @param array $sprykConfiguration
+     *
+     * @return array
+     */
+    protected function buildLevel(array $sprykConfiguration): array
+    {
+        if (!isset($sprykConfiguration['level'])) {
+            $sprykConfiguration['level'] = $this->sprykConfig->getDefaultLevel();
         }
 
         return $sprykConfiguration;

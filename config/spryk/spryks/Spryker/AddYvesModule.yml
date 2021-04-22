@@ -2,6 +2,7 @@ spryk: structure
 description: "Adds a new *module* Yves structure."
 priority: 1
 mode: both
+level: 1
 
 arguments:
     organization:
