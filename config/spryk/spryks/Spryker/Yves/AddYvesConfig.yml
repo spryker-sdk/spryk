@@ -3,21 +3,21 @@ description: "Adds a new *module*Config to the Yves application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  template:
-    value: Yves/YvesConfig.php.twig
+    template:
+        value: Yves/YvesConfig.php.twig
 
-  targetFilename:
-    value: "{{ module }}Config.php"
+    targetFilename:
+        value: "{{ module }}Config.php"
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
+    targetPath:
+        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule

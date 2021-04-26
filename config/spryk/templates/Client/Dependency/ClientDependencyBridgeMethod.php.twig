@@ -1,0 +1,6 @@
+
+    {{ docBlock }}
+    public function {{ methodName }}({{ parameter }}){{ methodReturnType }}
+    {
+        {% if return  %}return {%  endif %}$this->{{ dependentModule | lcfirst }}{{ dependencyType }}->{{ methodName }}({{ parameterWithoutTypes }});
+    }

@@ -1,0 +1,36 @@
+spryk: structure
+description: "Adds a new *module* structure."
+priority: 1
+mode: both
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+        type: NewModuleType
+
+    targetPath:
+        value: "{{ module }}/"
+
+    directories:
+        value:
+            - "src/{{ organization }}/"
+
+postSpryks:
+    - AddModule
+    - AddClient
+    - AddClientConfig
+    - AddSharedTransferSchema
+    - AddZedConfig
+    - AddZedDependencyProvider
+    - AddZedBusinessFacade
+    - AddZedCommunicationFactory
+    - AddZedConfig
+    - AddZedDependencyProvider
+    - AddZedPersistenceEntityManager
+    - AddZedPersistenceRepository
+    - AddZedTestCodeceptionConfiguration
+    - AddZedTestSuiteToCodeceptionConfiguration

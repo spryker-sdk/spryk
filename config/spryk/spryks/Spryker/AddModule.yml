@@ -4,30 +4,32 @@ priority: 1
 mode: both
 
 arguments:
-  module:
-    inherit: true
-    type: NewModuleType
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
+        type: NewModuleType
 
-  targetPath:
-    value: "{{ module }}/"
+    targetPath:
+        value: "{{ module }}/"
 
-  directories:
-    value:
-      - "src/{{ organization }}/"
+    directories:
+        value:
+            - "src/{{ organization }}/"
 
 postSpryks:
-  - AddModuleReadme
-  - AddModuleComposerJson
-  - AddModuleLicense
-  - AddModuleContributing
-  - AddModuleChangelog
-  - AddModuleTravis
-  - AddModuleGitattributes
-  - AddModuleGitignore
-  - AddModuleTooling
-  - AddModulePhpStanJson
-  - AddModulePhpStanNeon
+    - AddModuleReadme
+    - AddModuleComposerJson
+    - AddModuleLicense
+    - AddModuleContributing
+    - AddModuleChangelog
+    - AddModuleTravis
+    - AddModuleGitattributes
+    - AddModuleGitignore
+    - AddModuleTooling
+    - AddModulePhpStanJson
+    - AddModulePhpStanNeon
+    - AddModuleEditorconfig
+    - AddModuleCoveralls

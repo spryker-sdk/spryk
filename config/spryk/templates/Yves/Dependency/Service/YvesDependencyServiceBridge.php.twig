@@ -10,12 +10,12 @@ namespace {{ organization }}\Yves\{{ module }}\Dependency\Service;
 class {{ module }}To{{ dependentModule }}ServiceBridge implements {{ module }}To{{ dependentModule }}ServiceInterface
 {
     /**
-     * @var \{{ organization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface
+     * @var \{{ dependentModuleOrganization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface
      */
     protected ${{ dependentModule | camelBack }}Service;
 
     /**
-     * @param \{{ organization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface ${{ dependentModule | camelBack }}Service
+     * @param \{{ dependentModuleOrganization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface ${{ dependentModule | camelBack }}Service
      */
     public function __construct(${{ dependentModule | camelBack }}Service)
     {

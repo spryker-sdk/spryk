@@ -5,6 +5,8 @@
   "license": "proprietary",
   "require": {
     "php": ">=7.3",
+    "ext-dom": "*",
+    "ext-simplexml": "*",
     "roave/better-reflection": "^3.2 || ^4.0",
     "spryker/config": "^3.0.0",
     "spryker/doctrine-inflector": "^1.0.0",
@@ -78,5 +80,10 @@
     "use-include-path": true,
     "process-timeout": 600,
     "sort-packages": true
-  }
+  },
+  "bin": [
+    "bin/spryk-run",
+    "bin/spryk-dump",
+    "bin/spryk-build"
+  ]
 }

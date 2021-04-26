@@ -3,26 +3,25 @@ description: "Adds a new *module*Factory to the Yves application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  template:
-    value: Yves/YvesFactory.php.twig
+    template:
+        value: Yves/YvesFactory.php.twig
 
-  targetFilename:
-    value: "{{ module }}Factory.php"
+    targetFilename:
+        value: "{{ module }}Factory.php"
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
+    targetPath:
+        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddZedBusinessFacade
-  - AddYvesDependencyProvider
-  - AddZedConfig
+    - AddYvesDependencyProvider
+    - AddYvesConfig

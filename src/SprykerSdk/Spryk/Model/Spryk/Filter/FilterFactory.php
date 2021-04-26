@@ -36,6 +36,10 @@ class FilterFactory
             $this->createSingularizeFilter(),
             $this->createTypedArrayFilter(),
             $this->createRemoveRestApiSuffixFilter(),
+            $this->createCamelCaseToDashFilter(),
+            $this->createRemoveWidgetSuffixFilter(),
+            $this->createLowerCaseFilter(),
+            $this->createUpperCaseFirstFilter(),
         ];
     }
 
@@ -189,5 +193,37 @@ class FilterFactory
     public function createRemoveRestApiSuffixFilter(): FilterInterface
     {
         return new RemoveRestApiSuffixFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createCamelCaseToDashFilter(): FilterInterface
+    {
+        return new CamelCaseToDashFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createRemoveWidgetSuffixFilter(): FilterInterface
+    {
+        return new RemoveWidgetSuffixFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createLowerCaseFilter(): FilterInterface
+    {
+        return new LowerCaseFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createUpperCaseFirstFilter(): FilterInterface
+    {
+        return new UpperCaseFirstFilter();
     }
 }

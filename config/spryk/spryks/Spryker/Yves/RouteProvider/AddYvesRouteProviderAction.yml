@@ -1,0 +1,50 @@
+spryk: method
+description: "Adds a new action to the Yves controller."
+mode: both
+
+arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
+
+    module:
+        inherit: true
+
+    controller:
+        callback:
+            - ClassNameShortCallback
+            - EnsureControllerSuffixCallback
+        type: ClassNameChoice
+        typeOptions:
+            - module
+            - spryk
+            - choiceLoader
+
+    controllerMethod:
+        callback: EnsureActionSuffixCallback
+
+    templateName:
+        value: "{{ controllerMethod | removeActionSuffix | camelCaseToDash | lowerCase }}"
+
+    template:
+        value: Yves/RouteProvider/YvesRouteProviderMethod.php.twig
+
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\Plugin\\Router\\{{ module }}RouteProviderPlugin"
+
+preSpryks:
+    - AddYvesRouteProvider
+
+postSpryks:
+    - AddConstant:
+          arguments:
+              name:
+                  value: "ROUTE_{{ controllerMethod | removeActionSuffix | underscored | upper }}"
+              value:
+                  value:  "{{ module | camelCaseToDash | lowerCase }}/{{ controller | removeControllerSuffix | camelCaseToDash | lowerCase }}-{{ controllerMethod | removeActionSuffix | camelCaseToDash | lowerCase }}"
+              visibility:
+                  value:  "protected"
+              target:
+                  value: "{{ organization }}\\Yves\\{{ module }}\\Plugin\\Router\\{{ module }}RouteProviderPlugin"
+
+

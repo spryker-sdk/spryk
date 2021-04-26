@@ -4,37 +4,38 @@ priority: 1
 mode: core
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  module:
-    inherit: true
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  dependentModule: ~
+    dependentModule:
+        inherit: true
 
-  methods:
-    type: MethodNameChoice
-    choiceLoader: ServiceMethodChoiceLoader
-    isMultiple: true
-    typeOptions:
-      - module
-      - choiceLoader
+    methods:
+        type: MethodNameChoice
+        choiceLoader: ServiceMethodChoiceLoader
+        isMultiple: true
+        typeOptions:
+            - module
+            - choiceLoader
 
-  template:
-    value: Yves/Dependency/YvesDependencyBridgeMethod.php.twig
+    template:
+        value: Yves/Dependency/YvesDependencyBridgeMethod.php.twig
 
-  dependencyType:
-    value: Service
+    dependencyType:
+        value: Service
 
-  sourceClass:
-    value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
+    sourceClass:
+        value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
 
-  target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
 
 preSpryks:
-  - AddYvesDependencyServiceBridge
+    - AddYvesDependencyServiceBridge
 
 postSpryks:
-  - AddYvesDependencyServiceBridgeInterfaceMethod
+    - AddYvesDependencyServiceBridgeInterfaceMethod

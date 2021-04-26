@@ -8,6 +8,8 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\ApplicationLayerExtender;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\BusinessLayerPathExtender;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DefaultValueExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DevelopmentLayerExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DirectoriesExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\OrganizationExtender;
@@ -105,6 +107,7 @@ class ConfigurationFactory
             $this->createOrganizationExtender(),
             $this->createDirectoriesExtender(),
             $this->createApplicationLayerExtender(),
+            $this->createDefaultValueExtender(),
         ];
     }
 
@@ -156,6 +159,14 @@ class ConfigurationFactory
     protected function createDevelopmentLayerExtender(): SprykConfigurationExtenderInterface
     {
         return new DevelopmentLayerExtender($this->config);
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface
+     */
+    public function createDefaultValueExtender(): SprykConfigurationExtenderInterface
+    {
+        return new DefaultValueExtender($this->config);
     }
 
     /**

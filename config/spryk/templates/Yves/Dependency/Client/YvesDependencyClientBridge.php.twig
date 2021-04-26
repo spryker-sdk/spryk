@@ -10,12 +10,12 @@ namespace {{ organization }}\Yves\{{ module }}\Dependency\Client;
 class {{ module }}To{{ dependentModule }}ClientBridge implements {{ module }}To{{ dependentModule }}ClientInterface
 {
     /**
-     * @var \{{ organization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface
+     * @var \{{ dependentModuleOrganization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface
      */
     protected ${{ dependentModule | camelBack }}Client;
 
     /**
-     * @param \{{ organization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface ${{ dependentModule | camelBack }}Client
+     * @param \{{ dependentModuleOrganization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface ${{ dependentModule | camelBack }}Client
      */
     public function __construct(${{ dependentModule | camelBack }}Client)
     {

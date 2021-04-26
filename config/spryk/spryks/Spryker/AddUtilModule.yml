@@ -1,0 +1,25 @@
+spryk: structure
+description: "Adds a new Util *module* structure."
+priority: 1
+mode: both
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+        type: NewModuleType
+
+    targetPath:
+        value: "{{ module }}/"
+
+    directories:
+        value:
+            - "src/{{ organization }}/"
+
+postSpryks:
+    - AddModule
+    - AddSharedTransferSchema
+    - AddService

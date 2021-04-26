@@ -2054,6 +2054,34 @@
   mode: 2
   description: 'AddZedCommunicationControllerAction repository argument'
 -
+  name: AddZedCommunicationGatewayController.module
+  mode: 2
+  description: 'AddZedCommunicationGatewayController module argument'
+-
+  name: AddZedCommunicationGatewayController.organization
+  mode: 2
+  description: 'AddZedCommunicationGatewayController organization argument'
+-
+  name: AddZedCommunicationGatewayController.template
+  mode: 2
+  description: 'AddZedCommunicationGatewayController template argument'
+-
+  name: AddZedCommunicationGatewayController.controller
+  mode: 2
+  description: 'AddZedCommunicationGatewayController controller argument'
+-
+  name: AddZedCommunicationGatewayController.targetFilename
+  mode: 2
+  description: 'AddZedCommunicationGatewayController targetFilename argument'
+-
+  name: AddZedCommunicationGatewayController.targetPath
+  mode: 2
+  description: 'AddZedCommunicationGatewayController targetPath argument'
+-
+  name: AddZedCommunicationGatewayController.repository
+  mode: 2
+  description: 'AddZedCommunicationGatewayController repository argument'
+-
   name: AddZedCommunicationConsoleTest.module
   mode: 2
   description: 'AddZedCommunicationConsoleTest module argument'
@@ -3806,13 +3834,13 @@
   mode: 2
   description: 'AddModulePhpStanJson mode argument'
 -
-  name: AddYvesConfig.module
-  mode: 2
-  description: 'AddYvesConfig module argument'
--
   name: AddYvesConfig.organization
   mode: 2
   description: 'AddYvesConfig organization argument'
+-
+  name: AddYvesConfig.module
+  mode: 2
+  description: 'AddYvesConfig module argument'
 -
   name: AddYvesConfig.template
   mode: 2
@@ -3830,6 +3858,10 @@
   mode: 2
   description: 'AddYvesConfig repository argument'
 -
+  name: AddYvesDependencyServiceFactoryMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceFactoryMethod organization argument'
+-
   name: AddYvesDependencyServiceFactoryMethod.module
   mode: 2
   description: 'AddYvesDependencyServiceFactoryMethod module argument'
@@ -3837,10 +3869,6 @@
   name: AddYvesDependencyServiceFactoryMethod.dependentModule
   mode: 2
   description: 'AddYvesDependencyServiceFactoryMethod dependentModule argument'
--
-  name: AddYvesDependencyServiceFactoryMethod.organization
-  mode: 2
-  description: 'AddYvesDependencyServiceFactoryMethod organization argument'
 -
   name: AddYvesDependencyServiceFactoryMethod.factoryMethod
   mode: 2
@@ -3858,6 +3886,10 @@
   mode: 2
   description: 'AddYvesDependencyServiceFactoryMethod repository argument'
 -
+  name: AddYvesDependencyServiceInterface.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceInterface organization argument'
+-
   name: AddYvesDependencyServiceInterface.module
   mode: 2
   description: 'AddYvesDependencyServiceInterface module argument'
@@ -3865,10 +3897,6 @@
   name: AddYvesDependencyServiceInterface.dependentModule
   mode: 2
   description: 'AddYvesDependencyServiceInterface dependentModule argument'
--
-  name: AddYvesDependencyServiceInterface.organization
-  mode: 2
-  description: 'AddYvesDependencyServiceInterface organization argument'
 -
   name: AddYvesDependencyServiceInterface.template
   mode: 2
@@ -3886,13 +3914,13 @@
   mode: 2
   description: 'AddYvesDependencyServiceInterface repository argument'
 -
-  name: AddYvesDependencyServiceBridgeInterfaceMethod.module
-  mode: 2
-  description: 'AddYvesDependencyServiceBridgeInterfaceMethod module argument'
--
   name: AddYvesDependencyServiceBridgeInterfaceMethod.organization
   mode: 2
   description: 'AddYvesDependencyServiceBridgeInterfaceMethod organization argument'
+-
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.module
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod module argument'
 -
   name: AddYvesDependencyServiceBridgeInterfaceMethod.dependentModule
   mode: 2
@@ -3926,13 +3954,13 @@
   mode: 2
   description: 'AddYvesDependencyServiceBridgeInterfaceMethod mode argument'
 -
-  name: AddYvesDependencyServiceBridge.module
-  mode: 2
-  description: 'AddYvesDependencyServiceBridge module argument'
--
   name: AddYvesDependencyServiceBridge.organization
   mode: 2
   description: 'AddYvesDependencyServiceBridge organization argument'
+-
+  name: AddYvesDependencyServiceBridge.module
+  mode: 2
+  description: 'AddYvesDependencyServiceBridge module argument'
 -
   name: AddYvesDependencyServiceBridge.dependentModule
   mode: 2
@@ -3962,13 +3990,13 @@
   mode: 2
   description: 'AddYvesDependencyServiceBridge mode argument'
 -
-  name: AddYvesDependencyServiceBridgeMethod.module
-  mode: 2
-  description: 'AddYvesDependencyServiceBridgeMethod module argument'
--
   name: AddYvesDependencyServiceBridgeMethod.organization
   mode: 2
   description: 'AddYvesDependencyServiceBridgeMethod organization argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.module
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod module argument'
 -
   name: AddYvesDependencyServiceBridgeMethod.dependentModule
   mode: 2
@@ -4002,6 +4030,10 @@
   mode: 2
   description: 'AddYvesDependencyServiceBridgeMethod mode argument'
 -
+  name: AddYvesDependencyServiceDependencyProviderMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderMethod organization argument'
+-
   name: AddYvesDependencyServiceDependencyProviderMethod.module
   mode: 2
   description: 'AddYvesDependencyServiceDependencyProviderMethod module argument'
@@ -4009,10 +4041,6 @@
   name: AddYvesDependencyServiceDependencyProviderMethod.dependentModule
   mode: 2
   description: 'AddYvesDependencyServiceDependencyProviderMethod dependentModule argument'
--
-  name: AddYvesDependencyServiceDependencyProviderMethod.organization
-  mode: 2
-  description: 'AddYvesDependencyServiceDependencyProviderMethod organization argument'
 -
   name: AddYvesDependencyServiceDependencyProviderMethod.providerMethod
   mode: 2
@@ -4030,6 +4058,10 @@
   mode: 2
   description: 'AddYvesDependencyServiceDependencyProviderMethod repository argument'
 -
+  name: AddYvesDependencyServiceDependencyProviderConstant.organization
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderConstant organization argument'
+-
   name: AddYvesDependencyServiceDependencyProviderConstant.module
   mode: 2
   description: 'AddYvesDependencyServiceDependencyProviderConstant module argument'
@@ -4037,10 +4069,6 @@
   name: AddYvesDependencyServiceDependencyProviderConstant.dependentModule
   mode: 2
   description: 'AddYvesDependencyServiceDependencyProviderConstant dependentModule argument'
--
-  name: AddYvesDependencyServiceDependencyProviderConstant.organization
-  mode: 2
-  description: 'AddYvesDependencyServiceDependencyProviderConstant organization argument'
 -
   name: AddYvesDependencyServiceDependencyProviderConstant.name
   mode: 2
@@ -4062,6 +4090,10 @@
   mode: 2
   description: 'AddYvesDependencyServiceDependencyProviderConstant repository argument'
 -
+  name: AddYvesDependencyClientDependencyProviderMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderMethod organization argument'
+-
   name: AddYvesDependencyClientDependencyProviderMethod.module
   mode: 2
   description: 'AddYvesDependencyClientDependencyProviderMethod module argument'
@@ -4069,10 +4101,6 @@
   name: AddYvesDependencyClientDependencyProviderMethod.dependentModule
   mode: 2
   description: 'AddYvesDependencyClientDependencyProviderMethod dependentModule argument'
--
-  name: AddYvesDependencyClientDependencyProviderMethod.organization
-  mode: 2
-  description: 'AddYvesDependencyClientDependencyProviderMethod organization argument'
 -
   name: AddYvesDependencyClientDependencyProviderMethod.providerMethod
   mode: 2
@@ -4090,13 +4118,13 @@
   mode: 2
   description: 'AddYvesDependencyClientDependencyProviderMethod repository argument'
 -
-  name: AddYvesDependencyClientBridge.module
-  mode: 2
-  description: 'AddYvesDependencyClientBridge module argument'
--
   name: AddYvesDependencyClientBridge.organization
   mode: 2
   description: 'AddYvesDependencyClientBridge organization argument'
+-
+  name: AddYvesDependencyClientBridge.module
+  mode: 2
+  description: 'AddYvesDependencyClientBridge module argument'
 -
   name: AddYvesDependencyClientBridge.dependentModule
   mode: 2
@@ -4126,17 +4154,21 @@
   mode: 2
   description: 'AddYvesDependencyClientBridge mode argument'
 -
-  name: AddYvesDependencyClientBridgeInterfaceMethod.module
-  mode: 2
-  description: 'AddYvesDependencyClientBridgeInterfaceMethod module argument'
--
   name: AddYvesDependencyClientBridgeInterfaceMethod.organization
   mode: 2
   description: 'AddYvesDependencyClientBridgeInterfaceMethod organization argument'
 -
+  name: AddYvesDependencyClientBridgeInterfaceMethod.module
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod module argument'
+-
   name: AddYvesDependencyClientBridgeInterfaceMethod.dependentModule
   mode: 2
   description: 'AddYvesDependencyClientBridgeInterfaceMethod dependentModule argument'
+-
+  name: AddYvesDependencyClientBridgeInterfaceMethod.dependentModuleOrganization
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeInterfaceMethod dependentModuleOrganization argument'
 -
   name: AddYvesDependencyClientBridgeInterfaceMethod.methods
   mode: 2
@@ -4166,17 +4198,21 @@
   mode: 2
   description: 'AddYvesDependencyClientBridgeInterfaceMethod mode argument'
 -
-  name: AddYvesDependencyClientBridgeMethod.module
-  mode: 2
-  description: 'AddYvesDependencyClientBridgeMethod module argument'
--
   name: AddYvesDependencyClientBridgeMethod.organization
   mode: 2
   description: 'AddYvesDependencyClientBridgeMethod organization argument'
 -
+  name: AddYvesDependencyClientBridgeMethod.module
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod module argument'
+-
   name: AddYvesDependencyClientBridgeMethod.dependentModule
   mode: 2
   description: 'AddYvesDependencyClientBridgeMethod dependentModule argument'
+-
+  name: AddYvesDependencyClientBridgeMethod.dependentModuleOrganization
+  mode: 2
+  description: 'AddYvesDependencyClientBridgeMethod dependentModuleOrganization argument'
 -
   name: AddYvesDependencyClientBridgeMethod.methods
   mode: 2
@@ -4206,6 +4242,10 @@
   mode: 2
   description: 'AddYvesDependencyClientBridgeMethod mode argument'
 -
+  name: AddYvesDependencyClientInterface.organization
+  mode: 2
+  description: 'AddYvesDependencyClientInterface organization argument'
+-
   name: AddYvesDependencyClientInterface.module
   mode: 2
   description: 'AddYvesDependencyClientInterface module argument'
@@ -4213,10 +4253,6 @@
   name: AddYvesDependencyClientInterface.dependentModule
   mode: 2
   description: 'AddYvesDependencyClientInterface dependentModule argument'
--
-  name: AddYvesDependencyClientInterface.organization
-  mode: 2
-  description: 'AddYvesDependencyClientInterface organization argument'
 -
   name: AddYvesDependencyClientInterface.template
   mode: 2
@@ -4234,6 +4270,10 @@
   mode: 2
   description: 'AddYvesDependencyClientInterface repository argument'
 -
+  name: AddYvesDependencyClientFactoryMethod.organization
+  mode: 2
+  description: 'AddYvesDependencyClientFactoryMethod organization argument'
+-
   name: AddYvesDependencyClientFactoryMethod.module
   mode: 2
   description: 'AddYvesDependencyClientFactoryMethod module argument'
@@ -4241,10 +4281,6 @@
   name: AddYvesDependencyClientFactoryMethod.dependentModule
   mode: 2
   description: 'AddYvesDependencyClientFactoryMethod dependentModule argument'
--
-  name: AddYvesDependencyClientFactoryMethod.organization
-  mode: 2
-  description: 'AddYvesDependencyClientFactoryMethod organization argument'
 -
   name: AddYvesDependencyClientFactoryMethod.factoryMethod
   mode: 2
@@ -4262,6 +4298,10 @@
   mode: 2
   description: 'AddYvesDependencyClientFactoryMethod repository argument'
 -
+  name: AddYvesDependencyClientDependencyProviderConstant.organization
+  mode: 2
+  description: 'AddYvesDependencyClientDependencyProviderConstant organization argument'
+-
   name: AddYvesDependencyClientDependencyProviderConstant.module
   mode: 2
   description: 'AddYvesDependencyClientDependencyProviderConstant module argument'
@@ -4269,10 +4309,6 @@
   name: AddYvesDependencyClientDependencyProviderConstant.dependentModule
   mode: 2
   description: 'AddYvesDependencyClientDependencyProviderConstant dependentModule argument'
--
-  name: AddYvesDependencyClientDependencyProviderConstant.organization
-  mode: 2
-  description: 'AddYvesDependencyClientDependencyProviderConstant organization argument'
 -
   name: AddYvesDependencyClientDependencyProviderConstant.name
   mode: 2
@@ -4294,13 +4330,13 @@
   mode: 2
   description: 'AddYvesDependencyClientDependencyProviderConstant repository argument'
 -
-  name: AddYvesDependencyProvider.module
-  mode: 2
-  description: 'AddYvesDependencyProvider module argument'
--
   name: AddYvesDependencyProvider.organization
   mode: 2
   description: 'AddYvesDependencyProvider organization argument'
+-
+  name: AddYvesDependencyProvider.module
+  mode: 2
+  description: 'AddYvesDependencyProvider module argument'
 -
   name: AddYvesDependencyProvider.template
   mode: 2
@@ -4318,13 +4354,217 @@
   mode: 2
   description: 'AddYvesDependencyProvider repository argument'
 -
-  name: AddYvesConfigMethod.module
+  name: AddYvesController.organization
   mode: 2
-  description: 'AddYvesConfigMethod module argument'
+  description: 'AddYvesController organization argument'
+-
+  name: AddYvesController.module
+  mode: 2
+  description: 'AddYvesController module argument'
+-
+  name: AddYvesController.controller
+  mode: 2
+  description: 'AddYvesController controller argument'
+-
+  name: AddYvesController.template
+  mode: 2
+  description: 'AddYvesController template argument'
+-
+  name: AddYvesController.targetFilename
+  mode: 2
+  description: 'AddYvesController targetFilename argument'
+-
+  name: AddYvesController.targetPath
+  mode: 2
+  description: 'AddYvesController targetPath argument'
+-
+  name: AddYvesController.repository
+  mode: 2
+  description: 'AddYvesController repository argument'
+-
+  name: AddYvesControllerAction.organization
+  mode: 2
+  description: 'AddYvesControllerAction organization argument'
+-
+  name: AddYvesControllerAction.module
+  mode: 2
+  description: 'AddYvesControllerAction module argument'
+-
+  name: AddYvesControllerAction.controller
+  mode: 2
+  description: 'AddYvesControllerAction controller argument'
+-
+  name: AddYvesControllerAction.controllerMethod
+  mode: 2
+  description: 'AddYvesControllerAction controllerMethod argument'
+-
+  name: AddYvesControllerAction.templateName
+  mode: 2
+  description: 'AddYvesControllerAction templateName argument'
+-
+  name: AddYvesControllerAction.template
+  mode: 2
+  description: 'AddYvesControllerAction template argument'
+-
+  name: AddYvesControllerAction.target
+  mode: 2
+  description: 'AddYvesControllerAction target argument'
+-
+  name: AddYvesControllerAction.repository
+  mode: 2
+  description: 'AddYvesControllerAction repository argument'
+-
+  name: AddYvesWidgetView.organization
+  mode: 2
+  description: 'AddYvesWidgetView organization argument'
+-
+  name: AddYvesWidgetView.module
+  mode: 2
+  description: 'AddYvesWidgetView module argument'
+-
+  name: AddYvesWidgetView.theme
+  mode: 2
+  description: 'AddYvesWidgetView theme argument'
+-
+  name: AddYvesWidgetView.templateName
+  mode: 2
+  description: 'AddYvesWidgetView templateName argument'
+-
+  name: AddYvesWidgetView.template
+  mode: 2
+  description: 'AddYvesWidgetView template argument'
+-
+  name: AddYvesWidgetView.targetFilename
+  mode: 2
+  description: 'AddYvesWidgetView targetFilename argument'
+-
+  name: AddYvesWidgetView.targetPath
+  mode: 2
+  description: 'AddYvesWidgetView targetPath argument'
+-
+  name: AddYvesWidgetView.repository
+  mode: 2
+  description: 'AddYvesWidgetView repository argument'
+-
+  name: AddYvesView.organization
+  mode: 2
+  description: 'AddYvesView organization argument'
+-
+  name: AddYvesView.module
+  mode: 2
+  description: 'AddYvesView module argument'
+-
+  name: AddYvesView.theme
+  mode: 2
+  description: 'AddYvesView theme argument'
+-
+  name: AddYvesView.templateName
+  mode: 2
+  description: 'AddYvesView templateName argument'
+-
+  name: AddYvesView.template
+  mode: 2
+  description: 'AddYvesView template argument'
+-
+  name: AddYvesView.targetFilename
+  mode: 2
+  description: 'AddYvesView targetFilename argument'
+-
+  name: AddYvesView.targetPath
+  mode: 2
+  description: 'AddYvesView targetPath argument'
+-
+  name: AddYvesView.repository
+  mode: 2
+  description: 'AddYvesView repository argument'
+-
+  name: AddYvesTheme.organization
+  mode: 2
+  description: 'AddYvesTheme organization argument'
+-
+  name: AddYvesTheme.module
+  mode: 2
+  description: 'AddYvesTheme module argument'
+-
+  name: AddYvesTheme.theme
+  mode: 2
+  description: 'AddYvesTheme theme argument'
+-
+  name: AddYvesTheme.targetPath
+  mode: 2
+  description: 'AddYvesTheme targetPath argument'
+-
+  name: AddYvesTheme.directories
+  mode: 2
+  description: 'AddYvesTheme directories argument'
+-
+  name: AddYvesTheme.repository
+  mode: 2
+  description: 'AddYvesTheme repository argument'
+-
+  name: AddYvesRouteProvider.organization
+  mode: 2
+  description: 'AddYvesRouteProvider organization argument'
+-
+  name: AddYvesRouteProvider.module
+  mode: 2
+  description: 'AddYvesRouteProvider module argument'
+-
+  name: AddYvesRouteProvider.template
+  mode: 2
+  description: 'AddYvesRouteProvider template argument'
+-
+  name: AddYvesRouteProvider.targetFilename
+  mode: 2
+  description: 'AddYvesRouteProvider targetFilename argument'
+-
+  name: AddYvesRouteProvider.targetPath
+  mode: 2
+  description: 'AddYvesRouteProvider targetPath argument'
+-
+  name: AddYvesRouteProvider.repository
+  mode: 2
+  description: 'AddYvesRouteProvider repository argument'
+-
+  name: AddYvesRouteProviderAction.organization
+  mode: 2
+  description: 'AddYvesRouteProviderAction organization argument'
+-
+  name: AddYvesRouteProviderAction.module
+  mode: 2
+  description: 'AddYvesRouteProviderAction module argument'
+-
+  name: AddYvesRouteProviderAction.controller
+  mode: 2
+  description: 'AddYvesRouteProviderAction controller argument'
+-
+  name: AddYvesRouteProviderAction.controllerMethod
+  mode: 2
+  description: 'AddYvesRouteProviderAction controllerMethod argument'
+-
+  name: AddYvesRouteProviderAction.templateName
+  mode: 2
+  description: 'AddYvesRouteProviderAction templateName argument'
+-
+  name: AddYvesRouteProviderAction.template
+  mode: 2
+  description: 'AddYvesRouteProviderAction template argument'
+-
+  name: AddYvesRouteProviderAction.target
+  mode: 2
+  description: 'AddYvesRouteProviderAction target argument'
+-
+  name: AddYvesRouteProviderAction.repository
+  mode: 2
+  description: 'AddYvesRouteProviderAction repository argument'
 -
   name: AddYvesConfigMethod.organization
   mode: 2
   description: 'AddYvesConfigMethod organization argument'
+-
+  name: AddYvesConfigMethod.module
+  mode: 2
+  description: 'AddYvesConfigMethod module argument'
 -
   name: AddYvesConfigMethod.configMethod
   mode: 2
@@ -4350,13 +4590,13 @@
   mode: 2
   description: 'AddYvesConfigMethod repository argument'
 -
-  name: AddYvesFactory.module
-  mode: 2
-  description: 'AddYvesFactory module argument'
--
   name: AddYvesFactory.organization
   mode: 2
   description: 'AddYvesFactory organization argument'
+-
+  name: AddYvesFactory.module
+  mode: 2
+  description: 'AddYvesFactory module argument'
 -
   name: AddYvesFactory.template
   mode: 2
@@ -4374,17 +4614,49 @@
   mode: 2
   description: 'AddYvesFactory repository argument'
 -
-  name: AddModuleCoveralls.module
+  name: AddYvesWidget.organization
   mode: 2
-  description: 'AddModuleCoveralls module argument'
+  description: 'AddYvesWidget organization argument'
+-
+  name: AddYvesWidget.module
+  mode: 2
+  description: 'AddYvesWidget module argument'
+-
+  name: AddYvesWidget.widget
+  mode: 2
+  description: 'AddYvesWidget widget argument'
+-
+  name: AddYvesWidget.widgetClassName
+  mode: 2
+  description: 'AddYvesWidget widgetClassName argument'
+-
+  name: AddYvesWidget.templateName
+  mode: 2
+  description: 'AddYvesWidget templateName argument'
+-
+  name: AddYvesWidget.template
+  mode: 2
+  description: 'AddYvesWidget template argument'
+-
+  name: AddYvesWidget.targetFilename
+  mode: 2
+  description: 'AddYvesWidget targetFilename argument'
+-
+  name: AddYvesWidget.targetPath
+  mode: 2
+  description: 'AddYvesWidget targetPath argument'
+-
+  name: AddYvesWidget.repository
+  mode: 2
+  description: 'AddYvesWidget repository argument'
 -
   name: AddModuleCoveralls.organization
   mode: 2
   description: 'AddModuleCoveralls organization argument'
 -
-  name: AddModuleCoveralls.repositoryToken
+  name: AddModuleCoveralls.module
   mode: 2
-  description: 'AddModuleCoveralls repositoryToken argument'
+  description: 'AddModuleCoveralls module argument'
 -
   name: AddModuleCoveralls.template
   mode: 2
@@ -4518,13 +4790,13 @@
   mode: 2
   description: 'AddModuleScrutinizer mode argument'
 -
-  name: AddModule.module
-  mode: 2
-  description: 'AddModule module argument'
--
   name: AddModule.organization
   mode: 2
   description: 'AddModule organization argument'
+-
+  name: AddModule.module
+  mode: 2
+  description: 'AddModule module argument'
 -
   name: AddModule.targetPath
   mode: 2
@@ -4537,6 +4809,26 @@
   name: AddModule.repository
   mode: 2
   description: 'AddModule repository argument'
+-
+  name: AddDefaultModule.organization
+  mode: 2
+  description: 'AddDefaultModule organization argument'
+-
+  name: AddDefaultModule.module
+  mode: 2
+  description: 'AddDefaultModule module argument'
+-
+  name: AddDefaultModule.targetPath
+  mode: 2
+  description: 'AddDefaultModule targetPath argument'
+-
+  name: AddDefaultModule.directories
+  mode: 2
+  description: 'AddDefaultModule directories argument'
+-
+  name: AddDefaultModule.repository
+  mode: 2
+  description: 'AddDefaultModule repository argument'
 -
   name: AddSharedTransferSchema.module
   mode: 2
@@ -4706,6 +4998,34 @@
   mode: 2
   description: 'AddModuleTravis mode argument'
 -
+  name: AddConstant.organization
+  mode: 2
+  description: 'AddConstant organization argument'
+-
+  name: AddConstant.module
+  mode: 2
+  description: 'AddConstant module argument'
+-
+  name: AddConstant.name
+  mode: 2
+  description: 'AddConstant name argument'
+-
+  name: AddConstant.value
+  mode: 2
+  description: 'AddConstant value argument'
+-
+  name: AddConstant.visibility
+  mode: 2
+  description: 'AddConstant visibility argument'
+-
+  name: AddConstant.target
+  mode: 2
+  description: 'AddConstant target argument'
+-
+  name: AddConstant.repository
+  mode: 2
+  description: 'AddConstant repository argument'
+-
   name: AddModuleContributing.module
   mode: 2
   description: 'AddModuleContributing module argument'
@@ -4754,6 +5074,26 @@
   mode: 2
   description: 'AddModuleComposerJson mode argument'
 -
+  name: AddGuiModule.organization
+  mode: 2
+  description: 'AddGuiModule organization argument'
+-
+  name: AddGuiModule.module
+  mode: 2
+  description: 'AddGuiModule module argument'
+-
+  name: AddGuiModule.targetPath
+  mode: 2
+  description: 'AddGuiModule targetPath argument'
+-
+  name: AddGuiModule.directories
+  mode: 2
+  description: 'AddGuiModule directories argument'
+-
+  name: AddGuiModule.repository
+  mode: 2
+  description: 'AddGuiModule repository argument'
+-
   name: AddModuleGitattributes.module
   mode: 2
   description: 'AddModuleGitattributes module argument'
@@ -4781,6 +5121,26 @@
   name: AddModuleGitattributes.mode
   mode: 2
   description: 'AddModuleGitattributes mode argument'
+-
+  name: AddYvesModule.organization
+  mode: 2
+  description: 'AddYvesModule organization argument'
+-
+  name: AddYvesModule.module
+  mode: 2
+  description: 'AddYvesModule module argument'
+-
+  name: AddYvesModule.targetPath
+  mode: 2
+  description: 'AddYvesModule targetPath argument'
+-
+  name: AddYvesModule.directories
+  mode: 2
+  description: 'AddYvesModule directories argument'
+-
+  name: AddYvesModule.repository
+  mode: 2
+  description: 'AddYvesModule repository argument'
 -
   name: AddServiceDependencyProvider.module
   mode: 2
@@ -4901,6 +5261,26 @@
   name: AddModulePhpStanNeon.mode
   mode: 2
   description: 'AddModulePhpStanNeon mode argument'
+-
+  name: AddUtilModule.organization
+  mode: 2
+  description: 'AddUtilModule organization argument'
+-
+  name: AddUtilModule.module
+  mode: 2
+  description: 'AddUtilModule module argument'
+-
+  name: AddUtilModule.targetPath
+  mode: 2
+  description: 'AddUtilModule targetPath argument'
+-
+  name: AddUtilModule.directories
+  mode: 2
+  description: 'AddUtilModule directories argument'
+-
+  name: AddUtilModule.repository
+  mode: 2
+  description: 'AddUtilModule repository argument'
 -
   name: AddClientFactory.module
   mode: 2
@@ -5065,6 +5445,414 @@
   name: AddClientConfigMethod.repository
   mode: 2
   description: 'AddClientConfigMethod repository argument'
+-
+  name: AddClientDependencyServiceInterface.organization
+  mode: 2
+  description: 'AddClientDependencyServiceInterface organization argument'
+-
+  name: AddClientDependencyServiceInterface.module
+  mode: 2
+  description: 'AddClientDependencyServiceInterface module argument'
+-
+  name: AddClientDependencyServiceInterface.dependentModule
+  mode: 2
+  description: 'AddClientDependencyServiceInterface dependentModule argument'
+-
+  name: AddClientDependencyServiceInterface.template
+  mode: 2
+  description: 'AddClientDependencyServiceInterface template argument'
+-
+  name: AddClientDependencyServiceInterface.targetFilename
+  mode: 2
+  description: 'AddClientDependencyServiceInterface targetFilename argument'
+-
+  name: AddClientDependencyServiceInterface.targetPath
+  mode: 2
+  description: 'AddClientDependencyServiceInterface targetPath argument'
+-
+  name: AddClientDependencyServiceInterface.repository
+  mode: 2
+  description: 'AddClientDependencyServiceInterface repository argument'
+-
+  name: AddClientDependencyServiceFactoryMethod.organization
+  mode: 2
+  description: 'AddClientDependencyServiceFactoryMethod organization argument'
+-
+  name: AddClientDependencyServiceFactoryMethod.module
+  mode: 2
+  description: 'AddClientDependencyServiceFactoryMethod module argument'
+-
+  name: AddClientDependencyServiceFactoryMethod.dependentModule
+  mode: 2
+  description: 'AddClientDependencyServiceFactoryMethod dependentModule argument'
+-
+  name: AddClientDependencyServiceFactoryMethod.factoryMethod
+  mode: 2
+  description: 'AddClientDependencyServiceFactoryMethod factoryMethod argument'
+-
+  name: AddClientDependencyServiceFactoryMethod.template
+  mode: 2
+  description: 'AddClientDependencyServiceFactoryMethod template argument'
+-
+  name: AddClientDependencyServiceFactoryMethod.target
+  mode: 2
+  description: 'AddClientDependencyServiceFactoryMethod target argument'
+-
+  name: AddClientDependencyServiceFactoryMethod.repository
+  mode: 2
+  description: 'AddClientDependencyServiceFactoryMethod repository argument'
+-
+  name: AddClientDependencyServiceDependencyProviderMethod.organization
+  mode: 2
+  description: 'AddClientDependencyServiceDependencyProviderMethod organization argument'
+-
+  name: AddClientDependencyServiceDependencyProviderMethod.module
+  mode: 2
+  description: 'AddClientDependencyServiceDependencyProviderMethod module argument'
+-
+  name: AddClientDependencyServiceDependencyProviderMethod.dependentModule
+  mode: 2
+  description: 'AddClientDependencyServiceDependencyProviderMethod dependentModule argument'
+-
+  name: AddClientDependencyServiceDependencyProviderMethod.providerMethod
+  mode: 2
+  description: 'AddClientDependencyServiceDependencyProviderMethod providerMethod argument'
+-
+  name: AddClientDependencyServiceDependencyProviderMethod.template
+  mode: 2
+  description: 'AddClientDependencyServiceDependencyProviderMethod template argument'
+-
+  name: AddClientDependencyServiceDependencyProviderMethod.target
+  mode: 2
+  description: 'AddClientDependencyServiceDependencyProviderMethod target argument'
+-
+  name: AddClientDependencyServiceDependencyProviderMethod.repository
+  mode: 2
+  description: 'AddClientDependencyServiceDependencyProviderMethod repository argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.organization
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod organization argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.module
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod module argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.dependentModule
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod dependentModule argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.methods
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod methods argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.template
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod template argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.dependencyType
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod dependencyType argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.sourceClass
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod sourceClass argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.target
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod target argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.repository
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod repository argument'
+-
+  name: AddClientDependencyServiceBridgeMethod.mode
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeMethod mode argument'
+-
+  name: AddClientDependencyServiceBridge.organization
+  mode: 2
+  description: 'AddClientDependencyServiceBridge organization argument'
+-
+  name: AddClientDependencyServiceBridge.module
+  mode: 2
+  description: 'AddClientDependencyServiceBridge module argument'
+-
+  name: AddClientDependencyServiceBridge.dependentModule
+  mode: 2
+  description: 'AddClientDependencyServiceBridge dependentModule argument'
+-
+  name: AddClientDependencyServiceBridge.dependentModuleOrganization
+  mode: 2
+  description: 'AddClientDependencyServiceBridge dependentModuleOrganization argument'
+-
+  name: AddClientDependencyServiceBridge.template
+  mode: 2
+  description: 'AddClientDependencyServiceBridge template argument'
+-
+  name: AddClientDependencyServiceBridge.targetFilename
+  mode: 2
+  description: 'AddClientDependencyServiceBridge targetFilename argument'
+-
+  name: AddClientDependencyServiceBridge.targetPath
+  mode: 2
+  description: 'AddClientDependencyServiceBridge targetPath argument'
+-
+  name: AddClientDependencyServiceBridge.repository
+  mode: 2
+  description: 'AddClientDependencyServiceBridge repository argument'
+-
+  name: AddClientDependencyServiceBridge.mode
+  mode: 2
+  description: 'AddClientDependencyServiceBridge mode argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.organization
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod organization argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.module
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod module argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.dependentModule
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod dependentModule argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.methods
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod methods argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.template
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod template argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.dependencyType
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod dependencyType argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.sourceClass
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod sourceClass argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.target
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod target argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.repository
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod repository argument'
+-
+  name: AddClientDependencyServiceBridgeInterfaceMethod.mode
+  mode: 2
+  description: 'AddClientDependencyServiceBridgeInterfaceMethod mode argument'
+-
+  name: AddClientDependencyClientFactoryMethod.organization
+  mode: 2
+  description: 'AddClientDependencyClientFactoryMethod organization argument'
+-
+  name: AddClientDependencyClientFactoryMethod.module
+  mode: 2
+  description: 'AddClientDependencyClientFactoryMethod module argument'
+-
+  name: AddClientDependencyClientFactoryMethod.dependentModule
+  mode: 2
+  description: 'AddClientDependencyClientFactoryMethod dependentModule argument'
+-
+  name: AddClientDependencyClientFactoryMethod.factoryMethod
+  mode: 2
+  description: 'AddClientDependencyClientFactoryMethod factoryMethod argument'
+-
+  name: AddClientDependencyClientFactoryMethod.template
+  mode: 2
+  description: 'AddClientDependencyClientFactoryMethod template argument'
+-
+  name: AddClientDependencyClientFactoryMethod.target
+  mode: 2
+  description: 'AddClientDependencyClientFactoryMethod target argument'
+-
+  name: AddClientDependencyClientFactoryMethod.repository
+  mode: 2
+  description: 'AddClientDependencyClientFactoryMethod repository argument'
+-
+  name: AddClientDependencyClientBridge.organization
+  mode: 2
+  description: 'AddClientDependencyClientBridge organization argument'
+-
+  name: AddClientDependencyClientBridge.module
+  mode: 2
+  description: 'AddClientDependencyClientBridge module argument'
+-
+  name: AddClientDependencyClientBridge.dependentModuleOrganization
+  mode: 2
+  description: 'AddClientDependencyClientBridge dependentModuleOrganization argument'
+-
+  name: AddClientDependencyClientBridge.dependentModule
+  mode: 2
+  description: 'AddClientDependencyClientBridge dependentModule argument'
+-
+  name: AddClientDependencyClientBridge.template
+  mode: 2
+  description: 'AddClientDependencyClientBridge template argument'
+-
+  name: AddClientDependencyClientBridge.targetFilename
+  mode: 2
+  description: 'AddClientDependencyClientBridge targetFilename argument'
+-
+  name: AddClientDependencyClientBridge.targetPath
+  mode: 2
+  description: 'AddClientDependencyClientBridge targetPath argument'
+-
+  name: AddClientDependencyClientBridge.repository
+  mode: 2
+  description: 'AddClientDependencyClientBridge repository argument'
+-
+  name: AddClientDependencyClientBridge.mode
+  mode: 2
+  description: 'AddClientDependencyClientBridge mode argument'
+-
+  name: AddClientDependencyClientBridgeMethod.organization
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod organization argument'
+-
+  name: AddClientDependencyClientBridgeMethod.module
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod module argument'
+-
+  name: AddClientDependencyClientBridgeMethod.dependentModuleOrganization
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod dependentModuleOrganization argument'
+-
+  name: AddClientDependencyClientBridgeMethod.dependentModule
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod dependentModule argument'
+-
+  name: AddClientDependencyClientBridgeMethod.methods
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod methods argument'
+-
+  name: AddClientDependencyClientBridgeMethod.template
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod template argument'
+-
+  name: AddClientDependencyClientBridgeMethod.dependencyType
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod dependencyType argument'
+-
+  name: AddClientDependencyClientBridgeMethod.sourceClass
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod sourceClass argument'
+-
+  name: AddClientDependencyClientBridgeMethod.target
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod target argument'
+-
+  name: AddClientDependencyClientBridgeMethod.repository
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod repository argument'
+-
+  name: AddClientDependencyClientBridgeMethod.mode
+  mode: 2
+  description: 'AddClientDependencyClientBridgeMethod mode argument'
+-
+  name: AddClientDependencyClientDependencyProviderMethod.organization
+  mode: 2
+  description: 'AddClientDependencyClientDependencyProviderMethod organization argument'
+-
+  name: AddClientDependencyClientDependencyProviderMethod.module
+  mode: 2
+  description: 'AddClientDependencyClientDependencyProviderMethod module argument'
+-
+  name: AddClientDependencyClientDependencyProviderMethod.dependentModule
+  mode: 2
+  description: 'AddClientDependencyClientDependencyProviderMethod dependentModule argument'
+-
+  name: AddClientDependencyClientDependencyProviderMethod.providerMethod
+  mode: 2
+  description: 'AddClientDependencyClientDependencyProviderMethod providerMethod argument'
+-
+  name: AddClientDependencyClientDependencyProviderMethod.template
+  mode: 2
+  description: 'AddClientDependencyClientDependencyProviderMethod template argument'
+-
+  name: AddClientDependencyClientDependencyProviderMethod.target
+  mode: 2
+  description: 'AddClientDependencyClientDependencyProviderMethod target argument'
+-
+  name: AddClientDependencyClientDependencyProviderMethod.repository
+  mode: 2
+  description: 'AddClientDependencyClientDependencyProviderMethod repository argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.organization
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod organization argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.module
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod module argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.dependentModuleOrganization
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod dependentModuleOrganization argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.dependentModule
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod dependentModule argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.methods
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod methods argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.template
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod template argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.dependencyType
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod dependencyType argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.sourceClass
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod sourceClass argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.target
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod target argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.repository
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod repository argument'
+-
+  name: AddClientDependencyClientBridgeInterfaceMethod.mode
+  mode: 2
+  description: 'AddClientDependencyClientBridgeInterfaceMethod mode argument'
+-
+  name: AddClientDependencyClientInterface.organization
+  mode: 2
+  description: 'AddClientDependencyClientInterface organization argument'
+-
+  name: AddClientDependencyClientInterface.module
+  mode: 2
+  description: 'AddClientDependencyClientInterface module argument'
+-
+  name: AddClientDependencyClientInterface.dependentModule
+  mode: 2
+  description: 'AddClientDependencyClientInterface dependentModule argument'
+-
+  name: AddClientDependencyClientInterface.template
+  mode: 2
+  description: 'AddClientDependencyClientInterface template argument'
+-
+  name: AddClientDependencyClientInterface.targetFilename
+  mode: 2
+  description: 'AddClientDependencyClientInterface targetFilename argument'
+-
+  name: AddClientDependencyClientInterface.targetPath
+  mode: 2
+  description: 'AddClientDependencyClientInterface targetPath argument'
+-
+  name: AddClientDependencyClientInterface.repository
+  mode: 2
+  description: 'AddClientDependencyClientInterface repository argument'
 -
   name: AddClientInterface.module
   mode: 2

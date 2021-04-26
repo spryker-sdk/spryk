@@ -1,0 +1,41 @@
+spryk: bridgeMethods
+description: "Adds a new method to the *module* dependency Service bridge."
+priority: 1
+mode: core
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+
+    dependentModule:
+        inherit: true
+
+    methods:
+        type: MethodNameChoice
+        choiceLoader: ServiceMethodChoiceLoader
+        isMultiple: true
+        typeOptions:
+            - module
+            - choiceLoader
+
+    template:
+        value: Client/Dependency/ClientDependencyBridgeMethod.php.twig
+
+    dependencyType:
+        value: Service
+
+    sourceClass:
+        value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
+
+    target:
+        value: "{{ organization }}\\Client\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
+
+preSpryks:
+    - AddClientDependencyServiceBridge
+
+postSpryks:
+    - AddClientDependencyServiceBridgeInterfaceMethod

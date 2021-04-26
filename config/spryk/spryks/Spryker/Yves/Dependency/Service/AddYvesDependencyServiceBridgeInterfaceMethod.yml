@@ -3,37 +3,38 @@ description: "Adds a new method to the *module* dependency Service bridge interf
 mode: core
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  module:
-    inherit: true
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  dependentModule: ~
+    dependentModule:
+        inherit: true
 
-  methods:
-    type: MethodNameChoice
-    choiceLoader: ServiceMethodChoiceLoader
-    isMultiple: true
-    typeOptions:
-      - module
-      - choiceLoader
+    methods:
+        type: MethodNameChoice
+        choiceLoader: ServiceMethodChoiceLoader
+        isMultiple: true
+        typeOptions:
+            - module
+            - choiceLoader
 
-  template:
-    value: Yves/Dependency/YvesDependencyBridgeInterfaceMethod.php.twig
+    template:
+        value: Yves/Dependency/YvesDependencyBridgeInterfaceMethod.php.twig
 
-  dependencyType:
-    value: Service
+    dependencyType:
+        value: Service
 
-  sourceClass:
-    value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}ServiceInterface"
+    sourceClass:
+        value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}ServiceInterface"
 
-  target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceInterface"
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceInterface"
 
 preSpryks:
-  - AddYvesDependencyServiceInterface
+    - AddYvesDependencyServiceInterface
 
 postSpryks:
-  - AddYvesDependencyServiceBridgeMethod
+    - AddYvesDependencyServiceBridgeMethod

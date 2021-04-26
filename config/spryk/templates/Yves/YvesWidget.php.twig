@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace {{ organization }}\Yves\{{ module }};
+
+use Spryker\Yves\Kernel\Widget\AbstractWidget;
+
+/**
+ * @method \{{ organization }}\Yves\{{ module }}\{{ module }}Config getConfig()
+ */
+class {{ widgetClassName }} extends AbstractWidget
+{
+    public function __construct()
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public static function getName(): string
+    {
+        return '{{ widgetClassName }}';
+    }
+
+    /**
+     * @return string
+     */
+    public static function getTemplate(): string
+    {
+        return '@{{ module }}/views/{{ templateName }}/{{ templateName }}.twig';
+    }
+}

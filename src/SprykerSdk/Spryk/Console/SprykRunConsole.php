@@ -20,6 +20,8 @@ class SprykRunConsole extends AbstractSprykConsole
     protected const COMMAND_NAME = 'spryk:run';
     protected const COMMAND_DESCRIPTION = 'Runs a Spryk build process.';
     public const ARGUMENT_SPRYK = 'spryk';
+    public const ARGUMENT_TARGET_MODULE = 'targetModule';
+    public const ARGUMENT_DEPENDENT_MODULE = 'dependentModule';
 
     public const OPTION_INCLUDE_OPTIONALS = 'include-optional';
     public const OPTION_INCLUDE_OPTIONALS_SHORT = 'i';
@@ -38,6 +40,8 @@ class SprykRunConsole extends AbstractSprykConsole
             ->setDescription(static::COMMAND_DESCRIPTION)
             ->setHelp($this->getHelpText())
             ->addArgument(static::ARGUMENT_SPRYK, InputArgument::REQUIRED, 'Name of the Spryk which should be build.')
+            ->addArgument(static::ARGUMENT_TARGET_MODULE, InputArgument::OPTIONAL, 'Name of the target module in format "[Organization.]ModuleName[.LayerName]".')
+            ->addArgument(static::ARGUMENT_DEPENDENT_MODULE, InputArgument::OPTIONAL, 'Name of the dependent module in format "[Organization.]ModuleName[.LayerName]".')
             ->addOption(static::OPTION_INCLUDE_OPTIONALS, static::OPTION_INCLUDE_OPTIONALS_SHORT, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Name(s) of the Spryks which are marked as optional but should be build.');
 
         foreach ($this->getSprykArguments() as $argumentDefinition) {
@@ -75,10 +79,14 @@ class SprykRunConsole extends AbstractSprykConsole
         OptionsContainer::setOptions($input->getOptions());
 
         $sprykName = $this->getSprykName($input);
+        $targetModuleName = $this->getTargetModuleName($input);
+        $dependentModuleName = $this->getDependentModuleName($input);
         $this->getFacade()->executeSpryk(
             $sprykName,
             (array)OptionsContainer::getOption(static::OPTION_INCLUDE_OPTIONALS),
-            $this->createSprykStyle($input, $output)
+            $this->createSprykStyle($input, $output),
+            $targetModuleName,
+            $dependentModuleName
         );
 
         return static::CODE_SUCCESS;
@@ -106,6 +114,26 @@ class SprykRunConsole extends AbstractSprykConsole
     protected function getSprykName(InputInterface $input): string
     {
         return current((array)$input->getArgument(static::ARGUMENT_SPRYK));
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     *
+     * @return string
+     */
+    protected function getTargetModuleName(InputInterface $input): string
+    {
+        return current((array)$input->getArgument(static::ARGUMENT_TARGET_MODULE));
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     *
+     * @return string
+     */
+    protected function getDependentModuleName(InputInterface $input): string
+    {
+        return current((array)$input->getArgument(static::ARGUMENT_DEPENDENT_MODULE));
     }
 
     /**

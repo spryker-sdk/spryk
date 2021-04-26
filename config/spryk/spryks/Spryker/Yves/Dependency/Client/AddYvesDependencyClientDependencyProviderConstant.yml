@@ -3,22 +3,23 @@ description: "Adds a Client dependency constant to the *module*DependencyProvide
 mode: both
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  module:
-    inherit: true
-  dependentModule: ~
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    dependentModule:
+        inherit: true
 
-  name: ~
-  value: ~
-  visibility:
-    value: "public"
+    name: ~
+    value: ~
+    visibility:
+        value: "public"
 
-  target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
-  - AddYvesDependencyProvider
+    - AddYvesDependencyProvider

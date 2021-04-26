@@ -11,6 +11,7 @@ use SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderIn
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use SprykerSdk\Spryk\SprykConfig;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
@@ -128,7 +129,8 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     protected function mergeArguments(array $arguments, ?array $preDefinedDefinition = null)
     {
         if (is_array($preDefinedDefinition) && isset($preDefinedDefinition[static::ARGUMENTS])) {
-            $arguments = array_merge($arguments, $preDefinedDefinition[static::ARGUMENTS]);
+            $arguments = array_merge($preDefinedDefinition[static::ARGUMENTS], $arguments);
+            $arguments = array_replace_recursive($arguments, $preDefinedDefinition[static::ARGUMENTS]);
         }
 
         return $arguments;
@@ -281,6 +283,10 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
         $argumentCollection = $this->argumentResolver->resolve([
             static::NAME_SPRYK_CONFIG_MODE => [
                 'default' => $this->mode ?? $this->defaultDevelopmentMode,
+                'values' => [
+                    SprykConfig::NAME_DEVELOPMENT_LAYER_PROJECT,
+                    SprykConfig::NAME_DEVELOPMENT_LAYER_CORE,
+                ]
             ],
         ], $sprykName, $this->style);
 
