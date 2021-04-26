@@ -7,6 +7,7 @@
 
 namespace SprykerSdk\Spryk\Console;
 
+use SprykerSdk\Spryk\SprykConfig;
 use Symfony\Component\Console\Helper\FormatterHelper;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,6 +21,14 @@ class SprykDumpConsole extends AbstractSprykConsole
 
     public const ARGUMENT_SPRYK = 'spryk';
 
+    public const OPTION_LEVEL = 'level';
+    public const OPTION_LEVEL_SHORT = 'l';
+
+    /**
+     * @var int|null
+     */
+    protected $level = SprykConfig::SPRYK_LEVEL_1;
+
     /**
      * @return void
      */
@@ -27,7 +36,14 @@ class SprykDumpConsole extends AbstractSprykConsole
     {
         $this->setName(static::COMMAND_NAME)
             ->setDescription(static::COMMAND_DESCRIPTION)
-            ->addArgument(static::ARGUMENT_SPRYK, InputOption::VALUE_OPTIONAL, 'Name of a specific Spryk for which the options should be dumped.');
+            ->addArgument(static::ARGUMENT_SPRYK, InputOption::VALUE_OPTIONAL, 'Name of a specific Spryk for which the options should be dumped.')
+            ->addOption(
+                static::OPTION_LEVEL,
+                static::OPTION_LEVEL_SHORT,
+                InputOption::VALUE_REQUIRED,
+                'Spryk visibility level (1, 2, 3, all). By default = 1(main spryk commands).',
+                $this->level
+            );
     }
 
     /**
@@ -38,6 +54,9 @@ class SprykDumpConsole extends AbstractSprykConsole
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $level = $input->getOption(self::OPTION_LEVEL);
+        $this->level = $level === 'all' ? null : (int) $level;
+
         $sprykName = current((array)$input->getArgument(static::ARGUMENT_SPRYK));
         if ($sprykName !== false) {
             $this->dumpSprykOptions($output, $sprykName);
@@ -60,7 +79,7 @@ class SprykDumpConsole extends AbstractSprykConsole
         $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
         $sprykDefinitions = $this->formatSpryks($sprykDefinitions);
 
-        $output->writeln('List of all Spryk definitions:');
+        $output->writeln('List of Spryk definitions:');
         $this->printTable($output, ['Spryk name', 'Description'], $sprykDefinitions);
     }
 
@@ -123,7 +142,9 @@ class SprykDumpConsole extends AbstractSprykConsole
     {
         $formatted = [];
         foreach ($sprykDefinitions as $sprykName => $sprykDefinition) {
-            $formatted[$sprykName] = [$sprykName, $sprykDefinition['description']];
+            if ($this->level === (int) $sprykDefinition['level'] || $this->level === null) {
+                $formatted[$sprykName] = [$sprykName, $sprykDefinition['description']];
+            }
         }
         sort($formatted);
 
