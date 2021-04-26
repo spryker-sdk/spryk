@@ -13,6 +13,9 @@ arguments:
   template:
     value: Zed/ZedDependencyProvider.php.twig
 
+  extends:
+    value: \Spryker\Zed\Kernel\AbstractBundleDependencyProvider
+
   targetFilename:
     value: "{{ module }}DependencyProvider.php"
 

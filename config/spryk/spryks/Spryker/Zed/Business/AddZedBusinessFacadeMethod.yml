@@ -28,6 +28,9 @@ arguments:
       - "{@inheritdoc}"
       - "@api"
 
+  body:
+    value: ""
+
   template:
     value: Common/Method.php.twig
 

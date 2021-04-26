@@ -40,6 +40,7 @@ class FilterFactory
             $this->createRemoveWidgetSuffixFilter(),
             $this->createLowerCaseFilter(),
             $this->createUpperCaseFirstFilter(),
+            $this->createUpperCaseFilter(),
         ];
     }
 
@@ -225,5 +226,13 @@ class FilterFactory
     public function createUpperCaseFirstFilter(): FilterInterface
     {
         return new UpperCaseFirstFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createUpperCaseFilter(): FilterInterface
+    {
+        return new UpperCaseFilter();
     }
 }

@@ -11,6 +11,7 @@ arguments:
     inherit: true
 
   dependentModuleOrganization:
+    inherit: true
     default: Spryker
 
   dependentModule:

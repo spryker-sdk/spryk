@@ -28,6 +28,7 @@ arguments:
 
   annotations:
     value:
+      - "Specification:"
       - "@api"
 
   template:

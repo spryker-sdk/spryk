@@ -28,8 +28,6 @@ postSpryks:
     - AddZedDependencyProvider
     - AddZedBusinessFacade
     - AddZedCommunicationFactory
-    - AddZedConfig
-    - AddZedDependencyProvider
     - AddZedPersistenceEntityManager
     - AddZedPersistenceRepository
     - AddZedTestCodeceptionConfiguration

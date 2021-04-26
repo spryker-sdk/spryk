@@ -25,7 +25,7 @@
      */
     public function {{ method }}({% if input.value is not empty %}{{ input.value | typedArrayConvert }}{% endif %}): {{ output | typedArrayConvert }}
     {
-    {% if body is defined %}
+    {% if body is defined and body is not empty %}
     {{ body | raw }}
     {% endif -%}
     }

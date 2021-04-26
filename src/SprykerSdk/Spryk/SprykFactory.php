@@ -60,7 +60,7 @@ class SprykFactory
         return new SprykDefinitionBuilder(
             $this->createConfigurationFactory()->createConfigurationLoader(),
             $this->createArgumentResolver(),
-            $this->getConfig()->getDefaultDevelopmentMode()
+            $this->getConfig()
         );
     }
 

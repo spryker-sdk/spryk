@@ -8,7 +8,6 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\ApplicationLayerExtender;
-use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\BusinessLayerPathExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DefaultValueExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DevelopmentLayerExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DirectoriesExtender;

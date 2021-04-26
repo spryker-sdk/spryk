@@ -29,7 +29,7 @@ arguments:
     isMultiple: true
 
   interfaceName:
-    default: "{{ className }}Interface"
+    value: "{{ className }}Interface"
 
   template:
     value: Zed/Business/Model/ZedBusinessModel.php.twig
