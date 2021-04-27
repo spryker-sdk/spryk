@@ -10,16 +10,20 @@ namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules;
 class LevelRule implements ConfigurationValidatorRuleInterface
 {
     protected const LEVEL_CONFIG_NAME = 'level';
+
     /**
      * @var string
      */
     protected $errorMessage = 'Level is required value of configuration';
 
     /**
-     * @var array
+     * @var int[]
      */
     protected $availableLevels;
 
+    /**
+     * @param int[] $availableLevels
+     */
     public function __construct(array $availableLevels)
     {
         $this->availableLevels = $availableLevels;

@@ -38,7 +38,7 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
     protected $configurationValidator;
 
     /**
-     * @var SprykConfig
+     * @var \SprykerSdk\Spryk\SprykConfig
      */
     protected $sprykConfig;
 
@@ -47,7 +47,7 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMergerInterface $configurationMerger
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface $configurationExtender
      * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidatorInterface $configurationValidator
-     * @param SprykConfig $sprykConfig
+     * @param \SprykerSdk\Spryk\SprykConfig $sprykConfig
      */
     public function __construct(
         SprykConfigurationFinderInterface $configurationFinder,
@@ -129,7 +129,7 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
     protected function buildLevel(array $sprykConfiguration): array
     {
         if (!isset($sprykConfiguration['level'])) {
-            $sprykConfiguration['level'] = $this->sprykConfig->getDefaultLevel();
+            $sprykConfiguration['level'] = $this->sprykConfig->getDefaultBuildLevel();
         }
 
         return $sprykConfiguration;

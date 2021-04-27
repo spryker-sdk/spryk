@@ -2,6 +2,7 @@ spryk: copyModule
 description: "Copies a *module*."
 priority: 1
 mode: core
+level: 1
 
 arguments:
 

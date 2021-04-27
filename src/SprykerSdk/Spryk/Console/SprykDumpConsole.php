@@ -21,13 +21,8 @@ class SprykDumpConsole extends AbstractSprykConsole
 
     public const ARGUMENT_SPRYK = 'spryk';
 
-    public const OPTION_LEVEL = 'level';
-    public const OPTION_LEVEL_SHORT = 'l';
-
-    /**
-     * @var int|null
-     */
-    protected $level = SprykConfig::SPRYK_LEVEL_1;
+    protected const OPTION_LEVEL = 'level';
+    protected const OPTION_LEVEL_SHORT = 'l';
 
     /**
      * @return void
@@ -42,7 +37,7 @@ class SprykDumpConsole extends AbstractSprykConsole
                 static::OPTION_LEVEL_SHORT,
                 InputOption::VALUE_REQUIRED,
                 'Spryk visibility level (1, 2, 3, all). By default = 1(main spryk commands).',
-                $this->level
+                SprykConfig::SPRYK_LEVEL_1
             );
     }
 
@@ -54,8 +49,7 @@ class SprykDumpConsole extends AbstractSprykConsole
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $level = $input->getOption(self::OPTION_LEVEL);
-        $this->level = $level === 'all' ? null : (int) $level;
+        $level = $this->getLevelOption($input->getOption(static::OPTION_LEVEL));
 
         $sprykName = current((array)$input->getArgument(static::ARGUMENT_SPRYK));
         if ($sprykName !== false) {
@@ -64,9 +58,19 @@ class SprykDumpConsole extends AbstractSprykConsole
             return static::CODE_SUCCESS;
         }
 
-        $this->dumpAllSpryks($output);
+        $this->dumpAllSpryks($output, $level);
 
         return static::CODE_SUCCESS;
+    }
+
+    /**
+     * @param mixed $level
+     *
+     * @return int|null
+     */
+    protected function getLevelOption($level): ?int
+    {
+        return $level === 'all' ? null : (int) $level;
     }
 
     /**
@@ -74,10 +78,10 @@ class SprykDumpConsole extends AbstractSprykConsole
      *
      * @return void
      */
-    protected function dumpAllSpryks(OutputInterface $output): void
+    protected function dumpAllSpryks(OutputInterface $output, ?int $level): void
     {
         $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
-        $sprykDefinitions = $this->formatSpryks($sprykDefinitions);
+        $sprykDefinitions = $this->formatSpryks($sprykDefinitions, $level);
 
         $output->writeln('List of Spryk definitions:');
         $this->printTable($output, ['Spryk name', 'Description'], $sprykDefinitions);
@@ -135,14 +139,15 @@ class SprykDumpConsole extends AbstractSprykConsole
 
     /**
      * @param array $sprykDefinitions
+     * @param int|null $level
      *
      * @return array
      */
-    protected function formatSpryks(array $sprykDefinitions): array
+    protected function formatSpryks(array $sprykDefinitions, ?int $level): array
     {
         $formatted = [];
         foreach ($sprykDefinitions as $sprykName => $sprykDefinition) {
-            if ($this->level === (int) $sprykDefinition['level'] || $this->level === null) {
+            if ($level === (int) $sprykDefinition['level'] || $level === null) {
                 $formatted[$sprykName] = [$sprykName, $sprykDefinition['description']];
             }
         }

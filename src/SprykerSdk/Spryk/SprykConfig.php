@@ -154,7 +154,7 @@ class SprykConfig
         return static::NAME_DEVELOPMENT_LAYER_PROJECT;
     }
 
-    public function getDefaultLevel(): int
+    public function getDefaultBuildLevel(): int
     {
         return static::SPRYK_LEVEL_3;
     }
