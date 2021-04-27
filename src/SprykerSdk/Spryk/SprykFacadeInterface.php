@@ -29,9 +29,11 @@ interface SprykFacadeInterface
     ): void;
 
     /**
+     * @param int|null $level
+     *
      * @return array
      */
-    public function getSprykDefinitions(): array;
+    public function getSprykDefinitions(?int $level = null): array;
 
     /**
      * @param \SprykerSdk\Spryk\SprykFactory $factory
