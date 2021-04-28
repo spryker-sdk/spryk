@@ -25,9 +25,11 @@ class SprykConfig
     protected const NAME_ORGANIZATION = 'spryker-sdk';
     protected const NAME_PACKAGE = 'spryk';
 
-    public const SPRYK_LEVEL_1 = 1;
-    public const SPRYK_LEVEL_2 = 2;
-    public const SPRYK_LEVEL_3 = 3;
+    protected const SPRYK_LEVEL_1 = 1;
+    protected const SPRYK_LEVEL_2 = 2;
+    protected const SPRYK_LEVEL_3 = 3;
+
+    public const SPRYK_DEFAULT_DUMP_LEVEL = self::SPRYK_LEVEL_1;
 
     /**
      * @return string[]
@@ -154,6 +156,9 @@ class SprykConfig
         return static::NAME_DEVELOPMENT_LAYER_PROJECT;
     }
 
+    /**
+     * @return int
+     */
     public function getDefaultBuildLevel(): int
     {
         return static::SPRYK_LEVEL_3;

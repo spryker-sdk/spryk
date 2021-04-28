@@ -142,8 +142,16 @@ class ConfigurationFactory
     {
         return [
             new DevelopmentLayerRule($this->config->getAvailableDevelopmentLayers()),
-            new LevelRule($this->config->getAvailableLevels()),
+            $this->createLevelRule(),
         ];
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\LevelRule
+     */
+    protected function createLevelRule(): LevelRule
+    {
+        return new LevelRule($this->config->getAvailableLevels());
     }
 
     /**

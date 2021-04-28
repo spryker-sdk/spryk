@@ -37,7 +37,7 @@ class SprykDumpConsole extends AbstractSprykConsole
                 static::OPTION_LEVEL_SHORT,
                 InputOption::VALUE_REQUIRED,
                 'Spryk visibility level (1, 2, 3, all). By default = 1(main spryk commands).',
-                SprykConfig::SPRYK_LEVEL_1
+                (string)SprykConfig::SPRYK_DEFAULT_DUMP_LEVEL
             );
     }
 
@@ -49,7 +49,7 @@ class SprykDumpConsole extends AbstractSprykConsole
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $level = $this->getLevelOption($input->getOption(static::OPTION_LEVEL));
+        $level = $this->getLevelOption($input);
 
         $sprykName = current((array)$input->getArgument(static::ARGUMENT_SPRYK));
         if ($sprykName !== false) {
@@ -64,17 +64,20 @@ class SprykDumpConsole extends AbstractSprykConsole
     }
 
     /**
-     * @param mixed $level
+     * @param \Symfony\Component\Console\Input\InputInterface $input
      *
      * @return int|null
      */
-    protected function getLevelOption($level): ?int
+    protected function getLevelOption(InputInterface $input): ?int
     {
-        return $level === 'all' ? null : (int) $level;
+        $level = $input->getOption(static::OPTION_LEVEL);
+
+        return $level === 'all' ? null : (int)$level;
     }
 
     /**
      * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param int|null $level
      *
      * @return void
      */

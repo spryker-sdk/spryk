@@ -44,7 +44,7 @@ class SprykDefinitionDumper implements SprykDefinitionDumperInterface
             $sprykName = str_replace('.' . $fileInfo->getExtension(), '', $fileInfo->getFilename());
             $sprykDefinition = $this->configurationLoader->loadSpryk($sprykName);
 
-            if ($level === null || $level === (int) $sprykDefinition['level']) {
+            if ($level === null || $level === (int)$sprykDefinition['level']) {
                 $sprykDefinitions[$sprykName] = $sprykDefinition;
             }
         }
