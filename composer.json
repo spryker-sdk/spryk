@@ -11,7 +11,7 @@
         "spryker/config": "^3.0.0",
         "spryker/console": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0",
         "spryker/data-import": "^1.0.0",
-        "spryker/doctrine-inflector": "~1.0.0",
+        "spryker/doctrine-inflector": "^1.1.0",
         "spryker/glue-application-extension": "^1.1.0",
         "spryker/kernel": "^3.30.0",
         "spryker/laminas": "^1.0.0",
