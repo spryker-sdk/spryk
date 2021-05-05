@@ -84,6 +84,30 @@ interface SprykDefinitionInterface
     public function setPostSpryks(array $postSpryks);
 
     /**
+     * @return string[]
+     */
+    public function getPreCommands(): array;
+
+    /**
+     * @param string[] $preCommands
+     *
+     * @return $this
+     */
+    public function setPreCommands(array $preCommands);
+
+    /**
+     * @return string[]
+     */
+    public function getPostCommands(): array;
+
+    /**
+     * @param string[] $postCommands
+     *
+     * @return $this
+     */
+    public function setPostCommands(array $postCommands);
+
+    /**
      * @return string
      */
     public function getMode(): string;

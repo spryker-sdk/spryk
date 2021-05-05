@@ -8,8 +8,6 @@
 namespace SprykerSdk\Spryk\Console;
 
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
-use SprykerSdk\Spryk\Style\SprykStyle;
-use SprykerSdk\Spryk\Style\SprykStyleInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -78,32 +76,19 @@ class SprykRunConsole extends AbstractSprykConsole
     {
         OptionsContainer::setOptions($input->getOptions());
 
-        $sprykName = $this->getSprykName($input);
-        $targetModuleName = $this->getTargetModuleName($input);
-        $dependentModuleName = $this->getDependentModuleName($input);
-        $this->getFacade()->executeSpryk(
-            $sprykName,
+        $sprykExecutorConfiguration = $this->getFactory()->createSprykExecutorConfiguration(
+            $this->getSprykName($input),
             (array)OptionsContainer::getOption(static::OPTION_INCLUDE_OPTIONALS),
-            $this->createSprykStyle($input, $output),
-            $targetModuleName,
-            $dependentModuleName
+            $this->getTargetModuleName($input),
+            $this->getDependentModuleName($input)
+        );
+
+        $this->getFacade()->executeSpryk(
+            $sprykExecutorConfiguration,
+            $this->getFactory()->createSprykStyle($input, $output)
         );
 
         return static::CODE_SUCCESS;
-    }
-
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     *
-     * @return \SprykerSdk\Spryk\Style\SprykStyleInterface
-     */
-    protected function createSprykStyle(InputInterface $input, OutputInterface $output): SprykStyleInterface
-    {
-        return new SprykStyle(
-            $input,
-            $output
-        );
     }
 
     /**

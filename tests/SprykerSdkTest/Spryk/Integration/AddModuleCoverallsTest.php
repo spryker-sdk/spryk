@@ -34,7 +34,6 @@ class AddModuleCoverallsTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
-            '--repositoryToken' => 'uzf78t67832fe76923f764f3249f329f)&/vuzf76&/R',
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . '.coveralls.yml');
@@ -50,7 +49,6 @@ class AddModuleCoverallsTest extends Unit
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
-            '--repositoryToken' => 'uzf78t67832fe76923f764f3249f329f)&/vuzf76&/R',
             '--mode' => 'project',
         ]);
 

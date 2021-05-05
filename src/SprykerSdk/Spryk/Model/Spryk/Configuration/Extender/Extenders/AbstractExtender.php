@@ -15,8 +15,11 @@ abstract class AbstractExtender
 
     protected const NAME_ARGUMENT_LAYER = 'layer';
     protected const NAME_ARGUMENT_MODE = 'mode';
+    protected const NAME_ARGUMENT_ORGANIZATION = 'organization';
 
-    protected const NAME_ARGUMENT_DEFAULT = 'default';
+    protected const NAME_ARGUMENT_KEY_DEFAULT = 'default';
+    protected const NAME_ARGUMENT_KEY_VALUE = 'value';
+    protected const NAME_ARGUMENT_KEY_VALUES = 'values';
 
     protected const NAME_PLACEHOLDER_MODULE = '{{ module }}';
     protected const NAME_PLACEHOLDER_LAYER = '{{ layer }}';

@@ -7,24 +7,19 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Executor;
 
+use SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 interface SprykExecutorInterface
 {
     /**
-     * @param string $sprykName
-     * @param string[] $includeOptionalSubSpryks
+     * @param \SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface $sprykExecutorConfiguration
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
-     * @param string|null $targetModuleName
-     * @param string|null $dependentModuleName
      *
      * @return void
      */
     public function execute(
-        string $sprykName,
-        array $includeOptionalSubSpryks,
-        SprykStyleInterface $style,
-        ?string $targetModuleName,
-        ?string $dependentModuleName
+        SprykExecutorConfigurationInterface $sprykExecutorConfiguration,
+        SprykStyleInterface $style
     ): void;
 }
