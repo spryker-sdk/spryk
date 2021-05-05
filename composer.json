@@ -9,7 +9,7 @@
         "php": ">=7.3",
         "roave/better-reflection": "^3.2 || ^4.0",
         "spryker/config": "^3.0.0",
-        "spryker/console": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0",
+        "spryker/console": "^3.0.0 || ^4.0.0",
         "spryker/data-import": "^1.0.0",
         "spryker/doctrine-inflector": "^1.1.0",
         "spryker/glue-application-extension": "^1.1.0",
@@ -24,6 +24,7 @@
     },
     "require-dev": {
         "codeception/codeception": "^4.0.0",
+        "dereuromark/composer-prefer-lowest": "^0.1.7",
         "phpstan/phpstan": "^0.12.0",
         "phpunit/phpunit": "^7.0.0 || ^8.0.0",
         "spryker/code-sniffer": "*",
