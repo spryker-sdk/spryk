@@ -27,7 +27,7 @@ abstract class AbstractSprykHookCommand implements SprykCommandInterface
             return;
         }
 
-        $process = Process::fromShellCommandline($this->getCommandLine(), APPLICATION_ROOT_DIR);
+        $process = new Process(explode(' ', $this->getCommandLine()), APPLICATION_ROOT_DIR);
         $process->run();
 
         if (!$process->isSuccessful()) {
