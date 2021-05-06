@@ -33,11 +33,13 @@ class SprykFacade implements SprykFacadeInterface
     }
 
     /**
+     * @param int|null $level
+     *
      * @return array
      */
-    public function getSprykDefinitions(): array
+    public function getSprykDefinitions(?int $level = null): array
     {
-        return $this->getFactory()->createSprykDefinitionDumper()->dump();
+        return $this->getFactory()->createSprykDefinitionDumper()->dump($level);
     }
 
     /**

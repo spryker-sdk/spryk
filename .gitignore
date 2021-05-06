@@ -36,3 +36,6 @@ tests/_data/src/
 tests/_data/vendor/
 tests/_output/*
 !tests/_output/.gitkeep
+
+!tests/_data/config/*
+tests/_data/*

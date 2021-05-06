@@ -24,7 +24,6 @@
     },
     "require-dev": {
         "codeception/codeception": "^4.0.0",
-        "dereuromark/composer-prefer-lowest": "^0.1.7",
         "phpstan/phpstan": "^0.12.0",
         "phpunit/phpunit": "^7.0.0 || ^8.0.0",
         "spryker/code-sniffer": "*",
@@ -73,7 +72,11 @@
         ],
         "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-        "phpstan": "phpstan analyse -l 5 -c phpstan.neon src/"
+        "phpstan": "phpstan analyse src/",
+        "test": [
+            "codecept run -g Glue -x Zed",
+            "codecept run -g Zed -x Glue"
+        ]
     },
     "extra": {
         "branch-alias": {

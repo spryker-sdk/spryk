@@ -2,6 +2,7 @@ spryk: structure
 description: "Adds a new *module* structure."
 priority: 1
 mode: both
+level: 1
 
 arguments:
     organization:
@@ -25,7 +26,7 @@ postSpryks:
     - AddModuleLicense
     - AddModuleContributing
     - AddModuleChangelog
-    - AddModuleTravis
+    - AddModuleCi
     - AddModuleGitattributes
     - AddModuleGitignore
     - AddModuleTooling

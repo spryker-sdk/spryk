@@ -24,6 +24,7 @@ use SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMergerIn
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidator;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidatorInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\DevelopmentLayerRule;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\LevelRule;
 use SprykerSdk\Spryk\SprykConfig;
 
 class ConfigurationFactory
@@ -51,7 +52,7 @@ class ConfigurationFactory
             $this->createConfigurationMerger(),
             $this->createConfigurationExtender(),
             $this->createConfigurationValidator(),
-            $this->getConfig()->getDefaultDevelopmentMode()
+            $this->getConfig()
         );
     }
 
@@ -141,7 +142,16 @@ class ConfigurationFactory
     {
         return [
             new DevelopmentLayerRule($this->config->getAvailableDevelopmentLayers()),
+            $this->createLevelRule(),
         ];
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\LevelRule
+     */
+    protected function createLevelRule(): LevelRule
+    {
+        return new LevelRule($this->config->getAvailableLevels());
     }
 
     /**

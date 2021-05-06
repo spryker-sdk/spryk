@@ -1,6 +1,8 @@
 arguments:
   repository:
     value: "spryker/{{ organization | dasherize }}"
+  level:
+    value: 3
 
 core:
   arguments:

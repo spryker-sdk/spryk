@@ -10,7 +10,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Dumper;
 interface SprykDefinitionDumperInterface
 {
     /**
+     * @param int|null $level
+     *
      * @return array
      */
-    public function dump(): array;
+    public function dump(?int $level = null): array;
 }
