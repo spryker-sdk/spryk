@@ -1,4 +1,6 @@
 parameters:
+    level: 5
+
     bootstrap: %rootDir%/../../../phpstan-bootstrap.php
     autoload_directories:
         - %rootDir%/../../../tests/

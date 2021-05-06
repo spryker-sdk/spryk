@@ -1,6 +1,5 @@
 config:
   phpstan:
-    level: 7
     config: phpstan.neon
 
 preCommitFileCommands:

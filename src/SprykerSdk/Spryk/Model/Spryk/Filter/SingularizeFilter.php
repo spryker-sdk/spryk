@@ -7,7 +7,7 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
-use Doctrine\Common\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 
 class SingularizeFilter implements FilterInterface
 {
@@ -28,6 +28,8 @@ class SingularizeFilter implements FilterInterface
      */
     public function filter(string $value): string
     {
-        return Inflector::singularize($value);
+        $inflector = InflectorFactory::create()->build();
+
+        return $inflector->singularize($value);
     }
 }
