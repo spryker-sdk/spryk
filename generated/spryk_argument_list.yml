@@ -4678,31 +4678,31 @@
   mode: 2
   description: 'AddModuleReadme mode argument'
 -
-  name: AddModuleTravis.module
+  name: AddModuleCi.module
   mode: 2
   description: 'AddModuleTravis module argument'
 -
-  name: AddModuleTravis.organization
+  name: AddModuleCi.organization
   mode: 2
   description: 'AddModuleTravis organization argument'
 -
-  name: AddModuleTravis.template
+  name: AddModuleCi.template
   mode: 2
   description: 'AddModuleTravis template argument'
 -
-  name: AddModuleTravis.targetFilename
+  name: AddModuleCi.targetFilename
   mode: 2
   description: 'AddModuleTravis targetFilename argument'
 -
-  name: AddModuleTravis.targetPath
+  name: AddModuleCi.targetPath
   mode: 2
   description: 'AddModuleTravis targetPath argument'
 -
-  name: AddModuleTravis.repository
+  name: AddModuleCi.repository
   mode: 2
   description: 'AddModuleTravis repository argument'
 -
-  name: AddModuleTravis.mode
+  name: AddModuleCi.mode
   mode: 2
   description: 'AddModuleTravis mode argument'
 -

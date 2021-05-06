@@ -16,10 +16,10 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModuleTravisTest
+ * @group AddModuleCiTest
  * Add your own group annotations below this line
  */
-class AddModuleTravisTest extends Unit
+class AddModuleCiTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,20 +29,20 @@ class AddModuleTravisTest extends Unit
     /**
      * @return void
      */
-    public function testAddsTravisFile(): void
+    public function testAddsCiFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.travis.yml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . '.github/workflows/ci.yml');
     }
 
     /**
      * @return void
      */
-    public function testAddsTravisFileOnProjectLayer(): void
+    public function testAddsCiFileOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -51,7 +51,5 @@ class AddModuleTravisTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.travis.yml');
     }
 }

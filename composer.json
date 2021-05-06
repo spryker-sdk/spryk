@@ -67,7 +67,8 @@
         ],
         "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-        "phpstan": "phpstan analyse -l 5 -c phpstan.neon src/"
+        "phpstan": "phpstan analyse src/",
+        "test": "codecept run -x Glue -x Zed"
     },
     "extra": {
         "branch-alias": {
