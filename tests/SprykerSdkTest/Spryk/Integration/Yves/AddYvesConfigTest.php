@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Yves;
 
 use Codeception\Test\Unit;
 
@@ -15,6 +15,7 @@ use Codeception\Test\Unit;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
+ * @group Yves
  * @group AddYvesConfigTest
  * Add your own group annotations below this line
  */

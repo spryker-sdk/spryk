@@ -42,7 +42,7 @@ class AddModuleLicenseTest extends Unit
     /**
      * @return void
      */
-    public function testAddsLicenseFileOnProjectLayer(): void
+    public function testAddModuleLicenseFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -51,7 +51,5 @@ class AddModuleLicenseTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'LICENSE');
     }
 }

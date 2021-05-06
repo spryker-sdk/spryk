@@ -8,6 +8,7 @@
 namespace SprykerSdkTest\Spryk\Integration;
 
 use Codeception\Test\Unit;
+use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
 
 /**
  * Auto-generated group annotations
@@ -28,12 +29,25 @@ class AddModuleEditorconfigTest extends Unit
     /**
      * @return void
      */
-    public function testAddsChangeLogFile(): void
+    public function testAddsEditorconfigFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
         ]);
 
         $this->assertFileExists($this->tester->getModuleDirectory() . '.editorconfig');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddModuleEditorconfigFailsOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
     }
 }

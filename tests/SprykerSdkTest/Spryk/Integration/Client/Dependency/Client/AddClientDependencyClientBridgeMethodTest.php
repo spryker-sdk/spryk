@@ -70,7 +70,7 @@ class AddClientDependencyClientBridgeMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsClientDependencyClientBridgeMethodsOnProjectLayer(): void
+    public function testAddClientDependencyClientBridgeMethodFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -79,32 +79,9 @@ class AddClientDependencyClientBridgeMethodTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
-                'methodWithArrayArgument',
-                'methodReturnsVoid',
-                'methodWithTransferInputAndTransferOutput',
-                'methodWithDefaultNull',
-                'methodWithDefaultArray',
-                'methodWithoutMethodReturnType',
-                'methodWithoutDocBlockReturnType',
-                'methodWithMultipleReturn',
-                'methodWithMultipleReturnAndNullable',
-                'methodWithNullableReturn',
             ],
             '--mode' => 'project',
         ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithStringArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithArrayArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodReturnsVoid');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithTransferInputAndTransferOutput');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithDefaultNull');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithDefaultArray');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithoutMethodReturnType');
-        $this->tester->assertClassNotContains(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithoutMethodReturnType(): void');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithoutDocBlockReturnType');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithMultipleReturn');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithMultipleReturnAndNullable');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithNullableReturn');
     }
 
     /**
@@ -129,33 +106,5 @@ class AddClientDependencyClientBridgeMethodTest extends Unit
             ],
         ]);
         $this->tester->assertClassHasMethod(ClassName::CLIENT_CLIENT_BRIDGE, 'methodWithStringArgument');
-    }
-
-    /**
-     * @return void
-     */
-    public function testAddsClientDependencyClientBridgeMethodOnlyOnceOnProjectLayer(): void
-    {
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-            '--mode' => 'project',
-        ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithStringArgument');
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-            '--mode' => 'project',
-        ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_CLIENT_CLIENT_BRIDGE, 'methodWithStringArgument');
     }
 }

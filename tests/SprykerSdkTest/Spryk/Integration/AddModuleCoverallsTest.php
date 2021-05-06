@@ -42,7 +42,7 @@ class AddModuleCoverallsTest extends Unit
     /**
      * @return void
      */
-    public function testAddsCoverallsFileOnProjectLayer(): void
+    public function testAddModuleCoverallsFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -51,7 +51,5 @@ class AddModuleCoverallsTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.coveralls.yml');
     }
 }
