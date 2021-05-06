@@ -96,7 +96,7 @@ jobs:
       - name: Codecept run test
         run: |
             vendor/bin/codecept run -g Glue
-            vendor/bin/codecept run -x Glue
+            vendor/bin/codecept run -g Zed
             vendor/bin/codecept run -x Glue -x Zed --coverage-xml
 
       - name: Validate prefer lowest
