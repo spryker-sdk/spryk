@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new .travis.yml to the Modules root."
+description: "Adds a new CI config to the module."
 mode: core
 
 arguments:
@@ -11,13 +11,13 @@ arguments:
     default: Spryker
 
   template:
-    value: travis.yml.twig
+    value: ci.yml.twig
 
   targetFilename:
-    value: .travis.yml
+    value: ci.yml
 
   targetPath:
-    value: "{{ module }}/"
+    value: "{{ module }}/.github/workflows/"
 
 preSpryks:
   - AddModule

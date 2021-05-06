@@ -1,89 +1,93 @@
 {
-  "name": "spryker-sdk/spryk",
-  "type": "library",
-  "description": "Spryk module",
-  "license": "proprietary",
-  "require": {
-    "ext-dom": "*",
-    "ext-simplexml": "*",
-    "php": ">=7.3",
-    "roave/better-reflection": "^3.2 || ^4.0",
-    "spryker/config": "^3.0.0",
-    "spryker/doctrine-inflector": "^1.0.0",
-    "spryker/glue-application-extension": "^1.1.0",
-    "spryker/kernel": "^3.30.0",
-    "spryker/laminas": "^1.0.0",
-    "symfony/console": "^3.4.0 || ^4.0.0 || ^5.0.0",
-    "symfony/filesystem": "^3.4.0 || ^4.0.0 || ^5.0.0",
-    "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",
-    "symfony/yaml": "^3.4.9 || ^4.0.0 || ^5.0.0",
-    "twig/twig": "^1.41 || ^2.0.0 || ^3.0.0"
-  },
-  "require-dev": {
-    "codeception/codeception": "^4.0.0",
-    "phpstan/phpstan": "^0.12.0",
-    "phpunit/phpunit": "^7.0.0 || ^8.0.0",
-    "spryker/code-sniffer": "*",
-    "spryker/testify": "^3.0.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "SprykerSdk\\": "src/SprykerSdk/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "SprykerSdkTest\\": "tests/SprykerSdkTest/",
-      "SprykerSdkTest\\Module\\": "tests/_support/Module/",
-      "Spryker\\Glue\\GlueApplicationExtension\\": "vendor/spryker/glue-application-extension/src/Spryker/Glue/GlueApplicationExtension/",
-      "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
-      "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
-      "Spryker\\Glue\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Glue/Kernel/",
-      "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
-      "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
-      "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
-      "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
-      "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
-      "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
-      "Spryker\\Glue\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Glue/FooBar/",
-      "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Zed/ZipZap/",
-      "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Client/ZipZap/",
-      "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Service/ZipZap/",
-      "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
-      "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
-      "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
-      "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
-      "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
-      "Pyz\\Glue\\FooBar\\": "tests/_data/src/Pyz/Glue/FooBar/",
-      "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "scripts": {
-    "post-install-cmd": [
-      "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-    ],
-    "post-update-cmd": [
-      "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-    ],
-    "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-    "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-    "phpstan": "phpstan analyse -l 5 -c phpstan.neon src/"
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0.x-dev"
-    }
-  },
-  "config": {
-    "use-include-path": true,
-    "process-timeout": 600,
-    "sort-packages": true
-  },
-  "bin": [
-    "bin/spryk-run",
-    "bin/spryk-dump",
-    "bin/spryk-build"
-  ]
+    "name": "spryker-sdk/spryk",
+    "type": "library",
+    "description": "Spryk module",
+    "license": "proprietary",
+    "require": {
+        "ext-dom": "*",
+        "ext-simplexml": "*",
+        "php": ">=7.3",
+        "roave/better-reflection": "^3.2 || ^4.0",
+        "spryker/config": "^3.0.0",
+        "spryker/doctrine-inflector": "^1.1.0",
+        "spryker/glue-application-extension": "^1.1.0",
+        "spryker/kernel": "^3.30.0",
+        "spryker/laminas": "^1.0.0",
+        "symfony/console": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/filesystem": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/yaml": "^3.4.9 || ^4.0.0 || ^5.0.0",
+        "twig/twig": "^1.41 || ^2.0.0 || ^3.0.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.0.0",
+        "phpstan/phpstan": "^0.12.0",
+        "phpunit/phpunit": "^7.0.0 || ^8.0.0",
+        "spryker/code-sniffer": "*",
+        "spryker/testify": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SprykerSdk\\": "src/SprykerSdk/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SprykerSdkTest\\": "tests/SprykerSdkTest/",
+            "SprykerSdkTest\\Module\\": "tests/_support/Module/",
+            "Spryker\\Glue\\GlueApplicationExtension\\": "vendor/spryker/glue-application-extension/src/Spryker/Glue/GlueApplicationExtension/",
+            "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
+            "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
+            "Spryker\\Glue\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Glue/Kernel/",
+            "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
+            "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
+            "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
+            "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
+            "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
+            "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
+            "Spryker\\Glue\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Glue/FooBar/",
+            "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Zed/ZipZap/",
+            "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Client/ZipZap/",
+            "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Service/ZipZap/",
+            "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
+            "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
+            "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
+            "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
+            "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
+            "Pyz\\Glue\\FooBar\\": "tests/_data/src/Pyz/Glue/FooBar/",
+            "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-install-cmd": [
+            "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
+        ],
+        "post-update-cmd": [
+            "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
+        ],
+        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
+        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
+        "phpstan": "phpstan analyse src/",
+        "test": [
+            "codecept run -g Glue -x Zed",
+            "codecept run -g Zed -x Glue"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "config": {
+        "use-include-path": true,
+        "process-timeout": 600,
+        "sort-packages": true
+    },
+    "bin": [
+        "bin/spryk-run",
+        "bin/spryk-dump",
+        "bin/spryk-build"
+    ]
 }
