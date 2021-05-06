@@ -2,6 +2,7 @@ spryk: template
 description: "Adds a new *Module*Client to the Client application."
 priority: 1
 mode: both
+level: 1
 
 arguments:
   module:

@@ -2,6 +2,7 @@ spryk: structure
 description: "Adds a new Data Import module structure. Property entity must be in camel case."
 priority: 1
 mode: both
+level: 1
 
 arguments:
     organization:

@@ -7,6 +7,7 @@
 
 namespace SprykerSdk\Spryk\Console;
 
+use SprykerSdk\Spryk\SprykConfig;
 use Symfony\Component\Console\Helper\FormatterHelper;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,6 +21,9 @@ class SprykDumpConsole extends AbstractSprykConsole
 
     public const ARGUMENT_SPRYK = 'spryk';
 
+    protected const OPTION_LEVEL = 'level';
+    protected const OPTION_LEVEL_SHORT = 'l';
+
     /**
      * @return void
      */
@@ -27,7 +31,14 @@ class SprykDumpConsole extends AbstractSprykConsole
     {
         $this->setName(static::COMMAND_NAME)
             ->setDescription(static::COMMAND_DESCRIPTION)
-            ->addArgument(static::ARGUMENT_SPRYK, InputOption::VALUE_OPTIONAL, 'Name of a specific Spryk for which the options should be dumped.');
+            ->addArgument(static::ARGUMENT_SPRYK, InputOption::VALUE_OPTIONAL, 'Name of a specific Spryk for which the options should be dumped.')
+            ->addOption(
+                static::OPTION_LEVEL,
+                static::OPTION_LEVEL_SHORT,
+                InputOption::VALUE_REQUIRED,
+                'Spryk visibility level (1, 2, 3, all). By default = 1(main spryk commands).',
+                (string)SprykConfig::SPRYK_DEFAULT_DUMP_LEVEL
+            );
     }
 
     /**
@@ -38,6 +49,8 @@ class SprykDumpConsole extends AbstractSprykConsole
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $level = $this->getLevelOption($input);
+
         $sprykName = current((array)$input->getArgument(static::ARGUMENT_SPRYK));
         if ($sprykName !== false) {
             $this->dumpSprykOptions($output, $sprykName);
@@ -45,22 +58,35 @@ class SprykDumpConsole extends AbstractSprykConsole
             return static::CODE_SUCCESS;
         }
 
-        $this->dumpAllSpryks($output);
+        $this->dumpAllSpryks($output, $level);
 
         return static::CODE_SUCCESS;
     }
 
     /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     *
+     * @return int|null
+     */
+    protected function getLevelOption(InputInterface $input): ?int
+    {
+        $level = $input->getOption(static::OPTION_LEVEL);
+
+        return $level === 'all' ? null : (int)$level;
+    }
+
+    /**
      * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param int|null $level
      *
      * @return void
      */
-    protected function dumpAllSpryks(OutputInterface $output): void
+    protected function dumpAllSpryks(OutputInterface $output, ?int $level): void
     {
-        $sprykDefinitions = $this->getFacade()->getSprykDefinitions();
+        $sprykDefinitions = $this->getFacade()->getSprykDefinitions($level);
         $sprykDefinitions = $this->formatSpryks($sprykDefinitions);
 
-        $output->writeln('List of all Spryk definitions:');
+        $output->writeln('List of Spryk definitions:');
         $this->printTable($output, ['Spryk name', 'Description'], $sprykDefinitions);
     }
 

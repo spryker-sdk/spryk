@@ -33,16 +33,20 @@ class SprykDefinitionDumper implements SprykDefinitionDumperInterface
     }
 
     /**
+     * @param int|null $level
+     *
      * @return array
      */
-    public function dump(): array
+    public function dump(?int $level = null): array
     {
         $sprykDefinitions = [];
         foreach ($this->definitionFinder->find() as $fileInfo) {
             $sprykName = str_replace('.' . $fileInfo->getExtension(), '', $fileInfo->getFilename());
             $sprykDefinition = $this->configurationLoader->loadSpryk($sprykName);
 
-            $sprykDefinitions[$sprykName] = $sprykDefinition;
+            if ($level === null || $level === (int)$sprykDefinition['level']) {
+                $sprykDefinitions[$sprykName] = $sprykDefinition;
+            }
         }
 
         return $sprykDefinitions;
