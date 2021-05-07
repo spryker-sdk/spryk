@@ -20,32 +20,32 @@ class SprykExecutorConfiguration implements SprykExecutorConfigurationInterface
     protected $includeOptionalSubSpryks;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $targetModule;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $targetModuleOrganization;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $targetModuleLayer;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $dependentModule;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $dependentModuleOrganization;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $dependentModuleLayer;
 

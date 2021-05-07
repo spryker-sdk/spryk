@@ -323,7 +323,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     /**
      * @param mixed[] $sprykConfiguration
      *
-     * @return mixed[]
+     * @return string[]
      */
     protected function getPreCommands(array $sprykConfiguration): array
     {
@@ -337,7 +337,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     /**
      * @param mixed[] $sprykConfiguration
      *
-     * @return mixed[]
+     * @return string[]
      */
     protected function getPostCommands(array $sprykConfiguration): array
     {
