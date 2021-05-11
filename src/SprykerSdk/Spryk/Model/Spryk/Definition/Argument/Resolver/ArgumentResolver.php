@@ -77,6 +77,7 @@ class ArgumentResolver implements ArgumentResolverInterface
             $this->resolvedArgumentCollection->addArgument($argument);
         }
 
+        $argumentCollection = $this->resolveOrganizationAndModuleRootPath($argumentCollection);
         $argumentCollection = $this->superseder->supersede($argumentCollection, $this->resolvedArgumentCollection);
         $argumentCollection = $this->callbackArgumentResolver->resolve($argumentCollection);
 
@@ -265,5 +266,25 @@ class ArgumentResolver implements ArgumentResolverInterface
         $question = new ChoiceQuestion(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $values, $default);
 
         return $this->style->askQuestion($question);
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
+     *
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
+     */
+    protected function resolveOrganizationAndModuleRootPath(ArgumentCollectionInterface $argumentCollection): ArgumentCollectionInterface
+    {
+        if (! $argumentCollection->hasArgument('organization')) {
+            return $argumentCollection;
+        }
+
+        if (! in_array($argumentCollection->getArgument('organization')->getValue(), ['Spryker', 'SprykerShop', 'Pyz'])) {
+            $argumentCollection->getArgument('sprykerOrganization')->setValue('');
+            $argumentCollection->getArgument('sprykerBundles')->setValue('');
+            $argumentCollection->getArgument('moduleRoot')->setValue('{{ module | dasherize }}');
+        }
+
+        return $argumentCollection;
     }
 }
