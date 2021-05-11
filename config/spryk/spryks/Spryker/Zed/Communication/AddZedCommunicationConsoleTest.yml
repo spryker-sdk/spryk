@@ -20,7 +20,7 @@ arguments:
     value: "{{ className }}ConsoleTest.php"
 
   targetPath:
-    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/Communication/Console/"
+    value: "{{ moduleRoot }}/tests/{{ organization }}Test/Zed/{{ module }}/Communication/Console/"
 
 preSpryks:
   - AddModule

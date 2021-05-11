@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}Config.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
   - AddModule

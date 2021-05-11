@@ -16,7 +16,7 @@ arguments:
         value: "{{ module }}DependencyProvider.php"
 
     targetPath:
-        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/"
+        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/"
 
 preSpryks:
     - AddModule

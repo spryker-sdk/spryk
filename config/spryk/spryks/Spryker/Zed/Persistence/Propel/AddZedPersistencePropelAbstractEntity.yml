@@ -19,7 +19,7 @@ arguments:
     value: "Abstract{{ tableName | camelCased }}.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/"
 
 preSpryks:
   - AddZedPersistencePropelSchemaTable

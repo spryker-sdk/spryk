@@ -19,7 +19,7 @@ arguments:
     default: "{{ module | removeRestApiSuffix | lower }}"
 
   targetPath:
-    value: "{{ module }}/"
+    value: "{{ moduleRoot }}/"
 
   directories:
     value:

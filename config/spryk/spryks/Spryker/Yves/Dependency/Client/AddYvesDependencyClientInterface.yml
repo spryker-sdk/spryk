@@ -20,7 +20,7 @@ arguments:
         value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
 
     targetPath:
-        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
+        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
 
 preSpryks:
     - AddYvesDependencyClientBridge

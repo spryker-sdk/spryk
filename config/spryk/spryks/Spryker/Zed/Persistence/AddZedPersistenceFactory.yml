@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}PersistenceFactory.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
 
 preSpryks:
   - AddModule

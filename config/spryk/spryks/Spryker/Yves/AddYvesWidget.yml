@@ -26,7 +26,7 @@ arguments:
         value: "{{ widget | removeWidgetSuffix }}Widget.php"
 
     targetPath:
-        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Widget/"
+        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Widget/"
 
 preSpryks:
     - AddModule
