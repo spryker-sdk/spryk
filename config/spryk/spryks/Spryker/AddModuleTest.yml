@@ -1,0 +1,20 @@
+spryk: structure
+description: "Adds a new *module* tests structure."
+priority: 1
+mode: both
+level: 3
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    targetPath:
+        value: "{{ module }}/"
+
+    directories:
+        value:
+            - "tests/{{ organization }}Test/"
+
+preSpryks:
+    - AddModule
