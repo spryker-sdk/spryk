@@ -275,11 +275,11 @@ class ArgumentResolver implements ArgumentResolverInterface
      */
     protected function resolveOrganizationAndModuleRootPath(ArgumentCollectionInterface $argumentCollection): ArgumentCollectionInterface
     {
-        if (! $argumentCollection->hasArgument('organization')) {
+        if (!$argumentCollection->hasArgument('organization')) {
             return $argumentCollection;
         }
 
-        if (! in_array($argumentCollection->getArgument('organization')->getValue(), ['Spryker', 'SprykerShop', 'Pyz'])) {
+        if (!in_array($argumentCollection->getArgument('organization')->getValue(), ['Spryker', 'SprykerShop', 'Pyz'])) {
             $argumentCollection->getArgument('sprykerOrganization')->setValue('');
             $argumentCollection->getArgument('sprykerBundles')->setValue('');
             $argumentCollection->getArgument('moduleRoot')->setValue('{{ module | dasherize }}');
