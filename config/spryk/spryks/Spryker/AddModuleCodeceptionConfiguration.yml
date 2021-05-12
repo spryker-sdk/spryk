@@ -18,3 +18,4 @@ arguments:
 
 preSpryks:
   - AddModule
+  - AddModuleTest
