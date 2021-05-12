@@ -14,7 +14,7 @@ arguments:
         inherit: true
 
     template:
-        value: DataImport/Zed/Business/DataImportZedBusinessFactory.php.twig
+        value: Module/DataImport/Zed/Business/DataImportZedBusinessFactory.php.twig
 
     targetFilename:
         value: "{{ module }}BusinessFactory.php"

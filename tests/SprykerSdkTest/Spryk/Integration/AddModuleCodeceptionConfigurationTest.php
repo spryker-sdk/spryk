@@ -41,7 +41,7 @@ class AddModuleCodeceptionConfigurationTest extends Unit
     /**
      * @return void
      */
-    public function testAddsCodeceptionConfigFileOnProjectLayer(): void
+    public function testAddModuleCodeceptionConfigurationFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -49,7 +49,5 @@ class AddModuleCodeceptionConfigurationTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
     }
 }

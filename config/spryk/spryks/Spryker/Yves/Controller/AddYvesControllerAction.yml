@@ -5,7 +5,7 @@ mode: both
 arguments:
     organization:
         inherit: true
-        default: SprykerShops
+        default: SprykerShop
 
     module:
         inherit: true

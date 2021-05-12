@@ -42,7 +42,7 @@ postSpryks:
           arguments:
               extends:
                   value: \Spryker\Zed\DataImport\DataImportDependencyProvider
-    - AddDataImportZedBusinessFactory
+    - AddDataImportZedBusinessFactoryMethod
     - AddZedBusinessFacade
     - AddZedConfigMethod:
           arguments:

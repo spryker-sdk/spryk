@@ -41,7 +41,7 @@ class AddModuleChangelogTest extends Unit
     /**
      * @return void
      */
-    public function testAddsChangeLogFileOnProjectLayer(): void
+    public function testAddModuleChangelogFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -49,7 +49,5 @@ class AddModuleChangelogTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'CHANGELOG.md');
     }
 }

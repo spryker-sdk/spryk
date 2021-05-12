@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed\Dependency\Facade;
+namespace SprykerSdkTest\Spryk\Integration\Glue\Dependency\Client;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -46,7 +46,7 @@ class AddGlueDependencyClientBridgeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyClientBridgeOnProjectLayer(): void
+    public function testAddZedDependencyClientBridgeFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -55,11 +55,6 @@ class AddGlueDependencyClientBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists(
-            $this->tester->getProjectModuleDirectory('FooBar', 'Glue')
-            . 'Dependency/Client/FooBarToZipZapClientBridge.php'
-        );
     }
 
     /**
@@ -73,21 +68,5 @@ class AddGlueDependencyClientBridgeTest extends Unit
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::GLUE_BUSINESS_FACTORY, 'getZipZapClient');
-    }
-
-    /**
-     * @return void
-     */
-    public function testAddsGetterToFactoryOnProjectLayer(): void
-    {
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--mode' => 'project',
-        ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_BUSINESS_FACTORY, 'getZipZapClient');
     }
 }

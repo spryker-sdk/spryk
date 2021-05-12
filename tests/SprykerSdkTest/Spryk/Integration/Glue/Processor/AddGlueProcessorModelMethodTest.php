@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Glue;
+namespace SprykerSdkTest\Spryk\Integration\Glue\Processor;
 
 use Codeception\Test\Unit;
 

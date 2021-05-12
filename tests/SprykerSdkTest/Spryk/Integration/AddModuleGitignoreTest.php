@@ -42,7 +42,7 @@ class AddModuleGitignoreTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGitignoreFileOnProjectLayer(): void
+    public function testAddModuleGitignoreFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -51,7 +51,5 @@ class AddModuleGitignoreTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.gitignore');
     }
 }

@@ -3,18 +3,22 @@ description: "Adds a new composer.json to the Modules root."
 mode: core
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: composer.json.twig
+    template:
+        value: composer.json.twig
 
-  targetPath:
-    value: "{{ moduleRoot }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule
+
+postCommands:
+    - ComposerReplaceGenerate
+    - ComposerDumpAutoload

@@ -14,7 +14,7 @@ arguments:
     inherit: true
 
   template:
-    value: Zed/Communication/ZedCommunicationConsoleTest.php.twig
+    value: Zed/Communication/Console/ZedCommunicationConsoleTest.php.twig
 
   targetFilename:
     value: "{{ className }}ConsoleTest.php"

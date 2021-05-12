@@ -29,10 +29,10 @@ arguments:
         isMultiple: true
 
     interfaceName:
-        value: "{{ className }}Interface"
+        default: Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
 
     template:
-        value: Zed/Business/Model/ZedBusinessModel.php.twig
+        value: Module/DataImport/Zed/Business/Model/DataImportZedBusinessModel.php.twig
 
     targetFilename:
         callbackOnly: true

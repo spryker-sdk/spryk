@@ -7,8 +7,6 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Business{% if subDirectory.value %}\{{ subDirectory | replace({'/': '\\'}) }}{% endif %};
 
-use {{ interfaceName }};
-
 class {{ className | classNameShort }} implements {{ interfaceName | classNameShort }}
 {
 {% if constructorArguments.value %}

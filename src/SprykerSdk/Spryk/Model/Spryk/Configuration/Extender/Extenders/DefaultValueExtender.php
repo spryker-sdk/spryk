@@ -12,26 +12,24 @@ use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtend
 class DefaultValueExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
     /**
-     * @param array $sprykConfig
+     * @param mixed[] $sprykConfig
      *
-     * @return array
+     * @return mixed[]
      */
     public function extend(array $sprykConfig): array
     {
         $arguments = $this->getArguments($sprykConfig);
 
         foreach ($arguments as &$argument) {
-            $values = $argument['values'] ?? null;
-            if (!empty($argument['value']) || !is_array($values) || count($values) > 1) {
+            $values = $argument[static::NAME_ARGUMENT_KEY_VALUES] ?? null;
+            if (!empty($argument[static::NAME_ARGUMENT_KEY_VALUE]) || !is_array($values) || count($values) > 1) {
                 continue;
             }
 
-            $argument['value'] = reset($values);
-            $argument['default'] = $argument['value'];
+            $argument[static::NAME_ARGUMENT_KEY_VALUE] = reset($values);
+            $argument[static::NAME_ARGUMENT_KEY_DEFAULT] = $argument[static::NAME_ARGUMENT_KEY_VALUE];
         }
 
-        $sprykConfig = $this->setArguments($arguments, $sprykConfig);
-
-        return $sprykConfig;
+        return $this->setArguments($arguments, $sprykConfig);
     }
 }

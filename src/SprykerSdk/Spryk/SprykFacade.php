@@ -7,6 +7,7 @@
 
 namespace SprykerSdk\Spryk;
 
+use SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class SprykFacade implements SprykFacadeInterface
@@ -17,22 +18,18 @@ class SprykFacade implements SprykFacadeInterface
     protected $factory;
 
     /**
-     * @param string $sprykName
-     * @param string[] $includeOptionalSubSpryks
+     * @param \SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface $sprykExecutorConfiguration
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
-     * @param string|null $targetModuleName
-     * @param string|null $dependentModuleName
      *
      * @return void
      */
     public function executeSpryk(
-        string $sprykName,
-        array $includeOptionalSubSpryks,
-        SprykStyleInterface $style,
-        ?string $targetModuleName = null,
-        ?string $dependentModuleName = null
+        SprykExecutorConfigurationInterface $sprykExecutorConfiguration,
+        SprykStyleInterface $style
     ): void {
-        $this->getFactory()->createSprykExecutor()->execute($sprykName, $includeOptionalSubSpryks, $style, $targetModuleName, $dependentModuleName);
+        $this->getFactory()
+            ->createSprykExecutor()
+            ->execute($sprykExecutorConfiguration, $style);
     }
 
     /**

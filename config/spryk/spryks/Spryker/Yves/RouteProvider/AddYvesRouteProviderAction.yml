@@ -33,6 +33,7 @@ arguments:
         value: "{{ organization }}\\Yves\\{{ module }}\\Plugin\\Router\\{{ module }}RouteProviderPlugin"
 
 preSpryks:
+    - AddYvesController
     - AddYvesRouteProvider
 
 postSpryks:

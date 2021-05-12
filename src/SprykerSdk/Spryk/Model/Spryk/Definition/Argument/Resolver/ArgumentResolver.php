@@ -18,6 +18,8 @@ use Symfony\Component\Console\Question\Question;
 
 class ArgumentResolver implements ArgumentResolverInterface
 {
+    protected const ARGUMENT_KEY_VALUES = 'values';
+
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
      */
@@ -131,8 +133,12 @@ class ArgumentResolver implements ArgumentResolverInterface
 
         $allowEmptyInput = (isset($argumentDefinition['isOptional']) && ($argumentDefinition['isOptional'] === true)) ? true : false;
 
-        if (!$allowEmptyInput && isset($argumentDefinition['values']) && is_array($argumentDefinition['values'])) {
-            return $this->choseArgumentValue($argumentName, $sprykName, $argumentDefinition['values'], $defaultValue);
+        if (
+            !$allowEmptyInput
+            && isset($argumentDefinition[static::ARGUMENT_KEY_VALUES])
+            && is_array($argumentDefinition[static::ARGUMENT_KEY_VALUES])
+        ) {
+            return $this->choseArgumentValue($argumentName, $sprykName, $argumentDefinition[static::ARGUMENT_KEY_VALUES], $defaultValue);
         }
 
         return $this->askForArgumentValue($argumentName, $sprykName, $defaultValue, $allowEmptyInput);
@@ -235,11 +241,14 @@ class ArgumentResolver implements ArgumentResolverInterface
      */
     protected function askForArgumentValue(string $argument, string $sprykName, $default, bool $allowEmpty = false)
     {
-        $question = new Question(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $default);
-
+        $question = new Question(
+            sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument),
+            $default
+        );
         $question->setNormalizer(function ($value) {
             return $value ?: '';
         });
+
         if ($allowEmpty === false) {
             $question->setValidator(function ($value) {
                 if (!$value) {
@@ -256,14 +265,18 @@ class ArgumentResolver implements ArgumentResolverInterface
     /**
      * @param string $argument
      * @param string $sprykName
-     * @param (string|int|null)[] $values
+     * @param string[]|int[]|null[] $values
      * @param string|int|null $default
      *
      * @return string|int|null
      */
     protected function choseArgumentValue(string $argument, string $sprykName, array $values, $default)
     {
-        $question = new ChoiceQuestion(sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument), $values, $default);
+        $question = new ChoiceQuestion(
+            sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument),
+            $values,
+            $default
+        );
 
         return $this->style->askQuestion($question);
     }

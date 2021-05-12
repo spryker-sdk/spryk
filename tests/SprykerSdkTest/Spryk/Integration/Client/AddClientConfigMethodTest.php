@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Client;
 
 use Codeception\Test\Unit;
 use SprykerSdkTest\Module\ClassName;
