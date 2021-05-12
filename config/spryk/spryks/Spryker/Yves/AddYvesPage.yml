@@ -11,7 +11,7 @@ arguments:
         inherit: true
 
     targetPath:
-        value: "{{ module }}/"
+        value: "{{ moduleRoot }}/"
 
     directories:
         value:
