@@ -88,6 +88,36 @@ interface SprykStyleInterface
     public function report(string $message): void;
 
     /**
+     * @param string $message
+     *
+     * @return void
+     */
+    public function commandsEventReport(string $message): void;
+
+    /**
+     * @param string $commandName
+     *
+     * @return void
+     */
+    public function successCommandReport(string $commandName): void;
+
+    /**
+     * @param string $commandName
+     * @param string $errorMessage
+     * @param string $fallbackMessage
+     *
+     * @return void
+     */
+    public function errorCommandReport(string $commandName, string $errorMessage, string $fallbackMessage): void;
+
+    /**
+     * @param string $commandName
+     *
+     * @return void
+     */
+    public function warningCommandReport(string $commandName): void;
+
+    /**
      * @return \Symfony\Component\Console\Input\InputInterface
      */
     public function getInput(): InputInterface;

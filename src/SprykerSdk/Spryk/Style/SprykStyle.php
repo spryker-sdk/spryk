@@ -181,6 +181,54 @@ class SprykStyle implements SprykStyleInterface
     }
 
     /**
+     * @param string $message
+     *
+     * @return void
+     */
+    public function commandsEventReport(string $message): void
+    {
+        $this->writeln(sprintf('<options=bold>-- %s --</>', $message));
+    }
+
+    /**
+     * @param string $commandName
+     *
+     * @return void
+     */
+    public function successCommandReport(string $commandName): void
+    {
+        $this->output->writeln(sprintf('<fg=green>%s</> command finished successfully.', $commandName));
+    }
+
+    /**
+     * @param string $commandName
+     * @param string $errorMessage
+     * @param string $fallbackMessage
+     *
+     * @return void
+     */
+    public function errorCommandReport(string $commandName, string $errorMessage, string $fallbackMessage): void
+    {
+        $this->output->writeln([
+            sprintf('<fg=red>%s</> command failed with message:', $commandName),
+            sprintf('<bg=red>%s</>', $errorMessage),
+            sprintf('<bg=yellow>%s</>', $fallbackMessage),
+        ]);
+    }
+
+    /**
+     * @param string $commandName
+     *
+     * @return void
+     */
+    public function warningCommandReport(string $commandName): void
+    {
+        $this->output->writeln(
+            sprintf('<fg=yellow>%s</> command cannot be run for the current Spryk configuration.', $commandName)
+        );
+    }
+
+    /**
      * @param array|string $messages
      * @param int $options
      *

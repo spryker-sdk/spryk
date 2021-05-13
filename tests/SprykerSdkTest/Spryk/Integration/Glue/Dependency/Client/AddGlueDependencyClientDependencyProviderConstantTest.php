@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed\Dependency\Client;
+namespace SprykerSdkTest\Spryk\Integration\Glue\Dependency\Client;
 
 use Codeception\Test\Unit;
 use SprykerSdkTest\Module\ClassName;

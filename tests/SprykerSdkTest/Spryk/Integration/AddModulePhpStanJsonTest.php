@@ -42,7 +42,7 @@ class AddModulePhpStanJsonTest extends Unit
     /**
      * @return void
      */
-    public function testAddsPhpStanJsonFileOnProjectLayer(): void
+    public function testAddModulePhpStanJsonFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -51,7 +51,5 @@ class AddModulePhpStanJsonTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'phpstan.json');
     }
 }

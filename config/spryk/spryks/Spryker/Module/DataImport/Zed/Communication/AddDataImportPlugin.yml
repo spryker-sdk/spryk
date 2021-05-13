@@ -15,7 +15,7 @@ arguments:
         inherit: true
 
     template:
-        value: DataImport/Zed/Communication/DataImportPlugin.php.twig
+        value: Module/DataImport/Zed/Communication/DataImportPlugin.php.twig
 
     targetFilename:
         value: "{{ entity | dashToCamelCase }}DataImportPlugin.php"

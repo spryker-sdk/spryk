@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Yves\Dependency\Facade;
+namespace SprykerSdkTest\Spryk\Integration\Yves\Dependency\Client;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -46,7 +46,7 @@ class AddYvesDependencyClientBridgeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyClientBridgeOnProjectLayer(): void
+    public function testAddYvesDependencyClientBridgeFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -55,11 +55,6 @@ class AddYvesDependencyClientBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists(
-            $this->tester->getModuleDirectory('FooBar', 'Yves')
-            . 'Dependency/Client/FooBarToZipZapClientBridge.php'
-        );
     }
 
     /**
@@ -73,21 +68,5 @@ class AddYvesDependencyClientBridgeTest extends Unit
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::YVES_FACTORY, 'getZipZapClient');
-    }
-
-    /**
-     * @return void
-     */
-    public function testAddsGetterToFactoryOnProjectLayer(): void
-    {
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--mode' => 'project',
-        ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_FACTORY, 'getZipZapClient');
     }
 }

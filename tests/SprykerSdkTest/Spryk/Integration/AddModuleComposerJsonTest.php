@@ -41,7 +41,7 @@ class AddModuleComposerJsonTest extends Unit
     /**
      * @return void
      */
-    public function testAddsComposerJsonFileOnProjectLayer(): void
+    public function testAddModuleComposerJsonFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -49,7 +49,5 @@ class AddModuleComposerJsonTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'composer.json');
     }
 }

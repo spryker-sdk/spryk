@@ -52,6 +52,16 @@ class SprykDefinition implements SprykDefinitionInterface
     protected $postSpryks = [];
 
     /**
+     * @var string[]
+     */
+    protected $preCommands = [];
+
+    /**
+     * @var string[]
+     */
+    protected $postCommands = [];
+
+    /**
      * @var string
      */
     protected $mode;
@@ -172,6 +182,46 @@ class SprykDefinition implements SprykDefinitionInterface
     public function setPostSpryks(array $postSpryks)
     {
         $this->postSpryks = $postSpryks;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getPreCommands(): array
+    {
+        return $this->preCommands;
+    }
+
+    /**
+     * @param string[] $preCommands
+     *
+     * @return $this
+     */
+    public function setPreCommands(array $preCommands)
+    {
+        $this->preCommands = $preCommands;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getPostCommands(): array
+    {
+        return $this->postCommands;
+    }
+
+    /**
+     * @param string[] $postCommands
+     *
+     * @return $this
+     */
+    public function setPostCommands(array $postCommands)
+    {
+        $this->postCommands = $postCommands;
 
         return $this;
     }

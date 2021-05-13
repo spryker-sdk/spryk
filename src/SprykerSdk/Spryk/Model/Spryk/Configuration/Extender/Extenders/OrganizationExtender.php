@@ -13,60 +13,61 @@ use SprykerSdk\Spryk\SprykConfig;
 class OrganizationExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
     /**
-     * @param array $sprykConfig
+     * @param mixed[] $sprykConfig
      *
-     * @return array
+     * @return mixed[]
      */
     public function extend(array $sprykConfig): array
     {
         $arguments = $this->getArguments($sprykConfig);
 
-        if (!isset($arguments['organization']) || !isset($arguments['mode']['value'])) {
+        if (
+            !isset($arguments[static::NAME_ARGUMENT_ORGANIZATION])
+            || !isset($arguments[static::NAME_ARGUMENT_MODE][static::NAME_ARGUMENT_KEY_VALUE])
+        ) {
             return $sprykConfig;
         }
 
         $arguments = $this->buildProjectOrganization($arguments);
         $arguments = $this->buildCoreOrganization($arguments);
 
-        $sprykConfig = $this->setArguments($arguments, $sprykConfig);
-
-        return $sprykConfig;
+        return $this->setArguments($arguments, $sprykConfig);
     }
 
     /**
-     * @param array $arguments
+     * @param mixed[] $arguments
      *
-     * @return array
+     * @return mixed[]
      */
     protected function buildProjectOrganization(array $arguments): array
     {
-        if ($arguments['mode']['value'] !== SprykConfig::NAME_DEVELOPMENT_LAYER_PROJECT) {
+        if ($arguments[static::NAME_ARGUMENT_MODE][static::NAME_ARGUMENT_KEY_VALUE] !== SprykConfig::NAME_DEVELOPMENT_LAYER_PROJECT) {
             return $arguments;
         }
 
         $projectNamespace = $this->config->getProjectNamespace();
         $projectNamespaces = $this->config->getProjectNamespaces();
 
-        $arguments['organization']['default'] = $projectNamespace;
-        $arguments['organization']['values'] = $projectNamespaces;
+        $arguments[static::NAME_ARGUMENT_ORGANIZATION][static::NAME_ARGUMENT_KEY_DEFAULT] = $projectNamespace;
+        $arguments[static::NAME_ARGUMENT_ORGANIZATION][static::NAME_ARGUMENT_KEY_VALUES] = $projectNamespaces;
 
         return $arguments;
     }
 
     /**
-     * @param array $arguments
+     * @param mixed[] $arguments
      *
-     * @return array
+     * @return mixed[]
      */
     protected function buildCoreOrganization(array $arguments): array
     {
-        if ($arguments['mode']['value'] !== SprykConfig::NAME_DEVELOPMENT_LAYER_CORE) {
+        if ($arguments[static::NAME_ARGUMENT_MODE][static::NAME_ARGUMENT_KEY_VALUE] !== SprykConfig::NAME_DEVELOPMENT_LAYER_CORE) {
             return $arguments;
         }
 
         $coreNamespaces = $this->config->getCoreNamespaces();
 
-        $arguments['organization']['values'] = $coreNamespaces;
+        $arguments[static::NAME_ARGUMENT_ORGANIZATION][static::NAME_ARGUMENT_KEY_VALUES] = $coreNamespaces;
 
         return $arguments;
     }

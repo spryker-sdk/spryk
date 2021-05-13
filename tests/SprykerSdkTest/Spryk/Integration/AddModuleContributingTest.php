@@ -42,7 +42,7 @@ class AddModuleContributingTest extends Unit
     /**
      * @return void
      */
-    public function testAddsContributingFileOnProjectLayer(): void
+    public function testAddModuleContributingFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -50,7 +50,5 @@ class AddModuleContributingTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'CONTRIBUTING.md');
     }
 }

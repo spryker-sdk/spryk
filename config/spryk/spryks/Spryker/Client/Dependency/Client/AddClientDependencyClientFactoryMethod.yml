@@ -23,6 +23,7 @@ arguments:
         value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}Factory"
 
 preSpryks:
+    - AddClientDependencyProvider
     - AddClientFactory
 
 postSpryks:

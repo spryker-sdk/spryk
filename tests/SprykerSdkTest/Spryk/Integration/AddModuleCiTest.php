@@ -42,7 +42,7 @@ class AddModuleCiTest extends Unit
     /**
      * @return void
      */
-    public function testAddsCiFileOnProjectLayer(): void
+    public function testAddModuleCiFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 

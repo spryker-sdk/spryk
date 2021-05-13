@@ -31,9 +31,18 @@ interface ClassName
     public const CLIENT_CONFIG = 'Spryker\Client\FooBar\FooBarConfig';
     public const CLIENT = 'Spryker\Client\FooBar\FooBarClient';
     public const CLIENT_INTERFACE = 'Spryker\Client\FooBar\FooBarClientInterface';
+    public const CLIENT_FACTORY = 'Spryker\Client\FooBar\FooBarFactory';
+    public const CLIENT_DEPENDENCY_PROVIDER = 'Spryker\Client\FooBar\FooBarDependencyProvider';
 
+    public const CLIENT_CLIENT_BRIDGE = 'Spryker\Client\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
+    public const CLIENT_CLIENT_BRIDGE_INTERFACE = 'Spryker\Client\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
+    public const CLIENT_SERVICE_BRIDGE = 'Spryker\Client\FooBar\Dependency\Service\FooBarToZipZapServiceBridge';
+    public const CLIENT_SERVICE_BRIDGE_INTERFACE = 'Spryker\Client\FooBar\Dependency\Service\FooBarToZipZapServiceInterface';
+
+    public const YVES_CONTROLLER = 'Spryker\Yves\FooBar\Controller\FooBarController';
     public const YVES_FACTORY = 'Spryker\Yves\FooBar\FooBarFactory';
     public const YVES_CONFIG = 'Spryker\Yves\FooBar\FooBarConfig';
+    public const YVES_ROUTE_PROVIDER = 'Spryker\Yves\FooBar\Plugin\Router\FooBarRouteProviderPlugin';
     public const YVES_DEPENDENCY_PROVIDER = 'Spryker\Yves\FooBar\FooBarDependencyProvider';
     public const YVES_CLIENT_BRIDGE = 'Spryker\Yves\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
     public const YVES_CLIENT_BRIDGE_INTERFACE = 'Spryker\Yves\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
@@ -71,6 +80,8 @@ interface ClassName
     public const ZED_ENTITY_MANAGER = 'Spryker\Zed\FooBar\Persistence\FooBarEntityManager';
     public const ZED_ENTITY_MANAGER_INTERFACE = 'Spryker\Zed\FooBar\Persistence\FooBarEntityManagerInterface';
 
+    public const DATA_IMPORT_BUSINESS_FACTORY = 'Spryker\Zed\FooBar\Business\FooBarBusinessFactory';
+
     public const PROJECT_CONFIG_YVES = 'Pyz\Yves\FooBar\FooBarConfig';
     public const PROJECT_CONFIG_ZED = 'Pyz\Zed\FooBar\FooBarConfig';
     public const PROJECT_CONFIG_CLIENT = 'Pyz\Client\FooBar\FooBarConfig';
@@ -93,9 +104,18 @@ interface ClassName
     public const PROJECT_CLIENT_CONFIG = 'Pyz\Client\FooBar\FooBarConfig';
     public const PROJECT_CLIENT = 'Pyz\Client\FooBar\FooBarClient';
     public const PROJECT_CLIENT_INTERFACE = 'Pyz\Client\FooBar\FooBarClientInterface';
+    public const PROJECT_CLIENT_FACTORY = 'Pyz\Client\FooBar\FooBarFactory';
+    public const PROJECT_CLIENT_DEPENDENCY_PROVIDER = 'Pyz\Client\FooBar\FooBarDependencyProvider';
 
+    public const PROJECT_CLIENT_CLIENT_BRIDGE = 'Pyz\Client\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
+    public const PROJECT_CLIENT_CLIENT_BRIDGE_INTERFACE = 'Pyz\Client\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
+    public const PROJECT_CLIENT_SERVICE_BRIDGE = 'Pyz\Client\FooBar\Dependency\Service\FooBarToZipZapServiceBridge';
+    public const PROJECT_CLIENT_SERVICE_BRIDGE_INTERFACE = 'Pyz\Client\FooBar\Dependency\Service\FooBarToZipZapServiceInterface';
+
+    public const PROJECT_YVES_CONTROLLER = 'Pyz\Yves\FooBar\Controller\FooBarController';
     public const PROJECT_YVES_FACTORY = 'Pyz\Yves\FooBar\FooBarFactory';
     public const PROJECT_YVES_CONFIG = 'Pyz\Yves\FooBar\FooBarConfig';
+    public const PROJECT_YVES_ROUTE_PROVIDER = 'Pyz\Yves\FooBar\Plugin\Router\FooBarRouteProviderPlugin';
     public const PROJECT_YVES_DEPENDENCY_PROVIDER = 'Pyz\Yves\FooBar\FooBarDependencyProvider';
     public const PROJECT_YVES_CLIENT_BRIDGE = 'Pyz\Yves\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
     public const PROJECT_YVES_CLIENT_BRIDGE_INTERFACE = 'Pyz\Yves\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
@@ -132,4 +152,6 @@ interface ClassName
 
     public const PROJECT_ZED_ENTITY_MANAGER = 'Pyz\Zed\FooBar\Persistence\FooBarEntityManager';
     public const PROJECT_ZED_ENTITY_MANAGER_INTERFACE = 'Pyz\Zed\FooBar\Persistence\FooBarEntityManagerInterface';
+
+    public const PROJECT_DATA_IMPORT_BUSINESS_FACTORY = 'Pyz\Zed\FooBar\Business\FooBarBusinessFactory';
 }
