@@ -1,12 +1,12 @@
 arguments:
-  sprykerOrganization:
-      value: "spryker/"
-  sprykerBundles:
-      value: "Bundles/"
+  sprykerVendorPath:
+      value: ""
+  moduleSrcDirectory:
+      value: ""
   repository:
-    value: "{{ sprykerOrganization }}{{ organization | dasherize }}"
+    value: "{{ sprykerVendorPath }}{{ organization | dasherize }}"
   moduleRoot:
-    value: "{{ module }}"
+    value: "{{ module | dasherize }}"
   level:
     value: 3
 
@@ -15,7 +15,7 @@ core:
     mode:
       value: "core"
     targetPath:
-      value: "vendor/{{ repository }}/{{ sprykerBundles }}"
+      value: "vendor/{{ repository }}/{{ moduleSrcDirectory }}"
       type: prepend
 
 project:

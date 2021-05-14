@@ -21,7 +21,7 @@ arguments:
     default: Spryker
 
   sourcePath:
-    value: "vendor/{{ sprykerOrganization }}{{ organization | dasherize }}/{{ sprykerBundles }}{{ moduleRoot }}/"
+    value: "vendor/{{ sprykerVendorPath }}{{ organization | dasherize }}/{{ moduleSrcDirectory }}{{ moduleRoot }}/"
 
   targetFilePath:
-    value: "vendor/{{ sprykerOrganization }}{{ toOrganization | dasherize }}/{{ sprykerBundles }}{{ toModule }}/"
+    value: "vendor/{{ sprykerVendorPath }}{{ toOrganization | dasherize }}/{{ moduleSrcDirectory }}{{ toModule }}/"
