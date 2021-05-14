@@ -20,7 +20,7 @@ arguments:
     value: "{{ module }}Config.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/"
 
 preSpryks:
   - AddModule

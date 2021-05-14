@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}ServiceInterface.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Service/{{ module }}/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Service/{{ module }}/"
 
 preSpryks:
   - AddService

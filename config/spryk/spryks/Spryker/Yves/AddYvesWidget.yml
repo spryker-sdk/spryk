@@ -1,6 +1,7 @@
 spryk: template
 description: "Adds a new Widget to the Yves application."
 mode: both
+level: 1
 
 arguments:
     organization:
@@ -26,7 +27,7 @@ arguments:
         value: "{{ widget | removeWidgetSuffix }}Widget.php"
 
     targetPath:
-        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Widget/"
+        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Widget/"
 
 preSpryks:
     - AddModule

@@ -28,7 +28,7 @@ arguments:
         value: "{{ templateName }}.twig"
 
     targetPath:
-        value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Theme/{{ theme }}/views/{{ templateName }}/"
+        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Theme/{{ theme }}/views/{{ templateName }}/"
 
 preSpryks:
     - AddModule
