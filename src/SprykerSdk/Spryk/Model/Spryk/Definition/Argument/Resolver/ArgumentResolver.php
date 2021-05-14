@@ -292,10 +292,10 @@ class ArgumentResolver implements ArgumentResolverInterface
             return $argumentCollection;
         }
 
-        if (in_array($argumentCollection->getArgument('organization')->getValue(), ['Spryker', 'SprykerShop', 'Pyz'])) {
-            $argumentCollection->getArgument('sprykerVendorPath')->setValue('spryker' . DIRECTORY_SEPARATOR);
-            $argumentCollection->getArgument('moduleSrcDirectory')->setValue('Bundles' . DIRECTORY_SEPARATOR);
-            $argumentCollection->getArgument('moduleRoot')->setValue('{{ module }}');
+        if (!in_array($argumentCollection->getArgument('organization')->getValue(), ['Spryker', 'SprykerShop', 'Pyz'])) {
+            $argumentCollection->getArgument('sprykerVendorPath')->setValue('');
+            $argumentCollection->getArgument('moduleSrcDirectory')->setValue('');
+            $argumentCollection->getArgument('moduleRoot')->setValue('{{ module | dasherize }}');
         }
 
         return $argumentCollection;

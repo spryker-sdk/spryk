@@ -1,12 +1,12 @@
 arguments:
   sprykerVendorPath:
-      value: ""
+      value: "spryker/"
   moduleSrcDirectory:
-      value: ""
+      value: "Bundles/"
   repository:
     value: "{{ sprykerVendorPath }}{{ organization | dasherize }}"
   moduleRoot:
-    value: "{{ module | dasherize }}"
+    value: "{{ module }}"
   level:
     value: 3
 
