@@ -1,6 +1,10 @@
 parameters:
     level: 5
 
-    bootstrap: %rootDir%/../../../phpstan-bootstrap.php
-    autoload_directories:
-        - %rootDir%/../../../tests/
+    checkMissingIterableValueType: false
+
+    bootstrapFiles:
+        - %rootDir%/../../../phpstan-bootstrap.php
+
+    ignoreErrors:
+        - '#Parameter \#2 \$callback of function array_filter expects callable.+, .+glob.+ given#'

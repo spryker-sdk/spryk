@@ -53,7 +53,5 @@ class AddModuleCoverallsTest extends Unit
             '--repositoryToken' => 'uzf78t67832fe76923f764f3249f329f)&/vuzf76&/R',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.coveralls.yml');
     }
 }

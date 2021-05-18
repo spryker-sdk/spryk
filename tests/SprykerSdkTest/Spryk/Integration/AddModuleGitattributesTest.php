@@ -51,7 +51,5 @@ class AddModuleGitattributesTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.gitattributes');
     }
 }

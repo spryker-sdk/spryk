@@ -64,6 +64,7 @@ class SprykRunArgumentCallbackTest extends Unit
         ];
 
         $this->expectException(CallbackNotFoundException::class);
+
         $tester->execute($arguments, ['interactive' => false]);
     }
 }

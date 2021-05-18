@@ -66,7 +66,7 @@ interface SprykStyleInterface
     public function endPostSpryks(SprykDefinitionInterface $sprykDefinition): void;
 
     /**
-     * @param string|array $messages
+     * @param string|string[] $messages
      * @param int $options
      *
      * @return void

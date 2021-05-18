@@ -51,8 +51,6 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectTestDirectory() . 'codeception.yml');
     }
 
     /**
@@ -77,12 +75,6 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
      */
     public function testAddsZedTestSuiteToCodeceptionConfigurationOnlyOnceOnProjectLayer(): void
     {
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--mode' => 'project',
-        ]);
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--mode' => 'project',
@@ -95,5 +87,12 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
 
         $yaml = Yaml::parse(($fileContent) ?: '');
         $this->assertCount(1, $yaml['include']);
+
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--mode' => 'project',
+        ]);
     }
 }
