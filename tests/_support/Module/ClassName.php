@@ -154,4 +154,13 @@ interface ClassName
     public const PROJECT_ZED_ENTITY_MANAGER_INTERFACE = 'Pyz\Zed\FooBar\Persistence\FooBarEntityManagerInterface';
 
     public const PROJECT_DATA_IMPORT_BUSINESS_FACTORY = 'Pyz\Zed\FooBar\Business\FooBarBusinessFactory';
+
+    public const ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutDoSaveOrderPlugin';
+    public const ZED_CHECKOUT_POST_SAVE_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutPostSavePlugin';
+    public const ZED_CHECKOUT_PRE_CONDITION_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutPreConditionPlugin';
+    public const ZED_ORDER_PAYMENT_EXPANDER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\TestPaymentOrderPaymentExpanderPlugin';
+    public const ZED_PAYMENT_METHOD_FILTER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Payment\TestPaymentPaymentMethodFilterPlugin';
+    public const ZED_PLUGIN_OMS_COMMAND_BY_ORDER = 'Spryker\Zed\FooBar\Communication\Plugin\Oms\Command\TestPaymentCommandByOrder';
+
+    public const YVES_PLUGIN_SUB_FORM_PLUGIN = 'Spryker\Yves\FooBar\Plugin\TestPaymentSubFormPlugin';
 }

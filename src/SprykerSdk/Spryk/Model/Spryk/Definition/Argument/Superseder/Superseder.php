@@ -121,6 +121,10 @@ class Superseder implements SupersederInterface
     {
         $argument = $resolvedArguments->getArgument($argumentName);
 
+        if ($sprykArguments->hasArgument($argumentName)) {
+            $argument = $sprykArguments->getArgument($argumentName);
+        }
+
         return $this->resolveValue($argument, $sprykArguments, $resolvedArguments);
     }
 

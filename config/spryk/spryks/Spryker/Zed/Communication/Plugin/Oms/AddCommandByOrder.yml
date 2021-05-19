@@ -1,0 +1,37 @@
+spryk: template
+description: "Adds a new *module* CommandByOrder class."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: SprykerEco
+
+    paymentMethod:
+        inherit: true
+
+    className:
+        value: "{{ paymentMethod }}CommandByOrder"
+
+    implementerInterfaceName:
+        inherit: true
+        value: \Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface
+
+    expanderClassName:
+        inherit: true
+        value: "Spryker/Zed/Kernel/Communication/AbstractPlugin"
+
+    subDirectory:
+        value: "Zed/{{ module }}/Communication/Plugin/Oms/Command"
+
+    template:
+        value: Common/Class.php.twig
+
+    targetFilename:
+        value: "{{ className }}.php"
+
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/"

@@ -10,6 +10,10 @@
   mode: 2
   description: 'organization argument'
 -
+  name: paymentMethod
+  mode: 2
+  description: 'paymentMethod argument'
+-
   name: template
   mode: 2
   description: 'template argument'

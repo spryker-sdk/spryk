@@ -1,0 +1,45 @@
+spryk: method
+description: "Adds a new *module* class method."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: SprykerEco
+
+    paymentMethod:
+        inherit: true
+
+    subDirectory:
+        value: "Zed/{{ module }}/Communication/Plugin/Payment"
+
+    method:
+        inherit: true
+        value: "filterPaymentMethods"
+
+    input:
+        isMultiple: true
+        value: \Generated\Shared\Transfer\PaymentMethodsTransfer $paymentMethodsTransfer,\Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+
+    output:
+        value: \Generated\Shared\Transfer\PaymentMethodsTransfer
+
+    annotations:
+        value:
+            - "{@inheritdoc}"
+            - "@api"
+
+    template:
+        value: Common/Method.php.twig
+
+    target:
+        value: "{{ paymentMethod }}PaymentMethodFilterPlugin"
+
+    fqcnPattern:
+        value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ paymentMethod }}PaymentMethodFilterPlugin"
+
+preSpryks:
+    - AddPaymentMethodFilterPlugin

@@ -1,0 +1,37 @@
+spryk: structure
+description: "Adds a new payment module structure."
+priority: 1
+mode: core
+level: 1
+
+arguments:
+    organization:
+        default: SprykerEco
+
+    module:
+        inherit: true
+        type: NewModuleType
+
+    paymentMethod:
+        inherit: true
+
+    targetPath:
+        value: "{{ moduleRoot }}/"
+
+    directories:
+        value:
+            - "src/{{ organization }}/"
+
+preSpryks:
+    - AddModule
+
+postSpryks:
+    - AddYvesFactory
+    - AddCheckoutPostSavePluginMethod
+    - AddCheckoutDoSaveOrderPluginMethod
+    - AddPaymentMethodFilterPluginMethod
+    - AddCheckoutPreConditionPluginMethod
+    - AddOrderPaymentExpanderPluginMethod
+    - AddCommandByOrderMethod
+    - AddSubFormPluginMethod
+    - AddSubFormPluginDataProviderMethod
