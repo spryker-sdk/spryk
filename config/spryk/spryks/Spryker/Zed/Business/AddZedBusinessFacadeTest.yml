@@ -17,7 +17,7 @@ arguments:
     value: "{{ module }}FacadeTest.php"
 
   targetPath:
-    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/Business/"
+    value: "{{ moduleRoot }}/tests/{{ organization }}Test/Zed/{{ module }}/Business/"
 
 preSpryks:
   - AddZedBusinessTestSuite

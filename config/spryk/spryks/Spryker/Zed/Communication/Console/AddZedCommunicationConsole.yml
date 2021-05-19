@@ -21,7 +21,7 @@ arguments:
     value: "{{ className }}Console.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/Console/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/Console/"
 
 preSpryks:
   - AddModule

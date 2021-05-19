@@ -25,7 +25,7 @@ arguments:
     inherit: true
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/"
 
   directories:
     value:

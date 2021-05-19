@@ -20,7 +20,7 @@ arguments:
     value: "{{ modelName | camelCased }}ControllerAfterActionPlugin.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
 
 preSpryks:
   - AddModule

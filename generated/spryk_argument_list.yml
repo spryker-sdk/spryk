@@ -10,6 +10,14 @@
   mode: 2
   description: 'organization argument'
 -
+  name: sprykerVendorPath
+  mode: 2
+  description: 'sprykerVendorPath argument'
+-
+  name: moduleSrcDirectory
+  mode: 2
+  description: 'moduleSrcDirectory argument'
+-
   name: paymentMethod
   mode: 2
   description: 'paymentMethod argument'

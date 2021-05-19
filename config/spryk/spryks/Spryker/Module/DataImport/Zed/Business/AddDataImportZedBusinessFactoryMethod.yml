@@ -20,7 +20,7 @@ arguments:
         value: "{{ module }}BusinessFactory.php"
 
     targetPath:
-        value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
     - AddModule

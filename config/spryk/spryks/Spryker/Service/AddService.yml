@@ -19,7 +19,7 @@ arguments:
     value: "{{ module }}Service.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Service/{{ module }}/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Service/{{ module }}/"
 
 preSpryks:
   - AddModule

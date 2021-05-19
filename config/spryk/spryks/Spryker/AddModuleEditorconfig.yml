@@ -17,7 +17,7 @@ arguments:
     value: .editorconfig
 
   targetPath:
-    value: "{{ module }}/"
+    value: "{{ moduleRoot }}/"
 
 preSpryks:
   - AddModule

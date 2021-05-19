@@ -14,7 +14,7 @@ arguments:
         type: NewModuleType
 
     targetPath:
-        value: "{{ module }}/"
+        value: "{{ moduleRoot }}/"
 
     directories:
         value:

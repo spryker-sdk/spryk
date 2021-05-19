@@ -20,7 +20,7 @@ arguments:
     value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Dependency/Client/"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Dependency/Client/"
 
 preSpryks:
   - AddGlueDependencyClientBridge

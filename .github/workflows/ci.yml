@@ -47,8 +47,7 @@ jobs:
 
       - name: Codecept run test
         run: |
-            vendor/bin/codecept run -g Glue -x Zed --coverage-xml
-            vendor/bin/codecept run -g Zed -x Glue --coverage-xml
+            vendor/bin/codecept run --coverage-xml
 
       - name: CodeStyle checks
         run: composer cs-check
@@ -94,10 +93,7 @@ jobs:
         run: composer require --dev dereuromark/composer-prefer-lowest
 
       - name: Codecept run test
-        run: |
-            vendor/bin/codecept run -g Glue
-            vendor/bin/codecept run -g Zed
-            vendor/bin/codecept run -x Glue -x Zed --coverage-xml
+        run: vendor/bin/codecept run --coverage-xml
 
       - name: Validate prefer lowest
         run: vendor/bin/validate-prefer-lowest

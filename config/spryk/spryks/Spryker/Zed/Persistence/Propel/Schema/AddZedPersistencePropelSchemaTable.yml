@@ -17,7 +17,7 @@ arguments:
     default: Spryker
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/spy_{{ targetModule | underscored }}.schema.xml"
+    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/spy_{{ targetModule | underscored }}.schema.xml"
 
 preSpryks:
   - AddZedPersistencePropelSchema
