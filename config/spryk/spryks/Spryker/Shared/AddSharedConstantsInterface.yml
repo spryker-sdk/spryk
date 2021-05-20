@@ -1,6 +1,7 @@
 spryk: template
 description: "Adds a new *module*ConstantsInterface to the Shared application."
 mode: both
+level: 2
 
 arguments:
   module:

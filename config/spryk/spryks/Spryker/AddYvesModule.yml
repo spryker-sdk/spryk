@@ -1,8 +1,8 @@
 spryk: structure
-description: "Adds a new *module* Yves structure."
+description: "Adds a new *module* with Yves classes structure. Preferable to use AddYvesPage, AddYvesWidget"
 priority: 1
 mode: both
-level: 1
+level: 2
 
 arguments:
     organization:

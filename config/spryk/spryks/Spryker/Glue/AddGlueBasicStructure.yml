@@ -1,6 +1,7 @@
 spryk: structure
 description: "Adds a new Glue layer with basic structure."
 mode: both
+level: 2
 
 application: Glue
 

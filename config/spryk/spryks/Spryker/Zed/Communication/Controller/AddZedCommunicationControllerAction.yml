@@ -1,6 +1,7 @@
 spryk: method
 description: "Adds a new action to the Zed controller."
 mode: both
+level: 2
 
 arguments:
 

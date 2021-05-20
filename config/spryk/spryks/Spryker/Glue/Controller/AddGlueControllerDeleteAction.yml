@@ -1,6 +1,7 @@
 spryk: method
 description: "Adds a new delete action to the Glue controller."
 mode: both
+level: 2
 
 arguments:
   module:
