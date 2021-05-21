@@ -2,6 +2,7 @@ spryk: bridgeMethods
 description: "Adds a new method to the *module* dependency Service bridge."
 priority: 1
 mode: core
+level: 2
 
 arguments:
     organization:

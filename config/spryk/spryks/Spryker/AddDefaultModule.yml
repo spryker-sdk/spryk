@@ -1,5 +1,5 @@
 spryk: structure
-description: "Adds a new *module* structure."
+description: "Adds a new *module* structure with Zed (all layers stubs facades, factories), Client, Transfer skeletons."
 priority: 1
 mode: both
 level: 1

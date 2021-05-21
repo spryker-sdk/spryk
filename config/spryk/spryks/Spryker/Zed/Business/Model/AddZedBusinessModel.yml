@@ -1,6 +1,7 @@
 spryk: template
 description: "Adds a new Business model to the Zed application."
 mode: both
+level: 2
 
 application: Zed
 layer: Business

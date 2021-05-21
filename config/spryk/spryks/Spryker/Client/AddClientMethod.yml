@@ -2,6 +2,7 @@ spryk: method
 description: "Adds a new method to the *Module*Client."
 priority: 1
 mode: both
+level: 2
 
 arguments:
 

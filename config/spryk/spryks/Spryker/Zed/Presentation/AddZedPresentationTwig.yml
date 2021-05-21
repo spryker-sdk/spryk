@@ -1,6 +1,7 @@
 spryk: template
 description: "Adds a new twig file to the *module* Presentation layer."
 mode: both
+level: 2
 
 config:
   noRender: true

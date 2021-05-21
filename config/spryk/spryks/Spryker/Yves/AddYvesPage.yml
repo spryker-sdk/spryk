@@ -1,5 +1,5 @@
 spryk: structure
-description: "Adds a new Page to the Yves application(Controller with action, router plugin with action and default view)."
+description: "Adds a new Page to the Yves application (Controller with action, router plugin with action and default view)."
 mode: both
 level: 1
 
