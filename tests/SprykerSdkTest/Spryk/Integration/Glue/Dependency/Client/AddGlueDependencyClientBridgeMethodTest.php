@@ -117,31 +117,4 @@ class AddGlueDependencyClientBridgeMethodTest extends Unit
         ]);
         $this->tester->assertClassHasMethod(ClassName::GLUE_CLIENT_BRIDGE, 'methodWithStringArgument');
     }
-
-    /**
-     * @return void
-     */
-    public function testAddsGlueDependencyClientBridgeMethodOnlyOnceOnProjectLayer(): void
-    {
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-            '--mode' => 'project',
-        ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_CLIENT_BRIDGE, 'methodWithStringArgument');
-
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-            '--mode' => 'project',
-        ]);
-    }
 }
