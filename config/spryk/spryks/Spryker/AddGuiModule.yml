@@ -1,5 +1,5 @@
 spryk: structure
-description: "Adds a new GUI *module* structure(Zed communication layer)."
+description: "Adds a new GUI *module* structure (Zed communication layer)."
 priority: 1
 mode: both
 level: 1
