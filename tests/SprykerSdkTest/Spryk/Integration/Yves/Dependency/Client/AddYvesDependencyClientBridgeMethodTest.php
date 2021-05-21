@@ -117,31 +117,4 @@ class AddYvesDependencyClientBridgeMethodTest extends Unit
         ]);
         $this->tester->assertClassHasMethod(ClassName::YVES_CLIENT_BRIDGE, 'methodWithStringArgument');
     }
-
-    /**
-     * @return void
-     */
-    public function testAddsYvesDependencyClientBridgeMethodOnlyOnceOnProjectLayer(): void
-    {
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--mode' => 'project',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-        ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_CLIENT_BRIDGE, 'methodWithStringArgument');
-
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--mode' => 'project',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-        ]);
-    }
 }
