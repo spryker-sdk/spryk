@@ -117,31 +117,4 @@ class AddZedDependencyServiceBridgeMethodTest extends Unit
         ]);
         $this->tester->assertClassHasMethod(ClassName::ZED_SERVICE_BRIDGE, 'methodWithStringArgument');
     }
-
-    /**
-     * @return void
-     */
-    public function testAddsZedDependencyServiceBridgeMethodOnlyOnceOnProjectLayer(): void
-    {
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-            '--mode' => 'project',
-        ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_SERVICE_BRIDGE, 'methodWithStringArgument');
-
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--methods' => [
-                'methodWithStringArgument',
-            ],
-            '--mode' => 'project',
-        ]);
-    }
 }

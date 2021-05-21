@@ -69,30 +69,4 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
         $yaml = Yaml::parse(($fileContent) ?: '');
         $this->assertCount(1, $yaml['include']);
     }
-
-    /**
-     * @return void
-     */
-    public function testAddsZedTestSuiteToCodeceptionConfigurationOnlyOnceOnProjectLayer(): void
-    {
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--mode' => 'project',
-        ]);
-
-        $configurationFilePath = $this->tester->getProjectTestDirectory() . 'codeception.yml';
-        $this->assertFileExists($configurationFilePath);
-
-        $fileContent = file_get_contents($configurationFilePath);
-
-        $yaml = Yaml::parse(($fileContent) ?: '');
-        $this->assertCount(1, $yaml['include']);
-
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--mode' => 'project',
-        ]);
-    }
 }
