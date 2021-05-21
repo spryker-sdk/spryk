@@ -49,7 +49,5 @@ class AddModuleReadmeTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'README.md');
     }
 }

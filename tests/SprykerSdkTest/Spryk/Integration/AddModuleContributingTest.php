@@ -50,7 +50,5 @@ class AddModuleContributingTest extends Unit
             '--module' => 'FooBar',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'CONTRIBUTING.md');
     }
 }

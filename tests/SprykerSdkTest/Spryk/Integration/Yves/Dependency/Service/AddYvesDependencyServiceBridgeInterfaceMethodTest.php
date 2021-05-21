@@ -87,15 +87,5 @@ class AddYvesDependencyServiceBridgeInterfaceMethodTest extends Unit
             ],
             '--mode' => 'project',
         ]);
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodWithStringArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodWithArrayArgument');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodReturnsVoid');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodWithTransferInputAndTransferOutput');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodWithDefaultNull');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodWithDefaultArray');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodWithoutDocBlockReturnType');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodWithMultipleReturn');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodWithMultipleReturnAndNullable');
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_SERVICE_BRIDGE_INTERFACE, 'methodWithNullableReturn');
     }
 }

@@ -51,7 +51,5 @@ class AddModuleScrutinizerTest extends Unit
             '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists($this->tester->getProjectModuleDirectory() . '.scrutinizer.yml');
     }
 }

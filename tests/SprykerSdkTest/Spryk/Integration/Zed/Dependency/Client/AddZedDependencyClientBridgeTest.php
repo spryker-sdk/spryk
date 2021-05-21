@@ -55,11 +55,6 @@ class AddZedDependencyClientBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists(
-            $this->tester->getProjectModuleDirectory()
-            . 'Dependency/Client/FooBarToZipZapClientBridge.php'
-        );
     }
 
     /**
@@ -87,7 +82,5 @@ class AddZedDependencyClientBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_BUSINESS_FACTORY, 'getZipZapClient');
     }
 }

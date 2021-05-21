@@ -55,11 +55,6 @@ class AddGlueDependencyClientBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->assertFileExists(
-            $this->tester->getProjectModuleDirectory('FooBar', 'Glue')
-            . 'Dependency/Client/FooBarToZipZapClientBridge.php'
-        );
     }
 
     /**
@@ -87,7 +82,5 @@ class AddGlueDependencyClientBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--mode' => 'project',
         ]);
-
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_BUSINESS_FACTORY, 'getZipZapClient');
     }
 }
