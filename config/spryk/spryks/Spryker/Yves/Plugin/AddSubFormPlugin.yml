@@ -31,7 +31,7 @@ arguments:
         value: Common/Class.php.twig
 
     targetFilename:
-        value: "{{ paymentMethod }}SubFormPlugin.php"
+        value: "{{ classNamePrefix }}SubFormPlugin.php"
 
     targetPath:
         value: "{{ moduleRoot }}/src/{{ organization }}/"
