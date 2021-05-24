@@ -10,7 +10,7 @@ arguments:
         inherit: true
         default: SprykerEco
 
-    paymentMethod:
+    classNamePrefix:
         inherit: true
 
     subDirectory:
@@ -18,13 +18,14 @@ arguments:
 
     method:
         inherit: true
-        value: "checkCondition"
+        value: "saveOrder"
 
     input:
-        value: \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer,\Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
+        isMultiple: true
+        value: \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer,\Generated\Shared\Transfer\SaveOrderTransfer $saveOrderTransfer
 
     output:
-        value: ""
+        value: "void"
 
     annotations:
         value:
@@ -35,7 +36,7 @@ arguments:
         value: Common/Method.php.twig
 
     target:
-        value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ paymentMethod }}CheckoutPreConditionPlugin"
+        value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ classNamePrefix }}CheckoutDoSaveOrderPlugin"
 
 preSpryks:
-    - AddCheckoutPreConditionPlugin
+    - AddCheckoutDoSaveOrderPlugin

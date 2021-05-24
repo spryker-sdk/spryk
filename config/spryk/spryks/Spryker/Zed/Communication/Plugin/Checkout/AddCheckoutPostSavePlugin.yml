@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *module* CheckoutPreConditionPlugin class."
+description: "Adds a new *module* CheckoutPostSave class."
 mode: both
 
 arguments:
@@ -11,11 +11,11 @@ arguments:
         default: SprykerEco
 
     className:
-        value: "{{ paymentMethod }}CheckoutPreConditionPlugin"
+        value: "{{ classNamePrefix }}CheckoutPostSavePlugin"
 
     implementerInterfaceName:
         inherit: true
-        value: \Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPreConditionPluginInterface
+        value: \Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPostSaveInterface
 
     expanderClassName:
         inherit: true
@@ -28,7 +28,7 @@ arguments:
         value: Common/Class.php.twig
 
     targetFilename:
-        value: "{{ paymentMethod }}CheckoutPreConditionPlugin.php"
+        value: "{{ classNamePrefix }}CheckoutPostSavePlugin.php"
 
     targetPath:
         value: "{{ moduleRoot }}/src/{{ organization }}/"

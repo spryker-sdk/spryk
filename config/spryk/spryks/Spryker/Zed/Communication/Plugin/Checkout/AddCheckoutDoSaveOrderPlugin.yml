@@ -11,14 +11,12 @@ arguments:
         default: SprykerEco
 
     className:
-        value: "{{ paymentMethod }}CheckoutPostSavePlugin"
+        value: "{{ classNamePrefix }}CheckoutDoSaveOrderPlugin"
 
     implementerInterfaceName:
-        inherit: true
-        value: \Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPostSaveInterface
+        value: \Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutDoSaveOrderInterface
 
     expanderClassName:
-        inherit: true
         value: "Spryker/Zed/Kernel/Communication/AbstractPlugin"
 
     subDirectory:
@@ -28,7 +26,7 @@ arguments:
         value: Common/Class.php.twig
 
     targetFilename:
-        value: "{{ paymentMethod }}CheckoutPostSavePlugin.php"
+        value: "{{ classNamePrefix }}CheckoutDoSaveOrderPlugin.php"
 
     targetPath:
         value: "{{ moduleRoot }}/src/{{ organization }}/"

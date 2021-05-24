@@ -11,7 +11,7 @@ arguments:
         default: SprykerEco
 
     className:
-        value: "{{ paymentMethod }}OrderPaymentExpanderPlugin"
+        value: "{{ classNamePrefix }}OrderPaymentExpanderPlugin"
 
     implementerInterfaceName:
         inherit: true
@@ -28,7 +28,7 @@ arguments:
         value: Common/Class.php.twig
 
     targetFilename:
-        value: "{{ paymentMethod }}OrderPaymentExpanderPlugin.php"
+        value: "{{ classNamePrefix }}OrderPaymentExpanderPlugin.php"
 
     targetPath:
         value: "{{ moduleRoot }}/src/{{ organization }}/"

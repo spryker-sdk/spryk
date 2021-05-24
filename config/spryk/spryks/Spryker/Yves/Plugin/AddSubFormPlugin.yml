@@ -10,8 +10,11 @@ arguments:
         inherit: true
         default: SprykerEco
 
+    classNamePrefix:
+        inherit: true
+
     className:
-        value: "{{ paymentMethod }}SubFormPlugin"
+        value: "{{ classNamePrefix }}SubFormPlugin"
 
     implementerInterfaceName:
         inherit: true

@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *module* CommandByOrder class."
+description: "Adds a new OMS CommandByOrder plugin."
 mode: both
 
 arguments:
@@ -10,11 +10,11 @@ arguments:
         inherit: true
         default: SprykerEco
 
-    paymentMethod:
+    classNamePrefix:
         inherit: true
 
     className:
-        value: "{{ paymentMethod }}CommandByOrder"
+        value: "{{ classNamePrefix }}CommandByOrder"
 
     implementerInterfaceName:
         inherit: true

@@ -1,5 +1,5 @@
 spryk: template
-description: "Adds a new *module* CheckoutPostSave class."
+description: "Adds a new *module* PaymentMethodFilterPlugin class."
 mode: both
 
 arguments:
@@ -11,22 +11,24 @@ arguments:
         default: SprykerEco
 
     className:
-        value: "{{ paymentMethod }}CheckoutDoSaveOrderPlugin"
+        value: "{{ classNamePrefix }}PaymentMethodFilterPlugin"
 
     implementerInterfaceName:
-        value: \Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutDoSaveOrderInterface
+        inherit: true
+        value: \Spryker\Zed\PaymentExtension\Dependency\Plugin\PaymentMethodFilterPluginInterface
 
     expanderClassName:
+        inherit: true
         value: "Spryker/Zed/Kernel/Communication/AbstractPlugin"
 
     subDirectory:
-        value: "Zed/{{ module }}/Communication/Plugin/Checkout"
+        value: "Zed/{{ module }}/Communication/Plugin/Payment"
 
     template:
         value: Common/Class.php.twig
 
     targetFilename:
-        value: "{{ paymentMethod }}CheckoutDoSaveOrderPlugin.php"
+        value: "{{ className }}.php"
 
     targetPath:
         value: "{{ moduleRoot }}/src/{{ organization }}/"

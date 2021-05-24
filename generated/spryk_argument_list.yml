@@ -4854,25 +4854,25 @@
   mode: 2
   description: 'AddModule repository argument'
 -
-  name: AddDefaultModule.organization
+  name: AddModuleDefault.organization
   mode: 2
-  description: 'AddDefaultModule organization argument'
+  description: 'AddModuleDefault organization argument'
 -
-  name: AddDefaultModule.module
+  name: AddModuleDefault.module
   mode: 2
-  description: 'AddDefaultModule module argument'
+  description: 'AddModuleDefault module argument'
 -
-  name: AddDefaultModule.targetPath
+  name: AddModuleDefault.targetPath
   mode: 2
-  description: 'AddDefaultModule targetPath argument'
+  description: 'AddModuleDefault targetPath argument'
 -
-  name: AddDefaultModule.directories
+  name: AddModuleDefault.directories
   mode: 2
-  description: 'AddDefaultModule directories argument'
+  description: 'AddModuleDefault directories argument'
 -
-  name: AddDefaultModule.repository
+  name: AddModuleDefault.repository
   mode: 2
-  description: 'AddDefaultModule repository argument'
+  description: 'AddModuleDefault repository argument'
 -
   name: AddSharedTransferSchema.module
   mode: 2
@@ -5042,29 +5042,29 @@
   mode: 2
   description: 'AddModuleTravis mode argument'
 -
-  name: AddDataImportModule.organization
+  name: AddModuleDataImport.organization
   mode: 2
-  description: 'AddDataImportModule organization argument'
+  description: 'AddModuleDataImport organization argument'
 -
-  name: AddDataImportModule.module
+  name: AddModuleDataImport.module
   mode: 2
-  description: 'AddDataImportModule module argument'
+  description: 'AddModuleDataImport module argument'
 -
-  name: AddDataImportModule.entity
+  name: AddModuleDataImport.entity
   mode: 2
-  description: 'AddDataImportModule entity argument'
+  description: 'AddModuleDataImport entity argument'
 -
-  name: AddDataImportModule.targetPath
+  name: AddModuleDataImport.targetPath
   mode: 2
-  description: 'AddDataImportModule targetPath argument'
+  description: 'AddModuleDataImport targetPath argument'
 -
-  name: AddDataImportModule.directories
+  name: AddModuleDataImport.directories
   mode: 2
-  description: 'AddDataImportModule directories argument'
+  description: 'AddModuleDataImport directories argument'
 -
-  name: AddDataImportModule.repository
+  name: AddModuleDataImport.repository
   mode: 2
-  description: 'AddDataImportModule repository argument'
+  description: 'AddModuleDataImport repository argument'
 -
   name: AddConstant.organization
   mode: 2
@@ -5142,25 +5142,25 @@
   mode: 2
   description: 'AddModuleComposerJson mode argument'
 -
-  name: AddGuiModule.organization
+  name: AddModuleGui.organization
   mode: 2
-  description: 'AddGuiModule organization argument'
+  description: 'AddModuleGui organization argument'
 -
-  name: AddGuiModule.module
+  name: AddModuleGui.module
   mode: 2
-  description: 'AddGuiModule module argument'
+  description: 'AddModuleGui module argument'
 -
-  name: AddGuiModule.targetPath
+  name: AddModuleGui.targetPath
   mode: 2
-  description: 'AddGuiModule targetPath argument'
+  description: 'AddModuleGui targetPath argument'
 -
-  name: AddGuiModule.directories
+  name: AddModuleGui.directories
   mode: 2
-  description: 'AddGuiModule directories argument'
+  description: 'AddModuleGui directories argument'
 -
-  name: AddGuiModule.repository
+  name: AddModuleGui.repository
   mode: 2
-  description: 'AddGuiModule repository argument'
+  description: 'AddModuleGui repository argument'
 -
   name: AddModuleGitattributes.module
   mode: 2
@@ -5190,25 +5190,25 @@
   mode: 2
   description: 'AddModuleGitattributes mode argument'
 -
-  name: AddYvesModule.organization
+  name: AddModuleYves.organization
   mode: 2
-  description: 'AddYvesModule organization argument'
+  description: 'AddModuleYves organization argument'
 -
-  name: AddYvesModule.module
+  name: AddModuleYves.module
   mode: 2
-  description: 'AddYvesModule module argument'
+  description: 'AddModuleYves module argument'
 -
-  name: AddYvesModule.targetPath
+  name: AddModuleYves.targetPath
   mode: 2
-  description: 'AddYvesModule targetPath argument'
+  description: 'AddModuleYves targetPath argument'
 -
-  name: AddYvesModule.directories
+  name: AddModuleYves.directories
   mode: 2
-  description: 'AddYvesModule directories argument'
+  description: 'AddModuleYves directories argument'
 -
-  name: AddYvesModule.repository
+  name: AddModuleYves.repository
   mode: 2
-  description: 'AddYvesModule repository argument'
+  description: 'AddModuleYves repository argument'
 -
   name: AddServiceDependencyProvider.module
   mode: 2
@@ -5330,25 +5330,25 @@
   mode: 2
   description: 'AddModulePhpStanNeon mode argument'
 -
-  name: AddUtilModule.organization
+  name: AddModuleUtil.organization
   mode: 2
-  description: 'AddUtilModule organization argument'
+  description: 'AddModuleUtil organization argument'
 -
-  name: AddUtilModule.module
+  name: AddModuleUtil.module
   mode: 2
-  description: 'AddUtilModule module argument'
+  description: 'AddModuleUtil module argument'
 -
-  name: AddUtilModule.targetPath
+  name: AddModuleUtil.targetPath
   mode: 2
-  description: 'AddUtilModule targetPath argument'
+  description: 'AddModuleUtil targetPath argument'
 -
-  name: AddUtilModule.directories
+  name: AddModuleUtil.directories
   mode: 2
-  description: 'AddUtilModule directories argument'
+  description: 'AddModuleUtil directories argument'
 -
-  name: AddUtilModule.repository
+  name: AddModuleUtil.repository
   mode: 2
-  description: 'AddUtilModule repository argument'
+  description: 'AddModuleUtil repository argument'
 -
   name: AddClientFactory.module
   mode: 2

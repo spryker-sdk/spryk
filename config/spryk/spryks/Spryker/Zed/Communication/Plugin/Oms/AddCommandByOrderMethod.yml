@@ -13,11 +13,11 @@ arguments:
     subDirectory:
         value: "Zed/{{ module }}/Communication/Plugin/Oms/Command"
 
-    paymentMethod:
+    classNamePrefix:
         inherit: true
 
     className:
-        value: "{{ paymentMethod }}CommandByOrder"
+        value: "{{ classNamePrefix }}CommandByOrder"
 
     method:
         inherit: true

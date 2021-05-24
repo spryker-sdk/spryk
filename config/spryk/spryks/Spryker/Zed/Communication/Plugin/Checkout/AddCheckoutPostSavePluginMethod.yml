@@ -10,7 +10,7 @@ arguments:
         inherit: true
         default: SprykerEco
 
-    paymentMethod:
+    classNamePrefix:
         inherit: true
 
     method:
@@ -36,10 +36,10 @@ arguments:
         value: Common/Method.php.twig
 
     target:
-        value: "{{ paymentMethod }}CheckoutPostSavePlugin"
+        value: "{{ classNamePrefix }}CheckoutPostSavePlugin"
 
     fqcnPattern:
-        value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ paymentMethod }}CheckoutPostSavePlugin"
+        value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ classNamePrefix }}CheckoutPostSavePlugin"
 
 preSpryks:
     - AddCheckoutPostSavePlugin

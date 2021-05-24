@@ -10,7 +10,7 @@ arguments:
         inherit: true
         default: SprykerEco
 
-    paymentMethod:
+    classNamePrefix:
         inherit: true
 
     subDirectory:
@@ -36,10 +36,10 @@ arguments:
         value: Common/Method.php.twig
 
     target:
-        value: "{{ paymentMethod }}PaymentMethodFilterPlugin"
+        value: "{{ classNamePrefix }}PaymentMethodFilterPlugin"
 
     fqcnPattern:
-        value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ paymentMethod }}PaymentMethodFilterPlugin"
+        value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ classNamePrefix }}PaymentMethodFilterPlugin"
 
 preSpryks:
     - AddPaymentMethodFilterPlugin

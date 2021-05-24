@@ -1,7 +1,7 @@
 spryk: structure
 description: "Adds a new payment module structure."
 priority: 1
-mode: core
+mode: both
 level: 1
 
 arguments:
@@ -21,6 +21,9 @@ arguments:
     directories:
         value:
             - "src/{{ organization }}/"
+
+    classNamePrefix:
+        value: '{{ paymentMethod }}'
 
 preSpryks:
     - AddModule

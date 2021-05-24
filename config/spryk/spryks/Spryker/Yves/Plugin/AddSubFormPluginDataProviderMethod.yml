@@ -10,7 +10,7 @@ arguments:
         inherit: true
         default: SprykerEco
 
-    paymentMethod:
+    classNamePrefix:
         inherit: true
 
     method:
@@ -35,7 +35,7 @@ arguments:
         value: Common/Method.php.twig
 
     target:
-        value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ paymentMethod }}SubFormPlugin"
+        value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ classNamePrefix }}SubFormPlugin"
 
 preSpryks:
     - AddSubFormPlugin
