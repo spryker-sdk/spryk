@@ -1,5 +1,5 @@
 spryk: method
-description: "Adds a new *module* class method."
+description: "Adds a method run() to a new or existed <PaymentMethod>CommandByOrder class."
 mode: both
 
 arguments:
