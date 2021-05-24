@@ -15,10 +15,10 @@ use Codeception\Test\Unit;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddDataImportModuleTest
+ * @group AddModuleUtilTest
  * Add your own group annotations below this line
  */
-class AddDataImportModuleTest extends Unit
+class AddModuleUtilTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -28,29 +28,27 @@ class AddDataImportModuleTest extends Unit
     /**
      * @return void
      */
-    public function testAddsDataImportModuleDirectories(): void
+    public function testAddsUtilModuleDirectories(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--entity' => 'FooBarItem',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed');
         $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared');
+        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Service');
     }
 
     /**
      * @return void
      */
-    public function testAddsDataImportModuleDirectoriesOnProjectLayer(): void
+    public function testAddsUtilModuleDirectoriesOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--entity' => 'FooBarItem',
             '--mode' => 'project',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getProjectModuleDirectory());
         $this->assertDirectoryExists($this->tester->getProjectModuleDirectory('FooBar', 'Shared'));
+        $this->assertDirectoryExists($this->tester->getProjectModuleDirectory('FooBar', 'Service'));
     }
 }

@@ -23,7 +23,8 @@
      {% endif -%}
      * @return {{ output }}
      */
-    public function {{ method }}({% if input.value is not empty %}{{ input.value | typedArrayConvert }}{% endif %}): {{ output | typedArrayConvert }}
+    public function {{ method }}({% if input.value is not empty %}{{ input.value | typedArrayConvert }}{% endif %}){% if output.value is not empty %}: {{ output | typedArrayConvert }}{% endif %}
+
     {
     {% if body is defined and body is not empty %}
     {{ body | raw }}

@@ -121,8 +121,9 @@ class MethodSpryk implements SprykBuilderInterface
     protected function methodExists(SprykDefinitionInterface $sprykDefinition): bool
     {
         $reflectionClass = $this->getReflection($sprykDefinition);
+        $methodName = $this->getMethodName($sprykDefinition);
 
-        if ($reflectionClass->hasMethod($this->getMethodName($sprykDefinition))) {
+        if ($reflectionClass->hasMethod($methodName) && $reflectionClass->getMethod($methodName)->getDeclaringClass() === $reflectionClass) {
             return true;
         }
 

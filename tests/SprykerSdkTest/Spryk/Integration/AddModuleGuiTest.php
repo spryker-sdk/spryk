@@ -15,10 +15,10 @@ use Codeception\Test\Unit;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddGuiModuleTest
+ * @group AddModuleGuiTest
  * Add your own group annotations below this line
  */
-class AddGuiModuleTest extends Unit
+class AddModuleGuiTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
