@@ -49,13 +49,14 @@ class UpdateYmlSprykTest extends Unit
      */
     public function testBuildThrowsExceptionWhenYamlContentIsEmpty(): void
     {
-        $this->expectException(YmlException::class);
-
         $sprykDefinition = $this->tester->getSprykDefinition([
                 UpdateYmlSpryk::ARGUMENT_TARGET_PATH => static::TARGET_PATH_VALUE,
         ]);
 
         $updateYmlSpryk = $this->buildUpdateYmlSpryk();
+
+        $this->expectException(YmlException::class);
+
         $updateYmlSpryk->build(
             $sprykDefinition,
             $this->getSprykStyleMock()

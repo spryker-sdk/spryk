@@ -62,6 +62,7 @@ class SprykRunTest extends Unit
         ];
 
         $this->expectException(BuilderNotFoundException::class);
+
         $tester->execute($arguments);
     }
 
@@ -79,6 +80,7 @@ class SprykRunTest extends Unit
         ];
 
         $this->expectException(SprykConfigFileNotFound::class);
+
         $tester->execute($arguments);
     }
 

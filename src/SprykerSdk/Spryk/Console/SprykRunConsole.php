@@ -7,6 +7,7 @@
 
 namespace SprykerSdk\Spryk\Console;
 
+use RuntimeException;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -94,11 +95,18 @@ class SprykRunConsole extends AbstractSprykConsole
     /**
      * @param \Symfony\Component\Console\Input\InputInterface $input
      *
+     * @throws \RuntimeException
+     *
      * @return string
      */
     protected function getSprykName(InputInterface $input): string
     {
-        return current((array)$input->getArgument(static::ARGUMENT_SPRYK));
+        $name = current((array)$input->getArgument(static::ARGUMENT_SPRYK));
+        if ($name === false) {
+            throw new RuntimeException('Cannot retrieve Spryk name');
+        }
+
+        return $name;
     }
 
     /**

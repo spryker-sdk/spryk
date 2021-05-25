@@ -1,6 +1,6 @@
 # Spryk Module
-
-[![Build Status](https://github.com/spryker-sdk/spryk/workflows/CI/badge.svg?branch=master)](https://github.com/spryker-sdk/spryk/actions?query=workflow%3ACI+branch%3Amaster)
+[![CI](https://github.com/spryker-sdk/spryk/workflows/CI/badge.svg?branch=master)](https://github.com/spryker-sdk/spryk/actions?query=workflow%3ACI+branch%3Amaster)
+[![Latest Stable Version](https://poser.pugx.org/spryker-sdk/spryk/v/stable.svg)](https://packagist.org/packages/spryker-sdk/spryk)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 
@@ -29,7 +29,7 @@ namespace Pyz\Zed\Console;
 use SprykerSdk\Spryk\Console\SprykDumpConsole;
 use SprykerSdk\Spryk\Console\SprykBuildConsole;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
- 
+
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
     protected function getConsoleCommands(Container $container)
@@ -40,20 +40,19 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new SprykDumpConsole();
         }
         ...
- 
+
     }
 }
 ```
 
-Currently available commands are `SprykDumpConsole` and `SprykRunConsole`. 
+Currently available commands are `SprykDumpConsole` and `SprykRunConsole`.
 
-1. To get a list of all available spryks run `vendor/bin/console spryk:dump`. 
-2. To get a list of all options available for a specific spryk run `vendor/bin/console spryk:dump {SPRYK NAME}`. 
+1. To get a list of all available spryks run `vendor/bin/console spryk:dump`.
+2. To get a list of all options available for a specific spryk run `vendor/bin/console spryk:dump {SPRYK NAME}`.
 3. To execute one Spryk run `vendor/bin/console spryk:run {SPRYK NAME}`.
 4. To optimize searching of configurations run `vendor/bin/console spryk:build`.
 
 When you run a Spryk, the console will ask you for all needed arguments to build the Spryk. You also have the ability to pass all known arguments on the console by using `--{argument name}={argument value}`.
-
 
 ### SprykGui
 
@@ -88,9 +87,9 @@ A structure Spryk creates directory structure you define. The CreateSprykerModul
 
 ### Method Spryk
 
-The method Spryk is able to add methods to a specified target e.g. `Spryker\Zed\FooBar\Business\FooBarFacade` it needs some more arguments to fullfill the task as the prior mentioned Spryks. 
+The method Spryk is able to add methods to a specified target e.g. `Spryker\Zed\FooBar\Business\FooBarFacade` it needs some more arguments to fullfill the task as the prior mentioned Spryks.
 
-To get an idea what your Spryk needs take a look into the already existing Spryks.  
+To get an idea what your Spryk needs take a look into the already existing Spryks.
 
 # How to create a Spryk?
 
@@ -98,7 +97,7 @@ In most cases it is very easy to create a Spryk. As the whole Spryk Tool is cove
 
 If you only need to add a new Spryk configuration you will start by adding an Integration test for the new Spryk definition. You need to add the name of the Spryk you want to test. E.g. AddMySuperNiceFile and add the assertion to have this file created after you executed the test.
 
-When this is done run the Integration tests with `vendor/bin/codecept run Integration -g {YOUR TEST GROUP}` and see the test failing. You will get a message that the Spryk definition was not found by the given name, so add the definition file for you new Spryk. 
+When this is done run the Integration tests with `vendor/bin/codecept run Integration -g {YOUR TEST GROUP}` and see the test failing. You will get a message that the Spryk definition was not found by the given name, so add the definition file for you new Spryk.
 
 You need to add your Spryk definition file into `config/spryk/spryks/` on project or core level:
 

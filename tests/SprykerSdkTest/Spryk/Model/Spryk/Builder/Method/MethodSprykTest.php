@@ -51,9 +51,10 @@ class MethodSprykTest extends Unit
      */
     public function testBuildThrowsExceptionWhenReflectionClassFilenameIsNull()
     {
+        $methodSpryk = $this->buildMethodSprykMockWithEmptyFileNameOfReflectionClass();
+
         $this->expectException(ReflectionException::class);
 
-        $methodSpryk = $this->buildMethodSprykMockWithEmptyFileNameOfReflectionClass();
         $methodSpryk->build(
             $this->tester->getSprykDefinition([MethodSpryk::ARGUMENT_TARGET => static::ARGUMENT_TARGET]),
             $this->getSprykStyleMock()
@@ -65,9 +66,10 @@ class MethodSprykTest extends Unit
      */
     public function testBuildThrowsExceptionWhenTargetFileIsEmpty()
     {
+        $methodSpryk = $this->buildMethodSprykMockWithEmptyTargetFile();
+
         $this->expectException(EmptyFileException::class);
 
-        $methodSpryk = $this->buildMethodSprykMockWithEmptyTargetFile();
         $methodSpryk->build(
             $this->tester->getSprykDefinition([MethodSpryk::ARGUMENT_TARGET => static::ARGUMENT_TARGET]),
             $this->getSprykStyleMock()
