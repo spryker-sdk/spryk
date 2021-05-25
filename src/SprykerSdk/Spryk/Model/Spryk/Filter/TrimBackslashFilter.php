@@ -24,8 +24,6 @@ class TrimBackslashFilter implements FilterInterface
      */
     public function filter(string $value): string
     {
-        $namespace = trim($value, '\\');
-
-        return $namespace;
+        return trim($value, '\\');
     }
 }
