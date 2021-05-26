@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed\Business;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Plugin\Checkout;
 
 use Codeception\Test\Unit;
 use SprykerSdkTest\Module\ClassName;
