@@ -333,7 +333,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
      */
     protected function buildSubSprykDefinition($sprykInfo, string $parentSprykDefinitionKey): ?SprykDefinitionInterface
     {
-        $parentArgumentCollection = $this->argumentCollectionCache[$parentSprykDefinitionKey] ?? null;
+        $parentArgumentCollection = clone $this->argumentCollectionCache[$parentSprykDefinitionKey];
 
         if (!is_array($sprykInfo)) {
             return $this->buildDefinition($sprykInfo, [], $parentArgumentCollection);

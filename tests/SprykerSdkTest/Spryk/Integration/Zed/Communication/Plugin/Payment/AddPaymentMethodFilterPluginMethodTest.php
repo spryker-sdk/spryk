@@ -38,7 +38,7 @@ class AddPaymentMethodFilterPluginMethodTest extends Unit
         $this->tester->run($this, [
             '--organization' => 'Spryker',
             '--module' => 'FooBar',
-            '--paymentMethod' => 'TestPayment',
+            '--classNamePrefix' => 'TestPayment',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::ZED_PAYMENT_METHOD_FILTER_PLUGIN, 'filterPaymentMethods');

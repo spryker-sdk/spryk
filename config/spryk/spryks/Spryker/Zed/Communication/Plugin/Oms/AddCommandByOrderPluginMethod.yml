@@ -42,4 +42,4 @@ arguments:
         value: "{{ organization }}\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}"
 
 preSpryks:
-    - AddCommandByOrder
+    - AddCommandByOrderPlugin

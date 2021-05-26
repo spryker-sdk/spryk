@@ -1,7 +1,7 @@
 spryk: structure
 description: "Adds a new *module* tests structure."
 priority: 1
-mode: both
+mode: core
 level: 3
 
 arguments:

@@ -10,6 +10,9 @@ arguments:
         inherit: true
         default: SprykerEco
 
+    classNamePrefix:
+        inherit: true
+
     className:
         value: "{{ classNamePrefix }}PaymentMethodFilterPlugin"
 

@@ -8,7 +8,6 @@
 namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Plugin\Checkout;
 
 use Codeception\Test\Unit;
-use SprykerSdkTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -20,10 +19,10 @@ use SprykerSdkTest\Module\ClassName;
  * @group Communication
  * @group Plugin
  * @group Checkout
- * @group AddCheckoutDoSaveOrderPluginMethodTest
+ * @group AddCheckoutPreConditionPluginTest
  * Add your own group annotations below this line
  */
-class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
+class AddCheckoutPreConditionPluginTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -33,20 +32,20 @@ class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsCheckoutDoSaveOrderPluginMethod(): void
+    public function testAddsCheckoutPreConditionPlugin(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN, 'saveOrder');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Plugin/Checkout/TestPaymentCheckoutPreConditionPlugin.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsCheckoutDoSaveOrderPluginMethodOnProjectLayer(): void
+    public function testAddsCheckoutPreConditionPluginFileOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -54,6 +53,6 @@ class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN, 'saveOrder');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Plugin/Checkout/TestPaymentCheckoutPreConditionPlugin.php');
     }
 }

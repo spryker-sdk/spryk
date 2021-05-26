@@ -90,6 +90,6 @@ class ArgumentCollection implements ArgumentCollectionInterface
         $argumentsArray = $this->getArgumentsAsArray();
         ksort($argumentsArray);
 
-        return md5(json_encode($argumentsArray));
+        return md5(serialize($argumentsArray));
     }
 }

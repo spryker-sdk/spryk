@@ -24,6 +24,9 @@ arguments:
   clientMethod:
     inherit: true
 
+  resourceRouteMethod:
+    value: "patch"
+
   targetPath:
     value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/"
 
@@ -39,8 +42,6 @@ postSpryks:
       arguments:
         modelSuffix:
           value: "Updater"
-        resourceRouteMethod:
-          value: "patch"
   - AddGlueDependencyClientBridgeMethod:
       arguments:
         dependentModule:

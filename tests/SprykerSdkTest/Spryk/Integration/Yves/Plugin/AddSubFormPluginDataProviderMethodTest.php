@@ -36,7 +36,7 @@ class AddSubFormPluginDataProviderMethodTest extends Unit
         $this->tester->run($this, [
             '--organization' => 'Spryker',
             '--module' => 'FooBar',
-            '--paymentMethod' => 'TestPayment',
+            '--classNamePrefix' => 'TestPayment',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::YVES_PLUGIN_SUB_FORM_PLUGIN, 'createSubFormDataProvider');

@@ -31,14 +31,27 @@ class AddSubFormPluginMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddMethod(): void
+    public function testAddsSubFormPluginMethod(): void
     {
         $this->tester->run($this, [
-            '--organization' => 'Spryker',
             '--module' => 'FooBar',
-            '--paymentMethod' => 'TestPayment',
+            '--classNamePrefix' => 'TestPayment',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::YVES_PLUGIN_SUB_FORM_PLUGIN, 'createSubForm');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsSubFormPluginMethodOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--classNamePrefix' => 'TestPayment',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_PLUGIN_SUB_FORM_PLUGIN, 'createSubForm');
     }
 }

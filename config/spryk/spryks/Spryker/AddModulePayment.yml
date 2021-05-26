@@ -35,6 +35,6 @@ postSpryks:
     - AddPaymentMethodFilterPluginMethod
     - AddCheckoutPreConditionPluginMethod
     - AddOrderPaymentExpanderPluginMethod
-    - AddCommandByOrderMethod
+    - AddCommandByOrderPluginMethod
     - AddSubFormPluginMethod
     - AddSubFormPluginDataProviderMethod

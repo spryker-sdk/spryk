@@ -24,6 +24,9 @@ arguments:
   clientMethod:
     inherit: true
 
+  resourceRouteMethod:
+    value: "delete"
+
   targetPath:
     value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/"
 
@@ -39,8 +42,6 @@ preSpryks:
           value: "{{ resourceType | dashToCamelCase | singularize }}"
         modelSuffix:
           value: "Deleter"
-        resourceRouteMethod:
-          value: "delete"
   - AddGlueDependencyClientBridgeMethod:
       arguments:
         dependentModule:

@@ -33,14 +33,27 @@ class AddCheckoutPreConditionPluginMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddMethod(): void
+    public function testAddsCheckoutPreConditionPluginMethod(): void
     {
         $this->tester->run($this, [
-            '--organization' => 'Spryker',
             '--module' => 'FooBar',
-            '--paymentMethod' => 'TestPayment',
+            '--classNamePrefix' => 'TestPayment',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::ZED_CHECKOUT_PRE_CONDITION_PLUGIN, 'checkCondition');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsCheckoutPreConditionPluginMethodOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--classNamePrefix' => 'TestPayment',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_CHECKOUT_PRE_CONDITION_PLUGIN, 'checkCondition');
     }
 }
