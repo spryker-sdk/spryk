@@ -41,4 +41,9 @@ interface ArgumentCollectionInterface
      * @return array
      */
     public function getArgumentsAsArray(): array;
+
+    /**
+     * @return string
+     */
+    public function getFingerprint(): string;
 }

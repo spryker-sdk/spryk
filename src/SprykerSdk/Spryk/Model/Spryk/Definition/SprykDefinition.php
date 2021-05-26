@@ -24,6 +24,11 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @var string
      */
+    protected $sprykDefinitionKey;
+
+    /**
+     * @var string
+     */
     protected $description;
 
     /**
@@ -102,6 +107,26 @@ class SprykDefinition implements SprykDefinitionInterface
     public function setSprykName(string $sprykSprykName)
     {
         $this->sprykName = $sprykSprykName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSprykDefinitionKey(): string
+    {
+        return $this->sprykDefinitionKey;
+    }
+
+    /**
+     * @param string $sprykDefinitionKey
+     *
+     * @return $this
+     */
+    public function setSprykDefinitionKey(string $sprykDefinitionKey)
+    {
+        $this->sprykDefinitionKey = $sprykDefinitionKey;
 
         return $this;
     }

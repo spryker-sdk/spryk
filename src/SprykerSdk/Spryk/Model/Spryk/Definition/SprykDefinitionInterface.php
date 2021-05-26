@@ -36,6 +36,18 @@ interface SprykDefinitionInterface
     public function setSprykName(string $sprykName);
 
     /**
+     * @return string
+     */
+    public function getSprykDefinitionKey(): string;
+
+    /**
+     * @param string $sprykDefinitionKey
+     *
+     * @return $this
+     */
+    public function setSprykDefinitionKey(string $sprykDefinitionKey);
+
+    /**
      * @param array $config
      *
      * @return $this

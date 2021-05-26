@@ -7,10 +7,13 @@
 
 namespace {{ organization }}\Zed\{{ module }}\Business;
 
+use Spryker\Zed\DataImport\Business\DataImportBusinessFactory;
+use Spryker\Zed\DataImport\Business\Model\DataImporterInterface;
+
 /**
  * @method \{{ organization }}\Zed\{{ module }}\{{ module }}Config getConfig()
  */
-class {{ module }}BusinessFactory extends \Spryker\Zed\DataImport\Business\DataImportBusinessFactory
+class {{ module }}BusinessFactory extends DataImportBusinessFactory
 {
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface

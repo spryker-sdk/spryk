@@ -81,4 +81,15 @@ class ArgumentCollection implements ArgumentCollectionInterface
 
         return $result;
     }
+
+    /**
+     * @return string
+     */
+    public function getFingerprint(): string
+    {
+        $argumentsArray = $this->getArgumentsAsArray();
+        ksort($argumentsArray);
+
+        return md5(json_encode($argumentsArray));
+    }
 }

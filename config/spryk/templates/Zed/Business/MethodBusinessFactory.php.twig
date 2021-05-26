@@ -1,19 +1,27 @@
+{% set subDirectoryName = '' %}
+{% if subDirectory is defined and subDirectory.value is not null %}
+    {% set subDirectoryName = subDirectory | replace({"/": "\\"}) ~ '\\' %}
+{% endif %}
+{% if not interfaceName is defined %}
+    {% set interfaceName = '\\' ~ organization ~ '\\Zed\\' ~ module ~ '\\Business\\' ~ subDirectoryName ~ className ~ 'Interface' %}
+{% endif %}
+
 
 {% if not dependencyMethods.value %}
     /**
-     * @return \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+     * @return {{ interfaceName }}
      */
-    public function {{ factoryMethod }}(): \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    public function {{ factoryMethod }}(): {{ interfaceName }}
     {
-        return new \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}();
+        return new \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ className }}();
     }
 {% else %}
     /**
-    * @return \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    * @return {{ interfaceName }}
     */
-    public function {{ factoryMethod }}(): \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}Interface
+    public function {{ factoryMethod }}(): {{ interfaceName }}
     {
-        return new \{{ organization }}\Zed\{{ module }}\Business\{% if subDirectory %}{{ subDirectory | replace({"/": "\\"}) }}\{% endif %}{{ className }}(
+        return new \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ className }}(
         {% for dependencyMethod in dependencyMethods.value -%}
             {%- apply spaceless -%}
                 {% set endofline = '' %}
