@@ -1,14 +1,15 @@
 <?php
 
-{{ include('Partials/licence.twig') }}
+{{ include('Partials/license.twig') }}
 
 namespace {{ organization }}\Zed\{{ module }};
 
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
+use {{ extends | trimBackslash }};
 
 /**
  * @method \{{ organization }}\Zed\{{ module }}\{{ module }}Config getConfig()
  */
-class {{ module }}DependencyProvider extends {{ extends }}
+class {{ module }}DependencyProvider extends {{ extends | classNameShort }}
 {
 }

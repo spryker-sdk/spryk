@@ -1,9 +1,11 @@
 <?php
 
-{{ include('Partials/licence.twig') }}
+{{ include('Partials/license.twig') }}
 
 namespace {{ organization }}\Zed\{{ module }};
 
-class {{ module }}Config extends {{ extends }}
+use {{ extends | trimBackslash }};
+
+class {{ module }}Config extends {{ extends | classNameShort }}
 {
 }
