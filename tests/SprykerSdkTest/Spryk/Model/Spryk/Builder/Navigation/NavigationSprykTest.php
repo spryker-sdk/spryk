@@ -51,9 +51,10 @@ class NavigationSprykTest extends Unit
      */
     public function testBuildThrowsExceptionWhenNotSimpleXmlElement(): void
     {
+        $navigationSpryk = $this->getNavigationSprykMockForFailedToLoadFromFile();
+
         $this->expectException(XmlException::class);
 
-        $navigationSpryk = $this->getNavigationSprykMockForFailedToLoadFromFile();
         $navigationSpryk->build(
             $this->tester->getSprykDefinition([]),
             $this->getSprykStyleMock()

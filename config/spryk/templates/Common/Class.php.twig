@@ -1,0 +1,17 @@
+<?php
+
+{{ include('Partials/licence.twig') }}
+
+namespace {{ organization }}\{{ subDirectory | replace({'/': '\\'}) }};
+
+{% if expanderClassName %}
+use {{ expanderClassName | replace({'/': '\\'}) }};
+
+{% endif %}
+{% if implementerInterfaceName %}
+use {{ implementerInterfaceName | replace({'/': '\\'}) }};
+
+{% endif %}
+class {{ className }}{% if expanderClassName %} extends {{ expanderClassName | replace({'/': '\\'}) | classNameShort }}{% endif %}{% if implementerInterfaceName %} implements {{ implementerInterfaceName | replace({'/': '\\'}) | classNameShort }}{% endif ~%}
+{
+}

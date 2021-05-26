@@ -33,6 +33,8 @@ class SprykDefinitionDumper implements SprykDefinitionDumperInterface
     }
 
     /**
+     * @phpstan-return array<mixed>
+     *
      * @param int|null $level
      *
      * @return array

@@ -123,7 +123,7 @@ class MethodSpryk implements SprykBuilderInterface
         $reflectionClass = $this->getReflection($sprykDefinition);
         $methodName = $this->getMethodName($sprykDefinition);
 
-        if (isset($reflectionClass->getImmediateMethods()[$methodName])) {
+        if ($reflectionClass->hasMethod($methodName) && $reflectionClass->getMethod($methodName)->getDeclaringClass() === $reflectionClass) {
             return true;
         }
 
