@@ -42,6 +42,7 @@ class FilterFactory
             $this->createLowerCaseFilter(),
             $this->createUpperCaseFirstFilter(),
             $this->createUpperCaseFilter(),
+            $this->createTrimBackslashFilter(),
         ];
     }
 
@@ -243,5 +244,13 @@ class FilterFactory
     public function createUpperCaseFilter(): FilterInterface
     {
         return new UpperCaseFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createTrimBackslashFilter(): FilterInterface
+    {
+        return new TrimBackslashFilter();
     }
 }
