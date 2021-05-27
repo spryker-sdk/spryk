@@ -29,7 +29,7 @@ arguments:
         isMultiple: true
 
     interfaceName:
-        default: Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+        default: \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
 
     template:
         value: Module/DataImport/Zed/Business/Model/DataImportZedBusinessModel.php.twig

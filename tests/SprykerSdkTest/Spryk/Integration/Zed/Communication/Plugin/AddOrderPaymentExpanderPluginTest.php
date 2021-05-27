@@ -5,10 +5,9 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Plugin\Checkout;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Plugin;
 
 use Codeception\Test\Unit;
-use SprykerSdkTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
@@ -19,11 +18,10 @@ use SprykerSdkTest\Module\ClassName;
  * @group Zed
  * @group Communication
  * @group Plugin
- * @group Checkout
- * @group AddCheckoutDoSaveOrderPluginMethodTest
+ * @group AddOrderPaymentExpanderPluginTest
  * Add your own group annotations below this line
  */
-class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
+class AddOrderPaymentExpanderPluginTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -33,20 +31,20 @@ class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsCheckoutDoSaveOrderPluginMethod(): void
+    public function testAddsOrderPaymentExpanderPlugin(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN, 'saveOrder');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Plugin/TestPaymentOrderPaymentExpanderPlugin.php');
     }
 
     /**
      * @return void
      */
-    public function testAddsCheckoutDoSaveOrderPluginMethodOnProjectLayer(): void
+    public function testAddsOrderPaymentExpanderPluginFileOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -54,6 +52,6 @@ class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN, 'saveOrder');
+        $this->assertFileExists($this->tester->getProjectModuleDirectory() . 'Communication/Plugin/TestPaymentOrderPaymentExpanderPlugin.php');
     }
 }

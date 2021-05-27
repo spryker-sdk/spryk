@@ -58,6 +58,8 @@ preSpryks:
 
   - AddGlueProcessorModelMethod:
       arguments:
+        className:
+          value: "{{ expanderClassName }}"
         subDirectory:
           value: "Expander"
         modelSuffix:

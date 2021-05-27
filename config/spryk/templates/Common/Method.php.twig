@@ -16,7 +16,7 @@
      {% set inputs = input.value | split(',') -%}
      {%- if inputs is iterable -%}
      {% for input in inputs -%}
-     * @param {{ input }}
+     * @param {{ input | argumentToDocParameter }}
      {% endfor -%}
      *
      {% endif -%}

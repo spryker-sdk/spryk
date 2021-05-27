@@ -70,7 +70,7 @@ class SprykDumpConsole extends AbstractSprykConsole
      */
     protected function getLevelOption(InputInterface $input): ?int
     {
-        $level = $input->getOption(static::OPTION_LEVEL);
+        $level = current((array)$input->getOption(static::OPTION_LEVEL));
 
         return $level === 'all' ? null : (int)$level;
     }

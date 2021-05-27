@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed\Business;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Plugin\Checkout;
 
 use Codeception\Test\Unit;
 use SprykerSdkTest\Module\ClassName;
@@ -33,14 +33,27 @@ class AddCheckoutPostSavePluginMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddMethod(): void
+    public function testAddsCheckoutPostSavePluginMethod(): void
     {
         $this->tester->run($this, [
-            '--organization' => 'Spryker',
             '--module' => 'FooBar',
-            '--paymentMethod' => 'TestPayment',
+            '--classNamePrefix' => 'TestPayment',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::ZED_CHECKOUT_POST_SAVE_PLUGIN, 'executeHook');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddsCheckoutPostSavePluginMethodOnProjectLayer(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--classNamePrefix' => 'TestPayment',
+            '--mode' => 'project',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_CHECKOUT_POST_SAVE_PLUGIN, 'executeHook');
     }
 }

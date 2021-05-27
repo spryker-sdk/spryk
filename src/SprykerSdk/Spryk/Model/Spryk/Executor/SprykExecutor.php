@@ -143,7 +143,7 @@ class SprykExecutor implements SprykExecutorInterface
             $builder->build($sprykDefinition, $style);
         }
 
-        $this->executedSpryks[$sprykDefinition->getSprykName()] = $sprykDefinition;
+        $this->executedSpryks[$sprykDefinition->getSprykDefinitionKey()] = $sprykDefinition;
     }
 
     /**
@@ -238,9 +238,10 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         foreach ($preSpryks as $preSprykDefinition) {
-            if (isset($this->executedSpryks[$preSprykDefinition->getSprykName()])) {
+            if (isset($this->executedSpryks[$preSprykDefinition->getSprykDefinitionKey()])) {
                 continue;
             }
+
             $this->buildSpryk($preSprykDefinition, $style);
         }
     }
@@ -274,7 +275,7 @@ class SprykExecutor implements SprykExecutorInterface
      */
     protected function shouldSubSprykBeBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        if (isset($this->executedSpryks[$sprykDefinition->getSprykName()])) {
+        if (isset($this->executedSpryks[$sprykDefinition->getSprykDefinitionKey()])) {
             return false;
         }
 

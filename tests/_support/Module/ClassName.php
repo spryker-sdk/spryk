@@ -82,6 +82,15 @@ interface ClassName
 
     public const DATA_IMPORT_BUSINESS_FACTORY = 'Spryker\Zed\FooBar\Business\FooBarBusinessFactory';
 
+    public const ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutDoSaveOrderPlugin';
+    public const ZED_CHECKOUT_POST_SAVE_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutPostSavePlugin';
+    public const ZED_CHECKOUT_PRE_CONDITION_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutPreConditionPlugin';
+    public const ZED_ORDER_PAYMENT_EXPANDER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\TestPaymentOrderPaymentExpanderPlugin';
+    public const ZED_PAYMENT_METHOD_FILTER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Payment\TestPaymentPaymentMethodFilterPlugin';
+    public const ZED_PLUGIN_OMS_COMMAND_BY_ORDER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Oms\Command\TestPaymentCommandByOrder';
+
+    public const YVES_PLUGIN_SUB_FORM_PLUGIN = 'Spryker\Yves\FooBar\Plugin\TestPaymentSubFormPlugin';
+
     public const PROJECT_CONFIG_YVES = 'Pyz\Yves\FooBar\FooBarConfig';
     public const PROJECT_CONFIG_ZED = 'Pyz\Zed\FooBar\FooBarConfig';
     public const PROJECT_CONFIG_CLIENT = 'Pyz\Client\FooBar\FooBarConfig';
@@ -155,12 +164,12 @@ interface ClassName
 
     public const PROJECT_DATA_IMPORT_BUSINESS_FACTORY = 'Pyz\Zed\FooBar\Business\FooBarBusinessFactory';
 
-    public const ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutDoSaveOrderPlugin';
-    public const ZED_CHECKOUT_POST_SAVE_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutPostSavePlugin';
-    public const ZED_CHECKOUT_PRE_CONDITION_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutPreConditionPlugin';
-    public const ZED_ORDER_PAYMENT_EXPANDER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\TestPaymentOrderPaymentExpanderPlugin';
-    public const ZED_PAYMENT_METHOD_FILTER_PLUGIN = 'Spryker\Zed\FooBar\Communication\Plugin\Payment\TestPaymentPaymentMethodFilterPlugin';
-    public const ZED_PLUGIN_OMS_COMMAND_BY_ORDER = 'Spryker\Zed\FooBar\Communication\Plugin\Oms\Command\TestPaymentCommandByOrder';
+    public const PROJECT_ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN = 'Pyz\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutDoSaveOrderPlugin';
+    public const PROJECT_ZED_CHECKOUT_POST_SAVE_PLUGIN = 'Pyz\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutPostSavePlugin';
+    public const PROJECT_ZED_CHECKOUT_PRE_CONDITION_PLUGIN = 'Pyz\Zed\FooBar\Communication\Plugin\Checkout\TestPaymentCheckoutPreConditionPlugin';
+    public const PROJECT_ZED_ORDER_PAYMENT_EXPANDER_PLUGIN = 'Pyz\Zed\FooBar\Communication\Plugin\TestPaymentOrderPaymentExpanderPlugin';
+    public const PROJECT_ZED_PAYMENT_METHOD_FILTER_PLUGIN = 'Pyz\Zed\FooBar\Communication\Plugin\Payment\TestPaymentPaymentMethodFilterPlugin';
+    public const PROJECT_ZED_PLUGIN_OMS_COMMAND_BY_ORDER_PLUGIN = 'Pyz\Zed\FooBar\Communication\Plugin\Oms\Command\TestPaymentCommandByOrder';
 
-    public const YVES_PLUGIN_SUB_FORM_PLUGIN = 'Spryker\Yves\FooBar\Plugin\TestPaymentSubFormPlugin';
+    public const PROJECT_YVES_PLUGIN_SUB_FORM_PLUGIN = 'Pyz\Yves\FooBar\Plugin\TestPaymentSubFormPlugin';
 }

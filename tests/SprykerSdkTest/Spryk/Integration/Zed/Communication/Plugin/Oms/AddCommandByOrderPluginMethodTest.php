@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Plugin\Checkout;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Plugin\Oms;
 
 use Codeception\Test\Unit;
 use SprykerSdkTest\Module\ClassName;
@@ -19,11 +19,11 @@ use SprykerSdkTest\Module\ClassName;
  * @group Zed
  * @group Communication
  * @group Plugin
- * @group Checkout
- * @group AddCheckoutDoSaveOrderPluginMethodTest
+ * @group Oms
+ * @group AddCommandByOrderPluginMethodTest
  * Add your own group annotations below this line
  */
-class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
+class AddCommandByOrderPluginMethodTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -33,20 +33,20 @@ class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsCheckoutDoSaveOrderPluginMethod(): void
+    public function testAddsCommandByOrderPluginMethod(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN, 'saveOrder');
+        $this->tester->assertClassHasMethod(ClassName::ZED_PLUGIN_OMS_COMMAND_BY_ORDER_PLUGIN, 'run');
     }
 
     /**
      * @return void
      */
-    public function testAddsCheckoutDoSaveOrderPluginMethodOnProjectLayer(): void
+    public function testAddsCommandByOrderPluginMethodOnProjectLayer(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
@@ -54,6 +54,6 @@ class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_CHECKOUT_DO_SAVE_ORDER_PLUGIN, 'saveOrder');
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_ZED_PLUGIN_OMS_COMMAND_BY_ORDER_PLUGIN, 'run');
     }
 }

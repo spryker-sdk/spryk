@@ -47,7 +47,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
 Currently available commands are `SprykDumpConsole` and `SprykRunConsole`.
 
-1. To get a list of all available spryks run `vendor/bin/console spryk:dump`.
+> **_NOTE:_** However, instead of registering command in `ConsoleDependencyProvider` you can use standalone commands: `vendor/bin/spryk-run`, `vendor/bin/spryk-build` and `vendor/bin/spryk-dump`.
+
+1. To get a list of top level spryks run `vendor/bin/console spryk:dump`.
+1. To get a list of all available spryks run `vendor/bin/console spryk:dump --level=all`.
 2. To get a list of all options available for a specific spryk run `vendor/bin/console spryk:dump {SPRYK NAME}`.
 3. To execute one Spryk run `vendor/bin/console spryk:run {SPRYK NAME}`.
 4. To optimize searching of configurations run `vendor/bin/console spryk:build`.

@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Definition\Builder;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface;
+use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
@@ -45,6 +46,11 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
      * @var \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[]
      */
     protected $definitionCollection = [];
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface[]
+     */
+    protected $argumentCollectionCache = [];
 
     /**
      * @var string|null
@@ -96,42 +102,54 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     /**
      * @param string $sprykName
      * @param array|null $preDefinedDefinition
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface|null $parentArgumentCollection
      *
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
-    public function buildDefinition(string $sprykName, ?array $preDefinedDefinition = null): SprykDefinitionInterface
-    {
+    public function buildDefinition(
+        string $sprykName,
+        ?array $preDefinedDefinition = null,
+        ?ArgumentCollectionInterface $parentArgumentCollection = null
+    ): SprykDefinitionInterface {
         if ($this->calledSpryk === null) {
             $this->calledSpryk = $sprykName;
         }
 
-        if (!isset($this->definitionCollection[$sprykName])) {
-            $this->resolveModeByOrganisation($preDefinedDefinition);
+        $this->resolveModeByOrganisation($preDefinedDefinition);
+        $sprykConfiguration = $this->loadConfig($sprykName);
 
-            $sprykConfiguration = $this->loadConfig($sprykName);
+        $arguments = $this->mergeArguments($sprykConfiguration[static::ARGUMENTS], $preDefinedDefinition);
 
-            $arguments = $this->mergeArguments($sprykConfiguration[static::ARGUMENTS], $preDefinedDefinition);
+        if ($this->mode === null && isset($arguments[static::ARGUMENT_NAME_MODE][static::ARGUMENT_KEY_VALUE])) {
+            $this->mode = $arguments[static::ARGUMENT_NAME_MODE][static::ARGUMENT_KEY_VALUE];
+        }
 
-            if ($this->mode === null && isset($arguments[static::ARGUMENT_NAME_MODE][static::ARGUMENT_KEY_VALUE])) {
-                $this->mode = $arguments[static::ARGUMENT_NAME_MODE][static::ARGUMENT_KEY_VALUE];
-            }
+        $argumentCollection = $this->argumentResolver->resolve(
+            $arguments,
+            $sprykName,
+            $this->style,
+            $parentArgumentCollection
+        );
 
-            $argumentCollection = $this->argumentResolver->resolve($arguments, $sprykName, $this->style);
+        $sprykDefinitionKey = sprintf('%s.%s', $sprykName, $argumentCollection->getFingerprint());
+        $this->argumentCollectionCache[$sprykDefinitionKey] = $argumentCollection;
 
+        if (!isset($this->definitionCollection[$sprykDefinitionKey])) {
             $sprykDefinition = $this->createDefinition($sprykName, $sprykConfiguration[static::SPRYK_BUILDER_NAME]);
-            $this->definitionCollection[$sprykName] = $sprykDefinition;
+            $this->definitionCollection[$sprykDefinitionKey] = $sprykDefinition;
 
             $sprykDefinition->setMode($this->getMode($sprykConfiguration));
             $sprykDefinition->setArgumentCollection($argumentCollection);
+            $sprykDefinition->setSprykDefinitionKey($sprykDefinitionKey);
 
             $sprykDefinition->setPreCommands($this->getPreCommands($sprykConfiguration));
-            $sprykDefinition->setPreSpryks($this->getPreSpryks($sprykConfiguration));
-            $sprykDefinition->setPostSpryks($this->getPostSpryks($sprykConfiguration));
+            $sprykDefinition->setPreSpryks($this->getPreSpryks($sprykConfiguration, $sprykDefinitionKey));
+            $sprykDefinition->setPostSpryks($this->getPostSpryks($sprykConfiguration, $sprykDefinitionKey));
             $sprykDefinition->setPostCommands($this->getPostCommands($sprykConfiguration));
             $sprykDefinition->setConfig($this->getConfig($sprykConfiguration, $preDefinedDefinition));
         }
 
-        return $this->definitionCollection[$sprykName];
+        return $this->definitionCollection[$sprykDefinitionKey];
     }
 
     /**
@@ -239,14 +257,18 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
     /**
      * @param array $sprykConfiguration
+     * @param string $parentSprykDefinitionKey
      *
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
      */
-    protected function getPreSpryks(array $sprykConfiguration): array
+    protected function getPreSpryks(array $sprykConfiguration, string $parentSprykDefinitionKey): array
     {
         $preSpryks = [];
         if (isset($sprykConfiguration[static::CONFIGURATION_KEY_PRE_SPRYKS])) {
-            $preSpryks = $this->buildPreSprykDefinitions($sprykConfiguration[static::CONFIGURATION_KEY_PRE_SPRYKS]);
+            $preSpryks = $this->buildPreSprykDefinitions(
+                $sprykConfiguration[static::CONFIGURATION_KEY_PRE_SPRYKS],
+                $parentSprykDefinitionKey
+            );
         }
 
         return array_filter($preSpryks);
@@ -254,20 +276,15 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
     /**
      * @param array $preSpryks
+     * @param string $parentSprykDefinitionKey
      *
      * @return array
      */
-    protected function buildPreSprykDefinitions(array $preSpryks): array
+    protected function buildPreSprykDefinitions(array $preSpryks, string $parentSprykDefinitionKey): array
     {
         $preSprykDefinitions = [];
         foreach ($preSpryks as $preSprykName) {
-            if ($this->calledSpryk === $preSprykName) {
-                $preSprykDefinitions[] = $this->definitionCollection[$this->calledSpryk];
-
-                continue;
-            }
-
-            $preSprykDefinitions[] = $this->buildSubSprykDefinition($preSprykName);
+            $preSprykDefinitions[] = $this->buildSubSprykDefinition($preSprykName, $parentSprykDefinitionKey);
         }
 
         return $preSprykDefinitions;
@@ -275,14 +292,18 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
     /**
      * @param array $sprykConfiguration
+     * @param string $parentSprykDefinitionKey
      *
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
      */
-    protected function getPostSpryks(array $sprykConfiguration): array
+    protected function getPostSpryks(array $sprykConfiguration, string $parentSprykDefinitionKey): array
     {
         $postSpryks = [];
         if (isset($sprykConfiguration[static::CONFIGURATION_KEY_POST_SPRYKS])) {
-            $postSpryks = $this->buildPostSprykDefinitions($sprykConfiguration[static::CONFIGURATION_KEY_POST_SPRYKS]);
+            $postSpryks = $this->buildPostSprykDefinitions(
+                $sprykConfiguration[static::CONFIGURATION_KEY_POST_SPRYKS],
+                $parentSprykDefinitionKey
+            );
         }
 
         return array_filter($postSpryks);
@@ -290,14 +311,15 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
     /**
      * @param array $postSpryks
+     * @param string $parentSprykDefinitionKey
      *
      * @return array
      */
-    protected function buildPostSprykDefinitions(array $postSpryks): array
+    protected function buildPostSprykDefinitions(array $postSpryks, string $parentSprykDefinitionKey): array
     {
         $postSprykDefinitions = [];
         foreach ($postSpryks as $postSprykName) {
-            $postSprykDefinitions[] = $this->buildSubSprykDefinition($postSprykName);
+            $postSprykDefinitions[] = $this->buildSubSprykDefinition($postSprykName, $parentSprykDefinitionKey);
         }
 
         return $postSprykDefinitions;
@@ -305,19 +327,22 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 
     /**
      * @param string|array $sprykInfo
+     * @param string $parentSprykDefinitionKey
      *
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface|null
      */
-    protected function buildSubSprykDefinition($sprykInfo): ?SprykDefinitionInterface
+    protected function buildSubSprykDefinition($sprykInfo, string $parentSprykDefinitionKey): ?SprykDefinitionInterface
     {
+        $parentArgumentCollection = clone $this->argumentCollectionCache[$parentSprykDefinitionKey];
+
         if (!is_array($sprykInfo)) {
-            return $this->buildDefinition($sprykInfo);
+            return $this->buildDefinition($sprykInfo, [], $parentArgumentCollection);
         }
 
         $sprykName = array_keys($sprykInfo)[0];
         $preDefinedDefinition = $sprykInfo[$sprykName];
 
-        return $this->buildDefinition($sprykName, $preDefinedDefinition);
+        return $this->buildDefinition($sprykName, $preDefinedDefinition, $parentArgumentCollection);
     }
 
     /**

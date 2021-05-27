@@ -15,7 +15,7 @@ use Codeception\Test\Unit;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group Test
+ * @group AddModuleDataImportTest
  * Add your own group annotations below this line
  */
 class AddModuleDataImportTest extends Unit

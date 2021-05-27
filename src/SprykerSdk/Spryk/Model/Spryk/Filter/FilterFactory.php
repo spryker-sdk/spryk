@@ -18,6 +18,7 @@ class FilterFactory
     public function getFilterCollection(): array
     {
         return [
+            $this->createArgumentToDocParameterFilter(),
             $this->createCamelBackFilter(),
             $this->createClassNameShortFilter(),
             $this->createEnsureControllerSuffixFilter(),
@@ -43,6 +44,14 @@ class FilterFactory
             $this->createUpperCaseFilter(),
             $this->createTrimBackslashFilter(),
         ];
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createArgumentToDocParameterFilter(): FilterInterface
+    {
+        return new ArgumentToDocParameterFilter();
     }
 
     /**

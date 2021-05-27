@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed\Business;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Communication\Plugin\Payment;
 
 use Codeception\Test\Unit;
 use SprykerSdkTest\Module\ClassName;
@@ -38,7 +38,7 @@ class AddPaymentMethodFilterPluginMethodTest extends Unit
         $this->tester->run($this, [
             '--organization' => 'Spryker',
             '--module' => 'FooBar',
-            '--paymentMethod' => 'TestPayment',
+            '--classNamePrefix' => 'TestPayment',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::ZED_PAYMENT_METHOD_FILTER_PLUGIN, 'filterPaymentMethods');

@@ -116,7 +116,7 @@ class SprykRunConsole extends AbstractSprykConsole
      */
     protected function getTargetModuleName(InputInterface $input): string
     {
-        return current((array)$input->getArgument(static::ARGUMENT_TARGET_MODULE));
+        return current((array)$input->getArgument(static::ARGUMENT_TARGET_MODULE)) ?: '';
     }
 
     /**
@@ -126,7 +126,7 @@ class SprykRunConsole extends AbstractSprykConsole
      */
     protected function getDependentModuleName(InputInterface $input): string
     {
-        return current((array)$input->getArgument(static::ARGUMENT_DEPENDENT_MODULE));
+        return current((array)$input->getArgument(static::ARGUMENT_DEPENDENT_MODULE)) ?: '';
     }
 
     /**

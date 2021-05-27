@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed\Business;
+namespace SprykerSdkTest\Spryk\Integration\Yves\Plugin;
 
 use Codeception\Test\Unit;
 use SprykerSdkTest\Module\ClassName;
@@ -36,7 +36,7 @@ class AddSubFormPluginDataProviderMethodTest extends Unit
         $this->tester->run($this, [
             '--organization' => 'Spryker',
             '--module' => 'FooBar',
-            '--paymentMethod' => 'TestPayment',
+            '--classNamePrefix' => 'TestPayment',
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::YVES_PLUGIN_SUB_FORM_PLUGIN, 'createSubFormDataProvider');
