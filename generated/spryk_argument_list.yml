@@ -202,6 +202,10 @@
   mode: 2
   description: 'classNamePrefix argument'
 -
+  name: method
+  mode: 2
+  description: 'method argument'
+-
   name: implementerInterfaceName
   mode: 2
   description: 'implementerInterfaceName argument'
@@ -209,10 +213,6 @@
   name: expanderClassName
   mode: 2
   description: 'expanderClassName argument'
--
-  name: method
-  mode: 2
-  description: 'method argument'
 -
   name: resourceType
   mode: 2
@@ -3394,129 +3394,129 @@
   mode: 2
   description: 'AddZedNavigationSchema level argument'
 -
-  name: AddCommandByOrder.module
+  name: AddCommandByOrderPluginMethod.module
   mode: 2
-  description: 'AddCommandByOrder module argument'
+  description: 'AddCommandByOrderPluginMethod module argument'
 -
-  name: AddCommandByOrder.organization
+  name: AddCommandByOrderPluginMethod.organization
   mode: 2
-  description: 'AddCommandByOrder organization argument'
+  description: 'AddCommandByOrderPluginMethod organization argument'
 -
-  name: AddCommandByOrder.classNamePrefix
+  name: AddCommandByOrderPluginMethod.subDirectory
   mode: 2
-  description: 'AddCommandByOrder classNamePrefix argument'
+  description: 'AddCommandByOrderPluginMethod subDirectory argument'
 -
-  name: AddCommandByOrder.className
+  name: AddCommandByOrderPluginMethod.classNamePrefix
   mode: 2
-  description: 'AddCommandByOrder className argument'
+  description: 'AddCommandByOrderPluginMethod classNamePrefix argument'
 -
-  name: AddCommandByOrder.implementerInterfaceName
+  name: AddCommandByOrderPluginMethod.className
   mode: 2
-  description: 'AddCommandByOrder implementerInterfaceName argument'
+  description: 'AddCommandByOrderPluginMethod className argument'
 -
-  name: AddCommandByOrder.expanderClassName
+  name: AddCommandByOrderPluginMethod.method
   mode: 2
-  description: 'AddCommandByOrder expanderClassName argument'
+  description: 'AddCommandByOrderPluginMethod method argument'
 -
-  name: AddCommandByOrder.subDirectory
+  name: AddCommandByOrderPluginMethod.input
   mode: 2
-  description: 'AddCommandByOrder subDirectory argument'
+  description: 'AddCommandByOrderPluginMethod input argument'
 -
-  name: AddCommandByOrder.template
+  name: AddCommandByOrderPluginMethod.output
   mode: 2
-  description: 'AddCommandByOrder template argument'
+  description: 'AddCommandByOrderPluginMethod output argument'
 -
-  name: AddCommandByOrder.targetFilename
+  name: AddCommandByOrderPluginMethod.annotations
   mode: 2
-  description: 'AddCommandByOrder targetFilename argument'
+  description: 'AddCommandByOrderPluginMethod annotations argument'
 -
-  name: AddCommandByOrder.targetPath
+  name: AddCommandByOrderPluginMethod.template
   mode: 2
-  description: 'AddCommandByOrder targetPath argument'
+  description: 'AddCommandByOrderPluginMethod template argument'
 -
-  name: AddCommandByOrder.sprykerVendorPath
+  name: AddCommandByOrderPluginMethod.target
   mode: 2
-  description: 'AddCommandByOrder sprykerVendorPath argument'
+  description: 'AddCommandByOrderPluginMethod target argument'
 -
-  name: AddCommandByOrder.moduleSrcDirectory
+  name: AddCommandByOrderPluginMethod.sprykerVendorPath
   mode: 2
-  description: 'AddCommandByOrder moduleSrcDirectory argument'
+  description: 'AddCommandByOrderPluginMethod sprykerVendorPath argument'
 -
-  name: AddCommandByOrder.repository
+  name: AddCommandByOrderPluginMethod.moduleSrcDirectory
   mode: 2
-  description: 'AddCommandByOrder repository argument'
+  description: 'AddCommandByOrderPluginMethod moduleSrcDirectory argument'
 -
-  name: AddCommandByOrder.moduleRoot
+  name: AddCommandByOrderPluginMethod.repository
   mode: 2
-  description: 'AddCommandByOrder moduleRoot argument'
+  description: 'AddCommandByOrderPluginMethod repository argument'
 -
-  name: AddCommandByOrder.level
+  name: AddCommandByOrderPluginMethod.moduleRoot
   mode: 2
-  description: 'AddCommandByOrder level argument'
+  description: 'AddCommandByOrderPluginMethod moduleRoot argument'
 -
-  name: AddCommandByOrderMethod.module
+  name: AddCommandByOrderPluginMethod.level
   mode: 2
-  description: 'AddCommandByOrderMethod module argument'
+  description: 'AddCommandByOrderPluginMethod level argument'
 -
-  name: AddCommandByOrderMethod.organization
+  name: AddCommandByOrderPlugin.module
   mode: 2
-  description: 'AddCommandByOrderMethod organization argument'
+  description: 'AddCommandByOrderPlugin module argument'
 -
-  name: AddCommandByOrderMethod.subDirectory
+  name: AddCommandByOrderPlugin.organization
   mode: 2
-  description: 'AddCommandByOrderMethod subDirectory argument'
+  description: 'AddCommandByOrderPlugin organization argument'
 -
-  name: AddCommandByOrderMethod.classNamePrefix
+  name: AddCommandByOrderPlugin.classNamePrefix
   mode: 2
-  description: 'AddCommandByOrderMethod classNamePrefix argument'
+  description: 'AddCommandByOrderPlugin classNamePrefix argument'
 -
-  name: AddCommandByOrderMethod.className
+  name: AddCommandByOrderPlugin.className
   mode: 2
-  description: 'AddCommandByOrderMethod className argument'
+  description: 'AddCommandByOrderPlugin className argument'
 -
-  name: AddCommandByOrderMethod.method
+  name: AddCommandByOrderPlugin.implementerInterfaceName
   mode: 2
-  description: 'AddCommandByOrderMethod method argument'
+  description: 'AddCommandByOrderPlugin implementerInterfaceName argument'
 -
-  name: AddCommandByOrderMethod.input
+  name: AddCommandByOrderPlugin.expanderClassName
   mode: 2
-  description: 'AddCommandByOrderMethod input argument'
+  description: 'AddCommandByOrderPlugin expanderClassName argument'
 -
-  name: AddCommandByOrderMethod.output
+  name: AddCommandByOrderPlugin.subDirectory
   mode: 2
-  description: 'AddCommandByOrderMethod output argument'
+  description: 'AddCommandByOrderPlugin subDirectory argument'
 -
-  name: AddCommandByOrderMethod.annotations
+  name: AddCommandByOrderPlugin.template
   mode: 2
-  description: 'AddCommandByOrderMethod annotations argument'
+  description: 'AddCommandByOrderPlugin template argument'
 -
-  name: AddCommandByOrderMethod.template
+  name: AddCommandByOrderPlugin.targetFilename
   mode: 2
-  description: 'AddCommandByOrderMethod template argument'
+  description: 'AddCommandByOrderPlugin targetFilename argument'
 -
-  name: AddCommandByOrderMethod.target
+  name: AddCommandByOrderPlugin.targetPath
   mode: 2
-  description: 'AddCommandByOrderMethod target argument'
+  description: 'AddCommandByOrderPlugin targetPath argument'
 -
-  name: AddCommandByOrderMethod.sprykerVendorPath
+  name: AddCommandByOrderPlugin.sprykerVendorPath
   mode: 2
-  description: 'AddCommandByOrderMethod sprykerVendorPath argument'
+  description: 'AddCommandByOrderPlugin sprykerVendorPath argument'
 -
-  name: AddCommandByOrderMethod.moduleSrcDirectory
+  name: AddCommandByOrderPlugin.moduleSrcDirectory
   mode: 2
-  description: 'AddCommandByOrderMethod moduleSrcDirectory argument'
+  description: 'AddCommandByOrderPlugin moduleSrcDirectory argument'
 -
-  name: AddCommandByOrderMethod.repository
+  name: AddCommandByOrderPlugin.repository
   mode: 2
-  description: 'AddCommandByOrderMethod repository argument'
+  description: 'AddCommandByOrderPlugin repository argument'
 -
-  name: AddCommandByOrderMethod.moduleRoot
+  name: AddCommandByOrderPlugin.moduleRoot
   mode: 2
-  description: 'AddCommandByOrderMethod moduleRoot argument'
+  description: 'AddCommandByOrderPlugin moduleRoot argument'
 -
-  name: AddCommandByOrderMethod.level
+  name: AddCommandByOrderPlugin.level
   mode: 2
-  description: 'AddCommandByOrderMethod level argument'
+  description: 'AddCommandByOrderPlugin level argument'
 -
   name: AddCheckoutPostSavePluginMethod.module
   mode: 2
@@ -3650,6 +3650,10 @@
   mode: 2
   description: 'AddCheckoutPreConditionPlugin organization argument'
 -
+  name: AddCheckoutPreConditionPlugin.classNamePrefix
+  mode: 2
+  description: 'AddCheckoutPreConditionPlugin classNamePrefix argument'
+-
   name: AddCheckoutPreConditionPlugin.className
   mode: 2
   description: 'AddCheckoutPreConditionPlugin className argument'
@@ -3705,6 +3709,10 @@
   name: AddCheckoutPostSavePlugin.organization
   mode: 2
   description: 'AddCheckoutPostSavePlugin organization argument'
+-
+  name: AddCheckoutPostSavePlugin.classNamePrefix
+  mode: 2
+  description: 'AddCheckoutPostSavePlugin classNamePrefix argument'
 -
   name: AddCheckoutPostSavePlugin.className
   mode: 2
@@ -3821,6 +3829,10 @@
   name: AddCheckoutDoSaveOrderPlugin.organization
   mode: 2
   description: 'AddCheckoutDoSaveOrderPlugin organization argument'
+-
+  name: AddCheckoutDoSaveOrderPlugin.classNamePrefix
+  mode: 2
+  description: 'AddCheckoutDoSaveOrderPlugin classNamePrefix argument'
 -
   name: AddCheckoutDoSaveOrderPlugin.className
   mode: 2
@@ -4002,6 +4014,10 @@
   mode: 2
   description: 'AddPaymentMethodFilterPlugin organization argument'
 -
+  name: AddPaymentMethodFilterPlugin.classNamePrefix
+  mode: 2
+  description: 'AddPaymentMethodFilterPlugin classNamePrefix argument'
+-
   name: AddPaymentMethodFilterPlugin.className
   mode: 2
   description: 'AddPaymentMethodFilterPlugin className argument'
@@ -4057,6 +4073,10 @@
   name: AddOrderPaymentExpanderPlugin.organization
   mode: 2
   description: 'AddOrderPaymentExpanderPlugin organization argument'
+-
+  name: AddOrderPaymentExpanderPlugin.classNamePrefix
+  mode: 2
+  description: 'AddOrderPaymentExpanderPlugin classNamePrefix argument'
 -
   name: AddOrderPaymentExpanderPlugin.className
   mode: 2
@@ -5062,6 +5082,10 @@
   mode: 2
   description: 'AddGluePostResource clientMethod argument'
 -
+  name: AddGluePostResource.resourceRouteMethod
+  mode: 2
+  description: 'AddGluePostResource resourceRouteMethod argument'
+-
   name: AddGluePostResource.targetPath
   mode: 2
   description: 'AddGluePostResource targetPath argument'
@@ -5778,6 +5802,10 @@
   mode: 2
   description: 'AddGluePatchResource clientMethod argument'
 -
+  name: AddGluePatchResource.resourceRouteMethod
+  mode: 2
+  description: 'AddGluePatchResource resourceRouteMethod argument'
+-
   name: AddGluePatchResource.targetPath
   mode: 2
   description: 'AddGluePatchResource targetPath argument'
@@ -5825,6 +5853,10 @@
   name: AddGlueDeleteResource.clientMethod
   mode: 2
   description: 'AddGlueDeleteResource clientMethod argument'
+-
+  name: AddGlueDeleteResource.resourceRouteMethod
+  mode: 2
+  description: 'AddGlueDeleteResource resourceRouteMethod argument'
 -
   name: AddGlueDeleteResource.targetPath
   mode: 2
@@ -6509,6 +6541,10 @@
   name: AddGlueGetResource.clientMethod
   mode: 2
   description: 'AddGlueGetResource clientMethod argument'
+-
+  name: AddGlueGetResource.resourceRouteMethod
+  mode: 2
+  description: 'AddGlueGetResource resourceRouteMethod argument'
 -
   name: AddGlueGetResource.targetPath
   mode: 2
@@ -8813,6 +8849,10 @@
   name: AddModuleTest.level
   mode: 2
   description: 'AddModuleTest level argument'
+-
+  name: AddModuleTest.mode
+  mode: 2
+  description: 'AddModuleTest mode argument'
 -
   name: AddDataImportZedBusinessFactoryMethod.module
   mode: 2
