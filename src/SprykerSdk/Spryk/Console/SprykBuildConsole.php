@@ -18,7 +18,7 @@ class SprykBuildConsole extends AbstractSprykConsole
     protected function configure(): void
     {
         $this->setName('spryk:build')
-            ->setDescription('Builds a cache for all possible Spryk arguments.');
+            ->setDescription('Builds a cache for all possible Spryk arguments. This command must only be used if a new argument was supplied.');
     }
 
     /**
