@@ -21,9 +21,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     protected const SPRYK_BUILDER_NAME = 'spryk';
 
     protected const ARGUMENTS = 'arguments';
-    protected const ARGUMENT_NAME_LAYER = 'layer';
     protected const ARGUMENT_NAME_MODE = 'mode';
-    protected const ARGUMENT_NAME_MODULE = 'module';
     protected const ARGUMENT_NAME_ORGANIZATION = 'organization';
     protected const ARGUMENT_KEY_VALUE = 'value';
 
@@ -163,7 +161,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
         array $sprykDefinition
     ): array {
         if ($sprykExecutorConfiguration->getTargetModule()) {
-            $sprykDefinition[static::ARGUMENTS][static::ARGUMENT_NAME_MODULE][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getTargetModule();
+            $sprykDefinition[static::ARGUMENTS]['module'][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getTargetModule();
         }
 
         if ($sprykExecutorConfiguration->getTargetModuleOrganization()) {
@@ -171,7 +169,7 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
         }
 
         if ($sprykExecutorConfiguration->getTargetModuleLayer()) {
-            $sprykDefinition[static::ARGUMENTS][static::ARGUMENT_NAME_LAYER][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getTargetModuleLayer();
+            $sprykDefinition[static::ARGUMENTS]['layer'][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getTargetModuleLayer();
         }
 
         return $sprykDefinition;
@@ -188,15 +186,15 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
         array $sprykDefinition
     ): array {
         if ($sprykExecutorConfiguration->getDependentModule()) {
-            $sprykDefinition[static::ARGUMENTS][static::ARGUMENT_NAME_MODULE][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getDependentModule();
+            $sprykDefinition[static::ARGUMENTS]['dependentModule'][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getDependentModule();
         }
 
         if ($sprykExecutorConfiguration->getDependentModuleOrganization()) {
-            $sprykDefinition[static::ARGUMENTS][static::ARGUMENT_NAME_ORGANIZATION][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getDependentModuleOrganization();
+            $sprykDefinition[static::ARGUMENTS]['dependentModuleOrganization'][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getDependentModuleOrganization();
         }
 
         if ($sprykExecutorConfiguration->getDependentModuleLayer()) {
-            $sprykDefinition[static::ARGUMENTS][static::ARGUMENT_NAME_LAYER][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getDependentModuleLayer();
+            $sprykDefinition[static::ARGUMENTS]['dependentModuleLayer'][static::ARGUMENT_KEY_VALUE] = $sprykExecutorConfiguration->getDependentModuleLayer();
         }
 
         return $sprykDefinition;

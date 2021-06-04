@@ -39,7 +39,7 @@ class AddYvesRouteProviderActionTest extends Unit
             '--controllerMethod' => 'index',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::YVES_ROUTE_PROVIDER, 'addIndexRoute');
+        $this->tester->assertClassHasMethod(ClassName::YVES_ROUTE_PROVIDER, 'addFooBarIndexRoute');
     }
 
     /**
@@ -54,6 +54,6 @@ class AddYvesRouteProviderActionTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_ROUTE_PROVIDER, 'addIndexRoute');
+        $this->tester->assertClassHasMethod(ClassName::PROJECT_YVES_ROUTE_PROVIDER, 'addFooBarIndexRoute');
     }
 }

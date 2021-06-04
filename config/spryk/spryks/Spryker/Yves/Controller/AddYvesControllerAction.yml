@@ -11,6 +11,10 @@ arguments:
     module:
         inherit: true
 
+    theme:
+        inherit: true
+        default: default
+
     controller:
         callback:
             - ClassNameShortCallback
