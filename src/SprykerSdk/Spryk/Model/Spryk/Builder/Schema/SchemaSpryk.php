@@ -104,7 +104,7 @@ class SchemaSpryk implements SprykBuilderInterface
      *
      * @return \SimpleXMLElement
      */
-    protected function loadXmlFromFile(SprykDefinitionInterface $sprykDefinition)
+    protected function loadXmlFromFile(SprykDefinitionInterface $sprykDefinition): SimpleXMLElement
     {
         $targetPath = $this->getTargetPath($sprykDefinition);
 

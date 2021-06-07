@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\DependencyProvider;
 
 use Roave\BetterReflection\BetterReflection;
+use Roave\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
@@ -171,7 +172,7 @@ class DependencyProviderSpryk implements SprykBuilderInterface
      *
      * @return \Roave\BetterReflection\Reflection\ReflectionClass
      */
-    protected function getReflection(SprykDefinitionInterface $sprykDefinition)
+    protected function getReflection(SprykDefinitionInterface $sprykDefinition): ReflectionClass
     {
         $betterReflection = new BetterReflection();
 
@@ -185,7 +186,7 @@ class DependencyProviderSpryk implements SprykBuilderInterface
      *
      * @return string|null
      */
-    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition)
+    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition): ?string
     {
         $targetReflection = $this->getReflection($sprykDefinition);
 

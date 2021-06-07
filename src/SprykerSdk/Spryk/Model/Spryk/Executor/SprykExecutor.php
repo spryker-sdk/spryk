@@ -122,7 +122,7 @@ class SprykExecutor implements SprykExecutorInterface
      *
      * @return void
      */
-    protected function executePreSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style)
+    protected function executePreSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
         $style->startPreSpryks($sprykDefinition);
         $this->buildPreSpryks($sprykDefinition, $style);
@@ -135,7 +135,7 @@ class SprykExecutor implements SprykExecutorInterface
      *
      * @return void
      */
-    protected function executeSpryk(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style)
+    protected function executeSpryk(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
         $builder = $this->sprykBuilderCollection->getBuilder($sprykDefinition);
 
@@ -152,7 +152,7 @@ class SprykExecutor implements SprykExecutorInterface
      *
      * @return void
      */
-    protected function executePostSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style)
+    protected function executePostSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
         $style->startPostSpryks($sprykDefinition);
         $this->buildPostSpryks($sprykDefinition, $style);

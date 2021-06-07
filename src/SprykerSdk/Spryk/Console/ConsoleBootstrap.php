@@ -16,7 +16,7 @@ class ConsoleBootstrap extends Application
      * @param string $name
      * @param string $version
      */
-    public function __construct($name = 'Spryker', $version = '1')
+    public function __construct(string $name = 'Spryker', string $version = '1')
     {
         Environment::initialize();
 

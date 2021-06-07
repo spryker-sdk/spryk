@@ -27,7 +27,7 @@ class SprykDumpConsole extends AbstractSprykConsole
     /**
      * @return void
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName(static::COMMAND_NAME)
             ->setDescription(static::COMMAND_DESCRIPTION)
@@ -36,7 +36,7 @@ class SprykDumpConsole extends AbstractSprykConsole
                 static::OPTION_LEVEL,
                 static::OPTION_LEVEL_SHORT,
                 InputOption::VALUE_REQUIRED,
-                'Spryk visibility level (1, 2, 3, all). By default = 1(main spryk commands).',
+                'Spryk visibility level (1, 2, 3, all). By default = 1 (main spryk commands).',
                 (string)SprykConfig::SPRYK_DEFAULT_DUMP_LEVEL
             );
     }
@@ -135,6 +135,7 @@ class SprykDumpConsole extends AbstractSprykConsole
     protected function printTable(OutputInterface $output, array $headers, array $rows): void
     {
         (new Table($output))
+            ->setStyle('compact')
             ->setHeaders($headers)
             ->setRows($rows)
             ->render();

@@ -225,7 +225,7 @@ class ConstantSpryk implements SprykBuilderInterface
      *
      * @return string|null
      */
-    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition)
+    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition): ?string
     {
         $targetReflection = $this->getReflection($sprykDefinition);
         if (!($targetReflection instanceof ReflectionClass)) {

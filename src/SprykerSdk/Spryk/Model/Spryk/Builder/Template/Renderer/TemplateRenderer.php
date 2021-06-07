@@ -10,6 +10,7 @@ namespace SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
+use Twig\Loader\LoaderInterface;
 
 class TemplateRenderer implements TemplateRendererInterface
 {
@@ -81,7 +82,7 @@ class TemplateRenderer implements TemplateRendererInterface
     /**
      * @return \Twig\Loader\LoaderInterface
      */
-    protected function getLoader()
+    protected function getLoader(): LoaderInterface
     {
         return $this->renderer->getLoader();
     }

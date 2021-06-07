@@ -33,7 +33,7 @@ class SprykRunConsole extends AbstractSprykConsole
     /**
      * @return void
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName(static::COMMAND_NAME)
             ->setDescription(static::COMMAND_DESCRIPTION)

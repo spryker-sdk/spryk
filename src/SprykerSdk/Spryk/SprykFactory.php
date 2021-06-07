@@ -108,7 +108,7 @@ class SprykFactory
     /**
      * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterFactory
      */
-    public function createFilterFactory()
+    public function createFilterFactory(): FilterFactory
     {
         return new FilterFactory();
     }
@@ -138,7 +138,7 @@ class SprykFactory
     /**
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackFactory
      */
-    public function createCallbackFactory()
+    public function createCallbackFactory(): CallbackFactory
     {
         return new CallbackFactory();
     }
@@ -175,7 +175,7 @@ class SprykFactory
     /**
      * @return \SprykerSdk\Spryk\SprykConfig
      */
-    public function getConfig()
+    public function getConfig(): SprykConfig
     {
         if ($this->config === null) {
             $this->config = new SprykConfig();
