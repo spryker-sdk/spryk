@@ -36,7 +36,7 @@ class ComposerReplaceGenerateSprykHookCommand extends AbstractSprykHookCommand
     {
         $organization = $sprykDefinition->getArgumentCollection()->getArgument('organization');
 
-        if (!in_array($organization, ['Spryker', 'SprykerShop'])) {
+        if (!in_array($organization, ['Spryker', 'SprykerShop'], true)) {
             return false;
         }
 

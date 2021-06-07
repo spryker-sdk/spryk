@@ -44,6 +44,6 @@ class ComposerDumpAutoloadSprykHookCommand extends AbstractSprykHookCommand
      */
     protected function getFallbackMessage(SprykDefinitionInterface $sprykDefinition): string
     {
-        return 'Please, add new module into a `replace` section in `composer.json` for the organization.';
+        return 'Please, execute `composer dump-autoload` manually.';
     }
 }
