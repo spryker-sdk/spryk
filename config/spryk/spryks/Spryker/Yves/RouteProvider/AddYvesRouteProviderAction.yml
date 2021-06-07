@@ -23,6 +23,9 @@ arguments:
     controllerMethod:
         callback: EnsureActionSuffixCallback
 
+    constantName:
+        value: "ROUTE_{{ controller | classNameShort | removeControllerSuffix | underscored | upper }}_{{ controllerMethod | removeActionSuffix | underscored | upper }}"
+
     templateName:
         value: "{{ controllerMethod | removeActionSuffix | camelCaseToDash | lowerCase }}"
 
@@ -35,12 +38,10 @@ arguments:
 preSpryks:
     - AddYvesController
     - AddYvesRouteProvider
-
-postSpryks:
     - AddConstant:
           arguments:
               name:
-                  value: "ROUTE_{{ controllerMethod | removeActionSuffix | underscored | upper }}"
+                  value: "{{ constantName }}"
               value:
                   value:  "{{ module | camelCaseToDash | lowerCase }}/{{ controller | removeControllerSuffix | camelCaseToDash | lowerCase }}-{{ controllerMethod | removeActionSuffix | camelCaseToDash | lowerCase }}"
               visibility:

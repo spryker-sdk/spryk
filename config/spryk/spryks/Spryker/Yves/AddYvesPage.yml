@@ -11,15 +11,24 @@ arguments:
     module:
         inherit: true
 
+    theme:
+        inherit: true
+        default: default
+
+    controller:
+        inherit: true
+        default: Index
+
+    controllerMethod:
+        inherit: true
+        default: index
+
     targetPath:
         value: "{{ moduleRoot }}/"
 
     directories:
         value:
             - "src/{{ organization }}/"
-
-    controllerMethod:
-        value: index
 
 preSpryks:
     - AddModuleYves

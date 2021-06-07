@@ -23,8 +23,10 @@ arguments:
         value:
             - "src/{{ organization }}/"
 
-postSpryks:
+preSpryks:
     - AddModule
+
+postSpryks:
     - AddSharedTransferSchema
     - AddSharedTransferDefinition:
         arguments:

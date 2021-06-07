@@ -51,6 +51,8 @@ class SprykDefinitionDumper implements SprykDefinitionDumperInterface
             }
         }
 
+        ksort($sprykDefinitions);
+
         return $sprykDefinitions;
     }
 }

@@ -13,6 +13,18 @@ arguments:
         inherit: true
         type: NewModuleType
 
+    theme:
+        inherit: true
+        default: default
+
+    controller:
+        inherit: true
+        default: Index
+
+    controllerMethod:
+        inherit: true
+        default: index
+
     targetPath:
         value: "{{ moduleRoot }}/"
 

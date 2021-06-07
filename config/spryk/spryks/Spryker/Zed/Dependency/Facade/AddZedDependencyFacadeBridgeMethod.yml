@@ -5,43 +5,47 @@ mode: core
 level: 2
 
 arguments:
-  module:
-    inherit: true
-    moduleFilter:
-      application: Zed
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  dependentModule:
-    inherit: true
-    moduleFilter:
-      application: Zed
+    dependentModuleOrganization:
+        inherit: true
+        default: Spryker
 
-  methods:
-    type: MethodNameChoice
-    choiceLoader: ZedFacadeMethodChoiceLoader
-    isMultiple: true
-    typeOptions:
-      - module
-      - choiceLoader
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  template:
-    value: Zed/Dependency/ZedDependencyBridgeMethod.php.twig
+    methods:
+        type: MethodNameChoice
+        choiceLoader: ZedFacadeMethodChoiceLoader
+        isMultiple: true
+        typeOptions:
+            - module
+            - choiceLoader
 
-  dependencyType:
-    value: Facade
+    template:
+        value: Zed/Dependency/ZedDependencyBridgeMethod.php.twig
 
-  sourceClass:
-    value: "{{ organization }}\\Zed\\{{ dependentModule }}\\Business\\{{ dependentModule }}Facade"
+    dependencyType:
+        value: Facade
 
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Facade\\{{ module }}To{{ dependentModule }}FacadeBridge"
+    sourceClass:
+        value: "{{ organization }}\\Zed\\{{ dependentModule }}\\Business\\{{ dependentModule }}Facade"
+
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Facade\\{{ module }}To{{ dependentModule }}FacadeBridge"
 
 preSpryks:
-  - AddZedBusinessFacade
-  - AddZedDependencyFacadeBridge
+    - AddZedBusinessFacade
+    - AddZedDependencyFacadeBridge
 
 postSpryks:
-  - AddZedDependencyFacadeBridgeInterfaceMethod
+    - AddZedDependencyFacadeBridgeInterfaceMethod
