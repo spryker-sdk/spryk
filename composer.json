@@ -79,12 +79,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "post-install-cmd": [
-            "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-        ],
-        "post-update-cmd": [
-            "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-        ],
         "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "phpstan": "phpstan analyse src/",

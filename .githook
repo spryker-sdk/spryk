@@ -1,8 +1,0 @@
-config:
-  phpstan:
-    config: phpstan.neon
-
-preCommitFileCommands:
-  - GitHook\Command\FileCommand\PreCommit\CodeStyleFixCommand
-  - GitHook\Command\FileCommand\PreCommit\CodeStyleCheckCommand
-  - GitHook\Command\FileCommand\PreCommit\PhpStanCheckCommand
