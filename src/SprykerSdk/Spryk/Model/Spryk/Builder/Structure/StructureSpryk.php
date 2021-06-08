@@ -48,7 +48,7 @@ class StructureSpryk implements SprykBuilderInterface
         $directories = $this->getDirectoriesToCreate($sprykDefinition);
 
         foreach ($directories as $directory) {
-            $this->autoloadRegister($directory);
+            $this->addDirectoryToAutoload($directory);
             if (!is_dir($directory)) {
                 $shouldBuild = true;
             }
@@ -111,11 +111,13 @@ class StructureSpryk implements SprykBuilderInterface
     }
 
     /**
+     * Adds newly created modules to the autoloader to make reflection work.
+     *
      * @param string $path
      *
      * @return void
      */
-    protected function autoloadRegister(string $path): void
+    protected function addDirectoryToAutoload(string $path): void
     {
         spl_autoload_register(function ($class) use ($path): void {
             if (!class_exists($class)) {

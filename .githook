@@ -6,6 +6,3 @@ preCommitFileCommands:
   - GitHook\Command\FileCommand\PreCommit\CodeStyleFixCommand
   - GitHook\Command\FileCommand\PreCommit\CodeStyleCheckCommand
   - GitHook\Command\FileCommand\PreCommit\PhpStanCheckCommand
-
-preCommitRepositoryCommands:
-  - GitHook\Command\RepositoryCommand\PreCommit\GitAddCommand
