@@ -136,15 +136,15 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
             $sprykDefinition = $this->createDefinition($sprykName, $sprykConfiguration[static::SPRYK_BUILDER_NAME]);
             $this->definitionCollection[$sprykDefinitionKey] = $sprykDefinition;
 
-            $sprykDefinition->setMode($this->getMode($sprykConfiguration));
-            $sprykDefinition->setArgumentCollection($argumentCollection);
-            $sprykDefinition->setSprykDefinitionKey($sprykDefinitionKey);
-
-            $sprykDefinition->setPreCommands($this->getPreCommands($sprykConfiguration));
-            $sprykDefinition->setPreSpryks($this->getPreSpryks($sprykConfiguration, $sprykDefinitionKey));
-            $sprykDefinition->setPostSpryks($this->getPostSpryks($sprykConfiguration, $sprykDefinitionKey));
-            $sprykDefinition->setPostCommands($this->getPostCommands($sprykConfiguration));
-            $sprykDefinition->setConfig($this->getConfig($sprykConfiguration, $preDefinedDefinition));
+            $sprykDefinition
+                ->setMode($this->getMode($sprykConfiguration))
+                ->setArgumentCollection($argumentCollection)
+                ->setSprykDefinitionKey($sprykDefinitionKey)
+                ->setPreCommands($this->getPreCommands($sprykConfiguration))
+                ->setPreSpryks($this->getPreSpryks($sprykConfiguration, $sprykDefinitionKey))
+                ->setPostSpryks($this->getPostSpryks($sprykConfiguration, $sprykDefinitionKey))
+                ->setPostCommands($this->getPostCommands($sprykConfiguration))
+                ->setConfig($this->getConfig($sprykConfiguration, $preDefinedDefinition));
         }
 
         return $this->definitionCollection[$sprykDefinitionKey];
