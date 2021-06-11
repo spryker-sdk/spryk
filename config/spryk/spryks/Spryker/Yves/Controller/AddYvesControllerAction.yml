@@ -29,7 +29,7 @@ arguments:
         callback: EnsureActionSuffixCallback
 
     templateName:
-        value: "{{ controllerMethod | removeActionSuffix | camelCaseToDash | lower }}"
+        value: "{{ controllerMethod | removeActionSuffix | dasherize }}"
 
     template:
         value: Yves/Controller/YvesControllerMethod.php.twig

@@ -8,19 +8,19 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
 /**
- * Filter is used to lower the case of a first letter of the string.
+ * Filter is used to upper the case of a first letter of the string.
  *
  * Example:
- * $this->filter(`ClassName') === 'className';
+ * $this->filter(`className') === 'ClassName';
  */
-class LowerCaseFirstFilter implements FilterInterface
+class UpperCaseFirstFilter implements FilterInterface
 {
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'lcfirst';
+        return 'ucfirst';
     }
 
     /**
@@ -30,6 +30,6 @@ class LowerCaseFirstFilter implements FilterInterface
      */
     public function filter(string $value): string
     {
-        return lcfirst($value);
+        return ucfirst($value);
     }
 }

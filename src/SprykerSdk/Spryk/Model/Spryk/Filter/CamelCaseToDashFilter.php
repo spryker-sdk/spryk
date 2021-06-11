@@ -15,7 +15,7 @@ use Laminas\Filter\Word\CamelCaseToSeparator;
  * into a string where words are separated by "-".
  *
  * Example:
- * $this->filter(`stringExample') === 'string-example';
+ * $this->filter(`stringExample') === 'string-Example';
  */
 class CamelCaseToDashFilter implements FilterInterface
 {

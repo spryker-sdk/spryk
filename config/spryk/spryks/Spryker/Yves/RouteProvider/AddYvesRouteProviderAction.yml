@@ -27,7 +27,7 @@ arguments:
         value: "ROUTE_{{ controller | classNameShort | removeControllerSuffix | underscored | upper }}_{{ controllerMethod | removeActionSuffix | underscored | upper }}"
 
     templateName:
-        value: "{{ controllerMethod | removeActionSuffix | camelCaseToDash | lower }}"
+        value: "{{ controllerMethod | removeActionSuffix | dasherize }}"
 
     template:
         value: Yves/RouteProvider/YvesRouteProviderMethod.php.twig
@@ -43,7 +43,7 @@ preSpryks:
               name:
                   value: "{{ constantName }}"
               value:
-                  value:  "{{ module | camelCaseToDash | lower }}/{{ controller | removeControllerSuffix | camelCaseToDash | lower }}-{{ controllerMethod | removeActionSuffix | camelCaseToDash | lower }}"
+                  value:  "{{ module | dasherize }}/{{ controller | removeControllerSuffix | dasherize }}-{{ controllerMethod | removeActionSuffix | dasherize }}"
               visibility:
                   value:  "protected"
               target:

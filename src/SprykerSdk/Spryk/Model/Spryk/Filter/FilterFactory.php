@@ -38,6 +38,7 @@ class FilterFactory
             $this->createSingularizeFilter(),
             $this->createTypedArrayFilter(),
             $this->createUnderscoreFilter(),
+            $this->createUpperCaseFirstFilter(),
         ];
     }
 
@@ -207,5 +208,13 @@ class FilterFactory
     public function createRemoveWidgetSuffixFilter(): FilterInterface
     {
         return new RemoveWidgetSuffixFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createUpperCaseFirstFilter(): FilterInterface
+    {
+        return new UpperCaseFirstFilter();
     }
 }
