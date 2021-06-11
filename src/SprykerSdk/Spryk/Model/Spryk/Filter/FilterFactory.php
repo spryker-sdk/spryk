@@ -20,7 +20,6 @@ class FilterFactory
         return [
             $this->createArgumentToDocParameterFilter(),
             $this->createCamelCaseFilter(),
-            $this->createCamelCaseToDashFilter(),
             $this->createCamelCaseToWhitespaceFilter(),
             $this->createClassNameShortFilter(),
             $this->createConvertToClassNameFragmentFilter(),
@@ -192,14 +191,6 @@ class FilterFactory
     public function createRemoveRestApiSuffixFilter(): FilterInterface
     {
         return new RemoveRestApiSuffixFilter();
-    }
-
-    /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
-     */
-    public function createCamelCaseToDashFilter(): FilterInterface
-    {
-        return new CamelCaseToDashFilter();
     }
 
     /**
