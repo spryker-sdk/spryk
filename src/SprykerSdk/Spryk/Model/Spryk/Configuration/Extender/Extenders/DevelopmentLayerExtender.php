@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class DevelopmentLayerExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
@@ -33,12 +34,12 @@ class DevelopmentLayerExtender extends AbstractExtender implements SprykConfigur
     protected function buildModeArgument(array $sprykConfig): array
     {
         if ($this->isBoth($sprykConfig)) {
-            $sprykConfig['arguments']['mode']['default'] = $this->config->getDefaultDevelopmentMode();
+            $sprykConfig[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS][SprykConfig::NAME_ARGUMENT_MODE][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT] = $this->config->getDefaultDevelopmentMode();
 
             return $sprykConfig;
         }
 
-        $sprykConfig['arguments']['mode']['value'] = $this->getDevelopmentLayer($sprykConfig);
+        $sprykConfig[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS][SprykConfig::NAME_ARGUMENT_MODE][SprykConfig::NAME_ARGUMENT_KEY_VALUE] = $this->getDevelopmentLayer($sprykConfig);
 
         return $sprykConfig;
     }

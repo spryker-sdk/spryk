@@ -7,9 +7,17 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to remove the `Widget` suffix from a string
+ * if it is present in the given one.
+ *
+ * Example:
+ * $this->filter('ProductWidget') === `Product';
+ * $this->filter('Category') === `Category';
+ */
 class RemoveWidgetSuffixFilter implements FilterInterface
 {
-    public const WIDGET_SUFFIX = 'Widget';
+    protected const WIDGET_SUFFIX = 'Widget';
 
     /**
      * @return string

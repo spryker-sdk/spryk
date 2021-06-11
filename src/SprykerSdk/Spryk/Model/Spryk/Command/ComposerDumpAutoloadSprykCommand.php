@@ -9,14 +9,14 @@ namespace SprykerSdk\Spryk\Model\Spryk\Command;
 
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 
-class ComposerReplaceGenerateSprykHookCommand extends AbstractSprykHookCommand
+class ComposerDumpAutoloadSprykCommand extends AbstractSprykCommand
 {
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'ComposerReplaceGenerate';
+        return 'ComposerDumpAutoload';
     }
 
     /**
@@ -24,7 +24,7 @@ class ComposerReplaceGenerateSprykHookCommand extends AbstractSprykHookCommand
      */
     protected function getCommandLine(): string
     {
-        return 'vendor/bin/console dev:composer:replace';
+        return 'composer dump-autoload';
     }
 
     /**
@@ -34,12 +34,6 @@ class ComposerReplaceGenerateSprykHookCommand extends AbstractSprykHookCommand
      */
     protected function isRunnable(SprykDefinitionInterface $sprykDefinition): bool
     {
-        $organization = $sprykDefinition->getArgumentCollection()->getArgument('organization');
-
-        if (!in_array($organization->getValue(), ['Spryker', 'SprykerShop'], true)) {
-            return false;
-        }
-
         return true;
     }
 
@@ -50,9 +44,6 @@ class ComposerReplaceGenerateSprykHookCommand extends AbstractSprykHookCommand
      */
     protected function getFallbackMessage(SprykDefinitionInterface $sprykDefinition): string
     {
-        return sprintf(
-            'Please, add new module into a `replace` section in `composer.json` for the %s organization.',
-            $sprykDefinition->getArgumentCollection()->getArgument('organization')
-        );
+        return 'Please, execute `composer dump-autoload` manually.';
     }
 }

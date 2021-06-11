@@ -9,13 +9,13 @@ class {{ module }}To{{ dependentModule }}ClientBridge implements {{ module }}To{
     /**
      * @var \{{ dependentModuleOrganization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface
      */
-    protected ${{ dependentModule | camelBack }}Client;
+    protected ${{ dependentModule | lcfirst }}Client;
 
     /**
-     * @param \{{ dependentModuleOrganization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface ${{ dependentModule | camelBack }}Client
+     * @param \{{ dependentModuleOrganization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface ${{ dependentModule | lcfirst }}Client
      */
-    public function __construct(${{ dependentModule | camelBack }}Client)
+    public function __construct(${{ dependentModule | lcfirst }}Client)
     {
-        $this->{{ dependentModule | camelBack }}Client = ${{ dependentModule | camelBack }}Client;
+        $this->{{ dependentModule | lcfirst }}Client = ${{ dependentModule | lcfirst }}Client;
     }
 }

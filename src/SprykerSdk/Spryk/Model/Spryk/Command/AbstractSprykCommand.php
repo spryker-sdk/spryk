@@ -11,7 +11,7 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 use Symfony\Component\Process\Process;
 
-abstract class AbstractSprykHookCommand implements SprykCommandInterface
+abstract class AbstractSprykCommand implements SprykCommandInterface
 {
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition

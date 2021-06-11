@@ -9,13 +9,13 @@ class {{ module }}To{{ dependentModule }}FacadeBridge implements {{ module }}To{
     /**
      * @var \{{ dependentModuleOrganization }}\Zed\{{ dependentModule }}\Business\{{ dependentModule }}FacadeInterface
      */
-    protected ${{ dependentModule | camelBack }}Facade;
+    protected ${{ dependentModule | lcfirst }}Facade;
 
     /**
-     * @param \{{ dependentModuleOrganization }}\Zed\{{ dependentModule }}\Business\{{ dependentModule }}FacadeInterface ${{ dependentModule | camelBack }}Facade
+     * @param \{{ dependentModuleOrganization }}\Zed\{{ dependentModule }}\Business\{{ dependentModule }}FacadeInterface ${{ dependentModule | lcfirst }}Facade
      */
-    public function __construct(${{ dependentModule | camelBack }}Facade)
+    public function __construct(${{ dependentModule | lcfirst }}Facade)
     {
-        $this->{{ dependentModule | camelBack }}Facade = ${{ dependentModule | camelBack }}Facade;
+        $this->{{ dependentModule | lcfirst }}Facade = ${{ dependentModule | lcfirst }}Facade;
     }
 }

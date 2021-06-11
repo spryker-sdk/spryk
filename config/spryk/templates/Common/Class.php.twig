@@ -5,10 +5,10 @@
 namespace {{ organization }}\{{ subDirectory | replace({'/': '\\'}) }};
 
 {% if expanderClassName %}
-use {{ expanderClassName | replace({'/': '\\'}) | trimBackslash }};
+use {{ expanderClassName | replace({'/': '\\'}) | trim('\\') }};
 {% endif %}
 {% if implementerInterfaceName %}
-use {{ implementerInterfaceName | replace({'/': '\\'}) | trimBackslash }};
+use {{ implementerInterfaceName | replace({'/': '\\'}) | trim('\\') }};
 {% endif %}
 
 class {{ className }}{% if expanderClassName %} extends {{ expanderClassName | replace({'/': '\\'}) | classNameShort }}{% endif %}{% if implementerInterfaceName %} implements {{ implementerInterfaceName | replace({'/': '\\'}) | classNameShort }}{% endif ~%}

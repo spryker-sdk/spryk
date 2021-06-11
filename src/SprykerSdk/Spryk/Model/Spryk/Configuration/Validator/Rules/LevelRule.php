@@ -7,10 +7,10 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules;
 
+use SprykerSdk\Spryk\SprykConfig;
+
 class LevelRule implements ConfigurationValidatorRuleInterface
 {
-    protected const LEVEL_CONFIG_NAME = 'level';
-
     /**
      * @var string
      */
@@ -36,13 +36,13 @@ class LevelRule implements ConfigurationValidatorRuleInterface
      */
     public function validate(array $sprykConfig): bool
     {
-        if (!isset($sprykConfig[static::LEVEL_CONFIG_NAME])) {
+        if (!isset($sprykConfig[SprykConfig::SPRYK_DEFINITION_KEY_LEVEL])) {
             return false;
         }
 
-        $this->buildInvalidValueErrorMessage($sprykConfig[static::LEVEL_CONFIG_NAME]);
+        $this->buildInvalidValueErrorMessage($sprykConfig[SprykConfig::SPRYK_DEFINITION_KEY_LEVEL]);
 
-        if (in_array($sprykConfig[static::LEVEL_CONFIG_NAME], $this->availableLevels, true)) {
+        if (in_array($sprykConfig[SprykConfig::SPRYK_DEFINITION_KEY_LEVEL], $this->availableLevels, true)) {
             return true;
         }
 

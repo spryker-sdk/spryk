@@ -18,7 +18,7 @@ arguments:
         value: "{{ widget | removeWidgetSuffix }}Widget"
 
     templateName:
-        value: "{{ widget | removeWidgetSuffix | camelCaseToDash | lowerCase }}"
+        value: "{{ widget | removeWidgetSuffix | camelCaseToDash | lower }}"
 
     template:
         value: Yves/YvesWidget.php.twig

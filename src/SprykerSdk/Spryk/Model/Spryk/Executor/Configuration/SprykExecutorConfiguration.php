@@ -142,19 +142,19 @@ class SprykExecutorConfiguration implements SprykExecutorConfigurationInterface
             return;
         }
 
-        $explodedTargetModuleName = explode('.', $targetModuleName);
+        $targetModuleNameParts = explode('.', $targetModuleName);
 
-        if (count($explodedTargetModuleName) === 2) {
-            $this->targetModuleOrganization = $explodedTargetModuleName[0];
-            $this->targetModule = $explodedTargetModuleName[1];
+        if (count($targetModuleNameParts) === 2) {
+            $this->targetModuleOrganization = $targetModuleNameParts[0];
+            $this->targetModule = $targetModuleNameParts[1];
 
             return;
         }
 
-        if (count($explodedTargetModuleName) === 3) {
-            $this->targetModuleOrganization = $explodedTargetModuleName[0];
-            $this->targetModule = $explodedTargetModuleName[1];
-            $this->targetModuleLayer = $explodedTargetModuleName[2];
+        if (count($targetModuleNameParts) === 3) {
+            $this->targetModuleOrganization = $targetModuleNameParts[0];
+            $this->targetModule = $targetModuleNameParts[1];
+            $this->targetModuleLayer = $targetModuleNameParts[2];
 
             return;
         }
@@ -173,19 +173,19 @@ class SprykExecutorConfiguration implements SprykExecutorConfigurationInterface
             return;
         }
 
-        $explodedDependentModuleName = explode('.', $dependentModuleName);
+        $dependentModuleNameParts = explode('.', $dependentModuleName);
 
-        if (count($explodedDependentModuleName) === 2) {
-            $this->dependentModuleOrganization = $explodedDependentModuleName[0];
-            $this->dependentModule = $explodedDependentModuleName[1];
+        if (count($dependentModuleNameParts) === 2) {
+            $this->dependentModuleOrganization = $dependentModuleNameParts[0];
+            $this->dependentModule = $dependentModuleNameParts[1];
 
             return;
         }
 
-        if (count($explodedDependentModuleName) === 3) {
-            $this->dependentModuleOrganization = $explodedDependentModuleName[0];
-            $this->dependentModule = $explodedDependentModuleName[1];
-            $this->dependentModuleLayer = $explodedDependentModuleName[2];
+        if (count($dependentModuleNameParts) === 3) {
+            $this->dependentModuleOrganization = $dependentModuleNameParts[0];
+            $this->dependentModule = $dependentModuleNameParts[1];
+            $this->dependentModuleLayer = $dependentModuleNameParts[2];
 
             return;
         }

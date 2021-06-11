@@ -15,9 +15,20 @@ use Spryker\Shared\Kernel\KernelConstants;
  */
 class SprykConfig
 {
+    public const SPRYK_DEFINITION_KEY_LEVEL = 'level';
+    public const SPRYK_DEFINITION_KEY_ARGUMENTS = 'arguments';
+
     public const NAME_DEVELOPMENT_LAYER_CORE = 'core';
     public const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
-    protected const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
+    public const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
+
+    public const NAME_ARGUMENT_LAYER = 'layer';
+    public const NAME_ARGUMENT_MODE = 'mode';
+    public const NAME_ARGUMENT_ORGANIZATION = 'organization';
+
+    public const NAME_ARGUMENT_KEY_DEFAULT = 'default';
+    public const NAME_ARGUMENT_KEY_VALUE = 'value';
+    public const NAME_ARGUMENT_KEY_VALUES = 'values';
 
     protected const NAME_DIRECTORY_GENERATED = 'generated';
     protected const NAME_FILE_ARGUMENT_LIST = 'spryk_argument_list.yml';

@@ -22,8 +22,8 @@ class OrganizationExtender extends AbstractExtender implements SprykConfiguratio
         $arguments = $this->getArguments($sprykConfig);
 
         if (
-            !isset($arguments[static::NAME_ARGUMENT_ORGANIZATION])
-            || !isset($arguments[static::NAME_ARGUMENT_MODE][static::NAME_ARGUMENT_KEY_VALUE])
+            !isset($arguments[SprykConfig::NAME_ARGUMENT_ORGANIZATION])
+            || !isset($arguments[SprykConfig::NAME_ARGUMENT_MODE][SprykConfig::NAME_ARGUMENT_KEY_VALUE])
         ) {
             return $sprykConfig;
         }
@@ -41,15 +41,15 @@ class OrganizationExtender extends AbstractExtender implements SprykConfiguratio
      */
     protected function buildProjectOrganization(array $arguments): array
     {
-        if ($arguments[static::NAME_ARGUMENT_MODE][static::NAME_ARGUMENT_KEY_VALUE] !== SprykConfig::NAME_DEVELOPMENT_LAYER_PROJECT) {
+        if ($arguments[SprykConfig::NAME_ARGUMENT_MODE][SprykConfig::NAME_ARGUMENT_KEY_VALUE] !== SprykConfig::NAME_DEVELOPMENT_LAYER_PROJECT) {
             return $arguments;
         }
 
         $projectNamespace = $this->config->getProjectNamespace();
         $projectNamespaces = $this->config->getProjectNamespaces();
 
-        $arguments[static::NAME_ARGUMENT_ORGANIZATION][static::NAME_ARGUMENT_KEY_DEFAULT] = $projectNamespace;
-        $arguments[static::NAME_ARGUMENT_ORGANIZATION][static::NAME_ARGUMENT_KEY_VALUES] = $projectNamespaces;
+        $arguments[SprykConfig::NAME_ARGUMENT_ORGANIZATION][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT] = $projectNamespace;
+        $arguments[SprykConfig::NAME_ARGUMENT_ORGANIZATION][SprykConfig::NAME_ARGUMENT_KEY_VALUES] = $projectNamespaces;
 
         return $arguments;
     }
@@ -61,13 +61,13 @@ class OrganizationExtender extends AbstractExtender implements SprykConfiguratio
      */
     protected function buildCoreOrganization(array $arguments): array
     {
-        if ($arguments[static::NAME_ARGUMENT_MODE][static::NAME_ARGUMENT_KEY_VALUE] !== SprykConfig::NAME_DEVELOPMENT_LAYER_CORE) {
+        if ($arguments[SprykConfig::NAME_ARGUMENT_MODE][SprykConfig::NAME_ARGUMENT_KEY_VALUE] !== SprykConfig::NAME_DEVELOPMENT_LAYER_CORE) {
             return $arguments;
         }
 
         $coreNamespaces = $this->config->getCoreNamespaces();
 
-        $arguments[static::NAME_ARGUMENT_ORGANIZATION][static::NAME_ARGUMENT_KEY_VALUES] = $coreNamespaces;
+        $arguments[SprykConfig::NAME_ARGUMENT_ORGANIZATION][SprykConfig::NAME_ARGUMENT_KEY_VALUES] = $coreNamespaces;
 
         return $arguments;
     }

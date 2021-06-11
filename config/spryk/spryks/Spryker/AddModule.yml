@@ -33,4 +33,3 @@ postSpryks:
     - AddModulePhpStanJson
     - AddModulePhpStanNeon
     - AddModuleEditorconfig
-    - AddModuleCoveralls

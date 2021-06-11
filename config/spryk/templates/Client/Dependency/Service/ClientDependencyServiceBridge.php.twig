@@ -9,13 +9,13 @@ class {{ module }}To{{ dependentModule }}ServiceBridge implements {{ module }}To
     /**
      * @var \{{ dependentModuleOrganization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface
      */
-    protected ${{ dependentModule | camelBack }}Service;
+    protected ${{ dependentModule | lcfirst }}Service;
 
     /**
-     * @param \{{ dependentModuleOrganization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface ${{ dependentModule | camelBack }}Service
+     * @param \{{ dependentModuleOrganization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface ${{ dependentModule | lcfirst }}Service
      */
-    public function __construct(${{ dependentModule | camelBack }}Service)
+    public function __construct(${{ dependentModule | lcfirst }}Service)
     {
-        $this->{{ dependentModule | camelBack }}Service = ${{ dependentModule | camelBack }}Service;
+        $this->{{ dependentModule | lcfirst }}Service = ${{ dependentModule | lcfirst }}Service;
     }
 }

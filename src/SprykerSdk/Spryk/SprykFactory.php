@@ -16,8 +16,8 @@ use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Reader\ArgumentListReaderInterface
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollection;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderFactory;
-use SprykerSdk\Spryk\Model\Spryk\Command\ComposerDumpAutoloadSprykHookCommand;
-use SprykerSdk\Spryk\Model\Spryk\Command\ComposerReplaceGenerateSprykHookCommand;
+use SprykerSdk\Spryk\Model\Spryk\Command\ComposerDumpAutoloadSprykCommand;
+use SprykerSdk\Spryk\Model\Spryk\Command\ComposerReplaceGenerateSprykCommand;
 use SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\ConfigurationFactory;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackFactory;
@@ -266,24 +266,24 @@ class SprykFactory
     public function getCommandStack(): array
     {
         return [
-            $this->createComposerReplaceGenerateSprykHookCommand(),
-            $this->createComposerDumpAutoloadSprykHookCommand(),
+            $this->createComposerReplaceGenerateSprykCommand(),
+            $this->createComposerDumpAutoloadSprykCommand(),
         ];
     }
 
     /**
      * @return \SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface
      */
-    public function createComposerReplaceGenerateSprykHookCommand(): SprykCommandInterface
+    public function createComposerReplaceGenerateSprykCommand(): SprykCommandInterface
     {
-        return new ComposerReplaceGenerateSprykHookCommand();
+        return new ComposerReplaceGenerateSprykCommand();
     }
 
     /**
      * @return \SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface
      */
-    public function createComposerDumpAutoloadSprykHookCommand(): SprykCommandInterface
+    public function createComposerDumpAutoloadSprykCommand(): SprykCommandInterface
     {
-        return new ComposerDumpAutoloadSprykHookCommand();
+        return new ComposerDumpAutoloadSprykCommand();
     }
 }

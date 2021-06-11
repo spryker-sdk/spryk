@@ -7,6 +7,14 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to remove the `Action` suffix from a string
+ * if it is present in the given one.
+ *
+ * Example:
+ * $this->filter('indexAction') === `index';
+ * $this->filter('list') === `list';
+ */
 class RemoveActionSuffixFilter implements FilterInterface
 {
     public const ACTION_SUFFIX = 'Action';

@@ -11,25 +11,10 @@ use SprykerSdk\Spryk\SprykConfig;
 
 abstract class AbstractExtender
 {
-    protected const ARGUMENTS = 'arguments';
-
-    protected const NAME_ARGUMENT_LAYER = 'layer';
-    protected const NAME_ARGUMENT_MODE = 'mode';
-    protected const NAME_ARGUMENT_ORGANIZATION = 'organization';
-
-    protected const NAME_ARGUMENT_KEY_DEFAULT = 'default';
-    protected const NAME_ARGUMENT_KEY_VALUE = 'value';
-    protected const NAME_ARGUMENT_KEY_VALUES = 'values';
-
     protected const NAME_PLACEHOLDER_MODULE = '{{ module }}';
     protected const NAME_PLACEHOLDER_LAYER = '{{ layer }}';
-    protected const NAME_PLACEHOLDER_ORGANISATION = '{{ organization }}';
 
     protected const NAME_APPLICATION_LAYER_ZED = 'Zed';
-
-    protected const NAME_DEVELOPMENT_LAYER_CORE = 'core';
-    protected const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
-    protected const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
 
     /**
      * @var \SprykerSdk\Spryk\SprykConfig
@@ -51,7 +36,7 @@ abstract class AbstractExtender
      */
     protected function getArguments(array $sprykConfig): array
     {
-        return $sprykConfig[static::ARGUMENTS] ?? [];
+        return $sprykConfig[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS] ?? [];
     }
 
     /**
@@ -62,7 +47,7 @@ abstract class AbstractExtender
      */
     protected function setArguments(array $arguments, array $sprykConfig): array
     {
-        $sprykConfig[static::ARGUMENTS] = $arguments;
+        $sprykConfig[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS] = $arguments;
 
         return $sprykConfig;
     }
@@ -74,7 +59,7 @@ abstract class AbstractExtender
      */
     protected function getDevelopmentLayer(array $sprykConfig): ?string
     {
-        return $sprykConfig[static::NAME_ARGUMENT_MODE] ?? null;
+        return $sprykConfig[SprykConfig::NAME_ARGUMENT_MODE] ?? null;
     }
 
     /**
@@ -84,7 +69,7 @@ abstract class AbstractExtender
      */
     protected function isProject(array $sprykConfig): bool
     {
-        return $this->getDevelopmentLayer($sprykConfig) === static::NAME_DEVELOPMENT_LAYER_PROJECT;
+        return $this->getDevelopmentLayer($sprykConfig) === SprykConfig::NAME_DEVELOPMENT_LAYER_PROJECT;
     }
 
     /**
@@ -94,7 +79,7 @@ abstract class AbstractExtender
      */
     protected function isCore(array $sprykConfig): bool
     {
-        return $this->getDevelopmentLayer($sprykConfig) === static::NAME_DEVELOPMENT_LAYER_CORE;
+        return $this->getDevelopmentLayer($sprykConfig) === SprykConfig::NAME_DEVELOPMENT_LAYER_CORE;
     }
 
     /**
@@ -104,6 +89,6 @@ abstract class AbstractExtender
      */
     protected function isBoth(array $sprykConfig): bool
     {
-        return $this->getDevelopmentLayer($sprykConfig) === static::NAME_DEVELOPMENT_LAYER_BOTH;
+        return $this->getDevelopmentLayer($sprykConfig) === SprykConfig::NAME_DEVELOPMENT_LAYER_BOTH;
     }
 }

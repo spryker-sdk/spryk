@@ -110,12 +110,12 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
      */
     protected function buildMode(array $sprykConfiguration, ?string $sprykMode = null): array
     {
-        if (!isset($sprykConfiguration['mode'])) {
-            $sprykConfiguration['mode'] = $this->sprykConfig->getDefaultDevelopmentMode();
+        if (!isset($sprykConfiguration[SprykConfig::NAME_ARGUMENT_MODE])) {
+            $sprykConfiguration[SprykConfig::NAME_ARGUMENT_MODE] = $this->sprykConfig->getDefaultDevelopmentMode();
         }
 
-        if ($sprykMode !== null && $sprykConfiguration['mode'] === 'both') {
-            $sprykConfiguration['mode'] = $sprykMode;
+        if ($sprykMode !== null && $sprykConfiguration[SprykConfig::NAME_ARGUMENT_MODE] === 'both') {
+            $sprykConfiguration[SprykConfig::NAME_ARGUMENT_MODE] = $sprykMode;
         }
 
         return $sprykConfiguration;
@@ -128,8 +128,8 @@ class SprykConfigurationLoader implements SprykConfigurationLoaderInterface
      */
     protected function buildLevel(array $sprykConfiguration): array
     {
-        if (!isset($sprykConfiguration['level'])) {
-            $sprykConfiguration['level'] = $this->sprykConfig->getDefaultBuildLevel();
+        if (!isset($sprykConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_LEVEL])) {
+            $sprykConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_LEVEL] = $this->sprykConfig->getDefaultBuildLevel();
         }
 
         return $sprykConfiguration;

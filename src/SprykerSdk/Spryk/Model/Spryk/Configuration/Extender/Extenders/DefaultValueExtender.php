@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class DefaultValueExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
@@ -21,13 +22,13 @@ class DefaultValueExtender extends AbstractExtender implements SprykConfiguratio
         $arguments = $this->getArguments($sprykConfig);
 
         foreach ($arguments as &$argument) {
-            $values = $argument[static::NAME_ARGUMENT_KEY_VALUES] ?? null;
-            if (!empty($argument[static::NAME_ARGUMENT_KEY_VALUE]) || !is_array($values) || count($values) > 1) {
+            $values = $argument[SprykConfig::NAME_ARGUMENT_KEY_VALUES] ?? null;
+            if (!empty($argument[SprykConfig::NAME_ARGUMENT_KEY_VALUE]) || !is_array($values) || count($values) > 1) {
                 continue;
             }
 
-            $argument[static::NAME_ARGUMENT_KEY_VALUE] = reset($values);
-            $argument[static::NAME_ARGUMENT_KEY_DEFAULT] = $argument[static::NAME_ARGUMENT_KEY_VALUE];
+            $argument[SprykConfig::NAME_ARGUMENT_KEY_VALUE] = reset($values);
+            $argument[SprykConfig::NAME_ARGUMENT_KEY_DEFAULT] = $argument[SprykConfig::NAME_ARGUMENT_KEY_VALUE];
         }
 
         return $this->setArguments($arguments, $sprykConfig);

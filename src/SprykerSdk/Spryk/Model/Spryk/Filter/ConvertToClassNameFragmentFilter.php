@@ -7,6 +7,13 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to convert a string containing a classpath
+ * into a fragment of the class name.
+ *
+ * Example:
+ * $this->filter(`/Organization/Module/ClassName/') === 'Organization\Module\ClassName';
+ */
 class ConvertToClassNameFragmentFilter implements FilterInterface
 {
     /**

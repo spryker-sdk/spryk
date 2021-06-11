@@ -7,6 +7,13 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to convert a FQCN string
+ * into a string containing only the class name.
+ *
+ * Example:
+ * $this->filter(`\Organization\Module\ClassName') === 'ClassName';
+ */
 class ClassNameShortFilter implements FilterInterface
 {
     /**

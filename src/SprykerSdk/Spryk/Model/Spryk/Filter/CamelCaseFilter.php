@@ -10,6 +10,13 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\Word\UnderscoreToCamelCase;
 
+/**
+ * Filter is used to convert an underscored string
+ * into a camelCased one.
+ *
+ * Example:
+ * $this->filter(`string_example') === 'stringExample';
+ */
 class CamelCaseFilter implements FilterInterface
 {
     /**

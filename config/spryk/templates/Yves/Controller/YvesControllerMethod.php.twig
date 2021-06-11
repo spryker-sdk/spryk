@@ -6,7 +6,7 @@
     */
     public function {{ controllerMethod }}(\Symfony\Component\HttpFoundation\Request $request)
     {
-        $response = $this->execute{{ controllerMethod | ucfirst }}($request);
+        $response = $this->execute{{ controllerMethod | capitalize }}($request);
 
         if (!is_array($response)) {
             return $response;
@@ -24,7 +24,7 @@
     *
     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
     */
-    protected function execute{{ controllerMethod | ucfirst }}(\Symfony\Component\HttpFoundation\Request $request)
+    protected function execute{{ controllerMethod | capitalize }}(\Symfony\Component\HttpFoundation\Request $request)
     {
         return [
 

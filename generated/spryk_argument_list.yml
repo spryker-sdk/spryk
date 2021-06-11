@@ -4594,50 +4594,6 @@
   mode: 2
   description: 'AddModuleContributing mode argument'
 -
-  name: AddModuleCoveralls.organization
-  mode: 2
-  description: 'AddModuleCoveralls organization argument'
--
-  name: AddModuleCoveralls.module
-  mode: 2
-  description: 'AddModuleCoveralls module argument'
--
-  name: AddModuleCoveralls.template
-  mode: 2
-  description: 'AddModuleCoveralls template argument'
--
-  name: AddModuleCoveralls.targetFilename
-  mode: 2
-  description: 'AddModuleCoveralls targetFilename argument'
--
-  name: AddModuleCoveralls.targetPath
-  mode: 2
-  description: 'AddModuleCoveralls targetPath argument'
--
-  name: AddModuleCoveralls.sprykerVendorPath
-  mode: 2
-  description: 'AddModuleCoveralls sprykerVendorPath argument'
--
-  name: AddModuleCoveralls.moduleSrcDirectory
-  mode: 2
-  description: 'AddModuleCoveralls moduleSrcDirectory argument'
--
-  name: AddModuleCoveralls.repository
-  mode: 2
-  description: 'AddModuleCoveralls repository argument'
--
-  name: AddModuleCoveralls.moduleRoot
-  mode: 2
-  description: 'AddModuleCoveralls moduleRoot argument'
--
-  name: AddModuleCoveralls.level
-  mode: 2
-  description: 'AddModuleCoveralls level argument'
--
-  name: AddModuleCoveralls.mode
-  mode: 2
-  description: 'AddModuleCoveralls mode argument'
--
   name: AddModuleDataImport.organization
   mode: 2
   description: 'AddModuleDataImport organization argument'

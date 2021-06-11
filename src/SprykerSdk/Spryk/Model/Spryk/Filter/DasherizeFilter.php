@@ -11,6 +11,13 @@ use Laminas\Filter\FilterChain;
 use Laminas\Filter\StringToLower;
 use Laminas\Filter\Word\CamelCaseToDash;
 
+/**
+ * Filter is used to convert a camelCased string
+ * into a lowered string where words are separated by "-".
+ *
+ * Example:
+ * $this->filter(`StringExample') === 'string-example';
+ */
 class DasherizeFilter implements FilterInterface
 {
     /**

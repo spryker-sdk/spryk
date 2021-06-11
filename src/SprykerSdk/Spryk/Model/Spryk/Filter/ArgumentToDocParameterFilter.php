@@ -7,6 +7,14 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to convert a string
+ * representing an argument description into a PHPDoc {@param} string.
+ *
+ * Example:
+ * $this->filter(`string $argument') === 'string $argument';
+ * $this->filter(`?string $argument = null`) === 'string|null $argument';
+ */
 class ArgumentToDocParameterFilter implements FilterInterface
 {
     /**
@@ -28,9 +36,8 @@ class ArgumentToDocParameterFilter implements FilterInterface
 
         if (mb_substr($argumentParts[0], 0, 1) === '?') {
             return sprintf(
-                '%s|%s %s',
+                '%s|null %s',
                 mb_substr($argumentParts[0], 1),
-                'null',
                 $argumentParts[1]
             );
         }

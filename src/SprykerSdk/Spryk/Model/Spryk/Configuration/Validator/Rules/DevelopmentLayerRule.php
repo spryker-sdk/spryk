@@ -7,10 +7,10 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules;
 
+use SprykerSdk\Spryk\SprykConfig;
+
 class DevelopmentLayerRule implements ConfigurationValidatorRuleInterface
 {
-    protected const NAME_CONFIG_MODE = 'mode';
-
     /**
      * @var string[]
      */
@@ -36,15 +36,15 @@ class DevelopmentLayerRule implements ConfigurationValidatorRuleInterface
      */
     public function validate(array $sprykConfig): bool
     {
-        if (!isset($sprykConfig[static::NAME_CONFIG_MODE])) {
+        if (!isset($sprykConfig[SprykConfig::NAME_ARGUMENT_MODE])) {
             return true;
         }
 
-        if (in_array($sprykConfig[static::NAME_CONFIG_MODE], $this->availableDevelopmentLayers, true)) {
+        if (in_array($sprykConfig[SprykConfig::NAME_ARGUMENT_MODE], $this->availableDevelopmentLayers, true)) {
             return true;
         }
 
-        $this->buildErrorMessage($sprykConfig[static::NAME_CONFIG_MODE]);
+        $this->buildErrorMessage($sprykConfig[SprykConfig::NAME_ARGUMENT_MODE]);
 
         return false;
     }

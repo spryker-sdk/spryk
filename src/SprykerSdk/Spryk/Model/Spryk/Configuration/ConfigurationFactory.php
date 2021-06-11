@@ -23,6 +23,7 @@ use SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMergerInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidator;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidatorInterface;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\DevelopmentLayerRule;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\LevelRule;
 use SprykerSdk\Spryk\SprykConfig;
@@ -136,20 +137,28 @@ class ConfigurationFactory
     }
 
     /**
-     * @return array
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface[]
      */
     protected function createConfigurationValidatorRules(): array
     {
         return [
-            new DevelopmentLayerRule($this->config->getAvailableDevelopmentLayers()),
+            $this->createDevelopmentLayerRule(),
             $this->createLevelRule(),
         ];
     }
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\LevelRule
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface
      */
-    protected function createLevelRule(): LevelRule
+    protected function createDevelopmentLayerRule(): ConfigurationValidatorRuleInterface
+    {
+        return new DevelopmentLayerRule($this->config->getAvailableDevelopmentLayers());
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface
+     */
+    protected function createLevelRule(): ConfigurationValidatorRuleInterface
     {
         return new LevelRule($this->config->getAvailableLevels());
     }

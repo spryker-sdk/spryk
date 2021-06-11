@@ -19,7 +19,6 @@ use Symfony\Component\Finder\SplFileInfo;
 class CopyModuleSpryk implements SprykBuilderInterface
 {
     protected const ARGUMENT_SOURCE_PATH = 'sourcePath';
-    protected const ARGUMENT_ORGANIZATION = 'organization';
     protected const ARGUMENT_MODULE = 'module';
 
     protected const ARGUMENT_TARGET_PATH = 'targetFilePath';
@@ -207,7 +206,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
      */
     protected function buildSearchAndReplaceMapForFilePath(SprykDefinitionInterface $sprykDefinition): array
     {
-        $organization = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_ORGANIZATION);
+        $organization = $this->getArgumentValueByName($sprykDefinition, SprykConfig::NAME_ARGUMENT_ORGANIZATION);
         $module = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_MODULE);
 
         $toOrganization = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_TO_ORGANIZATION);
@@ -249,8 +248,8 @@ class CopyModuleSpryk implements SprykBuilderInterface
      */
     protected function buildSearchAndReplaceMapForFileContent(SprykDefinitionInterface $sprykDefinition): array
     {
-        $organization = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_ORGANIZATION);
-        $organizationDashed = $this->dasherize($this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_ORGANIZATION));
+        $organization = $this->getArgumentValueByName($sprykDefinition, SprykConfig::NAME_ARGUMENT_ORGANIZATION);
+        $organizationDashed = $this->dasherize($this->getArgumentValueByName($sprykDefinition, SprykConfig::NAME_ARGUMENT_ORGANIZATION));
         $module = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_MODULE);
         $moduleDashed = $this->dasherize($this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_MODULE));
 

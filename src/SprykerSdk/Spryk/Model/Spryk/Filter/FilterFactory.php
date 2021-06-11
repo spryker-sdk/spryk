@@ -19,30 +19,25 @@ class FilterFactory
     {
         return [
             $this->createArgumentToDocParameterFilter(),
-            $this->createCamelBackFilter(),
-            $this->createClassNameShortFilter(),
-            $this->createEnsureControllerSuffixFilter(),
-            $this->createEnsureConsoleSuffixFilter(),
-            $this->createEnsureMapperSuffixFilter(),
-            $this->createRemoveControllerSuffixFilter(),
-            $this->createRemoveActionSuffixFilter(),
-            $this->createDasherizeFilter(),
-            $this->createUnderscoreFilter(),
             $this->createCamelCaseFilter(),
-            $this->createLowerCaseFirstFilter(),
+            $this->createCamelCaseToDashFilter(),
             $this->createCamelCaseToWhitespaceFilter(),
+            $this->createClassNameShortFilter(),
             $this->createConvertToClassNameFragmentFilter(),
+            $this->createDasherizeFilter(),
             $this->createDashToCamelCaseFilter(),
             $this->createDashToUnderscoreFilter(),
+            $this->createEnsureConsoleSuffixFilter(),
+            $this->createEnsureControllerSuffixFilter(),
+            $this->createEnsureMapperSuffixFilter(),
+            $this->createLowerCaseFirstFilter(),
+            $this->createRemoveActionSuffixFilter(),
+            $this->createRemoveControllerSuffixFilter(),
+            $this->createRemoveRestApiSuffixFilter(),
+            $this->createRemoveWidgetSuffixFilter(),
             $this->createSingularizeFilter(),
             $this->createTypedArrayFilter(),
-            $this->createRemoveRestApiSuffixFilter(),
-            $this->createCamelCaseToDashFilter(),
-            $this->createRemoveWidgetSuffixFilter(),
-            $this->createLowerCaseFilter(),
-            $this->createUpperCaseFirstFilter(),
-            $this->createUpperCaseFilter(),
-            $this->createTrimBackslashFilter(),
+            $this->createUnderscoreFilter(),
         ];
     }
 
@@ -60,14 +55,6 @@ class FilterFactory
     public function createFilterExtension(): ExtensionInterface
     {
         return new TwigFilterExtension($this->getFilterCollection());
-    }
-
-    /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
-     */
-    public function createCamelBackFilter(): FilterInterface
-    {
-        return new CamelBackFilter();
     }
 
     /**
@@ -220,37 +207,5 @@ class FilterFactory
     public function createRemoveWidgetSuffixFilter(): FilterInterface
     {
         return new RemoveWidgetSuffixFilter();
-    }
-
-    /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
-     */
-    public function createLowerCaseFilter(): FilterInterface
-    {
-        return new LowerCaseFilter();
-    }
-
-    /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
-     */
-    public function createUpperCaseFirstFilter(): FilterInterface
-    {
-        return new UpperCaseFirstFilter();
-    }
-
-    /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
-     */
-    public function createUpperCaseFilter(): FilterInterface
-    {
-        return new UpperCaseFilter();
-    }
-
-    /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
-     */
-    public function createTrimBackslashFilter(): FilterInterface
-    {
-        return new TrimBackslashFilter();
     }
 }

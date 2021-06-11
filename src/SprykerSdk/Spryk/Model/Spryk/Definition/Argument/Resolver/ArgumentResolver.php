@@ -11,6 +11,7 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Argument;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\Resolver\CallbackArgumentResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Superseder\SupersederInterface;
+use SprykerSdk\Spryk\SprykConfig;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Question\ChoiceQuestion;
@@ -18,8 +19,6 @@ use Symfony\Component\Console\Question\Question;
 
 class ArgumentResolver implements ArgumentResolverInterface
 {
-    protected const ARGUMENT_KEY_VALUES = 'values';
-
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
      */
@@ -154,10 +153,10 @@ class ArgumentResolver implements ArgumentResolverInterface
 
         if (
             !$allowEmptyInput
-            && isset($argumentDefinition[static::ARGUMENT_KEY_VALUES])
-            && is_array($argumentDefinition[static::ARGUMENT_KEY_VALUES])
+            && isset($argumentDefinition[SprykConfig::NAME_ARGUMENT_KEY_VALUES])
+            && is_array($argumentDefinition[SprykConfig::NAME_ARGUMENT_KEY_VALUES])
         ) {
-            return $this->choseArgumentValue($argumentName, $sprykName, $argumentDefinition[static::ARGUMENT_KEY_VALUES], $defaultValue);
+            return $this->choseArgumentValue($argumentName, $sprykName, $argumentDefinition[SprykConfig::NAME_ARGUMENT_KEY_VALUES], $defaultValue);
         }
 
         return $this->askForArgumentValue($argumentName, $sprykName, $defaultValue, $allowEmptyInput);
@@ -176,7 +175,7 @@ class ArgumentResolver implements ArgumentResolverInterface
         ArgumentCollectionInterface $resolvedArgumentCollection
     ): bool {
         if (
-            isset($argumentDefinition['value'])
+            isset($argumentDefinition[SprykConfig::NAME_ARGUMENT_KEY_VALUE])
             || $this->canInherit($argumentName, $argumentDefinition, $resolvedArgumentCollection)
             || OptionsContainer::hasOption($argumentName)
         ) {
@@ -213,8 +212,8 @@ class ArgumentResolver implements ArgumentResolverInterface
         array $argumentDefinition,
         ArgumentCollectionInterface $resolvedArgumentCollection
     ) {
-        if (isset($argumentDefinition['value']) && !$this->issetNonEmptyOption($argumentName)) {
-            return $argumentDefinition['value'];
+        if (isset($argumentDefinition[SprykConfig::NAME_ARGUMENT_KEY_VALUE]) && !$this->issetNonEmptyOption($argumentName)) {
+            return $argumentDefinition[SprykConfig::NAME_ARGUMENT_KEY_VALUE];
         }
 
         if ($this->canInherit($argumentName, $argumentDefinition, $resolvedArgumentCollection)) {
@@ -256,8 +255,8 @@ class ArgumentResolver implements ArgumentResolverInterface
         array $argumentDefinition,
         ArgumentCollectionInterface $resolvedArgumentCollection
     ) {
-        if (isset($argumentDefinition['default'])) {
-            return $argumentDefinition['default'];
+        if (isset($argumentDefinition[SprykConfig::NAME_ARGUMENT_KEY_DEFAULT])) {
+            return $argumentDefinition[SprykConfig::NAME_ARGUMENT_KEY_DEFAULT];
         }
 
         if ($resolvedArgumentCollection->hasArgument($argumentName)) {
@@ -327,11 +326,11 @@ class ArgumentResolver implements ArgumentResolverInterface
      */
     protected function resolveOrganizationAndModuleRootPath(ArgumentCollectionInterface $argumentCollection): ArgumentCollectionInterface
     {
-        if (!$argumentCollection->hasArgument('organization')) {
+        if (!$argumentCollection->hasArgument(SprykConfig::NAME_ARGUMENT_ORGANIZATION)) {
             return $argumentCollection;
         }
 
-        if (!in_array($argumentCollection->getArgument('organization')->getValue(), ['Spryker', 'SprykerShop', 'Pyz'])) {
+        if (!in_array($argumentCollection->getArgument(SprykConfig::NAME_ARGUMENT_ORGANIZATION)->getValue(), ['Spryker', 'SprykerShop', 'Pyz'])) {
             $argumentCollection->getArgument('sprykerVendorPath')->setValue('');
             $argumentCollection->getArgument('moduleSrcDirectory')->setValue('');
             $argumentCollection->getArgument('moduleRoot')->setValue('{{ module | dasherize }}');

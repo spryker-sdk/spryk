@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class DirectoriesExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
@@ -42,7 +43,7 @@ class DirectoriesExtender extends AbstractExtender implements SprykConfiguration
             return $sprykConfig;
         }
 
-        $arguments['directories']['value'] = [''];
+        $arguments['directories'][SprykConfig::NAME_ARGUMENT_KEY_VALUE] = [''];
         $sprykConfig = $this->setArguments($arguments, $sprykConfig);
 
         return $sprykConfig;

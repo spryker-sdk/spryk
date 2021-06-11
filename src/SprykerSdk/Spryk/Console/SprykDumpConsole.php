@@ -99,7 +99,7 @@ class SprykDumpConsole extends AbstractSprykConsole
     protected function dumpSprykOptions(OutputInterface $output, string $sprykName): void
     {
         $sprykDefinition = $this->getFacade()->getSprykDefinition($sprykName);
-        $tableRows = $this->formatOptions($sprykDefinition['arguments']);
+        $tableRows = $this->formatOptions($sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]);
         $this->printTitleBlock($output, sprintf('List of all "%s" options:', $sprykName));
         $this->printTable($output, ['Option'], $tableRows);
 
@@ -166,7 +166,7 @@ class SprykDumpConsole extends AbstractSprykConsole
     {
         $formatted = ['mode' => ['mode']];
         foreach ($sprykDefinitions as $option => $optionDefinition) {
-            if (isset($optionDefinition['value'])) {
+            if (isset($optionDefinition[SprykConfig::NAME_ARGUMENT_KEY_VALUE])) {
                 continue;
             }
 

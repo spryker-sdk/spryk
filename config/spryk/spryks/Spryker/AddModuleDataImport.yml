@@ -57,7 +57,7 @@ postSpryks:
     - AddConstant:
         arguments:
             name:
-                value: "IMPORT_TYPE_{{ entity | underscored | upperCase }}"
+                value: "IMPORT_TYPE_{{ entity | underscored | upper }}"
             value:
                 value: "{{ entity | dasherize }}"
             visibility:

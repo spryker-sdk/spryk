@@ -4,7 +4,7 @@
 
 namespace {{ organization }}\Zed\{{ module }};
 
-use {{ extends | trimBackslash }};
+use {{ extends | trim('\\') }};
 
 class {{ module }}Config extends {{ extends | classNameShort }}
 {

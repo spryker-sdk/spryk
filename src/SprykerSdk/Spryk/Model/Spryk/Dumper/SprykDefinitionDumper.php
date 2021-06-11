@@ -9,6 +9,7 @@ namespace SprykerSdk\Spryk\Model\Spryk\Dumper;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Dumper\Finder\SprykDefinitionFinderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class SprykDefinitionDumper implements SprykDefinitionDumperInterface
 {
@@ -46,7 +47,7 @@ class SprykDefinitionDumper implements SprykDefinitionDumperInterface
             $sprykName = str_replace('.' . $fileInfo->getExtension(), '', $fileInfo->getFilename());
             $sprykDefinition = $this->configurationLoader->loadSpryk($sprykName);
 
-            if ($level === null || $level === (int)$sprykDefinition['level']) {
+            if ($level === null || $level === (int)$sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_LEVEL]) {
                 $sprykDefinitions[$sprykName] = $sprykDefinition;
             }
         }

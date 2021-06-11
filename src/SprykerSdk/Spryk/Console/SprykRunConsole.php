@@ -9,6 +9,7 @@ namespace SprykerSdk\Spryk\Console;
 
 use RuntimeException;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\OptionsContainer;
+use SprykerSdk\Spryk\SprykConfig;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -47,7 +48,7 @@ class SprykRunConsole extends AbstractSprykConsole
             $this->addOption(
                 $argumentDefinition['name'],
                 null,
-                $argumentDefinition['mode'],
+                $argumentDefinition[SprykConfig::NAME_ARGUMENT_MODE],
                 $argumentDefinition['description']
             );
         }

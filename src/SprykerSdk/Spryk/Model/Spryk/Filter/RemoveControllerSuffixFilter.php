@@ -7,6 +7,14 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to remove the `Controller` suffix from a string
+ * if it is present in the given one.
+ *
+ * Example:
+ * $this->filter('IndexController') === `Index';
+ * $this->filter('List') === `List';
+ */
 class RemoveControllerSuffixFilter implements FilterInterface
 {
     public const CONTROLLER_SUFFIX = 'Controller';

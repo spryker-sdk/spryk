@@ -8,6 +8,7 @@
 namespace SprykerSdkTest\Spryk\Model\Spryk\ConfigurationLoader;
 
 use Codeception\Test\Unit;
+use SprykerSdk\Spryk\SprykConfig;
 
 /**
  * Auto-generated group annotations
@@ -34,7 +35,7 @@ class SprykConfigurationLoaderTest extends Unit
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        $this->assertNull($sprykConfiguration['arguments']['emptyValue']);
+        $this->assertNull($sprykConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]['emptyValue']);
     }
 
     /**
@@ -44,7 +45,7 @@ class SprykConfigurationLoaderTest extends Unit
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration['arguments']['replaceDefault']['default']);
+        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]['replaceDefault'][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT]);
     }
 
     /**
@@ -54,7 +55,7 @@ class SprykConfigurationLoaderTest extends Unit
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration['arguments']['replaceValue']['value']);
+        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/', $sprykConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]['replaceValue'][SprykConfig::NAME_ARGUMENT_KEY_VALUE]);
     }
 
     /**
@@ -64,7 +65,7 @@ class SprykConfigurationLoaderTest extends Unit
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/foo-bar/', $sprykConfiguration['postSpryks'][0]['FooBarSpryk']['arguments']['replaceValue']['value']);
+        $this->assertSame('vendor/spryker/spryker/Bundles/%module%/src/foo-bar/', $sprykConfiguration['postSpryks'][0]['FooBarSpryk'][SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]['replaceValue'][SprykConfig::NAME_ARGUMENT_KEY_VALUE]);
     }
 
     /**
@@ -74,7 +75,7 @@ class SprykConfigurationLoaderTest extends Unit
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        $this->assertSame('foo/bar', $sprykConfiguration['arguments']['rootArgument']['value']);
+        $this->assertSame('foo/bar', $sprykConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]['rootArgument'][SprykConfig::NAME_ARGUMENT_KEY_VALUE]);
     }
 
     /**
@@ -84,6 +85,6 @@ class SprykConfigurationLoaderTest extends Unit
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);
 
-        $this->assertArrayNotHasKey('shouldNotBeMerged', $sprykConfiguration['arguments']);
+        $this->assertArrayNotHasKey('shouldNotBeMerged', $sprykConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]);
     }
 }

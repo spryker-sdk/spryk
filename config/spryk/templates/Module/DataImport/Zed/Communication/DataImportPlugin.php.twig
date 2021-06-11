@@ -44,6 +44,6 @@ class {{ entity }}DataImportPlugin extends AbstractPlugin implements DataImportP
      */
     public function getImportType(): string
     {
-        return {{ module }}Config::IMPORT_TYPE_{{ entity | underscored | upperCase }};
+        return {{ module }}Config::IMPORT_TYPE_{{ entity | underscored | upper }};
     }
 }

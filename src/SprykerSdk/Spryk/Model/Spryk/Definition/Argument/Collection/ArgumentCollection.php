@@ -9,6 +9,7 @@ namespace SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection;
 
 use SprykerSdk\Spryk\Exception\ArgumentNotFoundException;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class ArgumentCollection implements ArgumentCollectionInterface
 {
@@ -76,7 +77,7 @@ class ArgumentCollection implements ArgumentCollectionInterface
         $result = [];
 
         foreach ($this->arguments as $argument) {
-            $result[$argument->getName()]['value'] = $argument->getValue();
+            $result[$argument->getName()][SprykConfig::NAME_ARGUMENT_KEY_VALUE] = $argument->getValue();
         }
 
         return $result;
