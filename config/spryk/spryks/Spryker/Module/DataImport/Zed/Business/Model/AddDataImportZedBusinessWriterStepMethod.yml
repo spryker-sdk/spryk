@@ -15,6 +15,10 @@ arguments:
     module:
         inherit: true
 
+    subDirectory:
+        inherit: true
+        isOptional: true
+
     className:
         inherit: true
         type: ClassNameChoice
@@ -23,10 +27,6 @@ arguments:
             - module
             - spryk
             - choiceLoader
-
-    subDirectory:
-        inherit: true
-        isOptional: true
 
     modelMethod:
         inherit: true

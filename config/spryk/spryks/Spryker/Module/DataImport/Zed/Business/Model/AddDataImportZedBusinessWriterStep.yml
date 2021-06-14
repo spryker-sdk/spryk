@@ -16,9 +16,17 @@ arguments:
         inherit: true
 
     subDirectory:
+        inherit: true
         isOptional: true
 
-    className: ~
+    className:
+        inherit: true
+        type: ClassNameChoice
+        choiceLoader: ZedBusinessModelChoiceLoader
+        typeOptions:
+            - module
+            - spryk
+            - choiceLoader
 
     constructorArguments:
         type: ZedBusinessDependency

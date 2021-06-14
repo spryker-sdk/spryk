@@ -1934,13 +1934,13 @@
   mode: 2
   description: 'AddDataImportZedBusinessWriterStepMethod module argument'
 -
-  name: AddDataImportZedBusinessWriterStepMethod.className
-  mode: 2
-  description: 'AddDataImportZedBusinessWriterStepMethod className argument'
--
   name: AddDataImportZedBusinessWriterStepMethod.subDirectory
   mode: 2
   description: 'AddDataImportZedBusinessWriterStepMethod subDirectory argument'
+-
+  name: AddDataImportZedBusinessWriterStepMethod.className
+  mode: 2
+  description: 'AddDataImportZedBusinessWriterStepMethod className argument'
 -
   name: AddDataImportZedBusinessWriterStepMethod.modelMethod
   mode: 2
