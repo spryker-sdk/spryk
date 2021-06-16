@@ -5,41 +5,42 @@ mode: core
 level: 2
 
 arguments:
-  module:
-    moduleFilter:
-      application: Zed
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  dependentModule:
-    inherit: true
-    moduleFilter:
-      application: Service
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Service
 
-  methods:
-    type: MethodNameChoice
-    choiceLoader: ServiceMethodChoiceLoader
-    isMultiple: true
-    typeOptions:
-      - module
-      - choiceLoader
+    methods:
+        type: MethodNameChoice
+        choiceLoader: ServiceMethodChoiceLoader
+        isMultiple: true
+        typeOptions:
+            - module
+            - choiceLoader
 
-  template:
-    value: Zed/Dependency/ZedDependencyBridgeMethod.php.twig
+    template:
+        value: Zed/Dependency/ZedDependencyBridgeMethod.php.twig
 
-  dependencyType:
-    value: Service
+    dependencyType:
+        value: Service
 
-  sourceClass:
-    value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
+    sourceClass:
+        value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
 
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
 
 preSpryks:
-  - AddZedDependencyServiceBridge
+    - AddZedDependencyServiceBridge
 
 postSpryks:
-  - AddZedDependencyServiceBridgeInterfaceMethod
+    - AddZedDependencyServiceBridgeInterfaceMethod

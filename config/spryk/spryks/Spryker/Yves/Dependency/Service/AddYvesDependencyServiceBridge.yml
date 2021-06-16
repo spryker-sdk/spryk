@@ -11,9 +11,10 @@ arguments:
         inherit: true
 
     dependentModule:
-        inherit: trues
+        inherit: true
 
     dependentModuleOrganization:
+        inherit: true
         default: Spryker
 
     template:
@@ -32,11 +33,11 @@ postSpryks:
     - AddYvesDependencyServiceInterface
     - AddYvesDependencyServiceFactoryMethod
     - AddYvesDependencyServiceDependencyProviderMethod
-    -   AddYvesDependencyServiceDependencyProviderConstant:
-            arguments:
-                name:
-                    value: "SERVICE_{{ dependentModule | underscored | upper }}"
-                value:
-                    value:  "SERVICE_{{ dependentModule | underscored | upper }}"
-                visibility:
-                    value:  "public"
+    - AddYvesDependencyServiceDependencyProviderConstant:
+        arguments:
+            name:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"

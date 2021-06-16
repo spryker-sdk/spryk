@@ -7,25 +7,30 @@ application: Glue
 priority: 1
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  resourceType:
-    inherit: true
+    resourceType:
+        inherit: true
 
-  resourceRouteMethod:
-    inherit: true
+    resourceRouteMethod:
+        inherit: true
+        values:
+            - get
+            - post
+            - delete
+            - patch
 
-  template:
-    value: Glue/GlueRouteResource.php.twig
+    template:
+        value: Glue/GlueRouteResource.php.twig
 
-  target:
-    value: "{{ organization }}\\Glue\\{{ module }}\\Plugin\\GlueApplication\\{{ resourceType | dashToCamelCase }}ResourceRoutePlugin"
+    target:
+        value: "{{ organization }}\\Glue\\{{ module }}\\Plugin\\GlueApplication\\{{ resourceType | dashToCamelCase }}ResourceRoutePlugin"
 
 preSpryks:
-  - AddModule
-  - AddGlueResourceRoutePlugin
+    - AddModule
+    - AddGlueResourceRoutePlugin

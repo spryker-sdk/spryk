@@ -2526,10 +2526,6 @@
   mode: 2
   description: 'AddGlueDependencyClientBridge module argument'
 -
-  name: AddGlueDependencyClientBridge.dependentModuleOrganization
-  mode: 2
-  description: 'AddGlueDependencyClientBridge dependentModuleOrganization argument'
--
   name: AddGlueDependencyClientBridge.dependentModule
   mode: 2
   description: 'AddGlueDependencyClientBridge dependentModule argument'
@@ -5214,14 +5210,6 @@
   mode: 2
   description: 'AddModuleYves theme argument'
 -
-  name: AddModuleYves.controller
-  mode: 2
-  description: 'AddModuleYves controller argument'
--
-  name: AddModuleYves.controllerMethod
-  mode: 2
-  description: 'AddModuleYves controllerMethod argument'
--
   name: AddModuleYves.targetPath
   mode: 2
   description: 'AddModuleYves targetPath argument'
@@ -6350,10 +6338,6 @@
   mode: 2
   description: 'AddYvesDependencyClientDependencyProviderConstant module argument'
 -
-  name: AddYvesDependencyClientDependencyProviderConstant.dependentModule
-  mode: 2
-  description: 'AddYvesDependencyClientDependencyProviderConstant dependentModule argument'
--
   name: AddYvesDependencyClientDependencyProviderConstant.name
   mode: 2
   description: 'AddYvesDependencyClientDependencyProviderConstant name argument'
@@ -6626,6 +6610,10 @@
   mode: 2
   description: 'AddYvesDependencyServiceBridgeInterfaceMethod dependentModule argument'
 -
+  name: AddYvesDependencyServiceBridgeInterfaceMethod.dependentModuleOrganization
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeInterfaceMethod dependentModuleOrganization argument'
+-
   name: AddYvesDependencyServiceBridgeInterfaceMethod.methods
   mode: 2
   description: 'AddYvesDependencyServiceBridgeInterfaceMethod methods argument'
@@ -6681,6 +6669,10 @@
   name: AddYvesDependencyServiceBridgeMethod.dependentModule
   mode: 2
   description: 'AddYvesDependencyServiceBridgeMethod dependentModule argument'
+-
+  name: AddYvesDependencyServiceBridgeMethod.dependentModuleOrganization
+  mode: 2
+  description: 'AddYvesDependencyServiceBridgeMethod dependentModuleOrganization argument'
 -
   name: AddYvesDependencyServiceBridgeMethod.methods
   mode: 2
@@ -6786,6 +6778,10 @@
   mode: 2
   description: 'AddYvesDependencyServiceDependencyProviderMethod dependentModule argument'
 -
+  name: AddYvesDependencyServiceDependencyProviderMethod.dependentModuleOrganization
+  mode: 2
+  description: 'AddYvesDependencyServiceDependencyProviderMethod dependentModuleOrganization argument'
+-
   name: AddYvesDependencyServiceDependencyProviderMethod.providerMethod
   mode: 2
   description: 'AddYvesDependencyServiceDependencyProviderMethod providerMethod argument'
@@ -6873,6 +6869,10 @@
   name: AddYvesDependencyServiceInterface.dependentModule
   mode: 2
   description: 'AddYvesDependencyServiceInterface dependentModule argument'
+-
+  name: AddYvesDependencyServiceInterface.dependentModuleOrganization
+  mode: 2
+  description: 'AddYvesDependencyServiceInterface dependentModuleOrganization argument'
 -
   name: AddYvesDependencyServiceInterface.template
   mode: 2
@@ -7049,6 +7049,10 @@
   name: AddYvesRouteProviderAction.controllerMethod
   mode: 2
   description: 'AddYvesRouteProviderAction controllerMethod argument'
+-
+  name: AddYvesRouteProviderAction.theme
+  mode: 2
+  description: 'AddYvesRouteProviderAction theme argument'
 -
   name: AddYvesRouteProviderAction.constantName
   mode: 2

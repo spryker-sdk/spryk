@@ -26,11 +26,11 @@ preSpryks:
     - AddYvesFactory
 
 postSpryks:
-    -   AddYvesDependencyServiceDependencyProviderConstant:
-            arguments:
-                name:
-                    value: "SERVICE_{{ dependentModule | underscored | upper }}"
-                value:
-                    value:  "SERVICE_{{ dependentModule | underscored | upper }}"
-                visibility:
-                    value:  "public"
+    - AddYvesDependencyServiceDependencyProviderConstant:
+        arguments:
+            name:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"

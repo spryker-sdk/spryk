@@ -3,24 +3,24 @@ description: "Adds a Client dependency constant to the *module*DependencyProvide
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  dependentModule:
-    inherit: true
+    dependentModule:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  name: ~
-  value: ~
-  visibility:
-    value: "public"
+    name: ~
+    value: ~
+    visibility:
+        value: "public"
 
-  target:
-    value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}DependencyProvider"
+    target:
+        value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
-  - AddGlueDependencyProvider
+    - AddGlueDependencyProvider
 

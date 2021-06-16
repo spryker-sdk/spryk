@@ -3,21 +3,21 @@ description: "Adds a new .editorconfig to the Modules root."
 mode: core
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: editorconfig.twig
+    template:
+        value: editorconfig.twig
 
-  targetFilename:
-    value: .editorconfig
+    targetFilename:
+        value: .editorconfig
 
-  targetPath:
-    value: "{{ moduleRoot }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule

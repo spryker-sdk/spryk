@@ -26,12 +26,12 @@ preSpryks:
     - AddYvesFactory
 
 postSpryks:
-    -   AddYvesDependencyClientDependencyProviderConstant:
-            arguments:
-                name:
-                    value: "CLIENT_{{ dependentModule | underscored | upper }}"
-                value:
-                    value:  "CLIENT_{{ dependentModule | underscored | upper }}"
-                visibility:
-                    value:  "public"
+    - AddYvesDependencyClientDependencyProviderConstant:
+        arguments:
+            name:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"
 

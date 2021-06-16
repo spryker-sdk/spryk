@@ -10,9 +10,6 @@ arguments:
     module:
         inherit: true
 
-    dependentModule:
-        inherit: true
-
     name: ~
     value: ~
     visibility:

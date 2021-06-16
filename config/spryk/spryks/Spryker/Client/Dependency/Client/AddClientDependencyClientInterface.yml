@@ -23,4 +23,4 @@ arguments:
         value: "{{ moduleRoot }}/src/{{ organization }}/Client/{{ module }}/Dependency/Client/"
 
 preSpryks:
-    - AddClientDependencyClientBridge
+    - AddModule

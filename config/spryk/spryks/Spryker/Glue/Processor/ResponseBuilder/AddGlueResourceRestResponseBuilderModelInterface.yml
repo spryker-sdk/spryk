@@ -3,36 +3,37 @@ description: "Adds a new RestResponseBuilder model interface to the Glue applica
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  subDirectory:
-    default: RestResponseBuilder
+    subDirectory:
+        inherit: true
+        default: RestResponseBuilder
 
-  resourceType:
-    inherit: true
+    resourceType:
+        inherit: true
 
-  className:
-    inherit: true
-    default: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilder"
+    className:
+        inherit: true
+        value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilder"
 
-  interfaceName:
-    inherit: true
-    default: "{{ className }}Interface"
+    interfaceName:
+        inherit: true
+        value: "{{ className }}Interface"
 
-  template:
-    value: Glue/Processor/GlueProcessorModelInterface.php.twig
+    template:
+        value: Glue/Processor/GlueProcessorModelInterface.php.twig
 
-  targetFilename:
-    callbackOnly: true
-    callback: GlueProcessorModelInterfaceTargetFilename
+    targetFilename:
+        callbackOnly: true
+        callback: GlueProcessorModelInterfaceTargetFilename
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
 
 preSpryks:
-  - AddModule
+    - AddModule

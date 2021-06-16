@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -16,10 +16,11 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModuleChangelogTest
+ * @group Module
+ * @group AddModuleLicenseTest
  * Add your own group annotations below this line
  */
-class AddModuleChangelogTest extends Unit
+class AddModuleLicenseTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,24 +30,26 @@ class AddModuleChangelogTest extends Unit
     /**
      * @return void
      */
-    public function testAddsChangeLogFile(): void
+    public function testAddsLicenseFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'CHANGELOG.md');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'LICENSE');
     }
 
     /**
      * @return void
      */
-    public function testAddModuleChangelogFailsOnProjectLayer(): void
+    public function testAddModuleLicenseFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
     }

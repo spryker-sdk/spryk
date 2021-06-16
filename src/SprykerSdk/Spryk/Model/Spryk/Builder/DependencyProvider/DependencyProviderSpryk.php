@@ -205,7 +205,7 @@ class DependencyProviderSpryk implements SprykBuilderInterface
         $methodBody = $reflectionMethod->getBodyCode();
         $providerMethod = $this->getProviderMethod($sprykDefinition);
 
-        return strpos($methodBody, sprintf('$container = %s(', $providerMethod)) !== false;
+        return strpos($methodBody, sprintf('$container = $this->%s(', $providerMethod)) !== false;
     }
 
     /**

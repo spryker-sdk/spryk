@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -16,10 +16,11 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModuleReadmeTest
+ * @group Module
+ * @group AddModuleEditorconfigTest
  * Add your own group annotations below this line
  */
-class AddModuleReadmeTest extends Unit
+class AddModuleEditorconfigTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,19 +30,19 @@ class AddModuleReadmeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsReadmeFile(): void
+    public function testAddsEditorconfigFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'README.md');
+        $this->assertFileExists($this->tester->getModuleDirectory() . '.editorconfig');
     }
 
     /**
      * @return void
      */
-    public function testAddModuleReadmeFailsOnProjectLayer(): void
+    public function testAddModuleEditorconfigFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 

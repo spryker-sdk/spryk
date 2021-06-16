@@ -9,8 +9,13 @@ arguments:
 
     module:
         inherit: true
+
     dependentModule:
         inherit: true
+
+    dependentModuleOrganization:
+        inherit: true
+        default: Spryker
 
     providerMethod:
         value: "add{{ dependentModule }}Service"
@@ -26,12 +31,12 @@ preSpryks:
 
 postSpryks:
     - AddYvesDependencyServiceBridge
-    -   AddYvesDependencyServiceDependencyProviderConstant:
-            arguments:
-                name:
-                    value: "SERVICE_{{ dependentModule | underscored | upper }}"
-                value:
-                    value:  "SERVICE_{{ dependentModule | underscored | upper }}"
-                visibility:
-                    value:  "public"
+    - AddYvesDependencyServiceDependencyProviderConstant:
+        arguments:
+            name:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"
 

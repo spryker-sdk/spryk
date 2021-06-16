@@ -33,13 +33,13 @@ postSpryks:
     - AddClientDependencyClientInterface
     - AddClientDependencyClientFactoryMethod
     - AddClientDependencyClientDependencyProviderMethod
-    -   AddConstant:
-            arguments:
-                name:
-                    value: "CLIENT_{{ dependentModule | underscored | upper }}"
-                value:
-                    value:  "CLIENT_{{ dependentModule | underscored | upper }}"
-                visibility:
-                    value:  "public"
-                target:
-                    value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}DependencyProvider"
+    - AddConstant:
+        arguments:
+            name:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"
+            target:
+                value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}DependencyProvider"

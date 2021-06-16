@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -16,10 +16,11 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModuleGitignoreTest
+ * @group Module
+ * @group AddModuleContributingTest
  * Add your own group annotations below this line
  */
-class AddModuleGitignoreTest extends Unit
+class AddModuleContributingTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,26 +30,25 @@ class AddModuleGitignoreTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGitignoreFile(): void
+    public function testAddsContributingFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.gitignore');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'CONTRIBUTING.md');
     }
 
     /**
      * @return void
      */
-    public function testAddModuleGitignoreFailsOnProjectLayer(): void
+    public function testAddModuleContributingFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
     }

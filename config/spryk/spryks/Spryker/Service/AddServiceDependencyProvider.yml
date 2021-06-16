@@ -3,21 +3,21 @@ description: "Adds a new *Module*ServiceDependencyProvider to the Service applic
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Service/ServiceDependencyProvider.php.twig
+    template:
+        value: Service/ServiceDependencyProvider.php.twig
 
-  targetFilename:
-    value: "{{ module }}DependencyProvider.php"
+    targetFilename:
+        value: "{{ module }}DependencyProvider.php"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Service/{{ module }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Service/{{ module }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule

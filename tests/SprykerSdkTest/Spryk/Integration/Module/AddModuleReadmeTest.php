@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -16,10 +16,11 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModuleGitattributesTest
+ * @group Module
+ * @group AddModuleReadmeTest
  * Add your own group annotations below this line
  */
-class AddModuleGitattributesTest extends Unit
+class AddModuleReadmeTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,26 +30,24 @@ class AddModuleGitattributesTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGitattributesFile(): void
+    public function testAddsReadmeFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.gitattributes');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'README.md');
     }
 
     /**
      * @return void
      */
-    public function testAddModuleGitattributesFailsOnProjectLayer(): void
+    public function testAddModuleReadmeFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
     }

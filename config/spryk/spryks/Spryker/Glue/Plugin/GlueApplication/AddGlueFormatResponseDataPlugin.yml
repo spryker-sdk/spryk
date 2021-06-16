@@ -3,25 +3,25 @@ description: "Adds a new *modelName*FormatResponseDataPlugin to the Glue applica
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Glue/Plugin/GlueApplication/FormatResponseDataPlugin.php.twig
+    template:
+        value: Glue/Plugin/GlueApplication/FormatResponseDataPlugin.php.twig
 
-  modelName:
-    inherit: true
+    modelName:
+        inherit: true
 
-  targetFilename:
-    value: "{{ modelName | camelCased }}FormatResponseDataPlugin.php"
+    targetFilename:
+        value: "{{ modelName | camelCased }}FormatResponseDataPlugin.php"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
 
 preSpryks:
-  - AddModule
-  - AddGlueFactory
+    - AddModule
+    - AddGlueFactory

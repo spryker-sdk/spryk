@@ -8,43 +8,44 @@ application: Glue
 priority: 1
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  resourceType:
-    inherit: true
-    default: "{{ module | removeRestApiSuffix | lower }}"
+    resourceType:
+        inherit: true
+        value: "{{ module | removeRestApiSuffix | lower }}"
 
-  targetPath:
-    value: "{{ moduleRoot }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/"
 
-  directories:
-    value:
-      - "src/{{ organization }}/"
+    directories:
+        skipOnProjectLevel: true
+        value:
+            - "src/{{ organization }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddGlueResourceRoutePlugin
-  - AddGlueResourceMapper:
-      arguments:
-        className:
-          value: "{{ resourceType | dashToCamelCase | singularize }}Mapper"
-  - AddGlueController:
-      arguments:
-        controller:
-          value: "{{ resourceType | dashToCamelCase }}ResourceController"
-  - AddGlueResourceRestResponseBuilderModel:
-      arguments:
-        className:
-          value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilder"
-        interfaceName:
-          value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilderInterface"
-        subDirectory:
-          value: "RestResponseBuilder"
+    - AddGlueResourceRoutePlugin
+    - AddGlueResourceMapper:
+        arguments:
+            className:
+                value: "{{ resourceType | dashToCamelCase | singularize }}Mapper"
+    - AddGlueController:
+        arguments:
+            controller:
+                value: "{{ resourceType | dashToCamelCase }}ResourceController"
+    - AddGlueResourceRestResponseBuilderModel:
+        arguments:
+            className:
+                value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilder"
+            interfaceName:
+                value: "{{ resourceType | dashToCamelCase | singularize }}RestResponseBuilderInterface"
+            subDirectory:
+                value: "RestResponseBuilder"
 

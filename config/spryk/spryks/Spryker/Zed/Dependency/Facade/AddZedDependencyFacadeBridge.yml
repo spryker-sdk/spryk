@@ -42,6 +42,6 @@ postSpryks:
             name:
                 value: "FACADE_{{ dependentModule | underscored | upper }}"
             value:
-                value:  "FACADE_{{ dependentModule | underscored | upper }}"
+                value: "FACADE_{{ dependentModule | underscored | upper }}"
             visibility:
-                value:  "public"
+                value: "public"

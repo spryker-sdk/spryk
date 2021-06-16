@@ -5,26 +5,25 @@ mode: both
 level: 2
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    clientMethod: ~
+    input: ~
+    output: ~
 
-  clientMethod: ~
-  input: ~
-  output: ~
+    template:
+        value: Common/Method.php.twig
 
-  template:
-    value: Common/Method.php.twig
-
-  target:
-    value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}Client"
+    target:
+        value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}Client"
 
 preSpryks:
-  - AddClient
+    - AddClient
 
 postSpryks:
-  - AddClientInterfaceMethod
+    - AddClientInterfaceMethod

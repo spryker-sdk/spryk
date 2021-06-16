@@ -3,40 +3,39 @@ description: "Adds a Client dependency method to the *module*DependencyProvider.
 mode: both
 
 arguments:
-  module:
-    inherit: true
-    moduleFilter:
-      application: Zed
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  dependentModule:
-    inherit: true
-    moduleFilter:
-      application: Client
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Client
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  providerMethod:
-    value: "add{{ dependentModule }}Client"
+    providerMethod:
+        value: "add{{ dependentModule }}Client"
 
-  template:
-    value: Zed/Dependency/Client/ZedDependencyClientDependencyProviderMethod.php.twig
+    template:
+        value: Zed/Dependency/Client/ZedDependencyClientDependencyProviderMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
-  - AddZedDependencyProvider
+    - AddZedDependencyProvider
 
 postSpryks:
-  - AddZedDependencyClientBridge
-  - AddZedDependencyClientDependencyProviderConstant:
-      arguments:
-        name:
-          value: "CLIENT_{{ dependentModule | underscored | upper }}"
-        value:
-          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} client"
-        visibility:
-          value:  "public"
+    - AddZedDependencyClientDependencyProviderConstant:
+        arguments:
+            name:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"
 

@@ -3,21 +3,21 @@ description: "Adds a new CI config to the module."
 mode: core
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: ci.yml.twig
+    template:
+        value: ci.yml.twig
 
-  targetFilename:
-    value: ci.yml
+    targetFilename:
+        value: ci.yml
 
-  targetPath:
-    value: "{{ moduleRoot }}/.github/workflows/"
+    targetPath:
+        value: "{{ moduleRoot }}/.github/workflows/"
 
 preSpryks:
-  - AddModule
+    - AddModule

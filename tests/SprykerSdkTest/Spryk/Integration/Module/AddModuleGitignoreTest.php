@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -16,10 +16,11 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModuleComposerJsonTest
+ * @group Module
+ * @group AddModuleGitignoreTest
  * Add your own group annotations below this line
  */
-class AddModuleComposerJsonTest extends Unit
+class AddModuleGitignoreTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,24 +30,26 @@ class AddModuleComposerJsonTest extends Unit
     /**
      * @return void
      */
-    public function testAddsComposerJsonFile(): void
+    public function testAddsGitignoreFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'composer.json');
+        $this->assertFileExists($this->tester->getModuleDirectory() . '.gitignore');
     }
 
     /**
      * @return void
      */
-    public function testAddModuleComposerJsonFailsOnProjectLayer(): void
+    public function testAddModuleGitignoreFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
     }

@@ -3,26 +3,30 @@ description: "Adds a new Abstract*tableName* class to Zed's persistence layer."
 mode: both
 
 arguments:
-  module:
-    inherit: true
-  targetModule: ~
-  tableName: ~
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    targetModule:
+        inherit: true
 
-  template:
-    value: Zed/Persistence/Propel/AbstractEntity.php.twig
+    tableName:
+        inherit: true
 
-  targetFilename:
-    value: "Abstract{{ tableName | camelCased }}.php"
+    organization:
+        inherit: true
+        default: Spryker
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/"
+    template:
+        value: Zed/Persistence/Propel/AbstractEntity.php.twig
+
+    targetFilename:
+        value: "Abstract{{ tableName | camelCased }}.php"
+
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/"
 
 preSpryks:
-  - AddZedPersistencePropelSchemaTable
+    - AddZedPersistencePropelSchemaTable
 
 postSpryks:
-  - AddZedPersistencePropelAbstractQuery
+    - AddZedPersistencePropelAbstractQuery

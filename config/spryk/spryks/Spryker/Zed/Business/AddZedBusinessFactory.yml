@@ -3,26 +3,26 @@ description: "Adds a new *module*BusinessFactory to the Zed application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Zed/Business/ZedBusinessFactory.php.twig
+    template:
+        value: Zed/Business/ZedBusinessFactory.php.twig
 
-  targetFilename:
-    value: "{{ module }}BusinessFactory.php"
+    targetFilename:
+        value: "{{ module }}BusinessFactory.php"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddZedBusinessFacade
-  - AddZedDependencyProvider
-  - AddZedConfig
+    - AddZedBusinessFacade
+    - AddZedDependencyProvider
+    - AddZedConfig

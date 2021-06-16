@@ -19,11 +19,12 @@ arguments:
         value: "{{ moduleRoot }}/"
 
     directories:
+        skipOnProjectLevel: true
         value:
             - "src/{{ organization }}/"
 
     classNamePrefix:
-        value: '{{ paymentMethod }}'
+        value: '{{ paymentMethod | ucfirst }}'
 
 preSpryks:
     - AddModule

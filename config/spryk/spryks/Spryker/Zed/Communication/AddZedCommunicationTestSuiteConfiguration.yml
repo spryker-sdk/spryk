@@ -3,24 +3,24 @@ description: "Updates the *module* test configuration and adds the suite configu
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Zed/Communication/ZedCommunicationTestSuiteCodeceptionConfiguration.yml.twig
+    template:
+        value: Zed/Communication/ZedCommunicationTestSuiteCodeceptionConfiguration.yml.twig
 
-  afterElement:
-    value: coverage
+    afterElement:
+        value: coverage
 
-  addToElement:
-    value: suites
+    addToElement:
+        value: suites
 
-  targetPath:
-    value: "{{ moduleRoot }}/tests/{{ organization }}Test/Zed/{{ module }}/codeception.yml"
+    targetPath:
+        value: "{{ moduleRoot }}/tests/{{ organization }}Test/Zed/{{ module }}/codeception.yml"
 
 preSpryks:
-  - AddZedTestCodeceptionConfiguration
+    - AddZedTestCodeceptionConfiguration

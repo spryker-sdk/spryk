@@ -3,28 +3,28 @@ description: "Adds a new Console command to the Zed application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  className: ~
+    className: ~
 
-  consoleCommand: ~
+    consoleCommand: ~
 
-  template:
-    value: Zed/Communication/Console/ZedCommunicationConsole.php.twig
+    template:
+        value: Zed/Communication/Console/ZedCommunicationConsole.php.twig
 
-  targetFilename:
-    value: "{{ className }}Console.php"
+    targetFilename:
+        value: "{{ className }}Console.php"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/Console/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/Console/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddZedCommunicationConsoleTest
+    - AddZedCommunicationConsoleTest

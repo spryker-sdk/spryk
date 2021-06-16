@@ -3,25 +3,25 @@ description: "Adds a new *module*EntityManager to the Zed application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Zed/Persistence/ZedPersistenceEntityManager.php.twig
+    template:
+        value: Zed/Persistence/ZedPersistenceEntityManager.php.twig
 
-  targetFilename:
-    value: "{{ module }}EntityManager.php"
+    targetFilename:
+        value: "{{ module }}EntityManager.php"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddZedPersistenceFactory
-  - AddZedPersistenceEntityManagerInterface
+    - AddZedPersistenceFactory
+    - AddZedPersistenceEntityManagerInterface

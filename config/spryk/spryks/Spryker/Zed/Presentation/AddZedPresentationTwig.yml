@@ -4,34 +4,32 @@ mode: both
 level: 2
 
 config:
-  noRender: true
+    noRender: true
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    controller:
+        inherit: true
+        callback:
+            - ClassNameShortCallback
+            - RemoveControllerSuffixCallback
 
-  controller:
-    callback:
-      - ClassNameShortCallback
-      - RemoveControllerSuffixCallback
+    controllerMethod:
+        inherit: true
+        callback:
+            - RemoveActionSuffixCallback
 
-  controllerMethod:
-    callback:
-      - RemoveActionSuffixCallback
+    template:
+        value: Zed/Presentation/ZedPresentationTwig.twig
 
-  template:
-    value: Zed/Presentation/ZedPresentationTwig.twig
+    targetFilename:
+        value: "{{ controllerMethod | removeActionSuffix | dasherize | lcfirst }}.twig"
 
-  targetFilename:
-    value: "{{ controllerMethod | removeActionSuffix | dasherize | lcfirst }}.twig"
-
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"
-
-preSpryks:
-  - AddZedCommunicationControllerAction
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"

@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -16,10 +16,11 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModuleLicenseTest
+ * @group Module
+ * @group AddModulePhpStanNeonTest
  * Add your own group annotations below this line
  */
-class AddModuleLicenseTest extends Unit
+class AddModulePhpStanNeonTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,20 +30,20 @@ class AddModuleLicenseTest extends Unit
     /**
      * @return void
      */
-    public function testAddsLicenseFile(): void
+    public function testAddsPhpStanNeonFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'LICENSE');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'phpstan.neon');
     }
 
     /**
      * @return void
      */
-    public function testAddModuleLicenseFailsOnProjectLayer(): void
+    public function testAddModulePhpStanNeonFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 

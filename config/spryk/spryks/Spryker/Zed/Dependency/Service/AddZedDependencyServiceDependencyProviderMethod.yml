@@ -3,39 +3,39 @@ description: "Adds a Service dependency method to the *module*DependencyProvider
 mode: both
 
 arguments:
-  module:
-    moduleFilter:
-      application: Zed
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  dependentModule:
-    inherit: true
-    moduleFilter:
-      application: Service
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Service
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  providerMethod:
-    value: "add{{ dependentModule }}Service"
+    providerMethod:
+        value: "add{{ dependentModule }}Service"
 
-  template:
-    value: Zed/Dependency/Service/ZedDependencyServiceDependencyProviderMethod.php.twig
+    template:
+        value: Zed/Dependency/Service/ZedDependencyServiceDependencyProviderMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
-  - AddZedDependencyProvider
+    - AddZedDependencyProvider
 
 postSpryks:
-  - AddZedDependencyServiceBridge
-  - AddZedDependencyServiceDependencyProviderConstant:
-      arguments:
-        name:
-          value: "SERVICE_{{ dependentModule | underscored | upper }}"
-        value:
-          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
-        visibility:
-          value:  "public"
+    - AddZedDependencyServiceDependencyProviderConstant:
+        arguments:
+            name:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"
 

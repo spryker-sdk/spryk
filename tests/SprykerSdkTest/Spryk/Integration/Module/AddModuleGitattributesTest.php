@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -16,10 +16,11 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModuleScrutinizerTest
+ * @group Module
+ * @group AddModuleGitattributesTest
  * Add your own group annotations below this line
  */
-class AddModuleScrutinizerTest extends Unit
+class AddModuleGitattributesTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,20 +30,20 @@ class AddModuleScrutinizerTest extends Unit
     /**
      * @return void
      */
-    public function testAddsScrutinizerFile(): void
+    public function testAddsGitattributesFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.scrutinizer.yml');
+        $this->assertFileExists($this->tester->getModuleDirectory() . '.gitattributes');
     }
 
     /**
      * @return void
      */
-    public function testAddModuleScrutinizerFailsOnProjectLayer(): void
+    public function testAddModuleGitattributesFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 

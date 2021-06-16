@@ -3,21 +3,21 @@ description: "Adds a new *module*Config to the Client application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Client/ClientConfig.php.twig
+    template:
+        value: Client/ClientConfig.php.twig
 
-  targetFilename:
-    value: "{{ module }}Config.php"
+    targetFilename:
+        value: "{{ module }}Config.php"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Client/{{ module }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule

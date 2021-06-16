@@ -5,48 +5,48 @@ mode: both
 application: Glue
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  resourceType:
-    inherit: true
+    resourceType:
+        inherit: true
 
-  fromTransfer:
-    inherit: true
-    default: "Rest{{ resourceType | dashToCamelCase }}AttributesTransfer"
+    fromTransfer:
+        inherit: true
+        default: "Rest{{ resourceType | dashToCamelCase }}AttributesTransfer"
 
-  toTransfer:
-    inherit: true
-    default: "Rest{{ resourceType | dashToCamelCase }}AttributesTransfer"
+    toTransfer:
+        inherit: true
+        default: "Rest{{ resourceType | dashToCamelCase }}AttributesTransfer"
 
-  method:
-    value: "map{{ fromTransfer }}To{{ toTransfer }}"
-    inherit: true
+    method:
+        value: "map{{ fromTransfer }}To{{ toTransfer }}"
+        inherit: true
 
-  template:
-    value: Glue/Processor/Mapper/GlueResourceMapperMethod.php.twig
+    template:
+        value: Glue/Processor/Mapper/GlueResourceMapperMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Glue\\{{ module }}\\Processor\\Mapper\\{{ resourceType | singularize | dashToCamelCase | ensureMapperSuffix}}"
+    target:
+        value: "{{ organization }}\\Glue\\{{ module }}\\Processor\\Mapper\\{{ resourceType | singularize | dashToCamelCase | ensureMapperSuffix}}"
 
 preSpryks:
-  - AddModule
-  - AddSharedRestAttributesTransfer:
-      arguments:
-        name:
-          value: "{{ resourceType | dashToCamelCase }}"
-          callback:
-            - EnsureRestAttributesTransferAffix
-  - AddGlueResourceMapper:
-      arguments:
-        className:
-          value: "{{ resourceType | singularize | dashToCamelCase }}Mapper"
-        subDirectory:
-          value: "Mapper"
+    - AddModule
+    - AddSharedRestAttributesTransfer:
+        arguments:
+            name:
+                value: "{{ resourceType | dashToCamelCase }}"
+                callback:
+                    - EnsureRestAttributesTransferAffix
+    - AddGlueResourceMapper:
+        arguments:
+            className:
+                value: "{{ resourceType | singularize | dashToCamelCase }}Mapper"
+            subDirectory:
+                value: "Mapper"
 
 postSpryk:
-  - AddGlueResourceMapperInterfaceMethod
+    - AddGlueResourceMapperInterfaceMethod

@@ -3,39 +3,38 @@ description: "Adds a new method to the *module*FacadeInterface."
 mode: both
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    specification:
+        multiline: true
 
-  specification:
-    multiline: true
+    facadeMethod:
+        inherit: true
 
-  facadeMethod:
-    inherit: true
+    input:
+        inherit: true
+        isOptional: true
+        isMultiple: true
 
-  input:
-    inherit: true
-    isOptional: true
-    isMultiple: true
+    output:
+        inherit: true
+        isOptional: true
 
-  output:
-    inherit: true
-    isOptional: true
+    annotations:
+        value:
+            - "Specification:"
+            - "@api"
 
-  annotations:
-    value:
-      - "Specification:"
-      - "@api"
+    template:
+        value: Common/InterfaceMethod.php.twig
 
-  template:
-    value: Common/InterfaceMethod.php.twig
-
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}FacadeInterface"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}FacadeInterface"
 
 preSpryks:
-  - AddZedBusinessFacadeInterface
+    - AddZedBusinessFacadeInterface

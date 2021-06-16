@@ -11,6 +11,7 @@ arguments:
         inherit: true
 
     controller:
+        inherit: true
         callback:
             - ClassNameShortCallback
             - EnsureControllerSuffixCallback
@@ -21,7 +22,12 @@ arguments:
             - choiceLoader
 
     controllerMethod:
+        inherit: true
         callback: EnsureActionSuffixCallback
+
+    theme:
+        inherit: true
+        default: default
 
     constantName:
         value: "ROUTE_{{ controller | classNameShort | removeControllerSuffix | underscored | upper }}_{{ controllerMethod | removeActionSuffix | underscored | upper }}"
@@ -36,17 +42,17 @@ arguments:
         value: "{{ organization }}\\Yves\\{{ module }}\\Plugin\\Router\\{{ module }}RouteProviderPlugin"
 
 preSpryks:
-    - AddYvesController
+    - AddYvesControllerAction
     - AddYvesRouteProvider
     - AddConstant:
-          arguments:
-              name:
-                  value: "{{ constantName }}"
-              value:
-                  value:  "{{ module | dasherize }}/{{ controller | removeControllerSuffix | dasherize }}-{{ controllerMethod | removeActionSuffix | dasherize }}"
-              visibility:
-                  value:  "protected"
-              target:
-                  value: "{{ organization }}\\Yves\\{{ module }}\\Plugin\\Router\\{{ module }}RouteProviderPlugin"
+        arguments:
+            name:
+                value: "{{ constantName }}"
+            value:
+                value: "{{ module | dasherize }}/{{ controller | removeControllerSuffix | dasherize }}-{{ controllerMethod | removeActionSuffix | dasherize }}"
+            visibility:
+                value: "protected"
+            target:
+                value: "{{ organization }}\\Yves\\{{ module }}\\Plugin\\Router\\{{ module }}RouteProviderPlugin"
 
 

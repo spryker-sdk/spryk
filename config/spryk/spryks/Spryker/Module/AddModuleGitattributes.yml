@@ -3,21 +3,21 @@ description: "Adds a new .gitattributes to the Modules root."
 mode: core
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: gitattributes.twig
+    template:
+        value: gitattributes.twig
 
-  targetFilename:
-    value: .gitattributes
+    targetFilename:
+        value: .gitattributes
 
-  targetPath:
-    value: "{{ moduleRoot }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule

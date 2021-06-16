@@ -3,18 +3,18 @@ description: "Adds a new CHANGELOG.md to the Modules root."
 mode: core
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: CHANGELOG.md.twig
+    template:
+        value: CHANGELOG.md.twig
 
-  targetPath:
-    value: "{{ moduleRoot }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule

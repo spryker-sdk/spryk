@@ -3,32 +3,31 @@ description: "Adds a new Interface method to the *Module*ClientInterface."
 mode: both
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    clientMethod:
+        inherit: true
 
-  clientMethod:
-    inherit: true
+    input:
+        inherit: true
 
-  input:
-    inherit: true
-
-  output:
-    inherit: true
+    output:
+        inherit: true
 
 
-  specification:
-    multiline: true
+    specification:
+        multiline: true
 
-  template:
-    value: Common/InterfaceMethod.php.twig
+    template:
+        value: Common/InterfaceMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}ClientInterface"
+    target:
+        value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}ClientInterface"
 
 preSpryks:
-  - AddClientInterface
+    - AddClientInterface

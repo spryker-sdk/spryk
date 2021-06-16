@@ -3,24 +3,24 @@ description: "Adds a new *resourceType* Validation to the Glue application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Glue/Validation/AddGlueValidation.yml.twig
+    template:
+        value: Glue/Validation/AddGlueValidation.yml.twig
 
-  resourceType:
-    inherit: true
+    resourceType:
+        inherit: true
 
-  targetFilename:
-    value: "{{ resourceType | dasherize }}.validation.yaml"
+    targetFilename:
+        value: "{{ resourceType | dasherize }}.validation.yaml"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Validation/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Validation/"
 
 preSpryks:
-  - AddModule
+    - AddModule

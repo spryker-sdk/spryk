@@ -9,43 +9,45 @@ layer: Business
 priority: 1
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  subDirectory:
-    isOptional: true
+    subDirectory:
+        inherit: true
+        isOptional: true
 
-  className: ~
+    className:
+        inherit: true
 
-  constructorArguments:
-    type: ZedBusinessDependency
-    typeOptions:
-        - module
-        - spryk
-    isOptional: true
-    isMultiple: true
+    constructorArguments:
+        type: ZedBusinessDependency
+        typeOptions:
+            - module
+            - spryk
+        isOptional: true
+        isMultiple: true
 
-  interfaceName:
-    value: "{{ className }}Interface"
+    interfaceName:
+        value: "{{ className }}Interface"
 
-  template:
-    value: Zed/Business/Model/ZedBusinessModel.php.twig
+    template:
+        value: Zed/Business/Model/ZedBusinessModel.php.twig
 
-  targetFilename:
-    callbackOnly: true
-    callback: ZedBusinessModelTargetFilenameCallback
+    targetFilename:
+        callbackOnly: true
+        callback: ZedBusinessModelTargetFilenameCallback
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddZedBusinessModelInterface
-  - AddZedBusinessFactoryMethod
+    - AddZedBusinessModelInterface
+    - AddZedBusinessFactoryMethod
 

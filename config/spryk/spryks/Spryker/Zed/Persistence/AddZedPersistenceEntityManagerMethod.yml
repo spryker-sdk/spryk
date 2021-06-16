@@ -4,26 +4,25 @@ mode: both
 level: 2
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    entityManagerMethod: ~
+    input: ~
+    output: ~
 
-  entityManagerMethod: ~
-  input: ~
-  output: ~
+    template:
+        value: Common/Method.php.twig
 
-  template:
-    value: Common/Method.php.twig
-
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}EntityManager"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}EntityManager"
 
 preSpryks:
-  - AddZedPersistenceEntityManager
+    - AddZedPersistenceEntityManager
 
 postSpryks:
-  - AddZedPersistenceEntityManagerInterfaceMethod
+    - AddZedPersistenceEntityManagerInterfaceMethod

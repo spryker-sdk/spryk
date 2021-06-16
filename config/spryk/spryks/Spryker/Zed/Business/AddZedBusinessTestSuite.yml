@@ -3,19 +3,20 @@ description: "Adds a new *module* Business test suite directory."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  targetPath:
-    value: "{{ moduleRoot }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/"
 
-  directories:
-    value:
-      - "tests/{{ organization }}Test/Zed/{{ module }}/Business/"
+    directories:
+        skipOnProjectLevel: true
+        value:
+            - "tests/{{ organization }}Test/Zed/{{ module }}/Business/"
 
 postSpryks:
-  - AddZedBusinessTestSuiteConfiguration
+    - AddZedBusinessTestSuiteConfiguration

@@ -4,26 +4,25 @@ mode: both
 level: 2
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    repositoryMethod: ~
+    input: ~
+    output: ~
 
-  repositoryMethod: ~
-  input: ~
-  output: ~
+    template:
+        value: Common/Method.php.twig
 
-  template:
-    value: Common/Method.php.twig
-
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}Repository"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}Repository"
 
 preSpryks:
-  - AddZedPersistenceRepository
+    - AddZedPersistenceRepository
 
 postSpryks:
-  - AddZedPersistenceRepositoryInterfaceMethod
+    - AddZedPersistenceRepositoryInterfaceMethod

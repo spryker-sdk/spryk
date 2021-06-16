@@ -3,21 +3,21 @@ description: "Adds a new Rest*resourceType*AttributesTransfer definition to the 
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  name:
-    inherit: true
-    callback:
-      - EnsureRestAttributesTransferAffix
+    name:
+        inherit: true
+        callback:
+            - EnsureRestAttributesTransferAffix
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Shared/{{ module }}/Transfer/{{ module | underscored }}.transfer.xml"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Shared/{{ module }}/Transfer/{{ module | underscored }}.transfer.xml"
 
 preSpryks:
-  - AddModule
-  - AddSharedTransferSchema
+    - AddModule
+    - AddSharedTransferSchema

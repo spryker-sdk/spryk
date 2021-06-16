@@ -3,24 +3,24 @@ description: "Adds a new *module*Config to the Zed application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Zed/ZedConfig.php.twig
+    template:
+        value: Zed/ZedConfig.php.twig
 
-  extends:
-    value: \Spryker\Zed\Kernel\AbstractBundleConfig
+    extends:
+        value: \Spryker\Zed\Kernel\AbstractBundleConfig
 
-  targetFilename:
-    value: "{{ module }}Config.php"
+    targetFilename:
+        value: "{{ module }}Config.php"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule

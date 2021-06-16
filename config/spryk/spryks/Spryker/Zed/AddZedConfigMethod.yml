@@ -3,24 +3,23 @@ description: "Adds a new method to the Zed *module*Config."
 mode: both
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    configMethod: ~
+    input: ~
+    output: ~
 
-  configMethod: ~
-  input: ~
-  output: ~
+    template:
+        value: Common/Method.php.twig
 
-  template:
-    value: Common/Method.php.twig
-
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
 
 preSpryks:
-  - AddZedConfig
+    - AddZedConfig
 

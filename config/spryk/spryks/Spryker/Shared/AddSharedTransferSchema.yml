@@ -3,21 +3,21 @@ description: "Adds a new *module*.transfer.xml to the Shared application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Shared/transfer.xml.twig
+    template:
+        value: Shared/transfer.xml.twig
 
-  targetFilename:
-    value: "{{ module | underscored }}.transfer.xml"
+    targetFilename:
+        value: "{{ module | underscored }}.transfer.xml"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Shared/{{ module }}/Transfer/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Shared/{{ module }}/Transfer/"
 
 preSpryks:
-  - AddModule
+    - AddModule

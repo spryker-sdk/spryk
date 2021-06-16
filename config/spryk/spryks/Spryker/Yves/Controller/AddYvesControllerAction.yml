@@ -16,6 +16,7 @@ arguments:
         default: default
 
     controller:
+        inherit: true
         callback:
             - ClassNameShortCallback
             - EnsureControllerSuffixCallback
@@ -26,6 +27,7 @@ arguments:
             - choiceLoader
 
     controllerMethod:
+        inherit: true
         callback: EnsureActionSuffixCallback
 
     templateName:

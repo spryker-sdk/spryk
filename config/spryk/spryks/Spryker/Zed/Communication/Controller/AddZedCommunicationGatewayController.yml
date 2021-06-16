@@ -3,25 +3,25 @@ description: "Adds a new Gateway Controller to the Zed application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Zed/Communication/ZedCommunicationController.php.twig
+    template:
+        value: Zed/Communication/ZedCommunicationController.php.twig
 
-  controller:
-      value: GatewayController
+    controller:
+        value: GatewayController
 
-  targetFilename:
-    value: "GatewayController.php"
+    targetFilename:
+        value: "GatewayController.php"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 

@@ -3,29 +3,28 @@ description: "Adds a new method to the *module*RepositoryInterface."
 mode: both
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    repositoryMethod:
+        inherit: true
 
-  repositoryMethod:
-    inherit: true
+    input:
+        inherit: true
 
-  input:
-    inherit: true
-
-  output:
-    inherit: true
+    output:
+        inherit: true
 
 
-  template:
-    value: Common/InterfaceMethod.php.twig
+    template:
+        value: Common/InterfaceMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}RepositoryInterface"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}RepositoryInterface"
 
 preSpryks:
-  - AddZedPersistenceRepositoryInterface
+    - AddZedPersistenceRepositoryInterface

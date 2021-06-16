@@ -4,27 +4,30 @@ mode: both
 level: 2
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  controller:
-    callback:
-      - ClassNameShortCallback
-      - EnsureControllerSuffixCallback
+    controller:
+        inherit: true
+        callback:
+            - ClassNameShortCallback
+            - EnsureControllerSuffixCallback
 
-  template:
-    value: Zed/Communication/ZedCommunicationController.php.twig
+    template:
+        value: Zed/Communication/ZedCommunicationController.php.twig
 
-  targetFilename:
-    value: "{{ controller | classNameShort | ensureControllerSuffix }}.php"
+    targetFilename:
+        value: "{{ controller | classNameShort | ensureControllerSuffix }}.php"
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
 
 preSpryks:
-  - AddModule
+    - AddModule
+    - AddZedBusinessFacade
+    - AddZedCommunicationFactory
 

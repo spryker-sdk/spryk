@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -16,10 +16,11 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModuleEditorconfigTest
+ * @group Module
+ * @group AddModulePhpStanJsonTest
  * Add your own group annotations below this line
  */
-class AddModuleEditorconfigTest extends Unit
+class AddModulePhpStanJsonTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,24 +30,26 @@ class AddModuleEditorconfigTest extends Unit
     /**
      * @return void
      */
-    public function testAddsEditorconfigFile(): void
+    public function testAddsPhpStanJsonFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.editorconfig');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'phpstan.json');
     }
 
     /**
      * @return void
      */
-    public function testAddModuleEditorconfigFailsOnProjectLayer(): void
+    public function testAddModulePhpStanJsonFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
     }

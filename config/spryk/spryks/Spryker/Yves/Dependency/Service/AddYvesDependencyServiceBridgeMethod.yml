@@ -15,6 +15,10 @@ arguments:
     dependentModule:
         inherit: true
 
+    dependentModuleOrganization:
+        inherit: true
+        default: Spryker
+
     methods:
         type: MethodNameChoice
         choiceLoader: ServiceMethodChoiceLoader

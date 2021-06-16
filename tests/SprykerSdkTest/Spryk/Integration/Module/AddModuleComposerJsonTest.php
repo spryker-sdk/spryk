@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -16,10 +16,11 @@ use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group AddModulePhpStanNeonTest
+ * @group Module
+ * @group AddModuleComposerJsonTest
  * Add your own group annotations below this line
  */
-class AddModulePhpStanNeonTest extends Unit
+class AddModuleComposerJsonTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -29,26 +30,24 @@ class AddModulePhpStanNeonTest extends Unit
     /**
      * @return void
      */
-    public function testAddsPhpStanNeonFile(): void
+    public function testAddsComposerJsonFile(): void
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'phpstan.neon');
+        $this->assertFileExists($this->tester->getModuleDirectory() . 'composer.json');
     }
 
     /**
      * @return void
      */
-    public function testAddModulePhpStanNeonFailsOnProjectLayer(): void
+    public function testAddModuleComposerJsonFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
         $this->tester->run($this, [
             '--module' => 'FooBar',
-            '--organization' => 'Spryker',
             '--mode' => 'project',
         ]);
     }

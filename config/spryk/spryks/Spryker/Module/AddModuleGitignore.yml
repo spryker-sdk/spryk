@@ -3,21 +3,21 @@ description: "Adds a new .gitignore to the Modules root."
 mode: core
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: gitignore.twig
+    template:
+        value: gitignore.twig
 
-  targetFilename:
-    value: .gitignore
+    targetFilename:
+        value: .gitignore
 
-  targetPath:
-    value: "{{ moduleRoot }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule

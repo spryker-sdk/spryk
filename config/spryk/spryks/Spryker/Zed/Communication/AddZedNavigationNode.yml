@@ -3,24 +3,26 @@ description: "Adds a new navigation node entry tho the *module* navigation.xml."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  controller:
-    callback:
-      - ClassNameShortCallback
-      - RemoveControllerSuffixCallback
+    controller:
+        inherit: true
+        callback:
+            - ClassNameShortCallback
+            - RemoveControllerSuffixCallback
 
-  controllerMethod:
-    callback:
-      - RemoveActionSuffixCallback
+    controllerMethod:
+        inherit: true
+        callback:
+            - RemoveActionSuffixCallback
 
-  targetPath:
-    value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/navigation.xml"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/navigation.xml"
 
 preSpryks:
-  - AddZedNavigationSchema
+    - AddZedNavigationSchema

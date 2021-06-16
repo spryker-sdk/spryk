@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Module;
 
 use Codeception\Test\Unit;
 use Symfony\Component\Yaml\Yaml;
@@ -16,6 +16,7 @@ use Symfony\Component\Yaml\Yaml;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
+ * @group Module
  * @group AddModuleToolingTest
  * Add your own group annotations below this line
  */

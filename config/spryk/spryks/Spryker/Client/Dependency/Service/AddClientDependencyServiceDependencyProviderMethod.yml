@@ -25,15 +25,14 @@ preSpryks:
     - AddClientDependencyProvider
 
 postSpryks:
-    - AddClientDependencyServiceBridge
-    -   AddConstant:
-            arguments:
-                name:
-                    value: "SERVICE_{{ dependentModule | underscored | upper }}"
-                value:
-                    value:  "SERVICE_{{ dependentModule | underscored | upper }}"
-                visibility:
-                    value:  "public"
-                target:
-                    value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}DependencyProvider"
+    - AddConstant:
+        arguments:
+            name:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"
+            target:
+                value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}DependencyProvider"
 
