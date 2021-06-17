@@ -24,3 +24,7 @@ arguments:
 
     targetFilePath:
         value: "vendor/{{ sprykerVendorPath }}{{ toOrganization | dasherize }}/{{ moduleSrcDirectory }}{{ toModule }}/"
+
+postCommands:
+    - ComposerReplaceGenerate
+    - ComposerDumpAutoload

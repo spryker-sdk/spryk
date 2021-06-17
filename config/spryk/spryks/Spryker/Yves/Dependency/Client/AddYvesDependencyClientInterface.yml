@@ -12,6 +12,8 @@ arguments:
 
     dependentModule:
         inherit: true
+        moduleFilter:
+            application: Client
 
     template:
         value: Yves/Dependency/Client/YvesDependencyClientInterface.php.twig

@@ -9,8 +9,11 @@ arguments:
 
     module:
         inherit: true
+
     dependentModule:
         inherit: true
+        moduleFilter:
+            application: Service
 
     providerMethod:
         value: "add{{ dependentModule }}Service"

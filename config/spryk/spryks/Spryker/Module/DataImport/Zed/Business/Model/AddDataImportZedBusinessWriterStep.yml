@@ -21,18 +21,8 @@ arguments:
 
     className:
         inherit: true
-        type: ClassNameChoice
-        choiceLoader: ZedBusinessModelChoiceLoader
-        typeOptions:
-            - module
-            - spryk
-            - choiceLoader
 
     constructorArguments:
-        type: ZedBusinessDependency
-        typeOptions:
-            - module
-            - spryk
         isOptional: true
         isMultiple: true
 

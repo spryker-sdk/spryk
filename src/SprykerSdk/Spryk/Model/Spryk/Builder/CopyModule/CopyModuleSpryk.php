@@ -182,6 +182,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
             sprintf('/%sConfig.php/', $module) => sprintf('%sConfig.php', $toModule),
             sprintf('/%sConstants.php/', $module) => sprintf('%sConstants.php', $toModule),
             sprintf('/%sFacade.php/', $module) => sprintf('%sFacade.php', $toModule),
+            sprintf('/%sFacadeInterface.php/', $module) => sprintf('%sFacadeInterface.php', $toModule),
             sprintf('/%sFactory.php/', $module) => sprintf('%sFactory.php', $toModule),
             sprintf('/%sCommunicationFactory.php/', $module) => sprintf('%sCommunicationFactory.php', $toModule),
             sprintf('/%sBusinessFactory.php/', $module) => sprintf('%sBusinessFactory.php', $toModule),
@@ -256,7 +257,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
         $toOrganization = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_TO_ORGANIZATION);
         $toOrganizationDashed = $this->dasherize($this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_TO_ORGANIZATION));
         $toModule = $this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_TO_MODULE);
-        $toModuleDashed = $this->dasherize($this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_MODULE));
+        $toModuleDashed = $this->dasherize($this->getArgumentValueByName($sprykDefinition, static::ARGUMENT_TO_MODULE));
 
         return [
             sprintf('/%s\\\\(\w+)\\\\%s(?=[\\\\;])/', $organization, $module) => sprintf('%s\\\\${1}\\\\%s', $toOrganization, $toModule),
@@ -266,6 +267,8 @@ class CopyModuleSpryk implements SprykBuilderInterface
             sprintf('/"%s\\\\/', $organization) => sprintf('"%s\\', $toOrganization),
             sprintf('/"src\/%s/', $organization) => sprintf('"src/%s', $toOrganization),
             sprintf('/%s\s/', $module) => sprintf('%s ', $toModule),
+            sprintf('/interface %s([A-Z]+)/', $module) => sprintf('interface %s${1}', $toModule),
+            sprintf('/class %s([A-Z]+)/', $module) => sprintf('class %s${1}', $toModule),
             sprintf('/%sExtension\s/', $module) => sprintf('%sExtension ', $toModule),
             sprintf('/%sConfig.php/', $module) => sprintf('%sConfig.php', $toModule),
             sprintf('/%sConstants.php/', $module) => sprintf('%sConstants.php', $toModule),

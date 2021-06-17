@@ -12,6 +12,8 @@ arguments:
 
     dependentModule:
         inherit: true
+        moduleFilter:
+            application: Service
 
     methods:
         type: MethodNameChoice

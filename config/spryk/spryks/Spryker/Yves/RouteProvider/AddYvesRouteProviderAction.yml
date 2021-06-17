@@ -16,8 +16,10 @@ arguments:
             - ClassNameShortCallback
             - EnsureControllerSuffixCallback
         type: ClassNameChoice
+        choiceLoader: ZedCommunicationControllerChoiceLoader
         typeOptions:
             - module
+            - existingModule
             - spryk
             - choiceLoader
 

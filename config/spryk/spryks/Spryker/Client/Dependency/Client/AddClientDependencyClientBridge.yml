@@ -16,6 +16,8 @@ arguments:
 
     dependentModule:
         inherit: true
+        moduleFilter:
+            application: Client
 
     template:
         value: Client/Dependency/Client/ClientDependencyClientBridge.php.twig

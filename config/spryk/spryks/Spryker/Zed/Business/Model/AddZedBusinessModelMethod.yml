@@ -21,6 +21,7 @@ arguments:
         choiceLoader: ZedBusinessModelChoiceLoader
         typeOptions:
             - module
+            - existingModule
             - spryk
             - choiceLoader
 

@@ -12,6 +12,8 @@ arguments:
 
     dependentModule:
         inherit: true
+        moduleFilter:
+            application: Service
 
     factoryMethod:
         value: "get{{ dependentModule }}Service"

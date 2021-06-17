@@ -11,7 +11,9 @@ arguments:
         inherit: true
 
     dependentModule:
-        inherit: trues
+        inherit: true
+        moduleFilter:
+            application: Service
 
     dependentModuleOrganization:
         default: Spryker

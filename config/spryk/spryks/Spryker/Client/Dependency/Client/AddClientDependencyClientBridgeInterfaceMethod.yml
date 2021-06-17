@@ -16,6 +16,8 @@ arguments:
 
     dependentModule:
         inherit: true
+        moduleFilter:
+            application: Client
 
     methods:
         type: MethodNameChoice
