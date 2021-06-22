@@ -46,7 +46,7 @@ class DirectoriesExtender extends AbstractExtender implements SprykConfiguration
             return $sprykConfig;
         }
 
-        if ($this->isDirectoriesArgumentValidForProject($arguments[static::NAME_ARGUMENT_DIRECTORIES])) {
+        if (!$this->isDirectoriesArgumentValidForProject($arguments[static::NAME_ARGUMENT_DIRECTORIES])) {
             return $sprykConfig;
         }
 
