@@ -31,7 +31,7 @@ class SprykRunAddModuleTest extends Unit
     /**
      * @return void
      */
-    public function testCreatesModule()
+    public function testCreatesModule(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

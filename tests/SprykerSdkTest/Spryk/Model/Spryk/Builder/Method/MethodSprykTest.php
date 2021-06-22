@@ -49,7 +49,7 @@ class MethodSprykTest extends Unit
     /**
      * @return void
      */
-    public function testBuildThrowsExceptionWhenReflectionClassFilenameIsNull()
+    public function testBuildThrowsExceptionWhenReflectionClassFilenameIsNull(): void
     {
         $methodSpryk = $this->buildMethodSprykMockWithEmptyFileNameOfReflectionClass();
 
@@ -64,7 +64,7 @@ class MethodSprykTest extends Unit
     /**
      * @return void
      */
-    public function testBuildThrowsExceptionWhenTargetFileIsEmpty()
+    public function testBuildThrowsExceptionWhenTargetFileIsEmpty(): void
     {
         $methodSpryk = $this->buildMethodSprykMockWithEmptyTargetFile();
 

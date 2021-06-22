@@ -31,7 +31,7 @@ class SprykRunArgumentDefaultValueTest extends Unit
     /**
      * @return void
      */
-    public function testTakesDefaultArgumentValueOnEnter()
+    public function testTakesDefaultArgumentValueOnEnter(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

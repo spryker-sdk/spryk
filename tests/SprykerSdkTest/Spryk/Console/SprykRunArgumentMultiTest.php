@@ -29,7 +29,7 @@ class SprykRunArgumentMultiTest extends Unit
     /**
      * @return void
      */
-    public function testAddsMultiArgument()
+    public function testAddsMultiArgument(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

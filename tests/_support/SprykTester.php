@@ -62,7 +62,7 @@ class SprykTester extends Actor
      *
      * @return array
      */
-    public function getMergedConfiguration(string $directory)
+    public function getMergedConfiguration(string $directory): array
     {
         $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/']);
         $configurationMerger = new SprykConfigurationMerger($configurationFinder);

@@ -29,7 +29,7 @@ class SprykDumpTest extends Unit
     /**
      * @return void
      */
-    public function testDumpsAllSpryks()
+    public function testDumpsAllSpryks(): void
     {
         $command = $this->createSprykDumpConsole();
         $tester = $this->tester->getConsoleTester($command);
@@ -48,7 +48,7 @@ class SprykDumpTest extends Unit
     /**
      * @return void
      */
-    public function testDumpsSpecificSpryk()
+    public function testDumpsSpecificSpryk(): void
     {
         $command = $this->createSprykDumpConsole();
         $tester = $this->tester->getConsoleTester($command);

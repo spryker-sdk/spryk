@@ -79,8 +79,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
+        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
+        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "phpstan": "phpstan analyse src/",
         "test": [
             "codecept run -g Glue -x Zed",

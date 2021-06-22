@@ -80,7 +80,7 @@ class SprykIntegrationTester extends Actor
      *
      * @return \Symfony\Component\Console\Tester\CommandTester
      */
-    public function getConsoleTester(SprykRunConsole $command, string $sprykName)
+    public function getConsoleTester(SprykRunConsole $command, string $sprykName): CommandTester
     {
         $command->setFacade($this->getFacadeWithMockedConfig());
 

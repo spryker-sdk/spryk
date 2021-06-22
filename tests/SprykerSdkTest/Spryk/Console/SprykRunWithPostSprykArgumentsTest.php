@@ -29,7 +29,7 @@ class SprykRunWithPostSprykArgumentsTest extends Unit
     /**
      * @return void
      */
-    public function testExecutesPostSprykWithPredefinedArguments()
+    public function testExecutesPostSprykWithPredefinedArguments(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

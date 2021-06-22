@@ -29,7 +29,7 @@ class SprykRunStructureTest extends Unit
     /**
      * @return void
      */
-    public function testCreatesStructure()
+    public function testCreatesStructure(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

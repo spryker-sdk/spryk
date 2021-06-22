@@ -42,7 +42,7 @@ class SprykConsoleTester extends Actor
      *
      * @return \Symfony\Component\Console\Tester\CommandTester
      */
-    public function getConsoleTester(Command $command)
+    public function getConsoleTester(Command $command): CommandTester
     {
         if ($command instanceof AbstractSprykConsole) {
             $command->setFacade($this->getFacadeWithMockedConfig());
