@@ -233,7 +233,7 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
     protected function addSpacingToDocComment(string $docComment): string
     {
         $docCommentLines = explode(PHP_EOL, $docComment);
-        array_walk($docCommentLines, function (&$docCommentLine) {
+        array_walk($docCommentLines, function (&$docCommentLine): void {
             $docCommentLine = str_repeat(' ', 4) . $docCommentLine;
         });
 

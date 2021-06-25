@@ -3,26 +3,26 @@ description: "Adds a new *module*Repository to the Zed application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Zed/Persistence/ZedPersistenceRepository.php.twig
+    template:
+        value: Zed/Persistence/ZedPersistenceRepository.php.twig
 
-  targetFilename:
-    value: "{{ module }}Repository.php"
+    targetFilename:
+        value: "{{ module }}Repository.php"
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddZedPersistenceFactory
-  - AddZedPersistenceRepositoryInterface
+    - AddZedPersistenceFactory
+    - AddZedPersistenceRepositoryInterface
 

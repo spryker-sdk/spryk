@@ -9,6 +9,7 @@ namespace SprykerSdk\Spryk\Model\Spryk\Dumper;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Dumper\Finder\SprykDefinitionFinderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class SprykDefinitionDumper implements SprykDefinitionDumperInterface
 {
@@ -35,17 +36,23 @@ class SprykDefinitionDumper implements SprykDefinitionDumperInterface
     /**
      * @phpstan-return array<mixed>
      *
+     * @param int|null $level
+     *
      * @return array
      */
-    public function dump(): array
+    public function dump(?int $level = null): array
     {
         $sprykDefinitions = [];
         foreach ($this->definitionFinder->find() as $fileInfo) {
             $sprykName = str_replace('.' . $fileInfo->getExtension(), '', $fileInfo->getFilename());
             $sprykDefinition = $this->configurationLoader->loadSpryk($sprykName);
 
-            $sprykDefinitions[$sprykName] = $sprykDefinition;
+            if ($level === null || $level === (int)$sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_LEVEL]) {
+                $sprykDefinitions[$sprykName] = $sprykDefinition;
+            }
         }
+
+        ksort($sprykDefinitions);
 
         return $sprykDefinitions;
     }

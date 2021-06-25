@@ -43,7 +43,7 @@ class AddZedTestSuiteToCodeceptionConfigurationTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedTestSuiteToCodeceptionConfigurationOnProjectLayer(): void
+    public function testAddZedTestSuiteToCodeceptionConfigurationFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 

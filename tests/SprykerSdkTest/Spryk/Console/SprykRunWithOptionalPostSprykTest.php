@@ -29,7 +29,7 @@ class SprykRunWithOptionalPostSprykTest extends Unit
     /**
      * @return void
      */
-    public function testDoesNotExecutesOptionalPostSpryk()
+    public function testDoesNotExecutesOptionalPostSpryk(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);
@@ -49,7 +49,7 @@ class SprykRunWithOptionalPostSprykTest extends Unit
     /**
      * @return void
      */
-    public function testExecutesOptionalPostSpryk()
+    public function testExecutesOptionalPostSpryk(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

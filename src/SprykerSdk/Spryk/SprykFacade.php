@@ -7,6 +7,7 @@
 
 namespace SprykerSdk\Spryk;
 
+use SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class SprykFacade implements SprykFacadeInterface
@@ -17,23 +18,28 @@ class SprykFacade implements SprykFacadeInterface
     protected $factory;
 
     /**
-     * @param string $sprykName
-     * @param string[] $includeOptionalSubSpryks
+     * @param \SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface $sprykExecutorConfiguration
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
      *
      * @return void
      */
-    public function executeSpryk(string $sprykName, array $includeOptionalSubSpryks, SprykStyleInterface $style): void
-    {
-        $this->getFactory()->createSprykExecutor()->execute($sprykName, $includeOptionalSubSpryks, $style);
+    public function executeSpryk(
+        SprykExecutorConfigurationInterface $sprykExecutorConfiguration,
+        SprykStyleInterface $style
+    ): void {
+        $this->getFactory()
+            ->createSprykExecutor()
+            ->execute($sprykExecutorConfiguration, $style);
     }
 
     /**
+     * @param int|null $level
+     *
      * @return array
      */
-    public function getSprykDefinitions(): array
+    public function getSprykDefinitions(?int $level = null): array
     {
-        return $this->getFactory()->createSprykDefinitionDumper()->dump();
+        return $this->getFactory()->createSprykDefinitionDumper()->dump($level);
     }
 
     /**
@@ -88,8 +94,6 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function getSprykDefinition(string $sprykName, ?string $sprykMode = null): array
     {
-        $sprykMode = $sprykMode ?: $this->getFactory()->getConfig()->getDefaultDevelopmentMode();
-
         return $this->getFactory()
             ->createConfigurationFactory()
             ->createConfigurationLoader()

@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Method;
 
 use Roave\BetterReflection\BetterReflection;
+use Roave\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\ArgumentNotFoundException;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\NotAFullyQualifiedClassNameException;
@@ -121,8 +122,9 @@ class MethodSpryk implements SprykBuilderInterface
     protected function methodExists(SprykDefinitionInterface $sprykDefinition): bool
     {
         $reflectionClass = $this->getReflection($sprykDefinition);
+        $methodName = $this->getMethodName($sprykDefinition);
 
-        if ($reflectionClass->hasMethod($this->getMethodName($sprykDefinition))) {
+        if ($reflectionClass->hasMethod($methodName) && $reflectionClass->getMethod($methodName)->getDeclaringClass() === $reflectionClass) {
             return true;
         }
 
@@ -236,7 +238,7 @@ class MethodSpryk implements SprykBuilderInterface
      *
      * @return \Roave\BetterReflection\Reflection\ReflectionClass
      */
-    protected function getReflection(SprykDefinitionInterface $sprykDefinition)
+    protected function getReflection(SprykDefinitionInterface $sprykDefinition): ReflectionClass
     {
         $targetClassName = $this->getTargetClassName($sprykDefinition);
         $this->assertFullyQualifiedClassName($targetClassName);
@@ -273,7 +275,7 @@ class MethodSpryk implements SprykBuilderInterface
      *
      * @return void
      */
-    protected function assertFullyQualifiedClassName(string $className)
+    protected function assertFullyQualifiedClassName(string $className): void
     {
         if (strpos($className, '\\') === false) {
             throw new NotAFullyQualifiedClassNameException(sprintf(
@@ -295,7 +297,7 @@ class MethodSpryk implements SprykBuilderInterface
      *
      * @return string|null
      */
-    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition)
+    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition): ?string
     {
         $targetReflection = $this->getReflection($sprykDefinition);
 

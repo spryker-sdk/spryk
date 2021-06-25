@@ -3,21 +3,21 @@ description: "Adds a new *module*CommunicationFactory to the Zed application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Zed/Communication/ZedCommunicationFactory.php.twig
+    template:
+        value: Zed/Communication/ZedCommunicationFactory.php.twig
 
-  targetFilename:
-    value: "{{ module }}CommunicationFactory.php"
+    targetFilename:
+        value: "{{ module }}CommunicationFactory.php"
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Communication/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/"
 
 preSpryks:
-  - AddModule
+    - AddModule

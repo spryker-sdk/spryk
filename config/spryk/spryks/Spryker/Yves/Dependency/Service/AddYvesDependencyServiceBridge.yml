@@ -3,40 +3,43 @@ description: "Adds a new *module*To*dependentModule*ServiceBridge."
 mode: core
 
 arguments:
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  dependentModule: ~
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Service
 
-  dependentModuleOrganization:
-    default: Spryker
+    dependentModuleOrganization:
+        inherit: true
+        default: Spryker
 
+    template:
+        value: Yves/Dependency/Service/YvesDependencyServiceBridge.php.twig
 
-  template:
-    value: Yves/Dependency/Service/YvesDependencyServiceBridge.php.twig
+    targetFilename:
+        value: "{{ module }}To{{ dependentModule }}ServiceBridge.php"
 
-  targetFilename:
-    value: "{{ module }}To{{ dependentModule }}ServiceBridge.php"
-
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddYvesDependencyServiceInterface
-  - AddYvesDependencyServiceFactoryMethod
-  - AddYvesDependencyServiceDependencyProviderMethod
-  - AddYvesDependencyServiceDependencyProviderConstant:
-      arguments:
-          name:
-            value: "SERVICE_{{ dependentModule | underscored | upper }}"
-          value:
-            value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
-          visibility:
-            value:  "public"
+    - AddYvesDependencyServiceInterface
+    - AddYvesDependencyServiceFactoryMethod
+    - AddYvesDependencyServiceDependencyProviderMethod
+    - AddYvesDependencyServiceDependencyProviderConstant:
+        arguments:
+            name:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"

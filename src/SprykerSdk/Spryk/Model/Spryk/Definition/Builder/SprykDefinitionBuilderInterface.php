@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Definition\Builder;
 
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 interface SprykDefinitionBuilderInterface
@@ -19,6 +20,28 @@ interface SprykDefinitionBuilderInterface
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
      */
     public function buildDefinition(string $sprykName, ?array $preDefinedDefinition = null): SprykDefinitionInterface;
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface $sprykExecutorConfiguration
+     * @param mixed[] $sprykConfiguration
+     *
+     * @return mixed[]
+     */
+    public function addTargetModuleParams(
+        SprykExecutorConfigurationInterface $sprykExecutorConfiguration,
+        array $sprykConfiguration
+    ): array;
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface $sprykExecutorConfiguration
+     * @param mixed[] $sprykConfiguration
+     *
+     * @return mixed[]
+     */
+    public function addDependentModuleParams(
+        SprykExecutorConfigurationInterface $sprykExecutorConfiguration,
+        array $sprykConfiguration
+    ): array;
 
     /**
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style

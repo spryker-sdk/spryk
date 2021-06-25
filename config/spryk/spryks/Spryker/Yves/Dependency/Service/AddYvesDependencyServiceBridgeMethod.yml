@@ -2,39 +2,47 @@ spryk: bridgeMethods
 description: "Adds a new method to the *module* dependency Service bridge."
 priority: 1
 mode: core
+level: 2
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  module:
-    inherit: true
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  dependentModule: ~
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Service
 
-  methods:
-    type: MethodNameChoice
-    choiceLoader: ServiceMethodChoiceLoader
-    isMultiple: true
-    typeOptions:
-      - module
-      - choiceLoader
+    dependentModuleOrganization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Yves/Dependency/YvesDependencyBridgeMethod.php.twig
+    methods:
+        type: MethodNameChoice
+        choiceLoader: ServiceMethodChoiceLoader
+        isMultiple: true
+        typeOptions:
+            - module
+            - choiceLoader
 
-  dependencyType:
-    value: Service
+    template:
+        value: Yves/Dependency/YvesDependencyBridgeMethod.php.twig
 
-  sourceClass:
-    value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
+    dependencyType:
+        value: Service
 
-  target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
+    sourceClass:
+        value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}Service"
+
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceBridge"
 
 preSpryks:
-  - AddYvesDependencyServiceBridge
+    - AddYvesDependencyServiceBridge
 
 postSpryks:
-  - AddYvesDependencyServiceBridgeInterfaceMethod
+    - AddYvesDependencyServiceBridgeInterfaceMethod

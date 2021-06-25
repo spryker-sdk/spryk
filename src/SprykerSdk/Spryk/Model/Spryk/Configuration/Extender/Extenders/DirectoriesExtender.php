@@ -8,9 +8,13 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class DirectoriesExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
+    protected const NAME_ARGUMENT_DIRECTORIES = 'directories';
+    protected const NAME_ARGUMENT_KEY_SKIP_ON_PROJECT_LEVEL = 'skipOnProjectLevel';
+
     /**
      * @param array $sprykConfig
      *
@@ -38,13 +42,34 @@ class DirectoriesExtender extends AbstractExtender implements SprykConfiguration
             return $sprykConfig;
         }
 
-        if (!isset($arguments['directories'])) {
+        if (!isset($arguments[static::NAME_ARGUMENT_DIRECTORIES])) {
             return $sprykConfig;
         }
 
-        $arguments['directories']['value'] = [''];
+        if (!$this->isDirectoriesArgumentValidForProject($arguments[static::NAME_ARGUMENT_DIRECTORIES])) {
+            return $sprykConfig;
+        }
+
+        $arguments[static::NAME_ARGUMENT_DIRECTORIES][SprykConfig::NAME_ARGUMENT_KEY_VALUE] = [''];
         $sprykConfig = $this->setArguments($arguments, $sprykConfig);
 
         return $sprykConfig;
+    }
+
+    /**
+     * @param mixed[] $directoryArgumentDefinition
+     *
+     * @return bool
+     */
+    protected function isDirectoriesArgumentValidForProject(array $directoryArgumentDefinition): bool
+    {
+        if (
+            isset($directoryArgumentDefinition[static::NAME_ARGUMENT_KEY_SKIP_ON_PROJECT_LEVEL])
+            && $directoryArgumentDefinition[static::NAME_ARGUMENT_KEY_SKIP_ON_PROJECT_LEVEL] === 'true'
+        ) {
+            return false;
+        }
+
+        return true;
     }
 }

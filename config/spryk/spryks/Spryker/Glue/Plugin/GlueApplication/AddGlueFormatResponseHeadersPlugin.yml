@@ -3,25 +3,25 @@ description: "Adds a new *modelName*FormatResponseHeadersPlugin to the Glue appl
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Glue/Plugin/GlueApplication/FormatResponseHeadersPlugin.php.twig
+    template:
+        value: Glue/Plugin/GlueApplication/FormatResponseHeadersPlugin.php.twig
 
-  modelName:
-    inherit: true
+    modelName:
+        inherit: true
 
-  targetFilename:
-    value: "{{ modelName | camelCased }}FormatResponseHeadersPlugin.php"
+    targetFilename:
+        value: "{{ modelName | camelCased }}FormatResponseHeadersPlugin.php"
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
 
 preSpryks:
-  - AddModule
-  - AddGlueFactory
+    - AddModule
+    - AddGlueFactory

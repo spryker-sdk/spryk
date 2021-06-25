@@ -3,24 +3,24 @@ description: "Adds the include for the Zed test suite to the codeception.yml."
 mode: core
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  afterElement:
-    value: namespace
+    afterElement:
+        value: namespace
 
-  addToElement:
-    value: include
+    addToElement:
+        value: include
 
-  content:
-    value: "tests/{{ organization }}Test/Zed/{{ module }}"
+    content:
+        value: "tests/{{ organization }}Test/Zed/{{ module }}"
 
-  targetPath:
-    value: "{{ module }}/codeception.yml"
+    targetPath:
+        value: "{{ moduleRoot }}/codeception.yml"
 
 preSpryks:
-  - AddModuleCodeceptionConfiguration
+    - AddModuleCodeceptionConfiguration

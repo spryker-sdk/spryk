@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Merger;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 use Symfony\Component\Yaml\Yaml;
 
 class SprykConfigurationMerger implements SprykConfigurationMergerInterface
@@ -56,15 +57,15 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
      */
     protected function doMerge(array $rootConfiguration, array $sprykDefinition): array
     {
-        $rootConfiguration = $this->buildRootConfigByMode($rootConfiguration, $sprykDefinition['mode']);
-        $sprykDefinition['arguments'] = $this->mergeArguments(
-            $sprykDefinition['arguments'],
-            $rootConfiguration['arguments']
+        $rootConfiguration = $this->buildRootConfigByMode($rootConfiguration, $sprykDefinition[SprykConfig::NAME_ARGUMENT_MODE]);
+        $sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS] = $this->mergeArguments(
+            $sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS],
+            $rootConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]
         );
 
-        $sprykDefinition['arguments'] = $this->addRootArguments(
-            $sprykDefinition['arguments'],
-            $rootConfiguration['arguments']
+        $sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS] = $this->addRootArguments(
+            $sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS],
+            $rootConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]
         );
 
         return $sprykDefinition;
@@ -122,9 +123,9 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         $sprykName = array_keys($subSpryk)[0];
         $subSprykDefinition = $subSpryk[$sprykName];
 
-        if (isset($subSprykDefinition['arguments'])) {
-            $mergedArguments = $this->mergeArguments($subSprykDefinition['arguments'], $rootConfiguration['arguments']);
-            $subSpryk[$sprykName]['arguments'] = $mergedArguments;
+        if (isset($subSprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS])) {
+            $mergedArguments = $this->mergeArguments($subSprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS], $rootConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]);
+            $subSpryk[$sprykName][SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS] = $mergedArguments;
         }
 
         return $subSpryk;
@@ -163,7 +164,7 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
     protected function getMergedArgumentDefinition(array $rootArguments, string $argumentName, array $argumentDefinition): array
     {
         $mergeType = $rootArguments[$argumentName]['type'];
-        $mergeValue = $rootArguments[$argumentName]['value'];
+        $mergeValue = $rootArguments[$argumentName][SprykConfig::NAME_ARGUMENT_KEY_VALUE];
 
         $mergedArgumentDefinition = [];
 
@@ -204,7 +205,7 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
      */
     protected function buildRootConfigByMode(array $rootConfiguration, string $sprykMode): array
     {
-        $rootArguments = $rootConfiguration['arguments'];
+        $rootArguments = $rootConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS];
 
         $mode = $sprykMode;
 
@@ -212,7 +213,7 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
             return $rootConfiguration;
         }
 
-        $rootConfiguration['arguments'] = array_merge($rootArguments, $rootConfiguration[$mode]['arguments']);
+        $rootConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS] = array_merge($rootArguments, $rootConfiguration[$mode][SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]);
 
         return $rootConfiguration;
     }

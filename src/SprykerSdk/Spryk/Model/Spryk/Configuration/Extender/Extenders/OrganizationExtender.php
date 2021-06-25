@@ -8,45 +8,67 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class OrganizationExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
     /**
-     * @param array $sprykConfig
+     * @param mixed[] $sprykConfig
      *
-     * @return array
+     * @return mixed[]
      */
     public function extend(array $sprykConfig): array
     {
-        if (!$this->isProject($sprykConfig)) {
+        $arguments = $this->getArguments($sprykConfig);
+
+        if (
+            !isset($arguments[SprykConfig::NAME_ARGUMENT_ORGANIZATION])
+            || !isset($arguments[SprykConfig::NAME_ARGUMENT_MODE][SprykConfig::NAME_ARGUMENT_KEY_VALUE])
+        ) {
             return $sprykConfig;
         }
 
-        return $this->buildProjectOrganization($sprykConfig);
+        $arguments = $this->buildProjectOrganization($arguments);
+        $arguments = $this->buildCoreOrganization($arguments);
+
+        return $this->setArguments($arguments, $sprykConfig);
     }
 
     /**
-     * @param array $sprykConfig
+     * @param mixed[] $arguments
      *
-     * @return array
+     * @return mixed[]
      */
-    protected function buildProjectOrganization(array $sprykConfig): array
+    protected function buildProjectOrganization(array $arguments): array
     {
-        $arguments = $this->getArguments($sprykConfig);
-
-        if ($arguments === []) {
-            return $sprykConfig;
-        }
-
-        if (!isset($arguments['organization'])) {
-            return $sprykConfig;
+        if ($arguments[SprykConfig::NAME_ARGUMENT_MODE][SprykConfig::NAME_ARGUMENT_KEY_VALUE] !== SprykConfig::NAME_DEVELOPMENT_LAYER_PROJECT) {
+            return $arguments;
         }
 
         $projectNamespace = $this->config->getProjectNamespace();
+        $projectNamespaces = $this->config->getProjectNamespaces();
 
-        $arguments['organization']['default'] = $projectNamespace;
-        $sprykConfig = $this->setArguments($arguments, $sprykConfig);
+        $arguments[SprykConfig::NAME_ARGUMENT_ORGANIZATION][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT] = $projectNamespace;
+        $arguments[SprykConfig::NAME_ARGUMENT_ORGANIZATION][SprykConfig::NAME_ARGUMENT_KEY_VALUES] = $projectNamespaces;
 
-        return $sprykConfig;
+        return $arguments;
+    }
+
+    /**
+     * @param mixed[] $arguments
+     *
+     * @return mixed[]
+     */
+    protected function buildCoreOrganization(array $arguments): array
+    {
+        if ($arguments[SprykConfig::NAME_ARGUMENT_MODE][SprykConfig::NAME_ARGUMENT_KEY_VALUE] !== SprykConfig::NAME_DEVELOPMENT_LAYER_CORE) {
+            return $arguments;
+        }
+
+        $coreNamespaces = $this->config->getCoreNamespaces();
+
+        $arguments[SprykConfig::NAME_ARGUMENT_ORGANIZATION][SprykConfig::NAME_ARGUMENT_KEY_VALUES] = $coreNamespaces;
+
+        return $arguments;
     }
 }

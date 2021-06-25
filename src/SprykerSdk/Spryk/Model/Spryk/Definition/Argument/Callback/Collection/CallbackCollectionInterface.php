@@ -18,5 +18,5 @@ interface CallbackCollectionInterface
      *
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
      */
-    public function getCallbackByName($callbackName): CallbackInterface;
+    public function getCallbackByName(string $callbackName): CallbackInterface;
 }

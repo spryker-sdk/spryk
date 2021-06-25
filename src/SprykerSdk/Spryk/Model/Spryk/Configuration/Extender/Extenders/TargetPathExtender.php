@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class TargetPathExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
@@ -46,18 +47,18 @@ class TargetPathExtender extends AbstractExtender implements SprykConfigurationE
             return $sprykConfig;
         }
 
-        $hasTargetPathDefault = isset($arguments['targetPath']['default']);
+        $hasTargetPathDefault = isset($arguments['targetPath'][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT]);
 
         $targetPath = $hasTargetPathDefault
-            ? $arguments['targetPath']['default']
-            : $arguments['targetPath']['value'];
+            ? $arguments['targetPath'][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT]
+            : $arguments['targetPath'][SprykConfig::NAME_ARGUMENT_KEY_VALUE];
 
         $targetPath = $this->buildTargetPath($targetPath);
 
         if ($hasTargetPathDefault) {
-            $arguments['targetPath']['default'] = $targetPath;
+            $arguments['targetPath'][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT] = $targetPath;
         } else {
-            $arguments['targetPath']['value'] = $targetPath;
+            $arguments['targetPath'][SprykConfig::NAME_ARGUMENT_KEY_VALUE] = $targetPath;
         }
 
         $sprykConfig = $this->setArguments($arguments, $sprykConfig);

@@ -15,15 +15,32 @@ use Spryker\Shared\Kernel\KernelConstants;
  */
 class SprykConfig
 {
-    protected const NAME_DEVELOPMENT_LAYER_CORE = 'core';
-    protected const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
-    protected const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
+    public const SPRYK_DEFINITION_KEY_LEVEL = 'level';
+    public const SPRYK_DEFINITION_KEY_ARGUMENTS = 'arguments';
+
+    public const NAME_DEVELOPMENT_LAYER_CORE = 'core';
+    public const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
+    public const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
+
+    public const NAME_ARGUMENT_LAYER = 'layer';
+    public const NAME_ARGUMENT_MODE = 'mode';
+    public const NAME_ARGUMENT_ORGANIZATION = 'organization';
+
+    public const NAME_ARGUMENT_KEY_DEFAULT = 'default';
+    public const NAME_ARGUMENT_KEY_VALUE = 'value';
+    public const NAME_ARGUMENT_KEY_VALUES = 'values';
 
     protected const NAME_DIRECTORY_GENERATED = 'generated';
     protected const NAME_FILE_ARGUMENT_LIST = 'spryk_argument_list.yml';
 
     protected const NAME_ORGANIZATION = 'spryker-sdk';
     protected const NAME_PACKAGE = 'spryk';
+
+    protected const SPRYK_LEVEL_1 = 1;
+    protected const SPRYK_LEVEL_2 = 2;
+    protected const SPRYK_LEVEL_3 = 3;
+
+    public const SPRYK_DEFAULT_DUMP_LEVEL = self::SPRYK_LEVEL_1;
 
     /**
      * @return string[]
@@ -93,6 +110,18 @@ class SprykConfig
     }
 
     /**
+     * @return int[]
+     */
+    public function getAvailableLevels(): array
+    {
+        return [
+            static::SPRYK_LEVEL_1,
+            static::SPRYK_LEVEL_2,
+            static::SPRYK_LEVEL_3,
+        ];
+    }
+
+    /**
      * @return array
      */
     public function getCoreNamespaces(): array
@@ -136,6 +165,14 @@ class SprykConfig
     public function getDefaultDevelopmentMode(): string
     {
         return static::NAME_DEVELOPMENT_LAYER_PROJECT;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDefaultBuildLevel(): int
+    {
+        return static::SPRYK_LEVEL_3;
     }
 
     /**

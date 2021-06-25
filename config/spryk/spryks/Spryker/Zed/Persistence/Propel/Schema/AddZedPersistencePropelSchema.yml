@@ -3,22 +3,24 @@ description: "Adds a new spy_*targetModule*.schema.xml to the Zed application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
-  targetModule: ~
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    targetModule:
+        inherit: true
 
-  template:
-    value: Zed/Persistence/Propel/Schema/schema.xml.twig
+    organization:
+        inherit: true
+        default: Spryker
 
-  targetFilename:
-    value: "spy_{{ targetModule | underscored }}.schema.xml"
+    template:
+        value: Zed/Persistence/Propel/Schema/schema.xml.twig
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/"
+    targetFilename:
+        value: "spy_{{ targetModule | underscored }}.schema.xml"
+
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/"
 
 preSpryks:
-  - AddModule
+    - AddModule

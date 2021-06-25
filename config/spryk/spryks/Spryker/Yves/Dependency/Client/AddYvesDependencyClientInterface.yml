@@ -3,22 +3,26 @@ description: "Adds a new *module*To*dependentModule*ClientInterface."
 mode: both
 
 arguments:
-  module:
-    inherit: true
-  dependentModule: ~
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  template:
-    value: Yves/Dependency/Client/YvesDependencyClientInterface.php.twig
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Client
 
-  targetFilename:
-    value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
+    template:
+        value: Yves/Dependency/Client/YvesDependencyClientInterface.php.twig
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
+    targetFilename:
+        value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
+
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
 
 preSpryks:
-  - AddYvesDependencyClientBridge
+    - AddModule

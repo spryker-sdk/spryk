@@ -2,25 +2,29 @@ spryk: copyModule
 description: "Copies a *module*."
 priority: 1
 mode: core
+level: 1
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    toModule:
+        inherit: true
 
-  toModule:
-    inherit: true
+    toOrganization:
+        inherit: true
+        default: Spryker
 
-  toOrganization:
-    inherit: true
-    default: Spryker
+    sourcePath:
+        value: "vendor/{{ sprykerVendorPath }}{{ organization | dasherize }}/{{ moduleSrcDirectory }}{{ moduleRoot }}/"
 
-  sourcePath:
-    value: "vendor/spryker/{{ organization | dasherize }}/Bundles/{{ module }}/"
+    targetFilePath:
+        value: "vendor/{{ sprykerVendorPath }}{{ toOrganization | dasherize }}/{{ moduleSrcDirectory }}{{ toModule }}/"
 
-  targetFilePath:
-    value: "vendor/spryker/{{ toOrganization | dasherize }}/Bundles/{{ toModule }}/"
+postCommands:
+    - ComposerReplaceGenerate
+    - ComposerDumpAutoload

@@ -7,6 +7,12 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to lower the case of a first letter of the string.
+ *
+ * Example:
+ * $this->filter(`ClassName') === 'className';
+ */
 class LowerCaseFirstFilter implements FilterInterface
 {
     /**

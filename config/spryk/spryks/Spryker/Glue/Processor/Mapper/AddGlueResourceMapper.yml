@@ -7,44 +7,45 @@ application: Glue
 priority: 1
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  subDirectory:
-    default: Mapper
+    subDirectory:
+        inherit: true
+        default: Mapper
 
-  className:
-    inherit: true
+    className:
+        inherit: true
 
-  constructorArguments:
-    type: GlueProcessorDependency
-    typeOptions:
-      - module
-      - spryk
-    isOptional: true
-    isMultiple: true
+    constructorArguments:
+        type: GlueProcessorDependency
+        typeOptions:
+            - module
+            - spryk
+        isOptional: true
+        isMultiple: true
 
-  interfaceName:
-    inherit: true
-    default: "{{ className }}Interface"
+    interfaceName:
+        inherit: true
+        value: "{{ className }}Interface"
 
-  template:
-    value: Glue/Processor/GlueProcessorModel.php.twig
+    template:
+        value: Glue/Processor/GlueProcessorModel.php.twig
 
-  targetFilename:
-    callbackOnly: true
-    callback: GlueProcessorModelTargetFilename
+    targetFilename:
+        callbackOnly: true
+        callback: GlueProcessorModelTargetFilename
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddGlueResourceMapperInterface
-  - AddGlueMapperFactoryMethod
+    - AddGlueResourceMapperInterface
+    - AddGlueMapperFactoryMethod

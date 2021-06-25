@@ -10,6 +10,13 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\Word\DashToUnderscore;
 
+/**
+ * Filter is used to convert a string where words are separated by "-"
+ * into an underscored string.
+ *
+ * Example:
+ * $this->filter('string-example') === `string_example';
+ */
 class DashToUnderscoreFilter implements FilterInterface
 {
     protected const FILTER_NAME = 'dashToUnderscore';

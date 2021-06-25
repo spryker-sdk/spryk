@@ -3,46 +3,36 @@ description: "Adds a new method to the *target* business model interface."
 mode: both
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    className: ~
 
-  className: ~
+    subDirectory:
+        inherit: true
+        isOptional: true
 
-  subDirectory:
-    inherit: true
-    isOptional: true
+    modelMethod:
+        inherit: true
 
-  modelMethod:
-    inherit: true
+    input:
+        inherit: true
 
-  input:
-    inherit: true
+    output:
+        inherit: true
 
-  output:
-    inherit: true
+    template:
+        value: Common/InterfaceMethod.php.twig
 
-  template:
-    value: Common/InterfaceMethod.php.twig
+    target:
+        value: "{{ className }}Interface"
 
-  target:
-    value: "{{ className }}Interface"
-
-  fqcnPattern:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}Interface"
+    fqcnPattern:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}Interface"
 
 preSpryks:
-  - AddZedBusinessModel:
-      arguments:
-        subDirectory:
-          callback: ZedBusinessModelSubDirectoryCallback
-
-        className:
-          callback: ClassNameShortCallback
-
-postSpryks:
-  - AddZedBusinessModelMethod
+    - AddZedBusinessModelInterface

@@ -3,39 +3,33 @@ description: "Adds a new Business model interface to the Zed application."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  subDirectory:
-    inherit: true
-    isOptional: true
+    subDirectory:
+        inherit: true
+        isOptional: true
 
-  className:
-    inherit: true
+    className:
+        inherit: true
 
-  interfaceName:
-    default: "{{ className }}Interface"
+    interfaceName:
+        inherit: true
+        value: "{{ className }}Interface"
 
-  template:
-    value: Zed/Business/Model/ZedBusinessModelInterface.php.twig
+    template:
+        value: Zed/Business/Model/ZedBusinessModelInterface.php.twig
 
-  targetFilename:
-    callbackOnly: true
-    callback: ZedBusinessModelInterfaceTargetFilenameCallback
+    targetFilename:
+        callbackOnly: true
+        callback: ZedBusinessModelInterfaceTargetFilenameCallback
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
-  - AddModule
-  - AddZedBusinessModel:
-      arguments:
-        subDirectory:
-          callback: ZedBusinessModelSubDirectoryCallback
-
-        className:
-          callback: ClassNameShortCallback
+    - AddModule

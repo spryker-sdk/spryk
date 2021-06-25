@@ -7,6 +7,14 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to convert a string
+ * representing any type-hinted array into an argument description.
+ *
+ * Example:
+ * $this->filter(`\Organization\Module\Class[] $classes') === 'array $classes';
+ * $this->filter(`array $classes') === 'array $classes';
+ */
 class TypedArrayFilter implements FilterInterface
 {
     protected const FILTER_NAME = 'typedArrayConvert';

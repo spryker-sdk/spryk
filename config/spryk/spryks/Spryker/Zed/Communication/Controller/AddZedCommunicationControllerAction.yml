@@ -1,43 +1,46 @@
 spryk: method
 description: "Adds a new action to the Zed controller."
 mode: both
+level: 2
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    controller:
+        inherit: true
+        callback:
+            - ClassNameShortCallback
+            - EnsureControllerSuffixCallback
+        type: ClassNameChoice
+        choiceLoader: ZedCommunicationControllerChoiceLoader
+        typeOptions:
+            - module
+            - existingModule
+            - spryk
+            - choiceLoader
 
-  controller:
-    callback:
-      - ClassNameShortCallback
-      - EnsureControllerSuffixCallback
-    type: ClassNameChoice
-    choiceLoader: ZedCommunicationControllerChoiceLoader
-    typeOptions:
-      - module
-      - spryk
-      - choiceLoader
+    controllerMethod:
+        inherit: true
+        callback: EnsureActionSuffixCallback
 
-  controllerMethod:
-    callback: EnsureActionSuffixCallback
+    output:
+        default: void
 
-  output:
-    default: void
+    template:
+        value: Zed/Communication/MethodZedCommunicationController.php.twig
 
-  template:
-    value: Zed/Communication/MethodZedCommunicationController.php.twig
-
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"
 
 preSpryks:
-  - AddZedCommunicationController
+    - AddZedCommunicationController
 
 postSpryks:
-  - AddZedPresentationTwig
-  - AddZedNavigationNode
+    - AddZedPresentationTwig
+    - AddZedNavigationNode
 

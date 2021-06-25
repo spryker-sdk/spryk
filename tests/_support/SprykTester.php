@@ -17,6 +17,7 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Argument;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 /**
  * Inherited Methods
@@ -61,7 +62,7 @@ class SprykTester extends Actor
      *
      * @return array
      */
-    public function getMergedConfiguration(string $directory)
+    public function getMergedConfiguration(string $directory): array
     {
         $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/']);
         $configurationMerger = new SprykConfigurationMerger($configurationFinder);
@@ -72,7 +73,7 @@ class SprykTester extends Actor
             $configurationMerger,
             new SprykConfigurationExtender([]),
             new ConfigurationValidator([]),
-            $this->getDevelopmentMode()
+            new SprykConfig()
         );
 
         return $configurationLoader->loadSpryk('SprykDefinition');

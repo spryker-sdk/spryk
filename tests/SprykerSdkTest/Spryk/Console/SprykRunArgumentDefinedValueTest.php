@@ -29,7 +29,7 @@ class SprykRunArgumentDefinedValueTest extends Unit
     /**
      * @return void
      */
-    public function testTakesDefinedArgumentValue()
+    public function testTakesDefinedArgumentValue(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

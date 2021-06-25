@@ -32,7 +32,7 @@ class SprykRunTest extends Unit
     /**
      * @return void
      */
-    public function testOutputsSprykNameWhenVerbose()
+    public function testOutputsSprykNameWhenVerbose(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);
@@ -51,7 +51,7 @@ class SprykRunTest extends Unit
     /**
      * @return void
      */
-    public function testThrowsExceptionWhenBuilderBySprykNameNotFound()
+    public function testThrowsExceptionWhenBuilderBySprykNameNotFound(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);
@@ -69,7 +69,7 @@ class SprykRunTest extends Unit
     /**
      * @return void
      */
-    public function testThrowsExceptionWhenSprykConfigFileNotFound()
+    public function testThrowsExceptionWhenSprykConfigFileNotFound(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);
@@ -87,7 +87,7 @@ class SprykRunTest extends Unit
     /**
      * @return void
      */
-    public function testDoesNotRunIntoRecursionWhenCalledSprykCallsPostSprykWhichHasPreviouslyExecutedSprykAsPostSpryk()
+    public function testDoesNotRunIntoRecursionWhenCalledSprykCallsPostSprykWhichHasPreviouslyExecutedSprykAsPostSpryk(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

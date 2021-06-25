@@ -3,35 +3,38 @@ description: "Adds a method to the *module*BusinessFactory."
 mode: both
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    subDirectory:
+        inherit: true
+        isOptional: true
 
-  subDirectory:
-    inherit: true
-    isOptional: true
+    className:
+        inherit: true
 
-  className:
-    inherit: true
+    interfaceName:
+        inherit: true
+        isOptional: true
 
-  factoryMethod:
-    callbackOnly: true
-    callback: ZedBusinessFactoryMethodNameCallback
+    factoryMethod:
+        callbackOnly: true
+        callback: ZedBusinessFactoryMethodNameCallback
 
-  dependencyMethods:
-    isMultiple: true
-    isOptional: true
+    dependencyMethods:
+        isMultiple: true
+        isOptional: true
 
-  template:
-    value: Zed/Business/MethodBusinessFactory.php.twig
+    template:
+        value: Zed/Business/MethodBusinessFactory.php.twig
 
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
 
 preSpryks:
-  - AddZedBusinessFactory
+    - AddZedBusinessFactory
 

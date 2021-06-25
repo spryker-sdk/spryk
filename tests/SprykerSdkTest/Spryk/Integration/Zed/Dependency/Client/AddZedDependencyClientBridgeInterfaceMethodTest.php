@@ -66,7 +66,7 @@ class AddZedDependencyClientBridgeInterfaceMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyClientInterfaceMethodsOnProjectLayer(): void
+    public function testAddZedDependencyClientInterfaceMethodFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -75,15 +75,6 @@ class AddZedDependencyClientBridgeInterfaceMethodTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
-                'methodWithArrayArgument',
-                'methodReturnsVoid',
-                'methodWithTransferInputAndTransferOutput',
-                'methodWithDefaultNull',
-                'methodWithDefaultArray',
-                'methodWithoutDocBlockReturnType',
-                'methodWithMultipleReturn',
-                'methodWithMultipleReturnAndNullable',
-                'methodWithNullableReturn',
             ],
             '--mode' => 'project',
         ]);

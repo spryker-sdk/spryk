@@ -29,7 +29,7 @@ class SprykRunPreSprykTest extends Unit
     /**
      * @return void
      */
-    public function testExecutesPreSprykBeforeCalledSpryk()
+    public function testExecutesPreSprykBeforeCalledSpryk(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

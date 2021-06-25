@@ -1,51 +1,54 @@
 spryk: method
 description: "Adds a new delete action to the Glue controller."
 mode: both
+level: 2
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  controller:
-    callback:
-      - ClassNameShortCallback
-      - EnsureControllerSuffixCallback
+    controller:
+        inherit: true
+        callback:
+            - ClassNameShortCallback
+            - EnsureControllerSuffixCallback
 
-  controllerMethod:
-    default: "deleteAction"
-    callback: EnsureActionSuffixCallback
+    controllerMethod:
+        inherit: true
+        default: "deleteAction"
+        callback: EnsureActionSuffixCallback
 
-  resourceType:
-    inherit: true
+    resourceType:
+        inherit: true
 
-  modelName:
-    value: "{{ resourceType | dashToCamelCase | singularize }}"
+    modelName:
+        value: "{{ resourceType | dashToCamelCase | singularize }}"
 
-  modelSuffix:
-    inherit: true
-    default: "Deleter"
+    modelSuffix:
+        inherit: true
+        default: "Deleter"
 
-  template:
-    value: Glue/Controller/MethodDeleteGlueController.php.twig
+    template:
+        value: Glue/Controller/MethodDeleteGlueController.php.twig
 
-  target:
-    value: "{{ organization }}\\Glue\\{{ module }}\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"
+    target:
+        value: "{{ organization }}\\Glue\\{{ module }}\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"
 
 preSpryks:
-  - AddGlueController
-  - AddGlueProcessorModelMethod:
-      arguments:
-        className:
-          value: "{{ modelName }}{{ modelSuffix }}"
-        input:
-          value: "\\Spryker\\Glue\\GlueApplication\\Rest\\Request\\Data\\RestRequestInterface $restRequest"
-        output:
-          value: "\\Spryker\\Glue\\GlueApplication\\Rest\\JsonApi\\RestResponseInterface"
-        method:
-          value: "delete{{ modelName }}"
-        subDirectory:
-          value: "{{ modelName }}"
+    - AddGlueController
+    - AddGlueProcessorModelMethod:
+        arguments:
+            className:
+                value: "{{ modelName }}{{ modelSuffix }}"
+            input:
+                value: "\\Spryker\\Glue\\GlueApplication\\Rest\\Request\\Data\\RestRequestInterface $restRequest"
+            output:
+                value: "\\Spryker\\Glue\\GlueApplication\\Rest\\JsonApi\\RestResponseInterface"
+            method:
+                value: "delete{{ modelName }}"
+            subDirectory:
+                value: "{{ modelName }}"

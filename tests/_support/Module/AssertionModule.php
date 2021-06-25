@@ -105,7 +105,7 @@ class AssertionModule extends Module
      *
      * @return string|null
      */
-    protected function getVisibilityFromConstantReflection(ReflectionClassConstant $reflectionClassConstant)
+    protected function getVisibilityFromConstantReflection(ReflectionClassConstant $reflectionClassConstant): ?string
     {
         if ($reflectionClassConstant->isPublic()) {
             return 'public';

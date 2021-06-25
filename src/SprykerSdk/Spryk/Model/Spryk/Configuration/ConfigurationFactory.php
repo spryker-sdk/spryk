@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\ApplicationLayerExtender;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DefaultValueExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DevelopmentLayerExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\DirectoriesExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders\OrganizationExtender;
@@ -22,7 +23,9 @@ use SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMerger;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Merger\SprykConfigurationMergerInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidator;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidatorInterface;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\DevelopmentLayerRule;
+use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\LevelRule;
 use SprykerSdk\Spryk\SprykConfig;
 
 class ConfigurationFactory
@@ -50,7 +53,7 @@ class ConfigurationFactory
             $this->createConfigurationMerger(),
             $this->createConfigurationExtender(),
             $this->createConfigurationValidator(),
-            $this->getConfig()->getDefaultDevelopmentMode()
+            $this->getConfig()
         );
     }
 
@@ -105,6 +108,7 @@ class ConfigurationFactory
             $this->createOrganizationExtender(),
             $this->createDirectoriesExtender(),
             $this->createApplicationLayerExtender(),
+            $this->createDefaultValueExtender(),
         ];
     }
 
@@ -133,13 +137,30 @@ class ConfigurationFactory
     }
 
     /**
-     * @return array
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface[]
      */
     protected function createConfigurationValidatorRules(): array
     {
         return [
-            new DevelopmentLayerRule($this->config->getAvailableDevelopmentLayers()),
+            $this->createDevelopmentLayerRule(),
+            $this->createLevelRule(),
         ];
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface
+     */
+    protected function createDevelopmentLayerRule(): ConfigurationValidatorRuleInterface
+    {
+        return new DevelopmentLayerRule($this->config->getAvailableDevelopmentLayers());
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface
+     */
+    protected function createLevelRule(): ConfigurationValidatorRuleInterface
+    {
+        return new LevelRule($this->config->getAvailableLevels());
     }
 
     /**
@@ -156,6 +177,14 @@ class ConfigurationFactory
     protected function createDevelopmentLayerExtender(): SprykConfigurationExtenderInterface
     {
         return new DevelopmentLayerExtender($this->config);
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface
+     */
+    public function createDefaultValueExtender(): SprykConfigurationExtenderInterface
+    {
+        return new DefaultValueExtender($this->config);
     }
 
     /**

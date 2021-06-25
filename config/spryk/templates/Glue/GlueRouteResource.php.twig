@@ -1,4 +1,4 @@
 $resourceRouteCollection
-            ->add{{ resourceRouteMethod | capitalize }}('{{ resourceRouteMethod }}', false);
+            ->add{{ resourceRouteMethod | ucfirst }}('{{ resourceRouteMethod }}', false);
 
         return $resourceRouteCollection;

@@ -3,28 +3,27 @@ description: "Adds a new method to the Client *module*Config."
 mode: both
 
 arguments:
+    module:
+        inherit: true
 
-  module:
-    inherit: true
+    organization:
+        inherit: true
+        default: Spryker
 
-  organization:
-    inherit: true
-    default: Spryker
+    comment:
+        multiline: true
+        isOptional: true
 
-  comment:
-    multiline: true
-    isOptional: true
+    configMethod: ~
+    input: ~
+    output: ~
 
-  configMethod: ~
-  input: ~
-  output: ~
+    template:
+        value: Common/Method.php.twig
 
-  template:
-    value: Common/Method.php.twig
-
-  target:
-    value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}Config"
+    target:
+        value: "{{ organization }}\\Client\\{{ module }}\\{{ module }}Config"
 
 preSpryks:
-  - AddClientConfig
+    - AddClientConfig
 

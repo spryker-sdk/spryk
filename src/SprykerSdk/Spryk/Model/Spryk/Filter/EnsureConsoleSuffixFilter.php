@@ -7,6 +7,14 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to add the `Console` suffix to a string
+ * if it is not present in the given one.
+ *
+ * Example:
+ * $this->filter('CreateProduct') === `CreateProductConsole';
+ * $this->filter('RemoveProductConsole') === `RemoveProductConsole';
+ */
 class EnsureConsoleSuffixFilter implements FilterInterface
 {
     public const CONSOLE_SUFFIX = 'Console';

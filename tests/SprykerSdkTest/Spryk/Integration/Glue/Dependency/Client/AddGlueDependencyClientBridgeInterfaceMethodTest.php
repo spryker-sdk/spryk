@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\Zed\Dependency\Client;
+namespace SprykerSdkTest\Spryk\Integration\Glue\Dependency\Client;
 
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Exception\SprykWrongDevelopmentLayerException;
@@ -67,7 +67,7 @@ class AddGlueDependencyClientBridgeInterfaceMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsGlueDependencyClientInterfaceMethodsOnProjectLayer(): void
+    public function testAddGlueDependencyClientInterfaceMethodFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -76,15 +76,6 @@ class AddGlueDependencyClientBridgeInterfaceMethodTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
-                'methodWithArrayArgument',
-                'methodReturnsVoid',
-                'methodWithTransferInputAndTransferOutput',
-                'methodWithDefaultNull',
-                'methodWithDefaultArray',
-                'methodWithoutDocBlockReturnType',
-                'methodWithMultipleReturn',
-                'methodWithMultipleReturnAndNullable',
-                'methodWithNullableReturn',
             ],
             '--mode' => 'project',
         ]);

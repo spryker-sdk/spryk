@@ -7,38 +7,38 @@ application: Glue
 priority: 1
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  className:
-    inherit: true
+    className:
+        inherit: true
 
-  subDirectory:
-    inherit: true
-    isOptional: true
+    subDirectory:
+        inherit: true
+        isOptional: true
 
-  method:
-    inherit: true
+    method:
+        inherit: true
 
-  input:
-    isOptional: true
-    isMultiple: true
+    input:
+        isOptional: true
+        isMultiple: true
 
-  output:
-    isOptional: true
+    output:
+        isOptional: true
 
-  template:
-    value: Common/Method.php.twig
+    template:
+        value: Common/Method.php.twig
 
-  target:
-    value: '{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory }}{% endif %}\{{ className }}'
+    target:
+        value: '{{ organization }}\Glue\{{ module }}\Processor{% if subDirectory %}\{{ subDirectory }}{% endif %}\{{ className }}'
 
 preSpryks:
-  - AddGlueProcessorModel
+    - AddGlueProcessorModel
 
 postSpryks:
-  - AddGlueProcessorModelInterfaceMethod
+    - AddGlueProcessorModelInterfaceMethod

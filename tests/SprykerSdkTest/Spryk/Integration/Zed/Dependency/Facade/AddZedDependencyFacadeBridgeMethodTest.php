@@ -70,7 +70,7 @@ class AddZedDependencyFacadeBridgeMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyFacadeBridgeMethodsOnProjectLayer(): void
+    public function testAddZedDependencyFacadeBridgeMethodFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -79,16 +79,6 @@ class AddZedDependencyFacadeBridgeMethodTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
-                'methodWithArrayArgument',
-                'methodReturnsVoid',
-                'methodWithTransferInputAndTransferOutput',
-                'methodWithDefaultNull',
-                'methodWithDefaultArray',
-                'methodWithoutMethodReturnType',
-                'methodWithoutDocBlockReturnType',
-                'methodWithMultipleReturn',
-                'methodWithMultipleReturnAndNullable',
-                'methodWithNullableReturn',
             ],
             '--mode' => 'project',
         ]);

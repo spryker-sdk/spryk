@@ -1,18 +1,16 @@
 <?php
 
-/**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
- */
+{{ include('Partials/license.twig') }}
 
 namespace {{ organization }}\Glue\{{ module }}\Plugin\GlueApplication;
 
+use Generated\Shared\Transfer\RestErrorMessageTransfer;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ValidateHttpRequestPluginInterface;
 use Spryker\Glue\Kernel\AbstractPlugin;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @method \Spryker\Glue\{{ module }}\{{ module }}Factory getFactory()
+ * @method \{{ organization }}\Glue\{{ module }}\{{ module }}Factory getFactory()
  */
 class {{ modelName }}ValidateHttpRequestPlugin extends AbstractPlugin implements ValidateHttpRequestPluginInterface
 {

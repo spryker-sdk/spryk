@@ -3,37 +3,44 @@ description: "Adds a new method to the *module* dependency Client bridge."
 mode: core
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  module:
-    inherit: true
-  organization:
-    inherit: true
-    default: Spryker
+    module:
+        inherit: true
 
-  dependentModule: ~
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Client
 
-  methods:
-    type: MethodNameChoice
-    choiceLoader: ClientMethodChoiceLoader
-    isMultiple: true
-    typeOptions:
-      - module
-      - choiceLoader
+    dependentModuleOrganization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Yves/Dependency/YvesDependencyBridgeInterfaceMethod.php.twig
+    methods:
+        type: MethodNameChoice
+        choiceLoader: ClientMethodChoiceLoader
+        isMultiple: true
+        typeOptions:
+            - module
+            - choiceLoader
 
-  dependencyType:
-    value: Client
+    template:
+        value: Yves/Dependency/YvesDependencyBridgeInterfaceMethod.php.twig
 
-  sourceClass:
-    value: "{{ organization }}\\Client\\{{ dependentModule }}\\{{ dependentModule }}ClientInterface"
+    dependencyType:
+        value: Client
 
-  target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Client\\{{ module }}To{{ dependentModule }}ClientInterface"
+    sourceClass:
+        value: "{{ dependentModuleOrganization }}\\Client\\{{ dependentModule }}\\{{ dependentModule }}ClientInterface"
+
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\Dependency\\Client\\{{ module }}To{{ dependentModule }}ClientInterface"
 
 preSpryks:
-  - AddYvesDependencyClientInterface
+    - AddYvesDependencyClientInterface
 
 postSpryks:
-  - AddYvesDependencyClientBridgeMethod
+    - AddYvesDependencyClientBridgeMethod

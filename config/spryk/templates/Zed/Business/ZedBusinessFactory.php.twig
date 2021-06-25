@@ -1,9 +1,6 @@
 <?php
 
-/**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
- */
+{{ include('Partials/license.twig') }}
 
 namespace {{ organization }}\Zed\{{ module }}\Business;
 
@@ -11,8 +8,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
  * @method \{{ organization }}\Zed\{{ module }}\{{ module }}Config getConfig()
- * @method \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInterface getEntityManager()
- * @method \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}RepositoryInterface getRepository()
  */
 class {{ module }}BusinessFactory extends AbstractBusinessFactory
 {

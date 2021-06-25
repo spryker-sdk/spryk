@@ -70,33 +70,6 @@ class AddYvesDependencyClientBridgeMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyClientBridgeMethodsOnProjectLayer(): void
-    {
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--mode' => 'project',
-            '--methods' => [
-                'methodWithStringArgument',
-                'methodWithArrayArgument',
-                'methodReturnsVoid',
-                'methodWithTransferInputAndTransferOutput',
-                'methodWithDefaultNull',
-                'methodWithDefaultArray',
-                'methodWithoutMethodReturnType',
-                'methodWithoutDocBlockReturnType',
-                'methodWithMultipleReturn',
-                'methodWithMultipleReturnAndNullable',
-                'methodWithNullableReturn',
-            ],
-        ]);
-    }
-
-    /**
-     * @return void
-     */
     public function testAddsYvesDependencyClientBridgeMethodOnlyOnce(): void
     {
         $this->tester->run($this, [
@@ -116,5 +89,22 @@ class AddYvesDependencyClientBridgeMethodTest extends Unit
             ],
         ]);
         $this->tester->assertClassHasMethod(ClassName::YVES_CLIENT_BRIDGE, 'methodWithStringArgument');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAddYvesDependencyClientBridgeMethodFailsOnProjectLayer(): void
+    {
+        $this->expectException(SprykWrongDevelopmentLayerException::class);
+
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--dependentModule' => 'ZipZap',
+            '--mode' => 'project',
+            '--methods' => [
+                'methodWithStringArgument',
+            ],
+        ]);
     }
 }

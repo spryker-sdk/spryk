@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\Extenders;
 
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
+use SprykerSdk\Spryk\SprykConfig;
 
 class ApplicationLayerExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
@@ -34,7 +35,7 @@ class ApplicationLayerExtender extends AbstractExtender implements SprykConfigur
     {
         $arguments = $this->getArguments($sprykConfig);
 
-        if (isset($arguments['layer']['default'])) {
+        if (isset($arguments[SprykConfig::NAME_ARGUMENT_LAYER][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT])) {
             return $sprykConfig;
         }
 
@@ -45,9 +46,9 @@ class ApplicationLayerExtender extends AbstractExtender implements SprykConfigur
         }
 
         if ($this->isLayerPlaceholderExist($arguments)) {
-            $arguments['layer']['default'] = $applicationLayer;
+            $arguments[SprykConfig::NAME_ARGUMENT_LAYER][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT] = $applicationLayer;
         } else {
-            $arguments['layer']['value'] = $applicationLayer;
+            $arguments[SprykConfig::NAME_ARGUMENT_LAYER][SprykConfig::NAME_ARGUMENT_KEY_VALUE] = $applicationLayer;
         }
 
         $sprykConfig = $this->setArguments($arguments, $sprykConfig);
@@ -62,21 +63,14 @@ class ApplicationLayerExtender extends AbstractExtender implements SprykConfigur
      */
     protected function getApplicationLayer(array $arguments): ?string
     {
-        //todo: refactoring
         if (!isset($arguments['targetPath'])) {
             return null;
         }
 
-        $targetPath = $arguments['targetPath']['default'] ?? $arguments['targetPath']['value'];
+        $targetPath = $arguments['targetPath'][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT] ?? $arguments['targetPath'][SprykConfig::NAME_ARGUMENT_KEY_VALUE];
 
-//        if (!isset($arguments['targetPath']['default'])) {
-//            return null;
-//        }
-//
-//        $targetPath = $arguments['targetPath']['default'];
-
-        if (is_array($targetPath)) { //todo: check
-            $values = array_column($targetPath, 'value');
+        if (is_array($targetPath)) {
+            $values = array_column($targetPath, SprykConfig::NAME_ARGUMENT_KEY_VALUE);
             $targetPath = array_shift($values);
         }
 
@@ -103,11 +97,11 @@ class ApplicationLayerExtender extends AbstractExtender implements SprykConfigur
      */
     protected function isLayerPlaceholderExist(array $arguments): bool
     {
-        if (!isset($arguments['targetPath']['default'])) {
+        if (!isset($arguments['targetPath'][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT])) {
             return false;
         }
 
-        $targetPath = $arguments['targetPath']['default'];
+        $targetPath = $arguments['targetPath'][SprykConfig::NAME_ARGUMENT_KEY_DEFAULT];
 
         if (strpos($targetPath, static::NAME_PLACEHOLDER_LAYER) === false) {
             return false;

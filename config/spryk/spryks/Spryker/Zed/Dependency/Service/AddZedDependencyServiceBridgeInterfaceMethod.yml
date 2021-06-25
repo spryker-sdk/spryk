@@ -3,43 +3,44 @@ description: "Adds a new method to the *module* dependency Service bridge interf
 mode: core
 
 arguments:
-  module:
-    moduleFilter:
-      application: Zed
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  dependentModule:
-    inherit: true
-    moduleFilter:
-      application: Service
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Service
 
-  methods:
-    type: MethodNameChoice
-    choiceLoader: ServiceMethodChoiceLoader
-    isMultiple: true
-    typeOptions:
-      - module
-      - choiceLoader
+    methods:
+        type: MethodNameChoice
+        choiceLoader: ServiceMethodChoiceLoader
+        isMultiple: true
+        typeOptions:
+            - module
+            - choiceLoader
 
-  template:
-    value: Zed/Dependency/ZedDependencyBridgeInterfaceMethod.php.twig
+    template:
+        value: Zed/Dependency/ZedDependencyBridgeInterfaceMethod.php.twig
 
-  dependencyType:
-    value: Service
+    dependencyType:
+        value: Service
 
-  sourceClass:
-    value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}ServiceInterface"
+    sourceClass:
+        value: "{{ organization }}\\Service\\{{ dependentModule }}\\{{ dependentModule }}ServiceInterface"
 
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceInterface"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Dependency\\Service\\{{ module }}To{{ dependentModule }}ServiceInterface"
 
 preSpryks:
-  - AddZedDependencyServiceInterface
+    - AddZedDependencyServiceInterface
 
 postSpryks:
-  - AddZedDependencyServiceBridgeMethod
+    - AddZedDependencyServiceBridgeMethod
 
 

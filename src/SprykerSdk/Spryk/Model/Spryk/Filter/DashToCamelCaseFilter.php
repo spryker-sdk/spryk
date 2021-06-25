@@ -10,6 +10,13 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\Word\DashToCamelCase;
 
+/**
+ * Filter is used to convert a string where words are separated by "-"
+ * into a camelCased string.
+ *
+ * Example:
+ * $this->filter('string-example') === `stringExample';
+ */
 class DashToCamelCaseFilter implements FilterInterface
 {
     protected const FILTER_NAME = 'dashToCamelCase';

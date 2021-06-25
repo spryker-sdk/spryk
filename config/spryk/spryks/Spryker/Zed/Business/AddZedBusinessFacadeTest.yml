@@ -3,21 +3,21 @@ description: "Adds a new *module*FacadeTest."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Zed/Business/ZedBusinessFacadeTest.php.twig
+    template:
+        value: Zed/Business/ZedBusinessFacadeTest.php.twig
 
-  targetFilename:
-    value: "{{ module }}FacadeTest.php"
+    targetFilename:
+        value: "{{ module }}FacadeTest.php"
 
-  targetPath:
-    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/Business/"
+    targetPath:
+        value: "{{ moduleRoot }}/tests/{{ organization }}Test/Zed/{{ module }}/Business/"
 
 preSpryks:
-  - AddZedBusinessTestSuite
+    - AddZedBusinessTestSuite

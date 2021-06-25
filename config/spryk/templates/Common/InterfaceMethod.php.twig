@@ -1,3 +1,9 @@
+{% set inputString = input.value %}
+{% if input.value is not empty %}
+    {% if input.value is iterable %}
+        {% set inputString = input.value | join(',') %}
+    {% endif %}
+{% endif %}
 
     /**
      {% if specification is defined and specification.value is not empty %}
@@ -19,15 +25,15 @@
      *
      {% endfor -%}
      {% endif -%}
-     {% if input.value is not empty -%}
-     {% set inputs = input.value | split(',') -%}
+     {% if inputString is not empty -%}
+     {% set inputs = inputString | split(',') -%}
      {%- if inputs is iterable -%}
      {% for input in inputs -%}
-     * @param {{ input }}
+     * @param {{ input | argumentToDocParameter }}
      {% endfor -%}
      *
      {% endif -%}
      {% endif -%}
      * @return {{ output }}
      */
-    public function {{ method }}({% if input.value is not empty %}{{ input.value | typedArrayConvert }}{% endif %}): {{ output | typedArrayConvert }};
+    public function {{ method }}({% if inputString is not empty %}{{ inputString | typedArrayConvert }}{% endif %}): {{ output | typedArrayConvert }};

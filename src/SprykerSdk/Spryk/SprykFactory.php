@@ -16,6 +16,9 @@ use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Reader\ArgumentListReaderInterface
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollection;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderFactory;
+use SprykerSdk\Spryk\Model\Spryk\Command\ComposerDumpAutoloadSprykCommand;
+use SprykerSdk\Spryk\Model\Spryk\Command\ComposerReplaceGenerateSprykCommand;
+use SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\ConfigurationFactory;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackFactory;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollection;
@@ -30,9 +33,15 @@ use SprykerSdk\Spryk\Model\Spryk\Dumper\Finder\SprykDefinitionFinder;
 use SprykerSdk\Spryk\Model\Spryk\Dumper\Finder\SprykDefinitionFinderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Dumper\SprykDefinitionDumper;
 use SprykerSdk\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface;
+use SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfiguration;
+use SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface;
 use SprykerSdk\Spryk\Model\Spryk\Executor\SprykExecutor;
 use SprykerSdk\Spryk\Model\Spryk\Executor\SprykExecutorInterface;
 use SprykerSdk\Spryk\Model\Spryk\Filter\FilterFactory;
+use SprykerSdk\Spryk\Style\SprykStyle;
+use SprykerSdk\Spryk\Style\SprykStyleInterface;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class SprykFactory
 {
@@ -48,7 +57,8 @@ class SprykFactory
     {
         return new SprykExecutor(
             $this->createSprykDefinitionBuilder(),
-            $this->createSprykBuilderCollection()
+            $this->createSprykBuilderCollection(),
+            $this->getCommandStack()
         );
     }
 
@@ -60,7 +70,7 @@ class SprykFactory
         return new SprykDefinitionBuilder(
             $this->createConfigurationFactory()->createConfigurationLoader(),
             $this->createArgumentResolver(),
-            $this->getConfig()->getDefaultDevelopmentMode()
+            $this->getConfig()
         );
     }
 
@@ -98,7 +108,7 @@ class SprykFactory
     /**
      * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterFactory
      */
-    public function createFilterFactory()
+    public function createFilterFactory(): FilterFactory
     {
         return new FilterFactory();
     }
@@ -128,7 +138,7 @@ class SprykFactory
     /**
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackFactory
      */
-    public function createCallbackFactory()
+    public function createCallbackFactory(): CallbackFactory
     {
         return new CallbackFactory();
     }
@@ -165,7 +175,7 @@ class SprykFactory
     /**
      * @return \SprykerSdk\Spryk\SprykConfig
      */
-    public function getConfig()
+    public function getConfig(): SprykConfig
     {
         if ($this->config === null) {
             $this->config = new SprykConfig();
@@ -215,5 +225,65 @@ class SprykFactory
             $this->createArgumentsListBuilder(),
             $this->createSprykDefinitionDumper()
         );
+    }
+
+    /**
+     * @param string $sprykName
+     * @param string[] $includeOptionalSubSpryks
+     * @param string $targetModuleName
+     * @param string $dependentModuleName
+     *
+     * @return \SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface
+     */
+    public function createSprykExecutorConfiguration(
+        string $sprykName,
+        array $includeOptionalSubSpryks,
+        string $targetModuleName,
+        string $dependentModuleName
+    ): SprykExecutorConfigurationInterface {
+        return new SprykExecutorConfiguration(
+            $sprykName,
+            $includeOptionalSubSpryks,
+            $targetModuleName,
+            $dependentModuleName
+        );
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return \SprykerSdk\Spryk\Style\SprykStyleInterface
+     */
+    public function createSprykStyle(InputInterface $input, OutputInterface $output): SprykStyleInterface
+    {
+        return new SprykStyle($input, $output);
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface[]
+     */
+    public function getCommandStack(): array
+    {
+        return [
+            $this->createComposerReplaceGenerateSprykCommand(),
+            $this->createComposerDumpAutoloadSprykCommand(),
+        ];
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface
+     */
+    public function createComposerReplaceGenerateSprykCommand(): SprykCommandInterface
+    {
+        return new ComposerReplaceGenerateSprykCommand();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface
+     */
+    public function createComposerDumpAutoloadSprykCommand(): SprykCommandInterface
+    {
+        return new ComposerDumpAutoloadSprykCommand();
     }
 }

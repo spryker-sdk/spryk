@@ -3,23 +3,26 @@ description: "Adds a Service dependency constant to the *module*DependencyProvid
 mode: both
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  module:
-    inherit: true
-  dependentModule: ~
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Service
 
-  name: ~
-  value: ~
-  visibility:
-    value: "public"
+    name: ~
+    value: ~
+    visibility:
+        value: "public"
 
-  target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
-  - AddYvesDependencyProvider
+    - AddYvesDependencyProvider
 

@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+foreach ([__DIR__ . '/../../../../../autoload.php', __DIR__ . '/../../../autoload.php'] as $file) {
+    if (file_exists($file)) {
+        define('SPRYKER_COMPOSER_INSTALL', $file);
+        define('APPLICATION_ROOT_DIR', realpath(dirname($file) . '/..'));
+        break;
+    }
+}
+
+unset($file);
+
+if (!defined('SPRYKER_COMPOSER_INSTALL')) {
+    throw new \Exception('Could not resolve path to vendor/autoload.php');
+}
+
+define('SPRYKER_ROOT', getcwd());
+
+require_once SPRYKER_COMPOSER_INSTALL;
+
+use SprykerSdk\Spryk\Console\ConsoleBootstrap;
+use SprykerSdk\Spryk\Console\SprykRunConsole;
+
+$application = new ConsoleBootstrap();
+$application->addCommands([
+    new SprykRunConsole(),
+]);
+$application->setDefaultCommand('spryk:run', true);
+
+$application->run();

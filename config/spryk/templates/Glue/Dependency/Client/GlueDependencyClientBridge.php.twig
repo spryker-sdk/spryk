@@ -1,9 +1,6 @@
 <?php
 
-/**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
- */
+{{ include('Partials/license.twig') }}
 
 namespace {{ organization }}\Glue\{{ module }}\Dependency\Client;
 
@@ -12,13 +9,13 @@ class {{ module }}To{{ dependentModule }}ClientBridge implements {{ module }}To{
     /**
      * @var \{{ organization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface
      */
-    protected ${{ dependentModule | camelBack }}Client;
+    protected ${{ dependentModule | lcfirst }}Client;
 
     /**
-     * @param \{{ organization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface ${{ dependentModule | camelBack }}Client
+     * @param \{{ organization }}\Client\{{ dependentModule }}\{{ dependentModule }}ClientInterface ${{ dependentModule | lcfirst }}Client
      */
-    public function __construct(${{ dependentModule | camelBack }}Client)
+    public function __construct(${{ dependentModule | lcfirst }}Client)
     {
-        $this->{{ dependentModule | camelBack }}Client = ${{ dependentModule | camelBack }}Client;
+        $this->{{ dependentModule | lcfirst }}Client = ${{ dependentModule | lcfirst }}Client;
     }
 }

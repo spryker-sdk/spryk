@@ -3,35 +3,42 @@ description: "Adds a Service dependency method to the *module*DependencyProvider
 mode: both
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  module:
-    inherit: true
-  dependentModule: ~
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Service
 
-  providerMethod:
-    value: "add{{ dependentModule }}Service"
+    dependentModuleOrganization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Yves/Dependency/Service/YvesDependencyServiceDependencyProviderMethod.php.twig
+    providerMethod:
+        value: "add{{ dependentModule }}Service"
 
-  target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
+    template:
+        value: Yves/Dependency/Service/YvesDependencyServiceDependencyProviderMethod.php.twig
+
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
-  - AddYvesDependencyProvider
+    - AddYvesDependencyProvider
 
 postSpryks:
-  - AddYvesDependencyServiceBridge
-  - AddYvesDependencyServiceDependencyProviderConstant:
-      arguments:
-        name:
-          value: "SERVICE_{{ dependentModule | underscored | upper }}"
-        value:
-          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
-        visibility:
-          value:  "public"
+    - AddYvesDependencyServiceBridge
+    - AddYvesDependencyServiceDependencyProviderConstant:
+        arguments:
+            name:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"
 

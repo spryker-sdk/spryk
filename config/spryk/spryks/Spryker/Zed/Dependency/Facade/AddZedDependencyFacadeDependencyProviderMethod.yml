@@ -3,39 +3,39 @@ description: "Adds a facade dependency method to the *module*DependencyProvider.
 mode: both
 
 arguments:
-  module:
-    moduleFilter:
-      application: Zed
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  dependentModule:
-    inherit: true
-    moduleFilter:
-      application: Zed
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  providerMethod:
-    value: "add{{ dependentModule }}Facade"
+    providerMethod:
+        value: "add{{ dependentModule }}Facade"
 
-  template:
-    value: Zed/Dependency/Facade/ZedDependencyFacadeDependencyProviderMethod.php.twig
+    template:
+        value: Zed/Dependency/Facade/ZedDependencyFacadeDependencyProviderMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
-  - AddZedDependencyProvider
+    - AddZedDependencyProvider
 
 postSpryks:
-  - AddZedDependencyFacadeBridge
-  - AddZedDependencyFacadeDependencyProviderConstant:
-      arguments:
-        name:
-          value: "FACADE_{{ dependentModule | underscored | upper }}"
-        value:
-          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} facade"
-        visibility:
-          value:  "public"
+    - AddZedDependencyFacadeDependencyProviderConstant:
+        arguments:
+            name:
+                value: "FACADE_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "FACADE_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"
 

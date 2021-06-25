@@ -46,7 +46,7 @@ class AddZedDependencyServiceBridgeTest extends Unit
     /**
      * @return void
      */
-    public function testAddsZedDependencyServiceBridgeOnProjectLayer(): void
+    public function testAddZedDependencyServiceBridgeFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -68,19 +68,5 @@ class AddZedDependencyServiceBridgeTest extends Unit
         ]);
 
         $this->tester->assertClassHasMethod(ClassName::ZED_BUSINESS_FACTORY, 'getZipZapService');
-    }
-
-    /**
-     * @return void
-     */
-    public function testAddsGetterToFactoryOnProjectLayer(): void
-    {
-        $this->expectException(SprykWrongDevelopmentLayerException::class);
-
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--dependentModule' => 'ZipZap',
-            '--mode' => 'project',
-        ]);
     }
 }

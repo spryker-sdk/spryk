@@ -3,24 +3,24 @@ description: "Add the Zed *module* test suite configuration without any suite."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Zed/ZedTestCodeceptionConfiguration.yml.twig
+    template:
+        value: Zed/ZedTestCodeceptionConfiguration.yml.twig
 
-  targetPath:
-    value: "{{ module }}/tests/{{ organization }}Test/Zed/{{ module }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/tests/{{ organization }}Test/Zed/{{ module }}/"
 
-  targetFilename:
-    value: codeception.yml
+    targetFilename:
+        value: codeception.yml
 
 preSpryks:
-  - AddModuleCodeceptionConfiguration
+    - AddModuleCodeceptionConfiguration
 
 postSpryks:
-  - AddZedTestSuiteToCodeceptionConfiguration
+    - AddZedTestSuiteToCodeceptionConfiguration

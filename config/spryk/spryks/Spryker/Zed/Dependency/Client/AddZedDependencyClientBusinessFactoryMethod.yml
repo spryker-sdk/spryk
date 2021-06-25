@@ -3,39 +3,39 @@ description: "Adds a Client dependency method to the *module*BusinessFactory."
 mode: both
 
 arguments:
-  module:
-    inherit: true
-    moduleFilter:
-      application: Zed
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  dependentModule:
-    inherit: true
-    moduleFilter:
-      application: Client
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Client
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  factoryMethod:
-    value: "get{{ dependentModule }}Client"
+    factoryMethod:
+        value: "get{{ dependentModule }}Client"
 
-  template:
-    value: Zed/Dependency/Client/ZedDependencyClientBusinessFactoryMethod.php.twig
+    template:
+        value: Zed/Dependency/Client/ZedDependencyClientBusinessFactoryMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
 
 preSpryks:
-  - AddZedBusinessFactory
+    - AddZedBusinessFactory
 
 postSpryks:
-  - AddZedDependencyClientDependencyProviderConstant:
-      arguments:
-        name:
-          value: "CLIENT_{{ dependentModule | underscored | upper }}"
-        value:
-          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} client"
-        visibility:
-          value:  "public"
+    - AddZedDependencyClientDependencyProviderConstant:
+        arguments:
+            name:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"
 

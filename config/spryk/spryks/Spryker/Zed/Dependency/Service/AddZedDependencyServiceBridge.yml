@@ -3,44 +3,44 @@ description: "Adds a new *module*To*dependentModule*ServiceBridge."
 mode: core
 
 arguments:
-  module:
-    moduleFilter:
-      application: Zed
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  dependentModule:
-    inherit: true
-    moduleFilter:
-      application: Service
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Service
 
-  dependentModuleOrganization:
-    default: Spryker
+    dependentModuleOrganization:
+        default: Spryker
 
+    template:
+        value: Zed/Dependency/Service/ZedDependencyServiceBridge.php.twig
 
-  template:
-    value: Zed/Dependency/Service/ZedDependencyServiceBridge.php.twig
+    targetFilename:
+        value: "{{ module }}To{{ dependentModule }}ServiceBridge.php"
 
-  targetFilename:
-    value: "{{ module }}To{{ dependentModule }}ServiceBridge.php"
-
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Service/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Service/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddZedDependencyServiceInterface
-  - AddZedDependencyServiceBusinessFactoryMethod
-  - AddZedDependencyServiceDependencyProviderMethod
-  - AddZedDependencyServiceDependencyProviderConstant:
-      arguments:
-          name:
-            value: "SERVICE_{{ dependentModule | underscored | upper }}"
-          value:
-            value:  "{{ dependentModule | camelCaseToWhitespace | lower }} service"
-          visibility:
-            value:  "public"
+    - AddZedDependencyServiceInterface
+    - AddZedDependencyServiceBusinessFactoryMethod
+    - AddZedDependencyServiceDependencyProviderMethod
+    - AddZedDependencyServiceDependencyProviderConstant:
+        arguments:
+            name:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "SERVICE_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"

@@ -1,24 +1,21 @@
 <?php
 
-/**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
- */
+{{ include('Partials/license.twig') }}
 
 namespace {{ organization }}\Zed\{{ module }}\Dependency\Service;
 
 class {{ module }}To{{ dependentModule }}ServiceBridge implements {{ module }}To{{ dependentModule }}ServiceInterface
 {
     /**
-     * @var \{{ organization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface
+     * @var \{{ dependentModuleOrganization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface
      */
-    protected ${{ dependentModule | camelBack }}Service;
+    protected ${{ dependentModule | lcfirst }}Service;
 
     /**
-     * @param \{{ organization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface ${{ dependentModule | camelBack }}Service
+     * @param \{{ dependentModuleOrganization }}\Service\{{ dependentModule }}\{{ dependentModule }}ServiceInterface ${{ dependentModule | lcfirst }}Service
      */
-    public function __construct(${{ dependentModule | camelBack }}Service)
+    public function __construct(${{ dependentModule | lcfirst }}Service)
     {
-        $this->{{ dependentModule | camelBack }}Service = ${{ dependentModule | camelBack }}Service;
+        $this->{{ dependentModule | lcfirst }}Service = ${{ dependentModule | lcfirst }}Service;
     }
 }

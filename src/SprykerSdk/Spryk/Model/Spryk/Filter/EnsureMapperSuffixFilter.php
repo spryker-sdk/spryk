@@ -7,6 +7,14 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to add the `Mapper` suffix to a string
+ * if it is not present in the given one.
+ *
+ * Example:
+ * $this->filter('Product') === `ProductMapper';
+ * $this->filter('CategoryMapper') === `CategoryMapper';
+ */
 class EnsureMapperSuffixFilter implements FilterInterface
 {
     public const MAPPER_SUFFIX = 'Mapper';

@@ -4,11 +4,13 @@
     "description": "Spryk module",
     "license": "proprietary",
     "require": {
+        "ext-dom": "*",
+        "ext-simplexml": "*",
         "php": ">=7.3",
         "roave/better-reflection": "^3.2 || ^4.0",
         "spryker/config": "^3.0.0",
+        "spryker/console": "^3.0.0 || ^4.0.0",
         "spryker/doctrine-inflector": "^1.1.0",
-        "spryker/glue-application-extension": "^1.1.0",
         "spryker/kernel": "^3.30.0",
         "spryker/laminas": "^1.0.0",
         "symfony/console": "^3.4.0 || ^4.0.0 || ^5.0.0",
@@ -21,8 +23,26 @@
         "codeception/codeception": "^4.0.0",
         "phpstan/phpstan": "^0.12.0",
         "phpunit/phpunit": "^7.0.0 || ^8.0.0",
+        "spryker/checkout-extension": "^1.3.0",
         "spryker/code-sniffer": "*",
+        "spryker/data-import": "*",
+        "spryker/glue-application-extension": "^1.1.0",
+        "spryker/oms": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0",
+        "spryker/payment-extension": "*",
+        "spryker/router": "^1.1.0",
+        "spryker/sales-payment-extension": "*",
+        "spryker/step-engine": "*",
         "spryker/testify": "^3.0.0"
+    },
+    "suggest": {
+        "spryker/checkout-extension": "If you want to use Payment spryks, minimum required version: 1.3.0",
+        "spryker/data-import": "If you want to use DataImport spryks, minimum required version: 1.0.0",
+        "spryker/glue-application-extension": "If you want to use Glue spryks, minimum required version: 1.1.0",
+        "spryker/oms": "If you want to use Payment spryks, minimum required version: 4.0.0",
+        "spryker/payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
+        "spryker/router": "If you want to use Route spryks, minimum required version: 1.1.0",
+        "spryker/sales-payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
+        "spryker/step-engine": "If you want to use Payment spryks, minimum required version: 1.0.0"
     },
     "autoload": {
         "psr-4": {
@@ -59,14 +79,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "post-install-cmd": [
-            "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-        ],
-        "post-update-cmd": [
-            "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-        ],
-        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
+        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
+        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "phpstan": "phpstan analyse src/",
         "test": [
             "codecept run -g Glue -x Zed",
@@ -82,5 +96,10 @@
         "use-include-path": true,
         "process-timeout": 600,
         "sort-packages": true
-    }
+    },
+    "bin": [
+        "bin/spryk-run",
+        "bin/spryk-dump",
+        "bin/spryk-build"
+    ]
 }

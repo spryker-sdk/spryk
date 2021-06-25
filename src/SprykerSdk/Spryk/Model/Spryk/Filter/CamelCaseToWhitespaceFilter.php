@@ -10,6 +10,13 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\Word\CamelCaseToSeparator;
 
+/**
+ * Filter is used to convert a camelCased string
+ * into a string where words are separated by " ".
+ *
+ * Example:
+ * $this->filter(`stringExample') === 'string example';
+ */
 class CamelCaseToWhitespaceFilter implements FilterInterface
 {
     /**

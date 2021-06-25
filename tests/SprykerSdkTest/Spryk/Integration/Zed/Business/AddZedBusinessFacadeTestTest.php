@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Business;
 
 use Codeception\Test\Unit;
 
@@ -15,7 +15,8 @@ use Codeception\Test\Unit;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group Facade
+ * @group Zed
+ * @group Business
  * @group AddZedBusinessFacadeTestTest
  * Add your own group annotations below this line
  */

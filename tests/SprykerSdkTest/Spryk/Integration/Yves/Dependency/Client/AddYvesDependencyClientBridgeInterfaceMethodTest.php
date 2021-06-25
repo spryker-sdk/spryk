@@ -66,7 +66,7 @@ class AddYvesDependencyClientBridgeInterfaceMethodTest extends Unit
     /**
      * @return void
      */
-    public function testAddsYvesDependencyClientInterfaceMethodsOnProjectLayer(): void
+    public function testAddYvesDependencyClientInterfaceMethodFailsOnProjectLayer(): void
     {
         $this->expectException(SprykWrongDevelopmentLayerException::class);
 
@@ -75,15 +75,6 @@ class AddYvesDependencyClientBridgeInterfaceMethodTest extends Unit
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',
-                'methodWithArrayArgument',
-                'methodReturnsVoid',
-                'methodWithTransferInputAndTransferOutput',
-                'methodWithDefaultNull',
-                'methodWithDefaultArray',
-                'methodWithoutDocBlockReturnType',
-                'methodWithMultipleReturn',
-                'methodWithMultipleReturnAndNullable',
-                'methodWithNullableReturn',
             ],
             '--mode' => 'project',
         ]);

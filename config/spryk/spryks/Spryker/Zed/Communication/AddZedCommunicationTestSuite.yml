@@ -3,19 +3,20 @@ description: "Adds a new *module* Communication test suite directory."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  targetPath:
-    value: "{{ module }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/"
 
-  directories:
-    value:
-      - "tests/{{ organization }}Test/Zed/{{ module }}/Communication/"
+    directories:
+        skipOnProjectLevel: true
+        value:
+            - "tests/{{ organization }}Test/Zed/{{ module }}/Communication/"
 
 postSpryks:
-  - AddZedCommunicationTestSuiteConfiguration
+    - AddZedCommunicationTestSuiteConfiguration

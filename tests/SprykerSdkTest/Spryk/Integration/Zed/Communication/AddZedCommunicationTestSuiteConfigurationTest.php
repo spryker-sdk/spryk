@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Communication;
 
 use Codeception\Test\Unit;
 use Symfony\Component\Yaml\Yaml;
@@ -16,6 +16,8 @@ use Symfony\Component\Yaml\Yaml;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
+ * @group Zed
+ * @group Communication
  * @group AddZedCommunicationTestSuiteConfigurationTest
  * Add your own group annotations below this line
  */

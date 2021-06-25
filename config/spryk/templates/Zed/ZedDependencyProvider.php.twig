@@ -1,17 +1,14 @@
 <?php
 
-/**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
- */
+{{ include('Partials/license.twig') }}
 
 namespace {{ organization }}\Zed\{{ module }};
 
-use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
+use {{ extends | trim('\\') }};
 
 /**
  * @method \{{ organization }}\Zed\{{ module }}\{{ module }}Config getConfig()
  */
-class {{ module }}DependencyProvider extends AbstractBundleDependencyProvider
+class {{ module }}DependencyProvider extends {{ extends | classNameShort }}
 {
 }

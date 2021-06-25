@@ -3,34 +3,36 @@ description: "Adds a Client dependency method to the *module*DependencyProvider.
 mode: both
 
 arguments:
+    organization:
+        inherit: true
+        default: SprykerShop
 
-  module:
-    inherit: true
-  dependentModule: ~
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    dependentModule:
+        inherit: true
+        moduleFilter:
+            application: Client
 
-  providerMethod:
-    value: "add{{ dependentModule }}Client"
+    providerMethod:
+        value: "add{{ dependentModule }}Client"
 
-  template:
-    value: Yves/Dependency/Client/YvesDependencyClientDependencyProviderMethod.php.twig
+    template:
+        value: Yves/Dependency/Client/YvesDependencyClientDependencyProviderMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
+    target:
+        value: "{{ organization }}\\Yves\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
-  - AddYvesDependencyProvider
+    - AddYvesDependencyProvider
 
 postSpryks:
-  - AddYvesDependencyClientBridge
-  - AddYvesDependencyClientDependencyProviderConstant:
-      arguments:
-        name:
-          value: "CLIENT_{{ dependentModule | underscored | upper }}"
-        value:
-          value:  "{{ dependentModule | camelCaseToWhitespace | lower }} client"
-        visibility:
-          value:  "public"
+    - AddYvesDependencyClientDependencyProviderConstant:
+        arguments:
+            name:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            value:
+                value: "CLIENT_{{ dependentModule | underscored | upper }}"
+            visibility:
+                value: "public"

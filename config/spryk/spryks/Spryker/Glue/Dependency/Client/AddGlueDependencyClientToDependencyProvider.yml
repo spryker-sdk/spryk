@@ -3,25 +3,25 @@ description: "Adds a Client dependency method to Container in *module*Dependency
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  dependentModule:
-    inherit: true
+    dependentModule:
+        inherit: true
 
-  providerMethod:
-    inherit: true
-    default: "add{{ dependentModule }}Client"
+    providerMethod:
+        inherit: true
+        value: "add{{ dependentModule }}Client"
 
-  template:
-    value: Glue/Dependency/Client/GlueDependencyClientToDependencyProvider.php.twig
+    template:
+        value: Glue/Dependency/Client/GlueDependencyClientToDependencyProvider.php.twig
 
-  target:
-    value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}DependencyProvider"
+    target:
+        value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}DependencyProvider"
 
 preSpryks:
-  - AddGlueDependencyClientDependencyProviderMethod
+    - AddGlueDependencyClientDependencyProviderMethod

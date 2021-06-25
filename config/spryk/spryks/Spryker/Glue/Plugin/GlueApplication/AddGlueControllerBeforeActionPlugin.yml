@@ -3,25 +3,25 @@ description: "Adds a new *modelName*ControllerBeforeActionPlugin to the Glue app
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Glue/Plugin/GlueApplication/ControllerBeforeActionPlugin.php.twig
+    template:
+        value: Glue/Plugin/GlueApplication/ControllerBeforeActionPlugin.php.twig
 
-  modelName:
-    inherit: true
+    modelName:
+        inherit: true
 
-  targetFilename:
-    value: "{{ modelName | camelCased }}ControllerBeforeActionPlugin.php"
+    targetFilename:
+        value: "{{ modelName | camelCased }}ControllerBeforeActionPlugin.php"
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
 
 preSpryks:
-  - AddModule
-  - AddGlueFactory
+    - AddModule
+    - AddGlueFactory

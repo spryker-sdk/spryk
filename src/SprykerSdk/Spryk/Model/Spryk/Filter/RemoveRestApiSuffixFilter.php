@@ -7,6 +7,14 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
+/**
+ * Filter is used to remove the `RestApi` suffix from a string
+ * if it is present in the given one.
+ *
+ * Example:
+ * $this->filter('ProductRestApi') === `Product';
+ * $this->filter('Category') === `Category';
+ */
 class RemoveRestApiSuffixFilter implements FilterInterface
 {
     public const RESTAPI_SUFFIX = 'RestApi';

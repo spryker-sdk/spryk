@@ -3,33 +3,33 @@ description: "Adds a create resource builder method to the *module*Factory."
 mode: both
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  subDirectory:
-    inherit: true
-    isOptional: true
+    subDirectory:
+        inherit: true
+        isOptional: true
 
-  className:
-    inherit: true
+    className:
+        inherit: true
 
-  factoryMethod:
-    callbackOnly: true
-    callback: GlueProcessorFactoryMethodName
+    factoryMethod:
+        callbackOnly: true
+        callback: GlueProcessorFactoryMethodName
 
-  dependencyMethods:
-    isMultiple: true
-    isOptional: true
+    dependencyMethods:
+        isMultiple: true
+        isOptional: true
 
-  template:
-    value: Glue/GlueFactoryMethod.php.twig
+    template:
+        value: Glue/GlueFactoryMethod.php.twig
 
-  target:
-    value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}Factory"
+    target:
+        value: "{{ organization }}\\Glue\\{{ module }}\\{{ module }}Factory"
 
 preSpryks:
-  - AddGlueFactory
+    - AddGlueFactory

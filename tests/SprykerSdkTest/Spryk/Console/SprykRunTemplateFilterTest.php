@@ -29,7 +29,7 @@ class SprykRunTemplateFilterTest extends Unit
     /**
      * @return void
      */
-    public function testUsesCamelCaseToDashFilter(): void
+    public function testUsesDasherizeFilter(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);

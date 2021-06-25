@@ -11,6 +11,13 @@ use Laminas\Filter\FilterChain;
 use Laminas\Filter\StringToLower;
 use Laminas\Filter\Word\CamelCaseToUnderscore;
 
+/**
+ * Filter is used to convert a camelCased string
+ * into a lowered and underscored string.
+ *
+ * Example:
+ * $this->filter('StringExample') === `string_example';
+ */
 class UnderscoreFilter implements FilterInterface
 {
     /**

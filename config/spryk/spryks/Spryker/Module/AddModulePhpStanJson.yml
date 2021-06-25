@@ -1,0 +1,20 @@
+spryk: template
+description: "Adds a new phpstan.json to the Modules root."
+mode: core
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    template:
+        value: phpstan.json.twig
+
+    targetPath:
+        value: "{{ moduleRoot }}/"
+
+preSpryks:
+    - AddModule

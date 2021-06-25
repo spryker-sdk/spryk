@@ -2,28 +2,29 @@ spryk: template
 description: "Adds a new *Module*Service to the Service application."
 priority: 1
 mode: both
+level: 2
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Service/Service.php.twig
+    template:
+        value: Service/Service.php.twig
 
-  targetFilename:
-    value: "{{ module }}Service.php"
+    targetFilename:
+        value: "{{ module }}Service.php"
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Service/{{ module }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Service/{{ module }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddServiceDependencyProvider
-  - AddServiceInterface
-  - AddServiceFactory
+    - AddServiceDependencyProvider
+    - AddServiceInterface
+    - AddServiceFactory

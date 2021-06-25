@@ -32,7 +32,7 @@ class SprykRunArgumentTest extends Unit
     /**
      * @return void
      */
-    public function testAsksForArgumentValue()
+    public function testAsksForArgumentValue(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);
@@ -52,7 +52,7 @@ class SprykRunArgumentTest extends Unit
     /**
      * @return void
      */
-    public function testThrowsExceptionWhenArgumentNotFound()
+    public function testThrowsExceptionWhenArgumentNotFound(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);
@@ -70,7 +70,7 @@ class SprykRunArgumentTest extends Unit
     /**
      * @return void
      */
-    public function testAsksMultipleTimesForTheSameArgumentButFirstInputIsTakenAsDefault()
+    public function testAsksMultipleTimesForTheSameArgumentButFirstInputIsTakenAsDefault(): void
     {
         $command = new SprykRunConsole();
         $tester = $this->tester->getConsoleTester($command);
@@ -80,7 +80,7 @@ class SprykRunArgumentTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => 'AddModule',
         ];
 
-        $tester->setInputs(['FooBar', 'Spryker', static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER, static::KEY_STROKE_ENTER]);
+        $tester->setInputs(array_merge(['FooBar', 'Spryker'], array_fill(2, 13, static::KEY_STROKE_ENTER)));
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();

@@ -2,28 +2,29 @@ spryk: template
 description: "Adds a new *Module*Client to the Client application."
 priority: 1
 mode: both
+level: 2
 
 arguments:
-  module:
-    inherit: true
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    organization:
+        inherit: true
+        default: Spryker
 
-  template:
-    value: Client/Client.php.twig
+    template:
+        value: Client/Client.php.twig
 
-  targetFilename:
-    value: "{{ module }}Client.php"
+    targetFilename:
+        value: "{{ module }}Client.php"
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Client/{{ module }}/"
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Client/{{ module }}/"
 
 preSpryks:
-  - AddModule
+    - AddModule
 
 postSpryks:
-  - AddClientDependencyProvider
-  - AddClientInterface
-  - AddClientFactory
+    - AddClientDependencyProvider
+    - AddClientInterface
+    - AddClientFactory

@@ -33,7 +33,7 @@ class IntegrationModule extends Module
     /**
      * @return array
      */
-    public static function getExecutedSpryks()
+    public static function getExecutedSpryks(): array
     {
         return static::$executedSpryks;
     }

@@ -7,6 +7,7 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\ArgumentList\Builder;
 
+use SprykerSdk\Spryk\SprykConfig;
 use Symfony\Component\Console\Input\InputOption;
 
 class ArgumentListBuilder implements ArgumentListBuilderInterface
@@ -82,7 +83,7 @@ class ArgumentListBuilder implements ArgumentListBuilderInterface
     protected function filterValueArguments(array $sprykDefinitions): array
     {
         return array_filter($sprykDefinitions, function ($argumentDefinition) {
-            return (!isset($argumentDefinition['value']));
+            return (!isset($argumentDefinition[SprykConfig::NAME_ARGUMENT_KEY_VALUE]));
         });
     }
 
@@ -97,8 +98,8 @@ class ArgumentListBuilder implements ArgumentListBuilderInterface
         $sprykArguments = [];
 
         foreach ($this->filterValueArguments($sprykDefinitions) as $sprykName => $sprykDefinition) {
-            $standardArguments += $this->buildStandardArgumentList($sprykDefinition['arguments']);
-            $sprykArguments += $this->buildSprykArgumentList($sprykName, $sprykDefinition['arguments']);
+            $standardArguments += $this->buildStandardArgumentList($sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]);
+            $sprykArguments += $this->buildSprykArgumentList($sprykName, $sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]);
         }
 
         return $standardArguments + $sprykArguments;

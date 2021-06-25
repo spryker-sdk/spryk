@@ -12,7 +12,9 @@ interface SprykDefinitionDumperInterface
     /**
      * @phpstan-return array<mixed>
      *
+     * @param int|null $level
+     *
      * @return array
      */
-    public function dump(): array;
+    public function dump(?int $level = null): array;
 }

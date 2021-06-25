@@ -24,6 +24,11 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @var string
      */
+    protected $sprykDefinitionKey;
+
+    /**
+     * @var string
+     */
     protected $description;
 
     /**
@@ -50,6 +55,16 @@ class SprykDefinition implements SprykDefinitionInterface
      * @var \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
      */
     protected $postSpryks = [];
+
+    /**
+     * @var string[]
+     */
+    protected $preCommands = [];
+
+    /**
+     * @var string[]
+     */
+    protected $postCommands = [];
 
     /**
      * @var string
@@ -92,6 +107,26 @@ class SprykDefinition implements SprykDefinitionInterface
     public function setSprykName(string $sprykSprykName)
     {
         $this->sprykName = $sprykSprykName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSprykDefinitionKey(): string
+    {
+        return $this->sprykDefinitionKey;
+    }
+
+    /**
+     * @param string $sprykDefinitionKey
+     *
+     * @return $this
+     */
+    public function setSprykDefinitionKey(string $sprykDefinitionKey)
+    {
+        $this->sprykDefinitionKey = $sprykDefinitionKey;
 
         return $this;
     }
@@ -172,6 +207,46 @@ class SprykDefinition implements SprykDefinitionInterface
     public function setPostSpryks(array $postSpryks)
     {
         $this->postSpryks = $postSpryks;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getPreCommands(): array
+    {
+        return $this->preCommands;
+    }
+
+    /**
+     * @param string[] $preCommands
+     *
+     * @return $this
+     */
+    public function setPreCommands(array $preCommands)
+    {
+        $this->preCommands = $preCommands;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getPostCommands(): array
+    {
+        return $this->postCommands;
+    }
+
+    /**
+     * @param string[] $postCommands
+     *
+     * @return $this
+     */
+    public function setPostCommands(array $postCommands)
+    {
+        $this->postCommands = $postCommands;
 
         return $this;
     }

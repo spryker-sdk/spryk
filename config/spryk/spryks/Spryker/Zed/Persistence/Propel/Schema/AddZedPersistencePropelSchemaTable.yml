@@ -3,22 +3,25 @@ description: "Adds a new table to the spy_*targetModule*.schema.xml."
 mode: both
 
 arguments:
-  module:
-    inherit: true
-  targetModule: ~
-  tableName: ~
+    module:
+        inherit: true
 
-  organization:
-    inherit: true
-    default: Spryker
+    targetModule:
+        inherit: true
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/spy_{{ targetModule | underscored }}.schema.xml"
+    tableName:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/spy_{{ targetModule | underscored }}.schema.xml"
 
 preSpryks:
-  - AddZedPersistencePropelSchema
-
+    - AddZedPersistencePropelSchema
 
 postSpryks:
-  - AddZedPersistencePropelAbstractEntity
-  - AddZedPersistencePropelAbstractQuery
+    - AddZedPersistencePropelAbstractEntity
+    - AddZedPersistencePropelAbstractQuery

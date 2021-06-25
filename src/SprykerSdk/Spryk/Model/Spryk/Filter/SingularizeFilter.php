@@ -9,6 +9,13 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
 use Doctrine\Inflector\InflectorFactory;
 
+/**
+ * Filter is used to convert a word in plural form
+ * into a word in singular form.
+ *
+ * Example:
+ * $this->filter(`products') === 'product';
+ */
 class SingularizeFilter implements FilterInterface
 {
     protected const FILTER_NAME = 'singularize';
