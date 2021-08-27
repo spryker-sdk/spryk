@@ -53,7 +53,7 @@ jobs:
         run: composer cs-check
 
       - name: PHPStan checks
-        run: composer phpstan
+        run: composer stan
 
   prefer-lowest:
     runs-on: ubuntu-18.04

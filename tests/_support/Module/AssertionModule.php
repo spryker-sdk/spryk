@@ -8,9 +8,9 @@
 namespace SprykerSdkTest\Module;
 
 use Codeception\Module;
-use Roave\BetterReflection\BetterReflection;
-use Roave\BetterReflection\Reflection\ReflectionClass;
-use Roave\BetterReflection\Reflection\ReflectionClassConstant;
+use PHPStan\BetterReflection\BetterReflection;
+use PHPStan\BetterReflection\Reflection\ReflectionClass;
+use PHPStan\BetterReflection\Reflection\ReflectionClassConstant;
 
 class AssertionModule extends Module
 {
@@ -101,7 +101,7 @@ class AssertionModule extends Module
     }
 
     /**
-     * @param \Roave\BetterReflection\Reflection\ReflectionClassConstant $reflectionClassConstant
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionClassConstant $reflectionClassConstant
      *
      * @return string|null
      */
@@ -157,7 +157,7 @@ class AssertionModule extends Module
     }
 
     /**
-     * @param \Roave\BetterReflection\Reflection\ReflectionClass $classInfo
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionClass $classInfo
      *
      * @return string[]
      */

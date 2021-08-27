@@ -121,7 +121,7 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return \Roave\BetterReflection\Reflection\ReflectionMethod[]
+     * @return \PHPStan\BetterReflection\Reflection\ReflectionMethod[]
      */
     protected function getReflectionMethods(SprykDefinitionInterface $sprykDefinition): array
     {

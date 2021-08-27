@@ -8,7 +8,7 @@
 namespace SprykerSdkTest\Spryk\Integration\Glue\Plugin\GlueApplication;
 
 use Codeception\Test\Unit;
-use Roave\BetterReflection\BetterReflection;
+use PHPStan\BetterReflection\BetterReflection;
 
 /**
  * Auto-generated group annotations

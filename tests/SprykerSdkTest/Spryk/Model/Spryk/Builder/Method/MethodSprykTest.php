@@ -8,7 +8,7 @@
 namespace SprykerTest\Spryk\Model\Spryk\Builder\Method;
 
 use Codeception\Test\Unit;
-use Roave\BetterReflection\Reflection\ReflectionClass;
+use PHPStan\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
@@ -117,7 +117,7 @@ class MethodSprykTest extends Unit
     }
 
     /**
-     * @return \PHPUnit\Framework\MockObject\MockObject|\Roave\BetterReflection\Reflection\ReflectionClass
+     * @return \PHPUnit\Framework\MockObject\MockObject|\PHPStan\BetterReflection\Reflection\ReflectionClass
      */
     protected function buildReflectionClassMock(): ReflectionClass
     {
