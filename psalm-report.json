@@ -12,19 +12,6 @@
             "error_level": 6,
             "shortcode": 4,
             "other_references": null
-        },
-        {
-            "severity": "error",
-            "line_from": 107,
-            "line_to": 107,
-            "type": "ParamNameMismatch",
-            "message": "Argument 1 of SprykerSdk\\Spryk\\Model\\Spryk\\Definition\\SprykDefinition::setSprykName has wrong name $sprykSprykName, expecting $sprykName as defined by SprykerSdk\\Spryk\\Model\\Spryk\\Definition\\SprykDefinitionInterface::setSprykName",
-            "file_name": "vendor/spryker-sdk/spryk/src/SprykerSdk/Spryk/Model/Spryk/Definition/SprykDefinition.php",
-            "snippet": "    public function setSprykName(string $sprykSprykName)",
-            "selected_text": "$sprykSprykName",
-            "error_level": 7,
-            "shortcode": 230,
-            "other_references": null
         }
     ],
     "warning": [

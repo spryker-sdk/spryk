@@ -22,7 +22,7 @@
     "require-dev": {
         "codeception/codeception": "^4.0.0",
         "phpstan/phpstan": "^0.12.0",
-        "phpunit/phpunit": "^7.0.0 || ^8.0.0",
+        "phpunit/phpunit": "^8.5.0",
         "spryker/checkout-extension": "^1.3.0",
         "spryker/code-sniffer": "*",
         "spryker/data-import": "*",
