@@ -31,6 +31,8 @@ class AddClientDependencyClientBridgeInterfaceMethodTest extends Unit
     protected $tester;
 
     /**
+     * @skip
+     *
      * @return void
      */
     public function testAddsClientDependencyClientInterfaceMethods(): void

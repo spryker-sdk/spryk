@@ -31,6 +31,8 @@ class AddZedDependencyServiceBridgeMethodTest extends Unit
     protected $tester;
 
     /**
+     * @skip
+     *
      * @return void
      */
     public function testAddsZedDependencyServiceBridgeMethods(): void

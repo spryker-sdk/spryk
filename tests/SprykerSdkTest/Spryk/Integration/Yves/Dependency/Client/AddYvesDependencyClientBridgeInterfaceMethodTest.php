@@ -31,6 +31,8 @@ class AddYvesDependencyClientBridgeInterfaceMethodTest extends Unit
     protected $tester;
 
     /**
+     * @skip
+     *
      * @return void
      */
     public function testAddsYvesDependencyClientInterfaceMethods(): void
