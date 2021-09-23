@@ -31,7 +31,7 @@ class AddClientDependencyClientBridgeInterfaceMethodTest extends Unit
     protected $tester;
 
     /**
-     * @skip
+     * @skip Skipped for further investigation prioritisation and fix.
      *
      * @return void
      */

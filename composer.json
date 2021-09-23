@@ -81,9 +81,9 @@
     "scripts": {
         "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-        "stan": "vendor/bin/phpstan analyse",
+        "stan": "phpstan analyse",
         "test": [
-            "vendor/bin/codecept run"
+            "codecept run"
         ]
     },
     "extra": {

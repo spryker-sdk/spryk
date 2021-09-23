@@ -31,7 +31,7 @@ class AddZedDependencyClientBridgeMethodTest extends Unit
     protected $tester;
 
     /**
-     * @skip
+     * @skip Skipped for further investigation prioritisation and fix. Skipped for further investigation prioritisation and fix.
      *
      * @return void
      */
