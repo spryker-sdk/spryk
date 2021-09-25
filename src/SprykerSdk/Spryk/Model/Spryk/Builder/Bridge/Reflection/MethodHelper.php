@@ -13,7 +13,13 @@ use PHPStan\BetterReflection\Reflection\ReflectionType;
 
 class MethodHelper implements MethodHelperInterface
 {
+    /**
+     * @var string
+     */
     protected const NULLABLE_RETURN_TYPE_HINT = ': ?';
+    /**
+     * @var string
+     */
     protected const NON_NULLABLE_RETURN_TYPE_HINT = ': ';
 
     /**

@@ -18,10 +18,25 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class DependencyProviderSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TARGET = 'target';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TEMPLATE = 'template';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_METHOD_NAME = 'provideDependencies';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_PROVIDER_METHOD = 'providerMethod';
+    /**
+     * @var string
+     */
     protected const SPRYK_NAME = 'dependencyProvider';
 
     /**

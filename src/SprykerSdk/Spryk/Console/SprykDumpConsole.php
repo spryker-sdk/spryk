@@ -16,12 +16,27 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SprykDumpConsole extends AbstractSprykConsole
 {
+    /**
+     * @var string
+     */
     protected const COMMAND_NAME = 'spryk:dump';
+    /**
+     * @var string
+     */
     protected const COMMAND_DESCRIPTION = 'Dumps a list of all Spryk definitions.';
 
+    /**
+     * @var string
+     */
     public const ARGUMENT_SPRYK = 'spryk';
 
+    /**
+     * @var string
+     */
     protected const OPTION_LEVEL = 'level';
+    /**
+     * @var string
+     */
     protected const OPTION_LEVEL_SHORT = 'l';
 
     /**

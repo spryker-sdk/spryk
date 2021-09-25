@@ -18,10 +18,25 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class ResourceRouteSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TARGET = 'target';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TEMPLATE = 'template';
+    /**
+     * @var string
+     */
     protected const TARGET_METHOD_NAME = 'configure';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_RESOURCE_ROUTE_METHOD = 'resourceRouteMethod';
+    /**
+     * @var string
+     */
     protected const SPRYK_NAME = 'resourceRoute';
 
     /**

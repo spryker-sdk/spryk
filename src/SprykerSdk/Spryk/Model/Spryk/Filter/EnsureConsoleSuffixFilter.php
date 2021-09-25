@@ -17,6 +17,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
  */
 class EnsureConsoleSuffixFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     public const CONSOLE_SUFFIX = 'Console';
 
     /**

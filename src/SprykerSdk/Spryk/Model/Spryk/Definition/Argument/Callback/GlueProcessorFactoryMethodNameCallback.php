@@ -11,6 +11,9 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 
 class GlueProcessorFactoryMethodNameCallback implements CallbackInterface
 {
+    /**
+     * @var string
+     */
     protected const CALLBACK_NAME = 'GlueProcessorFactoryMethodName';
 
     /**

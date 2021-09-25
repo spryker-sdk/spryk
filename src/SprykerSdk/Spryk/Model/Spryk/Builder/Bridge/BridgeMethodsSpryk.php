@@ -16,11 +16,29 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class BridgeMethodsSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET = 'target';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TEMPLATE = 'template';
+    /**
+     * @var string
+     */
     public const ARGUMENT_SOURCE_CLASS = 'sourceClass';
+    /**
+     * @var string
+     */
     public const ARGUMENT_METHODS = 'methods';
+    /**
+     * @var string
+     */
     public const ARGUMENT_DEPENDENT_MODULE = 'dependentModule';
+    /**
+     * @var string
+     */
     public const ARGUMENT_DEPENDENCY_TYPE = 'dependencyType';
 
     /**

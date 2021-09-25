@@ -21,12 +21,30 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class MethodSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET = 'target';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET_PATH = 'targetPath';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TEMPLATE = 'template';
+    /**
+     * @var string
+     */
     public const ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN = 'fqcnPattern';
 
+    /**
+     * @var array
+     */
     public const ARGUMENT_METHOD_NAME_CANDIDATES = [
         'method',
         'controllerMethod',

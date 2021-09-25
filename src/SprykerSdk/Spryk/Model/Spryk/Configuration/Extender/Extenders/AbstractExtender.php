@@ -11,9 +11,18 @@ use SprykerSdk\Spryk\SprykConfig;
 
 abstract class AbstractExtender
 {
+    /**
+     * @var string
+     */
     protected const NAME_PLACEHOLDER_MODULE = '{{ module }}';
+    /**
+     * @var string
+     */
     protected const NAME_PLACEHOLDER_LAYER = '{{ layer }}';
 
+    /**
+     * @var string
+     */
     protected const NAME_APPLICATION_LAYER_ZED = 'Zed';
 
     /**

@@ -20,9 +20,21 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class ConstantSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET = 'target';
+    /**
+     * @var string
+     */
     public const ARGUMENT_CONSTANT_NAME = 'name';
+    /**
+     * @var string
+     */
     public const ARGUMENT_CONSTANT_VALUE = 'value';
+    /**
+     * @var string
+     */
     public const ARGUMENT_CONSTANT_VISIBILITY = 'visibility';
 
     /**

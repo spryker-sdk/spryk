@@ -17,6 +17,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
  */
 class TypedArrayFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     protected const FILTER_NAME = 'typedArrayConvert';
 
     /**

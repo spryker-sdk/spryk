@@ -17,6 +17,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
  */
 class RemoveRestApiSuffixFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     public const RESTAPI_SUFFIX = 'RestApi';
 
     /**

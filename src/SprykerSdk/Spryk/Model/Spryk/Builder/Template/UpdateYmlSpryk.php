@@ -16,11 +16,29 @@ use Symfony\Component\Yaml\Yaml;
 
 class UpdateYmlSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET_PATH = 'targetPath';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TEMPLATE = 'template';
+    /**
+     * @var string
+     */
     public const ARGUMENT_AFTER_ELEMENT = 'afterElement';
+    /**
+     * @var string
+     */
     public const ARGUMENT_ADD_TO_ELEMENT = 'addToElement';
+    /**
+     * @var string
+     */
     public const ARGUMENT_CONTENT = 'content';
+    /**
+     * @var int
+     */
     public const YAML_START_INLINE_LEVEL = 10;
 
     /**

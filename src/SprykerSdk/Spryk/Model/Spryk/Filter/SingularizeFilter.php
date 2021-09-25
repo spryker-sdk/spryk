@@ -18,6 +18,9 @@ use Doctrine\Inflector\InflectorFactory;
  */
 class SingularizeFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     protected const FILTER_NAME = 'singularize';
 
     /**

@@ -14,8 +14,17 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class TemplateSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET_PATH = 'targetPath';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET_FILE_NAME = 'targetFilename';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TEMPLATE = 'template';
 
     /**

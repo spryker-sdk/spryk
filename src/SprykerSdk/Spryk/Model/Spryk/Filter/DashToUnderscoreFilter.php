@@ -19,6 +19,9 @@ use Laminas\Filter\Word\DashToUnderscore;
  */
 class DashToUnderscoreFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     protected const FILTER_NAME = 'dashToUnderscore';
 
     /**

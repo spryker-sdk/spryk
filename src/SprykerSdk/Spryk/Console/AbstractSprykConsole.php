@@ -14,7 +14,13 @@ use Symfony\Component\Console\Command\Command;
 
 abstract class AbstractSprykConsole extends Command
 {
+    /**
+     * @var int
+     */
     protected const CODE_SUCCESS = 0;
+    /**
+     * @var int
+     */
     protected const CODE_ERROR = 1;
 
     /**

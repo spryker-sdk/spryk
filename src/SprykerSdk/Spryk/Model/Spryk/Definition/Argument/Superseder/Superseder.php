@@ -13,6 +13,9 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 
 class Superseder implements SupersederInterface
 {
+    /**
+     * @var string
+     */
     public const PLACEHOLDER_PATTERN = '/{{(.*?)[}|\|]/';
 
     /**

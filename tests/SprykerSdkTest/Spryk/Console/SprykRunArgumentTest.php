@@ -22,6 +22,9 @@ use SprykerSdk\Spryk\Exception\ArgumentNotFoundException;
  */
 class SprykRunArgumentTest extends Unit
 {
+    /**
+     * @var string
+     */
     public const KEY_STROKE_ENTER = "\x0D";
 
     /**

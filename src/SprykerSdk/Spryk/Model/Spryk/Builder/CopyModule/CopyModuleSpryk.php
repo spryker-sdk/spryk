@@ -18,11 +18,26 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class CopyModuleSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     protected const ARGUMENT_SOURCE_PATH = 'sourcePath';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_MODULE = 'module';
 
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TARGET_PATH = 'targetFilePath';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TO_ORGANIZATION = 'toOrganization';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TO_MODULE = 'toModule';
 
     /**

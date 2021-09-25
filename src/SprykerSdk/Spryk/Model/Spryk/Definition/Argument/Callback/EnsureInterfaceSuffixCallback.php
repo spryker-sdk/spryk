@@ -11,6 +11,9 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 
 class EnsureInterfaceSuffixCallback implements CallbackInterface
 {
+    /**
+     * @var string
+     */
     protected const INTERFACE_SUFFIX = 'Interface';
 
     /**
