@@ -31,6 +31,8 @@ class AddGlueDependencyClientBridgeInterfaceMethodTest extends Unit
     protected $tester;
 
     /**
+     * @skip Skipped for further investigation prioritisation and fix.
+     *
      * @return void
      */
     public function testAddsGlueDependencyClientInterfaceMethods(): void

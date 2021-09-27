@@ -83,8 +83,7 @@
         "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "stan": "phpstan analyse",
         "test": [
-            "codecept run -g Glue -x Zed",
-            "codecept run -g Zed -x Glue"
+            "codecept run"
         ]
     },
     "extra": {

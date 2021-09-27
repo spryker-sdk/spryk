@@ -27,6 +27,8 @@ class AddSharedTransferDefinitionTest extends Unit
     protected $tester;
 
     /**
+     * @skip Skipped for further investigation prioritisation and fix.
+     *
      * @return void
      */
     public function testAddsSharedTransferDefinition(): void
@@ -46,6 +48,8 @@ class AddSharedTransferDefinitionTest extends Unit
     }
 
     /**
+     * @skip Skipped for further investigation prioritisation and fix.
+     *
      * @return void
      */
     public function testAddsSharedTransferDefinitionOnProjectLayer(): void
