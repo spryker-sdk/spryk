@@ -21,17 +21,17 @@
     },
     "require-dev": {
         "codeception/codeception": "^4.0.0",
-        "phpstan/phpstan": "^0.12.0",
-        "phpunit/phpunit": "^8.5.0 || ^9.5.0",
+        "phpstan/phpstan": "^0.12.98",
+        "phpunit/phpunit": "^9.5.0",
         "spryker/checkout-extension": "^1.3.0",
-        "spryker/code-sniffer": "^0.16.3",
-        "spryker/data-import": "*",
+        "spryker/code-sniffer": "*",
+        "spryker/data-import": "^1.1.0",
         "spryker/glue-application-extension": "^1.1.0",
-        "spryker/oms": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0",
-        "spryker/payment-extension": "*",
+        "spryker/oms": "^10.0.0 || ^11.0.0",
+        "spryker/payment-extension": "^1.0.0",
         "spryker/router": "^1.1.0",
-        "spryker/sales-payment-extension": "*",
-        "spryker/step-engine": "*",
+        "spryker/sales-payment-extension": "^1.0.0",
+        "spryker/step-engine": "^3.3.0",
         "spryker/testify": "^3.40.0"
     },
     "suggest": {
@@ -82,9 +82,9 @@
         "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "stan": "phpstan analyse",
-        "test": [
-            "codecept run"
-        ]
+        "test": "codecept run",
+        "lowest": "validate-prefer-lowest -m",
+        "lowest-setup": "composer update --prefer-lowest --prefer-stable --prefer-dist --no-interaction && cp composer.json composer.backup && composer require --dev dereuromark/composer-prefer-lowest && mv composer.backup composer.json"
     },
     "extra": {
         "branch-alias": {
