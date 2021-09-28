@@ -17,6 +17,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
  */
 class EnsureControllerSuffixFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     public const CONTROLLER_SUFFIX = 'Controller';
 
     /**

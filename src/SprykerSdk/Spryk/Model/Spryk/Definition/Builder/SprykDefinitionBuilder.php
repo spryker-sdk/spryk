@@ -18,11 +18,26 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
 {
+    /**
+     * @var string
+     */
     protected const SPRYK_BUILDER_NAME = 'spryk';
 
+    /**
+     * @var string
+     */
     protected const CONFIGURATION_KEY_PRE_SPRYKS = 'preSpryks';
+    /**
+     * @var string
+     */
     protected const CONFIGURATION_KEY_POST_SPRYKS = 'postSpryks';
+    /**
+     * @var string
+     */
     protected const CONFIGURATION_KEY_PRE_COMMANDS = 'preCommands';
+    /**
+     * @var string
+     */
     protected const CONFIGURATION_KEY_POST_COMMANDS = 'postCommands';
 
     /**

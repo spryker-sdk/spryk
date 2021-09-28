@@ -21,6 +21,9 @@ use Codeception\Test\Unit;
  */
 class AddClientFactoryTest extends Unit
 {
+    /**
+     * @var string
+     */
     protected const SPRYK_NAME = 'AddClientFactory';
 
     /**

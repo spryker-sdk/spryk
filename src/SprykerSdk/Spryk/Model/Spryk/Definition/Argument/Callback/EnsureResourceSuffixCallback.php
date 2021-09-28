@@ -11,7 +11,13 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollecti
 
 class EnsureResourceSuffixCallback implements CallbackInterface
 {
+    /**
+     * @var string
+     */
     public const RESOURCE_SUFFIX = 'Resource';
+    /**
+     * @var string
+     */
     protected const CALLBACK_NAME = 'EnsureResourceSuffix';
 
     /**

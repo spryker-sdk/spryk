@@ -21,6 +21,9 @@ use SprykerSdk\Spryk\Console\SprykRunConsole;
  */
 class SprykRunAddModuleTest extends Unit
 {
+    /**
+     * @var string
+     */
     public const KEY_STROKE_ENTER = "\x0D";
 
     /**

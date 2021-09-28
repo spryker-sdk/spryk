@@ -7,8 +7,8 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\DependencyProvider;
 
-use Roave\BetterReflection\BetterReflection;
-use Roave\BetterReflection\Reflection\ReflectionClass;
+use PHPStan\BetterReflection\BetterReflection;
+use PHPStan\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
@@ -18,10 +18,25 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class DependencyProviderSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TARGET = 'target';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TEMPLATE = 'template';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_METHOD_NAME = 'provideDependencies';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_PROVIDER_METHOD = 'providerMethod';
+    /**
+     * @var string
+     */
     protected const SPRYK_NAME = 'dependencyProvider';
 
     /**
@@ -170,7 +185,7 @@ class DependencyProviderSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return \Roave\BetterReflection\Reflection\ReflectionClass
+     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
      */
     protected function getReflection(SprykDefinitionInterface $sprykDefinition): ReflectionClass
     {

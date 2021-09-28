@@ -17,6 +17,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
  */
 class RemoveWidgetSuffixFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     protected const WIDGET_SUFFIX = 'Widget';
 
     /**

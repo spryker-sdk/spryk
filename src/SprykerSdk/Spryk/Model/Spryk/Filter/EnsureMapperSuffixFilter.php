@@ -17,6 +17,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
  */
 class EnsureMapperSuffixFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     public const MAPPER_SUFFIX = 'Mapper';
 
     /**

@@ -7,8 +7,8 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\ResourceRoute;
 
-use Roave\BetterReflection\BetterReflection;
-use Roave\BetterReflection\Reflection\ReflectionClass;
+use PHPStan\BetterReflection\BetterReflection;
+use PHPStan\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
@@ -18,10 +18,25 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class ResourceRouteSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TARGET = 'target';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_TEMPLATE = 'template';
+    /**
+     * @var string
+     */
     protected const TARGET_METHOD_NAME = 'configure';
+    /**
+     * @var string
+     */
     protected const ARGUMENT_RESOURCE_ROUTE_METHOD = 'resourceRouteMethod';
+    /**
+     * @var string
+     */
     protected const SPRYK_NAME = 'resourceRoute';
 
     /**
@@ -170,7 +185,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return \Roave\BetterReflection\Reflection\ReflectionClass
+     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
      */
     protected function getReflection(SprykDefinitionInterface $sprykDefinition): ReflectionClass
     {

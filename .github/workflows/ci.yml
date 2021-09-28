@@ -15,7 +15,7 @@ jobs:
       matrix:
         php-version: [
             '7.3',
-            '7.4'
+            '8.0'
         ]
     steps:
       - name: Checkout
@@ -45,15 +45,17 @@ jobs:
       - name: Composer install
         run: composer install --no-interaction -o
 
+      - name: Check PHP for syntax errors
+        run: find ./src -path src -prune -o -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
+
       - name: Codecept run test
-        run: |
-            vendor/bin/codecept run --coverage-xml
+        run: vendor/bin/codecept run --coverage-xml
 
       - name: CodeStyle checks
         run: composer cs-check
 
       - name: PHPStan checks
-        run: composer phpstan
+        run: composer stan
 
   prefer-lowest:
     runs-on: ubuntu-18.04
@@ -87,13 +89,10 @@ jobs:
             restore-keys: ${{ runner.os }}-composer-
 
       - name: Composer prefer-lowest
-        run: composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable -o
+        run: composer lowest-setup
 
-      - name: Composer require dereuromark/composer-prefer-lowest package
-        run: composer require --dev dereuromark/composer-prefer-lowest
-
-      - name: Codecept run test
-        run: vendor/bin/codecept run --coverage-xml
+      #- name: Codecept run test
+      #  run: vendor/bin/codecept run
 
       - name: Validate prefer lowest
-        run: vendor/bin/validate-prefer-lowest
+        run: composer lowest

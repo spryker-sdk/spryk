@@ -100,13 +100,13 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @param string $sprykSprykName
+     * @param string $sprykName
      *
      * @return $this
      */
-    public function setSprykName(string $sprykSprykName)
+    public function setSprykName(string $sprykName)
     {
-        $this->sprykName = $sprykSprykName;
+        $this->sprykName = $sprykName;
 
         return $this;
     }

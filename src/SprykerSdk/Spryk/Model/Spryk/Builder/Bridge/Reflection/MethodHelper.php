@@ -7,17 +7,23 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection;
 
-use Roave\BetterReflection\Reflection\ReflectionMethod;
-use Roave\BetterReflection\Reflection\ReflectionParameter;
-use Roave\BetterReflection\Reflection\ReflectionType;
+use PHPStan\BetterReflection\Reflection\ReflectionMethod;
+use PHPStan\BetterReflection\Reflection\ReflectionParameter;
+use PHPStan\BetterReflection\Reflection\ReflectionType;
 
 class MethodHelper implements MethodHelperInterface
 {
+    /**
+     * @var string
+     */
     protected const NULLABLE_RETURN_TYPE_HINT = ': ?';
+    /**
+     * @var string
+     */
     protected const NON_NULLABLE_RETURN_TYPE_HINT = ': ';
 
     /**
-     * @param \Roave\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
      *
      * @return string
      */
@@ -32,7 +38,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \Roave\BetterReflection\Reflection\ReflectionType $reflectionType
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionType $reflectionType
      *
      * @return string
      */
@@ -40,6 +46,7 @@ class MethodHelper implements MethodHelperInterface
     {
         $returnType = ($reflectionType->allowsNull()) ? static::NULLABLE_RETURN_TYPE_HINT : static::NON_NULLABLE_RETURN_TYPE_HINT;
 
+        /** @var \PHPStan\BetterReflection\Reflection\ReflectionNamedType $reflectionType */
         if (!$reflectionType->isBuiltin()) {
             $returnType .= '\\';
         }
@@ -48,7 +55,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \Roave\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
      *
      * @return string
      */
@@ -64,7 +71,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \Roave\BetterReflection\Reflection\ReflectionParameter $reflectionParameter
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionParameter $reflectionParameter
      *
      * @return string
      */
@@ -77,10 +84,12 @@ class MethodHelper implements MethodHelperInterface
         }
 
         if ($reflectionParameter->hasType() && $reflectionParameter->getType() !== null) {
-            if (!$reflectionParameter->getType()->isBuiltin()) {
+            /** @var \PHPStan\BetterReflection\Reflection\ReflectionNamedType $reflectionType */
+            $reflectionType = $reflectionParameter->getType();
+            if (!$reflectionType->isBuiltin()) {
                 $parameter .= '\\';
             }
-            $parameter .= $reflectionParameter->getType() . ' ';
+            $parameter .= $reflectionType . ' ';
         }
 
         $parameter .= '$' . $reflectionParameter->getName();
@@ -90,7 +99,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \Roave\BetterReflection\Reflection\ReflectionParameter $reflectionParameter
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionParameter $reflectionParameter
      *
      * @return bool
      */
@@ -104,7 +113,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \Roave\BetterReflection\Reflection\ReflectionParameter $reflectionParameter
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionParameter $reflectionParameter
      *
      * @return string
      */
@@ -133,7 +142,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \Roave\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
      *
      * @return string
      */

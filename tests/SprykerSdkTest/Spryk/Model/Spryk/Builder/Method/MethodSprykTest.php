@@ -8,7 +8,7 @@
 namespace SprykerTest\Spryk\Model\Spryk\Builder\Method;
 
 use Codeception\Test\Unit;
-use Roave\BetterReflection\Reflection\ReflectionClass;
+use PHPStan\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Method\MethodSpryk;
@@ -28,7 +28,13 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
  */
 class MethodSprykTest extends Unit
 {
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET = '';
+    /**
+     * @var string
+     */
     public const EMPTY_FILE_NAME = 'emptyFile';
 
     /**
@@ -117,7 +123,7 @@ class MethodSprykTest extends Unit
     }
 
     /**
-     * @return \PHPUnit\Framework\MockObject\MockObject|\Roave\BetterReflection\Reflection\ReflectionClass
+     * @return \PHPUnit\Framework\MockObject\MockObject|\PHPStan\BetterReflection\Reflection\ReflectionClass
      */
     protected function buildReflectionClassMock(): ReflectionClass
     {

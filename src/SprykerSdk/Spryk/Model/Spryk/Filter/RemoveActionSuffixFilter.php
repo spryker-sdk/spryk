@@ -17,6 +17,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
  */
 class RemoveActionSuffixFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     public const ACTION_SUFFIX = 'Action';
 
     /**

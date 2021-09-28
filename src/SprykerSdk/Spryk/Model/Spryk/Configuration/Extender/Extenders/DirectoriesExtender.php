@@ -12,7 +12,13 @@ use SprykerSdk\Spryk\SprykConfig;
 
 class DirectoriesExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
+    /**
+     * @var string
+     */
     protected const NAME_ARGUMENT_DIRECTORIES = 'directories';
+    /**
+     * @var string
+     */
     protected const NAME_ARGUMENT_KEY_SKIP_ON_PROJECT_LEVEL = 'skipOnProjectLevel';
 
     /**

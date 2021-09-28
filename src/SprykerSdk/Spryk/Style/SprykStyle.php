@@ -17,6 +17,9 @@ class SprykStyle implements SprykStyleInterface
 {
     use InputHelper;
 
+    /**
+     * @var int
+     */
     public const MAX_LINE_LENGTH = 120;
 
     /**

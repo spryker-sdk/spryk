@@ -15,29 +15,83 @@ use Spryker\Shared\Kernel\KernelConstants;
  */
 class SprykConfig
 {
+    /**
+     * @var string
+     */
     public const SPRYK_DEFINITION_KEY_LEVEL = 'level';
+    /**
+     * @var string
+     */
     public const SPRYK_DEFINITION_KEY_ARGUMENTS = 'arguments';
 
+    /**
+     * @var string
+     */
     public const NAME_DEVELOPMENT_LAYER_CORE = 'core';
+    /**
+     * @var string
+     */
     public const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
+    /**
+     * @var string
+     */
     public const NAME_DEVELOPMENT_LAYER_BOTH = 'both';
 
+    /**
+     * @var string
+     */
     public const NAME_ARGUMENT_LAYER = 'layer';
+    /**
+     * @var string
+     */
     public const NAME_ARGUMENT_MODE = 'mode';
+    /**
+     * @var string
+     */
     public const NAME_ARGUMENT_ORGANIZATION = 'organization';
 
+    /**
+     * @var string
+     */
     public const NAME_ARGUMENT_KEY_DEFAULT = 'default';
+    /**
+     * @var string
+     */
     public const NAME_ARGUMENT_KEY_VALUE = 'value';
+    /**
+     * @var string
+     */
     public const NAME_ARGUMENT_KEY_VALUES = 'values';
 
+    /**
+     * @var string
+     */
     protected const NAME_DIRECTORY_GENERATED = 'generated';
+    /**
+     * @var string
+     */
     protected const NAME_FILE_ARGUMENT_LIST = 'spryk_argument_list.yml';
 
+    /**
+     * @var string
+     */
     protected const NAME_ORGANIZATION = 'spryker-sdk';
+    /**
+     * @var string
+     */
     protected const NAME_PACKAGE = 'spryk';
 
+    /**
+     * @var int
+     */
     protected const SPRYK_LEVEL_1 = 1;
+    /**
+     * @var int
+     */
     protected const SPRYK_LEVEL_2 = 2;
+    /**
+     * @var int
+     */
     protected const SPRYK_LEVEL_3 = 3;
 
     public const SPRYK_DEFAULT_DUMP_LEVEL = self::SPRYK_LEVEL_1;

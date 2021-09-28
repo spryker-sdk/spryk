@@ -7,8 +7,8 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection;
 
-use Roave\BetterReflection\BetterReflection;
-use Roave\BetterReflection\Reflection\ReflectionClass;
+use PHPStan\BetterReflection\BetterReflection;
+use PHPStan\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 
@@ -17,7 +17,7 @@ class ReflectionHelper implements ReflectionHelperInterface
     /**
      * @param string $className
      *
-     * @return \Roave\BetterReflection\Reflection\ReflectionClass
+     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
      */
     public function getReflectionClassByClassName(string $className): ReflectionClass
     {

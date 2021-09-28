@@ -7,8 +7,8 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Method;
 
-use Roave\BetterReflection\BetterReflection;
-use Roave\BetterReflection\Reflection\ReflectionClass;
+use PHPStan\BetterReflection\BetterReflection;
+use PHPStan\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\ArgumentNotFoundException;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\NotAFullyQualifiedClassNameException;
@@ -21,12 +21,30 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class MethodSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET = 'target';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET_PATH = 'targetPath';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
+    /**
+     * @var string
+     */
     public const ARGUMENT_TEMPLATE = 'template';
+    /**
+     * @var string
+     */
     public const ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN = 'fqcnPattern';
 
+    /**
+     * @var array
+     */
     public const ARGUMENT_METHOD_NAME_CANDIDATES = [
         'method',
         'controllerMethod',
@@ -236,7 +254,7 @@ class MethodSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return \Roave\BetterReflection\Reflection\ReflectionClass
+     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
      */
     protected function getReflection(SprykDefinitionInterface $sprykDefinition): ReflectionClass
     {

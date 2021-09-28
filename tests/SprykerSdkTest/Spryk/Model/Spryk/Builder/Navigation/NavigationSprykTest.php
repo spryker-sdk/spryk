@@ -26,9 +26,21 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
  */
 class NavigationSprykTest extends Unit
 {
+    /**
+     * @var string
+     */
     public const TARGET_PATH_VALUE = 'emptyFile';
+    /**
+     * @var string
+     */
     public const MODULE = 'module';
+    /**
+     * @var string
+     */
     public const CONTROLLER = 'controller';
+    /**
+     * @var string
+     */
     public const ACTION = 'action';
 
     /**

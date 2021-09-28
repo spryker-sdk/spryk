@@ -10,8 +10,8 @@ namespace SprykerSdk\Spryk\Model\Spryk\Builder\Constant;
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\StringToUpper;
 use Laminas\Filter\Word\CamelCaseToUnderscore;
-use Roave\BetterReflection\BetterReflection;
-use Roave\BetterReflection\Reflection\ReflectionClass;
+use PHPStan\BetterReflection\BetterReflection;
+use PHPStan\BetterReflection\Reflection\ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
@@ -20,9 +20,21 @@ use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class ConstantSpryk implements SprykBuilderInterface
 {
+    /**
+     * @var string
+     */
     public const ARGUMENT_TARGET = 'target';
+    /**
+     * @var string
+     */
     public const ARGUMENT_CONSTANT_NAME = 'name';
+    /**
+     * @var string
+     */
     public const ARGUMENT_CONSTANT_VALUE = 'value';
+    /**
+     * @var string
+     */
     public const ARGUMENT_CONSTANT_VISIBILITY = 'visibility';
 
     /**
@@ -209,7 +221,7 @@ class ConstantSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return \Roave\BetterReflection\Reflection\ReflectionClass|\Roave\BetterReflection\Reflection\Reflection
+     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass|\PHPStan\BetterReflection\Reflection\Reflection
      */
     protected function getReflection(SprykDefinitionInterface $sprykDefinition)
     {

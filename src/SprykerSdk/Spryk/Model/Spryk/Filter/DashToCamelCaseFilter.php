@@ -19,6 +19,9 @@ use Laminas\Filter\Word\DashToCamelCase;
  */
 class DashToCamelCaseFilter implements FilterInterface
 {
+    /**
+     * @var string
+     */
     protected const FILTER_NAME = 'dashToCamelCase';
 
     /**

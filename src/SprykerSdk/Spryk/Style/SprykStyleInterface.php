@@ -13,14 +13,38 @@ use Symfony\Component\Console\Question\Question;
 
 interface SprykStyleInterface
 {
+    /**
+     * @var int
+     */
     public const VERBOSITY_QUIET = 16;
+    /**
+     * @var int
+     */
     public const VERBOSITY_NORMAL = 32;
+    /**
+     * @var int
+     */
     public const VERBOSITY_VERBOSE = 64;
+    /**
+     * @var int
+     */
     public const VERBOSITY_VERY_VERBOSE = 128;
+    /**
+     * @var int
+     */
     public const VERBOSITY_DEBUG = 256;
 
+    /**
+     * @var int
+     */
     public const OUTPUT_NORMAL = 1;
+    /**
+     * @var int
+     */
     public const OUTPUT_RAW = 2;
+    /**
+     * @var int
+     */
     public const OUTPUT_PLAIN = 4;
 
     /**
