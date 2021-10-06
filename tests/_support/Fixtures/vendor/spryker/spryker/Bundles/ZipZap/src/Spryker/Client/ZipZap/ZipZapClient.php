@@ -111,7 +111,7 @@ class ZipZapClient implements ZipZapClientInterface
      *
      * @api
      *
-     * @return
+     * @return void
      */
     public function methodWithoutDocBlockReturnType()
     {

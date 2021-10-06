@@ -6,8 +6,8 @@
     "require": {
         "ext-dom": "*",
         "ext-simplexml": "*",
-        "ondrejmirtes/better-reflection": "^4.3.19",
         "php": ">=7.3",
+        "phpstan/phpstan": "0.12.98",
         "spryker/config": "^3.0.0",
         "spryker/console": "^3.0.0 || ^4.0.0",
         "spryker/doctrine-inflector": "^1.1.0",
@@ -21,7 +21,6 @@
     },
     "require-dev": {
         "codeception/codeception": "^4.0.0",
-        "phpstan/phpstan": "^0.12.98",
         "phpunit/phpunit": "^9.5.0",
         "spryker/checkout-extension": "^1.3.0",
         "spryker/code-sniffer": "*",

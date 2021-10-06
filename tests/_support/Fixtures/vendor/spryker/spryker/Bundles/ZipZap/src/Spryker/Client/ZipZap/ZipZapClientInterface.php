@@ -13,7 +13,8 @@ use Generated\Shared\Transfer\ZipZapTransfer;
 interface ZipZapClientInterface
 {
     /**
-     * {@inheritDoc}
+     * Specification:
+     * - Returns whether the method is with string argument.
      *
      * @api
      *
@@ -24,7 +25,8 @@ interface ZipZapClientInterface
     public function methodWithStringArgument(string $foo): bool;
 
     /**
-     * {@inheritDoc}
+     * Specification:
+     * - Returns whether the method is with array argument.
      *
      * @api
      *
@@ -35,7 +37,8 @@ interface ZipZapClientInterface
     public function methodWithArrayArgument(array $foo): bool;
 
     /**
-     * {@inheritDoc}
+     * Specification:
+     * - Returns whether the method is with void return type.
      *
      * @api
      *
@@ -46,6 +49,9 @@ interface ZipZapClientInterface
     public function methodReturnsVoid(string $foo): void;
 
     /**
+     * Specification:
+     * - Returns `FooBar` transfer object.
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\ZipZapTransfer $zipZapTransfer
@@ -55,6 +61,9 @@ interface ZipZapClientInterface
     public function methodWithTransferInputAndTransferOutput(ZipZapTransfer $zipZapTransfer): FooBarTransfer;
 
     /**
+     * Specification:
+     * - Returns whether the method is with default nullable value.
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\ZipZapTransfer|null $zipZapTransfer
@@ -64,29 +73,41 @@ interface ZipZapClientInterface
     public function methodWithDefaultNull(?ZipZapTransfer $zipZapTransfer = null): bool;
 
     /**
+     * Specification:
+     * - Returns whether the method is with default array value.
+     *
      * @api
      *
      * @param array $foo
      *
      * @return bool
      */
-    public function methodWithDefaultArray($foo = []): bool;
+    public function methodWithDefaultArray(array $foo = []): bool;
 
     /**
+     * Specification:
+     * - Returns whether the method is without return type.
+     *
      * @api
      *
      * @return void
      */
-    public function methodWithoutMethodReturnType();
+    public function methodWithoutMethodReturnType(): void;
 
     /**
+     * Specification:
+     * - Returns whether the method is without doc block return type.
+     *
      * @api
      *
      * @return
      */
-    public function methodWithoutDocBlockReturnType();
+    public function methodWithoutDocBlockReturnType(): void;
 
     /**
+     * Specification:
+     * - Returns whether the method is with multiple return type.
+     *
      * @api
      *
      * @return string|int
@@ -94,6 +115,9 @@ interface ZipZapClientInterface
     public function methodWithMultipleReturn();
 
     /**
+     * Specification:
+     * - Returns whether the method is with multiple and nullable return type.
+     *
      * @api
      *
      * @return string|int|null
@@ -101,9 +125,12 @@ interface ZipZapClientInterface
     public function methodWithMultipleReturnAndNullable();
 
     /**
+     * Specification:
+     * - Returns whether the method is with nullable return type.
+     *
      * @api
      *
      * @return string|null
      */
-    public function methodWithNullableReturn();
+    public function methodWithNullableReturn(): ?string;
 }

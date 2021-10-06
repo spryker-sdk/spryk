@@ -111,7 +111,7 @@ class ZipZapFacade implements ZipZapFacadeInterface
      *
      * @api
      *
-     * @return
+     * @return void
      */
     public function methodWithoutDocBlockReturnType()
     {
