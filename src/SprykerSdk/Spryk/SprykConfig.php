@@ -180,7 +180,12 @@ class SprykConfig
      */
     public function getCoreNamespaces(): array
     {
-        return Config::get(KernelConstants::CORE_NAMESPACES, []);
+        return Config::get(KernelConstants::CORE_NAMESPACES, [
+            'SprykerShop',
+            'SprykerEco',
+            'Spryker',
+            'SprykerSdk',
+        ]);
     }
 
     /**
@@ -188,7 +193,7 @@ class SprykConfig
      */
     public function getProjectNamespace(): ?string
     {
-        return Config::get(KernelConstants::PROJECT_NAMESPACE);
+        return Config::get(KernelConstants::PROJECT_NAMESPACE, ['Pyz']);
     }
 
     /**
@@ -196,7 +201,7 @@ class SprykConfig
      */
     public function getProjectNamespaces(): array
     {
-        return Config::get(KernelConstants::PROJECT_NAMESPACES, []);
+        return Config::get(KernelConstants::PROJECT_NAMESPACES, ['Pyz']);
     }
 
     /**
