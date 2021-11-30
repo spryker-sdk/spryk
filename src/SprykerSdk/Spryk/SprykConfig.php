@@ -193,7 +193,7 @@ class SprykConfig
      */
     public function getProjectNamespace(): ?string
     {
-        return Config::get(KernelConstants::PROJECT_NAMESPACE, ['Pyz']);
+        return Config::get(KernelConstants::PROJECT_NAMESPACE, 'Pyz');
     }
 
     /**
