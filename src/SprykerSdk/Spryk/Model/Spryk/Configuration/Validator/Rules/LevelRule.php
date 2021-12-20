@@ -17,12 +17,12 @@ class LevelRule implements ConfigurationValidatorRuleInterface
     protected $errorMessage = 'Level is required value of configuration';
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $availableLevels;
 
     /**
-     * @param int[] $availableLevels
+     * @param array<int> $availableLevels
      */
     public function __construct(array $availableLevels)
     {
@@ -67,7 +67,7 @@ class LevelRule implements ConfigurationValidatorRuleInterface
         $this->errorMessage = sprintf(
             'Spryk level of %s is invalid. Please set `level` one of: %s.',
             $value,
-            implode(', ', $this->availableLevels)
+            implode(', ', $this->availableLevels),
         );
     }
 }

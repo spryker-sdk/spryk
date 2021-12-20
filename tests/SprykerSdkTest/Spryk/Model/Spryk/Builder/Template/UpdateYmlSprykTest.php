@@ -62,7 +62,7 @@ class UpdateYmlSprykTest extends Unit
 
         $updateYmlSpryk->build(
             $sprykDefinition,
-            $this->getSprykStyleMock()
+            $this->getSprykStyleMock(),
         );
     }
 

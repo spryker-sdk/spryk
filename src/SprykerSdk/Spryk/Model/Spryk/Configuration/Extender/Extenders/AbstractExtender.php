@@ -15,6 +15,7 @@ abstract class AbstractExtender
      * @var string
      */
     protected const NAME_PLACEHOLDER_MODULE = '{{ module }}';
+
     /**
      * @var string
      */

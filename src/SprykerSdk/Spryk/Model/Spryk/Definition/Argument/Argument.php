@@ -20,7 +20,7 @@ class Argument implements ArgumentInterface
     protected $value;
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $callbacks = [];
 
@@ -65,7 +65,7 @@ class Argument implements ArgumentInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCallbacks(): array
     {

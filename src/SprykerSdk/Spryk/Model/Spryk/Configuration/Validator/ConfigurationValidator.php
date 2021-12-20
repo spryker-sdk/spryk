@@ -10,17 +10,17 @@ namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Validator;
 class ConfigurationValidator implements ConfigurationValidatorInterface
 {
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface>
      */
     protected $rules;
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $errorMessages = [];
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface[] $rules
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface> $rules
      */
     public function __construct(array $rules)
     {

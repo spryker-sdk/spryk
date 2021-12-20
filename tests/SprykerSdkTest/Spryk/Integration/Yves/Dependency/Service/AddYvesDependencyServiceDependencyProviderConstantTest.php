@@ -46,7 +46,7 @@ class AddYvesDependencyServiceDependencyProviderConstantTest extends Unit
             ClassName::YVES_DEPENDENCY_PROVIDER,
             'SERVICE_ZIP_ZAP',
             'zip zap service',
-            'public'
+            'public',
         );
     }
 
@@ -68,7 +68,7 @@ class AddYvesDependencyServiceDependencyProviderConstantTest extends Unit
             ClassName::PROJECT_YVES_DEPENDENCY_PROVIDER,
             'SERVICE_ZIP_ZAP',
             'zip zap service',
-            'public'
+            'public',
         );
     }
 }

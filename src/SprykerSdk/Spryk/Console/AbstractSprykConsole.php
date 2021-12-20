@@ -18,6 +18,7 @@ abstract class AbstractSprykConsole extends Command
      * @var int
      */
     protected const CODE_SUCCESS = 0;
+
     /**
      * @var int
      */

@@ -51,7 +51,7 @@ class AddZedPersistenceEntityManagerInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Persistence/FooBarEntityManagerInterface.php'
+            . 'Persistence/FooBarEntityManagerInterface.php',
         );
     }
 }

@@ -46,7 +46,7 @@ class GlueProcessorModelSubDirectoryCallback implements CallbackInterface
         $requiredSubDirectoryFragments = array_slice(
             $classNameFragments,
             $positionOfProcessor + 1,
-            count($classNameFragments)
+            count($classNameFragments),
         );
 
         return implode(DIRECTORY_SEPARATOR, $requiredSubDirectoryFragments);

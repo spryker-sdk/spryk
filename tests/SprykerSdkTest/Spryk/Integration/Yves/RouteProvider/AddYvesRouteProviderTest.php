@@ -51,7 +51,7 @@ class AddYvesRouteProviderTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
-            . 'Plugin/Router/FooBarRouteProviderPlugin.php'
+            . 'Plugin/Router/FooBarRouteProviderPlugin.php',
         );
     }
 }

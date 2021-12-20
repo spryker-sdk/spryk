@@ -20,6 +20,7 @@ class SprykDumpConsole extends AbstractSprykConsole
      * @var string
      */
     protected const COMMAND_NAME = 'spryk:dump';
+
     /**
      * @var string
      */
@@ -34,6 +35,7 @@ class SprykDumpConsole extends AbstractSprykConsole
      * @var string
      */
     protected const OPTION_LEVEL = 'level';
+
     /**
      * @var string
      */
@@ -52,7 +54,7 @@ class SprykDumpConsole extends AbstractSprykConsole
                 static::OPTION_LEVEL_SHORT,
                 InputOption::VALUE_REQUIRED,
                 'Spryk visibility level (1, 2, 3, all). By default = 1 (main spryk commands).',
-                (string)SprykConfig::SPRYK_DEFAULT_DUMP_LEVEL
+                (string)SprykConfig::SPRYK_DEFAULT_DUMP_LEVEL,
             );
     }
 
@@ -136,7 +138,7 @@ class SprykDumpConsole extends AbstractSprykConsole
     {
         $output->writeln(
             (new FormatterHelper())
-                ->formatBlock($title, $style)
+                ->formatBlock($title, $style),
         );
     }
 

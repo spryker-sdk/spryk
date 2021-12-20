@@ -15,7 +15,7 @@ class SprykExecutorConfiguration implements SprykExecutorConfigurationInterface
     protected $sprykName;
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $includeOptionalSubSpryks;
 
@@ -51,7 +51,7 @@ class SprykExecutorConfiguration implements SprykExecutorConfigurationInterface
 
     /**
      * @param string $sprykName
-     * @param string[] $includeOptionalSubSpryks
+     * @param array<string> $includeOptionalSubSpryks
      * @param string $targetModuleName
      * @param string $dependentModuleName
      */
@@ -76,7 +76,7 @@ class SprykExecutorConfiguration implements SprykExecutorConfigurationInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getIncludeOptionalSubSpryks(): array
     {

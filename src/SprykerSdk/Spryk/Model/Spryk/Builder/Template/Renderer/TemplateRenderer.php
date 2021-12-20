@@ -21,7 +21,7 @@ class TemplateRenderer implements TemplateRendererInterface
 
     /**
      * @param array $templateDirectories
-     * @param \Twig\Extension\ExtensionInterface[] $extensions
+     * @param array<\Twig\Extension\ExtensionInterface> $extensions
      */
     public function __construct(array $templateDirectories, array $extensions)
     {

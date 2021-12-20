@@ -53,13 +53,13 @@ class AddYvesPageTest extends Unit
         ]);
 
         $this->assertDirectoryExists(
-            $this->tester->getProjectModuleDirectory('FooBar', 'Yves') . 'Controller'
+            $this->tester->getProjectModuleDirectory('FooBar', 'Yves') . 'Controller',
         );
         $this->assertDirectoryExists(
-            $this->tester->getProjectModuleDirectory('FooBar', 'Yves') . 'Plugin'
+            $this->tester->getProjectModuleDirectory('FooBar', 'Yves') . 'Plugin',
         );
         $this->assertDirectoryExists(
-            $this->tester->getProjectModuleDirectory('FooBar', 'Yves') . 'Theme'
+            $this->tester->getProjectModuleDirectory('FooBar', 'Yves') . 'Theme',
         );
     }
 }

@@ -22,18 +22,22 @@ class ResourceRouteSpryk implements SprykBuilderInterface
      * @var string
      */
     protected const ARGUMENT_TARGET = 'target';
+
     /**
      * @var string
      */
     protected const ARGUMENT_TEMPLATE = 'template';
+
     /**
      * @var string
      */
     protected const TARGET_METHOD_NAME = 'configure';
+
     /**
      * @var string
      */
     protected const ARGUMENT_RESOURCE_ROUTE_METHOD = 'resourceRouteMethod';
+
     /**
      * @var string
      */
@@ -84,7 +88,7 @@ class ResourceRouteSpryk implements SprykBuilderInterface
 
         $methodContent = $this->renderer->render(
             $templateName,
-            $sprykDefinition->getArgumentCollection()->getArguments()
+            $sprykDefinition->getArgumentCollection()->getArguments(),
         );
 
         $search = 'return $resourceRouteCollection;';
@@ -99,8 +103,8 @@ class ResourceRouteSpryk implements SprykBuilderInterface
         $style->report(
             sprintf(
                 'Added resource route declaration to "%s".',
-                $this->getTargetArgument($sprykDefinition)
-            )
+                $this->getTargetArgument($sprykDefinition),
+            ),
         );
     }
 

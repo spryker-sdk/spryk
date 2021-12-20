@@ -41,7 +41,7 @@ interface ArgumentInterface
     public function setCallbacks(array $callbacks);
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCallbacks(): array;
 

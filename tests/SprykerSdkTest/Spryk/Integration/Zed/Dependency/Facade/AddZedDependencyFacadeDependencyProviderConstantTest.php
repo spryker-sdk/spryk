@@ -46,7 +46,7 @@ class AddZedDependencyFacadeDependencyProviderConstantTest extends Unit
             ClassName::ZED_DEPENDENCY_PROVIDER,
             'FACADE_ZIP_ZAP',
             'zip zap facade',
-            'public'
+            'public',
         );
     }
 
@@ -68,7 +68,7 @@ class AddZedDependencyFacadeDependencyProviderConstantTest extends Unit
             ClassName::PROJECT_ZED_DEPENDENCY_PROVIDER,
             'FACADE_ZIP_ZAP',
             'zip zap facade',
-            'public'
+            'public',
         );
     }
 }

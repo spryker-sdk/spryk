@@ -34,7 +34,7 @@ abstract class AbstractSprykCommand implements SprykCommandInterface
             $style->errorCommandReport(
                 $this->getName(),
                 $this->getProcessErrorOutput($process),
-                $this->getFallbackMessage($sprykDefinition)
+                $this->getFallbackMessage($sprykDefinition),
             );
 
             return;

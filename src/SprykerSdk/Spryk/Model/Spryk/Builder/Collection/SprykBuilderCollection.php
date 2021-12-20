@@ -14,12 +14,12 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 class SprykBuilderCollection implements SprykBuilderCollectionInterface
 {
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface>
      */
     protected $builder = [];
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface[] $builder
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface> $builder
      */
     public function __construct(array $builder)
     {
@@ -47,7 +47,7 @@ class SprykBuilderCollection implements SprykBuilderCollectionInterface
             'Builder for Spryk "%s" not found. '
             . 'Maybe there is a typo in your spryk definition @spryk '
             . 'or the Spryk builder is not added to the SprykBuilderCollection',
-            $sprykBuilderName
+            $sprykBuilderName,
         ));
     }
 }

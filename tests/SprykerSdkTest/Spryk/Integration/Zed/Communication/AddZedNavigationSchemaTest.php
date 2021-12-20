@@ -51,7 +51,7 @@ class AddZedNavigationSchemaTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Communication/navigation.xml'
+            . 'Communication/navigation.xml',
         );
     }
 }

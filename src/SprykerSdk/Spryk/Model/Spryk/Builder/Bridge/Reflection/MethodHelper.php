@@ -8,8 +8,8 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection;
 
 use PHPStan\BetterReflection\Reflection\ReflectionMethod;
+use PHPStan\BetterReflection\Reflection\ReflectionNamedType;
 use PHPStan\BetterReflection\Reflection\ReflectionParameter;
-use PHPStan\BetterReflection\Reflection\ReflectionType;
 
 class MethodHelper implements MethodHelperInterface
 {
@@ -17,6 +17,7 @@ class MethodHelper implements MethodHelperInterface
      * @var string
      */
     protected const NULLABLE_RETURN_TYPE_HINT = ': ?';
+
     /**
      * @var string
      */
@@ -29,6 +30,7 @@ class MethodHelper implements MethodHelperInterface
      */
     public function getMethodReturnType(ReflectionMethod $reflectionMethod): string
     {
+        /** @var \PHPStan\BetterReflection\Reflection\ReflectionNamedType $reflectionType */
         $reflectionType = $reflectionMethod->getReturnType();
         if ($reflectionType === null) {
             return '';
@@ -38,15 +40,14 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionType $reflectionType
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionNamedType $reflectionType
      *
      * @return string
      */
-    protected function buildMethodReturnTypeFromReflectionType(ReflectionType $reflectionType): string
+    protected function buildMethodReturnTypeFromReflectionType(ReflectionNamedType $reflectionType): string
     {
         $returnType = ($reflectionType->allowsNull()) ? static::NULLABLE_RETURN_TYPE_HINT : static::NON_NULLABLE_RETURN_TYPE_HINT;
 
-        /** @var \PHPStan\BetterReflection\Reflection\ReflectionNamedType $reflectionType */
         if (!$reflectionType->isBuiltin()) {
             $returnType .= '\\';
         }

@@ -23,14 +23,17 @@ class NavigationSpryk implements SprykBuilderInterface
      * @var string
      */
     public const ARGUMENT_TARGET_PATH = 'targetPath';
+
     /**
      * @var string
      */
     public const ARGUMENT_MODULE = 'module';
+
     /**
      * @var string
      */
     public const ARGUMENT_CONTROLLER = 'controller';
+
     /**
      * @var string
      */

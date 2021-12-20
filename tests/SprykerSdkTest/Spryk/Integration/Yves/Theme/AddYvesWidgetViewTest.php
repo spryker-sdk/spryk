@@ -40,7 +40,7 @@ class AddYvesWidgetViewTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getModuleDirectory()
-            . 'src/Spryker/Yves/FooBar/Theme/mobile/views/index/index.twig'
+            . 'src/Spryker/Yves/FooBar/Theme/mobile/views/index/index.twig',
         );
     }
 
@@ -58,7 +58,7 @@ class AddYvesWidgetViewTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
-            . 'Theme/mobile/views/index/index.twig'
+            . 'Theme/mobile/views/index/index.twig',
         );
     }
 }

@@ -15,6 +15,7 @@ class EnsureResourceSuffixCallback implements CallbackInterface
      * @var string
      */
     public const RESOURCE_SUFFIX = 'Resource';
+
     /**
      * @var string
      */

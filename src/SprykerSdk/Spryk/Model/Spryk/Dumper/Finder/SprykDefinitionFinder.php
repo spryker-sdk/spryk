@@ -12,12 +12,12 @@ use Symfony\Component\Finder\Finder;
 class SprykDefinitionFinder implements SprykDefinitionFinderInterface
 {
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $sprykDirectories;
 
     /**
-     * @param string[] $sprykDirectories
+     * @param array<string> $sprykDirectories
      */
     public function __construct(array $sprykDirectories)
     {

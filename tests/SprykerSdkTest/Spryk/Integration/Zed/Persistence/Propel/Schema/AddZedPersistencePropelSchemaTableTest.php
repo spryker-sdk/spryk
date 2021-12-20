@@ -58,7 +58,7 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
         $this->tester->assertTableCount(
             1,
             $this->tester->getProjectModuleDirectory() . 'Persistence/Propel/Schema/spy_foo_bar.schema.xml',
-            'spy_foo_bar'
+            'spy_foo_bar',
         );
     }
 
@@ -104,7 +104,7 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
         $this->tester->assertTableCount(
             1,
             $this->tester->getProjectModuleDirectory() . 'Persistence/Propel/Schema/spy_foo_bar.schema.xml',
-            'spy_foo_bar'
+            'spy_foo_bar',
         );
     }
 }
