@@ -51,7 +51,7 @@ class AddZedPersistenceFactoryTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Persistence/FooBarPersistenceFactory.php'
+            . 'Persistence/FooBarPersistenceFactory.php',
         );
     }
 }

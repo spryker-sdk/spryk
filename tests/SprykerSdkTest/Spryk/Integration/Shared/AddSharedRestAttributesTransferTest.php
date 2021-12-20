@@ -52,7 +52,7 @@ class AddSharedRestAttributesTransferTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Shared')
-            . 'Transfer/foo_bar.transfer.xml'
+            . 'Transfer/foo_bar.transfer.xml',
         );
     }
 }

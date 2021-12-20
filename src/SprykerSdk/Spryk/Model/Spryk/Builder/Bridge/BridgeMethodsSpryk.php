@@ -20,22 +20,27 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
      * @var string
      */
     public const ARGUMENT_TARGET = 'target';
+
     /**
      * @var string
      */
     public const ARGUMENT_TEMPLATE = 'template';
+
     /**
      * @var string
      */
     public const ARGUMENT_SOURCE_CLASS = 'sourceClass';
+
     /**
      * @var string
      */
     public const ARGUMENT_METHODS = 'methods';
+
     /**
      * @var string
      */
     public const ARGUMENT_DEPENDENT_MODULE = 'dependentModule';
+
     /**
      * @var string
      */
@@ -95,7 +100,7 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
         $targetFileContent = $this->reflectionHelper->getFileContentByClassName(
-            $this->getTargetClassName($sprykDefinition)
+            $this->getTargetClassName($sprykDefinition),
         );
 
         $reflectionMethods = $this->getReflectionMethods($sprykDefinition);
@@ -116,7 +121,7 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
 
             $methodContent = $this->renderer->render(
                 $this->getStringArgumentValue(static::ARGUMENT_TEMPLATE, $sprykDefinition),
-                $arguments
+                $arguments,
             );
 
             $search = '}';
@@ -129,7 +134,7 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
             $style->report(sprintf(
                 'Added method "<fg=green>%s</>" to "<fg=green>%s</>"',
                 $reflectionMethod->getName(),
-                $sprykDefinition->getArgumentCollection()->getArgument('target')
+                $sprykDefinition->getArgumentCollection()->getArgument('target'),
             ));
         }
 
@@ -139,16 +144,16 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return \PHPStan\BetterReflection\Reflection\ReflectionMethod[]
+     * @return array<\PHPStan\BetterReflection\Reflection\ReflectionMethod>
      */
     protected function getReflectionMethods(SprykDefinitionInterface $sprykDefinition): array
     {
         $targetReflectionClass = $this->reflectionHelper->getReflectionClassByClassName(
-            $this->getTargetClassName($sprykDefinition)
+            $this->getTargetClassName($sprykDefinition),
         );
 
         $sourceReflectionClass = $this->reflectionHelper->getReflectionClassByClassName(
-            $this->getSourceClassName($sprykDefinition)
+            $this->getSourceClassName($sprykDefinition),
         );
 
         $methodNames = $this->getMethodNames($sprykDefinition);
@@ -221,7 +226,7 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
     protected function putTargetFileContent(SprykDefinitionInterface $sprykDefinition, string $newContent): void
     {
         $targetFilePath = $this->reflectionHelper->getFilePathByClassName(
-            $this->getTargetClassName($sprykDefinition)
+            $this->getTargetClassName($sprykDefinition),
         );
 
         file_put_contents($targetFilePath, $newContent);

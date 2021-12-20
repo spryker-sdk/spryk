@@ -43,7 +43,7 @@ class AddGlueResourceRouteTest extends Unit
 
         $this->assertRouteAdded(
             '\Spryker\Glue\FooBar\Plugin\GlueApplication\FooBarsResourceRoutePlugin',
-            'get'
+            'get',
         );
     }
 
@@ -61,7 +61,7 @@ class AddGlueResourceRouteTest extends Unit
 
         $this->assertRouteAdded(
             '\Pyz\Glue\FooBar\Plugin\GlueApplication\FooBarsResourceRoutePlugin',
-            'get'
+            'get',
         );
     }
 

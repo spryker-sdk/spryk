@@ -34,7 +34,7 @@ class GlueResourceTargetFilenameCallback implements CallbackInterface
     {
         return sprintf(
             '%s.php',
-            (string)$argumentCollection->getArgument('className')->getValue()
+            (string)$argumentCollection->getArgument('className')->getValue(),
         );
     }
 }

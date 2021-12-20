@@ -17,18 +17,22 @@ interface SprykStyleInterface
      * @var int
      */
     public const VERBOSITY_QUIET = 16;
+
     /**
      * @var int
      */
     public const VERBOSITY_NORMAL = 32;
+
     /**
      * @var int
      */
     public const VERBOSITY_VERBOSE = 64;
+
     /**
      * @var int
      */
     public const VERBOSITY_VERY_VERBOSE = 128;
+
     /**
      * @var int
      */
@@ -38,10 +42,12 @@ interface SprykStyleInterface
      * @var int
      */
     public const OUTPUT_NORMAL = 1;
+
     /**
      * @var int
      */
     public const OUTPUT_RAW = 2;
+
     /**
      * @var int
      */
@@ -90,7 +96,7 @@ interface SprykStyleInterface
     public function endPostSpryks(SprykDefinitionInterface $sprykDefinition): void;
 
     /**
-     * @param string|string[] $messages
+     * @param array<string>|string $messages
      * @param int $options
      *
      * @return void

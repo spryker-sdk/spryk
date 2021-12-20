@@ -53,7 +53,7 @@ class ComposerReplaceGenerateSprykCommand extends AbstractSprykCommand
     {
         return sprintf(
             'Please, add new module into a `replace` section in `composer.json` for the %s organization.',
-            $sprykDefinition->getArgumentCollection()->getArgument(SprykConfig::NAME_ARGUMENT_ORGANIZATION)
+            $sprykDefinition->getArgumentCollection()->getArgument(SprykConfig::NAME_ARGUMENT_ORGANIZATION),
         );
     }
 }

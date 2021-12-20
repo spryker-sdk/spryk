@@ -13,12 +13,12 @@ use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface;
 class CallbackCollection implements CallbackCollectionInterface
 {
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface>
      */
     protected $callbacks;
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface[] $callbacks
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface> $callbacks
      */
     public function __construct(array $callbacks)
     {

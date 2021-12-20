@@ -58,7 +58,7 @@ class SprykFactory
         return new SprykExecutor(
             $this->createSprykDefinitionBuilder(),
             $this->createSprykBuilderCollection(),
-            $this->getCommandStack()
+            $this->getCommandStack(),
         );
     }
 
@@ -70,7 +70,7 @@ class SprykFactory
         return new SprykDefinitionBuilder(
             $this->createConfigurationFactory()->createConfigurationLoader(),
             $this->createArgumentResolver(),
-            $this->getConfig()
+            $this->getConfig(),
         );
     }
 
@@ -88,7 +88,7 @@ class SprykFactory
     public function createSprykBuilderCollection(): SprykBuilderCollectionInterface
     {
         $sprykBuilderCollection = new SprykBuilderCollection(
-            $this->createSprykBuilderFactory()->getSprykBuilder()
+            $this->createSprykBuilderFactory()->getSprykBuilder(),
         );
 
         return $sprykBuilderCollection;
@@ -101,7 +101,7 @@ class SprykFactory
     {
         return new SprykBuilderFactory(
             $this->getConfig(),
-            $this->createFilterFactory()
+            $this->createFilterFactory(),
         );
     }
 
@@ -121,7 +121,7 @@ class SprykFactory
         return new ArgumentResolver(
             $this->createArgumentCollection(),
             $this->createSuperseder(),
-            $this->createCallbackFactory()->createCallbackArgumentResolver()
+            $this->createCallbackFactory()->createCallbackArgumentResolver(),
         );
     }
 
@@ -131,7 +131,7 @@ class SprykFactory
     public function createSuperseder(): SupersederInterface
     {
         return new Superseder(
-            $this->createSprykBuilderFactory()->createTemplateRenderer()
+            $this->createSprykBuilderFactory()->createTemplateRenderer(),
         );
     }
 
@@ -158,7 +158,7 @@ class SprykFactory
     {
         return new SprykDefinitionDumper(
             $this->createDefinitionFinder(),
-            $this->createConfigurationFactory()->createConfigurationLoader()
+            $this->createConfigurationFactory()->createConfigurationLoader(),
         );
     }
 
@@ -168,7 +168,7 @@ class SprykFactory
     public function createDefinitionFinder(): SprykDefinitionFinderInterface
     {
         return new SprykDefinitionFinder(
-            $this->getConfig()->getSprykDirectories()
+            $this->getConfig()->getSprykDirectories(),
         );
     }
 
@@ -211,7 +211,7 @@ class SprykFactory
     {
         return new ArgumentListGenerator(
             $this->getConfig()->getArgumentListFilePath(),
-            $this->createArgumentsListBuilder()
+            $this->createArgumentsListBuilder(),
         );
     }
 
@@ -223,13 +223,13 @@ class SprykFactory
         return new ArgumentListReader(
             $this->getConfig()->getArgumentListFilePath(),
             $this->createArgumentsListBuilder(),
-            $this->createSprykDefinitionDumper()
+            $this->createSprykDefinitionDumper(),
         );
     }
 
     /**
      * @param string $sprykName
-     * @param string[] $includeOptionalSubSpryks
+     * @param array<string> $includeOptionalSubSpryks
      * @param string $targetModuleName
      * @param string $dependentModuleName
      *
@@ -245,7 +245,7 @@ class SprykFactory
             $sprykName,
             $includeOptionalSubSpryks,
             $targetModuleName,
-            $dependentModuleName
+            $dependentModuleName,
         );
     }
 
@@ -261,7 +261,7 @@ class SprykFactory
     }
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface>
      */
     public function getCommandStack(): array
     {

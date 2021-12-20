@@ -28,12 +28,12 @@ class SprykExecutor implements SprykExecutorInterface
     protected $sprykBuilderCollection;
 
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface>
      */
     protected $executedSpryks = [];
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $includeOptionalSubSpryks = [];
 
@@ -43,14 +43,14 @@ class SprykExecutor implements SprykExecutorInterface
     protected $mainSprykDefinitionMode;
 
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface>
      */
     protected $sprykCommands;
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface $definitionBuilder
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface $sprykBuilderCollection
-     * @param \SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface[] $sprykCommands
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface> $sprykCommands
      */
     public function __construct(
         SprykDefinitionBuilderInterface $definitionBuilder,
@@ -78,15 +78,15 @@ class SprykExecutor implements SprykExecutorInterface
         $sprykPreDefinition = [];
         $sprykPreDefinition = $this->definitionBuilder->addTargetModuleParams(
             $sprykExecutorConfiguration,
-            $sprykPreDefinition
+            $sprykPreDefinition,
         );
         $sprykPreDefinition = $this->definitionBuilder->addDependentModuleParams(
             $sprykExecutorConfiguration,
-            $sprykPreDefinition
+            $sprykPreDefinition,
         );
         $sprykDefinition = $this->definitionBuilder->buildDefinition(
             $sprykExecutorConfiguration->getSprykName(),
-            $sprykPreDefinition
+            $sprykPreDefinition,
         );
 
         $this->mainSprykDefinitionMode = $this->getSprykDefinitionMode($sprykDefinition, $style);
@@ -303,7 +303,7 @@ class SprykExecutor implements SprykExecutorInterface
             $errorMessage = '`%s` spryk support `%s` development layer only.';
 
             throw new SprykWrongDevelopmentLayerException(
-                sprintf($errorMessage, $sprykDefinition->getSprykName(), strtoupper($sprykDefinition->getMode()))
+                sprintf($errorMessage, $sprykDefinition->getSprykName(), strtoupper($sprykDefinition->getMode())),
             );
         }
 

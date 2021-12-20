@@ -51,7 +51,7 @@ class AddZedPersistenceRepositoryTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Persistence/FooBarRepository.php'
+            . 'Persistence/FooBarRepository.php',
         );
     }
 }

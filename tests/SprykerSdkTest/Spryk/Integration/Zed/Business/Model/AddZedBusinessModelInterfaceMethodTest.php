@@ -62,7 +62,7 @@ class AddZedBusinessModelInterfaceMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(
             'Pyz\Zed\FooBar\Business\Foo\BarInterface',
-            'addSomething'
+            'addSomething',
         );
     }
 }

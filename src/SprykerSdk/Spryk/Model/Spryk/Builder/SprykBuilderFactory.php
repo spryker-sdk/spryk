@@ -59,7 +59,7 @@ class SprykBuilderFactory
     }
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface>
      */
     public function getSprykBuilder(): array
     {
@@ -85,7 +85,7 @@ class SprykBuilderFactory
     public function createStructureSpryk(): SprykBuilderInterface
     {
         return new StructureSpryk(
-            $this->getConfig()->getRootDirectory()
+            $this->getConfig()->getRootDirectory(),
         );
     }
 
@@ -96,7 +96,7 @@ class SprykBuilderFactory
     {
         return new TemplateSpryk(
             $this->createTemplateRenderer(),
-            $this->getConfig()->getRootDirectory()
+            $this->getConfig()->getRootDirectory(),
         );
     }
 
@@ -107,7 +107,7 @@ class SprykBuilderFactory
     {
         return new UpdateYmlSpryk(
             $this->createTemplateRenderer(),
-            $this->getConfig()->getRootDirectory()
+            $this->getConfig()->getRootDirectory(),
         );
     }
 
@@ -117,7 +117,7 @@ class SprykBuilderFactory
     public function createMethodSpryk(): SprykBuilderInterface
     {
         return new MethodSpryk(
-            $this->createTemplateRenderer()
+            $this->createTemplateRenderer(),
         );
     }
 
@@ -135,7 +135,7 @@ class SprykBuilderFactory
     public function createNavigationSpryk(): SprykBuilderInterface
     {
         return new NavigationSpryk(
-            $this->getConfig()->getRootDirectory()
+            $this->getConfig()->getRootDirectory(),
         );
     }
 
@@ -146,7 +146,7 @@ class SprykBuilderFactory
     {
         return new SchemaSpryk(
             $this->getConfig()->getRootDirectory(),
-            $this->filterFactory->createCamelCaseFilter()
+            $this->filterFactory->createCamelCaseFilter(),
         );
     }
 
@@ -157,7 +157,7 @@ class SprykBuilderFactory
     {
         return new TemplateRenderer(
             $this->getConfig()->getTemplateDirectories(),
-            [$this->filterFactory->createFilterExtension()]
+            [$this->filterFactory->createFilterExtension()],
         );
     }
 
@@ -169,7 +169,7 @@ class SprykBuilderFactory
         return new BridgeMethodsSpryk(
             $this->createTemplateRenderer(),
             $this->createReflectionHelper(),
-            $this->createMethodHelper()
+            $this->createMethodHelper(),
         );
     }
 
@@ -180,7 +180,7 @@ class SprykBuilderFactory
     {
         return new CopyModuleSpryk(
             $this->getConfig(),
-            $this->filterFactory->createDasherizeFilter()
+            $this->filterFactory->createDasherizeFilter(),
         );
     }
 
@@ -190,7 +190,7 @@ class SprykBuilderFactory
     public function createTransferSpryk(): SprykBuilderInterface
     {
         return new TransferSpryk(
-            $this->getConfig()->getRootDirectory()
+            $this->getConfig()->getRootDirectory(),
         );
     }
 
@@ -200,7 +200,7 @@ class SprykBuilderFactory
     public function createResourceRouteSpryk(): SprykBuilderInterface
     {
         return new ResourceRouteSpryk(
-            $this->createTemplateRenderer()
+            $this->createTemplateRenderer(),
         );
     }
 

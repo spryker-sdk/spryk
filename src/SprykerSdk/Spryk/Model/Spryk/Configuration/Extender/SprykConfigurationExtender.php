@@ -10,7 +10,7 @@ namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Extender;
 class SprykConfigurationExtender implements SprykConfigurationExtenderInterface
 {
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface>
      */
     protected $configExtenders;
 

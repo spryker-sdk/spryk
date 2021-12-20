@@ -54,7 +54,7 @@ class AddZedDependencyClientInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Dependency/Client/FooBarToZipZapClientInterface.php'
+            . 'Dependency/Client/FooBarToZipZapClientInterface.php',
         );
     }
 }

@@ -25,18 +25,22 @@ class MethodSpryk implements SprykBuilderInterface
      * @var string
      */
     public const ARGUMENT_TARGET = 'target';
+
     /**
      * @var string
      */
     public const ARGUMENT_TARGET_PATH = 'targetPath';
+
     /**
      * @var string
      */
     public const ARGUMENT_TARGET_FILE_NAME = 'targetFileName';
+
     /**
      * @var string
      */
     public const ARGUMENT_TEMPLATE = 'template';
+
     /**
      * @var string
      */
@@ -113,7 +117,7 @@ class MethodSpryk implements SprykBuilderInterface
 
         $methodContent = $this->renderer->render(
             $templateName,
-            $sprykDefinition->getArgumentCollection()->getArguments()
+            $sprykDefinition->getArgumentCollection()->getArguments(),
         );
 
         $search = '}';
@@ -128,7 +132,7 @@ class MethodSpryk implements SprykBuilderInterface
         $style->report(sprintf(
             'Added method "<fg=green>%s</>" to "<fg=green>%s</>"',
             $this->getMethodName($sprykDefinition),
-            $sprykDefinition->getArgumentCollection()->getArgument('target')
+            $sprykDefinition->getArgumentCollection()->getArgument('target'),
         ));
     }
 
@@ -197,7 +201,7 @@ class MethodSpryk implements SprykBuilderInterface
         throw new ArgumentNotFoundException(sprintf(
             'Could not find method argument value. You need to add on of "%s" as method argument to your spryk "%s".',
             implode(', ', static::ARGUMENT_METHOD_NAME_CANDIDATES),
-            $sprykDefinition->getSprykName()
+            $sprykDefinition->getSprykName(),
         ));
     }
 
@@ -303,7 +307,7 @@ class MethodSpryk implements SprykBuilderInterface
                 $className,
                 static::ARGUMENT_TARGET,
                 static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN,
-                '{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}'
+                '{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}',
             ));
         }
     }

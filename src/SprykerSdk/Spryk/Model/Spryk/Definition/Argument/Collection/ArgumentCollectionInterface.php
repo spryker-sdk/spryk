@@ -33,7 +33,7 @@ interface ArgumentCollectionInterface
     public function getArgument(string $name): ArgumentInterface;
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface>
      */
     public function getArguments(): array;
 

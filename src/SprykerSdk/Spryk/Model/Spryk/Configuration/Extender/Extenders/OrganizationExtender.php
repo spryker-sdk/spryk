@@ -13,9 +13,9 @@ use SprykerSdk\Spryk\SprykConfig;
 class OrganizationExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
     /**
-     * @param mixed[] $sprykConfig
+     * @param array<mixed> $sprykConfig
      *
-     * @return mixed[]
+     * @return array<mixed>
      */
     public function extend(array $sprykConfig): array
     {
@@ -35,9 +35,9 @@ class OrganizationExtender extends AbstractExtender implements SprykConfiguratio
     }
 
     /**
-     * @param mixed[] $arguments
+     * @param array<mixed> $arguments
      *
-     * @return mixed[]
+     * @return array<mixed>
      */
     protected function buildProjectOrganization(array $arguments): array
     {
@@ -55,9 +55,9 @@ class OrganizationExtender extends AbstractExtender implements SprykConfiguratio
     }
 
     /**
-     * @param mixed[] $arguments
+     * @param array<mixed> $arguments
      *
-     * @return mixed[]
+     * @return array<mixed>
      */
     protected function buildCoreOrganization(array $arguments): array
     {

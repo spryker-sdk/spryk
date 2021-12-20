@@ -50,7 +50,7 @@ class AddYvesFactoryTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
-            . 'FooBarFactory.php'
+            . 'FooBarFactory.php',
         );
     }
 }

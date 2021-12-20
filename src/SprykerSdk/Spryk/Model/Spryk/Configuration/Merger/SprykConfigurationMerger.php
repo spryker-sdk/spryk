@@ -60,12 +60,12 @@ class SprykConfigurationMerger implements SprykConfigurationMergerInterface
         $rootConfiguration = $this->buildRootConfigByMode($rootConfiguration, $sprykDefinition[SprykConfig::NAME_ARGUMENT_MODE]);
         $sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS] = $this->mergeArguments(
             $sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS],
-            $rootConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]
+            $rootConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS],
         );
 
         $sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS] = $this->addRootArguments(
             $sprykDefinition[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS],
-            $rootConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS]
+            $rootConfiguration[SprykConfig::SPRYK_DEFINITION_KEY_ARGUMENTS],
         );
 
         return $sprykDefinition;

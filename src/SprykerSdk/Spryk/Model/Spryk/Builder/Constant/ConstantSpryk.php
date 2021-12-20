@@ -24,14 +24,17 @@ class ConstantSpryk implements SprykBuilderInterface
      * @var string
      */
     public const ARGUMENT_TARGET = 'target';
+
     /**
      * @var string
      */
     public const ARGUMENT_CONSTANT_NAME = 'name';
+
     /**
      * @var string
      */
     public const ARGUMENT_CONSTANT_VALUE = 'value';
+
     /**
      * @var string
      */
@@ -72,7 +75,7 @@ class ConstantSpryk implements SprykBuilderInterface
             PHP_EOL . '    %s const %s = \'%s\';' . PHP_EOL,
             $this->getConstantVisibility($sprykDefinition),
             $this->getConstantName($sprykDefinition),
-            $this->getConstantValue($sprykDefinition)
+            $this->getConstantValue($sprykDefinition),
         );
 
         if ($positionOfOpeningBrace !== false) {
@@ -84,7 +87,7 @@ class ConstantSpryk implements SprykBuilderInterface
         $style->report(sprintf(
             'Added constant "<fg=green>%s</>" to "<fg=green>%s</>"',
             trim($constantLine),
-            $sprykDefinition->getArgumentCollection()->getArgument('target')
+            $sprykDefinition->getArgumentCollection()->getArgument('target'),
         ));
     }
 

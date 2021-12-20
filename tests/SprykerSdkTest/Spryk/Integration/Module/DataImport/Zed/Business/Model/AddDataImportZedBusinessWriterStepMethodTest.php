@@ -46,7 +46,7 @@ class AddDataImportZedBusinessWriterStepMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(
             'Spryker\Zed\FooBar\Business\Writer\FooBarItemWriter',
-            'addSomething'
+            'addSomething',
         );
     }
 
@@ -67,7 +67,7 @@ class AddDataImportZedBusinessWriterStepMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(
             'Pyz\Zed\FooBar\Business\Writer\FooBarItemWriter',
-            'addSomething'
+            'addSomething',
         );
     }
 }

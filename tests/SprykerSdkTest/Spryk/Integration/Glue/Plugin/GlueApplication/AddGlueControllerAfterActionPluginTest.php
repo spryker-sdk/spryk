@@ -54,7 +54,7 @@ class AddGlueControllerAfterActionPluginTest extends Unit
         ]);
 
         $this->assertFileExists(
-            $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxControllerAfterActionPlugin.php'
+            $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxControllerAfterActionPlugin.php',
         );
     }
 }

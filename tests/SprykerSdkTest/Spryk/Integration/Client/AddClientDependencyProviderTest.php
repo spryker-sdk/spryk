@@ -50,7 +50,7 @@ class AddClientDependencyProviderTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Client')
-            . 'FooBarDependencyProvider.php'
+            . 'FooBarDependencyProvider.php',
         );
     }
 }

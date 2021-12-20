@@ -54,7 +54,7 @@ class AddGlueFormatResponseHeadersPluginTest extends Unit
         ]);
 
         $this->assertFileExists(
-            $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxFormatResponseHeadersPlugin.php'
+            $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/BazQuxFormatResponseHeadersPlugin.php',
         );
     }
 }

@@ -16,6 +16,7 @@ class DirectoriesExtender extends AbstractExtender implements SprykConfiguration
      * @var string
      */
     protected const NAME_ARGUMENT_DIRECTORIES = 'directories';
+
     /**
      * @var string
      */
@@ -63,7 +64,7 @@ class DirectoriesExtender extends AbstractExtender implements SprykConfiguration
     }
 
     /**
-     * @param mixed[] $directoryArgumentDefinition
+     * @param array<mixed> $directoryArgumentDefinition
      *
      * @return bool
      */

@@ -21,7 +21,7 @@ class EnsureRestAttributesTransferAffixCallback implements CallbackInterface
      */
     public function getName(): string
     {
-        return self::CALLBACK_NAME;
+        return static::CALLBACK_NAME;
     }
 
     /**
