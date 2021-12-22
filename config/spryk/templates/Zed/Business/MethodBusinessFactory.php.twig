@@ -9,9 +9,9 @@
 
 {% if not dependencyMethods.value %}
     /**
-     * @return {{ interfaceName }}
+     * @return \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ interfaceName }}
      */
-    public function {{ factoryMethod }}(): {{ interfaceName }}
+    public function {{ factoryMethod }}(): \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ interfaceName }}
     {
         return new \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ className }}();
     }

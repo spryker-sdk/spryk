@@ -1,0 +1,105 @@
+spryk: wrapper
+description: "Adds a Registry code for Apps. It builds connect and disconnect logic."
+priority: 1
+mode: both
+level: 2
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+
+excludedSpryks:
+    - AddZedPresentationTwig
+    - AddZedNavigationNode
+
+preSpryks:
+    - AddModule
+
+postSpryks:
+    - AddZedBusinessModelMethod:
+          arguments:
+              className:
+                  value: Registry
+              subDirectory:
+                  value: Registry
+              modelMethod:
+                  value: connect
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+
+    - AddZedBusinessModelMethod:
+          arguments:
+              className:
+                  value: Registry
+              subDirectory:
+                  value: Registry
+              modelMethod:
+                  value: disconnect
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+
+    - AddZedCommunicationControllerAction:
+          excludedSpryks:
+              - AddZedPresentationTwig
+              - AddZedNavigationNode
+          arguments:
+              controller:
+                  value: RegistryController
+              controllerMethod:
+                  value: connect
+              body:
+                  value: "${{ module | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ module }}Transfer();\n        ${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->connect(${{ module | lcfirst }}Transfer);"
+
+    - AddZedCommunicationControllerAction:
+          excludedSpryks:
+              - AddZedPresentationTwig
+              - AddZedNavigationNode
+          arguments:
+              controller:
+                  value: RegistryController
+              controllerMethod:
+                  value: disconnect
+              body:
+                  value: "${{ module | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ module }}Transfer();\n        ${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->disconnect(${{ module | lcfirst }}Transfer);"
+
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: connect
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+            body:
+                value: "return $this->getFactory()->createRegistry()->connect(${{ module | lcfirst }}Transfer);"
+
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: disconnect
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+            body:
+                value: "return $this->getFactory()->createRegistry()->disconnect(${{ module | lcfirst }}Transfer);"
+
+    - AddSharedTransferDefinition:
+        arguments:
+            name:
+                value: "{{ module }}Transfer"
+
+    - AddSharedTransferDefinition:
+        arguments:
+            name:
+                value: "{{ module }}Transfer"
+
+

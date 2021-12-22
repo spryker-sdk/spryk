@@ -72,6 +72,11 @@ interface SprykDefinitionInterface
     public function setArgumentCollection(ArgumentCollectionInterface $argumentCollection);
 
     /**
+     * @return array<string>
+     */
+    public function getExcludedSpryks(): array;
+
+    /**
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
      */
     public function getPreSpryks(): array;

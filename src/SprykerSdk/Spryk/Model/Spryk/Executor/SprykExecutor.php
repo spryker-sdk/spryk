@@ -234,12 +234,14 @@ class SprykExecutor implements SprykExecutorInterface
     protected function buildPreSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
         $preSpryks = $sprykDefinition->getPreSpryks();
+        $excludedSpryks = $sprykDefinition->getExcludedSpryks();
+
         if (count($preSpryks) === 0) {
             return;
         }
 
         foreach ($preSpryks as $preSprykDefinition) {
-            if (isset($this->executedSpryks[$preSprykDefinition->getSprykDefinitionKey()])) {
+            if (isset($this->executedSpryks[$preSprykDefinition->getSprykDefinitionKey()]) || isset($excludedSpryks[$preSprykDefinition->getSprykName()])) {
                 continue;
             }
 
@@ -256,12 +258,14 @@ class SprykExecutor implements SprykExecutorInterface
     protected function buildPostSpryks(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
         $postSpryks = $sprykDefinition->getPostSpryks();
+        $excludedSpryks = $sprykDefinition->getExcludedSpryks();
+
         if (count($postSpryks) === 0) {
             return;
         }
 
         foreach ($postSpryks as $postSprykDefinition) {
-            if (!$this->shouldSubSprykBeBuild($postSprykDefinition)) {
+            if (!$this->shouldSubSprykBeBuild($postSprykDefinition) || isset($excludedSpryks[$postSprykDefinition->getSprykName()])) {
                 continue;
             }
 

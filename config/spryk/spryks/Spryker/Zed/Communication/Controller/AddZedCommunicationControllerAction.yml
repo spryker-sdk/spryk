@@ -28,11 +28,19 @@ arguments:
         inherit: true
         callback: EnsureActionSuffixCallback
 
+    method:
+        value: "{{ controllerMethod }}"
+
+    body:
+        value: ""
+
     output:
         default: void
-
+#
+#    template:
+#        value: Zed/Communication/MethodZedCommunicationController.php.twig
     template:
-        value: Zed/Communication/MethodZedCommunicationController.php.twig
+        value: Common/Method.php.twig
 
     target:
         value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\{{ controller | classNameShort | ensureControllerSuffix }}"

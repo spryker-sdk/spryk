@@ -25,6 +25,7 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInter
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\UpdateYmlSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Transfer\TransferSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Wrapper\WrapperSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Filter\FilterFactory;
 use SprykerSdk\Spryk\SprykConfig;
 
@@ -64,6 +65,7 @@ class SprykBuilderFactory
     public function getSprykBuilder(): array
     {
         return [
+            $this->createWrapperSpryk(),
             $this->createStructureSpryk(),
             $this->createTemplateSpryk(),
             $this->createUpdateYmlSpryk(),
@@ -77,6 +79,14 @@ class SprykBuilderFactory
             $this->createResourceRouteSpryk(),
             $this->createDependencyProviderSpryk(),
         ];
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createWrapperSpryk(): SprykBuilderInterface
+    {
+        return new WrapperSpryk();
     }
 
     /**

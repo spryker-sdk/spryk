@@ -32,6 +32,7 @@ class FilterFactory
             $this->createLowerCaseFirstFilter(),
             $this->createRemoveActionSuffixFilter(),
             $this->createRemoveControllerSuffixFilter(),
+            $this->createRemoveConfigSuffixFilter(),
             $this->createRemoveRestApiSuffixFilter(),
             $this->createRemoveWidgetSuffixFilter(),
             $this->createSingularizeFilter(),
@@ -95,6 +96,14 @@ class FilterFactory
     public function createRemoveControllerSuffixFilter(): FilterInterface
     {
         return new RemoveControllerSuffixFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createRemoveConfigSuffixFilter(): FilterInterface
+    {
+        return new RemoveConfigSuffixFilter();
     }
 
     /**

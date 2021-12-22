@@ -49,6 +49,11 @@ class SprykDefinition implements SprykDefinitionInterface
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
      */
+    protected $excludedSpryks = [];
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     */
     protected $preSpryks = [];
 
     /**
@@ -167,6 +172,26 @@ class SprykDefinition implements SprykDefinitionInterface
     public function setArgumentCollection(ArgumentCollectionInterface $argumentCollection)
     {
         $this->argumentCollection = $argumentCollection;
+
+        return $this;
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     */
+    public function getExcludedSpryks(): array
+    {
+        return $this->excludedSpryks;
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[] $excludedSpryks
+     *
+     * @return $this
+     */
+    public function setExcludedSpryks(array $excludedSpryks)
+    {
+        $this->excludedSpryks = $excludedSpryks;
 
         return $this;
     }
