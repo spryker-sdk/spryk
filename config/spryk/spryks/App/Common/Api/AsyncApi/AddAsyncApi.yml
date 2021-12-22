@@ -1,0 +1,15 @@
+spryk: template
+description: "Adds a new AsyncAPI file to the specified `targetFile` path."
+priority: 1
+mode: both
+level: 2
+
+arguments:
+    template:
+        value: App/Common/Api/AsyncApi/asyncapi.schema.yml
+    targetFile:
+        required: true
+    title:
+        required: true
+    api-version:
+        default: 0.1.0
