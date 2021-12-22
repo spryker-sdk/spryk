@@ -5,11 +5,25 @@ mode: both
 level: 2
 
 arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+
     template:
-        value: App/Common/Api/AsyncApi/asyncapi.schema.yml
-    targetFile:
+        value: App/Common/Api/AsyncApi/asyncapi.schema.yml.twig
+
+    targetPath:
         required: true
+
+    targetFilename:
+        required: true
+        default: asyncapi.yml
+
     title:
         required: true
+
     api-version:
         default: 0.1.0

@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerSdkTest\Spryk\Integration\App\Common\Api\AsyncApi;
+namespace SprykerSdkTest\Spryk\Integration\Zed\Test\Helper;
 
 use Codeception\Test\Unit;
 
@@ -15,14 +15,13 @@ use Codeception\Test\Unit;
  * @group SprykerSdkTest
  * @group Spryk
  * @group Integration
- * @group App
- * @group Common
- * @group Api
- * @group AsyncApi
- * @group AddAsyncApiTest
+ * @group Zed
+ * @group Test
+ * @group Helper
+ * @group AddZedTestHelperTest
  * Add your own group annotations below this line
  */
-class AddAsyncApiTest extends Unit
+class AddZedTestHelperTest extends Unit
 {
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
@@ -32,14 +31,12 @@ class AddAsyncApiTest extends Unit
     /**
      * @return void
      */
-    public function testAddsAsyncApiFile(): void
+    public function testAddsZedTestHelper(): void
     {
         $this->tester->run($this, [
-            '--title' => 'FooBar',
-            '--targetPath' => 'config/app/api/asyncapi/',
-            '--targetFilename' => 'asyncapi.yml',
+            '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists(codecept_data_dir('/config/app/api/asyncapi/asyncapi.yml'));
+        $this->assertFileExists($this->tester->getModuleDirectory() . '/tests/SprykerTest/Zed/FooBar/_support/Helper/FooBarHelper.php');
     }
 }
