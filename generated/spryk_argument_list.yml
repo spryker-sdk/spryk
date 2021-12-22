@@ -2,6 +2,42 @@
 # This file collected all spryks arguments and generated with spryk:build command.
 ###
 -
+  name: template
+  mode: 2
+  description: 'template argument'
+-
+  name: targetFile
+  mode: 2
+  description: 'targetFile argument'
+-
+  name: title
+  mode: 2
+  description: 'title argument'
+-
+  name: api-version
+  mode: 2
+  description: 'api-version argument'
+-
+  name: sprykerVendorPath
+  mode: 2
+  description: 'sprykerVendorPath argument'
+-
+  name: moduleSrcDirectory
+  mode: 2
+  description: 'moduleSrcDirectory argument'
+-
+  name: repository
+  mode: 2
+  description: 'repository argument'
+-
+  name: moduleRoot
+  mode: 2
+  description: 'moduleRoot argument'
+-
+  name: level
+  mode: 2
+  description: 'level argument'
+-
   name: module
   mode: 2
   description: 'module argument'
@@ -30,10 +66,6 @@
   mode: 2
   description: 'subDirectory argument'
 -
-  name: template
-  mode: 2
-  description: 'template argument'
--
   name: targetFilename
   mode: 2
   description: 'targetFilename argument'
@@ -41,26 +73,6 @@
   name: targetPath
   mode: 2
   description: 'targetPath argument'
--
-  name: sprykerVendorPath
-  mode: 2
-  description: 'sprykerVendorPath argument'
--
-  name: moduleSrcDirectory
-  mode: 2
-  description: 'moduleSrcDirectory argument'
--
-  name: repository
-  mode: 2
-  description: 'repository argument'
--
-  name: moduleRoot
-  mode: 2
-  description: 'moduleRoot argument'
--
-  name: level
-  mode: 2
-  description: 'level argument'
 -
   name: method
   mode: 2
@@ -297,6 +309,42 @@
   name: targetFilePath
   mode: 2
   description: 'targetFilePath argument'
+-
+  name: AddAsyncApi.template
+  mode: 2
+  description: 'AddAsyncApi template argument'
+-
+  name: AddAsyncApi.targetFile
+  mode: 2
+  description: 'AddAsyncApi targetFile argument'
+-
+  name: AddAsyncApi.title
+  mode: 2
+  description: 'AddAsyncApi title argument'
+-
+  name: AddAsyncApi.api-version
+  mode: 2
+  description: 'AddAsyncApi api-version argument'
+-
+  name: AddAsyncApi.sprykerVendorPath
+  mode: 2
+  description: 'AddAsyncApi sprykerVendorPath argument'
+-
+  name: AddAsyncApi.moduleSrcDirectory
+  mode: 2
+  description: 'AddAsyncApi moduleSrcDirectory argument'
+-
+  name: AddAsyncApi.repository
+  mode: 2
+  description: 'AddAsyncApi repository argument'
+-
+  name: AddAsyncApi.moduleRoot
+  mode: 2
+  description: 'AddAsyncApi moduleRoot argument'
+-
+  name: AddAsyncApi.level
+  mode: 2
+  description: 'AddAsyncApi level argument'
 -
   name: AddCheckoutDoSaveOrderPlugin.module
   mode: 2
