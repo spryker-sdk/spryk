@@ -29,11 +29,11 @@ postSpryks:
               modelMethod:
                   value: connect
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
               output:
                   value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
               body:
-                  value: "${{ module | lcfirst }}ResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer();\n\n        return ${{ module | lcfirst }}ResponseTransfer;"
+                  value: "return ${{ module | lcfirst }}ResponseTransfer;"
 
     - AddZedBusinessModelMethod:
           arguments:
@@ -44,11 +44,11 @@ postSpryks:
               modelMethod:
                   value: disconnect
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
               output:
                   value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
               body:
-                  value: "${{ module | lcfirst }}ResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer();\n\n        return ${{ module | lcfirst }}ResponseTransfer;"
+                  value: "return ${{ module | lcfirst }}ResponseTransfer;"
 
     - AddZedCommunicationControllerAction:
           excludedSpryks:
@@ -68,20 +68,20 @@ postSpryks:
                     - "${{ module | lcfirst }}ResponseTransfer = new {{ module }}ResponseTransfer();"
                     - "${{ module | lcfirst }}ResponseTransfer = $this->getFactory()"
                     - "    ->createRequestValidator()"
-                    - "    ->validateRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
+                    - "    ->validateConnectRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
                     - ""
                     - "$responseBuilder = $this->getFactory()->createResponseBuilder();"
                     - ""
                     - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
-                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), Response::HTTP_BAD_REQUEST);"
+                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST);"
                     - "};"
                     - ""
-                    - "${{ module | lcfirst }}Transfer = $this->getFactory()->createRequestToTransferMapper()->mapRequestToTransfer($request);"
+                    - "${{ module | lcfirst }}Transfer = $this->getFactory()->createRequestToTransferMapper()->mapConnectRequestToTransfer($request);"
                     - ""
                     - "${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->connect(${{ module | lcfirst }}Transfer, ${{ module | lcfirst }}ResponseTransfer);"
                     - ""
                     - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
-                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), /* What to put here? */);"
+                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST /* What to put here? */);"
                     - "};"
                     - ""
                     - "return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer));"
@@ -101,15 +101,33 @@ postSpryks:
                   value: disconnectAction
               body:
                   value:
-                      - "${{ module | lcfirst }}Transfer = new {{ module }}Transfer();"
-                      - "${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->connect(${{ module | lcfirst }}Transfer);"
+                      - "${{ module | lcfirst }}ResponseTransfer = new {{ module }}ResponseTransfer();"
+                      - "${{ module | lcfirst }}ResponseTransfer = $this->getFactory()"
+                      - "    ->createRequestValidator()"
+                      - "    ->validateDisconnectRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
+                      - ""
+                      - "$responseBuilder = $this->getFactory()->createResponseBuilder();"
+                      - ""
+                      - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
+                      - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST);"
+                      - "};"
+                      - ""
+                      - "${{ module | lcfirst }}Transfer = $this->getFactory()->createRequestToTransferMapper()->mapDisconnectRequestToTransfer($request);"
+                      - ""
+                      - "${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->disconnect(${{ module | lcfirst }}Transfer, ${{ module | lcfirst }}ResponseTransfer);"
+                      - ""
+                      - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
+                      - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST /* What to put here? */);"
+                      - "};"
+                      - ""
+                      - "return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer));"
 
     - AddZedBusinessFacadeMethod:
         arguments:
             facadeMethod:
                 value: connect
             input:
-                value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
             output:
                 value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
             body:
@@ -120,20 +138,118 @@ postSpryks:
             facadeMethod:
                 value: disconnect
             input:
-                value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
             output:
                 value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
             body:
                 value: "return $this->getFactory()->createRegistry()->disconnect(${{ module | lcfirst }}Transfer);"
 
-    - AddSharedTransferDefinition:
-        arguments:
-            name:
-                value: "{{ module }}Transfer"
+    - AddZedCommunicationModelMethod:
+          arguments:
+              className:
+                  value: RequestValidator
+              subDirectory:
+                  value: RequestValidator
+              modelMethod:
+                  value: validateConnectRequest
+              input:
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+              body:
+                  value: "return ${{ module | lcfirst }}ResponseTransfer;"
+
+    - AddZedCommunicationModelMethod:
+          arguments:
+              className:
+                  value: RequestValidator
+              subDirectory:
+                  value: RequestValidator
+              modelMethod:
+                  value: validateDisconnectRequest
+              input:
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+              body:
+                  value: "return ${{ module | lcfirst }}ResponseTransfer;"
+
+    - AddZedCommunicationModelMethod:
+          arguments:
+              className:
+                  value: RequestToTransferMapper
+              subDirectory:
+                  value: RequestMapper
+              modelMethod:
+                  value: mapConnectRequestToTransfer
+              input:
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer"
+              body:
+                  value:
+                      - "${{ module | lcfirst }}Transfer = new {{ module }}Transfer();"
+                      - ""
+                      - "return ${{ module | lcfirst }}Transfer;"
+
+    - AddZedCommunicationModelMethod:
+          arguments:
+              className:
+                  value: RequestToTransferMapper
+              subDirectory:
+                  value: RequestMapper
+              modelMethod:
+                  value: mapConnectRequestToTransfer
+              input:
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer"
+              body:
+                  value:
+                      - "${{ module | lcfirst }}Transfer = new {{ module }}Transfer();"
+                      - ""
+                      - "return ${{ module | lcfirst }}Transfer;"
+
+    - AddZedCommunicationModelMethod:
+          arguments:
+              className:
+                  value: RequestToTransferMapper
+              subDirectory:
+                  value: RequestMapper
+              modelMethod:
+                  value: mapDisconnectRequestToTransfer
+              input:
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer"
+              body:
+                  value:
+                      - "${{ module | lcfirst }}Transfer = new {{ module }}Transfer();"
+                      - ""
+                      - "return ${{ module | lcfirst }}Transfer;"
+
+    - AddZedCommunicationModelMethod:
+          arguments:
+              className:
+                  value: ResponseBuilder
+              subDirectory:
+                  value: ResponseBuilder
+              modelMethod:
+                  value: createResponse
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+              output:
+                  value: "array"
+              body:
+                  value:
+                      - "return ${{ module | lcfirst }}ResponseTransfer->modifiedToArray();"
 
     - AddSharedTransferDefinition:
         arguments:
             name:
                 value: "{{ module }}Transfer"
 
-
+    - AddSharedTransferDefinition:
+        arguments:
+            name:
+                value: "{{ module }}Transfer"

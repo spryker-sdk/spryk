@@ -31,8 +31,11 @@ class CallbackFactory
     {
         return new CallbackCollection([
             $this->createZedFactoryMethodNameCallback(),
+            $this->createZedCommunicationFactoryMethodNameCallback(),
             $this->createZedBusinessModelTargetFilenameCallback(),
+            $this->createZedCommunicationModelTargetFilenameCallback(),
             $this->createZedBusinessModelInterfaceTargetFilenameCallback(),
+            $this->createZedCommunicationModelInterfaceTargetFilenameCallback(),
             $this->createZedBusinessModelSubDirectoryCallback(),
             $this->createZedTestMethodNameCallback(),
             $this->createClassNameShortCallback(),
@@ -56,6 +59,14 @@ class CallbackFactory
     /**
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
      */
+    public function createZedCommunicationFactoryMethodNameCallback(): CallbackInterface
+    {
+        return new ZedCommunicationFactoryMethodNameCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
     public function createZedFactoryMethodNameCallback(): CallbackInterface
     {
         return new ZedBusinessFactoryMethodNameCallback();
@@ -72,9 +83,25 @@ class CallbackFactory
     /**
      * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
      */
+    public function createZedCommunicationModelTargetFilenameCallback(): CallbackInterface
+    {
+        return new ZedCommunicationModelTargetFilenameCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
     public function createZedBusinessModelInterfaceTargetFilenameCallback(): CallbackInterface
     {
         return new ZedBusinessModelInterfaceTargetFilenameCallback();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Callback\CallbackInterface
+     */
+    public function createZedCommunicationModelInterfaceTargetFilenameCallback(): CallbackInterface
+    {
+        return new ZedCommunicationModelInterfaceTargetFilenameCallback();
     }
 
     /**

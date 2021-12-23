@@ -1,0 +1,38 @@
+spryk: method
+description: "Adds a new method to the *target* communication model interface."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    className: ~
+
+    subDirectory:
+        inherit: true
+        isOptional: true
+
+    modelMethod:
+        inherit: true
+
+    input:
+        inherit: true
+
+    output:
+        inherit: true
+
+    template:
+        value: Common/InterfaceMethod.php.twig
+
+    target:
+        value: "{{ className }}Interface"
+
+    fqcnPattern:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}Interface"
+
+preSpryks:
+    - AddZedCommunicationModelInterface

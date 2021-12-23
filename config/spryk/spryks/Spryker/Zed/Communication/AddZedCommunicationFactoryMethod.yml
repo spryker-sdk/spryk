@@ -1,0 +1,40 @@
+spryk: method
+description: "Adds a method to the *module*CommunicationFactory."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    subDirectory:
+        inherit: true
+        isOptional: true
+
+    className:
+        inherit: true
+
+    interfaceName:
+        inherit: true
+        isOptional: true
+
+    factoryMethod:
+        callbackOnly: true
+        callback: ZedCommunicationFactoryMethodNameCallback
+
+    dependencyMethods:
+        isMultiple: true
+        isOptional: true
+
+    template:
+        value: Zed/Communication/MethodCommunicationFactory.php.twig
+
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\{{ module }}CommunicationFactory"
+
+preSpryks:
+    - AddZedCommunicationFactory
+
