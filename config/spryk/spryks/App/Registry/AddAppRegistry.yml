@@ -57,14 +57,34 @@ postSpryks:
           arguments:
               input:
                   value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
+              output:
+                  value: "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
               controller:
                   value: RegistryController
               controllerMethod:
                   value: connectAction
               body:
                   value:
-                    - "${{ module | lcfirst }}ResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer();\n\n"
-                    - "return ${{ module | lcfirst }}ResponseTransfer;"
+                    - "${{ module | lcfirst }}ResponseTransfer = new {{ module }}ResponseTransfer();"
+                    - "${{ module | lcfirst }}ResponseTransfer = $this->getFactory()"
+                    - "    ->createRequestValidator()"
+                    - "    ->validateRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
+                    - ""
+                    - "$responseBuilder = $this->getFactory()->createResponseBuilder();"
+                    - ""
+                    - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
+                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), Response::HTTP_BAD_REQUEST);"
+                    - "};"
+                    - ""
+                    - "${{ module | lcfirst }}Transfer = $this->getFactory()->createRequestToTransferMapper()->mapRequestToTransfer($request);"
+                    - ""
+                    - "${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->connect(${{ module | lcfirst }}Transfer, ${{ module | lcfirst }}ResponseTransfer);"
+                    - ""
+                    - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
+                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), /* What to put here? */);"
+                    - "};"
+                    - ""
+                    - "return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer));"
 
     - AddZedCommunicationControllerAction:
           excludedSpryks:
@@ -73,12 +93,16 @@ postSpryks:
           arguments:
               input:
                   value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
+              output:
+                  value: "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
               controller:
                   value: RegistryController
               controllerMethod:
                   value: disconnectAction
               body:
-                  value: "${{ module | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ module }}Transfer();\n        ${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->disconnect(${{ module | lcfirst }}Transfer);"
+                  value:
+                      - "${{ module | lcfirst }}Transfer = new {{ module }}Transfer();"
+                      - "${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->connect(${{ module | lcfirst }}Transfer);"
 
     - AddZedBusinessFacadeMethod:
         arguments:

@@ -91,9 +91,9 @@ class Argument implements ArgumentInterface
     {
         $value = $this->getValue();
 
-//        if (!is_string($value)) {
-//            throw new \Exception(sprintf('Argument "%s" toString must return a string but returns "%s"', $this->getName(), gettype($value)));
-//        }
+        if (is_array($value)) {
+            return implode(PHP_EOL, $value);
+        }
 
         return $value;
     }
