@@ -27,7 +27,7 @@ class {{ className | ensureConsoleSuffix }}Test extends Unit
     /**
      * @return void
      */
-    public function testExecutes_add_test_info(): void
+    public function testExecutes(): void
     {
         $command = new {{ className | ensureConsoleSuffix }}();
         $commandTester = $this->tester->getConsoleTester($command);

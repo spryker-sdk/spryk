@@ -38,6 +38,9 @@ arguments:
     output:
         isOptional: true
 
+    body:
+        default: ""
+
     facadeMethod:
         value: "{{ modelMethod }}"
 
@@ -52,6 +55,7 @@ arguments:
 
 preSpryks:
     - AddZedBusinessModel
+    - AddZedBusinessModelInterfaceMethod
 
 postSpryks:
     - AddZedBusinessFacadeMethod:

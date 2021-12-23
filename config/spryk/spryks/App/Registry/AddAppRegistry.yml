@@ -32,6 +32,8 @@ postSpryks:
                   value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
               output:
                   value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+              body:
+                  value: "${{ module | lcfirst }}ResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer();\n\n        return ${{ module | lcfirst }}ResponseTransfer;"
 
     - AddZedBusinessModelMethod:
           arguments:
@@ -45,28 +47,36 @@ postSpryks:
                   value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer"
               output:
                   value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
-
-    - AddZedCommunicationControllerAction:
-          excludedSpryks:
-              - AddZedPresentationTwig
-              - AddZedNavigationNode
-          arguments:
-              controller:
-                  value: RegistryController
-              controllerMethod:
-                  value: connect
               body:
-                  value: "${{ module | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ module }}Transfer();\n        ${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->connect(${{ module | lcfirst }}Transfer);"
+                  value: "${{ module | lcfirst }}ResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer();\n\n        return ${{ module | lcfirst }}ResponseTransfer;"
 
     - AddZedCommunicationControllerAction:
           excludedSpryks:
               - AddZedPresentationTwig
               - AddZedNavigationNode
           arguments:
+              input:
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
               controller:
                   value: RegistryController
               controllerMethod:
-                  value: disconnect
+                  value: connectAction
+              body:
+                  value:
+                    - "${{ module | lcfirst }}ResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer();\n\n"
+                    - "return ${{ module | lcfirst }}ResponseTransfer;"
+
+    - AddZedCommunicationControllerAction:
+          excludedSpryks:
+              - AddZedPresentationTwig
+              - AddZedNavigationNode
+          arguments:
+              input:
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
+              controller:
+                  value: RegistryController
+              controllerMethod:
+                  value: disconnectAction
               body:
                   value: "${{ module | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ module }}Transfer();\n        ${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->disconnect(${{ module | lcfirst }}Transfer);"
 

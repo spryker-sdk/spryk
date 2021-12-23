@@ -27,6 +27,6 @@ class ZedTestMethodNameCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
-        return 'test' . ucfirst($value) . '_add_test_info';
+        return 'test' . ucfirst($value);
     }
 }

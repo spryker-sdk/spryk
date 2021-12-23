@@ -33,6 +33,12 @@
 
     {
     {% if body is defined and body is not empty %}
+        {%  if body is iterable %}
+            {% for line in body %}
+    {{ line | raw }}
+            {% endfor %}
+        {% else %}
     {{ body | raw }}
+        {% endif %}
     {% endif -%}
     }

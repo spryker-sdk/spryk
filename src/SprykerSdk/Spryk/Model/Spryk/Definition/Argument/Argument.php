@@ -85,15 +85,15 @@ class Argument implements ArgumentInterface
     }
 
     /**
-     * @return mixed
+     * @return string|array
      */
     public function __toString()
     {
         $value = $this->getValue();
 
-        if (!is_string($value)) {
-            throw new \Exception(sprintf('Argument "%s" toString must return a string but returns "%s"', $this->getName(), gettype($value)));
-        }
+//        if (!is_string($value)) {
+//            throw new \Exception(sprintf('Argument "%s" toString must return a string but returns "%s"', $this->getName(), gettype($value)));
+//        }
 
         return $value;
     }

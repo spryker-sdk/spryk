@@ -34,11 +34,12 @@ arguments:
     body:
         value: ""
 
+    input:
+        value: ""
+
     output:
         default: void
-#
-#    template:
-#        value: Zed/Communication/MethodZedCommunicationController.php.twig
+
     template:
         value: Common/Method.php.twig
 
