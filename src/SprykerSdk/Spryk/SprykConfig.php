@@ -193,7 +193,7 @@ class SprykConfig
     {
         return Config::get(
             KernelConstants::CORE_NAMESPACES,
-            getenv('CORE_NAMESPACES') ? explode(',', getenv('CORE_NAMESPACES')) : []
+            getenv('CORE_NAMESPACES') ? explode(',', getenv('CORE_NAMESPACES')) : [],
         );
     }
 
@@ -202,7 +202,7 @@ class SprykConfig
      */
     public function getProjectNamespace(): ?string
     {
-        return Config::get(KernelConstants::PROJECT_NAMESPACE, getenv('PROJECT_NAMESPACE') ?:'');
+        return Config::get(KernelConstants::PROJECT_NAMESPACE, getenv('PROJECT_NAMESPACE') ?: '');
     }
 
     /**
@@ -212,7 +212,7 @@ class SprykConfig
     {
         return Config::get(
             KernelConstants::PROJECT_NAMESPACES,
-            getenv('PROJECT_NAMESPACES') ? explode(',', getenv('PROJECT_NAMESPACES')) : []
+            getenv('PROJECT_NAMESPACES') ? explode(',', getenv('PROJECT_NAMESPACES')) : [],
         );
     }
 
