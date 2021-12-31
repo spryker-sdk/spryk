@@ -191,9 +191,16 @@ class SprykConfig
      */
     public function getCoreNamespaces(): array
     {
+        $namespaces = [];
+        $namespacesFromEnv = getenv('CORE_NAMESPACES');
+        if ($namespacesFromEnv) {
+            /** @var string $namespacesFromEnv */
+            $namespaces = explode(',', $namespacesFromEnv);
+        }
+
         return Config::get(
             KernelConstants::CORE_NAMESPACES,
-            getenv('CORE_NAMESPACES') ? explode(',', getenv('CORE_NAMESPACES')) : [],
+            $namespaces,
         );
     }
 
@@ -210,9 +217,16 @@ class SprykConfig
      */
     public function getProjectNamespaces(): array
     {
+        $namespaces = [];
+        $namespacesFromEnv = getenv('PROJECT_NAMESPACES');
+        if ($namespacesFromEnv) {
+            /** @var string $namespacesFromEnv */
+            $namespaces = explode(',', $namespacesFromEnv);
+        }
+
         return Config::get(
             KernelConstants::PROJECT_NAMESPACES,
-            getenv('PROJECT_NAMESPACES') ? explode(',', getenv('PROJECT_NAMESPACES')) : [],
+            $namespaces,
         );
     }
 
