@@ -192,9 +192,9 @@ class SprykConfig
     public function getCoreNamespaces(): array
     {
         $namespaces = [];
+        /** @var string $namespacesFromEnv */
         $namespacesFromEnv = getenv('CORE_NAMESPACES');
         if ($namespacesFromEnv) {
-            /** @var string $namespacesFromEnv */
             $namespaces = explode(',', $namespacesFromEnv);
         }
 
@@ -218,9 +218,9 @@ class SprykConfig
     public function getProjectNamespaces(): array
     {
         $namespaces = [];
+        /** @var string $namespacesFromEnv */
         $namespacesFromEnv = getenv('PROJECT_NAMESPACES');
         if ($namespacesFromEnv) {
-            /** @var string $namespacesFromEnv */
             $namespaces = explode(',', $namespacesFromEnv);
         }
 
