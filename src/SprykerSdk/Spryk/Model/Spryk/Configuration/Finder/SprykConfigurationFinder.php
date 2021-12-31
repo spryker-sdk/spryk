@@ -14,12 +14,12 @@ use Symfony\Component\Finder\SplFileInfo;
 class SprykConfigurationFinder implements SprykConfigurationFinderInterface
 {
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $directories;
 
     /**
-     * @param string[] $directories
+     * @param array<string> $directories
      */
     public function __construct(array $directories)
     {

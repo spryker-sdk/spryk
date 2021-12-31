@@ -94,7 +94,10 @@
     "config": {
         "use-include-path": true,
         "process-timeout": 600,
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "bin": [
         "bin/spryk-run",

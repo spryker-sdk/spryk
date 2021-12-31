@@ -56,7 +56,7 @@ class AddClientDependencyServiceInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory($moduleName, 'Client')
-            . 'Dependency/Service/FooBarToZipZapServiceInterface.php'
+            . 'Dependency/Service/FooBarToZipZapServiceInterface.php',
         );
     }
 }

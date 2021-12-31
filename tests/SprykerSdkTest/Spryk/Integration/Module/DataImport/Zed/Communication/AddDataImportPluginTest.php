@@ -41,7 +41,7 @@ class AddDataImportPluginTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getModuleDirectory()
-            . 'src/Spryker/Zed/FooBar/Communication/Plugin/DataImport/FooBarItemDataImportPlugin.php'
+            . 'src/Spryker/Zed/FooBar/Communication/Plugin/DataImport/FooBarItemDataImportPlugin.php',
         );
     }
 
@@ -58,7 +58,7 @@ class AddDataImportPluginTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Communication/Plugin/DataImport/FooBarItemDataImportPlugin.php'
+            . 'Communication/Plugin/DataImport/FooBarItemDataImportPlugin.php',
         );
     }
 }

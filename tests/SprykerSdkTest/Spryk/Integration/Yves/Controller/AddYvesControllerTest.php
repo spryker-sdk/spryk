@@ -40,7 +40,7 @@ class AddYvesControllerTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getModuleDirectory()
-            . 'src/Spryker/Yves/FooBar/Controller/FooBarController.php'
+            . 'src/Spryker/Yves/FooBar/Controller/FooBarController.php',
         );
     }
 
@@ -57,7 +57,7 @@ class AddYvesControllerTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
-            . 'Controller/FooBarController.php'
+            . 'Controller/FooBarController.php',
         );
     }
 }

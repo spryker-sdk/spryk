@@ -20,7 +20,7 @@ class CallbackFactory
     public function createCallbackArgumentResolver(): CallbackArgumentResolverInterface
     {
         return new CallbackArgumentResolver(
-            $this->createCallbackCollection()
+            $this->createCallbackCollection(),
         );
     }
 

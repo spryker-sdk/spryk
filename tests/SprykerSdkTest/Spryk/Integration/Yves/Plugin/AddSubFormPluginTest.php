@@ -53,7 +53,7 @@ class AddSubFormPluginTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
-            . 'Plugin/TestPaymentSubFormPlugin.php'
+            . 'Plugin/TestPaymentSubFormPlugin.php',
         );
     }
 }

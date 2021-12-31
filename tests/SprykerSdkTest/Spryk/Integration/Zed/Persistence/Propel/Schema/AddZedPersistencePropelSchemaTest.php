@@ -55,7 +55,7 @@ class AddZedPersistencePropelSchemaTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Persistence/Propel/Schema/spy_foo_bar.schema.xml'
+            . 'Persistence/Propel/Schema/spy_foo_bar.schema.xml',
         );
     }
 }

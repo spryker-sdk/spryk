@@ -50,7 +50,7 @@ class AddServiceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Service')
-            . 'FooBarService.php'
+            . 'FooBarService.php',
         );
     }
 }

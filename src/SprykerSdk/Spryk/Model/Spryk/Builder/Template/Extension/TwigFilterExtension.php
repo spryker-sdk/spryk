@@ -13,12 +13,12 @@ use Twig\TwigFilter;
 class TwigFilterExtension extends AbstractExtension
 {
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface>
      */
     protected $filters;
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface[] $filters
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface> $filters
      */
     public function __construct(array $filters)
     {
@@ -26,7 +26,7 @@ class TwigFilterExtension extends AbstractExtension
     }
 
     /**
-     * @return \Twig\TwigFilter[]
+     * @return array<\Twig\TwigFilter>
      */
     public function getFilters(): array
     {

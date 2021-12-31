@@ -46,7 +46,7 @@ class AddGlueDependencyClientDependencyProviderConstantTest extends Unit
             ClassName::GLUE_DEPENDENCY_PROVIDER,
             'CLIENT_ZIP_ZAP',
             'CLIENT_ZIP_ZAP',
-            'public'
+            'public',
         );
     }
 
@@ -68,7 +68,7 @@ class AddGlueDependencyClientDependencyProviderConstantTest extends Unit
             ClassName::PROJECT_GLUE_DEPENDENCY_PROVIDER,
             'CLIENT_ZIP_ZAP',
             'CLIENT_ZIP_ZAP',
-            'public'
+            'public',
         );
     }
 }

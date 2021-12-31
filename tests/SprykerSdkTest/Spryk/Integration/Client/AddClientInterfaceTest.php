@@ -55,7 +55,7 @@ class AddClientInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Client')
-            . 'FooBarClientInterface.php'
+            . 'FooBarClientInterface.php',
         );
     }
 }

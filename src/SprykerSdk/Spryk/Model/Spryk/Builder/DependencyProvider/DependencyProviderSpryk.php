@@ -22,18 +22,22 @@ class DependencyProviderSpryk implements SprykBuilderInterface
      * @var string
      */
     protected const ARGUMENT_TARGET = 'target';
+
     /**
      * @var string
      */
     protected const ARGUMENT_TEMPLATE = 'template';
+
     /**
      * @var string
      */
     protected const ARGUMENT_METHOD_NAME = 'provideDependencies';
+
     /**
      * @var string
      */
     protected const ARGUMENT_PROVIDER_METHOD = 'providerMethod';
+
     /**
      * @var string
      */
@@ -84,7 +88,7 @@ class DependencyProviderSpryk implements SprykBuilderInterface
 
         $methodContent = $this->renderer->render(
             $templateName,
-            $sprykDefinition->getArgumentCollection()->getArguments()
+            $sprykDefinition->getArgumentCollection()->getArguments(),
         );
 
         $search = 'return $container;';
@@ -99,8 +103,8 @@ class DependencyProviderSpryk implements SprykBuilderInterface
         $style->report(
             sprintf(
                 'Added provided dependency "%s" to container.',
-                $this->getTargetArgument($sprykDefinition)
-            )
+                $this->getTargetArgument($sprykDefinition),
+            ),
         );
     }
 

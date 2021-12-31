@@ -22,6 +22,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
      * @var string
      */
     protected const ARGUMENT_SOURCE_PATH = 'sourcePath';
+
     /**
      * @var string
      */
@@ -31,10 +32,12 @@ class CopyModuleSpryk implements SprykBuilderInterface
      * @var string
      */
     protected const ARGUMENT_TARGET_PATH = 'targetFilePath';
+
     /**
      * @var string
      */
     protected const ARGUMENT_TO_ORGANIZATION = 'toOrganization';
+
     /**
      * @var string
      */
@@ -151,7 +154,7 @@ class CopyModuleSpryk implements SprykBuilderInterface
         $style->report(sprintf(
             'Copied "<fg=green>%s</>" to "<fg=green>%s</>"',
             rtrim($fileInfo->getRelativePath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $fileInfo->getFilename(),
-            $targetPath
+            $targetPath,
         ));
     }
 

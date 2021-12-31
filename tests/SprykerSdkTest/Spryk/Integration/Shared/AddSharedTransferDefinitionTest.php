@@ -43,7 +43,7 @@ class AddSharedTransferDefinitionTest extends Unit
             '<?xml version="1.0"?>
 <transfers xmlns="spryker:transfer-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
   <transfer name="FooBarItem"> </transfer>
-</transfers>'
+</transfers>',
         );
     }
 
@@ -65,7 +65,7 @@ class AddSharedTransferDefinitionTest extends Unit
             '<?xml version="1.0"?>
 <transfers xmlns="spryker:transfer-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
   <transfer name="FooBarItem"> </transfer>
-</transfers>'
+</transfers>',
         );
     }
 }

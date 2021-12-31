@@ -46,7 +46,7 @@ class AddZedDependencyServiceDependencyProviderConstantTest extends Unit
             ClassName::ZED_DEPENDENCY_PROVIDER,
             'SERVICE_ZIP_ZAP',
             'zip zap service',
-            'public'
+            'public',
         );
     }
 
@@ -68,7 +68,7 @@ class AddZedDependencyServiceDependencyProviderConstantTest extends Unit
             ClassName::PROJECT_ZED_DEPENDENCY_PROVIDER,
             'SERVICE_ZIP_ZAP',
             'zip zap service',
-            'public'
+            'public',
         );
     }
 }

@@ -80,7 +80,7 @@ class ArgumentResolver implements ArgumentResolverInterface
                 $argumentName,
                 $sprykName,
                 (array)$argumentDefinition,
-                $resolvedArgumentCollection
+                $resolvedArgumentCollection,
             );
             $argumentCollection->addArgument($argument);
             $resolvedArgumentCollection->addArgument($argument);
@@ -116,7 +116,7 @@ class ArgumentResolver implements ArgumentResolverInterface
         if (isset($argumentDefinition['callbackOnly'])) {
             if ($this->isValueKnownForArgument($argumentName, $argumentDefinition, $resolvedArgumentCollection)) {
                 $argument->setValue(
-                    $this->getKnownValueForArgument($argumentName, $argumentDefinition, $resolvedArgumentCollection)
+                    $this->getKnownValueForArgument($argumentName, $argumentDefinition, $resolvedArgumentCollection),
                 );
             }
 
@@ -281,7 +281,7 @@ class ArgumentResolver implements ArgumentResolverInterface
     {
         $question = new Question(
             sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument),
-            $default
+            $default,
         );
         $question->setNormalizer(function ($value) {
             return $value ?: '';
@@ -303,7 +303,7 @@ class ArgumentResolver implements ArgumentResolverInterface
     /**
      * @param string $argument
      * @param string $sprykName
-     * @param string[]|int[]|null[] $values
+     * @param array<string>|array<int>|array<null> $values
      * @param string|int|null $default
      *
      * @return string|int|null
@@ -313,7 +313,7 @@ class ArgumentResolver implements ArgumentResolverInterface
         $question = new ChoiceQuestion(
             sprintf('Enter value for <fg=yellow>%s.%s</> argument', $sprykName, $argument),
             $values,
-            $default
+            $default,
         );
 
         return $this->style->askQuestion($question);

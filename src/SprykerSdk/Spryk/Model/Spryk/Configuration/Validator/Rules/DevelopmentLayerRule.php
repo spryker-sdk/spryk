@@ -12,7 +12,7 @@ use SprykerSdk\Spryk\SprykConfig;
 class DevelopmentLayerRule implements ConfigurationValidatorRuleInterface
 {
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $availableDevelopmentLayers;
 

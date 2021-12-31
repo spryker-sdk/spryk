@@ -22,10 +22,12 @@ class TransferSpryk implements SprykBuilderInterface
      * @var string
      */
     public const ARGUMENT_TARGET_PATH = 'targetPath';
+
     /**
      * @var string
      */
     public const ARGUMENT_NAME = 'name';
+
     /**
      * @var string
      */

@@ -30,8 +30,8 @@ class AssertionModule extends Module
             sprintf(
                 'Expected that class "%s" has method "%s" but method not found.',
                 $className,
-                $methodName
-            )
+                $methodName,
+            ),
         );
     }
 
@@ -70,8 +70,8 @@ class AssertionModule extends Module
             sprintf(
                 'Expected that class "%s" has constant "%s" but constant not found.',
                 $className,
-                $constantName
-            )
+                $constantName,
+            ),
         );
 
         if ($hasConstant) {
@@ -84,8 +84,8 @@ class AssertionModule extends Module
                     'Expected that class constant "%s" visibility is "%s" but it is "%s".',
                     $constantName,
                     $visibility,
-                    $constantVisibility
-                )
+                    $constantVisibility,
+                ),
             );
             $this->assertSame(
                 $constantValue,
@@ -94,8 +94,8 @@ class AssertionModule extends Module
                     'Expected that class constant "%s" value is "%s" but it is "%s".',
                     $constantName,
                     $constantValue,
-                    $constantReflection->getValue()
-                )
+                    $constantReflection->getValue(),
+                ),
             );
         }
     }
@@ -159,7 +159,7 @@ class AssertionModule extends Module
     /**
      * @param \PHPStan\BetterReflection\Reflection\ReflectionClass $classInfo
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function getClassMethodNames(ReflectionClass $classInfo): array
     {

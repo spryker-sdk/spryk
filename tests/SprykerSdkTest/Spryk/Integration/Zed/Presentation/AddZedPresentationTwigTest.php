@@ -56,7 +56,7 @@ class AddZedPresentationTwigTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Presentation/Index/index.twig'
+            . 'Presentation/Index/index.twig',
         );
     }
 
@@ -88,7 +88,7 @@ class AddZedPresentationTwigTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Presentation/Index/index.twig'
+            . 'Presentation/Index/index.twig',
         );
     }
 }

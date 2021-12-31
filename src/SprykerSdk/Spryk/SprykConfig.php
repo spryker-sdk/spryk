@@ -19,6 +19,7 @@ class SprykConfig
      * @var string
      */
     public const SPRYK_DEFINITION_KEY_LEVEL = 'level';
+
     /**
      * @var string
      */
@@ -28,10 +29,12 @@ class SprykConfig
      * @var string
      */
     public const NAME_DEVELOPMENT_LAYER_CORE = 'core';
+
     /**
      * @var string
      */
     public const NAME_DEVELOPMENT_LAYER_PROJECT = 'project';
+
     /**
      * @var string
      */
@@ -41,10 +44,12 @@ class SprykConfig
      * @var string
      */
     public const NAME_ARGUMENT_LAYER = 'layer';
+
     /**
      * @var string
      */
     public const NAME_ARGUMENT_MODE = 'mode';
+
     /**
      * @var string
      */
@@ -54,10 +59,12 @@ class SprykConfig
      * @var string
      */
     public const NAME_ARGUMENT_KEY_DEFAULT = 'default';
+
     /**
      * @var string
      */
     public const NAME_ARGUMENT_KEY_VALUE = 'value';
+
     /**
      * @var string
      */
@@ -67,6 +74,7 @@ class SprykConfig
      * @var string
      */
     protected const NAME_DIRECTORY_GENERATED = 'generated';
+
     /**
      * @var string
      */
@@ -76,6 +84,7 @@ class SprykConfig
      * @var string
      */
     protected const NAME_ORGANIZATION = 'spryker-sdk';
+
     /**
      * @var string
      */
@@ -85,10 +94,12 @@ class SprykConfig
      * @var int
      */
     protected const SPRYK_LEVEL_1 = 1;
+
     /**
      * @var int
      */
     protected const SPRYK_LEVEL_2 = 2;
+
     /**
      * @var int
      */
@@ -97,7 +108,7 @@ class SprykConfig
     public const SPRYK_DEFAULT_DUMP_LEVEL = self::SPRYK_LEVEL_1;
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getRootSprykDirectories(): array
     {
@@ -105,7 +116,7 @@ class SprykConfig
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getSprykDirectories(): array
     {
@@ -113,7 +124,7 @@ class SprykConfig
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getTemplateDirectories(): array
     {
@@ -123,7 +134,7 @@ class SprykConfig
     /**
      * @param string|null $subDirectory
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function buildDirectoryList(?string $subDirectory = null): array
     {
@@ -164,7 +175,7 @@ class SprykConfig
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getAvailableLevels(): array
     {

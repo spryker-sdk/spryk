@@ -13,9 +13,9 @@ use SprykerSdk\Spryk\SprykConfig;
 class DefaultValueExtender extends AbstractExtender implements SprykConfigurationExtenderInterface
 {
     /**
-     * @param mixed[] $sprykConfig
+     * @param array<mixed> $sprykConfig
      *
-     * @return mixed[]
+     * @return array<mixed>
      */
     public function extend(array $sprykConfig): array
     {

@@ -63,7 +63,7 @@ class AddConstantTest extends Unit
             ClassName::CLIENT,
             $constantName,
             $constantValue,
-            $constantVisibility
+            $constantVisibility,
         );
     }
 }

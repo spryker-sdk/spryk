@@ -21,18 +21,22 @@ class SprykRunConsole extends AbstractSprykConsole
      * @var string
      */
     protected const COMMAND_NAME = 'spryk:run';
+
     /**
      * @var string
      */
     protected const COMMAND_DESCRIPTION = 'Runs a Spryk build process.';
+
     /**
      * @var string
      */
     public const ARGUMENT_SPRYK = 'spryk';
+
     /**
      * @var string
      */
     public const ARGUMENT_TARGET_MODULE = 'targetModule';
+
     /**
      * @var string
      */
@@ -42,6 +46,7 @@ class SprykRunConsole extends AbstractSprykConsole
      * @var string
      */
     public const OPTION_INCLUDE_OPTIONALS = 'include-optional';
+
     /**
      * @var string
      */
@@ -70,7 +75,7 @@ class SprykRunConsole extends AbstractSprykConsole
                 $argumentDefinition['name'],
                 null,
                 $argumentDefinition[SprykConfig::NAME_ARGUMENT_MODE],
-                $argumentDefinition['description']
+                $argumentDefinition['description'],
             );
         }
     }
@@ -103,12 +108,12 @@ class SprykRunConsole extends AbstractSprykConsole
             $this->getSprykName($input),
             (array)OptionsContainer::getOption(static::OPTION_INCLUDE_OPTIONALS),
             $this->getTargetModuleName($input),
-            $this->getDependentModuleName($input)
+            $this->getDependentModuleName($input),
         );
 
         $this->getFacade()->executeSpryk(
             $sprykExecutorConfiguration,
-            $this->getFactory()->createSprykStyle($input, $output)
+            $this->getFactory()->createSprykStyle($input, $output),
         );
 
         return static::CODE_SUCCESS;

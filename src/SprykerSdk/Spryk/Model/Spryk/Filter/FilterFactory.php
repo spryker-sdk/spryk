@@ -13,7 +13,7 @@ use Twig\Extension\ExtensionInterface;
 class FilterFactory
 {
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface>
      */
     public function getFilterCollection(): array
     {

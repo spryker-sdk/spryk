@@ -41,7 +41,7 @@ class MissingSprykExecutionExtension extends Extension
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getMissingSpryks(): array
     {
@@ -52,7 +52,7 @@ class MissingSprykExecutionExtension extends Extension
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getAllSpryks(): array
     {

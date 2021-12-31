@@ -54,7 +54,7 @@ class AddZedDependencyServiceInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Dependency/Service/FooBarToZipZapServiceInterface.php'
+            . 'Dependency/Service/FooBarToZipZapServiceInterface.php',
         );
     }
 }
