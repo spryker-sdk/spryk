@@ -30,7 +30,7 @@ class MethodHelper implements MethodHelperInterface
      */
     public function getMethodReturnType(ReflectionMethod $reflectionMethod): string
     {
-        /** @var ?\PHPStan\BetterReflection\Reflection\ReflectionNamedType $reflectionType */
+        /** @var \PHPStan\BetterReflection\Reflection\ReflectionNamedType|null $reflectionType */
         $reflectionType = $reflectionMethod->getReturnType();
 
         if ($reflectionType === null) {
