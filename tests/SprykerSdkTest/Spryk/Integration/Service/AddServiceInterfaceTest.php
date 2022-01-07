@@ -50,7 +50,7 @@ class AddServiceInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Service')
-            . 'FooBarServiceInterface.php'
+            . 'FooBarServiceInterface.php',
         );
     }
 }

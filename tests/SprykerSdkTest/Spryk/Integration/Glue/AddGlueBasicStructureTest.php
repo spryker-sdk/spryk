@@ -48,7 +48,7 @@ class AddGlueBasicStructureTest extends Unit
             ClassName::GLUE_CONFIG,
             'RESOURCE_FOO_BARS',
             'foo-bars',
-            'public'
+            'public',
         );
         $this->tester->assertClassHasMethod(ClassName::GLUE_BUSINESS_FACTORY, 'createFooBarMapper');
         $this->tester->assertClassHasMethod(ClassName::GLUE_BUSINESS_FACTORY, 'createFooBarRestResponseBuilder');
@@ -79,7 +79,7 @@ class AddGlueBasicStructureTest extends Unit
             ClassName::PROJECT_GLUE_CONFIG,
             'RESOURCE_FOO_BARS',
             'foo-bars',
-            'public'
+            'public',
         );
         $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_BUSINESS_FACTORY, 'createFooBarMapper');
         $this->tester->assertClassHasMethod(ClassName::PROJECT_GLUE_BUSINESS_FACTORY, 'createFooBarRestResponseBuilder');

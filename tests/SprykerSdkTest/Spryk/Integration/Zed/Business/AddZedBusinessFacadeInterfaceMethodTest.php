@@ -68,6 +68,7 @@ class AddZedBusinessFacadeInterfaceMethodTest extends Unit
 
     /**
      * @group testAddsCommentFacadeInterface
+     *
      * @return void
      */
     public function testAddsCommentFacadeInterface(): void

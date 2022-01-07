@@ -14,7 +14,7 @@ use SprykerSdk\Spryk\SprykConfig;
 class ArgumentCollection implements ArgumentCollectionInterface
 {
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface>
      */
     protected $arguments = [];
 
@@ -62,7 +62,7 @@ class ArgumentCollection implements ArgumentCollectionInterface
     }
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Definition\Argument\ArgumentInterface>
      */
     public function getArguments(): array
     {

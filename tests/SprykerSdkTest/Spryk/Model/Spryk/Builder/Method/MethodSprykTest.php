@@ -32,6 +32,7 @@ class MethodSprykTest extends Unit
      * @var string
      */
     public const ARGUMENT_TARGET = '';
+
     /**
      * @var string
      */
@@ -63,7 +64,7 @@ class MethodSprykTest extends Unit
 
         $methodSpryk->build(
             $this->tester->getSprykDefinition([MethodSpryk::ARGUMENT_TARGET => static::ARGUMENT_TARGET]),
-            $this->getSprykStyleMock()
+            $this->getSprykStyleMock(),
         );
     }
 
@@ -78,7 +79,7 @@ class MethodSprykTest extends Unit
 
         $methodSpryk->build(
             $this->tester->getSprykDefinition([MethodSpryk::ARGUMENT_TARGET => static::ARGUMENT_TARGET]),
-            $this->getSprykStyleMock()
+            $this->getSprykStyleMock(),
         );
     }
 
@@ -96,7 +97,7 @@ class MethodSprykTest extends Unit
             ->expects(Unit::once())
             ->method('getReflection')
             ->willReturn(
-                $this->buildReflectionClassMock()
+                $this->buildReflectionClassMock(),
             );
 
         return $methodSprykMock;
@@ -116,7 +117,7 @@ class MethodSprykTest extends Unit
             ->expects(Unit::once())
             ->method('getTargetFilename')
             ->willReturn(
-                codecept_data_dir() . static::EMPTY_FILE_NAME
+                codecept_data_dir() . static::EMPTY_FILE_NAME,
             );
 
         return $methodSprykMock;

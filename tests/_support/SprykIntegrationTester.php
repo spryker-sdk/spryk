@@ -143,7 +143,7 @@ class SprykIntegrationTester extends Actor
     }
 
     /**
-     * @return object|\SprykerSdk\Spryk\SprykConfig
+     * @return \SprykerSdk\Spryk\SprykConfig|object
      */
     protected function getSprykConfigMock()
     {

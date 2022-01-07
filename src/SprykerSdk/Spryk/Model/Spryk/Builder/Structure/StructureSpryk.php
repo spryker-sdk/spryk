@@ -17,6 +17,7 @@ class StructureSpryk implements SprykBuilderInterface
      * @var string
      */
     public const ARGUMENT_DIRECTORIES = 'directories';
+
     /**
      * @var string
      */
@@ -84,7 +85,7 @@ class StructureSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function getDirectoriesToCreate(SprykDefinitionInterface $sprykDefinition): array
     {

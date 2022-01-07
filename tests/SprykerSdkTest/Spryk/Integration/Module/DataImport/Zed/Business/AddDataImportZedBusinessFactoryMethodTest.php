@@ -42,7 +42,7 @@ class AddDataImportZedBusinessFactoryMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(
             ClassName::DATA_IMPORT_BUSINESS_FACTORY,
-            'getFooBarItemDataImporter'
+            'getFooBarItemDataImporter',
         );
     }
 
@@ -59,7 +59,7 @@ class AddDataImportZedBusinessFactoryMethodTest extends Unit
 
         $this->tester->assertClassHasMethod(
             ClassName::PROJECT_DATA_IMPORT_BUSINESS_FACTORY,
-            'getFooBarItemDataImporter'
+            'getFooBarItemDataImporter',
         );
     }
 }

@@ -72,53 +72,60 @@ interface SprykDefinitionInterface
     public function setArgumentCollection(ArgumentCollectionInterface $argumentCollection);
 
     /**
-     * @return array<string>
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition>
      */
     public function getExcludedSpryks(): array;
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition> $excludedSpryks
+     *
+     * @return $this
+     */
+    public function setExcludedSpryks(array $excludedSpryks);
+
+    /**
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition>
      */
     public function getPreSpryks(): array;
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[] $preSpryks
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition> $preSpryks
      *
      * @return $this
      */
     public function setPreSpryks(array $preSpryks);
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition>
      */
     public function getPostSpryks(): array;
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[] $postSpryks
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition> $postSpryks
      *
      * @return $this
      */
     public function setPostSpryks(array $postSpryks);
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getPreCommands(): array;
 
     /**
-     * @param string[] $preCommands
+     * @param array<string> $preCommands
      *
      * @return $this
      */
     public function setPreCommands(array $preCommands);
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getPostCommands(): array;
 
     /**
-     * @param string[] $postCommands
+     * @param array<string> $postCommands
      *
      * @return $this
      */

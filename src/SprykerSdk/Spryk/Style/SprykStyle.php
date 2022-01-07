@@ -163,7 +163,7 @@ class SprykStyle implements SprykStyleInterface
     }
 
     /**
-     * @param string|string[] $messages
+     * @param array<string>|string $messages
      * @param int $options
      *
      * @return void
@@ -227,12 +227,12 @@ class SprykStyle implements SprykStyleInterface
     public function warningCommandReport(string $commandName): void
     {
         $this->output->writeln(
-            sprintf('<fg=yellow>%s</> command cannot be run for the current Spryk configuration.', $commandName)
+            sprintf('<fg=yellow>%s</> command cannot be run for the current Spryk configuration.', $commandName),
         );
     }
 
     /**
-     * @param string|string[] $messages
+     * @param array<string>|string $messages
      * @param int $options
      *
      * @return void

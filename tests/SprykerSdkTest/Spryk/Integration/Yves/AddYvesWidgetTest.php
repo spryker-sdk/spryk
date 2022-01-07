@@ -52,7 +52,7 @@ class AddYvesWidgetTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
-            . 'Widget/ZipZapWidget.php'
+            . 'Widget/ZipZapWidget.php',
         );
     }
 }

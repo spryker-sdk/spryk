@@ -40,8 +40,10 @@ interface ArgumentInterface
 
     /**
      * @param bool $allowOverride
+     *
+     * @return $this
      */
-    public function setAllowOverride(bool $allowOverride): void;
+    public function setAllowOverride(bool $allowOverride);
 
     /**
      * @param array $callbacks
@@ -51,7 +53,7 @@ interface ArgumentInterface
     public function setCallbacks(array $callbacks);
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCallbacks(): array;
 

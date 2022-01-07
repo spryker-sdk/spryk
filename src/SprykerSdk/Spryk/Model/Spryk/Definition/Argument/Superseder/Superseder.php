@@ -24,7 +24,7 @@ class Superseder implements SupersederInterface
     protected $templateRenderer;
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $resolvedArguments = [];
 
@@ -70,7 +70,7 @@ class Superseder implements SupersederInterface
 
         if (!is_array($argumentValue)) {
             $argument->setValue(
-                $this->replacePlaceholderInValue($argumentValue, $sprykArguments, $resolvedArguments)
+                $this->replacePlaceholderInValue($argumentValue, $sprykArguments, $resolvedArguments),
             );
 
             return;

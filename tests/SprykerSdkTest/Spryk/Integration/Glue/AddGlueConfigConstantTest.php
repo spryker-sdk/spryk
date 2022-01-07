@@ -45,7 +45,7 @@ class AddGlueConfigConstantTest extends Unit
             ClassName::GLUE_CONFIG,
             'FOO_BAR_CONSTANT',
             'FOO_BAR_CONSTANT',
-            'public'
+            'public',
         );
     }
 
@@ -67,7 +67,7 @@ class AddGlueConfigConstantTest extends Unit
             ClassName::PROJECT_GLUE_CONFIG,
             'FOO_BAR_CONSTANT',
             'FOO_BAR_CONSTANT',
-            'public'
+            'public',
         );
     }
 }

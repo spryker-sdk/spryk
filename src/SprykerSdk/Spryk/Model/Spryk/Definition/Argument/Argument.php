@@ -25,7 +25,7 @@ class Argument implements ArgumentInterface
     protected $allowOverride = false;
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $callbacks = [];
 
@@ -79,14 +79,18 @@ class Argument implements ArgumentInterface
 
     /**
      * @param bool $allowOverride
+     *
+     * @return $this
      */
-    public function setAllowOverride(bool $allowOverride): void
+    public function setAllowOverride(bool $allowOverride)
     {
         $this->allowOverride = $allowOverride;
+
+        return $this;
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCallbacks(): array
     {
@@ -106,7 +110,7 @@ class Argument implements ArgumentInterface
     }
 
     /**
-     * @return string|array
+     * @return array|string
      */
     public function __toString()
     {

@@ -56,7 +56,7 @@ class AddZedPersistencePropelAbstractEntityTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Persistence/Propel/AbstractSpyFooBar.php'
+            . 'Persistence/Propel/AbstractSpyFooBar.php',
         );
     }
 }

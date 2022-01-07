@@ -10,11 +10,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Dumper;
 interface SprykDefinitionDumperInterface
 {
     /**
-     * @phpstan-return array<mixed>
-     *
      * @param int|null $level
      *
-     * @return array
+     * @return array<mixed>
      */
     public function dump(?int $level = null): array;
 }

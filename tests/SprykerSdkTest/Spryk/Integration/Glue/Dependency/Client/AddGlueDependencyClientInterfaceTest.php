@@ -54,7 +54,7 @@ class AddGlueDependencyClientInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Glue')
-            . 'Dependency/Client/FooBarToZipZapClientInterface.php'
+            . 'Dependency/Client/FooBarToZipZapClientInterface.php',
         );
     }
 }

@@ -47,27 +47,27 @@ class SprykDefinition implements SprykDefinitionInterface
     protected $isCalled = false;
 
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition>
      */
     protected $excludedSpryks = [];
 
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition>
      */
     protected $preSpryks = [];
 
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     * @var array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition>
      */
     protected $postSpryks = [];
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $preCommands = [];
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $postCommands = [];
 
@@ -177,7 +177,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition>
      */
     public function getExcludedSpryks(): array
     {
@@ -185,7 +185,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[] $excludedSpryks
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition> $excludedSpryks
      *
      * @return $this
      */
@@ -197,7 +197,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition>
      */
     public function getPreSpryks(): array
     {
@@ -205,7 +205,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[] $preSpryks
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition> $preSpryks
      *
      * @return $this
      */
@@ -217,7 +217,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition>
      */
     public function getPostSpryks(): array
     {
@@ -225,7 +225,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition[] $postSpryks
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition> $postSpryks
      *
      * @return $this
      */
@@ -237,7 +237,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getPreCommands(): array
     {
@@ -245,7 +245,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @param string[] $preCommands
+     * @param array<string> $preCommands
      *
      * @return $this
      */
@@ -257,7 +257,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getPostCommands(): array
     {
@@ -265,7 +265,7 @@ class SprykDefinition implements SprykDefinitionInterface
     }
 
     /**
-     * @param string[] $postCommands
+     * @param array<string> $postCommands
      *
      * @return $this
      */

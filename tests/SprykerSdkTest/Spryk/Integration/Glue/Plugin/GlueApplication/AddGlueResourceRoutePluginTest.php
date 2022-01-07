@@ -58,7 +58,7 @@ class AddGlueResourceRoutePluginTest extends Unit
         ]);
 
         $this->assertFileExists(
-            $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/FooBarsResourceRoutePlugin.php'
+            $this->tester->getProjectModuleDirectory('FooBar', 'Glue') . 'Plugin/GlueApplication/FooBarsResourceRoutePlugin.php',
         );
     }
 }

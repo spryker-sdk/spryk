@@ -54,7 +54,7 @@ class AddYvesDependencyServiceInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
-            . 'Dependency/Service/FooBarToZipZapServiceInterface.php'
+            . 'Dependency/Service/FooBarToZipZapServiceInterface.php',
         );
     }
 }

@@ -292,7 +292,10 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
             }
         }
 
-        return array_filter($excludedSpryks);
+        /** @var array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinition> $excludedSpryks */
+        $excludedSpryks = array_filter($excludedSpryks);
+
+        return $excludedSpryks;
     }
 
     /**

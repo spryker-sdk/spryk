@@ -23,9 +23,9 @@ interface SprykDefinitionBuilderInterface
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface $sprykExecutorConfiguration
-     * @param mixed[] $sprykConfiguration
+     * @param array<mixed> $sprykConfiguration
      *
-     * @return mixed[]
+     * @return array<mixed>
      */
     public function addTargetModuleParams(
         SprykExecutorConfigurationInterface $sprykExecutorConfiguration,
@@ -34,9 +34,9 @@ interface SprykDefinitionBuilderInterface
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface $sprykExecutorConfiguration
-     * @param mixed[] $sprykConfiguration
+     * @param array<mixed> $sprykConfiguration
      *
-     * @return mixed[]
+     * @return array<mixed>
      */
     public function addDependentModuleParams(
         SprykExecutorConfigurationInterface $sprykExecutorConfiguration,

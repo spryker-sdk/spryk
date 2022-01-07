@@ -39,7 +39,7 @@ class AddYvesThemeTest extends Unit
 
         $this->assertDirectoryExists(
             $this->tester->getModuleDirectory()
-            . 'src/Spryker/Yves/FooBar/Theme/mobile'
+            . 'src/Spryker/Yves/FooBar/Theme/mobile',
         );
     }
 
@@ -56,7 +56,7 @@ class AddYvesThemeTest extends Unit
 
         $this->assertDirectoryExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
-            . 'Theme/mobile'
+            . 'Theme/mobile',
         );
     }
 }

@@ -39,7 +39,7 @@ class AddZedCommunicationGatewayControllerTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getModuleDirectory()
-            . 'src/Spryker/Zed/FooBar/Communication/Controller/GatewayController.php'
+            . 'src/Spryker/Zed/FooBar/Communication/Controller/GatewayController.php',
         );
     }
 
@@ -55,7 +55,7 @@ class AddZedCommunicationGatewayControllerTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Communication/Controller/GatewayController.php'
+            . 'Communication/Controller/GatewayController.php',
         );
     }
 }

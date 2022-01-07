@@ -54,7 +54,7 @@ class AddZedDependencyFacadeInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory()
-            . 'Dependency/Facade/FooBarToZipZapFacadeInterface.php'
+            . 'Dependency/Facade/FooBarToZipZapFacadeInterface.php',
         );
     }
 }

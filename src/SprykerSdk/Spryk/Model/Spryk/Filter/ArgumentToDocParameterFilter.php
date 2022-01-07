@@ -38,7 +38,7 @@ class ArgumentToDocParameterFilter implements FilterInterface
             return sprintf(
                 '%s|null %s',
                 mb_substr($argumentParts[0], 1),
-                $argumentParts[1]
+                $argumentParts[1],
             );
         }
 

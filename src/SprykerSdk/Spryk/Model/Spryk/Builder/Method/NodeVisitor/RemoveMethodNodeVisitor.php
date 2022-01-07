@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Method\NodeVisitor;
 
 use PhpParser\Node;
@@ -21,14 +26,14 @@ class RemoveMethodNodeVisitor extends NodeVisitorAbstract
     protected string $methodName;
 
     /**
-     * @var SprykStyleInterface
+     * @var \SprykerSdk\Spryk\Style\SprykStyleInterface
      */
     protected SprykStyleInterface $style;
 
     /**
      * @param string $name
      * @param string $methodName
-     * @param SprykStyleInterface $style
+     * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
      */
     public function __construct(string $name, string $methodName, SprykStyleInterface $style)
     {

@@ -7,13 +7,13 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Method;
 
+use Exception;
 use PhpParser\Lexer\Emulative;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\CloningVisitor;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 use PHPStan\BetterReflection\BetterReflection;
-use PHPStan\BetterReflection\Reflection\Reflection;
 use PHPStan\BetterReflection\Reflection\ReflectionClass;
 use Ramsey\Uuid\Uuid;
 use SprykerSdk\Spryk\Exception\ArgumentNotFoundException;
@@ -166,6 +166,7 @@ class MethodSpryk implements SprykBuilderInterface
         $process = new Process(['vendor/bin/phpcbf', $tmpFileName, '--standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml']);
         $process->run();
 
+        /** @var string $tmpFileContent */
         $tmpFileContent = file_get_contents($tmpFileName);
 
         $this->putTargetFileContent($sprykDefinition, $tmpFileContent);
@@ -191,7 +192,7 @@ class MethodSpryk implements SprykBuilderInterface
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
      *
-     * @return void
+     * @return string
      */
     protected function removeMethods(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): string
     {
@@ -205,16 +206,24 @@ class MethodSpryk implements SprykBuilderInterface
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\Reflection $reflection
+     * @param \PHPStan\BetterReflection\Reflection\ReflectionClass $reflection
+     * @param string $name
      * @param string $methodName
-     * @param \SprykerSdk\Spryk\Style\SprykStyleInterface|string $style
+     * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
+     *
+     * @throws \Exception
      *
      * @return string
      */
-    protected function removeMethod(Reflection $reflection, string $name, string $methodName, SprykStyleInterface $style): string
+    protected function removeMethod(ReflectionClass $reflection, string $name, string $methodName, SprykStyleInterface $style): string
     {
         $fileName = $reflection->getFileName();
 
+        if (!$fileName) {
+            throw new Exception('Could not get fileName from reflection.');
+        }
+
+        /** @var string $code */
         $code = file_get_contents($fileName);
 
         $lexer = new Emulative([
@@ -229,6 +238,7 @@ class MethodSpryk implements SprykBuilderInterface
         $traverser = new NodeTraverser();
         $traverser->addVisitor(new CloningVisitor());
 
+        /** @var array<\PhpParser\Node> $oldStmts */
         $oldStmts = $parser->parse($code);
         $oldTokens = $lexer->getTokens();
 
@@ -444,9 +454,9 @@ class MethodSpryk implements SprykBuilderInterface
     /**
      * @param string $className
      *
-     * @return \PHPStan\BetterReflection\Reflection\Reflection
+     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
      */
-    protected function getReflectionFromClassName(string $className): Reflection
+    protected function getReflectionFromClassName(string $className): ReflectionClass
     {
         $betterReflection = new BetterReflection();
 

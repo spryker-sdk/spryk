@@ -50,7 +50,7 @@ class AddYvesDependencyProviderTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Yves')
-            . 'FooBarDependencyProvider.php'
+            . 'FooBarDependencyProvider.php',
         );
     }
 }

@@ -15,7 +15,7 @@ interface SprykExecutorConfigurationInterface
     public function getSprykName(): string;
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getIncludeOptionalSubSpryks(): array;
 

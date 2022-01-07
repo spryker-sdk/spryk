@@ -50,7 +50,7 @@ class AddSharedConstantsInterfaceTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getProjectModuleDirectory('FooBar', 'Shared')
-            . 'FooBarConstants.php'
+            . 'FooBarConstants.php',
         );
     }
 }

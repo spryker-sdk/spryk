@@ -53,7 +53,7 @@ class ConfigurationFactory
             $this->createConfigurationMerger(),
             $this->createConfigurationExtender(),
             $this->createConfigurationValidator(),
-            $this->getConfig()
+            $this->getConfig(),
         );
     }
 
@@ -63,12 +63,12 @@ class ConfigurationFactory
     public function createConfigurationMerger(): SprykConfigurationMergerInterface
     {
         return new SprykConfigurationMerger(
-            $this->createConfigurationFinder($this->config->getRootSprykDirectories())
+            $this->createConfigurationFinder($this->config->getRootSprykDirectories()),
         );
     }
 
     /**
-     * @param string[] $directories
+     * @param array<string> $directories
      *
      * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinderInterface
      */
@@ -83,7 +83,7 @@ class ConfigurationFactory
     public function createConfigurationValidator(): ConfigurationValidatorInterface
     {
         return new ConfigurationValidator(
-            $this->createConfigurationValidatorRules()
+            $this->createConfigurationValidatorRules(),
         );
     }
 
@@ -93,12 +93,12 @@ class ConfigurationFactory
     public function createConfigurationExtender(): SprykConfigurationExtenderInterface
     {
         return new SprykConfigurationExtender(
-            $this->getConfigurationExtenders()
+            $this->getConfigurationExtenders(),
         );
     }
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface>
      */
     protected function getConfigurationExtenders(): array
     {
@@ -137,7 +137,7 @@ class ConfigurationFactory
     }
 
     /**
-     * @return \SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface[]
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\Rules\ConfigurationValidatorRuleInterface>
      */
     protected function createConfigurationValidatorRules(): array
     {
