@@ -34,6 +34,16 @@ interface ArgumentInterface
     public function getValue();
 
     /**
+     * @return bool
+     */
+    public function getAllowOverride(): bool;
+
+    /**
+     * @param bool $allowOverride
+     */
+    public function setAllowOverride(bool $allowOverride): void;
+
+    /**
      * @param array $callbacks
      *
      * @return $this

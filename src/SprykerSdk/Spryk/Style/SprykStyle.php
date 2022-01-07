@@ -237,7 +237,7 @@ class SprykStyle implements SprykStyleInterface
      *
      * @return void
      */
-    protected function writeln($messages, int $options = 0): void
+    public function writeln($messages, int $options = 0): void
     {
         $this->output->writeln($messages, $options);
     }

@@ -6,9 +6,9 @@
 {% endif %}
 
     /**
-     {% if specification is defined and specification.value is not empty %}
+     {% if specification is defined and specification.value is not empty -%}
      * Specification:
-     {%- for specificationLine in specification.value -%}
+     {% for specificationLine in specification.value -%}
      * {{ specificationLine }}
      {% endfor -%}
      *

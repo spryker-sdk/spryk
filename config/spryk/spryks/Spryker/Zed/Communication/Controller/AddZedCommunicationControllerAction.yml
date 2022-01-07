@@ -28,9 +28,6 @@ arguments:
         inherit: true
         callback: EnsureActionSuffixCallback
 
-    method:
-        value: "{{ controllerMethod }}"
-
     body:
         value: ""
 

@@ -3,6 +3,10 @@ description: "Adds a new method to the *module*FacadeInterface."
 mode: both
 
 arguments:
+    allowOverride:
+        default: false
+        inherit: true
+
     module:
         inherit: true
 

@@ -3,7 +3,7 @@
     {% set subDirectoryName = subDirectory | replace({"/": "\\"}) ~ '\\' %}
 {% endif %}
 {% if not interfaceName is defined or interfaceName.value is null %}
-    {% set interfaceName = '\\' ~ organization ~ '\\Zed\\' ~ module ~ '\\Business\\' ~ subDirectoryName ~ className ~ 'Interface' %}
+    {% set interfaceName = className ~ 'Interface' %}
 {% endif %}
 
 

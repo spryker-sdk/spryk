@@ -4,10 +4,11 @@
     "description": "Spryk module",
     "license": "proprietary",
     "require": {
+        "php": ">=7.4",
         "ext-dom": "*",
         "ext-simplexml": "*",
         "ondrejmirtes/better-reflection": "^4.3.19",
-        "php": ">=7.4",
+        "ramsey/uuid": "^4.2",
         "spryker/config": "^3.0.0",
         "spryker/console": "^3.0.0 || ^4.0.0",
         "spryker/doctrine-inflector": "^1.1.0",

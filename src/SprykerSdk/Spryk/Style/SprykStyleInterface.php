@@ -98,6 +98,14 @@ interface SprykStyleInterface
     public function write($messages, int $options = 0): void;
 
     /**
+     * @param string|string[] $messages
+     * @param int $options
+     *
+     * @return void
+     */
+    public function writeln($messages, int $options = 0): void;
+
+    /**
      * @param \Symfony\Component\Console\Question\Question $question
      *
      * @return string|int|null

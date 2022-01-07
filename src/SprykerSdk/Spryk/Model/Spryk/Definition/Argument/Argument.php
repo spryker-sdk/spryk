@@ -20,6 +20,11 @@ class Argument implements ArgumentInterface
     protected $value;
 
     /**
+     * @var bool
+     */
+    protected $allowOverride = false;
+
+    /**
      * @var string[]
      */
     protected $callbacks = [];
@@ -62,6 +67,22 @@ class Argument implements ArgumentInterface
         $this->value = $value;
 
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAllowOverride(): bool
+    {
+        return $this->allowOverride;
+    }
+
+    /**
+     * @param bool $allowOverride
+     */
+    public function setAllowOverride(bool $allowOverride): void
+    {
+        $this->allowOverride = $allowOverride;
     }
 
     /**

@@ -26,7 +26,6 @@ arguments:
 
     targetFilename:
         callbackOnly: true
-#        callback: ZedBusinessModelInterfaceTargetFilenameCallback
         callback: ZedCommunicationModelInterfaceTargetFilenameCallback
 
     targetPath:

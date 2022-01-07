@@ -32,7 +32,7 @@ arguments:
 
     annotations:
         value:
-            - "{@inheritdoc}"
+            - "{@inheritDoc}"
             - "@api"
 
     template:

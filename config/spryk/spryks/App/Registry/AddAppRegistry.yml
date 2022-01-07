@@ -22,6 +22,8 @@ preSpryks:
 postSpryks:
     - AddZedBusinessModelMethod:
           arguments:
+              allowOverride:
+                  value: true
               className:
                   value: Registry
               subDirectory:
@@ -37,6 +39,8 @@ postSpryks:
 
     - AddZedBusinessModelMethod:
           arguments:
+              allowOverride:
+                  value: true
               className:
                   value: Registry
               subDirectory:
@@ -55,6 +59,8 @@ postSpryks:
               - AddZedPresentationTwig
               - AddZedNavigationNode
           arguments:
+              allowOverride:
+                  value: true
               input:
                   value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
               output:
@@ -64,11 +70,12 @@ postSpryks:
               controllerMethod:
                   value: connectAction
               body:
+                  allowOverride: true
                   value:
                     - "${{ module | lcfirst }}ResponseTransfer = new {{ module }}ResponseTransfer();"
                     - "${{ module | lcfirst }}ResponseTransfer = $this->getFactory()"
-                    - "    ->createRequestValidator()"
-                    - "    ->validateConnectRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
+                    - "        ->createRequestValidator()"
+                    - "        ->validateConnectRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
                     - ""
                     - "$responseBuilder = $this->getFactory()->createResponseBuilder();"
                     - ""
@@ -91,6 +98,8 @@ postSpryks:
               - AddZedPresentationTwig
               - AddZedNavigationNode
           arguments:
+              allowOverride:
+                  value: true
               input:
                   value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
               output:
@@ -100,11 +109,12 @@ postSpryks:
               controllerMethod:
                   value: disconnectAction
               body:
+                  allowOverride: true
                   value:
                       - "${{ module | lcfirst }}ResponseTransfer = new {{ module }}ResponseTransfer();"
                       - "${{ module | lcfirst }}ResponseTransfer = $this->getFactory()"
-                      - "    ->createRequestValidator()"
-                      - "    ->validateDisconnectRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
+                      - "        ->createRequestValidator()"
+                      - "        ->validateDisconnectRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
                       - ""
                       - "$responseBuilder = $this->getFactory()->createResponseBuilder();"
                       - ""
@@ -124,6 +134,8 @@ postSpryks:
 
     - AddZedBusinessFacadeMethod:
         arguments:
+            allowOverride:
+                value: true
             facadeMethod:
                 value: connect
             input:
@@ -131,10 +143,13 @@ postSpryks:
             output:
                 value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
             body:
-                value: "return $this->getFactory()->createRegistry()->connect(${{ module | lcfirst }}Transfer);"
+                allowOverride: true
+                value: "return $this->getFactory()->createRegistry()->connect(${{ module | lcfirst }}Transfer, ${{ module | lcfirst }}ResponseTransfer);"
 
     - AddZedBusinessFacadeMethod:
         arguments:
+            allowOverride:
+                value: true
             facadeMethod:
                 value: disconnect
             input:
@@ -142,7 +157,8 @@ postSpryks:
             output:
                 value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
             body:
-                value: "return $this->getFactory()->createRegistry()->disconnect(${{ module | lcfirst }}Transfer);"
+                allowOverride: true
+                value: "return $this->getFactory()->createRegistry()->disconnect(${{ module | lcfirst }}Transfer, ${{ module | lcfirst }}ResponseTransfer);"
 
     - AddZedCommunicationModelMethod:
           arguments:
@@ -176,6 +192,8 @@ postSpryks:
 
     - AddZedCommunicationModelMethod:
           arguments:
+              allowOverride:
+                  value: true
               className:
                   value: RequestToTransferMapper
               subDirectory:
@@ -188,30 +206,14 @@ postSpryks:
                   value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer"
               body:
                   value:
-                      - "${{ module | lcfirst }}Transfer = new {{ module }}Transfer();"
+                      - "${{ module | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ module }}Transfer();"
                       - ""
                       - "return ${{ module | lcfirst }}Transfer;"
 
     - AddZedCommunicationModelMethod:
           arguments:
-              className:
-                  value: RequestToTransferMapper
-              subDirectory:
-                  value: RequestMapper
-              modelMethod:
-                  value: mapConnectRequestToTransfer
-              input:
-                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
-              output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer"
-              body:
-                  value:
-                      - "${{ module | lcfirst }}Transfer = new {{ module }}Transfer();"
-                      - ""
-                      - "return ${{ module | lcfirst }}Transfer;"
-
-    - AddZedCommunicationModelMethod:
-          arguments:
+              allowOverride:
+                  value: true
               className:
                   value: RequestToTransferMapper
               subDirectory:
@@ -224,12 +226,14 @@ postSpryks:
                   value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer"
               body:
                   value:
-                      - "${{ module | lcfirst }}Transfer = new {{ module }}Transfer();"
+                      - "${{ module | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ module }}Transfer();"
                       - ""
                       - "return ${{ module | lcfirst }}Transfer;"
 
     - AddZedCommunicationModelMethod:
           arguments:
+              allowOverride:
+                  value: true
               className:
                   value: ResponseBuilder
               subDirectory:
@@ -247,9 +251,9 @@ postSpryks:
     - AddSharedTransferDefinition:
         arguments:
             name:
-                value: "{{ module }}Transfer"
+                value: "{{ module }}"
 
     - AddSharedTransferDefinition:
         arguments:
             name:
-                value: "{{ module }}Transfer"
+                value: "{{ module }}Response"

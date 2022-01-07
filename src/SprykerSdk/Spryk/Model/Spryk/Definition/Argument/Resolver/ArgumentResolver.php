@@ -109,6 +109,8 @@ class ArgumentResolver implements ArgumentResolverInterface
         $argument = new Argument();
         $argument->setName($argumentName);
 
+        $argument->setAllowOverride($argumentDefinition['allowOverride'] ?? false);
+
         if (isset($argumentDefinition['callback'])) {
             $argument->setCallbacks((array)$argumentDefinition['callback']);
         }
@@ -288,9 +290,9 @@ class ArgumentResolver implements ArgumentResolverInterface
         });
 
         if ($allowEmpty === false) {
-            $question->setValidator(function ($value) {
-                if (!$value) {
-                    throw new InvalidArgumentException('Value is invalid');
+            $question->setValidator(function ($value) use ($argument, $sprykName) {
+                if (!is_string($value) && !is_bool($value)) {
+                    throw new InvalidArgumentException(sprintf('No value or empty value for argument "%s" used in spryk "%s".', $argument, $sprykName));
                 }
 
                 return $value;
