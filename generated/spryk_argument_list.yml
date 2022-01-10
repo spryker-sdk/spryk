@@ -2,21 +2,13 @@
 # This file collected all spryks arguments and generated with spryk:build command.
 ###
 -
-  name: template
+  name: organization
   mode: 2
-  description: 'template argument'
+  description: 'organization argument'
 -
-  name: targetFile
+  name: module
   mode: 2
-  description: 'targetFile argument'
--
-  name: title
-  mode: 2
-  description: 'title argument'
--
-  name: api-version
-  mode: 2
-  description: 'api-version argument'
+  description: 'module argument'
 -
   name: sprykerVendorPath
   mode: 2
@@ -38,13 +30,25 @@
   mode: 2
   description: 'level argument'
 -
-  name: module
+  name: template
   mode: 2
-  description: 'module argument'
+  description: 'template argument'
 -
-  name: organization
+  name: targetPath
   mode: 2
-  description: 'organization argument'
+  description: 'targetPath argument'
+-
+  name: targetFilename
+  mode: 2
+  description: 'targetFilename argument'
+-
+  name: title
+  mode: 2
+  description: 'title argument'
+-
+  name: api-version
+  mode: 2
+  description: 'api-version argument'
 -
   name: classNamePrefix
   mode: 2
@@ -65,14 +69,6 @@
   name: subDirectory
   mode: 2
   description: 'subDirectory argument'
--
-  name: targetFilename
-  mode: 2
-  description: 'targetFilename argument'
--
-  name: targetPath
-  mode: 2
-  description: 'targetPath argument'
 -
   name: method
   mode: 2
@@ -234,6 +230,18 @@
   mode: 2
   description: 'theme argument'
 -
+  name: propertyName
+  mode: 2
+  description: 'propertyName argument'
+-
+  name: propertyType
+  mode: 2
+  description: 'propertyType argument'
+-
+  name: singular
+  mode: 2
+  description: 'singular argument'
+-
   name: templateName
   mode: 2
   description: 'templateName argument'
@@ -249,6 +257,10 @@
   name: widgetClassName
   mode: 2
   description: 'widgetClassName argument'
+-
+  name: allowOverride
+  mode: 2
+  description: 'allowOverride argument'
 -
   name: facadeMethod
   mode: 2
@@ -310,13 +322,53 @@
   mode: 2
   description: 'targetFilePath argument'
 -
+  name: AddAppRegistry.organization
+  mode: 2
+  description: 'AddAppRegistry organization argument'
+-
+  name: AddAppRegistry.module
+  mode: 2
+  description: 'AddAppRegistry module argument'
+-
+  name: AddAppRegistry.sprykerVendorPath
+  mode: 2
+  description: 'AddAppRegistry sprykerVendorPath argument'
+-
+  name: AddAppRegistry.moduleSrcDirectory
+  mode: 2
+  description: 'AddAppRegistry moduleSrcDirectory argument'
+-
+  name: AddAppRegistry.repository
+  mode: 2
+  description: 'AddAppRegistry repository argument'
+-
+  name: AddAppRegistry.moduleRoot
+  mode: 2
+  description: 'AddAppRegistry moduleRoot argument'
+-
+  name: AddAppRegistry.level
+  mode: 2
+  description: 'AddAppRegistry level argument'
+-
+  name: AddAsyncApi.organization
+  mode: 2
+  description: 'AddAsyncApi organization argument'
+-
+  name: AddAsyncApi.module
+  mode: 2
+  description: 'AddAsyncApi module argument'
+-
   name: AddAsyncApi.template
   mode: 2
   description: 'AddAsyncApi template argument'
 -
-  name: AddAsyncApi.targetFile
+  name: AddAsyncApi.targetPath
   mode: 2
-  description: 'AddAsyncApi targetFile argument'
+  description: 'AddAsyncApi targetPath argument'
+-
+  name: AddAsyncApi.targetFilename
+  mode: 2
+  description: 'AddAsyncApi targetFilename argument'
 -
   name: AddAsyncApi.title
   mode: 2
@@ -5802,6 +5854,54 @@
   mode: 2
   description: 'AddSharedTransferDefinition level argument'
 -
+  name: AddSharedTransferProperty.module
+  mode: 2
+  description: 'AddSharedTransferProperty module argument'
+-
+  name: AddSharedTransferProperty.organization
+  mode: 2
+  description: 'AddSharedTransferProperty organization argument'
+-
+  name: AddSharedTransferProperty.name
+  mode: 2
+  description: 'AddSharedTransferProperty name argument'
+-
+  name: AddSharedTransferProperty.propertyName
+  mode: 2
+  description: 'AddSharedTransferProperty propertyName argument'
+-
+  name: AddSharedTransferProperty.propertyType
+  mode: 2
+  description: 'AddSharedTransferProperty propertyType argument'
+-
+  name: AddSharedTransferProperty.singular
+  mode: 2
+  description: 'AddSharedTransferProperty singular argument'
+-
+  name: AddSharedTransferProperty.targetPath
+  mode: 2
+  description: 'AddSharedTransferProperty targetPath argument'
+-
+  name: AddSharedTransferProperty.sprykerVendorPath
+  mode: 2
+  description: 'AddSharedTransferProperty sprykerVendorPath argument'
+-
+  name: AddSharedTransferProperty.moduleSrcDirectory
+  mode: 2
+  description: 'AddSharedTransferProperty moduleSrcDirectory argument'
+-
+  name: AddSharedTransferProperty.repository
+  mode: 2
+  description: 'AddSharedTransferProperty repository argument'
+-
+  name: AddSharedTransferProperty.moduleRoot
+  mode: 2
+  description: 'AddSharedTransferProperty moduleRoot argument'
+-
+  name: AddSharedTransferProperty.level
+  mode: 2
+  description: 'AddSharedTransferProperty level argument'
+-
   name: AddSharedTransferSchema.module
   mode: 2
   description: 'AddSharedTransferSchema module argument'
@@ -7406,6 +7506,10 @@
   mode: 2
   description: 'AddZedBusinessFacadeInterface level argument'
 -
+  name: AddZedBusinessFacadeInterfaceMethod.allowOverride
+  mode: 2
+  description: 'AddZedBusinessFacadeInterfaceMethod allowOverride argument'
+-
   name: AddZedBusinessFacadeInterfaceMethod.module
   mode: 2
   description: 'AddZedBusinessFacadeInterfaceMethod module argument'
@@ -7902,6 +8006,10 @@
   mode: 2
   description: 'AddZedBusinessModelMethod output argument'
 -
+  name: AddZedBusinessModelMethod.body
+  mode: 2
+  description: 'AddZedBusinessModelMethod body argument'
+-
   name: AddZedBusinessModelMethod.facadeMethod
   mode: 2
   description: 'AddZedBusinessModelMethod facadeMethod argument'
@@ -8017,6 +8125,46 @@
   name: AddZedBusinessTestSuiteConfiguration.level
   mode: 2
   description: 'AddZedBusinessTestSuiteConfiguration level argument'
+-
+  name: AddZedBusinessTester.module
+  mode: 2
+  description: 'AddZedBusinessTester module argument'
+-
+  name: AddZedBusinessTester.organization
+  mode: 2
+  description: 'AddZedBusinessTester organization argument'
+-
+  name: AddZedBusinessTester.template
+  mode: 2
+  description: 'AddZedBusinessTester template argument'
+-
+  name: AddZedBusinessTester.targetFilename
+  mode: 2
+  description: 'AddZedBusinessTester targetFilename argument'
+-
+  name: AddZedBusinessTester.targetPath
+  mode: 2
+  description: 'AddZedBusinessTester targetPath argument'
+-
+  name: AddZedBusinessTester.sprykerVendorPath
+  mode: 2
+  description: 'AddZedBusinessTester sprykerVendorPath argument'
+-
+  name: AddZedBusinessTester.moduleSrcDirectory
+  mode: 2
+  description: 'AddZedBusinessTester moduleSrcDirectory argument'
+-
+  name: AddZedBusinessTester.repository
+  mode: 2
+  description: 'AddZedBusinessTester repository argument'
+-
+  name: AddZedBusinessTester.moduleRoot
+  mode: 2
+  description: 'AddZedBusinessTester moduleRoot argument'
+-
+  name: AddZedBusinessTester.level
+  mode: 2
+  description: 'AddZedBusinessTester level argument'
 -
   name: AddZedCommunicationConsole.module
   mode: 2
@@ -8170,6 +8318,14 @@
   mode: 2
   description: 'AddZedCommunicationControllerAction controllerMethod argument'
 -
+  name: AddZedCommunicationControllerAction.body
+  mode: 2
+  description: 'AddZedCommunicationControllerAction body argument'
+-
+  name: AddZedCommunicationControllerAction.input
+  mode: 2
+  description: 'AddZedCommunicationControllerAction input argument'
+-
   name: AddZedCommunicationControllerAction.output
   mode: 2
   description: 'AddZedCommunicationControllerAction output argument'
@@ -8242,6 +8398,62 @@
   mode: 2
   description: 'AddZedCommunicationFactory level argument'
 -
+  name: AddZedCommunicationFactoryMethod.module
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod module argument'
+-
+  name: AddZedCommunicationFactoryMethod.organization
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod organization argument'
+-
+  name: AddZedCommunicationFactoryMethod.subDirectory
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod subDirectory argument'
+-
+  name: AddZedCommunicationFactoryMethod.className
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod className argument'
+-
+  name: AddZedCommunicationFactoryMethod.interfaceName
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod interfaceName argument'
+-
+  name: AddZedCommunicationFactoryMethod.factoryMethod
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod factoryMethod argument'
+-
+  name: AddZedCommunicationFactoryMethod.dependencyMethods
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod dependencyMethods argument'
+-
+  name: AddZedCommunicationFactoryMethod.template
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod template argument'
+-
+  name: AddZedCommunicationFactoryMethod.target
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod target argument'
+-
+  name: AddZedCommunicationFactoryMethod.sprykerVendorPath
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod sprykerVendorPath argument'
+-
+  name: AddZedCommunicationFactoryMethod.moduleSrcDirectory
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod moduleSrcDirectory argument'
+-
+  name: AddZedCommunicationFactoryMethod.repository
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod repository argument'
+-
+  name: AddZedCommunicationFactoryMethod.moduleRoot
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod moduleRoot argument'
+-
+  name: AddZedCommunicationFactoryMethod.level
+  mode: 2
+  description: 'AddZedCommunicationFactoryMethod level argument'
+-
   name: AddZedCommunicationGatewayController.module
   mode: 2
   description: 'AddZedCommunicationGatewayController module argument'
@@ -8285,6 +8497,242 @@
   name: AddZedCommunicationGatewayController.level
   mode: 2
   description: 'AddZedCommunicationGatewayController level argument'
+-
+  name: AddZedCommunicationModel.module
+  mode: 2
+  description: 'AddZedCommunicationModel module argument'
+-
+  name: AddZedCommunicationModel.organization
+  mode: 2
+  description: 'AddZedCommunicationModel organization argument'
+-
+  name: AddZedCommunicationModel.subDirectory
+  mode: 2
+  description: 'AddZedCommunicationModel subDirectory argument'
+-
+  name: AddZedCommunicationModel.className
+  mode: 2
+  description: 'AddZedCommunicationModel className argument'
+-
+  name: AddZedCommunicationModel.constructorArguments
+  mode: 2
+  description: 'AddZedCommunicationModel constructorArguments argument'
+-
+  name: AddZedCommunicationModel.interfaceName
+  mode: 2
+  description: 'AddZedCommunicationModel interfaceName argument'
+-
+  name: AddZedCommunicationModel.template
+  mode: 2
+  description: 'AddZedCommunicationModel template argument'
+-
+  name: AddZedCommunicationModel.targetFilename
+  mode: 2
+  description: 'AddZedCommunicationModel targetFilename argument'
+-
+  name: AddZedCommunicationModel.targetPath
+  mode: 2
+  description: 'AddZedCommunicationModel targetPath argument'
+-
+  name: AddZedCommunicationModel.sprykerVendorPath
+  mode: 2
+  description: 'AddZedCommunicationModel sprykerVendorPath argument'
+-
+  name: AddZedCommunicationModel.moduleSrcDirectory
+  mode: 2
+  description: 'AddZedCommunicationModel moduleSrcDirectory argument'
+-
+  name: AddZedCommunicationModel.repository
+  mode: 2
+  description: 'AddZedCommunicationModel repository argument'
+-
+  name: AddZedCommunicationModel.moduleRoot
+  mode: 2
+  description: 'AddZedCommunicationModel moduleRoot argument'
+-
+  name: AddZedCommunicationModel.level
+  mode: 2
+  description: 'AddZedCommunicationModel level argument'
+-
+  name: AddZedCommunicationModelInterface.module
+  mode: 2
+  description: 'AddZedCommunicationModelInterface module argument'
+-
+  name: AddZedCommunicationModelInterface.organization
+  mode: 2
+  description: 'AddZedCommunicationModelInterface organization argument'
+-
+  name: AddZedCommunicationModelInterface.subDirectory
+  mode: 2
+  description: 'AddZedCommunicationModelInterface subDirectory argument'
+-
+  name: AddZedCommunicationModelInterface.className
+  mode: 2
+  description: 'AddZedCommunicationModelInterface className argument'
+-
+  name: AddZedCommunicationModelInterface.interfaceName
+  mode: 2
+  description: 'AddZedCommunicationModelInterface interfaceName argument'
+-
+  name: AddZedCommunicationModelInterface.template
+  mode: 2
+  description: 'AddZedCommunicationModelInterface template argument'
+-
+  name: AddZedCommunicationModelInterface.targetFilename
+  mode: 2
+  description: 'AddZedCommunicationModelInterface targetFilename argument'
+-
+  name: AddZedCommunicationModelInterface.targetPath
+  mode: 2
+  description: 'AddZedCommunicationModelInterface targetPath argument'
+-
+  name: AddZedCommunicationModelInterface.sprykerVendorPath
+  mode: 2
+  description: 'AddZedCommunicationModelInterface sprykerVendorPath argument'
+-
+  name: AddZedCommunicationModelInterface.moduleSrcDirectory
+  mode: 2
+  description: 'AddZedCommunicationModelInterface moduleSrcDirectory argument'
+-
+  name: AddZedCommunicationModelInterface.repository
+  mode: 2
+  description: 'AddZedCommunicationModelInterface repository argument'
+-
+  name: AddZedCommunicationModelInterface.moduleRoot
+  mode: 2
+  description: 'AddZedCommunicationModelInterface moduleRoot argument'
+-
+  name: AddZedCommunicationModelInterface.level
+  mode: 2
+  description: 'AddZedCommunicationModelInterface level argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.module
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod module argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.organization
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod organization argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.className
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod className argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.subDirectory
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod subDirectory argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.modelMethod
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod modelMethod argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.input
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod input argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.output
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod output argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.template
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod template argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.target
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod target argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.fqcnPattern
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod fqcnPattern argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.sprykerVendorPath
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod sprykerVendorPath argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.moduleSrcDirectory
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod moduleSrcDirectory argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.repository
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod repository argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.moduleRoot
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod moduleRoot argument'
+-
+  name: AddZedCommunicationModelInterfaceMethod.level
+  mode: 2
+  description: 'AddZedCommunicationModelInterfaceMethod level argument'
+-
+  name: AddZedCommunicationModelMethod.module
+  mode: 2
+  description: 'AddZedCommunicationModelMethod module argument'
+-
+  name: AddZedCommunicationModelMethod.organization
+  mode: 2
+  description: 'AddZedCommunicationModelMethod organization argument'
+-
+  name: AddZedCommunicationModelMethod.className
+  mode: 2
+  description: 'AddZedCommunicationModelMethod className argument'
+-
+  name: AddZedCommunicationModelMethod.subDirectory
+  mode: 2
+  description: 'AddZedCommunicationModelMethod subDirectory argument'
+-
+  name: AddZedCommunicationModelMethod.modelMethod
+  mode: 2
+  description: 'AddZedCommunicationModelMethod modelMethod argument'
+-
+  name: AddZedCommunicationModelMethod.input
+  mode: 2
+  description: 'AddZedCommunicationModelMethod input argument'
+-
+  name: AddZedCommunicationModelMethod.output
+  mode: 2
+  description: 'AddZedCommunicationModelMethod output argument'
+-
+  name: AddZedCommunicationModelMethod.body
+  mode: 2
+  description: 'AddZedCommunicationModelMethod body argument'
+-
+  name: AddZedCommunicationModelMethod.facadeMethod
+  mode: 2
+  description: 'AddZedCommunicationModelMethod facadeMethod argument'
+-
+  name: AddZedCommunicationModelMethod.template
+  mode: 2
+  description: 'AddZedCommunicationModelMethod template argument'
+-
+  name: AddZedCommunicationModelMethod.target
+  mode: 2
+  description: 'AddZedCommunicationModelMethod target argument'
+-
+  name: AddZedCommunicationModelMethod.fqcnPattern
+  mode: 2
+  description: 'AddZedCommunicationModelMethod fqcnPattern argument'
+-
+  name: AddZedCommunicationModelMethod.sprykerVendorPath
+  mode: 2
+  description: 'AddZedCommunicationModelMethod sprykerVendorPath argument'
+-
+  name: AddZedCommunicationModelMethod.moduleSrcDirectory
+  mode: 2
+  description: 'AddZedCommunicationModelMethod moduleSrcDirectory argument'
+-
+  name: AddZedCommunicationModelMethod.repository
+  mode: 2
+  description: 'AddZedCommunicationModelMethod repository argument'
+-
+  name: AddZedCommunicationModelMethod.moduleRoot
+  mode: 2
+  description: 'AddZedCommunicationModelMethod moduleRoot argument'
+-
+  name: AddZedCommunicationModelMethod.level
+  mode: 2
+  description: 'AddZedCommunicationModelMethod level argument'
 -
   name: AddZedCommunicationTestSuite.module
   mode: 2
@@ -10277,6 +10725,46 @@
   name: AddZedTestCodeceptionConfiguration.level
   mode: 2
   description: 'AddZedTestCodeceptionConfiguration level argument'
+-
+  name: AddZedTestHelper.module
+  mode: 2
+  description: 'AddZedTestHelper module argument'
+-
+  name: AddZedTestHelper.organization
+  mode: 2
+  description: 'AddZedTestHelper organization argument'
+-
+  name: AddZedTestHelper.template
+  mode: 2
+  description: 'AddZedTestHelper template argument'
+-
+  name: AddZedTestHelper.targetFilename
+  mode: 2
+  description: 'AddZedTestHelper targetFilename argument'
+-
+  name: AddZedTestHelper.targetPath
+  mode: 2
+  description: 'AddZedTestHelper targetPath argument'
+-
+  name: AddZedTestHelper.sprykerVendorPath
+  mode: 2
+  description: 'AddZedTestHelper sprykerVendorPath argument'
+-
+  name: AddZedTestHelper.moduleSrcDirectory
+  mode: 2
+  description: 'AddZedTestHelper moduleSrcDirectory argument'
+-
+  name: AddZedTestHelper.repository
+  mode: 2
+  description: 'AddZedTestHelper repository argument'
+-
+  name: AddZedTestHelper.moduleRoot
+  mode: 2
+  description: 'AddZedTestHelper moduleRoot argument'
+-
+  name: AddZedTestHelper.level
+  mode: 2
+  description: 'AddZedTestHelper level argument'
 -
   name: AddZedTestSuiteToCodeceptionConfiguration.module
   mode: 2

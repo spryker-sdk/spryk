@@ -24,6 +24,7 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRenderer;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\TemplateSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\UpdateYmlSpryk;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Transfer\TransferPropertySpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Transfer\TransferSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Wrapper\WrapperSpryk;
 use SprykerSdk\Spryk\Model\Spryk\Filter\FilterFactory;
@@ -76,6 +77,7 @@ class SprykBuilderFactory
             $this->createBridgeMethodsSpryk(),
             $this->createCopyModuleSpryk(),
             $this->createTransferSpryk(),
+            $this->createTransferPropertySpryk(),
             $this->createResourceRouteSpryk(),
             $this->createDependencyProviderSpryk(),
         ];
@@ -200,6 +202,16 @@ class SprykBuilderFactory
     public function createTransferSpryk(): SprykBuilderInterface
     {
         return new TransferSpryk(
+            $this->getConfig()->getRootDirectory(),
+        );
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface
+     */
+    public function createTransferPropertySpryk(): SprykBuilderInterface
+    {
+        return new TransferPropertySpryk(
             $this->getConfig()->getRootDirectory(),
         );
     }

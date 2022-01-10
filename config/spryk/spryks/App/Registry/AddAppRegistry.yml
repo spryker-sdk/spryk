@@ -31,11 +31,11 @@ postSpryks:
               modelMethod:
                   value: connect
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer ${{ module | lcfirst }}RegistryRequestTransfer, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
               output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
               body:
-                  value: "return ${{ module | lcfirst }}ResponseTransfer;"
+                  value: "return ${{ module | lcfirst }}RegistryResponseTransfer;"
 
     - AddZedBusinessModelMethod:
           arguments:
@@ -48,11 +48,11 @@ postSpryks:
               modelMethod:
                   value: disconnect
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer ${{ module | lcfirst }}RegistryRequestTransfer, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
               output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
               body:
-                  value: "return ${{ module | lcfirst }}ResponseTransfer;"
+                  value: "return ${{ module | lcfirst }}RegistryResponseTransfer;"
 
     - AddZedCommunicationControllerAction:
           excludedSpryks:
@@ -72,26 +72,26 @@ postSpryks:
               body:
                   allowOverride: true
                   value:
-                    - "${{ module | lcfirst }}ResponseTransfer = new {{ module }}ResponseTransfer();"
-                    - "${{ module | lcfirst }}ResponseTransfer = $this->getFactory()"
+                    - "${{ module | lcfirst }}RegistryResponseTransfer = new {{ module }}RegistryResponseTransfer();"
+                    - "${{ module | lcfirst }}RegistryResponseTransfer = $this->getFactory()"
                     - "        ->createRequestValidator()"
-                    - "        ->validateConnectRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
+                    - "        ->validateConnectRequest($request, ${{ module | lcfirst }}RegistryResponseTransfer);"
                     - ""
                     - "$responseBuilder = $this->getFactory()->createResponseBuilder();"
                     - ""
-                    - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
-                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST);"
+                    - "if (!${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful()) {"
+                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer), ${{ module | lcfirst }}RegistryResponseTransfer->getHttpResponseCode());"
                     - "};"
                     - ""
-                    - "${{ module | lcfirst }}Transfer = $this->getFactory()->createRequestToTransferMapper()->mapConnectRequestToTransfer($request);"
+                    - "${{ module | lcfirst }}RegistryRequestTransfer = $this->getFactory()->createRequestToTransferMapper()->mapConnectRequestToTransfer($request);"
                     - ""
-                    - "${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->connect(${{ module | lcfirst }}Transfer, ${{ module | lcfirst }}ResponseTransfer);"
+                    - "${{ module | lcfirst }}RegistryResponseTransfer = $this->getFacade()->connect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
                     - ""
-                    - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
-                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST /* What to put here? */);"
+                    - "if (!${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful()) {"
+                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer), ${{ module | lcfirst }}RegistryResponseTransfer->getHttpResponseCode());"
                     - "};"
                     - ""
-                    - "return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer));"
+                    - "return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer));"
 
     - AddZedCommunicationControllerAction:
           excludedSpryks:
@@ -111,26 +111,26 @@ postSpryks:
               body:
                   allowOverride: true
                   value:
-                      - "${{ module | lcfirst }}ResponseTransfer = new {{ module }}ResponseTransfer();"
-                      - "${{ module | lcfirst }}ResponseTransfer = $this->getFactory()"
+                      - "${{ module | lcfirst }}RegistryResponseTransfer = new {{ module }}RegistryResponseTransfer();"
+                      - "${{ module | lcfirst }}RegistryResponseTransfer = $this->getFactory()"
                       - "        ->createRequestValidator()"
-                      - "        ->validateDisconnectRequest($request, ${{ module | lcfirst }}ResponseTransfer);"
+                      - "        ->validateDisconnectRequest($request, ${{ module | lcfirst }}RegistryResponseTransfer);"
                       - ""
                       - "$responseBuilder = $this->getFactory()->createResponseBuilder();"
                       - ""
-                      - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
-                      - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST);"
+                      - "if (!${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful()) {"
+                      - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer), ${{ module | lcfirst }}RegistryResponseTransfer->getHttpResponseCode());"
                       - "};"
                       - ""
-                      - "${{ module | lcfirst }}Transfer = $this->getFactory()->createRequestToTransferMapper()->mapDisconnectRequestToTransfer($request);"
+                      - "${{ module | lcfirst }}RegistryRequestTransfer = $this->getFactory()->createRequestToTransferMapper()->mapDisconnectRequestToTransfer($request);"
                       - ""
-                      - "${{ module | lcfirst }}ResponseTransfer = $this->getFacade()->disconnect(${{ module | lcfirst }}Transfer, ${{ module | lcfirst }}ResponseTransfer);"
+                      - "${{ module | lcfirst }}RegistryResponseTransfer = $this->getFacade()->disconnect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
                       - ""
-                      - "if (!${{ module | lcfirst }}ResponseTransfer->getIsSuccessful()) {"
-                      - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer), \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST /* What to put here? */);"
+                      - "if (!${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful()) {"
+                      - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer), ${{ module | lcfirst }}RegistryResponseTransfer->getHttpResponseCode());"
                       - "};"
                       - ""
-                      - "return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}ResponseTransfer));"
+                      - "return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer));"
 
     - AddZedBusinessFacadeMethod:
         arguments:
@@ -139,12 +139,33 @@ postSpryks:
             facadeMethod:
                 value: connect
             input:
-                value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer ${{ module | lcfirst }}RegistryRequestTransfer, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
             output:
-                value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
             body:
                 allowOverride: true
-                value: "return $this->getFactory()->createRegistry()->connect(${{ module | lcfirst }}Transfer, ${{ module | lcfirst }}ResponseTransfer);"
+                value: "return $this->getFactory()->createRegistry()->connect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
+
+    - AddZedBusinessFacadeMethodTest:
+          arguments:
+              allowOverride:
+                  value: true
+              facadeMethod:
+                  value: connect
+              output:
+                  value: "void"
+              body:
+                  allowOverride: true
+                  value:
+                      - "${{ module | lcfirst }}RegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer();"
+                      - "${{ module | lcfirst }}RegistryResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer();"
+                      - ""
+                      - "${{ module | lcfirst }}RegistryResponseTransfer = $this->tester->getFacade()->connect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
+                      - ""
+                      - "$this->assertInstanceOf(\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer::class, ${{ module | lcfirst }}RegistryResponseTransfer);"
+                      - "$this->assertTrue(${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful());"
+                      - "$this->assertSame(\\Symfony\\Component\\HttpFoundation\\Response::HTTP_OK, ${{ module | lcfirst }}RegistryResponseTransfer->getHttpStatusCode());"
+
 
     - AddZedBusinessFacadeMethod:
         arguments:
@@ -153,12 +174,32 @@ postSpryks:
             facadeMethod:
                 value: disconnect
             input:
-                value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer ${{ module | lcfirst }}Transfer, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer ${{ module | lcfirst }}RegistryRequestTransfer, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
             output:
-                value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+                value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
             body:
                 allowOverride: true
-                value: "return $this->getFactory()->createRegistry()->disconnect(${{ module | lcfirst }}Transfer, ${{ module | lcfirst }}ResponseTransfer);"
+                value: "return $this->getFactory()->createRegistry()->disconnect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
+
+    - AddZedBusinessFacadeMethodTest:
+        arguments:
+            allowOverride:
+                value: true
+            facadeMethod:
+                value: disconnect
+            output:
+                value: "void"
+            body:
+                allowOverride: true
+                value:
+                    - "${{ module | lcfirst }}RegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer();"
+                    - "${{ module | lcfirst }}RegistryResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer();"
+                    - ""
+                    - "${{ module | lcfirst }}RegistryResponseTransfer = $this->tester->getFacade()->disconnect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
+                    - ""
+                    - "$this->assertInstanceOf(\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer::class, ${{ module | lcfirst }}RegistryResponseTransfer);"
+                    - "$this->assertTrue(${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful());"
+                    - "$this->assertSame(\\Symfony\\Component\\HttpFoundation\\Response::HTTP_OK, ${{ module | lcfirst }}RegistryResponseTransfer->getHttpStatusCode());"
 
     - AddZedCommunicationModelMethod:
           arguments:
@@ -169,11 +210,11 @@ postSpryks:
               modelMethod:
                   value: validateConnectRequest
               input:
-                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
               output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
               body:
-                  value: "return ${{ module | lcfirst }}ResponseTransfer;"
+                  value: "return ${{ module | lcfirst }}RegistryResponseTransfer;"
 
     - AddZedCommunicationModelMethod:
           arguments:
@@ -184,11 +225,11 @@ postSpryks:
               modelMethod:
                   value: validateDisconnectRequest
               input:
-                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
               output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
               body:
-                  value: "return ${{ module | lcfirst }}ResponseTransfer;"
+                  value: "return ${{ module | lcfirst }}RegistryResponseTransfer;"
 
     - AddZedCommunicationModelMethod:
           arguments:
@@ -203,12 +244,12 @@ postSpryks:
               input:
                   value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
               output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer"
               body:
                   value:
-                      - "${{ module | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ module }}Transfer();"
+                      - "${{ module | lcfirst }}RegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer();"
                       - ""
-                      - "return ${{ module | lcfirst }}Transfer;"
+                      - "return ${{ module | lcfirst }}RegistryRequestTransfer;"
 
     - AddZedCommunicationModelMethod:
           arguments:
@@ -223,12 +264,12 @@ postSpryks:
               input:
                   value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
               output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}Transfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer"
               body:
                   value:
-                      - "${{ module | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ module }}Transfer();"
+                      - "${{ module | lcfirst }}RegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer();"
                       - ""
-                      - "return ${{ module | lcfirst }}Transfer;"
+                      - "return ${{ module | lcfirst }}RegistryRequestTransfer;"
 
     - AddZedCommunicationModelMethod:
           arguments:
@@ -241,19 +282,70 @@ postSpryks:
               modelMethod:
                   value: createResponse
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}ResponseTransfer ${{ module | lcfirst }}ResponseTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
               output:
                   value: "array"
               body:
                   value:
-                      - "return ${{ module | lcfirst }}ResponseTransfer->modifiedToArray();"
+                      - "return ${{ module | lcfirst }}RegistryResponseTransfer->modifiedToArray();"
 
     - AddSharedTransferDefinition:
-        arguments:
-            name:
-                value: "{{ module }}"
+          arguments:
+              name:
+                  value: "{{ module }}RegistryRequest"
 
-    - AddSharedTransferDefinition:
-        arguments:
-            name:
-                value: "{{ module }}Response"
+    - AddSharedTransferProperty:
+          arguments:
+              name:
+                  value: "{{ module }}RegistryResponse"
+              propertyName:
+                  value: "isSuccessful"
+              propertyType:
+                  value: "bool"
+
+    - AddSharedTransferProperty:
+          arguments:
+              name:
+                  value: "{{ module }}RegistryResponse"
+              propertyName:
+                  value: "httpStatusCode"
+              propertyType:
+                  value: "int"
+
+    - AddSharedTransferProperty:
+          arguments:
+              name:
+                  value: "{{ module }}RegistryResponse"
+              propertyName:
+                  value: "code"
+              propertyType:
+                  value: "string"
+
+    - AddSharedTransferProperty:
+          arguments:
+              name:
+                  value: "{{ module }}RegistryResponse"
+              propertyName:
+                  value: "status"
+              propertyType:
+                  value: "int"
+
+    - AddSharedTransferProperty:
+          arguments:
+              name:
+                  value: "{{ module }}RegistryResponse"
+              propertyName:
+                  value: "messages"
+              propertyType:
+                  value: "ResponseMessage[]"
+              singular:
+                  value: "message"
+
+    - AddSharedTransferProperty:
+          arguments:
+              name:
+                  value: "ResponseMessage"
+              propertyName:
+                  value: "message"
+              propertyType:
+                  value: "string"

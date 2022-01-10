@@ -20,3 +20,5 @@ arguments:
 
 postSpryks:
     - AddZedBusinessTestSuiteConfiguration
+    - AddZedBusinessTester
+    - AddZedTestHelper

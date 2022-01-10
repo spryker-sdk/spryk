@@ -54,5 +54,6 @@ suites:
                 - SprykerSdkTest\Module\CleanUpModule:
                     rootDirectory: 'tests/_data/'
                 - SprykerSdkTest\Module\IntegrationModule
+                - SprykerSdkTest\Module\TransferModule
                 - SprykerSdkTest\Module\DevelopmentModeModule:
                     developmentMode: 'core'

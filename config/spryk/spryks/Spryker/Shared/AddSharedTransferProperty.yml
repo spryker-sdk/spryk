@@ -1,0 +1,28 @@
+spryk: transferProperty
+description: "Adds a new property to *module*.transfer.xml in the Shared application."
+mode: both
+level: 2
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    name:
+        inherit: true
+
+    propertyName: ~
+
+    propertyType: ~
+
+    singular:
+        default: false
+
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Shared/{{ module }}/Transfer/{{ module | underscored }}.transfer.xml"
+
+preSpryks:
+    - AddSharedTransferDefinition

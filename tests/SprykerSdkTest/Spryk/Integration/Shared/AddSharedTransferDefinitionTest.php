@@ -27,8 +27,6 @@ class AddSharedTransferDefinitionTest extends Unit
     protected $tester;
 
     /**
-     * @skip Skipped for further investigation prioritisation and fix.
-     *
      * @return void
      */
     public function testAddsSharedTransferDefinition(): void
@@ -42,14 +40,12 @@ class AddSharedTransferDefinitionTest extends Unit
             $this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
             '<?xml version="1.0"?>
 <transfers xmlns="spryker:transfer-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
-  <transfer name="FooBarItem"> </transfer>
+  <transfer name="FooBarItem"/>
 </transfers>',
         );
     }
 
     /**
-     * @skip Skipped for further investigation prioritisation and fix.
-     *
      * @return void
      */
     public function testAddsSharedTransferDefinitionOnProjectLayer(): void
@@ -64,7 +60,7 @@ class AddSharedTransferDefinitionTest extends Unit
             $this->tester->getProjectModuleDirectory('FooBar', 'Shared') . 'Transfer/foo_bar.transfer.xml',
             '<?xml version="1.0"?>
 <transfers xmlns="spryker:transfer-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
-  <transfer name="FooBarItem"> </transfer>
+  <transfer name="FooBarItem"/>
 </transfers>',
         );
     }

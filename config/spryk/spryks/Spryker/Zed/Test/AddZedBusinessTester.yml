@@ -1,0 +1,33 @@
+spryk: template
+description: "Adds a new Business Test Helper."
+mode: both
+level: 2
+
+application: Zed
+layer: Business
+
+priority: 1
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    template:
+        value: Zed/Test/ZedBusinessTester.php.twig
+
+    targetFilename:
+        value: "{{ module }}BusinessTester.php"
+
+    targetPath:
+        value: "{{ moduleRoot }}/tests/{{ organization }}Test/Zed/{{ module }}/_support/"
+
+preSpryks:
+    - AddModule
+
+postSpryks:
+    - AddZedBusinessTestSuite
+
