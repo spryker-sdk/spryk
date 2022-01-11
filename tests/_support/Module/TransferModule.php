@@ -19,7 +19,7 @@ class TransferModule extends Module
      */
     public function haveTransferSchemaFileWithTransferAndExistingProperty(string $pathToTransferFile, string $transferName): void
     {
-        $transferSchema = sprintf('<transfers xmlns="spryker:transfer-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+        $transferSchema = sprintf('<transfers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
   <transfer name="FooBar">
     <property name="something" type="string" />
   </transfer>
@@ -47,7 +47,7 @@ class TransferModule extends Module
      */
     public function haveTransferSchemaFileWithTransfer(string $pathToTransferFile, string $transferName): void
     {
-        $transferSchema = sprintf('<transfers xmlns="spryker:transfer-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+        $transferSchema = sprintf('<transfers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
   <transfer name="FooBar">
     <property name="something" type="string" />
   </transfer>
