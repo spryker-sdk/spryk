@@ -34,6 +34,6 @@
      *
      {% endif -%}
      {% endif -%}
-     * @return {{ output }}
+     * @return {{ output | returnValueToDocParameter }}
      */
     public function {{ method }}({% if inputString is not empty %}{{ inputString | typedArrayConvert }}{% endif %}): {{ output | typedArrayConvert }};
