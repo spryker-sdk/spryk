@@ -494,11 +494,11 @@ postSpryks:
               name:
                   value: "AppRegistryResponse"
               propertyName:
-                  value: "messages"
+                  value: "errorMessages"
               propertyType:
                   value: "ErrorMessage[]"
               singular:
-                  value: "message"
+                  value: "errorMessage"
 
     - AddSharedTransferProperty:
           arguments:
