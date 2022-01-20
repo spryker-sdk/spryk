@@ -35,6 +35,7 @@ class FilterFactory
             $this->createRemoveConfigSuffixFilter(),
             $this->createRemoveRestApiSuffixFilter(),
             $this->createRemoveWidgetSuffixFilter(),
+            $this->createReturnValueToDocParameterFilter(),
             $this->createSingularizeFilter(),
             $this->createTypedArrayFilter(),
             $this->createUnderscoreFilter(),
@@ -48,6 +49,14 @@ class FilterFactory
     public function createArgumentToDocParameterFilter(): FilterInterface
     {
         return new ArgumentToDocParameterFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createReturnValueToDocParameterFilter(): FilterInterface
+    {
+        return new ReturnValueToDocParameterFilter();
     }
 
     /**

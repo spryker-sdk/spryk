@@ -222,6 +222,10 @@
   mode: 2
   description: 'pluginClassName argument'
 -
+  name: body
+  mode: 2
+  description: 'body argument'
+-
   name: paymentMethod
   mode: 2
   description: 'paymentMethod argument'
@@ -265,10 +269,6 @@
   name: facadeMethod
   mode: 2
   description: 'facadeMethod argument'
--
-  name: body
-  mode: 2
-  description: 'body argument'
 -
   name: afterElement
   mode: 2
@@ -4449,6 +4449,62 @@
   name: AddGlueValidation.level
   mode: 2
   description: 'AddGlueValidation level argument'
+-
+  name: AddMethod.organization
+  mode: 2
+  description: 'AddMethod organization argument'
+-
+  name: AddMethod.module
+  mode: 2
+  description: 'AddMethod module argument'
+-
+  name: AddMethod.method
+  mode: 2
+  description: 'AddMethod method argument'
+-
+  name: AddMethod.body
+  mode: 2
+  description: 'AddMethod body argument'
+-
+  name: AddMethod.visibility
+  mode: 2
+  description: 'AddMethod visibility argument'
+-
+  name: AddMethod.input
+  mode: 2
+  description: 'AddMethod input argument'
+-
+  name: AddMethod.output
+  mode: 2
+  description: 'AddMethod output argument'
+-
+  name: AddMethod.template
+  mode: 2
+  description: 'AddMethod template argument'
+-
+  name: AddMethod.target
+  mode: 2
+  description: 'AddMethod target argument'
+-
+  name: AddMethod.sprykerVendorPath
+  mode: 2
+  description: 'AddMethod sprykerVendorPath argument'
+-
+  name: AddMethod.moduleSrcDirectory
+  mode: 2
+  description: 'AddMethod moduleSrcDirectory argument'
+-
+  name: AddMethod.repository
+  mode: 2
+  description: 'AddMethod repository argument'
+-
+  name: AddMethod.moduleRoot
+  mode: 2
+  description: 'AddMethod moduleRoot argument'
+-
+  name: AddMethod.level
+  mode: 2
+  description: 'AddMethod level argument'
 -
   name: AddModule.organization
   mode: 2
@@ -8686,6 +8742,10 @@
   mode: 2
   description: 'AddZedCommunicationModelMethod modelMethod argument'
 -
+  name: AddZedCommunicationModelMethod.visibility
+  mode: 2
+  description: 'AddZedCommunicationModelMethod visibility argument'
+-
   name: AddZedCommunicationModelMethod.input
   mode: 2
   description: 'AddZedCommunicationModelMethod input argument'
@@ -8733,6 +8793,50 @@
   name: AddZedCommunicationModelMethod.level
   mode: 2
   description: 'AddZedCommunicationModelMethod level argument'
+-
+  name: AddZedCommunicationTest.module
+  mode: 2
+  description: 'AddZedCommunicationTest module argument'
+-
+  name: AddZedCommunicationTest.organization
+  mode: 2
+  description: 'AddZedCommunicationTest organization argument'
+-
+  name: AddZedCommunicationTest.className
+  mode: 2
+  description: 'AddZedCommunicationTest className argument'
+-
+  name: AddZedCommunicationTest.template
+  mode: 2
+  description: 'AddZedCommunicationTest template argument'
+-
+  name: AddZedCommunicationTest.targetFilename
+  mode: 2
+  description: 'AddZedCommunicationTest targetFilename argument'
+-
+  name: AddZedCommunicationTest.targetPath
+  mode: 2
+  description: 'AddZedCommunicationTest targetPath argument'
+-
+  name: AddZedCommunicationTest.sprykerVendorPath
+  mode: 2
+  description: 'AddZedCommunicationTest sprykerVendorPath argument'
+-
+  name: AddZedCommunicationTest.moduleSrcDirectory
+  mode: 2
+  description: 'AddZedCommunicationTest moduleSrcDirectory argument'
+-
+  name: AddZedCommunicationTest.repository
+  mode: 2
+  description: 'AddZedCommunicationTest repository argument'
+-
+  name: AddZedCommunicationTest.moduleRoot
+  mode: 2
+  description: 'AddZedCommunicationTest moduleRoot argument'
+-
+  name: AddZedCommunicationTest.level
+  mode: 2
+  description: 'AddZedCommunicationTest level argument'
 -
   name: AddZedCommunicationTestSuite.module
   mode: 2

@@ -1,0 +1,30 @@
+spryk: method
+description: "Adds a new method  to the target class."
+mode: both
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+
+    method: ~
+
+    body: ~
+
+    visibility:
+        inherit: true
+        default: public
+
+    input: ~
+
+    output:
+        default: void
+
+    template:
+        value: Common/Method.php.twig
+
+    target: ~
+

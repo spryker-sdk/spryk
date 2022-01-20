@@ -27,9 +27,9 @@
      *
      {% endif -%}
      {% endif -%}
-     * @return {{ output }}
+     * @return {{ output | returnValueToDocParameter }}
      */
-    public function {{ method }}({% if inputString is not empty %}{{ inputString | typedArrayConvert }}{% endif %}){% if output.value is not empty %}: {{ output | typedArrayConvert }}{% endif %}
+    {% if visibility is defined %}{{ visibility }}{% else %}public{% endif %} function {{ method }}({% if inputString is not empty %}{{ inputString | typedArrayConvert }}{% endif %}){% if output.value is not empty %}: {{ output | typedArrayConvert }}{% endif %}
 
     {
     {% if body is defined and body is not empty %}

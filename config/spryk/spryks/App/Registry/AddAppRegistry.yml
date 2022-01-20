@@ -20,78 +20,131 @@ preSpryks:
     - AddModule
 
 postSpryks:
-#    - AddZedBusinessModelMethod:
-#          arguments:
-#              allowOverride:
-#                  value: true
-#              className:
-#                  value: Registry
-#              subDirectory:
-#                  value: Registry
-#              modelMethod:
-#                  value: connect
-#              input:
-#                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer ${{ module | lcfirst }}RegistryRequestTransfer, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
-#              output:
-#                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
-#              body:
-#                  value: "return ${{ module | lcfirst }}RegistryResponseTransfer;"
+    #    - AddZedBusinessModelMethod:
+    #          arguments:
+    #              allowOverride:
+    #                  value: true
+    #              className:
+    #                  value: Registry
+    #              subDirectory:
+    #                  value: Registry
+    #              modelMethod:
+    #                  value: connect
+    #              input:
+    #                  value: "\\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer $appRegistryRequestTransfer, \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer $appRegistryResponseTransfer"
+    #              output:
+    #                  value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer"
+    #              body:
+    #                  value: "return $appRegistryResponseTransfer;"
 
     - AddZedBusinessModelMethod:
           arguments:
               allowOverride:
                   value: true
               className:
-                  value: Registry
+                  value: "{{ module }}Registry"
               subDirectory:
                   value: Registry
               modelMethod:
                   value: disconnect
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer ${{ module | lcfirst }}RegistryRequestTransfer, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer $appRegistryRequestTransfer"
               output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer"
               body:
-                  value: "return ${{ module | lcfirst }}RegistryResponseTransfer;"
+                  value: "return (new AppRegistryResponseTransfer())->setIsSuccessful(true);"
 
-#    - AddZedCommunicationControllerAction:
-#          excludedSpryks:
-#              - AddZedPresentationTwig
-#              - AddZedNavigationNode
-#          arguments:
-#              allowOverride:
-#                  value: true
-#              input:
-#                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
-#              output:
-#                  value: "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
-#              controller:
-#                  value: RegistryController
-#              controllerMethod:
-#                  value: connectAction
-#              body:
-#                  allowOverride: true
-#                  value:
-#                    - "${{ module | lcfirst }}RegistryResponseTransfer = new {{ module }}RegistryResponseTransfer();"
-#                    - "${{ module | lcfirst }}RegistryResponseTransfer = $this->getFactory()"
-#                    - "        ->createRequestValidator()"
-#                    - "        ->validateConnectRequest($request, ${{ module | lcfirst }}RegistryResponseTransfer);"
-#                    - ""
-#                    - "$responseBuilder = $this->getFactory()->createResponseBuilder();"
-#                    - ""
-#                    - "if (!${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful()) {"
-#                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer), ${{ module | lcfirst }}RegistryResponseTransfer->getHttpResponseCode());"
-#                    - "};"
-#                    - ""
-#                    - "${{ module | lcfirst }}RegistryRequestTransfer = $this->getFactory()->createRequestToTransferMapper()->mapConnectRequestToTransfer($request);"
-#                    - ""
-#                    - "${{ module | lcfirst }}RegistryResponseTransfer = $this->getFacade()->connect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
-#                    - ""
-#                    - "if (!${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful()) {"
-#                    - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer), ${{ module | lcfirst }}RegistryResponseTransfer->getHttpResponseCode());"
-#                    - "};"
-#                    - ""
-#                    - "return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer));"
+    - AddConstant:
+          arguments:
+              name:
+                  value: "HEADER_TENANT_ID"
+              value:
+                  value: "X-Tenant-Id"
+              visibility:
+                  value: "public"
+              target:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
+
+    - AddConstant:
+          arguments:
+              name:
+                  value: "RESPONSE_CODE_INVALID_HTTP_METHOD"
+              value:
+                  value: "800"
+              visibility:
+                  value: "public"
+              target:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
+
+    - AddConstant:
+          arguments:
+              name:
+                  value: "RESPONSE_MESSAGE_INVALID_HTTP_METHOD"
+              value:
+                  value: "Incorrect HTTP method."
+              visibility:
+                  value: "public"
+              target:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
+
+    - AddConstant:
+          arguments:
+              name:
+                  value: "RESPONSE_CODE_MISSING_TENANT_IDENTIFIER"
+              value:
+                  value: "801"
+              visibility:
+                  value: "public"
+              target:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
+
+    - AddConstant:
+          arguments:
+              name:
+                  value: "RESPONSE_MESSAGE_MISSING_TENANT_IDENTIFIER"
+              value:
+                  value: "X-Tenant-Id in header is required."
+              visibility:
+                  value: "public"
+              target:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
+
+    #    - AddZedCommunicationControllerAction:
+    #          excludedSpryks:
+    #              - AddZedPresentationTwig
+    #              - AddZedNavigationNode
+    #          arguments:
+    #              allowOverride:
+    #                  value: true
+    #              input:
+    #                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
+    #              output:
+    #                  value: "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
+    #              controller:
+    #                  value: RegistryController
+    #              controllerMethod:
+    #                  value: connect
+    #              body:
+    #                  allowOverride: true
+    #                  value:
+    #                    - "$appRegistryResponseTransfer = new AppRegistryResponseTransfer();"
+    #                    - "$appRegistryResponseTransfer = $this->getFactory()"
+    #                    - "        ->createRequestValidator()"
+    #                    - "        ->validateConnectRequest($request, $appRegistryResponseTransfer);"
+    #                    - ""
+    #                    - "if (!$appRegistryResponseTransfer->getIsSuccessful()) {"
+    #                    - "    return $this->buildErrorResponse($appRegistryResponseTransfer);"
+    #                    - "}"
+    #                    - ""
+    #                    - "$appRegistryRequestTransfer = $this->getFactory()->createRequestMapper()->mapConnectRequestToTransfer($request);"
+    #                    - ""
+    #                    - "$appRegistryResponseTransfer = $this->getFacade()->connect($appRegistryRequestTransfer, $appRegistryResponseTransfer);"
+    #                    - ""
+    #                    - "if (!$appRegistryResponseTransfer->getIsSuccessful()) {"
+    #                    - "    return $this->buildErrorResponse($appRegistryResponseTransfer);"
+    #                    - "}"
+    #                    - ""
+    #                    - "return $this->jsonResponse();"
 
     - AddZedCommunicationControllerAction:
           excludedSpryks:
@@ -107,197 +160,330 @@ postSpryks:
               controller:
                   value: RegistryController
               controllerMethod:
-                  value: disconnectAction
+                  value: disconnect
               body:
                   allowOverride: true
                   value:
-                      - "${{ module | lcfirst }}RegistryResponseTransfer = new {{ module }}RegistryResponseTransfer();"
-                      - "${{ module | lcfirst }}RegistryResponseTransfer = $this->getFactory()"
-                      - "        ->createRequestValidator()"
-                      - "        ->validateDisconnectRequest($request, ${{ module | lcfirst }}RegistryResponseTransfer);"
+                      - "$errorMessageTransfer = $this->getFactory()->createRequestValidator()"
+                      - "    ->validateAppRegistryRequest($request);"
                       - ""
-                      - "$responseBuilder = $this->getFactory()->createResponseBuilder();"
+                      - "if ($errorMessageTransfer) {"
+                      - "    $appRegistryResponseTransfer = (new \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer())"
+                      - "        ->setIsSuccessful(false)"
+                      - "        ->addErrorMessage($errorMessageTransfer);"
                       - ""
-                      - "if (!${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful()) {"
-                      - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer), ${{ module | lcfirst }}RegistryResponseTransfer->getHttpResponseCode());"
-                      - "};"
+                      - "        return $this->buildResponse($appRegistryResponseTransfer);"
+                      - "}"
                       - ""
-                      - "${{ module | lcfirst }}RegistryRequestTransfer = $this->getFactory()->createRequestToTransferMapper()->mapDisconnectRequestToTransfer($request);"
+                      - "$appRegistryRequestTransfer = $this->getFactory()->createRequestMapper()"
+                      - "    ->mapAppRegistryRequestToTransfer($request, new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer());"
                       - ""
-                      - "${{ module | lcfirst }}RegistryResponseTransfer = $this->getFacade()->disconnect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
+                      - "$appRegistryResponseTransfer = $this->getFacade()->disconnect($appRegistryRequestTransfer);"
                       - ""
-                      - "if (!${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful()) {"
-                      - "    return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer), ${{ module | lcfirst }}RegistryResponseTransfer->getHttpResponseCode());"
-                      - "};"
-                      - ""
-                      - "return $this->jsonResponse($responseBuilder->createResponse(${{ module | lcfirst }}RegistryResponseTransfer));"
+                      - "return $this->buildResponse($appRegistryResponseTransfer);"
 
-#    - AddZedBusinessFacadeMethod:
-#        arguments:
-#            allowOverride:
-#                value: true
-#            facadeMethod:
-#                value: connect
-#            input:
-#                value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer ${{ module | lcfirst }}RegistryRequestTransfer, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
-#            output:
-#                value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
-#            body:
-#                allowOverride: true
-#                value: "return $this->getFactory()->createRegistry()->connect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
+    - AddMethod:
+          arguments:
+              allowOverride:
+                  value: true
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer $appRegistryResponseTransfer"
+              output:
+                  value: "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
+              target:
+                  value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\RegistryController"
+              method:
+                  value: buildResponse
+              visibility:
+                  value: protected
+              body:
+                  allowOverride: true
+                  value:
+                      - "if (!$appRegistryResponseTransfer->getIsSuccessful()) {"
+                      - "    return $this->buildErrorResponse($appRegistryResponseTransfer);"
+                      - "}"
+                      - ""
+                      - "return $this->jsonResponse([]);"
 
-#    - AddZedBusinessFacadeMethodTest:
-#          arguments:
-#              allowOverride:
-#                  value: true
-#              facadeMethod:
-#                  value: connect
-#              output:
-#                  value: "void"
-#              body:
-#                  allowOverride: true
-#                  value:
-#                      - "${{ module | lcfirst }}RegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer();"
-#                      - "${{ module | lcfirst }}RegistryResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer();"
-#                      - ""
-#                      - "${{ module | lcfirst }}RegistryResponseTransfer = $this->tester->getFacade()->connect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
-#                      - ""
-#                      - "$this->assertInstanceOf(\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer::class, ${{ module | lcfirst }}RegistryResponseTransfer);"
-#                      - "$this->assertTrue(${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful());"
-#                      - "$this->assertSame(\\Symfony\\Component\\HttpFoundation\\Response::HTTP_OK, ${{ module | lcfirst }}RegistryResponseTransfer->getHttpStatusCode());"
+
+
+    - AddZedCommunicationTest:
+          arguments:
+              className:
+                  value: RegistryController
+
+    - AddConstant:
+          arguments:
+              name:
+                  value: "PATH_REGISTRY_DISCONNECT"
+              value:
+                  value: "{{ module | dasherize }}/registry/disconnect"
+              visibility:
+                  value: "protected"
+              target:
+                  value: "\\{{ organization }}Test\\Zed\\{{ module }}\\Communication\\RegistryControllerTest"
+
+    - AddMethod:
+          arguments:
+              method:
+                  value: "testDisconnectActionDisconnectsSuccessfullyWithValidRequestData"
+              target:
+                  value: "\\{{ organization }}Test\\Zed\\{{ module }}\\Communication\\RegistryControllerTest"
+              body:
+                  value:
+                      - "// Arrange"
+                      - "$request = \\Symfony\\Component\\HttpFoundation\\Request::create(static::PATH_REGISTRY_DISCONNECT, Request::METHOD_POST);"
+                      - "$request->headers->set(\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config::HEADER_TENANT_ID, \\Ramsey\\Uuid\\Uuid::uuid4()->toString());"
+                      - ""
+                      - "// Act"
+                      - "$response = (new \\{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\RegistryController())->disconnectAction($request);"
+                      - ""
+                      - "// Assert"
+                      - "$this->assertInstanceOf(\\Symfony\\Component\\HttpFoundation\\JsonResponse::class, $response);"
+                      - "$this->assertTrue($response->isSuccessful());"
+                      - "$this->assertSame($response->getContent(), json_encode([]));"
+
+    - AddMethod:
+          arguments:
+              method:
+                  value: "testDisconnectActionReturnsValidationErrorWithIncorrectMethod"
+              target:
+                  value: "\\{{ organization }}Test\\Zed\\{{ module }}\\Communication\\RegistryControllerTest"
+              body:
+                  value:
+                      - "// Arrange"
+                      - "$request = \\Symfony\\Component\\HttpFoundation\\Request::create(static::PATH_REGISTRY_DISCONNECT, Request::METHOD_GET);"
+                      - "$request->headers->set(\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config::HEADER_TENANT_ID, \\Ramsey\\Uuid\\Uuid::uuid4()->toString());"
+                      - ""
+                      - "// Act"
+                      - "$response = (new \\{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\RegistryController())->disconnectAction($request);"
+                      - ""
+                      - "// Assert"
+                      - "$this->assertInstanceOf(\\Symfony\\Component\\HttpFoundation\\JsonResponse::class, $response);"
+                      - "$this->assertFalse($response->isSuccessful());"
+                      - "$this->assertThat($response->getContent(), new \\Codeception\\PHPUnit\\Constraint\\JsonContains(["
+                      - "    'errors' => [['code' => {{ module }}Config::RESPONSE_CODE_INVALID_HTTP_METHOD]],"
+                      - "]));"
+
+    - AddMethod:
+          arguments:
+              method:
+                  value: "testDisconnectActionReturnsValidationErrorWithMissingTenantId"
+              target:
+                  value: "\\{{ organization }}Test\\Zed\\{{ module }}\\Communication\\RegistryControllerTest"
+              body:
+                  value:
+                      - "// Arrange"
+                      - "$request = \\Symfony\\Component\\HttpFoundation\\Request::create(static::PATH_REGISTRY_DISCONNECT, Request::METHOD_POST);"
+                      - ""
+                      - "// Act"
+                      - "$response = (new \\{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\RegistryController())->disconnectAction($request);"
+                      - ""
+                      - "// Assert"
+                      - "$this->assertInstanceOf(\\Symfony\\Component\\HttpFoundation\\JsonResponse::class, $response);"
+                      - "$this->assertFalse($response->isSuccessful());"
+                      - "$this->assertThat($response->getContent(), new \\Codeception\\PHPUnit\\Constraint\\JsonContains(["
+                      - "    'errors' => [['code' => {{ module }}Config::RESPONSE_CODE_MISSING_TENANT_IDENTIFIER]],"
+                      - "]));"
+
+    - AddMethod:
+          arguments:
+              allowOverride:
+                  value: true
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer $appRegistryResponseTransfer"
+              output:
+                  value: "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
+              target:
+                  value: "{{ organization }}\\Zed\\{{ module }}\\Communication\\Controller\\RegistryController"
+              method:
+                  value: buildErrorResponse
+              visibility:
+                  value: protected
+              body:
+                  allowOverride: true
+                  value:
+                      - "$responseData = [];"
+                      - ""
+                      - "foreach ($appRegistryResponseTransfer->getErrorMessages() as $errorMessageTransfer) {"
+                      - "    $responseData['errors'][] = ["
+                      - "        'code' => $errorMessageTransfer->getCode(),"
+                      - "        'detail' => $errorMessageTransfer->getDetail(),"
+                      - "    ];"
+                      - "}"
+                      - ""
+                      - "return $this->jsonResponse($responseData, \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST);"
+
+    #    - AddZedBusinessFacadeMethod:
+    #        arguments:
+    #            allowOverride:
+    #                value: true
+    #            facadeMethod:
+    #                value: connect
+    #            input:
+    #                value: "\\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer $appRegistryRequestTransfer, \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer $appRegistryResponseTransfer"
+    #            output:
+    #                value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer"
+    #            body:
+    #                allowOverride: true
+    #                value: "return $this->getFactory()->createRegistry()->connect($appRegistryRequestTransfer, $appRegistryResponseTransfer);"
+
+    #    - AddZedBusinessFacadeMethodTest:
+    #          arguments:
+    #              allowOverride:
+    #                  value: true
+    #              facadeMethod:
+    #                  value: connect
+    #              output:
+    #                  value: "void"
+    #              body:
+    #                  allowOverride: true
+    #                  value:
+    #                      - "$appRegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer();"
+    #                      - "$appRegistryResponseTransfer = new \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer();"
+    #                      - ""
+    #                      - "$appRegistryResponseTransfer = $this->tester->getFacade()->connect($appRegistryRequestTransfer, $appRegistryResponseTransfer);"
+    #                      - ""
+    #                      - "$this->assertInstanceOf(\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer::class, $appRegistryResponseTransfer);"
+    #                      - "$this->assertTrue($appRegistryResponseTransfer->getIsSuccessful());"
+    #                      - "$this->assertSame(\\Symfony\\Component\\HttpFoundation\\Response::HTTP_OK, $appRegistryResponseTransfer->getHttpStatusCode());"
 
 
     - AddZedBusinessFacadeMethod:
-        arguments:
-            allowOverride:
-                value: true
-            facadeMethod:
-                value: disconnect
-            input:
-                value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer ${{ module | lcfirst }}RegistryRequestTransfer, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
-            output:
-                value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
-            body:
-                allowOverride: true
-                value: "return $this->getFactory()->createRegistry()->disconnect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
-
-    - AddZedBusinessFacadeMethodTest:
-        arguments:
-            allowOverride:
-                value: true
-            facadeMethod:
-                value: disconnect
-            output:
-                value: "void"
-            body:
-                allowOverride: true
-                value:
-                    - "${{ module | lcfirst }}RegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer();"
-                    - "${{ module | lcfirst }}RegistryResponseTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer();"
-                    - ""
-                    - "${{ module | lcfirst }}RegistryResponseTransfer = $this->tester->getFacade()->disconnect(${{ module | lcfirst }}RegistryRequestTransfer, ${{ module | lcfirst }}RegistryResponseTransfer);"
-                    - ""
-                    - "$this->assertInstanceOf(\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer::class, ${{ module | lcfirst }}RegistryResponseTransfer);"
-                    - "$this->assertTrue(${{ module | lcfirst }}RegistryResponseTransfer->getIsSuccessful());"
-                    - "$this->assertSame(\\Symfony\\Component\\HttpFoundation\\Response::HTTP_OK, ${{ module | lcfirst }}RegistryResponseTransfer->getHttpStatusCode());"
-
-#    - AddZedCommunicationModelMethod:
-#          arguments:
-#              className:
-#                  value: RequestValidator
-#              subDirectory:
-#                  value: RequestValidator
-#              modelMethod:
-#                  value: validateConnectRequest
-#              input:
-#                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
-#              output:
-#                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
-#              body:
-#                  value: "return ${{ module | lcfirst }}RegistryResponseTransfer;"
-
-    - AddZedCommunicationModelMethod:
-          arguments:
-              className:
-                  value: RequestValidator
-              subDirectory:
-                  value: RequestValidator
-              modelMethod:
-                  value: validateDisconnectRequest
-              input:
-                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
-              output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer"
-              body:
-                  value: "return ${{ module | lcfirst }}RegistryResponseTransfer;"
-
-#    - AddZedCommunicationModelMethod:
-#          arguments:
-#              allowOverride:
-#                  value: true
-#              className:
-#                  value: RequestToTransferMapper
-#              subDirectory:
-#                  value: RequestMapper
-#              modelMethod:
-#                  value: mapConnectRequestToTransfer
-#              input:
-#                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
-#              output:
-#                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer"
-#              body:
-#                  value:
-#                      - "${{ module | lcfirst }}RegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer();"
-#                      - ""
-#                      - "return ${{ module | lcfirst }}RegistryRequestTransfer;"
-
-    - AddZedCommunicationModelMethod:
           arguments:
               allowOverride:
                   value: true
+              facadeMethod:
+                  value: disconnect
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer $appRegistryRequestTransfer"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer"
+              body:
+                  allowOverride: true
+                  value:
+                      - "return $this->getFactory()->create{{ module }}Registry()"
+                      - "    ->disconnect($appRegistryRequestTransfer);"
+
+    - AddZedBusinessFacadeMethodTest:
+          arguments:
+              allowOverride:
+                  value: true
+              facadeMethod:
+                  value: disconnect
+              output:
+                  value: "void"
+              body:
+                  allowOverride: true
+                  value:
+                      - "$appRegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer();"
+                      - ""
+                      - "$appRegistryResponseTransfer = $this->tester->getFacade()->disconnect($appRegistryRequestTransfer);"
+                      - ""
+                      - "$this->assertInstanceOf(\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer::class, $appRegistryResponseTransfer);"
+                      - "$this->assertTrue($appRegistryResponseTransfer->getIsSuccessful());"
+                      - "$this->assertCount(0, $appRegistryResponseTransfer->getErrorMessages());"
+
+    #    - AddZedCommunicationModelMethod:
+    #          arguments:
+    #              className:
+    #                  value: RequestValidator
+    #              subDirectory:
+    #                  value: RequestValidator
+    #              modelMethod:
+    #                  value: validateConnectRequest
+    #              input:
+    #                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer $appRegistryResponseTransfer"
+    #              output:
+    #                  value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer"
+    #              body:
+    #                  value: "return $appRegistryResponseTransfer;"
+
+
+    - AddZedCommunicationModelMethod:
+          arguments:
               className:
-                  value: RequestToTransferMapper
+                  value: RequestValidator
               subDirectory:
-                  value: RequestMapper
+                  value: RequestValidator
               modelMethod:
-                  value: mapDisconnectRequestToTransfer
+                  value: validateAppRegistryRequest
               input:
                   value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
               output:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer"
+                  value: "?\\Generated\\Shared\\Transfer\\ErrorMessageTransfer"
               body:
                   value:
-                      - "${{ module | lcfirst }}RegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\{{ module }}RegistryRequestTransfer();"
+                      - "if ($request->getMethod() !== Request::METHOD_POST) {"
+                      - "    return (new \\Generated\\Shared\\Transfer\\ErrorMessageTransfer())->setCode(\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config::RESPONSE_CODE_INVALID_HTTP_METHOD)"
+                      - "        ->setDetail({{ module }}Config::RESPONSE_MESSAGE_INVALID_HTTP_METHOD);"
+                      - "}"
                       - ""
-                      - "return ${{ module | lcfirst }}RegistryRequestTransfer;"
+                      - "if (!$request->headers->get({{ module }}Config::HEADER_TENANT_ID)) {"
+                      - "    return (new \\Generated\\Shared\\Transfer\\ErrorMessageTransfer())->setCode({{ module }}Config::RESPONSE_CODE_MISSING_TENANT_IDENTIFIER)"
+                      - "        ->setDetail({{ module }}Config::RESPONSE_MESSAGE_MISSING_TENANT_IDENTIFIER);"
+                      - "}"
+                      - ""
+                      - "return null;"
+
+    #    - AddZedCommunicationModelMethod:
+    #          arguments:
+    #              allowOverride:
+    #                  value: true
+    #              className:
+    #                  value: RequestMapper
+    #              subDirectory:
+    #                  value: RequestMapper
+    #              modelMethod:
+    #                  value: mapConnectRequestToTransfer
+    #              input:
+    #                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
+    #              output:
+    #                  value: "\\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer"
+    #              body:
+    #                  value:
+    #                      - "$appRegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer();"
+    #                      - ""
+    #                      - "return $appRegistryRequestTransfer;"
 
     - AddZedCommunicationModelMethod:
           arguments:
               allowOverride:
                   value: true
               className:
-                  value: ResponseBuilder
+                  value: RequestMapper
               subDirectory:
-                  value: ResponseBuilder
+                  value: RequestMapper
               modelMethod:
-                  value: createResponse
+                  value: mapAppRegistryRequestToTransfer
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ module }}RegistryResponseTransfer ${{ module | lcfirst }}RegistryResponseTransfer"
+                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer $appRegistryRequestTransfer"
               output:
-                  value: "array"
+                  value: "\\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer"
               body:
                   value:
-                      - "return ${{ module | lcfirst }}RegistryResponseTransfer->modifiedToArray();"
+                      - "return $appRegistryRequestTransfer->setTenantIdentifier("
+                      - "    $request->headers->get(\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config::HEADER_TENANT_ID)"
+                      - ");"
 
     - AddSharedTransferDefinition:
           arguments:
               name:
-                  value: "{{ module }}RegistryRequest"
+                  value: "AppRegistryRequest"
 
     - AddSharedTransferProperty:
           arguments:
               name:
-                  value: "{{ module }}RegistryResponse"
+                  value: "AppRegistryRequest"
+              propertyName:
+                  value: "tenantIdentifier"
+              propertyType:
+                  value: "string"
+
+    - AddSharedTransferProperty:
+          arguments:
+              name:
+                  value: "AppRegistryResponse"
               propertyName:
                   value: "isSuccessful"
               propertyType:
@@ -306,16 +492,18 @@ postSpryks:
     - AddSharedTransferProperty:
           arguments:
               name:
-                  value: "{{ module }}RegistryResponse"
+                  value: "AppRegistryResponse"
               propertyName:
-                  value: "httpStatusCode"
+                  value: "messages"
               propertyType:
-                  value: "int"
+                  value: "ErrorMessage[]"
+              singular:
+                  value: "message"
 
     - AddSharedTransferProperty:
           arguments:
               name:
-                  value: "{{ module }}RegistryResponse"
+                  value: "ErrorMessage"
               propertyName:
                   value: "code"
               propertyType:
@@ -324,28 +512,8 @@ postSpryks:
     - AddSharedTransferProperty:
           arguments:
               name:
-                  value: "{{ module }}RegistryResponse"
+                  value: "ErrorMessage"
               propertyName:
-                  value: "status"
-              propertyType:
-                  value: "int"
-
-    - AddSharedTransferProperty:
-          arguments:
-              name:
-                  value: "{{ module }}RegistryResponse"
-              propertyName:
-                  value: "messages"
-              propertyType:
-                  value: "ResponseMessage[]"
-              singular:
-                  value: "message"
-
-    - AddSharedTransferProperty:
-          arguments:
-              name:
-                  value: "ResponseMessage"
-              propertyName:
-                  value: "message"
+                  value: "detail"
               propertyType:
                   value: "string"

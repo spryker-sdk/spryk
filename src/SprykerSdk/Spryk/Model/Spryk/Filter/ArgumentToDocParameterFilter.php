@@ -14,6 +14,7 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
  * Example:
  * $this->filter(`string $argument') === 'string $argument';
  * $this->filter(`?string $argument = null`) === 'string|null $argument';
+ * $this->filter(`array $argument = []`) === 'array $argument';
  */
 class ArgumentToDocParameterFilter implements FilterInterface
 {
@@ -32,12 +33,22 @@ class ArgumentToDocParameterFilter implements FilterInterface
      */
     public function filter(string $value): string
     {
+        $value = trim($value);
+
         $argumentParts = explode(' ', $value);
 
         if (mb_substr($argumentParts[0], 0, 1) === '?') {
             return sprintf(
                 '%s|null %s',
                 mb_substr($argumentParts[0], 1),
+                $argumentParts[1],
+            );
+        }
+
+        if (!empty($argumentParts[2]) && $argumentParts[2] === '=') {
+            return sprintf(
+                '%s %s',
+                $argumentParts[0],
                 $argumentParts[1],
             );
         }

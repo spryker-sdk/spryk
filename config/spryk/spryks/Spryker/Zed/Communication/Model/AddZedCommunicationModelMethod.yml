@@ -31,6 +31,10 @@ arguments:
 
     modelMethod: ~
 
+    visibility:
+        inherit: true
+        default: public
+
     input:
         isOptional: true
         isMultiple: true
