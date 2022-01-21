@@ -1,0 +1,36 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+
+namespace {{ organization }}\{{ subDirectory | replace({'/': '\\'}) }};
+
+{% if expanderClassName %}
+use {{ expanderClassName | replace({'/': '\\'}) | trim('\\') }};
+{% endif %}
+{% if implementerInterfaceName %}
+use {{ implementerInterfaceName | replace({'/': '\\'}) | trim('\\') }};
+{% endif %}
+
+class {{ className }}{% if expanderClassName %} extends {{ expanderClassName | replace({'/': '\\'}) | classNameShort }}{% endif %}{% if implementerInterfaceName %} implements {{ implementerInterfaceName | replace({'/': '\\'}) | classNameShort }}{% endif ~%}
+{
+    /**
+     * @param \Generated\Shared\Transfer\{{ messageName }}Transfer ${{ messageName | lcfirst }}Transfer
+     *
+     * @return void
+     */
+    public function on{{ messageName }}(\Generated\Shared\Transfer\{{ messageName }}Transfer ${{ messageName | lcfirst }}Transfer): void
+    {
+    }
+
+    /**
+     * Return an array where the key is the class name to be handled and the value is the callable that handles the message.
+     *
+     * @return array<string, callable>
+     */
+    public function handles(): array
+    {
+        return [
+            \Generated\Shared\Transfer\{{ messageName }}Transfer::class, [$this, 'on{{ messageName }}'],
+        ];
+    }
+}

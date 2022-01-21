@@ -1,0 +1,40 @@
+spryk: template
+description: "Adds a new *module* *message*HandlerPlugin class."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    messageName:
+        inherit: true
+
+    className:
+        value: "{{ module }}{{ messageName }}MessageHandlerPlugin"
+
+    implementerInterfaceName:
+        inherit: true
+        value: "Spryker/Zed/MessageBrokerExtension/Dependency/Plugin/MessageHandlerPluginInterface"
+
+    expanderClassName:
+        inherit: true
+        value: "Spryker/Zed/Kernel/Communication/AbstractPlugin"
+
+    subDirectory:
+        value: "Zed/{{ module }}/Communication/Plugin/MessageBroker"
+
+    template:
+        value: Zed/Communication/Plugin/MessageBroker/MessageHandlerPluginClass.php.twig
+
+    targetFilename:
+        value: "{{ module }}{{ messageName }}MessageHandlerPlugin.php"
+
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/"
+
+preSpryks:
+    - AddModule
