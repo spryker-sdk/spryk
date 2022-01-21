@@ -222,6 +222,10 @@
   mode: 2
   description: 'pluginClassName argument'
 -
+  name: messageName
+  mode: 2
+  description: 'messageName argument'
+-
   name: body
   mode: 2
   description: 'body argument'
@@ -4449,6 +4453,66 @@
   name: AddGlueValidation.level
   mode: 2
   description: 'AddGlueValidation level argument'
+-
+  name: AddMessageBrokerHandlerPlugin.module
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin module argument'
+-
+  name: AddMessageBrokerHandlerPlugin.organization
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin organization argument'
+-
+  name: AddMessageBrokerHandlerPlugin.messageName
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin messageName argument'
+-
+  name: AddMessageBrokerHandlerPlugin.className
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin className argument'
+-
+  name: AddMessageBrokerHandlerPlugin.implementerInterfaceName
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin implementerInterfaceName argument'
+-
+  name: AddMessageBrokerHandlerPlugin.expanderClassName
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin expanderClassName argument'
+-
+  name: AddMessageBrokerHandlerPlugin.subDirectory
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin subDirectory argument'
+-
+  name: AddMessageBrokerHandlerPlugin.template
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin template argument'
+-
+  name: AddMessageBrokerHandlerPlugin.targetFilename
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin targetFilename argument'
+-
+  name: AddMessageBrokerHandlerPlugin.targetPath
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin targetPath argument'
+-
+  name: AddMessageBrokerHandlerPlugin.sprykerVendorPath
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin sprykerVendorPath argument'
+-
+  name: AddMessageBrokerHandlerPlugin.moduleSrcDirectory
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin moduleSrcDirectory argument'
+-
+  name: AddMessageBrokerHandlerPlugin.repository
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin repository argument'
+-
+  name: AddMessageBrokerHandlerPlugin.moduleRoot
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin moduleRoot argument'
+-
+  name: AddMessageBrokerHandlerPlugin.level
+  mode: 2
+  description: 'AddMessageBrokerHandlerPlugin level argument'
 -
   name: AddMethod.organization
   mode: 2
