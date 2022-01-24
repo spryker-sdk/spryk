@@ -11,6 +11,9 @@ use {{ expanderClassName | replace({'/': '\\'}) | trim('\\') }};
 use {{ implementerInterfaceName | replace({'/': '\\'}) | trim('\\') }};
 {% endif %}
 
+/**
+ * @method \{{ organization }}\Zed\\{{ module }}\Business\{{ module }}FacadeInterface getFacade()
+ */
 class {{ className }}{% if expanderClassName %} extends {{ expanderClassName | replace({'/': '\\'}) | classNameShort }}{% endif %}{% if implementerInterfaceName %} implements {{ implementerInterfaceName | replace({'/': '\\'}) | classNameShort }}{% endif ~%}
 {
     /**
@@ -20,6 +23,7 @@ class {{ className }}{% if expanderClassName %} extends {{ expanderClassName | r
      */
     public function on{{ messageName }}(\Generated\Shared\Transfer\{{ messageName }}Transfer ${{ messageName | lcfirst }}Transfer): void
     {
+        $this->getFacade()->handle{{ messageName }}(${{ messageName | lcfirst }}Transfer);
     }
 
     /**
@@ -27,10 +31,8 @@ class {{ className }}{% if expanderClassName %} extends {{ expanderClassName | r
      *
      * @return array<string, callable>
      */
-    public function handles(): array
+    public function handles(): iterable
     {
-        return [
-            \Generated\Shared\Transfer\{{ messageName }}Transfer::class, [$this, 'on{{ messageName }}'],
-        ];
+        yield \Generated\Shared\Transfer\{{ messageName }}Transfer::class => [$this, 'on{{ messageName }}'];
     }
 }
