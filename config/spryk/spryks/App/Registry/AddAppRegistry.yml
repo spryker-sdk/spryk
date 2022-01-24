@@ -52,7 +52,10 @@ postSpryks:
               output:
                   value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer"
               body:
-                  value: "return (new AppRegistryResponseTransfer())->setIsSuccessful(true);"
+                  value:
+                      - "$appRegistryRequestTransfer->requireTenantIdentifier();"
+                      - ""
+                      - "return (new AppRegistryResponseTransfer())->setIsSuccessful(true);"
 
     - AddConstant:
           arguments:
@@ -376,13 +379,29 @@ postSpryks:
               body:
                   allowOverride: true
                   value:
-                      - "$appRegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer();"
+                      - "$appRegistryRequestTransfer = (new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer())"
+                      - "     ->setTenantIdentifier(\\Ramsey\\Uuid\\Uuid::uuid4()->toString());"
                       - ""
                       - "$appRegistryResponseTransfer = $this->tester->getFacade()->disconnect($appRegistryRequestTransfer);"
                       - ""
                       - "$this->assertInstanceOf(\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer::class, $appRegistryResponseTransfer);"
                       - "$this->assertTrue($appRegistryResponseTransfer->getIsSuccessful());"
                       - "$this->assertCount(0, $appRegistryResponseTransfer->getErrorMessages());"
+
+    - AddZedBusinessFacadeMethodTest:
+          arguments:
+              facadeMethod:
+                  value: disconnectThrowsExceptionWithWithInvalidData
+              output:
+                  value: "void"
+              body:
+                  allowOverride: true
+                  value:
+                      - "$appRegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer();"
+                      - ""
+                      - "$this->expectException(\\Spryker\\Shared\\Kernel\\Transfer\\Exception\\RequiredTransferPropertyException::class);"
+                      - ""
+                      - "$this->tester->getFacade()->disconnect($appRegistryRequestTransfer);"
 
     #    - AddZedCommunicationModelMethod:
     #          arguments:
