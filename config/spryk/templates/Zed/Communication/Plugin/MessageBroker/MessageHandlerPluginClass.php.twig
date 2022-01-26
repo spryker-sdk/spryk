@@ -12,7 +12,7 @@ use {{ implementerInterfaceName | replace({'/': '\\'}) | trim('\\') }};
 {% endif %}
 
 /**
- * @method \{{ organization }}\Zed\\{{ module }}\Business\{{ module }}FacadeInterface getFacade()
+ * @method \{{ organization }}\Zed\{{ module }}\Business\{{ module }}FacadeInterface getFacade()
  */
 class {{ className }}{% if expanderClassName %} extends {{ expanderClassName | replace({'/': '\\'}) | classNameShort }}{% endif %}{% if implementerInterfaceName %} implements {{ implementerInterfaceName | replace({'/': '\\'}) | classNameShort }}{% endif ~%}
 {
