@@ -22,6 +22,7 @@ arguments:
             application: Zed
 
     methods:
+        inherit: true
         type: MethodNameChoice
         choiceLoader: ZedFacadeMethodChoiceLoader
         isMultiple: true

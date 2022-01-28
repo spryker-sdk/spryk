@@ -33,9 +33,9 @@ postSpryks:
     - AddZedDependencyFacadeDependencyProviderConstant:
         arguments:
             name:
-                value: "FACADE_{{ dependentModule | underscored | upper }}"
+                value: "FACADE_{{ dependentModule | camelCaseToUnderscore | upper }}"
             value:
-                value: "FACADE_{{ dependentModule | underscored | upper }}"
+                value: "FACADE_{{ dependentModule | camelCaseToUnderscore | upper }}"
             visibility:
                 value: "public"
 

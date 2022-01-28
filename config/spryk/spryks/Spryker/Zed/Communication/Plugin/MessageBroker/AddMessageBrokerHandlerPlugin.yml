@@ -25,6 +25,7 @@ arguments:
         value: "Spryker/Zed/Kernel/Communication/AbstractPlugin"
 
     subDirectory:
+        inherit: true
         value: "Zed/{{ module }}/Communication/Plugin/MessageBroker"
 
     template:
@@ -36,5 +37,46 @@ arguments:
     targetPath:
         value: "{{ moduleRoot }}/src/{{ organization }}/"
 
-preSpryks:
-    - AddModule
+postSpryks:
+    - AddZedBusinessMessageBrokerMessageHandlerMethod
+    - AddZedDependencyFacadeBridgeMethod:
+          arguments:
+              dependentModule:
+                  value: "MessageBroker"
+              methods:
+                  value:
+                      - "sendMessage"
+    - AddZedBusinessFacadeMethod:
+          arguments:
+              allowOverride:
+                  value: true
+              facadeMethod:
+                  value: "handle{{ messageName }}"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ messageName }}Transfer ${{ messageName | lcfirst }}Transfer"
+              output:
+                  value: void
+              body:
+                  allowOverride: true
+                  value:
+                      - "$this->getFactory()->create{{ module }}MessageHandler()->handle{{ messageName }}(${{ messageName | lcfirst }}Transfer);"
+
+    - AddZedBusinessFacadeMethodTest:
+          arguments:
+              allowOverride:
+                  value: true
+              facadeMethod:
+                  value: "handle{{ messageName }}"
+              output:
+                  value: "void"
+              body:
+                  allowOverride: true
+                  value:
+                      - "// Arrange"
+                      - "${{ messageName | lcfirst }}Transfer = new \\Generated\\Shared\\Transfer\\{{ messageName }}Transfer();"
+                      - ""
+                      - "        // Act"
+                      - "$this->tester->getFacade()->handle{{ messageName }}(${{ messageName | lcfirst }}Transfer);"
+                      - ""
+                      - "        // Assert"
+                      - "$this->markTestSkipped('Test needs implementation');"

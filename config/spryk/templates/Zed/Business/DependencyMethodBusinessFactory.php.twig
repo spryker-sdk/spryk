@@ -1,0 +1,17 @@
+{% set interface = '' %}
+
+{% if mode == 'core' %}
+    {% if dependencyType == 'Facade' %}
+        {% set interface = '\\Spryker\\Zed\\' ~ module ~ '\\Dependency\\' ~ dependencyType ~ '\\' ~ module ~ 'To' ~ dependentModule ~ 'FacadeInterface' %}
+    {% endif %}
+{% else %}
+    {% set interface = '\\Spryker\\Zed\\' ~ dependentModule ~ '\\Business\\' ~ dependentModule ~ 'FacadeInterface' %}
+{% endif %}
+
+    /**
+     * @return {{ interface }}
+     */
+    public function {{ dependencyMethod }}(): {{ interface }}
+    {
+        return $this->getProvidedDependency(\{{ organization }}\Zed\{{ module }}\{{ module }}DependencyProvider::{{ dependencyType | upper }}_{{ dependentModule | camelCaseToUnderscore | upper }});
+    }

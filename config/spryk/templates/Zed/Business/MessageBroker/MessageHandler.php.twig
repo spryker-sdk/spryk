@@ -1,0 +1,40 @@
+<?php
+{{ include('Partials/license.twig') }}
+namespace {{ organization }}\Zed\{{ module }}\Business{% if subDirectory.value %}\{{ subDirectory | replace({'/': '\\'}) }}{% endif %};
+
+{% if mode == 'project' %}
+use Spryker\Zed\MessageBroker\Business\MessageBrokerFacadeInterface;
+{% set facadeInterfaceName = "MessageBrokerFacadeInterface" %}
+{% else %}
+use Spryker\Zed\{{ module }}\Dependency\Facade\{{ module }}ToMessageBrokerFacadeInterface;
+{% set facadeInterfaceName = module ~ "ToMessageBrokerFacadeInterface" %}
+{% endif %}
+
+class {{ className | classNameShort }} implements {{ interfaceName | classNameShort }}
+{
+    /**
+     * @var {{ facadeInterfaceName }}
+     */
+    protected {{ facadeInterfaceName }} $messageBrokerFacade;
+
+    /**
+     * @var {{ facadeInterfaceName }}
+     */
+    public function __construct({{ facadeInterfaceName }} $messageBrokerFacade)
+    {
+        $this->messageBrokerFacade = $messageBrokerFacade;
+    }
+
+    /**
+     * @var \Spryker\Shared\Kernel\Transfer\TransferInterface $newMessageTransfer
+     * @var \Spryker\Shared\Kernel\Transfer\TransferInterface|null $previousMessageTransfer
+     */
+    public function sendMessage($newMessageTransfer, $previousMessageTransfer = null): void
+    {
+        if ($previousMessageTransfer !== null) {
+            $newMessageTransfer->setMessageAttributes($previousMessageTransfer->getMessageAttributes());
+        }
+
+        $this->messageBrokerFacade->sendMessage($newMessageTransfer);
+    }
+}

@@ -58,9 +58,13 @@ class TemplateRenderer implements TemplateRendererInterface
      */
     public function renderString(string $templateString, array $arguments): string
     {
-        $template = $this->renderer->createTemplate($templateString);
+        try {
+            $template = $this->renderer->createTemplate($templateString);
 
-        return $template->render($arguments);
+            return $template->render($arguments);
+        } catch (\Throwable $e) {
+            $foo = '';
+        }
     }
 
     /**

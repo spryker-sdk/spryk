@@ -58,6 +58,7 @@ class MethodSpryk implements SprykBuilderInterface
         'method',
         'controllerMethod',
         'factoryMethod',
+        'dependencyMethod',
         'facadeMethod',
         'modelMethod',
         'providerMethod',
@@ -71,11 +72,6 @@ class MethodSpryk implements SprykBuilderInterface
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
     protected $renderer;
-
-    /**
-     * @var array<string, bool>
-     */
-    protected $executedSpryks = [];
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
@@ -163,8 +159,8 @@ class MethodSpryk implements SprykBuilderInterface
         $tmpFileName = sprintf('%s/%s.php', sys_get_temp_dir(), Uuid::uuid4()->toString());
         file_put_contents($tmpFileName, $tmpFileContent);
 
-        $process = new Process(['vendor/bin/phpcbf', $tmpFileName, '--standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml']);
-        $process->run();
+//        $process = new Process(['vendor/bin/phpcbf', $tmpFileName, '--standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml']);
+//        $process->run();
 
         /** @var string $tmpFileContent */
         $tmpFileContent = file_get_contents($tmpFileName);

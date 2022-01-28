@@ -21,6 +21,7 @@ class FilterFactory
             $this->createArgumentToDocParameterFilter(),
             $this->createCamelCaseFilter(),
             $this->createCamelCaseToWhitespaceFilter(),
+            $this->createCamelCaseToUnderscoreFilter(),
             $this->createClassNameShortFilter(),
             $this->createConvertToClassNameFragmentFilter(),
             $this->createDasherizeFilter(),
@@ -161,6 +162,14 @@ class FilterFactory
     public function createCamelCaseToWhitespaceFilter(): FilterInterface
     {
         return new CamelCaseToWhitespaceFilter();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
+     */
+    public function createCamelCaseToUnderscoreFilter(): FilterInterface
+    {
+        return new CamelCaseToUnderscoreFilter();
     }
 
     /**
