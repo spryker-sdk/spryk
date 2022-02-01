@@ -7,12 +7,10 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Transfer;
 
-use DOMDocument;
-use DOMElement;
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\Word\DashToCamelCase;
 use SimpleXMLElement;
-use SprykerSdk\Spryk\Exception\XmlException;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
@@ -37,14 +35,21 @@ abstract class AbstractTransferSpryk implements SprykBuilderInterface
     /**
      * @var string
      */
-    protected $rootDirectory;
+    protected string $rootDirectory;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface
+     */
+    protected FileResolverInterface $fileResolver;
 
     /**
      * @param string $rootDirectory
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface $fileResolver
      */
-    public function __construct(string $rootDirectory)
+    public function __construct(string $rootDirectory, FileResolverInterface $fileResolver)
     {
         $this->rootDirectory = $rootDirectory;
+        $this->fileResolver = $fileResolver;
     }
 
     /**
@@ -71,119 +76,21 @@ abstract class AbstractTransferSpryk implements SprykBuilderInterface
     abstract public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void;
 
     /**
-     * @param string $xmlFilePath
-     *
-     * @return \DOMDocument
-     */
-    protected function getDomDocument(string $xmlFilePath): DOMDocument
-    {
-        $xmlSchemaDom = new DOMDocument('1.0');
-        $xmlSchemaDom->formatOutput = true;
-        $xmlSchemaDom->preserveWhiteSpace = false;
-        $xmlSchemaDom->load($xmlFilePath);
-
-        return $xmlSchemaDom;
-    }
-
-    /**
-     * @param string $xml
-     * @param string $targetPath
-     *
-     * @return void
-     */
-    protected function writeXml(string $xml, string $targetPath): void
-    {
-        $xml = str_replace('</transfer>', '</transfer>' . PHP_EOL, $xml);
-
-        file_put_contents($targetPath, $xml);
-    }
-
-    /**
+     * @param \SimpleXMLElement $simpleXMLElement
      * @param string $transferName
-     * @param \DOMDocument $xmlSchemaDom
      *
-     * @return \DOMElement|null
+     * @return \SimpleXMLElement|null
      */
-    protected function findTransferByName(string $transferName, DOMDocument $xmlSchemaDom): ?DOMElement
+    protected function findTransferByName(SimpleXMLElement $simpleXMLElement, string $transferName): ?SimpleXMLElement
     {
-        $transfers = $xmlSchemaDom->getElementsByTagName('transfer');
-
-        /** @var \DOMElement $transfer */
-        foreach ($transfers as $transfer) {
-            if ($transfer->getAttribute('name') !== $transferName) {
-                continue;
+        /** @var \SimpleXMLElement $transferXMLElement */
+        foreach ($simpleXMLElement->children() as $transferXMLElement) {
+            if ((string)$transferXMLElement['name'] === $transferName) {
+                return $transferXMLElement;
             }
-
-            return $transfer;
         }
 
         return null;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @throws \SprykerSdk\Spryk\Exception\XmlException
-     *
-     * @return \SimpleXMLElement
-     */
-    protected function getXml(SprykDefinitionInterface $sprykDefinition): SimpleXMLElement
-    {
-        $xml = $this->loadXmlFromFile($sprykDefinition);
-
-        if (!($xml instanceof SimpleXMLElement)) {
-            throw new XmlException('Could not load xml file!');
-        }
-
-        return $xml;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return \SimpleXMLElement|false
-     */
-    protected function loadXmlFromFile(SprykDefinitionInterface $sprykDefinition)
-    {
-        $targetPath = $this->getTargetPath($sprykDefinition);
-
-        return simplexml_load_file($targetPath);
-    }
-
-    /**
-     * @param \SimpleXMLElement $xml
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return void
-     */
-    protected function prettyPrintXml(SimpleXMLElement $xml, SprykDefinitionInterface $sprykDefinition): void
-    {
-        $dom = new DOMDocument('1.1');
-        $dom->preserveWhiteSpace = false;
-        $dom->formatOutput = true;
-
-        $dom->loadXML($this->getXmlAsString($xml));
-        $dom->save($this->getTargetPath($sprykDefinition));
-    }
-
-    /**
-     * @codeCoverageIgnore
-     *
-     * @param \SimpleXMLElement $xml
-     *
-     * @throws \SprykerSdk\Spryk\Exception\XmlException
-     *
-     * @return string
-     */
-    protected function getXmlAsString(SimpleXMLElement $xml): string
-    {
-        $xmlString = $xml->asXML();
-
-        if (!is_string($xmlString)) {
-            throw new XmlException('Could not get xml as string!');
-        }
-
-        return $xmlString;
     }
 
     /**

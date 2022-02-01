@@ -8,6 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Template;
 
 use SprykerSdk\Spryk\Exception\YmlException;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
@@ -49,20 +50,27 @@ class UpdateYmlSpryk implements SprykBuilderInterface
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
-    protected $renderer;
+    protected TemplateRendererInterface $renderer;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface
+     */
+    protected FileResolverInterface $fileResolver;
 
     /**
      * @var string
      */
-    protected $rootDirectory;
+    protected string $rootDirectory;
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface $fileResolver
      * @param string $rootDirectory
      */
-    public function __construct(TemplateRendererInterface $renderer, string $rootDirectory)
+    public function __construct(TemplateRendererInterface $renderer, FileResolverInterface $fileResolver, string $rootDirectory)
     {
         $this->renderer = $renderer;
+        $this->fileResolver = $fileResolver;
         $this->rootDirectory = $rootDirectory;
     }
 
@@ -88,50 +96,23 @@ class UpdateYmlSpryk implements SprykBuilderInterface
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
      *
+     * @throws \SprykerSdk\Spryk\Exception\YmlException
+     *
      * @return void
      */
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $targetYaml = $this->getTargetYaml($sprykDefinition);
-        $targetYaml = $this->updateYaml($sprykDefinition, $targetYaml);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedYmlInterface $resolved */
+        $resolved = $this->fileResolver->resolve($this->getTargetPath($sprykDefinition));
 
-        $this->dumpYamlToFile($sprykDefinition, $targetYaml);
-
-        $style->report(sprintf('Updated <fg=green>%s</>', $this->getTargetPath($sprykDefinition)));
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return array
-     */
-    protected function getTargetYaml(SprykDefinitionInterface $sprykDefinition): array
-    {
-        $targetYaml = $this->getTargetYamlAsArray($sprykDefinition);
-        $targetYaml = $this->prepareTargetYaml($sprykDefinition, $targetYaml);
-
-        return $targetYaml;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @throws \SprykerSdk\Spryk\Exception\YmlException
-     *
-     * @return array
-     */
-    protected function getTargetYamlAsArray(SprykDefinitionInterface $sprykDefinition): array
-    {
-        $targetPath = $this->getTargetPath($sprykDefinition);
-        $fileContent = file_get_contents($targetPath);
-
-        if ($fileContent === false || strlen($fileContent) === 0) {
-            throw new YmlException(sprintf('Could not load yaml content from "%s"!', $targetPath));
+        if (empty($resolved->getDecodedYml())) {
+            throw new YmlException(sprintf('The YML file "%s" is empty or it was not able to parse it.', $this->getTargetPath($sprykDefinition)));
         }
 
-        $yaml = Yaml::parse($fileContent);
+        $targetYml = $this->prepareTargetYaml($sprykDefinition, $resolved->getDecodedYml());
+        $resolved->setDecodedYml($this->updateYaml($sprykDefinition, $targetYml));
 
-        return $yaml;
+        $style->report(sprintf('Updated <fg=green>%s</>', $this->getTargetPath($sprykDefinition)));
     }
 
     /**
@@ -186,7 +167,7 @@ class UpdateYmlSpryk implements SprykBuilderInterface
             return $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_CONTENT)->getValue();
         }
 
-        return $this->getSourceYamlAsArray($sprykDefinition);
+        return $this->getDataForYml($sprykDefinition);
     }
 
     /**
@@ -194,7 +175,7 @@ class UpdateYmlSpryk implements SprykBuilderInterface
      *
      * @return array
      */
-    protected function getSourceYamlAsArray(SprykDefinitionInterface $sprykDefinition): array
+    protected function getDataForYml(SprykDefinitionInterface $sprykDefinition): array
     {
         $content = $this->getContent($sprykDefinition, $this->getTemplateName($sprykDefinition));
         $yaml = Yaml::parse($content);
@@ -285,18 +266,5 @@ class UpdateYmlSpryk implements SprykBuilderInterface
             ->getValue();
 
         return $afterElement;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     * @param array $targetYaml
-     *
-     * @return void
-     */
-    protected function dumpYamlToFile(SprykDefinitionInterface $sprykDefinition, array $targetYaml): void
-    {
-        $yamlContent = Yaml::dump($targetYaml, static::YAML_START_INLINE_LEVEL);
-
-        file_put_contents($this->getTargetPath($sprykDefinition), $yamlContent);
     }
 }

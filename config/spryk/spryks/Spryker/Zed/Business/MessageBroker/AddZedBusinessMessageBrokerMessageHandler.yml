@@ -1,3 +1,7 @@
+# Adds a MessageHandler class
+# Adds a MessageHandler interface
+# Adds the Factory method to get the MessageHandler
+# Adds a facade method to call the created handler
 spryk: template
 description: "Adds a new MessageBroker MessageHandler to the Zed application."
 mode: both
@@ -27,7 +31,7 @@ arguments:
         value: "MessageBroker"
 
     interfaceName:
-        value: "{{ className }}Interface"
+        value: "\\{{ organization}}\\Zed\\{{ module}}\\Business\\MessageBroker\\{{ className }}Interface"
 
     template:
         value: Zed/Business/MessageBroker/MessageHandler.php.twig
@@ -43,8 +47,8 @@ preSpryks:
     - AddModule
 
 postSpryks:
-    - AddZedBusinessModelInterface
-    - AddZedBusinessFactoryMethod:
+    - AddZedBusinessModelInterface # Add Interface for the newly created method
+    - AddZedBusinessFactoryMethod: # Add method to get the MessageBrokerFacade dependency for class creation in the factory
           arguments:
               subDirectory:
                   value: "MessageBroker"

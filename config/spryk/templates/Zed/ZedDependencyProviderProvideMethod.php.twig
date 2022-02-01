@@ -1,0 +1,11 @@
+/**
+ * @param \Spryker\Zed\Kernel\Container $container
+ *
+ * @return \Spryker\Zed\Kernel\Container
+ */
+public function provide{{ layer }}LayerDependencies(Container $container)
+{
+    $container = parent::provide{{ layer }}LayerDependencies($container);
+
+    return $container;
+}

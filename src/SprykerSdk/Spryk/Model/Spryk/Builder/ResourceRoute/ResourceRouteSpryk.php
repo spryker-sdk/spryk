@@ -7,13 +7,16 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\ResourceRoute;
 
-use PHPStan\BetterReflection\BetterReflection;
-use PHPStan\BetterReflection\Reflection\ReflectionClass;
-use SprykerSdk\Spryk\Exception\EmptyFileException;
-use SprykerSdk\Spryk\Exception\ReflectionException;
+use PhpParser\Lexer;
+use PhpParser\Node\Stmt\Expression;
+use PhpParser\NodeTraverser;
+use PhpParser\Parser;
+use SprykerSdk\Spryk\Model\Spryk\Builder\NodeVisitor\AddExpressionToMethodBeforeReturnVisitor;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class ResourceRouteSpryk implements SprykBuilderInterface
@@ -46,14 +49,47 @@ class ResourceRouteSpryk implements SprykBuilderInterface
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
-    protected $renderer;
+    protected TemplateRendererInterface $renderer;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface
+     */
+    protected FileResolverInterface $fileResolver;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface
+     */
+    protected NodeFinderInterface $nodeFinder;
+
+    /**
+     * @var \PhpParser\Parser
+     */
+    protected Parser $parser;
+
+    /**
+     * @var \PhpParser\Lexer
+     */
+    protected Lexer $lexer;
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface $fileResolver
+     * @param \SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface $nodeFinder
+     * @param \PhpParser\Parser $parser
+     * @param \PhpParser\Lexer $lexer
      */
-    public function __construct(TemplateRendererInterface $renderer)
-    {
+    public function __construct(
+        TemplateRendererInterface $renderer,
+        FileResolverInterface $fileResolver,
+        NodeFinderInterface $nodeFinder,
+        Parser $parser,
+        Lexer $lexer
+    ) {
         $this->renderer = $renderer;
+        $this->fileResolver = $fileResolver;
+        $this->nodeFinder = $nodeFinder;
+        $this->parser = $parser;
+        $this->lexer = $lexer;
     }
 
     /**
@@ -82,23 +118,20 @@ class ResourceRouteSpryk implements SprykBuilderInterface
      */
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $targetFileContent = $this->getTargetFileContent($sprykDefinition);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface|null $resolved */
+        $resolved = $this->fileResolver->resolve($this->getTargetArgument($sprykDefinition));
 
-        $templateName = $this->getTemplateName($sprykDefinition);
-
-        $methodContent = $this->renderer->render(
-            $templateName,
-            $sprykDefinition->getArgumentCollection()->getArguments(),
-        );
-
-        $search = 'return $resourceRouteCollection;';
-        $positionOfReturnStatement = strrpos($targetFileContent, $search);
-
-        if ($positionOfReturnStatement !== false) {
-            $targetFileContent = substr_replace($targetFileContent, $methodContent, $positionOfReturnStatement, strlen($search));
+        if (!$resolved) {
+            return;
         }
 
-        $this->putTargetFileContent($sprykDefinition, $targetFileContent);
+        $expression = $this->getExpression($sprykDefinition);
+
+        $traverser = new NodeTraverser();
+        $traverser->addVisitor(new AddExpressionToMethodBeforeReturnVisitor($expression, 'configure'));
+        $newStmts = $traverser->traverse($resolved->getClassTokenTree());
+
+        $resolved->setClassTokenTree($newStmts);
 
         $style->report(
             sprintf(
@@ -106,6 +139,30 @@ class ResourceRouteSpryk implements SprykBuilderInterface
                 $this->getTargetArgument($sprykDefinition),
             ),
         );
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return \PhpParser\Node\Stmt\Expression
+     */
+    protected function getExpression(SprykDefinitionInterface $sprykDefinition): Expression
+    {
+        $argumentCollection = $sprykDefinition->getArgumentCollection();
+        $templateName = $this->getTemplateName($sprykDefinition);
+
+        $methodContent = sprintf('<?php %s', $this->renderer->render(
+            $templateName,
+            $argumentCollection->getArguments(),
+        ));
+
+        /** @var array<\PhpParser\Node\Stmt> $expressions */
+        $expressions = $this->parser->parse($methodContent);
+
+        /** @var \PhpParser\Node\Stmt\Expression $expression */
+        $expression = $expressions[0];
+
+        return $expression;
     }
 
     /**
@@ -139,92 +196,27 @@ class ResourceRouteSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @throws \SprykerSdk\Spryk\Exception\EmptyFileException
-     *
-     * @return string
-     */
-    protected function getTargetFileContent(SprykDefinitionInterface $sprykDefinition): string
-    {
-        $targetFileName = $this->getTargetFileName($sprykDefinition);
-
-        $targetFileContent = file_get_contents($targetFileName);
-        if ($targetFileContent === false || strlen($targetFileContent) === 0) {
-            throw new EmptyFileException(sprintf('Target file "%s" seems to be empty', $targetFileName));
-        }
-
-        return $targetFileContent;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @throws \SprykerSdk\Spryk\Exception\ReflectionException
-     *
-     * @return string
-     */
-    protected function getTargetFileName(SprykDefinitionInterface $sprykDefinition): string
-    {
-        $targetFilename = $this->getTargetFileNameFromReflectionClass($sprykDefinition);
-
-        if (!is_string($targetFilename)) {
-            throw new ReflectionException('Filename is not expected to be null!');
-        }
-
-        return $targetFilename;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     * @param string $newContent
-     *
-     * @return void
-     */
-    protected function putTargetFileContent(SprykDefinitionInterface $sprykDefinition, string $newContent): void
-    {
-        $targetFilename = $this->getTargetFileName($sprykDefinition);
-
-        file_put_contents($targetFilename, $newContent);
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
-     */
-    protected function getReflection(SprykDefinitionInterface $sprykDefinition): ReflectionClass
-    {
-        $betterReflection = new BetterReflection();
-
-        return $betterReflection->classReflector()->reflect($this->getTargetArgument($sprykDefinition));
-    }
-
-    /**
-     * @codeCoverageIgnore
-     *
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return string|null
-     */
-    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition): ?string
-    {
-        $targetReflection = $this->getReflection($sprykDefinition);
-
-        return $targetReflection->getFileName();
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
      * @return bool
      */
     protected function isRouteDeclared(SprykDefinitionInterface $sprykDefinition): bool
     {
-        $reflectionClass = $this->getReflection($sprykDefinition);
-        $reflectionMethod = $reflectionClass->getMethod(static::TARGET_METHOD_NAME);
-        $methodBody = $reflectionMethod->getBodyCode();
-        $resourceRouteMethod = $this->getResourceRouteMethod($sprykDefinition);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface|null $resolved */
+        $resolved = $this->fileResolver->resolve($this->getTargetArgument($sprykDefinition));
 
-        return strpos($methodBody, sprintf('->add%s(', ucfirst($resourceRouteMethod))) !== false;
+        if (!$resolved) {
+            return false;
+        }
+
+        $resourceRouteMethod = $this->getResourceRouteMethod($sprykDefinition);
+        $methodCallName = sprintf('add%s', ucfirst($resourceRouteMethod));
+
+        $methodCallNode = $this->nodeFinder->findMethodCallNode($resolved->getClassTokenTree(), $methodCallName);
+
+        if ($methodCallNode) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

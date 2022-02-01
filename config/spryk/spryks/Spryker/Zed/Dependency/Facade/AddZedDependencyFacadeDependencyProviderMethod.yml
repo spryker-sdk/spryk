@@ -28,8 +28,17 @@ arguments:
 
 preSpryks:
     - AddZedDependencyProvider
+    - AddZedDependencyProviderProvideMethod:
+          arguments:
+                layer:
+                    value: Business
 
 postSpryks:
+    - AddZedDependencyFacadeToDependencyProvider:
+          arguments:
+              provideMethod:
+                  value: "provideBusinessLayerDependencies"
+
     - AddZedDependencyFacadeDependencyProviderConstant:
         arguments:
             name:

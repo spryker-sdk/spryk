@@ -10,12 +10,13 @@ namespace SprykerSdk\Spryk\Model\Spryk\Builder\Constant;
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\StringToUpper;
 use Laminas\Filter\Word\CamelCaseToUnderscore;
-use PHPStan\BetterReflection\BetterReflection;
-use PHPStan\BetterReflection\Reflection\ReflectionClass;
-use SprykerSdk\Spryk\Exception\EmptyFileException;
-use SprykerSdk\Spryk\Exception\ReflectionException;
+use PhpParser\NodeTraverser;
+use SprykerSdk\Spryk\Model\Spryk\Builder\NodeVisitor\AddConstantVisitor;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class ConstantSpryk implements SprykBuilderInterface
@@ -41,6 +42,26 @@ class ConstantSpryk implements SprykBuilderInterface
     public const ARGUMENT_CONSTANT_VISIBILITY = 'visibility';
 
     /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface
+     */
+    protected FileResolverInterface $fileResolver;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface
+     */
+    protected NodeFinderInterface $nodeFinder;
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface $fileResolver
+     * @param \SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface $nodeFinder
+     */
+    public function __construct(FileResolverInterface $fileResolver, NodeFinderInterface $nodeFinder)
+    {
+        $this->fileResolver = $fileResolver;
+        $this->nodeFinder = $nodeFinder;
+    }
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -55,7 +76,16 @@ class ConstantSpryk implements SprykBuilderInterface
      */
     public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        return (!$this->constantExists($sprykDefinition));
+        $constantName = $this->getConstantName($sprykDefinition);
+
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface|null $resolvedClass */
+        $resolvedClass = $this->fileResolver->resolve($this->getTargetArgument($sprykDefinition));
+
+        if (!$resolvedClass) {
+            return false;
+        }
+
+        return (!$this->constantExists($resolvedClass, $constantName));
     }
 
     /**
@@ -66,42 +96,42 @@ class ConstantSpryk implements SprykBuilderInterface
      */
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $targetFileContent = $this->getTargetFileContent($sprykDefinition);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface $resolvedClass */
+        $resolvedClass = $this->fileResolver->resolve($this->getTargetArgument($sprykDefinition));
 
-        $search = '{';
-        $positionOfOpeningBrace = strpos($targetFileContent, $search);
+        $traverser = new NodeTraverser();
 
-        $constantLine = sprintf(
-            PHP_EOL . '    %s const %s = \'%s\';' . PHP_EOL,
-            $this->getConstantVisibility($sprykDefinition),
+        $traverser->addVisitor(new AddConstantVisitor(
             $this->getConstantName($sprykDefinition),
             $this->getConstantValue($sprykDefinition),
-        );
+            $this->getConstantVisibility($sprykDefinition),
+        ));
 
-        if ($positionOfOpeningBrace !== false) {
-            $targetFileContent = substr_replace($targetFileContent, $constantLine, $positionOfOpeningBrace + 1, strlen($search));
-        }
-
-        $this->putTargetFileContent($sprykDefinition, $targetFileContent);
+        $newStmts = $traverser->traverse($resolvedClass->getClassTokenTree());
+        $resolvedClass->setClassTokenTree($newStmts);
 
         $style->report(sprintf(
             'Added constant "<fg=green>%s</>" to "<fg=green>%s</>"',
-            trim($constantLine),
+            $this->getConstantName($sprykDefinition),
             $sprykDefinition->getArgumentCollection()->getArgument('target'),
         ));
     }
 
     /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface $resolvedClass
+     * @param string $constantName
      *
      * @return bool
      */
-    protected function constantExists(SprykDefinitionInterface $sprykDefinition): bool
+    protected function constantExists(ResolvedClassInterface $resolvedClass, string $constantName): bool
     {
-        $targetFileContent = $this->getTargetFileContent($sprykDefinition);
-        $constant = sprintf('const %s', $this->getConstantName($sprykDefinition));
+        $constNode = $this->nodeFinder->findConstantNode($resolvedClass->getClassTokenTree(), $constantName);
 
-        return (strpos($targetFileContent, $constant) !== false);
+        if ($constNode === null) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -124,12 +154,10 @@ class ConstantSpryk implements SprykBuilderInterface
      */
     protected function getConstantVisibility(SprykDefinitionInterface $sprykDefinition): string
     {
-        $constantVisibility = $sprykDefinition
+        return $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_CONSTANT_VISIBILITY)
             ->getValue();
-
-        return $constantVisibility;
     }
 
     /**
@@ -159,94 +187,9 @@ class ConstantSpryk implements SprykBuilderInterface
      */
     protected function getConstantValue(SprykDefinitionInterface $sprykDefinition): string
     {
-        $constantValue = $sprykDefinition
+        return $sprykDefinition
             ->getArgumentCollection()
             ->getArgument(static::ARGUMENT_CONSTANT_VALUE)
             ->getValue();
-
-        return $constantValue;
-    }
-
-    /**
-     * @codeCoverageIgnore
-     *
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @throws \SprykerSdk\Spryk\Exception\EmptyFileException
-     *
-     * @return string
-     */
-    protected function getTargetFileContent(SprykDefinitionInterface $sprykDefinition): string
-    {
-        $targetFileName = $this->getTargetFileName($sprykDefinition);
-
-        $targetFileContent = file_get_contents($targetFileName);
-        if ($targetFileContent === false || strlen($targetFileContent) === 0) {
-            throw new EmptyFileException(sprintf('Target file "%s" seems to be empty', $targetFileName));
-        }
-
-        return $targetFileContent;
-    }
-
-    /**
-     * @codeCoverageIgnore
-     *
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @throws \SprykerSdk\Spryk\Exception\ReflectionException
-     *
-     * @return string
-     */
-    protected function getTargetFileName(SprykDefinitionInterface $sprykDefinition): string
-    {
-        $targetFilename = $this->getTargetFileNameFromReflectionClass($sprykDefinition);
-
-        if ($targetFilename === null) {
-            throw new ReflectionException('Filename is not expected to be null!');
-        }
-
-        return $targetFilename;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     * @param string $newContent
-     *
-     * @return void
-     */
-    protected function putTargetFileContent(SprykDefinitionInterface $sprykDefinition, string $newContent): void
-    {
-        $targetFilename = $this->getTargetFileName($sprykDefinition);
-
-        file_put_contents($targetFilename, $newContent);
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass|\PHPStan\BetterReflection\Reflection\Reflection
-     */
-    protected function getReflection(SprykDefinitionInterface $sprykDefinition)
-    {
-        $betterReflection = new BetterReflection();
-
-        return $betterReflection->classReflector()->reflect($this->getTargetArgument($sprykDefinition));
-    }
-
-    /**
-     * @codeCoverageIgnore
-     *
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return string|null
-     */
-    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition): ?string
-    {
-        $targetReflection = $this->getReflection($sprykDefinition);
-        if (!($targetReflection instanceof ReflectionClass)) {
-            return null;
-        }
-
-        return $targetReflection->getFileName();
     }
 }

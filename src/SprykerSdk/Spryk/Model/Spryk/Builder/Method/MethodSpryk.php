@@ -7,27 +7,22 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Method;
 
-use Exception;
-use PhpParser\Lexer\Emulative;
+use PhpParser\Lexer;
+use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\NodeTraverser;
-use PhpParser\NodeVisitor\CloningVisitor;
-use PhpParser\ParserFactory;
-use PhpParser\PrettyPrinter\Standard;
-use PHPStan\BetterReflection\BetterReflection;
-use PHPStan\BetterReflection\Reflection\ReflectionClass;
-use Ramsey\Uuid\Uuid;
+use PhpParser\Parser;
 use SprykerSdk\Spryk\Exception\ArgumentNotFoundException;
-use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\NotAFullyQualifiedClassNameException;
-use SprykerSdk\Spryk\Exception\ReflectionException;
-use SprykerSdk\Spryk\Model\Spryk\Builder\Method\NodeVisitor\RemoveMethodNodeVisitor;
+use SprykerSdk\Spryk\Model\Spryk\Builder\NodeVisitor\AddMethodVisitor;
+use SprykerSdk\Spryk\Model\Spryk\Builder\NodeVisitor\ReplaceMethodBodyNodeVisitor;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Argument;
-use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
+use SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
-use Symfony\Component\Process\Process;
 
 class MethodSpryk implements SprykBuilderInterface
 {
@@ -35,11 +30,6 @@ class MethodSpryk implements SprykBuilderInterface
      * @var string
      */
     public const ARGUMENT_TARGET = 'target';
-
-    /**
-     * @var string
-     */
-    public const ARGUMENT_TARGET_PATH = 'targetPath';
 
     /**
      * @var string
@@ -59,6 +49,7 @@ class MethodSpryk implements SprykBuilderInterface
         'controllerMethod',
         'factoryMethod',
         'dependencyMethod',
+        'provideMethod',
         'facadeMethod',
         'modelMethod',
         'providerMethod',
@@ -71,14 +62,47 @@ class MethodSpryk implements SprykBuilderInterface
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
-    protected $renderer;
+    protected TemplateRendererInterface $renderer;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface
+     */
+    protected FileResolverInterface $fileResolver;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface
+     */
+    protected NodeFinderInterface $nodeFinder;
+
+    /**
+     * @var \PhpParser\Parser
+     */
+    protected Parser $parser;
+
+    /**
+     * @var \PhpParser\Lexer
+     */
+    protected Lexer $lexer;
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface $fileResolver
+     * @param \SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface $nodeFinder
+     * @param \PhpParser\Parser $parser
+     * @param \PhpParser\Lexer $lexer
      */
-    public function __construct(TemplateRendererInterface $renderer)
-    {
+    public function __construct(
+        TemplateRendererInterface $renderer,
+        FileResolverInterface $fileResolver,
+        NodeFinderInterface $nodeFinder,
+        Parser $parser,
+        Lexer $lexer
+    ) {
         $this->renderer = $renderer;
+        $this->fileResolver = $fileResolver;
+        $this->nodeFinder = $nodeFinder;
+        $this->parser = $parser;
+        $this->lexer = $lexer;
     }
 
     /**
@@ -96,7 +120,12 @@ class MethodSpryk implements SprykBuilderInterface
      */
     public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        $methodExists = $this->methodExists($sprykDefinition);
+        $methodName = $this->getMethodName($sprykDefinition);
+
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface $resolvedClass */
+        $resolvedClass = $this->fileResolver->resolve($this->getTargetClassName($sprykDefinition));
+
+        $methodExists = $this->methodExists($resolvedClass, $methodName);
 
         if (!$methodExists) {
             return true;
@@ -117,22 +146,11 @@ class MethodSpryk implements SprykBuilderInterface
      */
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $argumentCollection = $sprykDefinition->getArgumentCollection();
-        $originalFileContent = $this->getTargetFileContent($sprykDefinition);
-        $tmpFileContent = $originalFileContent;
-
-        $methodExists = $this->methodExists($sprykDefinition);
-
-        if ($argumentCollection->hasArgument('allowOverride') && $argumentCollection->getArgument('allowOverride')->getValue() && $this->methodExists($sprykDefinition)) {
-            $methodBody = $this->getBody($sprykDefinition);
-            $argumentCollection = $this->prepareBodyArgument($argumentCollection, $methodBody);
-            $tmpFileContent = $this->removeMethods($sprykDefinition, $style);
-        }
-
-        $templateName = $this->getTemplateName($sprykDefinition);
-
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface $resolvedClass */
+        $resolvedClass = $this->fileResolver->resolve($this->getTargetClassName($sprykDefinition));
         $methodName = $this->getMethodName($sprykDefinition);
-
+        $methodExists = $this->methodExists($resolvedClass, $methodName);
+        $argumentCollection = $sprykDefinition->getArgumentCollection();
         $methodArgument = new Argument();
         $methodArgument
             ->setName('method')
@@ -140,42 +158,24 @@ class MethodSpryk implements SprykBuilderInterface
 
         $argumentCollection->addArgument($methodArgument);
 
-        $methodContent = $this->renderer->render(
-            $templateName,
-            $argumentCollection->getArguments(),
-        );
+        $classMethodNode = $this->getClassMethodNode($sprykDefinition);
 
-        $search = '}';
-        $positionOfClosingBrace = strrpos($tmpFileContent, $search);
+        if ($argumentCollection->hasArgument('allowOverride') && $argumentCollection->getArgument('allowOverride')->getValue() && $methodExists) {
+            $traverser = new NodeTraverser();
+            $traverser->addVisitor(new ReplaceMethodBodyNodeVisitor($methodName, $classMethodNode));
 
-        if ($positionOfClosingBrace !== false) {
-            $tmpFileContent = substr_replace($tmpFileContent, $methodContent, $positionOfClosingBrace - 1, strlen($search));
-        }
+            $newStmts = $traverser->traverse($resolvedClass->getClassTokenTree());
 
-        // Fix issue with useless spaces after opening curly brace, those brake the doc-blocks after running the CS Fixer.
-        $tmpFileContent = str_replace('{    ', '{', $tmpFileContent);
-
-        // Run the CS Fixer
-        $tmpFileName = sprintf('%s/%s.php', sys_get_temp_dir(), Uuid::uuid4()->toString());
-        file_put_contents($tmpFileName, $tmpFileContent);
-
-//        $process = new Process(['vendor/bin/phpcbf', $tmpFileName, '--standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml']);
-//        $process->run();
-
-        /** @var string $tmpFileContent */
-        $tmpFileContent = file_get_contents($tmpFileName);
-
-        $this->putTargetFileContent($sprykDefinition, $tmpFileContent);
-
-        if ($methodExists) {
-            $style->report(sprintf(
-                'Updated method "<fg=green>%s</>" to "<fg=green>%s</>"',
-                $this->getMethodName($sprykDefinition),
-                $argumentCollection->getArgument('target'),
-            ));
+            $resolvedClass->setClassTokenTree($newStmts);
 
             return;
         }
+
+        $traverser = new NodeTraverser();
+        $traverser->addVisitor(new AddMethodVisitor($classMethodNode));
+        $newStmts = $traverser->traverse($resolvedClass->getClassTokenTree());
+
+        $resolvedClass->setClassTokenTree($newStmts);
 
         $style->report(sprintf(
             'Added method "<fg=green>%s</>" to "<fg=green>%s</>"',
@@ -186,123 +186,46 @@ class MethodSpryk implements SprykBuilderInterface
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
      *
-     * @return string
+     * @return \PhpParser\Node\Stmt\ClassMethod
      */
-    protected function removeMethods(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): string
+    protected function getClassMethodNode(SprykDefinitionInterface $sprykDefinition): ClassMethod
     {
-        $methodName = $this->getMethodName($sprykDefinition);
+        $argumentCollection = $sprykDefinition->getArgumentCollection();
+        $templateName = $this->getTemplateName($sprykDefinition);
 
-        $reflection = $this->getReflection($sprykDefinition);
+        $methodContent = sprintf('<?php class Foo {%s}', $this->renderer->render(
+            $templateName,
+            $argumentCollection->getArguments(),
+        ));
 
-        $name = $sprykDefinition->getArgumentCollection()->getArgument('target');
+        /** @var array<\PhpParser\Node\Stmt> $methodContentToken */
+        $methodContentToken = $this->parser->parse($methodContent);
 
-        return $this->removeMethod($reflection, $name, $methodName, $style);
+        /** @var \PhpParser\Node\Stmt\Class_ $classStmt */
+        $classStmt = $methodContentToken[0];
+
+        /** @var \PhpParser\Node\Stmt\ClassMethod $firstClassMethod */
+        $firstClassMethod = $classStmt->stmts[0];
+
+        return $firstClassMethod;
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionClass $reflection
-     * @param string $name
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface $resolvedClass
      * @param string $methodName
-     * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
-     *
-     * @throws \Exception
-     *
-     * @return string
-     */
-    protected function removeMethod(ReflectionClass $reflection, string $name, string $methodName, SprykStyleInterface $style): string
-    {
-        $fileName = $reflection->getFileName();
-
-        if (!$fileName) {
-            throw new Exception('Could not get fileName from reflection.');
-        }
-
-        /** @var string $code */
-        $code = file_get_contents($fileName);
-
-        $lexer = new Emulative([
-            'usedAttributes' => [
-                'comments',
-                'startLine', 'endLine',
-                'startTokenPos', 'endTokenPos',
-            ],
-        ]);
-        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7, $lexer);
-
-        $traverser = new NodeTraverser();
-        $traverser->addVisitor(new CloningVisitor());
-
-        /** @var array<\PhpParser\Node> $oldStmts */
-        $oldStmts = $parser->parse($code);
-        $oldTokens = $lexer->getTokens();
-
-        $newStmts = $traverser->traverse($oldStmts);
-
-        $traverser = new NodeTraverser();
-        $traverser->addVisitor(new RemoveMethodNodeVisitor($name, $methodName, $style));
-
-        $newStmts = $traverser->traverse($newStmts);
-
-        $prettyPrinter = new Standard();
-
-        return $prettyPrinter->printFormatPreserving($newStmts, $oldStmts, $oldTokens);
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface $argumentCollection
-     * @param string $body
-     *
-     * @return \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface
-     */
-    protected function prepareBodyArgument(ArgumentCollectionInterface $argumentCollection, string $body): ArgumentCollectionInterface
-    {
-        if (!$argumentCollection->hasArgument('body')) {
-            return $argumentCollection;
-        }
-
-        $bodyArgument = $argumentCollection->getArgument('body');
-
-        if ($bodyArgument->getAllowOverride() === false) {
-            $bodyArgument->setValue($body);
-        }
-
-        return $argumentCollection;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
      * @return bool
      */
-    protected function methodExists(SprykDefinitionInterface $sprykDefinition): bool
+    protected function methodExists(ResolvedClassInterface $resolvedClass, string $methodName): bool
     {
-        $reflectionClass = $this->getReflection($sprykDefinition);
-        $methodName = $this->getMethodName($sprykDefinition);
+        $methodNode = $this->nodeFinder->findMethodNode($resolvedClass->getClassTokenTree(), $methodName);
 
-        if ($reflectionClass->hasMethod($methodName) && $reflectionClass->getMethod($methodName)->getDeclaringClass() === $reflectionClass) {
-            return true;
+        if (!$methodNode) {
+            return false;
         }
 
-        return false;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return string
-     */
-    protected function getBody(SprykDefinitionInterface $sprykDefinition): string
-    {
-        $reflectionClass = $this->getReflection($sprykDefinition);
-        $methodName = $this->getMethodName($sprykDefinition);
-
-        if ($reflectionClass->hasMethod($methodName) && $reflectionClass->getMethod($methodName)->getDeclaringClass() === $reflectionClass) {
-            return $reflectionClass->getMethod($methodName)->getBodyCode();
-        }
-
-        return '';
+        return true;
     }
 
     /**
@@ -360,116 +283,16 @@ class MethodSpryk implements SprykBuilderInterface
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      *
-     * @throws \SprykerSdk\Spryk\Exception\ArgumentNotFoundException
-     *
-     * @return string
-     */
-    protected function getMethodBody(SprykDefinitionInterface $sprykDefinition): string
-    {
-        $argumentCollection = $sprykDefinition->getArgumentCollection();
-
-        foreach (static::ARGUMENT_METHOD_NAME_CANDIDATES as $methodNameCandidate) {
-            if ($argumentCollection->hasArgument($methodNameCandidate)) {
-                return $argumentCollection->getArgument($methodNameCandidate);
-            }
-        }
-
-        throw new ArgumentNotFoundException(sprintf(
-            'Could not find method argument value. You need to add on of "%s" as method argument to your spryk "%s".',
-            implode(', ', static::ARGUMENT_METHOD_NAME_CANDIDATES),
-            $sprykDefinition->getSprykName(),
-        ));
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @throws \SprykerSdk\Spryk\Exception\EmptyFileException
-     *
-     * @return string
-     */
-    protected function getTargetFileContent(SprykDefinitionInterface $sprykDefinition): string
-    {
-        $targetFileName = $this->getTargetFileName($sprykDefinition);
-
-        $targetFileContent = file_get_contents($targetFileName);
-
-        if ($targetFileContent === false || strlen($targetFileContent) === 0) {
-            throw new EmptyFileException(sprintf('Target file "%s" seems to be empty', $targetFileName));
-        }
-
-        return $targetFileContent;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @throws \SprykerSdk\Spryk\Exception\ReflectionException
-     *
-     * @return string
-     */
-    protected function getTargetFileName(SprykDefinitionInterface $sprykDefinition): string
-    {
-        $targetFilename = $this->getTargetFileNameFromReflectionClass($sprykDefinition);
-
-        if ($targetFilename === null) {
-            throw new ReflectionException('Filename is not expected to be null!');
-        }
-
-        return $targetFilename;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     * @param string $newContent
-     *
-     * @return void
-     */
-    protected function putTargetFileContent(SprykDefinitionInterface $sprykDefinition, string $newContent): void
-    {
-        $targetFilename = $this->getTargetFileName($sprykDefinition);
-
-        file_put_contents($targetFilename, $newContent);
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
-     */
-    protected function getReflection(SprykDefinitionInterface $sprykDefinition): ReflectionClass
-    {
-        $targetClassName = $this->getTargetClassName($sprykDefinition);
-        $this->assertFullyQualifiedClassName($targetClassName);
-
-        $targetClassName = str_replace(DIRECTORY_SEPARATOR, '\\', $targetClassName);
-
-        return $this->getReflectionFromClassName($targetClassName);
-    }
-
-    /**
-     * @param string $className
-     *
-     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
-     */
-    protected function getReflectionFromClassName(string $className): ReflectionClass
-    {
-        $betterReflection = new BetterReflection();
-
-        return $betterReflection->classReflector()->reflect($className);
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
      * @return string
      */
     protected function getTargetClassName(SprykDefinitionInterface $sprykDefinition): string
     {
         $className = $this->getTargetArgument($sprykDefinition);
+
         if (strpos($className, '\\') === false && $sprykDefinition->getArgumentCollection()->hasArgument(static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN)) {
             $className = $sprykDefinition->getArgumentCollection()->getArgument(static::ARGUMENT_FULLY_QUALIFIED_CLASS_NAME_PATTERN)->getValue();
         }
+
         $className = str_replace(DIRECTORY_SEPARATOR, '\\', $className);
 
         $this->assertFullyQualifiedClassName($className);
@@ -497,19 +320,5 @@ class MethodSpryk implements SprykBuilderInterface
                 '{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}',
             ));
         }
-    }
-
-    /**
-     * @codeCoverageIgnore
-     *
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return string|null
-     */
-    protected function getTargetFileNameFromReflectionClass(SprykDefinitionInterface $sprykDefinition): ?string
-    {
-        $targetReflection = $this->getReflection($sprykDefinition);
-
-        return $targetReflection->getFileName();
     }
 }

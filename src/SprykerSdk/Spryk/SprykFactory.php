@@ -7,6 +7,7 @@
 
 namespace SprykerSdk\Spryk;
 
+use PhpParser\PrettyPrinter\Standard;
 use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Builder\ArgumentListBuilder;
 use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Builder\ArgumentListBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Generator\ArgumentListGenerator;
@@ -15,6 +16,16 @@ use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Reader\ArgumentListReader;
 use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Reader\ArgumentListReaderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollection;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Collection\SprykBuilderCollectionInterface;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\ClassDumper;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\ClassDumperInterface;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\JsonDumper;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\JsonDumperInterface;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\XmlDumper;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\XmlDumperInterface;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\YmlDumper;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\YmlDumperInterface;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\FileDumper;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\FileDumperInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderFactory;
 use SprykerSdk\Spryk\Model\Spryk\Command\ComposerDumpAutoloadSprykCommand;
 use SprykerSdk\Spryk\Model\Spryk\Command\ComposerReplaceGenerateSprykCommand;
@@ -38,6 +49,8 @@ use SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurati
 use SprykerSdk\Spryk\Model\Spryk\Executor\SprykExecutor;
 use SprykerSdk\Spryk\Model\Spryk\Executor\SprykExecutorInterface;
 use SprykerSdk\Spryk\Model\Spryk\Filter\FilterFactory;
+use SprykerSdk\Spryk\Model\Spryk\Printer\DiffPrinter;
+use SprykerSdk\Spryk\Model\Spryk\Printer\DiffPrinterInterface;
 use SprykerSdk\Spryk\Style\SprykStyle;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 use Symfony\Component\Console\Input\InputInterface;
@@ -59,7 +72,73 @@ class SprykFactory
             $this->createSprykDefinitionBuilder(),
             $this->createSprykBuilderCollection(),
             $this->getCommandStack(),
+            $this->createSprykBuilderFactory()->createFileResolver(),
+            $this->createFileDumper(),
+            $this->createDiffPrinter(),
         );
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\FileDumperInterface
+     */
+    public function createFileDumper(): FileDumperInterface
+    {
+        return new FileDumper(
+            $this->createClassDumper(),
+            $this->createYmlDumper(),
+            $this->createJsonDumper(),
+            $this->createXmlDumper(),
+        );
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\ClassDumperInterface
+     */
+    public function createClassDumper(): ClassDumperInterface
+    {
+        $builderFactory = $this->createSprykBuilderFactory();
+
+        return new ClassDumper($this->createClassPrinter(), $builderFactory->createParser(), $builderFactory->createLexer());
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\YmlDumperInterface
+     */
+    public function createYmlDumper(): YmlDumperInterface
+    {
+        return new YmlDumper();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\JsonDumperInterface
+     */
+    public function createJsonDumper(): JsonDumperInterface
+    {
+        return new JsonDumper();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper\XmlDumperInterface
+     */
+    public function createXmlDumper(): XmlDumperInterface
+    {
+        return new XmlDumper();
+    }
+
+    /**
+     * @return \PhpParser\PrettyPrinter\Standard
+     */
+    public function createClassPrinter(): Standard
+    {
+        return new Standard();
+    }
+
+    /**
+     * @return \SprykerSdk\Spryk\Model\Spryk\Printer\DiffPrinterInterface
+     */
+    public function createDiffPrinter(): DiffPrinterInterface
+    {
+        return new DiffPrinter();
     }
 
     /**

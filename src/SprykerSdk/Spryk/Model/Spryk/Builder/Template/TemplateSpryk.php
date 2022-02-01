@@ -7,6 +7,8 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Template;
 
+use Exception;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
@@ -32,20 +34,27 @@ class TemplateSpryk implements SprykBuilderInterface
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface
      */
-    protected $renderer;
+    protected TemplateRendererInterface $renderer;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface
+     */
+    protected FileResolverInterface $fileResolver;
 
     /**
      * @var string
      */
-    protected $rootDirectory;
+    protected string $rootDirectory;
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Template\Renderer\TemplateRendererInterface $renderer
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface $fileResolver
      * @param string $rootDirectory
      */
-    public function __construct(TemplateRendererInterface $renderer, string $rootDirectory)
+    public function __construct(TemplateRendererInterface $renderer, FileResolverInterface $fileResolver, string $rootDirectory)
     {
         $this->renderer = $renderer;
+        $this->fileResolver = $fileResolver;
         $this->rootDirectory = $rootDirectory;
     }
 
@@ -64,20 +73,31 @@ class TemplateSpryk implements SprykBuilderInterface
      */
     public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        $targetPath = $this->getTargetPath($sprykDefinition);
+        $resolved = $this->fileResolver->resolve($this->getTargetPath($sprykDefinition));
 
-        return (!file_exists($targetPath));
+        if ($resolved === null) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
      * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $style
      *
+     * @throws \Exception
+     *
      * @return void
      */
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
         $targetPath = $this->getTargetPath($sprykDefinition);
+
+        if ($this->fileResolver->resolve($targetPath)) {
+            throw new Exception(sprintf('Trying to add a file from template failed, because the file "%s" already exists', $targetPath));
+        }
+
         $templateName = $this->getTemplateName($sprykDefinition);
 
         $targetDirectory = dirname($targetPath);
@@ -89,7 +109,7 @@ class TemplateSpryk implements SprykBuilderInterface
 
         $content = $this->getContent($sprykDefinition, $templateName);
 
-        file_put_contents($targetPath, $content);
+        $this->fileResolver->addFile($targetPath, $content);
 
         $style->report(sprintf('Created <fg=green>%s</>', $targetPath));
     }

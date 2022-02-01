@@ -10,6 +10,7 @@ namespace SprykerSdk\Spryk\Model\Spryk\Builder\Schema;
 use DOMDocument;
 use SimpleXMLElement;
 use SprykerSdk\Spryk\Exception\XmlException;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface;
@@ -35,16 +36,23 @@ class SchemaSpryk implements SprykBuilderInterface
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface
      */
-    protected $filter;
+    protected FilterInterface $filter;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface
+     */
+    protected FileResolverInterface $fileResolver;
 
     /**
      * @param string $rootDirectory
      * @param \SprykerSdk\Spryk\Model\Spryk\Filter\FilterInterface $filter
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface $fileResolver
      */
-    public function __construct(string $rootDirectory, FilterInterface $filter)
+    public function __construct(string $rootDirectory, FilterInterface $filter, FileResolverInterface $fileResolver)
     {
         $this->rootDirectory = $rootDirectory;
         $this->filter = $filter;
+        $this->fileResolver = $fileResolver;
     }
 
     /**
@@ -73,9 +81,12 @@ class SchemaSpryk implements SprykBuilderInterface
      */
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $simpleXmlElement = $this->getSimpleXmlElement($sprykDefinition);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolved */
+        $resolved = $this->fileResolver->resolve($this->getTargetPath($sprykDefinition));
+        $simpleXmlElement = $resolved->getSimpleXmlElement();
 
         $tableName = $this->getTableName($sprykDefinition);
+
         if ($this->isTableDefinedInSchema($simpleXmlElement, $tableName)) {
             return;
         }
@@ -85,7 +96,7 @@ class SchemaSpryk implements SprykBuilderInterface
         $tableNodeXmlElement->addAttribute('idMethod', 'native');
         $tableNodeXmlElement->addAttribute('class', $this->filter->filter($tableName));
 
-        $this->prettyPrintXml($simpleXmlElement, $sprykDefinition);
+        $resolved->setSimpleXmlElement($simpleXmlElement);
 
         $style->report(sprintf('Added table to <fg=green>%s</>', $this->getTargetPath($sprykDefinition)));
     }

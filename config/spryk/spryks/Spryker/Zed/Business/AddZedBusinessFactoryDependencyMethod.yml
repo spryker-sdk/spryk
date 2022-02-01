@@ -22,3 +22,11 @@ arguments:
 preSpryks:
     - AddZedBusinessFactory
 
+postSpryks:
+    - AddZedDependencyFacadeBridgeMethod:
+          arguments:
+              dependentModule:
+                  value: "MessageBroker"
+              methods:
+                  value:
+                      - "sendMessage"

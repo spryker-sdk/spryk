@@ -7,6 +7,8 @@ paths:
     support: tests/_support/
     envs: tests/_envs/
 
+bootstrap: bootstrap.php
+
 settings:
     suite_class: \PHPUnit\Framework\TestSuite
     colors: true
@@ -25,6 +27,10 @@ suites:
         class_name: SprykTester
         modules:
             enabled:
+                - SprykerSdkTest\Module\SprykHelper
+                - SprykerSdkTest\Module\TransferModule
+                - SprykerSdkTest\Module\CleanUpModule:
+                      rootDirectory: 'tests/_data/'
                 - SprykerSdkTest\Module\DevelopmentModeModule:
                     developmentMode: 'core'
 
@@ -34,6 +40,7 @@ suites:
         class_name: SprykConsoleTester
         modules:
             enabled:
+                - SprykerSdkTest\Module\SprykHelper
                 - SprykerSdkTest\Module\AssertionModule
                 - SprykerSdkTest\Module\ConsoleEnvironmentModule
                 - SprykerSdkTest\Module\CleanUpModule:
@@ -50,6 +57,7 @@ suites:
 
         modules:
             enabled:
+                - SprykerSdkTest\Module\SprykHelper
                 - SprykerSdkTest\Module\AssertionModule
                 - SprykerSdkTest\Module\CleanUpModule:
                     rootDirectory: 'tests/_data/'

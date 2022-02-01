@@ -38,6 +38,11 @@ class SprykIntegrationTester extends Actor
     use _generated\SprykIntegrationTesterActions;
 
     /**
+     * @var string|null
+     */
+    protected ?string $rootDirectory = null;
+
+    /**
      * @param \Codeception\Test\Unit $testClass
      * @param array $arguments
      *
@@ -179,6 +184,13 @@ class SprykIntegrationTester extends Actor
      */
     protected function getRootDirectory(): string
     {
+//        if (!$this->rootDirectory) {
+//            $vfs = vfsStream::setup('root');
+//            $this->rootDirectory = $vfs->url();
+//        }
+//
+//        return $this->rootDirectory;
+
         return realpath(__DIR__ . '/../../');
     }
 

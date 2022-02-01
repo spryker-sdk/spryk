@@ -9,7 +9,6 @@ namespace SprykerSdk\Spryk\Model\Spryk\Filter;
 
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\StringToLower;
-use Laminas\Filter\Word\CamelCaseToSeparator;
 use Laminas\Filter\Word\CamelCaseToUnderscore;
 
 /**

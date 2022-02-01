@@ -13,6 +13,9 @@ arguments:
     dependentModule:
         inherit: true
 
+    provideMethod:
+        value: "provideDependencies"
+
     providerMethod:
         inherit: true
         value: "add{{ dependentModule }}Client"

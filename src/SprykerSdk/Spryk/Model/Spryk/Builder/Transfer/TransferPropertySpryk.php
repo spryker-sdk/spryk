@@ -7,8 +7,7 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Transfer;
 
-use DOMDocument;
-use DOMElement;
+use SimpleXMLElement;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
@@ -41,7 +40,7 @@ class TransferPropertySpryk extends AbstractTransferSpryk
      */
     public function shouldBuild(SprykDefinitionInterface $sprykDefinition): bool
     {
-        return !$this->isTransferPropertyDefined($sprykDefinition);
+        return true;
     }
 
     /**
@@ -52,54 +51,49 @@ class TransferPropertySpryk extends AbstractTransferSpryk
      */
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $targetPath = $this->getTargetPath($sprykDefinition);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolved */
+        $resolved = $this->fileResolver->resolve($this->getTargetPath($sprykDefinition));
+        $simpleXMLElement = $resolved->getSimpleXmlElement();
 
         $transferName = $this->getTransferName($sprykDefinition);
+
+        $transferXMLElement = $this->findTransferByName($simpleXMLElement, $transferName);
+
+        if (!$transferXMLElement) {
+            $style->report(sprintf('Could not find transferXMLElement by name <fg=green>%s</> in <fg=green>%s</>', $transferName, $this->getTargetPath($sprykDefinition)));
+
+            return;
+        }
+
+        $properties = $this->getProperties($sprykDefinition);
+
+        if ($properties) {
+            foreach ($properties as $propertyParts) {
+                $propertyDefinition = explode(':', $propertyParts);
+                $this->addProperty($transferXMLElement, $transferName, $style, $propertyDefinition[0], $propertyDefinition[1], $propertyDefinition[2] ?? null);
+            }
+
+            return;
+        }
+
         $propertyName = $this->getPropertyName($sprykDefinition);
         $propertyType = $this->getPropertyType($sprykDefinition);
         $singular = $this->getSingular($sprykDefinition);
 
-        $xmlSchemaDom = $this->getDomDocument($targetPath);
-
-        $transfer = $this->findTransferByName($transferName, $xmlSchemaDom);
-
-        if (!$transfer) {
-            $style->report(sprintf('Could not find transfer by name <fg=green>%s</> in <fg=green>%s</>', $transferName, $targetPath));
-
-            return;
-        }
-
-        $property = $this->findPropertyByName($propertyName, $transfer);
-
-        if ($property) {
-            $style->report(sprintf('A property by name <fg=green>%s.%s</> already exists in <fg=green>%s</>', $transferName, $propertyName, $targetPath));
-
-            return;
-        }
-
-        $transfer->appendChild($this->createProperty($xmlSchemaDom, $propertyName, $propertyType, $singular));
-
-        /** @var string $xmlString */
-        $xmlString = $xmlSchemaDom->saveXML();
-
-        $this->writeXml($xmlString, $targetPath);
-
-        $style->report(sprintf('Added transfer property <fg=green>%s.%s</> in <fg=green>%s</>', $transferName, $propertyName, $targetPath));
+        $this->addProperty($transferXMLElement, $transferName, $style, $propertyName, $propertyType, $singular);
     }
 
     /**
+     * @param \SimpleXMLElement $transferXMLElement
      * @param string $propertyName
-     * @param \DOMElement $transfer
      *
-     * @return \DOMElement|null
+     * @return \SimpleXMLElement|null
      */
-    protected function findPropertyByName(string $propertyName, DOMElement $transfer): ?DOMElement
+    protected function findPropertyByName(SimpleXMLElement $transferXMLElement, string $propertyName): ?SimpleXMLElement
     {
-        $properties = $transfer->getElementsByTagName('property');
-
-        foreach ($properties as $property) {
-            if ($property->getAttribute('name') === $propertyName) {
-                return $property;
+        foreach ($transferXMLElement->children() as $propertyXMLElement) {
+            if ((string)$propertyXMLElement['name'] === $propertyName) {
+                return $propertyXMLElement;
             }
         }
 
@@ -107,25 +101,57 @@ class TransferPropertySpryk extends AbstractTransferSpryk
     }
 
     /**
-     * @param \DOMDocument $xmlSchemaDom
+     * @param \SimpleXMLElement $transferXMLElement
+     * @param string $transferName
+     * @param \SprykerSdk\Spryk\Style\SprykStyleInterface $output
      * @param string $propertyName
      * @param string $propertyType
      * @param string|null $singular
      *
-     * @return \DOMElement
+     * @return void
      */
-    protected function createProperty(DOMDocument $xmlSchemaDom, string $propertyName, string $propertyType, ?string $singular): DOMElement
-    {
-        $property = $xmlSchemaDom->createElement('property');
+    protected function addProperty(
+        SimpleXMLElement $transferXMLElement,
+        string $transferName,
+        SprykStyleInterface $output,
+        string $propertyName,
+        string $propertyType,
+        ?string $singular = null
+    ): void {
+        $propertyXMLElement = $this->findPropertyByName($transferXMLElement, $propertyName);
 
-        $property->setAttribute('name', $propertyName);
-        $property->setAttribute('type', $propertyType);
-
-        if (is_string($singular)) {
-            $property->setAttribute('singular', $singular);
+        if ($propertyXMLElement) {
+            return;
         }
 
-        return $property;
+        $propertyXMLElement = $transferXMLElement->addChild('property');
+        $propertyXMLElement->addAttribute('name', $propertyName);
+        $propertyXMLElement->addAttribute('type', $propertyType);
+
+        if ($singular) {
+            $propertyXMLElement->addAttribute('singular', $singular);
+        }
+
+        $output->report(sprintf('Added transferXMLElement property <fg=green>%s.%s</>', $transferName, $propertyName));
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
+     *
+     * @return array|null
+     */
+    protected function getProperties(SprykDefinitionInterface $sprykDefinition): ?array
+    {
+        $properties = $sprykDefinition
+            ->getArgumentCollection()
+            ->getArgument(static::PROPERTY_NAME)
+            ->getValue();
+
+        if (is_array($properties)) {
+            return $properties;
+        }
+
+        return null;
     }
 
     /**
@@ -180,21 +206,22 @@ class TransferPropertySpryk extends AbstractTransferSpryk
      */
     protected function isTransferPropertyDefined(SprykDefinitionInterface $sprykDefinition): bool
     {
-        $targetPath = $this->getTargetPath($sprykDefinition);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolved */
+        $resolved = $this->fileResolver->resolve($this->getTargetPath($sprykDefinition));
+        $simpleXMLElement = $resolved->getSimpleXmlElement();
+
         $transferName = $this->getTransferName($sprykDefinition);
         $propertyName = $this->getPropertyName($sprykDefinition);
 
-        $xmlSchemaDom = $this->getDomDocument($targetPath);
+        $transferXMLElement = $this->findTransferByName($simpleXMLElement, $transferName);
 
-        $transfer = $this->findTransferByName($transferName, $xmlSchemaDom);
-
-        if (!$transfer) {
+        if (!$transferXMLElement) {
             return false;
         }
 
-        $property = $this->findPropertyByName($propertyName, $transfer);
+        $propertyXMLElement = $this->findPropertyByName($transferXMLElement, $propertyName);
 
-        if (!$property) {
+        if (!$propertyXMLElement) {
             return false;
         }
 

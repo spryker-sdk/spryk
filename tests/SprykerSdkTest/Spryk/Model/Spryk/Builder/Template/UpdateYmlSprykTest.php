@@ -30,7 +30,7 @@ class UpdateYmlSprykTest extends Unit
     /**
      * @var string
      */
-    public const TARGET_PATH_VALUE = 'emptyFile';
+    public const TARGET_PATH_VALUE = 'emptyFile.yml';
 
     /**
      * @var \SprykerSdkTest\SprykTester
@@ -53,7 +53,7 @@ class UpdateYmlSprykTest extends Unit
     public function testBuildThrowsExceptionWhenYamlContentIsEmpty(): void
     {
         $sprykDefinition = $this->tester->getSprykDefinition([
-                UpdateYmlSpryk::ARGUMENT_TARGET_PATH => static::TARGET_PATH_VALUE,
+            UpdateYmlSpryk::ARGUMENT_TARGET_PATH => static::TARGET_PATH_VALUE,
         ]);
 
         $updateYmlSpryk = $this->buildUpdateYmlSpryk();
@@ -82,7 +82,7 @@ class UpdateYmlSprykTest extends Unit
     protected function buildUpdateYmlSpryk(): SprykBuilderInterface
     {
         $templateRendererMock = $this->getTemplateRendererMock();
-        $updateYmlSpryk = new UpdateYmlSpryk($templateRendererMock, $this->tester->getRootDirectory());
+        $updateYmlSpryk = new UpdateYmlSpryk($templateRendererMock, $this->tester->getFileResolver(), $this->tester->getRootDirectory());
 
         return $updateYmlSpryk;
     }

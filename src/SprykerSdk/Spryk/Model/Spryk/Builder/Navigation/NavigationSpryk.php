@@ -7,12 +7,10 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Navigation;
 
-use DOMDocument;
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\StringToLower;
 use Laminas\Filter\Word\CamelCaseToDash;
-use SimpleXMLElement;
-use SprykerSdk\Spryk\Exception\XmlException;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\SprykBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
@@ -42,14 +40,21 @@ class NavigationSpryk implements SprykBuilderInterface
     /**
      * @var string
      */
-    protected $rootDirectory;
+    protected string $rootDirectory;
+
+    /**
+     * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface
+     */
+    protected FileResolverInterface $fileResolver;
 
     /**
      * @param string $rootDirectory
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface $fileResolver
      */
-    public function __construct(string $rootDirectory)
+    public function __construct(string $rootDirectory, FileResolverInterface $fileResolver)
     {
         $this->rootDirectory = $rootDirectory;
+        $this->fileResolver = $fileResolver;
     }
 
     /**
@@ -78,7 +83,9 @@ class NavigationSpryk implements SprykBuilderInterface
      */
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $xml = $this->getXml($sprykDefinition);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolved */
+        $resolved = $this->fileResolver->resolve($this->getTargetPath($sprykDefinition));
+        $simpleXMLElement = $resolved->getSimpleXmlElement();
 
         $dasherizeFilter = $this->getDasherizeFilter();
 
@@ -86,9 +93,10 @@ class NavigationSpryk implements SprykBuilderInterface
         $controller = $dasherizeFilter->filter($this->getController($sprykDefinition));
         $action = $dasherizeFilter->filter($this->getAction($sprykDefinition));
 
-        $parentNode = $xml->$module;
+        $parentNode = $simpleXMLElement->$module;
+
         if (!$parentNode) {
-            $parentNode = current((array)$xml->children());
+            $parentNode = current((array)$simpleXMLElement->children());
         }
 
         $page = $parentNode->pages->addChild($module);
@@ -98,74 +106,9 @@ class NavigationSpryk implements SprykBuilderInterface
         $page->addChild('controller', $controller);
         $page->addChild('action', $action);
 
-        $this->prettyPrintXml($xml, $sprykDefinition);
+//        $this->prettyPrintXml($simpleXMLElement, $sprykDefinition);
 
         $style->report(sprintf('Added navigation entry in <fg=green>%s</>', $this->getTargetPath($sprykDefinition)));
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @throws \SprykerSdk\Spryk\Exception\XmlException
-     *
-     * @return \SimpleXMLElement
-     */
-    protected function getXml(SprykDefinitionInterface $sprykDefinition): SimpleXMLElement
-    {
-        $xml = $this->loadXmlFromFile($sprykDefinition);
-
-        if (!($xml instanceof SimpleXMLElement)) {
-            throw new XmlException('Could not load xml file!');
-        }
-
-        return $xml;
-    }
-
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return \SimpleXMLElement|false
-     */
-    protected function loadXmlFromFile(SprykDefinitionInterface $sprykDefinition)
-    {
-        $targetPath = $this->getTargetPath($sprykDefinition);
-
-        return simplexml_load_file($targetPath);
-    }
-
-    /**
-     * @param \SimpleXMLElement $xml
-     * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $sprykDefinition
-     *
-     * @return void
-     */
-    protected function prettyPrintXml(SimpleXMLElement $xml, SprykDefinitionInterface $sprykDefinition): void
-    {
-        $dom = new DOMDocument('1.0');
-        $dom->preserveWhiteSpace = false;
-        $dom->formatOutput = true;
-
-        $dom->loadXML($this->getXmlAsString($xml));
-        $dom->save($this->getTargetPath($sprykDefinition));
-    }
-
-    /**
-     * @codeCoverageIgnore
-     *
-     * @param \SimpleXMLElement $xml
-     *
-     * @throws \SprykerSdk\Spryk\Exception\XmlException
-     *
-     * @return string
-     */
-    protected function getXmlAsString(SimpleXMLElement $xml): string
-    {
-        $xmlString = $xml->asXML();
-        if (!is_string($xmlString)) {
-            throw new XmlException('Could not get xml as string!');
-        }
-
-        return $xmlString;
     }
 
     /**

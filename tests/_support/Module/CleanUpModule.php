@@ -9,6 +9,8 @@ namespace SprykerSdkTest\Module;
 
 use Codeception\Module;
 use Codeception\TestInterface;
+use ReflectionClass;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolver;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
@@ -38,10 +40,16 @@ class CleanUpModule extends Module
             $toDelete[] = $path;
         }
 
+        $filesystem = new Filesystem();
+//        $filesystem->remove($this->getRootDirectory());
+        $filesystem->remove(sprintf('%s/spryk', sys_get_temp_dir()));
+
         foreach ($toDelete as $item) {
-            $filesystem = new Filesystem();
             $filesystem->remove($item);
         }
+
+        $fileResolverReflection = new ReflectionClass(FileResolver::class);
+        $fileResolverReflection->setStaticPropertyValue('resolved', []);
     }
 
     /**

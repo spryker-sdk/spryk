@@ -1,0 +1,29 @@
+spryk: dependencyProvider
+description: "Adds a Client dependency method to Container in *module*DependencyProvider."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    dependentModule:
+        inherit: true
+
+    provideMethod: ~
+
+    providerMethod:
+        inherit: true
+        value: "add{{ dependentModule }}Facade"
+
+    template:
+        value: Zed/Dependency/Facade/ZedDependencyFacadeToDependencyProvider.php.twig
+
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+    - AddZedDependencyFacadeDependencyProviderMethod

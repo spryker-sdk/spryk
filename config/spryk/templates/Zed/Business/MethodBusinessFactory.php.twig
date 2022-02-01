@@ -1,25 +1,24 @@
-{% set subDirectoryName = 'Hundnase' %}
 {% if subDirectory is defined and subDirectory.value is not null %}
     {% set subDirectoryName = subDirectory | replace({"/": "\\"}) ~ '\\' %}
 {% endif %}
 {% if not interfaceName is defined or interfaceName.value is null %}
-    {% set interfaceName = className ~ 'Interface' %}
+    {% set interfaceName = '\\' ~  organization ~ '\\Zed\\' ~ module ~ '\\Business\\' ~  subDirectoryName ~ className ~ 'Interface' %}
 {% endif %}
 
 
 {% if not dependencyMethods.value %}
     /**
-     * @return \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ interfaceName }}
+     * @return {{ interfaceName }}
      */
-    public function {{ factoryMethod }}(): \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ interfaceName }}
+    public function {{ factoryMethod }}(): {{ interfaceName }}
     {
         return new \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ className }}();
     }
 {% else %}
     /**
-    * @return \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ interfaceName }}
+    * @return {{ interfaceName }}
     */
-    public function {{ factoryMethod }}(): \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ interfaceName }}
+    public function {{ factoryMethod }}(): {{ interfaceName }}
     {
         return new \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ className }}(
         {% for dependencyMethod in dependencyMethods.value -%}

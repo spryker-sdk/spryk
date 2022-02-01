@@ -8,6 +8,8 @@
 namespace SprykerSdkTest\Module;
 
 use Codeception\Module;
+use SimpleXMLElement;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface;
 
 class TransferModule extends Module
 {
@@ -64,5 +66,32 @@ class TransferModule extends Module
         }
 
         file_put_contents($pathToTransferFile, $transferSchema);
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolvedXml
+     * @param string $transferName
+     * @param string $propertyName
+     * @param string $propertyType
+     * @param string|null $singular
+     *
+     * @return void
+     */
+    public function assertResolvedXmlHasProperty(
+        ResolvedXmlInterface $resolvedXml,
+        string $transferName,
+        string $propertyName,
+        string $propertyType,
+        ?string $singular = null
+    ): void {
+        $simpleXMLElement = $resolvedXml->getSimpleXmlElement();
+        $this->assertInstanceOf(SimpleXMLElement::class, $simpleXMLElement);
+
+        $property = $simpleXMLElement->xpath(sprintf('//transfer[@name="%s"]/property[@name="%s"]', $transferName, $propertyName))[0];
+        $this->assertInstanceOf(SimpleXMLElement::class, $property);
+        $propertyString = $property->asXML();
+        $expectedPropertyString = sprintf('<property name="%s" type="%s"%s/>', $propertyName, $propertyType, $singular ? sprintf(' singular="%s"', $singular) : '');
+
+        $this->assertSame($expectedPropertyString, $propertyString);
     }
 }

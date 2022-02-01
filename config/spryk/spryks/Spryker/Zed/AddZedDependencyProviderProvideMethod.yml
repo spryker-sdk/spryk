@@ -1,0 +1,24 @@
+spryk: method
+description: "Adds a new *module*DependencyProvider::provideXLayerDependencies to the DependencyProvider."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    layer: ~
+    provideMethod:
+        value: "provide{{ layer }}LayerDependencies"
+
+    template:
+        value: Zed/ZedDependencyProviderProvideMethod.php.twig
+
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+    - AddModule

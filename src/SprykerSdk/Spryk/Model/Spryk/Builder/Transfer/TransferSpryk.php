@@ -43,22 +43,16 @@ class TransferSpryk extends AbstractTransferSpryk
      */
     public function build(SprykDefinitionInterface $sprykDefinition, SprykStyleInterface $style): void
     {
-        $targetPath = $this->getTargetPath($sprykDefinition);
         $transferName = $this->getTransferName($sprykDefinition);
 
-        $xmlSchemaDom = $this->getDomDocument($targetPath);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolved */
+        $resolved = $this->fileResolver->resolve($this->getTargetPath($sprykDefinition));
+        $simpleXmlElement = $resolved->getSimpleXmlElement();
 
-        $transfer = $xmlSchemaDom->createElement('transfer');
-        $transfer->setAttribute('name', $transferName);
+        $transferNodeXmlElement = $simpleXmlElement->addChild('transfer');
+        $transferNodeXmlElement->addAttribute('name', $transferName);
 
-        /** @var \DOMElement $rootNode */
-        $rootNode = $xmlSchemaDom->documentElement;
-        $rootNode->appendChild($transfer);
-
-        /** @var string $xmlString */
-        $xmlString = $xmlSchemaDom->saveXML();
-
-        $this->writeXml($xmlString, $targetPath);
+        $resolved->setSimpleXmlElement($simpleXmlElement);
 
         $style->report(sprintf('Added transfer in <fg=green>%s</>', $this->getTargetPath($sprykDefinition)));
     }
@@ -70,14 +64,15 @@ class TransferSpryk extends AbstractTransferSpryk
      */
     protected function isTransferDefined(SprykDefinitionInterface $sprykDefinition): bool
     {
-        $targetPath = $this->getTargetPath($sprykDefinition);
         $transferName = $this->getTransferName($sprykDefinition);
 
-        $xmlSchemaDom = $this->getDomDocument($targetPath);
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolved */
+        $resolved = $this->fileResolver->resolve($this->getTargetPath($sprykDefinition));
+        $simpleXmlElement = $resolved->getSimpleXmlElement();
 
-        $transfer = $this->findTransferByName($transferName, $xmlSchemaDom);
+        $transferXMLElement = $this->findTransferByName($simpleXmlElement, $transferName);
 
-        if (!$transfer) {
+        if (!$transferXMLElement) {
             return false;
         }
 

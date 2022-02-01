@@ -88,8 +88,6 @@ class SprykRunMethodTest extends Unit
 
         $tester->execute($arguments);
         $expectedDocBlock = '/**
- * {@inheritDoc}
- *
  * @api
  *
  * @return bool
