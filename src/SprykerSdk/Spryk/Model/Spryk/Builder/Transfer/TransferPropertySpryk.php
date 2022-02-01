@@ -69,7 +69,7 @@ class TransferPropertySpryk extends AbstractTransferSpryk
 
         if ($properties) {
             foreach ($properties as $propertyParts) {
-                $propertyDefinition = explode(':', $propertyParts);
+                $propertyDefinition = explode(':', trim($propertyParts));
                 $this->addProperty($transferXMLElement, $transferName, $style, $propertyDefinition[0], $propertyDefinition[1], $propertyDefinition[2] ?? null);
             }
 
@@ -149,6 +149,10 @@ class TransferPropertySpryk extends AbstractTransferSpryk
 
         if (is_array($properties)) {
             return $properties;
+        }
+
+        if (strpos($properties, ',') !== false) {
+            return explode(',', $properties);
         }
 
         return null;
