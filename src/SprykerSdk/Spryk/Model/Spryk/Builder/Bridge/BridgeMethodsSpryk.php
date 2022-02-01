@@ -217,6 +217,7 @@ class BridgeMethodsSpryk implements SprykBuilderInterface
         $targetImmediateMethods = $this->getMethodNamesFromResolvedClass($resolvedClass);
 
         $reflectionMethods = [];
+
         foreach ($methodNames as $methodName) {
             if (!isset($targetImmediateMethods[$methodName])) {
                 $reflectionMethods[] = $sourceReflectionClass->getMethod($methodName);

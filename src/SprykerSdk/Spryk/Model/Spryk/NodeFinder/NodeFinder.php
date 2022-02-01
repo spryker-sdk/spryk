@@ -88,7 +88,7 @@ class NodeFinder implements NodeFinderInterface
             $methodNames[(string)$methodNode->name] = (string)$methodNode->name;
         }
 
-        return $methodNodes;
+        return $methodNames;
     }
 
     /**
