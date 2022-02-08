@@ -20,7 +20,7 @@ arguments:
         value: "{{ module }}DependencyProvider.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/"
+        value: "src/{{ organization }}/Zed/{{ module }}/"
 
 preSpryks:
     - AddModule

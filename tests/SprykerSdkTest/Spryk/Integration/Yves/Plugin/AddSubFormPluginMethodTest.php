@@ -34,6 +34,7 @@ class AddSubFormPluginMethodTest extends Unit
     public function testAddsSubFormPluginMethod(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'SprykerShop',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);

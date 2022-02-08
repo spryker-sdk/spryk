@@ -38,7 +38,7 @@ class AddYvesDependencyClientInterfaceTest extends Unit
             '--dependentModule' => 'ZipZap',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Dependency/Client/FooBarToZipZapClientInterface.php');
+        $this->assertFileExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves/FooBar/Dependency/Client/FooBarToZipZapClientInterface.php');
     }
 
     /**

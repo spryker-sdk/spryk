@@ -16,7 +16,7 @@ arguments:
             - EnsureRestAttributesTransferAffix
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Shared/{{ module }}/Transfer/{{ module | underscored }}.transfer.xml"
+        value: "src/{{ organization }}/Shared/{{ module }}/Transfer/{{ module | underscored }}.transfer.xml"
 
 preSpryks:
     - AddModule

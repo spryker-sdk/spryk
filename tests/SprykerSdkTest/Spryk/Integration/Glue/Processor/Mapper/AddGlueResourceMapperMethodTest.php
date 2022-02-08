@@ -41,8 +41,8 @@ class AddGlueResourceMapperMethodTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapperInterface.php');
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapper.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapperInterface.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapper.php');
         $this->tester->assertClassHasMethod(ClassName::GLUE_RESOURCE_MAPPER, 'mapRestFooBarsAttributesTransferToBarQuxTransfer');
     }
 
@@ -75,8 +75,8 @@ class AddGlueResourceMapperMethodTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapperInterface.php');
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapper.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapperInterface.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Mapper/FooBarMapper.php');
         $this->tester->assertClassHasMethod(ClassName::GLUE_RESOURCE_MAPPER, 'mapBarQuxTransferToRestFooBarsAttributesTransfer');
     }
 

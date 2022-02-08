@@ -35,6 +35,7 @@ class AddOrderPaymentExpanderPluginMethodTest extends Unit
     public function testAddsCommandByOrderMethod(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'Spryker',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);

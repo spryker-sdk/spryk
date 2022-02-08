@@ -37,12 +37,14 @@ class SprykRunArgumentTest extends Unit
      */
     public function testAsksForArgumentValue(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'Structure',
+            '--mode' => 'core',
         ];
 
         $tester->setInputs(['Structure']);
@@ -57,12 +59,14 @@ class SprykRunArgumentTest extends Unit
      */
     public function testThrowsExceptionWhenArgumentNotFound(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithMissingArgument',
+            '--mode' => 'core',
         ];
 
         $this->expectException(ArgumentNotFoundException::class);
@@ -75,12 +79,14 @@ class SprykRunArgumentTest extends Unit
      */
     public function testAsksMultipleTimesForTheSameArgumentButFirstInputIsTakenAsDefault(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddModule',
+            '--mode' => 'core',
         ];
 
         $tester->setInputs(array_merge(['FooBar', 'Spryker'], array_fill(2, 13, static::KEY_STROKE_ENTER)));

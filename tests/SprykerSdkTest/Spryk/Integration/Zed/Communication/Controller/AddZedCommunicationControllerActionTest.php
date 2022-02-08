@@ -131,7 +131,7 @@ class AddZedCommunicationControllerActionTest extends Unit
             '--controllerMethod' => 'indexAction',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
     }
 
     /**
@@ -160,7 +160,7 @@ class AddZedCommunicationControllerActionTest extends Unit
             '--controllerMethod' => 'indexAction',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Presentation/Index/index.twig');
     }
 
     /**

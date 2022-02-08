@@ -37,7 +37,7 @@ class AddModulePhpStanNeonTest extends Unit
             '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'phpstan.neon');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'phpstan.neon');
     }
 
     /**

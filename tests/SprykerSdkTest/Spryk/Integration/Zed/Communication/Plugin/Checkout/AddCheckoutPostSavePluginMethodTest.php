@@ -36,6 +36,7 @@ class AddCheckoutPostSavePluginMethodTest extends Unit
     public function testAddsCheckoutPostSavePluginMethod(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'Spryker',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);

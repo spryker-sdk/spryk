@@ -36,18 +36,20 @@ class SprykRunAddModuleTest extends Unit
      */
     public function testCreatesModule(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'AddModule',
+            '--mode' => 'core',
             '-n' => true,
         ];
 
         $tester->setInputs(array_merge(['FooBar', 'Spryker'], array_fill(2, 13, static::KEY_STROKE_ENTER)));
         $tester->execute($arguments);
 
-        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
+        $this->assertDirectoryExists($this->tester->getVirtualDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
     }
 }

@@ -26,7 +26,7 @@ arguments:
         value: "{{ module }}To{{ dependentModule }}ServiceInterface.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
+        value: "src/{{ organization }}/Yves/{{ module }}/Dependency/Service/"
 
 preSpryks:
     - AddYvesDependencyServiceBridge

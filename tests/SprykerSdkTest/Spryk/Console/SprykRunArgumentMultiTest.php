@@ -31,7 +31,8 @@ class SprykRunArgumentMultiTest extends Unit
      */
     public function testAddsMultiArgument(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
@@ -39,11 +40,12 @@ class SprykRunArgumentMultiTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => 'AddFacadeMethod',
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments);
 
-        $pathToFacadeInterface = $this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacadeInterface.php';
+        $pathToFacadeInterface = $this->tester->getVirtualDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/Business/FooBarFacadeInterface.php';
         $facadeInterfaceContent = file_get_contents($pathToFacadeInterface);
         $facadeInterfaceContent = ($facadeInterfaceContent) ?: '';
 

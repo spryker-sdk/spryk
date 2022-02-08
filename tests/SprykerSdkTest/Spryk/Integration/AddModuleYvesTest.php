@@ -34,8 +34,8 @@ class AddModuleYvesTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves');
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared');
+        $this->assertDirectoryExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves');
+        $this->assertDirectoryExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Shared');
     }
 
     /**

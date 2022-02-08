@@ -1,6 +1,6 @@
 spryk: template
 description: "Unit Test configuration"
-
+mode: both
 arguments:
   module:
     value: FooBar
@@ -15,4 +15,4 @@ arguments:
     value: "{{ module }}FacadeInterface.php"
 
   targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+    value: "src/{{ organization }}/Zed/{{ module }}/Business/"

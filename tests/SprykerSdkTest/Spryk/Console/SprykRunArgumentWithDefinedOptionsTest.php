@@ -32,7 +32,8 @@ class SprykRunArgumentWithDefinedOptionsTest extends Unit
      */
     public function testDoesNotAskForUserInputWhenAllArgumentsGivenFromUser(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [

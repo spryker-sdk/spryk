@@ -28,7 +28,7 @@ arguments:
         value: "delete"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/"
+        value: "src/{{ organization }}/Glue/{{ module }}/"
 
     directories:
         skipOnProjectLevel: true

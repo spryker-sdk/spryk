@@ -35,11 +35,12 @@ class AddCheckoutPreConditionPluginTest extends Unit
     public function testAddsCheckoutPreConditionPlugin(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'Spryker',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Plugin/Checkout/TestPaymentCheckoutPreConditionPlugin.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Plugin/Checkout/TestPaymentCheckoutPreConditionPlugin.php');
     }
 
     /**

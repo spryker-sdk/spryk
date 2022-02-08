@@ -1,6 +1,8 @@
 spryk: structure
 description: "Unit Test configuration"
-
+mode: both
 arguments:
-  module:
-    value: FooBar
+    organization:
+        default: Spryker
+    module:
+        value: FooBar

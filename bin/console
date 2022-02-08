@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+
+use SprykerSdk\Kernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Spryker\Shared\Config\Application\Environment;
+
+if (!is_file(dirname(__DIR__).'/vendor/autoload_runtime.php')) {
+    throw new LogicException('Symfony Runtime is missing. Try running "composer require symfony/runtime".');
+}
+
+require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
+
+return function (array $context) {
+    define('APPLICATION_ROOT_DIR', __DIR__ . '/..');
+    define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?? 'test');
+    define('APPLICATION', 'Spryk');
+    define('APPLICATION_STORE', '');
+//    Environment::initialize();
+    $kernel = new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
+
+    return new Application($kernel);
+};

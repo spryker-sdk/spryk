@@ -39,7 +39,7 @@ class AddZedPersistencePropelAbstractEntityTest extends Unit
             '--tableName' => 'spy_foo_bar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/AbstractSpyFooBar.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/AbstractSpyFooBar.php');
     }
 
     /**

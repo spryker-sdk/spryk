@@ -8,12 +8,26 @@
 namespace SprykerSdkTest\Module;
 
 use Codeception\Module;
-use PHPStan\BetterReflection\BetterReflection;
-use PHPStan\BetterReflection\Reflection\ReflectionClass;
-use PHPStan\BetterReflection\Reflection\ReflectionClassConstant;
+use PhpParser\Node\Expr\MethodCall;
+use PhpParser\Node\Stmt\ClassConst;
+use PhpParser\Node\Stmt\ClassMethod;
+use PhpParser\PrettyPrinter\Standard;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface;
+use SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface;
 
 class AssertionModule extends Module
 {
+ /**
+  * @return \SprykerSdkTest\Module\SprykHelper
+  */
+    protected function getSprykHelper(): SprykHelper
+    {
+        /** @var \SprykerSdkTest\Module\SprykHelper $sprykHelper */
+        $sprykHelper = $this->getModule(SprykHelper::class);
+
+        return $sprykHelper;
+    }
+
     /**
      * @param string $className
      * @param string $methodName
@@ -22,11 +36,14 @@ class AssertionModule extends Module
      */
     public function assertClassHasMethod(string $className, string $methodName): void
     {
-        $reflection = new BetterReflection();
-        $classInfo = $reflection->classReflector()->reflect($className);
+        $resolved = $this->getResolvedByClassName($className);
+        $nodeFinder = $this->getNodeFinder();
 
-        $this->assertTrue(
-            $classInfo->hasMethod($methodName),
+        $method = $nodeFinder->findMethodNode($resolved->getClassTokenTree(), $methodName);
+
+        $this->assertInstanceOf(
+            ClassMethod::class,
+            $method,
             sprintf(
                 'Expected that class "%s" has method "%s" but method not found.',
                 $className,
@@ -43,12 +60,9 @@ class AssertionModule extends Module
      */
     public function assertClassNotContains(string $className, string $value): void
     {
-        $reflection = new BetterReflection();
-        $classInfo = $reflection->classReflector()->reflect($className);
+        $resolved = $this->getResolvedByClassName($className);
 
-        $filePath = $classInfo->getLocatedSource()->getFileName();
-
-        $this->assertNotRegExp('/' . preg_quote($value, '/') . '/', file_get_contents($filePath), sprintf('%s was not expected to be in the class, but was found.', $value));
+        $this->assertNotRegExp('/' . preg_quote($value, '/') . '/', $resolved->getContent(), sprintf('%s was not expected to be in the class, but was found.', $value));
     }
 
     /**
@@ -61,12 +75,12 @@ class AssertionModule extends Module
      */
     public function assertClassHasConstant(string $className, string $constantName, string $constantValue, string $visibility): void
     {
-        $reflection = new BetterReflection();
-        $classInfo = $reflection->classReflector()->reflect($className);
+        $resolved = $this->getResolvedByClassName($className);
+        $classConst = $this->getNodeFinder()->findConstantNode($resolved->getClassTokenTree(), $constantName);
 
-        $hasConstant = $classInfo->hasConstant($constantName);
-        $this->assertTrue(
-            $hasConstant,
+        $this->assertInstanceOf(
+            ClassConst::class,
+            $classConst,
             sprintf(
                 'Expected that class "%s" has constant "%s" but constant not found.',
                 $className,
@@ -74,46 +88,51 @@ class AssertionModule extends Module
             ),
         );
 
-        if ($hasConstant) {
-            $constantReflection = $classInfo->getReflectionConstant($constantName);
-            $constantVisibility = $this->getVisibilityFromConstantReflection($constantReflection);
-            $this->assertSame(
+        if (!$classConst) {
+            return;
+        }
+
+        $constantVisibility = $this->getVisibilityFromClassConst($classConst);
+
+        $this->assertSame(
+            $visibility,
+            $constantVisibility,
+            sprintf(
+                'Expected that class constant "%s" visibility is "%s" but it is "%s".',
+                $constantName,
                 $visibility,
                 $constantVisibility,
-                sprintf(
-                    'Expected that class constant "%s" visibility is "%s" but it is "%s".',
-                    $constantName,
-                    $visibility,
-                    $constantVisibility,
-                ),
-            );
-            $this->assertSame(
+            ),
+        );
+
+        $classConstValue = $classConst->consts[0]->value->value;
+
+        $this->assertSame(
+            $constantValue,
+            $classConstValue,
+            sprintf(
+                'Expected that class constant "%s" value is "%s" but it is "%s".',
+                $constantName,
                 $constantValue,
-                $constantReflection->getValue(),
-                sprintf(
-                    'Expected that class constant "%s" value is "%s" but it is "%s".',
-                    $constantName,
-                    $constantValue,
-                    $constantReflection->getValue(),
-                ),
-            );
-        }
+                $classConstValue,
+            ),
+        );
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionClassConstant $reflectionClassConstant
+     * @param \PhpParser\Node\Stmt\ClassConst $classConst
      *
      * @return string|null
      */
-    protected function getVisibilityFromConstantReflection(ReflectionClassConstant $reflectionClassConstant): ?string
+    protected function getVisibilityFromClassConst(ClassConst $classConst): ?string
     {
-        if ($reflectionClassConstant->isPublic()) {
+        if ($classConst->isPublic()) {
             return 'public';
         }
-        if ($reflectionClassConstant->isProtected()) {
+        if ($classConst->isProtected()) {
             return 'protected';
         }
-        if ($reflectionClassConstant->isPrivate()) {
+        if ($classConst->isPrivate()) {
             return 'private';
         }
 
@@ -129,13 +148,27 @@ class AssertionModule extends Module
      */
     public function assertMethodBody(string $className, string $methodName, string $expectBody): void
     {
-        $this->assertClassHasMethod($className, $methodName);
+        $resolved = $this->getResolvedByClassName($className);
+        $classMethod = $this->getNodeFinder()->findMethodNode($resolved->getClassTokenTree(), $methodName);
 
-        $reflection = new BetterReflection();
-        $classInfo = $reflection->classReflector()->reflect($className);
+        $printer = new Standard();
+        $methodBodyCode = $printer->prettyPrint($classMethod->stmts);
 
-        $methodBody = $classInfo->getMethod($methodName)->getBodyCode();
-        $this->assertSame($expectBody, $methodBody);
+        $this->assertSame($expectBody, $methodBodyCode);
+    }
+
+    /**
+     * @param string $className
+     * @param string $resourceRouteMethod
+     *
+     * @return void
+     */
+    public function assertRouteAdded(string $className, string $resourceRouteMethod): void
+    {
+        $resolved = $this->getResolvedByClassName($className);
+        $methodCallNode = $this->getNodeFinder()->findMethodCallNode($resolved->getClassTokenTree(), $resourceRouteMethod);
+
+        $this->assertInstanceOf(MethodCall::class, $methodCallNode, sprintf('Expected to find a method call "%s::%s" but was not found.', $className, $resourceRouteMethod));
     }
 
     /**
@@ -147,30 +180,43 @@ class AssertionModule extends Module
      */
     public function assertDocBlockForClassMethod(string $expectedDocBlock, string $className, string $methodName): void
     {
-        $betterReflection = new BetterReflection();
-        $reflectedClass = $betterReflection->classReflector()
-            ->reflect($className);
+        $resolved = $this->getResolvedByClassName($className);
+        $nodeFinder = $this->getNodeFinder();
 
-        $reflectedMethod = $reflectedClass->getMethod($methodName);
-        $docBlock = $reflectedMethod->getDocComment();
+        $method = $nodeFinder->findMethodNode($resolved->getClassTokenTree(), $methodName);
+
+        if (!$method) {
+            $this->assertTrue(false, sprintf('Could not find a method by name "%s"', $methodName));
+        }
+
+        $docBlock = $method->getDocComment()->getText();
         $this->assertSame($expectedDocBlock, $docBlock);
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionClass $classInfo
-     *
-     * @return array<string>
+     * @return \SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface
      */
-    protected function getClassMethodNames(ReflectionClass $classInfo): array
+    protected function getNodeFinder(): NodeFinderInterface
     {
-        $classMethods = $classInfo->getMethods();
-        $classMethodNames = [];
+        /** @var \SprykerSdk\Spryk\Model\Spryk\NodeFinder\NodeFinderInterface $nodeFinder */
+        $nodeFinder = $this->getSprykHelper()->getClass(NodeFinderInterface::class);
 
-        foreach ($classMethods as $classMethod) {
-            $classMethodNames[] = $classMethod->getName();
-        }
+        return $nodeFinder;
+    }
 
-        return $classMethodNames;
+    /**
+     * @param string $className
+     *
+     * @return \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface
+     */
+    protected function getResolvedByClassName(string $className): ResolvedClassInterface
+    {
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface $resolved */
+        $resolved = $this->getSprykHelper()->getFileResolver()->resolve($className);
+
+        $this->assertInstanceOf(ResolvedClassInterface::class, $resolved, sprintf('Expected class "%s" not found.', $className));
+
+        return $resolved;
     }
 
     /**

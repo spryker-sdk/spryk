@@ -35,7 +35,7 @@ class AddYvesDependencyProviderTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/FooBarDependencyProvider.php');
+        $this->assertFileExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves/FooBar/FooBarDependencyProvider.php');
     }
 
     /**

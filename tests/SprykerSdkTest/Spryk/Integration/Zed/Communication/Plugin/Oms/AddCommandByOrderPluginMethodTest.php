@@ -36,6 +36,7 @@ class AddCommandByOrderPluginMethodTest extends Unit
     public function testAddsCommandByOrderPluginMethod(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'Spryker',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);

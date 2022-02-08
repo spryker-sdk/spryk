@@ -20,7 +20,7 @@ arguments:
         value: "GatewayController.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Communication/Controller/"
 
 preSpryks:
     - AddModule

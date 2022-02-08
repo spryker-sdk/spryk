@@ -36,7 +36,7 @@ class AddGlueConfigTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarConfig.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/FooBarConfig.php');
     }
 
     /**

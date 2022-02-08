@@ -39,7 +39,7 @@ class AddZedCommunicationControllerTest extends Unit
             '--controller' => 'Index',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
     }
 
     /**
@@ -66,7 +66,7 @@ class AddZedCommunicationControllerTest extends Unit
             '--controller' => ClassName::ZED_CONTROLLER,
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
     }
 
     /**
@@ -93,7 +93,7 @@ class AddZedCommunicationControllerTest extends Unit
             '--controller' => 'IndexController',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Controller/IndexController.php');
     }
 
     /**

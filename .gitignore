@@ -39,3 +39,6 @@ tests/_output/*
 
 !tests/_data/config/*
 tests/_data/*
+
+var/*
+generated/*

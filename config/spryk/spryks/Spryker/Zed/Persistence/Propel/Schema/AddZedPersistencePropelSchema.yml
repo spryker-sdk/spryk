@@ -20,7 +20,7 @@ arguments:
         value: "spy_{{ targetModule | underscored }}.schema.xml"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/"
 
 preSpryks:
     - AddModule

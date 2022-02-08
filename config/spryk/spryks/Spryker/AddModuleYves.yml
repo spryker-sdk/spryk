@@ -18,7 +18,7 @@ arguments:
         default: default
 
     targetPath:
-        value: "{{ moduleRoot }}/"
+        value: ""
 
     directories:
         skipOnProjectLevel: true

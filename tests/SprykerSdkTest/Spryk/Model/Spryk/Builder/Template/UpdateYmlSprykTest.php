@@ -54,16 +54,15 @@ class UpdateYmlSprykTest extends Unit
     {
         $sprykDefinition = $this->tester->getSprykDefinition([
             UpdateYmlSpryk::ARGUMENT_TARGET_PATH => static::TARGET_PATH_VALUE,
+            UpdateYmlSpryk::ARGUMENT_ORGANIZATION => 'Spryker',
+            UpdateYmlSpryk::ARGUMENT_MODULE => 'FooBar',
         ]);
 
         $updateYmlSpryk = $this->buildUpdateYmlSpryk();
 
         $this->expectException(YmlException::class);
 
-        $updateYmlSpryk->build(
-            $sprykDefinition,
-            $this->getSprykStyleMock(),
-        );
+        $updateYmlSpryk->runSpryk($sprykDefinition);
     }
 
     /**
@@ -82,7 +81,14 @@ class UpdateYmlSprykTest extends Unit
     protected function buildUpdateYmlSpryk(): SprykBuilderInterface
     {
         $templateRendererMock = $this->getTemplateRendererMock();
-        $updateYmlSpryk = new UpdateYmlSpryk($templateRendererMock, $this->tester->getFileResolver(), $this->tester->getRootDirectory());
+
+        /** @var \Codeception\Module\Symfony $symfony */
+        $symfony = $this->getModule('Symfony');
+        $container = $symfony->_getContainer();
+//        $container->set(TemplateRendererInterface::class, $templateRendererMock);
+        $updateYmlSpryk = $this->tester->grabService(UpdateYmlSpryk::class);
+
+//        $updateYmlSpryk = new UpdateYmlSpryk($templateRendererMock, $this->tester->getFileResolver(), $this->tester->getRootDirectory());
 
         return $updateYmlSpryk;
     }

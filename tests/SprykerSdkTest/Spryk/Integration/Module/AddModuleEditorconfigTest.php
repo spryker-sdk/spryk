@@ -36,7 +36,7 @@ class AddModuleEditorconfigTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.editorconfig');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . '.editorconfig');
     }
 
     /**

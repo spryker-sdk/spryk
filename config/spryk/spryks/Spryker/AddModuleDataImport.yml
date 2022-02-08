@@ -17,7 +17,7 @@ arguments:
         inherit: true
 
     targetPath:
-        value: "{{ moduleRoot }}/"
+        value: ""
 
     directories:
         skipOnProjectLevel: true

@@ -18,7 +18,7 @@ arguments:
         value: "{{ module }}Facade.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Business/"
 
 preSpryks:
     - AddModule

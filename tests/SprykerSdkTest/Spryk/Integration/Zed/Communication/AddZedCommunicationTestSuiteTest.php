@@ -36,7 +36,7 @@ class AddZedCommunicationTestSuiteTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication');
+        $this->assertDirectoryExists($this->tester->getSprykerModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication');
     }
 
     /**

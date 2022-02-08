@@ -37,7 +37,7 @@ class AddModuleCiTest extends Unit
             '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '.github/workflows/ci.yml');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . '.github/workflows/ci.yml');
     }
 
     /**

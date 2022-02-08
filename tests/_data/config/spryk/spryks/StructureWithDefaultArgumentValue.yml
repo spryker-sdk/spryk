@@ -1,13 +1,16 @@
 spryk: structure
 description: "Unit Test configuration"
-
+mode: both
 arguments:
-  module:
-    value: FooBar
+    organization:
+        value: Spryker
 
-  directories:
-    value:
-      - src/
+    module:
+        value: FooBar
 
-  targetPath:
-    default: "{{ module }}/"
+    directories:
+        value:
+            - src/
+
+    targetPath:
+        default: ""

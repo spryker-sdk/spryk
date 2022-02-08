@@ -31,18 +31,20 @@ class SprykRunPostSprykTest extends Unit
      */
     public function testExecutesPostSprykAfterCalledSpryk(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'SprykWithPostSpryk',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments);
 
-        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
+        $this->assertDirectoryExists($this->tester->getVirtualDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
 
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
+        $this->assertFileExists($this->tester->getVirtualDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
     }
 }

@@ -24,7 +24,7 @@ arguments:
         value: "{{ module }}To{{ dependentModule }}FacadeInterface.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Facade/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Dependency/Facade/"
 
 preSpryks:
     - AddModule

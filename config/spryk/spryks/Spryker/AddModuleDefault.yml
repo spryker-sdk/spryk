@@ -14,7 +14,7 @@ arguments:
         type: NewModuleType
 
     targetPath:
-        value: "{{ moduleRoot }}/"
+        value: ""
 
     directories:
         skipOnProjectLevel: true

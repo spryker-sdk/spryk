@@ -8,6 +8,7 @@
 namespace SprykerSdkTest\Spryk\Integration\App\Common\Api\AsyncApi;
 
 use Codeception\Test\Unit;
+use SprykerSdkTest\SprykIntegrationTester;
 
 /**
  * Auto-generated group annotations
@@ -27,7 +28,7 @@ class AddAsyncApiTest extends Unit
     /**
      * @var \SprykerSdkTest\SprykIntegrationTester
      */
-    protected $tester;
+    protected SprykIntegrationTester $tester;
 
     /**
      * @return void
@@ -40,6 +41,6 @@ class AddAsyncApiTest extends Unit
             '--targetFilename' => 'asyncapi.yml',
         ]);
 
-        $this->assertFileExists(codecept_data_dir('/config/app/api/asyncapi/asyncapi.yml'));
+        $this->assertFileExists($this->tester->getVirtualDirectory() . '/config/app/api/asyncapi/asyncapi.yml');
     }
 }

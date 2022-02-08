@@ -31,10 +31,11 @@ class AddModulePaymentTest extends Unit
     public function testAddsModule(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'Spryker',
             '--module' => 'FooBar',
             '--paymentMethod' => 'FooPayment',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src');
+        $this->assertDirectoryExists($this->tester->getSprykerModuleDirectory() . 'src');
     }
 }

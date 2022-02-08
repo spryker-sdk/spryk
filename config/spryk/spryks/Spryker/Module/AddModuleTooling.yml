@@ -14,7 +14,7 @@ arguments:
         value: tooling.yml.twig
 
     targetPath:
-        value: "{{ moduleRoot }}/"
+        value: ""
 
 preSpryks:
     - AddModule

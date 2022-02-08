@@ -39,6 +39,7 @@ class AddYvesDependencyServiceBridgeMethodTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--dependentOrganization' => 'Spryker',
             '--dependentModule' => 'ZipZap',
             '--methods' => [
                 'methodWithStringArgument',

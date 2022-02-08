@@ -69,6 +69,6 @@ class AddModuleToolingTest extends Unit
      */
     protected function getToolingFilePath(): string
     {
-        return $this->tester->getModuleDirectory() . 'tooling.yml';
+        return $this->tester->getSprykerModuleDirectory() . 'tooling.yml';
     }
 }

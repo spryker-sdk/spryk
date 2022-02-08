@@ -20,7 +20,7 @@ arguments:
         value: "{{ resourceType | dasherize }}.validation.yaml"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Validation/"
+        value: "src/{{ organization }}/Glue/{{ module }}/Validation/"
 
 preSpryks:
     - AddModule

@@ -36,6 +36,7 @@ class AddCheckoutPreConditionPluginMethodTest extends Unit
     public function testAddsCheckoutPreConditionPluginMethod(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'Spryker',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);

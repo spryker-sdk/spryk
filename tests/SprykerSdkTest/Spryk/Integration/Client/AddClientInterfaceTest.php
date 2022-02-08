@@ -40,7 +40,7 @@ class AddClientInterfaceTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClientInterface.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Client/FooBar/FooBarClientInterface.php');
     }
 
     /**

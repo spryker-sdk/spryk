@@ -17,7 +17,7 @@ arguments:
         value: "{{ module }}CommunicationFactory.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Communication/"
 
 preSpryks:
     - AddModule

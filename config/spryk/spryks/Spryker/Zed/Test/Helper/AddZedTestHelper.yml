@@ -23,7 +23,7 @@ arguments:
         value: "{{ module }}Helper.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/tests/{{ organization }}Test/Zed/{{ module }}/_support/Helper/"
+        value: "tests/{{ organization }}Test/Zed/{{ module }}/_support/Helper/"
 
 preSpryks:
     - AddModule

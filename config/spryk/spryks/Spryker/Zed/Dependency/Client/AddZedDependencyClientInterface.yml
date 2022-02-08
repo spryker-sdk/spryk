@@ -24,7 +24,7 @@ arguments:
         value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Client/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Dependency/Client/"
 
 preSpryks:
     - AddModule

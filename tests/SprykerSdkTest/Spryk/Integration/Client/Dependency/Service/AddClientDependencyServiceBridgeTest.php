@@ -40,7 +40,7 @@ class AddClientDependencyServiceBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/Dependency/Service/FooBarToZipZapServiceBridge.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Client/FooBar/Dependency/Service/FooBarToZipZapServiceBridge.php');
     }
 
     /**

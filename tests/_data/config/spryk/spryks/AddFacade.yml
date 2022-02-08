@@ -1,21 +1,21 @@
 spryk: template
 description: "Unit Test configuration"
-
+mode: both
 arguments:
-  module:
-    value: FooBar
+    organization:
+        value: Spryker
 
-  organization:
-    value: Spryker
+    module:
+        value: FooBar
 
-  template:
-    value: Facade.php.twig
+    template:
+        value: Facade.php.twig
 
-  targetFilename:
-    value: "{{ module }}Facade.php"
+    targetFilename:
+        value: "{{ module }}Facade.php"
 
-  targetPath:
-    value: "{{ module }}/src/{{ organization }}/Zed/{{ module }}/Business/"
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Business/"
 
 postSpryks:
-  - AddFacadeInterface
+    - AddFacadeInterface

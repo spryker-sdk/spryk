@@ -2,14 +2,15 @@ spryk: template
 description: "Unit Test configuration"
 
 arguments:
-  module: ~
-  organization: ~
+    organization:
+        default: Spryker
+    module: ~
 
-  template:
-    value: composer.json.twig
+    template:
+        value: composer.json.twig
 
-  targetPath:
-    default: "{{ module }}/"
+    targetPath:
+        default: ""
 
 preSpryks:
-  - AddModule
+    - AddModule

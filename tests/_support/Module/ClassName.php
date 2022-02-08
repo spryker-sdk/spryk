@@ -122,47 +122,47 @@ interface ClassName
     /**
      * @var string
      */
-    public const YVES_CONTROLLER = 'Spryker\Yves\FooBar\Controller\FooBarController';
+    public const YVES_CONTROLLER = 'SprykerShop\Yves\FooBar\Controller\FooBarController';
 
     /**
      * @var string
      */
-    public const YVES_FACTORY = 'Spryker\Yves\FooBar\FooBarFactory';
+    public const YVES_FACTORY = 'SprykerShop\Yves\FooBar\FooBarFactory';
 
     /**
      * @var string
      */
-    public const YVES_CONFIG = 'Spryker\Yves\FooBar\FooBarConfig';
+    public const YVES_CONFIG = 'SprykerShop\Yves\FooBar\FooBarConfig';
 
     /**
      * @var string
      */
-    public const YVES_ROUTE_PROVIDER = 'Spryker\Yves\FooBar\Plugin\Router\FooBarRouteProviderPlugin';
+    public const YVES_ROUTE_PROVIDER = 'SprykerShop\Yves\FooBar\Plugin\Router\FooBarRouteProviderPlugin';
 
     /**
      * @var string
      */
-    public const YVES_DEPENDENCY_PROVIDER = 'Spryker\Yves\FooBar\FooBarDependencyProvider';
+    public const YVES_DEPENDENCY_PROVIDER = 'SprykerShop\Yves\FooBar\FooBarDependencyProvider';
 
     /**
      * @var string
      */
-    public const YVES_CLIENT_BRIDGE = 'Spryker\Yves\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
+    public const YVES_CLIENT_BRIDGE = 'SprykerShop\Yves\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
 
     /**
      * @var string
      */
-    public const YVES_CLIENT_BRIDGE_INTERFACE = 'Spryker\Yves\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
+    public const YVES_CLIENT_BRIDGE_INTERFACE = 'SprykerShop\Yves\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
 
     /**
      * @var string
      */
-    public const YVES_SERVICE_BRIDGE = 'Spryker\Yves\FooBar\Dependency\Service\FooBarToZipZapServiceBridge';
+    public const YVES_SERVICE_BRIDGE = 'SprykerShop\Yves\FooBar\Dependency\Service\FooBarToZipZapServiceBridge';
 
     /**
      * @var string
      */
-    public const YVES_SERVICE_BRIDGE_INTERFACE = 'Spryker\Yves\FooBar\Dependency\Service\FooBarToZipZapServiceInterface';
+    public const YVES_SERVICE_BRIDGE_INTERFACE = 'SprykerShop\Yves\FooBar\Dependency\Service\FooBarToZipZapServiceInterface';
 
     /**
      * @var string
@@ -327,7 +327,7 @@ interface ClassName
     /**
      * @var string
      */
-    public const YVES_PLUGIN_SUB_FORM_PLUGIN = 'Spryker\Yves\FooBar\Plugin\TestPaymentSubFormPlugin';
+    public const YVES_PLUGIN_SUB_FORM_PLUGIN = 'SprykerShop\Yves\FooBar\Plugin\TestPaymentSubFormPlugin';
 
     /**
      * @var string
@@ -362,37 +362,12 @@ interface ClassName
     /**
      * @var string
      */
-    public const PROJECT_FACADE = 'Pyz\Zed\FooBar\Business\FooBarFacade';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_FACADE_TEST = 'Pyz\Zed\FooBar\Business\FooBarFacadeTest';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_FACADE_INTERFACE = 'Pyz\Zed\FooBar\Business\FooBarFacadeInterface';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_REPOSITORY = 'Pyz\Zed\FooBar\Persistence\FooBarRepository';
-
-    /**
-     * @var string
-     */
     public const PROJECT_REPOSITORY_INTERFACE = 'Pyz\Zed\FooBar\Persistence\FooBarRepositoryInterface';
 
     /**
      * @var string
      */
     public const PROJECT_ENTITY_MANAGER = 'Pyz\Zed\FooBar\Persistence\FooBarEntityManager';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_ENTITY_MANAGER_INTERFACE = 'Pyz\Zed\FooBar\Persistence\FooBarEntityManagerInterface';
 
     /**
      * @var string
@@ -427,21 +402,6 @@ interface ClassName
     /**
      * @var string
      */
-    public const PROJECT_CLIENT_CLIENT_BRIDGE_INTERFACE = 'Pyz\Client\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_CLIENT_SERVICE_BRIDGE = 'Pyz\Client\FooBar\Dependency\Service\FooBarToZipZapServiceBridge';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_CLIENT_SERVICE_BRIDGE_INTERFACE = 'Pyz\Client\FooBar\Dependency\Service\FooBarToZipZapServiceInterface';
-
-    /**
-     * @var string
-     */
     public const PROJECT_YVES_CONTROLLER = 'Pyz\Yves\FooBar\Controller\FooBarController';
 
     /**
@@ -463,26 +423,6 @@ interface ClassName
      * @var string
      */
     public const PROJECT_YVES_DEPENDENCY_PROVIDER = 'Pyz\Yves\FooBar\FooBarDependencyProvider';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_YVES_CLIENT_BRIDGE = 'Pyz\Yves\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_YVES_CLIENT_BRIDGE_INTERFACE = 'Pyz\Yves\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_YVES_SERVICE_BRIDGE = 'Pyz\Yves\FooBar\Dependency\Service\FooBarToZipZapServiceBridge';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_YVES_SERVICE_BRIDGE_INTERFACE = 'Pyz\Yves\FooBar\Dependency\Service\FooBarToZipZapServiceInterface';
 
     /**
      * @var string
@@ -537,42 +477,7 @@ interface ClassName
     /**
      * @var string
      */
-    public const PROJECT_GLUE_CLIENT_BRIDGE = 'Pyz\Glue\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_GLUE_CLIENT_BRIDGE_INTERFACE = 'Pyz\Glue\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_ZED_FACADE_BRIDGE = 'Pyz\Zed\FooBar\Dependency\Facade\FooBarToZipZapFacadeBridge';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_ZED_FACADE_BRIDGE_INTERFACE = 'Pyz\Zed\FooBar\Dependency\Facade\FooBarToZipZapFacadeInterface';
-
-    /**
-     * @var string
-     */
     public const PROJECT_ZED_CLIENT_BRIDGE = 'Pyz\Zed\FooBar\Dependency\Client\FooBarToZipZapClientBridge';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_ZED_CLIENT_BRIDGE_INTERFACE = 'Pyz\Zed\FooBar\Dependency\Client\FooBarToZipZapClientInterface';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_ZED_SERVICE_BRIDGE = 'Pyz\Zed\FooBar\Dependency\Service\FooBarToZipZapServiceBridge';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_ZED_SERVICE_BRIDGE_INTERFACE = 'Pyz\Zed\FooBar\Dependency\Service\FooBarToZipZapServiceInterface';
 
     /**
      * @var string
@@ -583,11 +488,6 @@ interface ClassName
      * @var string
      */
     public const PROJECT_ZED_FACADE_TEST = 'PyzTest\Zed\FooBar\Business\FooBarFacadeTest';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_ZED_FACADE_INTERFACE = 'Pyz\Zed\FooBar\Business\FooBarFacadeInterface';
 
     /**
      * @var string
@@ -633,11 +533,6 @@ interface ClassName
      * @var string
      */
     public const PROJECT_ZED_ORDER_PAYMENT_EXPANDER_PLUGIN = 'Pyz\Zed\FooBar\Communication\Plugin\TestPaymentOrderPaymentExpanderPlugin';
-
-    /**
-     * @var string
-     */
-    public const PROJECT_ZED_PAYMENT_METHOD_FILTER_PLUGIN = 'Pyz\Zed\FooBar\Communication\Plugin\Payment\TestPaymentPaymentMethodFilterPlugin';
 
     /**
      * @var string

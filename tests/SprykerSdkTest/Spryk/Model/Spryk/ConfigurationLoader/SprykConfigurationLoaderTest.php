@@ -31,6 +31,14 @@ class SprykConfigurationLoaderTest extends Unit
     /**
      * @return void
      */
+    protected function _before(): void
+    {
+        $this->markTestSkipped('Not needed anymore when refactoring of Spryks is done');
+    }
+
+    /**
+     * @return void
+     */
     public function testDoesNotReplaceEmptyValue(): void
     {
         $sprykConfiguration = $this->tester->getMergedConfiguration(__DIR__);

@@ -44,9 +44,9 @@ class AddGlueControllerPostActionTest extends Unit
             '--controllerMethod' => 'postAction',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
         $this->tester->assertClassHasMethod(ClassName::GLUE_CONTROLLER, 'postAction');
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/FooBar/FooBarWriter.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/FooBar/FooBarWriter.php');
     }
 
     /**

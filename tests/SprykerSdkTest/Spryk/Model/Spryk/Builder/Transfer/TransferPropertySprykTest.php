@@ -10,7 +10,6 @@ namespace SprykerSdkTest\Spryk\Model\Spryk\Builder\Transfer;
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Transfer\TransferPropertySpryk;
-use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 /**
  * @group SprykerSdkTest
@@ -33,7 +32,11 @@ class TransferPropertySprykTest extends Unit
     public function testAddMultiplePropertiesAddsMultipleProperties(): void
     {
         // Arrange
-        $targetXmlPath = '/../../_support/Fixtures/Transfer/foo_bar.transfer.xml';
+        $transferFilePath = $this->tester->haveTransferSchema(
+            'Spryker',
+            'FooBar',
+            file_get_contents(codecept_data_dir('/../_support/Fixtures/Transfer/foo_bar.transfer.xml')),
+        );
         $transferName = 'FooBar';
         $propertyAName = 'propertyA';
         $propertyBName = 'propertyB';
@@ -47,29 +50,21 @@ class TransferPropertySprykTest extends Unit
                 sprintf('%s:%s:withSingular', $propertyBName, $propertyType),
             ],
             'propertyType' => 'empty',
-            'targetPath' => $targetXmlPath,
+            'targetPath' => 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
         ]);
 
         // Act
         $fileResolver = $this->tester->getFileResolver();
-        $transferPropertySpryk = new TransferPropertySpryk(codecept_data_dir('config'), $fileResolver);
-        $transferPropertySpryk->build($sprykDefinition, $this->getSprykStyleMock());
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\AbstractBuilder $transferPropertySpryk */
+        $transferPropertySpryk = $this->tester->getClass(TransferPropertySpryk::class);
+        $transferPropertySpryk->runSpryk($sprykDefinition);
+        $this->tester->persistResolvedFiles();
 
         // Assert
-        $resolved = $fileResolver->resolve(codecept_data_dir('config') . $targetXmlPath);
+        $resolved = $fileResolver->resolve($transferFilePath);
         $this->assertInstanceOf(ResolvedXmlInterface::class, $resolved);
 
         $this->tester->assertResolvedXmlHasProperty($resolved, $transferName, $propertyAName, $propertyType);
         $this->tester->assertResolvedXmlHasProperty($resolved, $transferName, $propertyBName, $propertyType, 'withSingular');
-    }
-
-    /**
-     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerSdk\Spryk\Style\SprykStyleInterface
-     */
-    protected function getSprykStyleMock(): SprykStyleInterface
-    {
-        $mockBuilder = $this->getMockBuilder(SprykStyleInterface::class);
-
-        return $mockBuilder->getMock();
     }
 }

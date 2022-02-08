@@ -1,32 +1,31 @@
 spryk: method
 description: "Unit Test configuration"
-
+mode: both
 arguments:
+    organization:
+        value: Spryker
 
-  module:
-    value: FooBar
+    module:
+        value: FooBar
 
-  organization:
-    value: Spryker
+    method:
+        value: doSomething
 
-  method:
-    value: doSomething
+    input:
+        value: false
 
-  input:
-    value: false
+    output:
+        value: bool
 
-  output:
-    value: bool
+    annotations:
+        value:
+            - "@api"
 
-  annotations:
-    value:
-      - "@api"
+    template:
+        value: Method.php.twig
 
-  template:
-    value: Method.php.twig
-
-  target:
-    value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}Facade"
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}Facade"
 
 preSpryks:
-  - AddFacade
+    - AddFacade

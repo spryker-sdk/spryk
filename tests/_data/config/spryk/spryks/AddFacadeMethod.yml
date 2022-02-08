@@ -1,6 +1,6 @@
 spryk: method
 description: "Unit Test configuration"
-
+mode: both
 arguments:
 
   module:

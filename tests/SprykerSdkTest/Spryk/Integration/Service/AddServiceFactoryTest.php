@@ -35,7 +35,7 @@ class AddServiceFactoryTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Service/FooBar/FooBarFactory.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Service/FooBar/FooBarFactory.php');
     }
 
     /**

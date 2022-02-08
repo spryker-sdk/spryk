@@ -1,6 +1,6 @@
 spryk: template
 description: "Unit Test configuration"
-
+mode: core
 arguments:
   module: ~
   organization: ~
@@ -9,7 +9,7 @@ arguments:
     value: README.md.twig
 
   targetPath:
-    default: "{{ module }}/"
+    default: ""
 
 preSpryks:
   - AddModule

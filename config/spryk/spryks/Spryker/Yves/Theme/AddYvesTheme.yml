@@ -17,7 +17,7 @@ arguments:
         default: default
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Theme/{{ theme }}/"
+        value: "src/{{ organization }}/Yves/{{ module }}/Theme/{{ theme }}/"
 
     directories:
         value:

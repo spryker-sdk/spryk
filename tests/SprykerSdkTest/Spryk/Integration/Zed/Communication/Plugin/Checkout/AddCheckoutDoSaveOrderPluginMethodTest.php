@@ -36,6 +36,7 @@ class AddCheckoutDoSaveOrderPluginMethodTest extends Unit
     public function testAddsCheckoutDoSaveOrderPluginMethod(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'Spryker',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);

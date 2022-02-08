@@ -27,7 +27,7 @@ arguments:
         value: "{{ module }}To{{ dependentModule }}ServiceBridge.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Dependency/Service/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Dependency/Service/"
 
 preSpryks:
     - AddModule

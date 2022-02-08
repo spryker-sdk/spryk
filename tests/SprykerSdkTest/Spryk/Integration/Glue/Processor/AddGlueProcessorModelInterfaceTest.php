@@ -38,7 +38,7 @@ class AddGlueProcessorModelInterfaceTest extends Unit
             '--className' => 'Bar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Foo/BarInterface.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Foo/BarInterface.php');
     }
 
     /**

@@ -22,7 +22,7 @@ arguments:
         value: "{{ module }}To{{ dependentModule }}ClientInterface.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
+        value: "src/{{ organization }}/Yves/{{ module }}/Dependency/Client/"
 
 preSpryks:
     - AddModule

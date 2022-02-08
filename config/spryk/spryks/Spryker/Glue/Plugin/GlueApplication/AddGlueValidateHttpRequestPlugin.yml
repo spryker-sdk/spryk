@@ -20,7 +20,7 @@ arguments:
         value: "{{ modelName | camelCased }}ValidateHttpRequestPlugin.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
+        value: "src/{{ organization }}/Glue/{{ module }}/Plugin/GlueApplication/"
 
 preSpryks:
     - AddModule

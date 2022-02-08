@@ -36,9 +36,9 @@ class AddYvesPageTest extends Unit
             '--controller' => 'Index',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Controller');
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Plugin');
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Theme');
+        $this->assertDirectoryExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves/FooBar/Controller');
+        $this->assertDirectoryExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves/FooBar/Plugin');
+        $this->assertDirectoryExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves/FooBar/Theme');
     }
 
     /**

@@ -33,7 +33,7 @@ arguments:
         callback: GlueProcessorModelInterfaceTargetFilename
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
+        value: "src/{{ organization }}/Glue/{{ module }}/Processor/"
 
 preSpryks:
     - AddModule

@@ -69,6 +69,6 @@ class SprykDumpTest extends Unit
      */
     protected function createSprykDumpConsole(): SprykDumpConsole
     {
-        return new SprykDumpConsole();
+        return $this->tester->getClass(SprykDumpConsole::class);
     }
 }

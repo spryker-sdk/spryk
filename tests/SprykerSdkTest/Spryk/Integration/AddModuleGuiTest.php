@@ -34,8 +34,8 @@ class AddModuleGuiTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed');
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src/Spryker/Shared');
+        $this->assertDirectoryExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed');
+        $this->assertDirectoryExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Shared');
     }
 
     /**

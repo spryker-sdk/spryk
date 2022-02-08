@@ -16,7 +16,7 @@ arguments:
         value: App/Common/Api/AsyncApi/asyncapi.schema.yml.twig
 
     targetPath:
-        required: true
+        value: "config/api/asyncapi/"
 
     targetFilename:
         required: true

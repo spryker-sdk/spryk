@@ -20,7 +20,7 @@ arguments:
         value: "{{ module | removeRestApiSuffix | lower }}"
 
     targetPath:
-        value: "{{ moduleRoot }}/"
+        value: ""
 
     directories:
         skipOnProjectLevel: true

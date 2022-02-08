@@ -14,7 +14,7 @@ arguments:
         value: composer.json.twig
 
     targetPath:
-        value: "{{ moduleRoot }}/"
+        value: ""
 
 preSpryks:
     - AddModule

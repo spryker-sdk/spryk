@@ -38,8 +38,8 @@ class AddGlueResourceRestResponseBuilderModelTest extends Unit
             '--resourceType' => 'foo-bar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilder.php');
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilder.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/RestResponseBuilder/FooBarRestResponseBuilderInterface.php');
     }
 
     /**

@@ -17,7 +17,7 @@ arguments:
         value: "{{ module }}EntityManagerInterface.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Persistence/"
 
 preSpryks:
     - AddModule

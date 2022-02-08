@@ -33,11 +33,12 @@ class AddSubFormPluginTest extends Unit
     public function testAddsSubFormPlugin(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'SprykerShop',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Plugin/TestPaymentSubFormPlugin.php');
+        $this->assertFileExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves/FooBar/Plugin/TestPaymentSubFormPlugin.php');
     }
 
     /**

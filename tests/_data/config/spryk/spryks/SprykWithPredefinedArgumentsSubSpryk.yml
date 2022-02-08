@@ -1,26 +1,28 @@
 spryk: structure
 description: "Unit Test configuration"
-
+mode: both
 arguments:
+    organization:
+        default: Spryker
 
-  module:
-    value: FooBar
+    module:
+        value: FooBar
 
-  directories:
-    value:
-      - src/
+    directories:
+        value:
+            - src/
 
-  targetPath:
-    value: "{{ module }}/"
+    targetPath:
+        value: ""
 
-  templateTargetPath:
-    value: "{{ module }}/sub-directory/"
+    templateTargetPath:
+        value: "sub-directory/"
 
 postSpryks:
-   - TemplateWithoutInteraction:
-      isOptional: true
-      arguments:
-        targetPath:
-          value: "{{ templateTargetPath }}"
+    -   TemplateWithoutInteraction:
+            isOptional: true
+            arguments:
+                targetPath:
+                    value: "{{ templateTargetPath }}"
 
 

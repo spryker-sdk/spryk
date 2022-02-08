@@ -35,7 +35,7 @@ class AddServiceDependencyProviderTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Service/FooBar/FooBarDependencyProvider.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Service/FooBar/FooBarDependencyProvider.php');
     }
 
     /**

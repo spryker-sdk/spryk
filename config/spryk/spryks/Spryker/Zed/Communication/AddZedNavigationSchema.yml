@@ -14,7 +14,7 @@ arguments:
         value: Zed/Communication/navigation.xml.twig
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Communication/"
 
 preSpryks:
     - AddModule

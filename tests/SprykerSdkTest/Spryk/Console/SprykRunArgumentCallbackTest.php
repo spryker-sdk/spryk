@@ -32,7 +32,8 @@ class SprykRunArgumentCallbackTest extends Unit
      */
     public function testAppliesCallback(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
@@ -41,6 +42,7 @@ class SprykRunArgumentCallbackTest extends Unit
             '--module' => 'FooBar',
             '--organization' => 'Spryker',
             '--output' => 'Spryker',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments, ['interactive' => false]);
@@ -53,7 +55,8 @@ class SprykRunArgumentCallbackTest extends Unit
      */
     public function testThrowsExceptionWhenCallbackNotFound(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [

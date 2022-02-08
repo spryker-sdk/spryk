@@ -36,20 +36,22 @@ class SprykRunArgumentDefaultValueTest extends Unit
      */
     public function testTakesDefaultArgumentValueOnEnter(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'StructureWithDefaultArgumentValue',
+            '--mode' => 'core',
         ];
         $tester->setInputs([static::KEY_STROKE_ENTER]);
         $tester->execute($arguments);
 
         $output = $tester->getDisplay();
-        $expectedOutput = 'Enter value for StructureWithDefaultArgumentValue.targetPath argument [vendor/spryker/spryker/Bundles/{{ module }}/]';
+        $expectedOutput = 'Enter value for StructureWithDefaultArgumentValue.targetPath argument []';
         $this->assertRegExp('#' . preg_quote($expectedOutput) . '#', $output);
 
-        $this->assertDirectoryExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
+        $this->assertDirectoryExists($this->tester->getVirtualDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/src');
     }
 }

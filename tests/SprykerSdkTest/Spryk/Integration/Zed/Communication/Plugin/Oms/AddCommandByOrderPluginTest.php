@@ -35,11 +35,12 @@ class AddCommandByOrderPluginTest extends Unit
     public function testAddsCommandByOrderPlugin(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'Spryker',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Plugin/Oms/Command/TestPaymentCommandByOrder.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Plugin/Oms/Command/TestPaymentCommandByOrder.php');
     }
 
     /**

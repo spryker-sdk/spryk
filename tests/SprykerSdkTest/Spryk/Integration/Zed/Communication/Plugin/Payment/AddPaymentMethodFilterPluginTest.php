@@ -35,11 +35,12 @@ class AddPaymentMethodFilterPluginTest extends Unit
     public function testAddsPaymentMethodFilterPlugin(): void
     {
         $this->tester->run($this, [
+            '--organization' => 'Spryker',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Plugin/Payment/TestPaymentPaymentMethodFilterPlugin.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/Plugin/Payment/TestPaymentPaymentMethodFilterPlugin.php');
     }
 
     /**

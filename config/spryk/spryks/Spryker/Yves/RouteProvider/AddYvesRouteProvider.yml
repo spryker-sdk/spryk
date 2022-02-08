@@ -17,7 +17,7 @@ arguments:
         value: "{{ module }}RouteProviderPlugin.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Yves/{{ module }}/Plugin/Router/"
+        value: "src/{{ organization }}/Yves/{{ module }}/Plugin/Router/"
 
 preSpryks:
     - AddModule

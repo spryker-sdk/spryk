@@ -37,6 +37,6 @@ class AddZedTestHelperTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . '/tests/SprykerTest/Zed/FooBar/_support/Helper/FooBarHelper.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . '/tests/SprykerTest/Zed/FooBar/_support/Helper/FooBarHelper.php');
     }
 }

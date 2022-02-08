@@ -21,7 +21,7 @@ arguments:
         value: "{{ entity | dashToCamelCase }}DataImportPlugin.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Communication/Plugin/DataImport/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Communication/Plugin/DataImport/"
 
 preSpryks:
     - AddModule

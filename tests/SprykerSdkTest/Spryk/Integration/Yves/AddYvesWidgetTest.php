@@ -36,7 +36,7 @@ class AddYvesWidgetTest extends Unit
             '--widget' => 'ZipZap',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Widget/ZipZapWidget.php');
+        $this->assertFileExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves/FooBar/Widget/ZipZapWidget.php');
     }
 
     /**

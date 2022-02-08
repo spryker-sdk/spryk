@@ -8,6 +8,7 @@
 namespace SprykerSdkTest;
 
 use Codeception\Actor;
+use Codeception\Stub;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinder;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoader;
@@ -64,13 +65,28 @@ class SprykTester extends Actor
      */
     public function getMergedConfiguration(string $directory): array
     {
-        $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/']);
-        $configurationMerger = new SprykConfigurationMerger($configurationFinder);
+//        $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/']);
+//        $configurationMerger = new SprykConfigurationMerger($configurationFinder);
+//
+//        $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/spryks/']);
+//        $configurationLoader = new SprykConfigurationLoader(
+//            $configurationFinder,
+//            $configurationMerger,
+//            new SprykConfigurationExtender([]),
+//            new ConfigurationValidator([]),
+//            new SprykConfig(),
+//        );
 
-        $configurationFinder = new SprykConfigurationFinder([$directory . '/Fixtures/config/spryks/']);
+        $spyrkConfigStub = Stub::make(SprykConfig::class, [
+            'getSprykDirectories' => function () use ($directory) {
+                return [$directory];
+            },
+        ]);
+
+        $configurationFinder = new SprykConfigurationFinder($spyrkConfigStub);
         $configurationLoader = new SprykConfigurationLoader(
             $configurationFinder,
-            $configurationMerger,
+            new SprykConfigurationMerger(),
             new SprykConfigurationExtender([]),
             new ConfigurationValidator([]),
             new SprykConfig(),

@@ -1,17 +1,19 @@
 spryk: template
 description: "Unit Test configuration"
-
+mode: both
 arguments:
+    organization:
+        default: Spryker
 
-  module:
-    value: FooBar
+    module:
+        value: FooBar
 
-  template:
-    value: composer.json.twig
+    template:
+        value: composer.json.twig
 
-  targetPath:
-    value: "{{ module }}/"
+    targetPath:
+        value: ""
 
 # The postSpryk contains a call to this spryk, this would lead a unresolvable recursion.
 postSpryks:
-  - SprykWithRecursion2
+    - SprykWithRecursion2

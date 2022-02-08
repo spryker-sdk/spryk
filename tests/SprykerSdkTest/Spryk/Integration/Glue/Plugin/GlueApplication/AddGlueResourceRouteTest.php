@@ -8,7 +8,6 @@
 namespace SprykerSdkTest\Spryk\Integration\Glue\Plugin\GlueApplication;
 
 use Codeception\Test\Unit;
-use PHPStan\BetterReflection\BetterReflection;
 
 /**
  * Auto-generated group annotations
@@ -41,9 +40,9 @@ class AddGlueResourceRouteTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertRouteAdded(
-            '\Spryker\Glue\FooBar\Plugin\GlueApplication\FooBarsResourceRoutePlugin',
-            'get',
+        $this->tester->assertRouteAdded(
+            'Spryker\Glue\FooBar\Plugin\GlueApplication\FooBarsResourceRoutePlugin',
+            'addGet',
         );
     }
 
@@ -59,24 +58,9 @@ class AddGlueResourceRouteTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->assertRouteAdded(
-            '\Pyz\Glue\FooBar\Plugin\GlueApplication\FooBarsResourceRoutePlugin',
-            'get',
+        $this->tester->assertRouteAdded(
+            'Pyz\Glue\FooBar\Plugin\GlueApplication\FooBarsResourceRoutePlugin',
+            'addGet',
         );
-    }
-
-    /**
-     * @param string $className
-     * @param string $resourceRouteMethod
-     *
-     * @return void
-     */
-    protected function assertRouteAdded(string $className, string $resourceRouteMethod): void
-    {
-        $reflection = new BetterReflection();
-        $classReflection = $reflection->classReflector()->reflect($className);
-        $methodReflection = $classReflection->getMethod('configure');
-
-        $this->assertStringContainsString('->add' . ucfirst($resourceRouteMethod) . '(', $methodReflection->getBodyCode());
     }
 }

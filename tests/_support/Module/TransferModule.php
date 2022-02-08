@@ -10,9 +10,44 @@ namespace SprykerSdkTest\Module;
 use Codeception\Module;
 use SimpleXMLElement;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface;
+use SprykerSdk\Spryk\Model\Spryk\Filter\CamelCaseToUnderscoreFilter;
 
 class TransferModule extends Module
 {
+ /**
+  * @param string $organization
+  * @param string $module
+  * @param string $content
+  *
+  * @return string
+  */
+    public function haveTransferSchema(string $organization, string $module, string $content): string
+    {
+        $underScoreFilter = new CamelCaseToUnderscoreFilter();
+
+        $filePath = $this->getSprykHelper()->getVirtualDirectory() . sprintf('/vendor/spryker/spryker/Bundles/%s/src/%s/Shared/%s/Transfer/%s.transfer.xml', $module, $organization, $module, $underScoreFilter->filter($module));
+        $directory = dirname($filePath);
+
+        if (!is_dir($directory)) {
+            mkdir($directory, 0777, true);
+        }
+
+        file_put_contents($filePath, $content);
+
+        return $filePath;
+    }
+
+    /**
+     * @return \SprykerSdkTest\Module\SprykHelper
+     */
+    protected function getSprykHelper(): SprykHelper
+    {
+        /** @var \SprykerSdkTest\Module\SprykHelper $sprykHelper */
+        $sprykHelper = $this->getModule(SprykHelper::class);
+
+        return $sprykHelper;
+    }
+
     /**
      * @param string $pathToTransferFile
      * @param string $transferName

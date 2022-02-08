@@ -31,19 +31,21 @@ class SprykRunTemplateFilterTest extends Unit
      */
     public function testUsesDasherizeFilter(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'TemplateWithFilter',
+            '--mode' => 'core',
         ];
 
         $tester->setInputs(['FooBar']);
         $tester->execute($arguments);
 
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer-with-filter.json');
-        $fileContent = file_get_contents($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer-with-filter.json');
+        $this->assertFileExists($this->tester->getVirtualDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer-with-filter.json');
+        $fileContent = file_get_contents($this->tester->getVirtualDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer-with-filter.json');
         $fileContent = ($fileContent) ?: '';
 
         $this->assertRegExp('/"name": "spryker\/foo-bar"/', $fileContent);

@@ -46,7 +46,7 @@ class AddDataImportZedBusinessWriterStepTest extends Unit
         ]);
 
         $this->assertFileExists(
-            $this->tester->getModuleDirectory()
+            $this->tester->getSprykerModuleDirectory()
             . 'src/Spryker/Zed/FooBar/Business/Writer/FooBarItemWriter.php',
         );
     }

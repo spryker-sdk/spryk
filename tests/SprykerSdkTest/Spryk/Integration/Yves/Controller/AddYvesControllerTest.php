@@ -39,8 +39,8 @@ class AddYvesControllerTest extends Unit
         ]);
 
         $this->assertFileExists(
-            $this->tester->getModuleDirectory()
-            . 'src/Spryker/Yves/FooBar/Controller/FooBarController.php',
+            $this->tester->getSprykerShopModuleDirectory()
+            . 'src/SprykerShop/Yves/FooBar/Controller/FooBarController.php',
         );
     }
 

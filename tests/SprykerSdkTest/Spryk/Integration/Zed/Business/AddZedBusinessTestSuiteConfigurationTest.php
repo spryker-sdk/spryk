@@ -37,7 +37,7 @@ class AddZedBusinessTestSuiteConfigurationTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $targetFile = $this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/codeception.yml';
+        $targetFile = $this->tester->getSprykerModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/codeception.yml';
         $this->assertFileExists($targetFile);
 
         $fileContent = file_get_contents($targetFile);

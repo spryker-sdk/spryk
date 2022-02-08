@@ -10,7 +10,7 @@ namespace SprykerSdkTest\Spryk\Console;
 use Codeception\Test\Unit;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
 use SprykerSdk\Spryk\Exception\BuilderNotFoundException;
-use SprykerSdk\Spryk\Exception\SprykConfigFileNotFound;
+use SprykerSdk\Spryk\Exception\SprykConfigFileNotFoundException;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -34,7 +34,8 @@ class SprykRunTest extends Unit
      */
     public function testOutputsSprykNameWhenVerbose(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
@@ -53,7 +54,8 @@ class SprykRunTest extends Unit
      */
     public function testThrowsExceptionWhenBuilderBySprykNameNotFound(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
@@ -71,7 +73,8 @@ class SprykRunTest extends Unit
      */
     public function testThrowsExceptionWhenSprykConfigFileNotFound(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
@@ -79,7 +82,7 @@ class SprykRunTest extends Unit
             SprykRunConsole::ARGUMENT_SPRYK => 'NotExistingSprykName',
         ];
 
-        $this->expectException(SprykConfigFileNotFound::class);
+        $this->expectException(SprykConfigFileNotFoundException::class);
 
         $tester->execute($arguments);
     }
@@ -89,17 +92,19 @@ class SprykRunTest extends Unit
      */
     public function testDoesNotRunIntoRecursionWhenCalledSprykCallsPostSprykWhichHasPreviouslyExecutedSprykAsPostSpryk(): void
     {
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command);
 
         $arguments = [
             'command' => $command->getName(),
             SprykRunConsole::ARGUMENT_SPRYK => 'SprykWithRecursion2',
+            '--mode' => 'core',
         ];
 
         $tester->execute($arguments);
 
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json');
-        $this->assertFileExists($this->tester->getRootDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
+        $this->assertFileExists($this->tester->getVirtualDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/composer.json');
+        $this->assertFileExists($this->tester->getVirtualDirectory() . 'vendor/spryker/spryker/Bundles/FooBar/README.md');
     }
 }

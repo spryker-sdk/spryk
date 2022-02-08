@@ -18,7 +18,10 @@ settings:
 coverage:
     enabled: true
     remote: true
-    whitelist: { include: ['src/SprykerSdk/*.php'] }
+    whitelist:
+        include:
+            - 'src/*.php'
+            - 'tests/*.php'
 
 suites:
     Spryk:
@@ -27,12 +30,19 @@ suites:
         class_name: SprykTester
         modules:
             enabled:
-                - SprykerSdkTest\Module\SprykHelper
+                - Symfony:
+                      part: services
+                      app_path: 'src'
+                      kernel_class: 'SprykerSdk\Kernel'
+                      environment: 'test'
+                - SprykerSdkTest\Module\SprykHelper:
+                      withTestSpryks: true
+                      withTestTemplates: true
                 - SprykerSdkTest\Module\TransferModule
                 - SprykerSdkTest\Module\CleanUpModule:
                       rootDirectory: 'tests/_data/'
                 - SprykerSdkTest\Module\DevelopmentModeModule:
-                    developmentMode: 'core'
+                      developmentMode: 'core'
 
     Console:
         bootstrap: _bootstrap.php
@@ -40,28 +50,41 @@ suites:
         class_name: SprykConsoleTester
         modules:
             enabled:
-                - SprykerSdkTest\Module\SprykHelper
+                - Symfony:
+                      part: services
+                      app_path: 'src'
+                      kernel_class: 'SprykerSdk\Kernel'
+                      environment: 'test'
+                - SprykerSdkTest\Module\SprykHelper:
+                      withTestSpryks: true
+                      withTestTemplates: true
                 - SprykerSdkTest\Module\AssertionModule
                 - SprykerSdkTest\Module\ConsoleEnvironmentModule
-                - SprykerSdkTest\Module\CleanUpModule:
-                    rootDirectory: 'tests/_data/'
-                - SprykerSdkTest\Module\DevelopmentModeModule:
-                      developmentMode: 'core'
+                -   SprykerSdkTest\Module\CleanUpModule:
+                        rootDirectory: 'tests/_data/'
+                -   SprykerSdkTest\Module\DevelopmentModeModule:
+                        developmentMode: 'core'
 
     Integration:
         bootstrap: _bootstrap.php
         path: SprykerSdkTest/Spryk/Integration
         class_name: SprykIntegrationTester
         extensions:
-            enabled: [SprykerSdkTest\Extension\MissingSprykExecutionExtension]
+            enabled:
+                   - Codeception\Extension\RunFailed
 
         modules:
             enabled:
+                - Symfony:
+                      part: services
+                      app_path: 'src'
+                      kernel_class: 'SprykerSdk\Kernel'
+                      environment: 'test'
                 - SprykerSdkTest\Module\SprykHelper
                 - SprykerSdkTest\Module\AssertionModule
-                - SprykerSdkTest\Module\CleanUpModule:
-                    rootDirectory: 'tests/_data/'
+                -   SprykerSdkTest\Module\CleanUpModule:
+                        rootDirectory: 'tests/_data/'
                 - SprykerSdkTest\Module\IntegrationModule
                 - SprykerSdkTest\Module\TransferModule
-                - SprykerSdkTest\Module\DevelopmentModeModule:
-                    developmentMode: 'core'
+                -   SprykerSdkTest\Module\DevelopmentModeModule:
+                        developmentMode: 'core'

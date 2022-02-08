@@ -23,7 +23,7 @@ arguments:
         value: "{{ controller | classNameShort | ensureControllerSuffix }}.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Controller/"
+        value: "src/{{ organization }}/Glue/{{ module }}/Controller/"
 
 preSpryks:
     - AddModule

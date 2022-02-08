@@ -1,6 +1,6 @@
 spryk: undefinedSpryk
 description: "Unit Test configuration"
-
+mode: both
 arguments:
   foo:
     value: bar

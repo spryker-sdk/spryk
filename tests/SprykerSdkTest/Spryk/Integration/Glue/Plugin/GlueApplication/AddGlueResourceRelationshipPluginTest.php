@@ -40,9 +40,9 @@ class AddGlueResourceRelationshipPluginTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/FooBarByBazResourceRelationshipPlugin.php');
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Expander/FooBarByBazExpanderInterface.php');
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Expander/FooBarByBazExpander.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Plugin/GlueApplication/FooBarByBazResourceRelationshipPlugin.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Expander/FooBarByBazExpanderInterface.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/Expander/FooBarByBazExpander.php');
     }
 
     /**

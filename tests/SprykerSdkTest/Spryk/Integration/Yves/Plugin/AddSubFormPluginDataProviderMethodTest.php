@@ -34,7 +34,7 @@ class AddSubFormPluginDataProviderMethodTest extends Unit
     public function testAddMethod(): void
     {
         $this->tester->run($this, [
-            '--organization' => 'Spryker',
+            '--organization' => 'SprykerShop',
             '--module' => 'FooBar',
             '--classNamePrefix' => 'TestPayment',
         ]);

@@ -14,7 +14,7 @@ arguments:
         value: codeception.yml.twig
 
     targetPath:
-        value: "{{ moduleRoot }}/"
+        value: ""
 
 preSpryks:
     - AddModule

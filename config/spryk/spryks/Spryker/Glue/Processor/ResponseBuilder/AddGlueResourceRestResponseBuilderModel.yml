@@ -48,7 +48,7 @@ arguments:
         callback: GlueProcessorModelTargetFilename
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Glue/{{ module }}/Processor/"
+        value: "src/{{ organization }}/Glue/{{ module }}/Processor/"
 AddGlueResourceRestResponseBuilderModel:
     yml:
 preSpryks:

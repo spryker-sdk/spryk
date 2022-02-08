@@ -36,7 +36,7 @@ class AddYvesRouteProviderTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Plugin/Router/FooBarRouteProviderPlugin.php');
+        $this->assertFileExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves/FooBar/Plugin/Router/FooBarRouteProviderPlugin.php');
     }
 
     /**

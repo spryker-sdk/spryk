@@ -14,7 +14,7 @@ arguments:
         value: README.md.twig
 
     targetPath:
-        value: "{{ moduleRoot }}/"
+        value: ""
 
 preSpryks:
     - AddModule

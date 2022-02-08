@@ -20,10 +20,10 @@ arguments:
         default: Spryker
 
     sourcePath:
-        value: "vendor/{{ sprykerVendorPath }}{{ organization | dasherize }}/{{ moduleSrcDirectory }}{{ moduleRoot }}/"
+        value: "{{ organization | dasherize }}/{{ moduleSrcDirectory }}"
 
-    targetFilePath:
-        value: "vendor/{{ sprykerVendorPath }}{{ toOrganization | dasherize }}/{{ moduleSrcDirectory }}{{ toModule }}/"
+    targetPath:
+        value: "{{ toOrganization | dasherize }}/{{ moduleSrcDirectory }}{{ toModule }}/"
 
 postCommands:
     - ComposerReplaceGenerate

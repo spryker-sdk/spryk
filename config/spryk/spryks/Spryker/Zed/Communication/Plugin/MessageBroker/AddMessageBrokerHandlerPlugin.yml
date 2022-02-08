@@ -35,7 +35,7 @@ arguments:
         value: "{{ module }}{{ messageName }}MessageHandlerPlugin.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/"
+        value: "src/{{ organization }}/"
 
 postSpryks:
     - AddZedBusinessMessageBrokerMessageHandlerMethod

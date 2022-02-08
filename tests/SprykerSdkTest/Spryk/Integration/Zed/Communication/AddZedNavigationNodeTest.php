@@ -39,7 +39,7 @@ class AddZedNavigationNodeTest extends Unit
             '--controllerMethod' => 'index',
         ]);
 
-        $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
+        $pathToNavigationSchema = $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
         $this->assertFileExists($pathToNavigationSchema);
 
         $xmlContent = file_get_contents($pathToNavigationSchema);
@@ -79,7 +79,7 @@ class AddZedNavigationNodeTest extends Unit
      */
     public function testAddsNodeToSchemaFileToFirstNode(): void
     {
-        $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
+        $pathToNavigationSchema = $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
         if (!is_dir(dirname($pathToNavigationSchema))) {
             mkdir(dirname($pathToNavigationSchema), 0777, true);
         }
@@ -138,7 +138,7 @@ class AddZedNavigationNodeTest extends Unit
             '--controllerMethod' => 'indexAction',
         ]);
 
-        $pathToNavigationSchema = $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
+        $pathToNavigationSchema = $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Communication/navigation.xml';
         $this->assertFileExists($pathToNavigationSchema);
 
         $xmlContent = file_get_contents($pathToNavigationSchema);

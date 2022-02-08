@@ -32,7 +32,7 @@ arguments:
         value: "{{ classNamePrefix }}CheckoutDoSaveOrderPlugin.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/"
+        value: "src/{{ organization }}/"
 
 preSpryks:
     - AddModule

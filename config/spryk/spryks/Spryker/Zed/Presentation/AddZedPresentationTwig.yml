@@ -32,4 +32,4 @@ arguments:
         value: "{{ controllerMethod | removeActionSuffix | dasherize | lcfirst }}.twig"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Presentation/{{ controller | classNameShort | removeControllerSuffix }}/"

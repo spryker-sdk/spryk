@@ -32,7 +32,7 @@ class AddSharedTransferPropertyTest extends Unit
     public function testDoesNotAddSharedTransferPropertyIfItAlreadyExists(): void
     {
         $this->tester->haveTransferSchemaFileWithTransferAndExistingProperty(
-            $this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
+            $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
             'FooBarItem',
         );
 
@@ -55,7 +55,7 @@ class AddSharedTransferPropertyTest extends Unit
 </transfers>';
 
         $this->assertXmlStringEqualsXmlFile(
-            $this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
+            $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
             $expectedXml,
         );
     }
@@ -66,7 +66,7 @@ class AddSharedTransferPropertyTest extends Unit
     public function testAddsSharedTransferProperty(): void
     {
         $this->tester->haveTransferSchemaFileWithTransfer(
-            $this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
+            $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
             'FooBarItem',
         );
 
@@ -89,7 +89,7 @@ class AddSharedTransferPropertyTest extends Unit
 </transfers>';
 
         $this->assertXmlStringEqualsXmlFile(
-            $this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
+            $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
             $expectedXml,
         );
     }

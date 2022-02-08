@@ -36,7 +36,7 @@ class AddZedBusinessTestSuiteTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business');
+        $this->assertDirectoryExists($this->tester->getSprykerModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Business');
     }
 
     /**

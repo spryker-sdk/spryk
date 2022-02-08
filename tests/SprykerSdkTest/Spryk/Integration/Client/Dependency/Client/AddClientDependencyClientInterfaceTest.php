@@ -38,7 +38,7 @@ class AddClientDependencyClientInterfaceTest extends Unit
             '--dependentModule' => 'ZipZap',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Client/FooBar/Dependency/Client/FooBarToZipZapClientInterface.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Client/FooBar/Dependency/Client/FooBarToZipZapClientInterface.php');
     }
 
     /**

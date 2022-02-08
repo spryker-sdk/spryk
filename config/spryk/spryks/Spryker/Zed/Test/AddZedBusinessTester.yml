@@ -23,7 +23,7 @@ arguments:
         value: "{{ module }}BusinessTester.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/tests/{{ organization }}Test/Zed/{{ module }}/_support/"
+        value: "tests/{{ organization }}Test/Zed/{{ module }}/_support/"
 
 preSpryks:
     - AddModule

@@ -37,7 +37,7 @@ class AddGlueResourceInterfaceTest extends Unit
             '--mode' => 'core',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/BarResourceInterface.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/BarResourceInterface.php');
     }
 
     /**

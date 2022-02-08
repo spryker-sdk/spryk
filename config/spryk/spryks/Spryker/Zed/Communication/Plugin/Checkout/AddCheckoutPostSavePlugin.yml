@@ -34,7 +34,7 @@ arguments:
         value: "{{ classNamePrefix }}CheckoutPostSavePlugin.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/"
+        value: "src/{{ organization }}/"
 
 preSpryks:
     - AddModule

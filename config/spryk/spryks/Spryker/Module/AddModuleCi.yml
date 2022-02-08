@@ -17,7 +17,7 @@ arguments:
         value: ci.yml
 
     targetPath:
-        value: "{{ moduleRoot }}/.github/workflows/"
+        value: ".github/workflows/"
 
 preSpryks:
     - AddModule

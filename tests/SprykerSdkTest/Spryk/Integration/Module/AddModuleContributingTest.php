@@ -37,7 +37,7 @@ class AddModuleContributingTest extends Unit
             '--organization' => 'Spryker',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'CONTRIBUTING.md');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'CONTRIBUTING.md');
     }
 
     /**

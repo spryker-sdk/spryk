@@ -34,7 +34,7 @@ class AddModuleTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getModuleDirectory() . 'src');
+        $this->assertDirectoryExists($this->tester->getSprykerModuleDirectory() . 'src');
     }
 
     /**
@@ -47,6 +47,6 @@ class AddModuleTest extends Unit
             '--mode' => 'project',
         ]);
 
-        $this->assertDirectoryExists($this->tester->getProjectModuleDirectory());
+        $this->assertDirectoryExists($this->tester->getVirtualDirectory() . 'src');
     }
 }

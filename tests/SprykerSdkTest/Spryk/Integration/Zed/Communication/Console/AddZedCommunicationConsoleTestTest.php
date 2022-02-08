@@ -37,7 +37,7 @@ class AddZedCommunicationConsoleTestTest extends Unit
             '--className' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication/Console/FooBarConsoleTest.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/Communication/Console/FooBarConsoleTest.php');
     }
 
     /**

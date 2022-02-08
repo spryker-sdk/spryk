@@ -37,7 +37,7 @@ class AddSharedTransferDefinitionTest extends Unit
         ]);
 
         $this->assertXmlStringEqualsXmlFile(
-            $this->tester->getModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
+            $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
             '<?xml version="1.0"?>
 <transfers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
   <transfer name="FooBarItem"/>

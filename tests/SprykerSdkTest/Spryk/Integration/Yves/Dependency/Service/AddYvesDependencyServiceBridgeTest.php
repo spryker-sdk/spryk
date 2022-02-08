@@ -40,7 +40,7 @@ class AddYvesDependencyServiceBridgeTest extends Unit
             '--dependentModule' => 'ZipZap',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Yves/FooBar/Dependency/Service/FooBarToZipZapServiceBridge.php');
+        $this->assertFileExists($this->tester->getSprykerShopModuleDirectory() . 'src/SprykerShop/Yves/FooBar/Dependency/Service/FooBarToZipZapServiceBridge.php');
     }
 
     /**

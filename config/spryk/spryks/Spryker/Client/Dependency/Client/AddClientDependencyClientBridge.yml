@@ -26,7 +26,7 @@ arguments:
         value: "{{ module }}To{{ dependentModule }}ClientBridge.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Client/{{ module }}/Dependency/Client/"
+        value: "src/{{ organization }}/Client/{{ module }}/Dependency/Client/"
 
 preSpryks:
     - AddModule

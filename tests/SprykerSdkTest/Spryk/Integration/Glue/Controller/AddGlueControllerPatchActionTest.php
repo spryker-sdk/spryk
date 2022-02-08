@@ -44,9 +44,9 @@ class AddGlueControllerPatchActionTest extends Unit
             '--controllerMethod' => 'patchAction',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Controller/BarController.php');
         $this->tester->assertClassHasMethod(ClassName::GLUE_CONTROLLER, 'patchAction');
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/FooBar/FooBarUpdater.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Glue/FooBar/Processor/FooBar/FooBarUpdater.php');
     }
 
     /**

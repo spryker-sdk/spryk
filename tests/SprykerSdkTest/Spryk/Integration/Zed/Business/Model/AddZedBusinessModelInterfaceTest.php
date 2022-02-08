@@ -39,7 +39,7 @@ class AddZedBusinessModelInterfaceTest extends Unit
             '--className' => 'Bar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/BarInterface.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/Foo/BarInterface.php');
     }
 
     /**

@@ -36,7 +36,7 @@ class AddModuleCodeceptionConfigurationTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'codeception.yml');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'codeception.yml');
     }
 
     /**

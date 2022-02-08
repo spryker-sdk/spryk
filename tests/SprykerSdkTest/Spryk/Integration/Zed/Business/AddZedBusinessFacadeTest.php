@@ -36,7 +36,7 @@ class AddZedBusinessFacadeTest extends Unit
             '--module' => 'FooBar',
         ]);
 
-        $this->assertFileExists($this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/FooBarFacade.php');
+        $this->assertFileExists($this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Business/FooBarFacade.php');
     }
 
     /**

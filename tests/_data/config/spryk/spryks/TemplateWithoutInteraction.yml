@@ -1,10 +1,15 @@
 spryk: template
 description: "Unit Test configuration"
-
+mode: both
 arguments:
+    organization:
+        default: Spryker
 
-  template:
-    value: README.md.twig
+    module:
+        value: FooBar
 
-  targetPath:
-    value: FooBar/
+    template:
+        value: README.md.twig
+
+    targetPath:
+        value: ""

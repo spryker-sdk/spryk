@@ -23,7 +23,7 @@ arguments:
         value: "Abstract{{ tableName | camelCased }}Query.php"
 
     targetPath:
-        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/"
+        value: "src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/"
 
 preSpryks:
     - AddZedPersistencePropelSchemaTable

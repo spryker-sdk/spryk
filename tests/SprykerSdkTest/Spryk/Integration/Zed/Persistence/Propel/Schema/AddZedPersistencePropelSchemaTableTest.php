@@ -40,7 +40,7 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
             '--tableName' => 'spy_foo_bar',
         ]);
 
-        $this->tester->assertTableCount(1, $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/Schema/spy_foo_bar.schema.xml', 'spy_foo_bar');
+        $this->tester->assertTableCount(1, $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/Schema/spy_foo_bar.schema.xml', 'spy_foo_bar');
     }
 
     /**
@@ -79,7 +79,7 @@ class AddZedPersistencePropelSchemaTableTest extends Unit
             '--tableName' => 'spy_foo_bar',
         ]);
 
-        $this->tester->assertTableCount(1, $this->tester->getModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/Schema/spy_foo_bar.schema.xml', 'spy_foo_bar');
+        $this->tester->assertTableCount(1, $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Zed/FooBar/Persistence/Propel/Schema/spy_foo_bar.schema.xml', 'spy_foo_bar');
     }
 
     /**

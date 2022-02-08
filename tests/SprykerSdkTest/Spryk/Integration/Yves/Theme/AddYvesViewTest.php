@@ -39,8 +39,8 @@ class AddYvesViewTest extends Unit
         ]);
 
         $this->assertFileExists(
-            $this->tester->getModuleDirectory()
-            . 'src/Spryker/Yves/FooBar/Theme/mobile/views/index/index.twig',
+            $this->tester->getSprykerShopModuleDirectory()
+            . 'src/SprykerShop/Yves/FooBar/Theme/mobile/views/index/index.twig',
         );
     }
 

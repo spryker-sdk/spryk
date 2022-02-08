@@ -38,8 +38,8 @@ class AddYvesThemeTest extends Unit
         ]);
 
         $this->assertDirectoryExists(
-            $this->tester->getModuleDirectory()
-            . 'src/Spryker/Yves/FooBar/Theme/mobile',
+            $this->tester->getSprykerShopModuleDirectory()
+            . 'src/SprykerShop/Yves/FooBar/Theme/mobile',
         );
     }
 

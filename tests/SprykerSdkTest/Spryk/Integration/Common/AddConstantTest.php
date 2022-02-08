@@ -34,7 +34,8 @@ class AddConstantTest extends Unit
     public function testAddsConstant(): void
     {
         $sprykName = 'AddClient';
-        $command = new SprykRunConsole();
+        /** @var \SprykerSdk\Spryk\Console\SprykRunConsole $command */
+        $command = $this->tester->getClass(SprykRunConsole::class);
         $tester = $this->tester->getConsoleTester($command, $sprykName);
 
         $arguments = [
