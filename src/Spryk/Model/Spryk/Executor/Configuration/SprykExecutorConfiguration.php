@@ -12,32 +12,32 @@ class SprykExecutorConfiguration implements SprykExecutorConfigurationInterface
     /**
      * @var string
      */
-    protected $sprykName;
+    protected string $sprykName;
 
     /**
      * @var array<string>
      */
-    protected $includeOptionalSubSpryks;
+    protected array $includeOptionalSubSpryks;
 
     /**
      * @var string|null
      */
-    protected $targetModule;
+    protected ?string $targetModule = null;
 
     /**
      * @var string|null
      */
-    protected $targetModuleOrganization;
+    protected ?string $targetModuleOrganization = null;
 
     /**
      * @var string|null
      */
-    protected $targetModuleLayer;
+    protected ?string $targetModuleLayer = null;
 
     /**
      * @var string|null
      */
-    protected $dependentModule;
+    protected ?string $dependentModule = null;
 
     /**
      * @var string|null
@@ -47,13 +47,15 @@ class SprykExecutorConfiguration implements SprykExecutorConfigurationInterface
     /**
      * @var string|null
      */
-    protected $dependentModuleLayer;
+    protected ?string $dependentModuleLayer = null;
 
     /**
      * @param string $sprykName
      * @param array<string> $includeOptionalSubSpryks
      * @param string $targetModuleName
      * @param string $dependentModuleName
+     *
+     * @return \SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface
      */
     public function prepare(
         string $sprykName,

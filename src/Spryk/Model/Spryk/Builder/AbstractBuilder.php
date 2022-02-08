@@ -14,7 +14,7 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\SprykConfig;
-use SprykerSdk\Spryk\Style\SprykStyle;
+use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 abstract class AbstractBuilder implements SprykBuilderInterface
 {
@@ -49,9 +49,9 @@ abstract class AbstractBuilder implements SprykBuilderInterface
     protected FileResolverInterface $fileResolver;
 
     /**
-     * @var \SprykerSdk\Spryk\Style\SprykStyle|null
+     * @var \SprykerSdk\Spryk\Style\SprykStyleInterface|null
      */
-    protected ?SprykStyle $style = null;
+    protected ?SprykStyleInterface $style = null;
 
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface
@@ -75,11 +75,11 @@ abstract class AbstractBuilder implements SprykBuilderInterface
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $definition
-     * @param \SprykerSdk\Spryk\Style\SprykStyle|null $style
+     * @param \SprykerSdk\Spryk\Style\SprykStyleInterface|null $style
      *
      * @return void
      */
-    public function runSpryk(SprykDefinitionInterface $definition, ?SprykStyle $style = null): void
+    public function runSpryk(SprykDefinitionInterface $definition, ?SprykStyleInterface $style = null): void
     {
         $this->definition = $definition;
         $this->arguments = $definition->getArgumentCollection();
@@ -104,6 +104,10 @@ abstract class AbstractBuilder implements SprykBuilderInterface
     abstract protected function build(): void;
 
     /**
+     * @retrun void
+     *
+     * @param string $message
+     *
      * @return void
      */
     protected function log(string $message): void
@@ -214,6 +218,8 @@ abstract class AbstractBuilder implements SprykBuilderInterface
     }
 
     /**
+     * @param string $argumentName
+     *
      * @return array|string|int
      */
     protected function getArgumentByName(string $argumentName)

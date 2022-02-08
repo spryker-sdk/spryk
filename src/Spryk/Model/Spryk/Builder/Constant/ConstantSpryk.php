@@ -69,11 +69,7 @@ class ConstantSpryk extends AbstractBuilder
         /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface|null $resolvedClass */
         $resolvedClass = $this->fileResolver->resolve($this->getTarget());
 
-        if (!$resolvedClass) {
-            return false;
-        }
-
-        return (!$this->constantExists($resolvedClass, $constantName));
+        return ($resolvedClass instanceof ResolvedClassInterface && !$this->constantExists($resolvedClass, $constantName));
     }
 
     /**

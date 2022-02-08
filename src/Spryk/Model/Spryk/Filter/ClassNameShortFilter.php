@@ -35,7 +35,7 @@ class ClassNameShortFilter implements FilterInterface
             return $value;
         }
         $classNameFragments = explode('\\', $value);
-        $classNameShort = (string)array_pop($classNameFragments);
+        $classNameShort = array_pop($classNameFragments);
 
         return $classNameShort;
     }

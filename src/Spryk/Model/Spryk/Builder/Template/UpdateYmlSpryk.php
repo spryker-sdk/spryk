@@ -73,7 +73,7 @@ class UpdateYmlSpryk extends AbstractBuilder
      */
     protected function build(): void
     {
-        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedYmlInterface $resolved */
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedYmlInterface|null $resolved */
         $resolved = $this->fileResolver->resolve($this->getTargetPath());
 
         if (!$resolved || empty($resolved->getDecodedYml())) {

@@ -118,13 +118,11 @@ class TemplateSpryk extends AbstractBuilder
      */
     protected function getFilename(): string
     {
-        $filename = $this->getFilenameFromTemplateName();
-
         if ($this->arguments->hasArgument(static::ARGUMENT_TARGET_FILE_NAME)) {
-            $filename = $this->getStringArgument(static::ARGUMENT_TARGET_FILE_NAME);
+            return $this->getStringArgument(static::ARGUMENT_TARGET_FILE_NAME);
         }
 
-        return $filename;
+        return $this->getFilenameFromTemplateName();
     }
 
     /**
@@ -132,13 +130,11 @@ class TemplateSpryk extends AbstractBuilder
      */
     protected function getSubDirectory(): string
     {
-        $subDirectory = '';
-
         if ($this->arguments->hasArgument(static::ARGUMENT_SUB_DIRECTORY) && $this->arguments->getArgument(static::ARGUMENT_SUB_DIRECTORY)->getValue() !== null) {
-            $subDirectory = rtrim($this->getStringArgument(static::ARGUMENT_SUB_DIRECTORY), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+            return rtrim($this->getStringArgument(static::ARGUMENT_SUB_DIRECTORY), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         }
 
-        return $subDirectory;
+        return '';
     }
 
     /**
@@ -174,7 +170,7 @@ class TemplateSpryk extends AbstractBuilder
         $filename = str_replace('.twig', '', $this->getTemplateName());
         if (strpos($filename, '/') !== false) {
             $filenameFragments = explode('/', $filename);
-            $filename = (string)array_pop($filenameFragments);
+            $filename = array_pop($filenameFragments);
         }
 
         return $filename;

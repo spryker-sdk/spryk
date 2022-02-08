@@ -8,7 +8,7 @@
 namespace SprykerSdk\Spryk\Model\Spryk\Builder;
 
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
-use SprykerSdk\Spryk\Style\SprykStyle;
+use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 interface SprykBuilderInterface
 {
@@ -19,9 +19,9 @@ interface SprykBuilderInterface
 
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface $definition
-     * @param \SprykerSdk\Spryk\Style\SprykStyle|null $style
+     * @param \SprykerSdk\Spryk\Style\SprykStyleInterface|null $style
      *
      * @return void
      */
-    public function runSpryk(SprykDefinitionInterface $definition, ?SprykStyle $style = null): void;
+    public function runSpryk(SprykDefinitionInterface $definition, ?SprykStyleInterface $style = null): void;
 }

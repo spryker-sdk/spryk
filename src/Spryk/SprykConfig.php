@@ -276,6 +276,9 @@ class SprykConfig
         return $this->getRootDirectory() . $sprykRelativePath . DIRECTORY_SEPARATOR;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTwigConfiguration(): array
     {
         return [

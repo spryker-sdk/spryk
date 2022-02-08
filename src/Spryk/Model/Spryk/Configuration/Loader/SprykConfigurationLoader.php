@@ -9,7 +9,6 @@ namespace SprykerSdk\Spryk\Model\Spryk\Configuration\Loader;
 
 use SprykerSdk\Spryk\Exception\SprykConfigNotValid;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderInterface;
-use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderPluginInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Finder\SprykConfigurationFinderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Validator\ConfigurationValidatorInterface;
 use SprykerSdk\Spryk\SprykConfig;

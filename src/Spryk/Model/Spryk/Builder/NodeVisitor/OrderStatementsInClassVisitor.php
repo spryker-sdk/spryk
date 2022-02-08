@@ -164,6 +164,6 @@ class OrderStatementsInClassVisitor extends NodeVisitorAbstract
             $private[] = $unorderedStatement;
         }
 
-        return array_merge($public, $protected, $private);
+        return [...$public, ...$protected, ...$private];
     }
 }

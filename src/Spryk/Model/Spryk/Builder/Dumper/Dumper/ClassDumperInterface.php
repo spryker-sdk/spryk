@@ -10,9 +10,9 @@ namespace SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\Dumper;
 interface ClassDumperInterface
 {
     /**
-     * @param iterable<\SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface> $resolvedFiles
+     * @param array<\SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedClassInterface> $resolvedFiles
      *
      * @return void
      */
-    public function dump(iterable $resolvedFiles): void;
+    public function dump(array $resolvedFiles): void;
 }

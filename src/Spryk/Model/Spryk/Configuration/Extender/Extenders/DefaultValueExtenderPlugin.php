@@ -23,7 +23,13 @@ class DefaultValueExtenderPlugin extends AbstractExtender implements SprykConfig
 
         foreach ($arguments as &$argument) {
             $values = $argument[SprykConfig::NAME_ARGUMENT_KEY_VALUES] ?? null;
-            if (!empty($argument[SprykConfig::NAME_ARGUMENT_KEY_VALUE]) || !is_array($values) || count($values) > 1) {
+            if (!empty($argument[SprykConfig::NAME_ARGUMENT_KEY_VALUE])) {
+                continue;
+            }
+            if (!is_array($values)) {
+                continue;
+            }
+            if (count($values) > 1) {
                 continue;
             }
 

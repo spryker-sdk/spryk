@@ -8,7 +8,6 @@
 namespace SprykerSdkTest;
 
 use Codeception\Actor;
-use Codeception\Test\Unit;
 
 /**
  * Inherited Methods
@@ -29,20 +28,6 @@ use Codeception\Test\Unit;
 class SprykIntegrationTester extends Actor
 {
     use _generated\SprykIntegrationTesterActions;
-
-    /**
-     * @param \Codeception\Test\Unit $testClass
-     *
-     * @return string
-     */
-    protected function getSprykName(Unit $testClass): string
-    {
-        $classNameFragments = explode('\\', get_class($testClass));
-        $classNameShort = array_pop($classNameFragments);
-        $sprykName = substr($classNameShort, 0, -4);
-
-        return $sprykName;
-    }
 
     /**
      * @param string $module

@@ -15,7 +15,6 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\Builder\SprykDefinitionBuilderInterface;
 use SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface;
 use SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface;
-use SprykerSdk\Spryk\Model\Spryk\Printer\DiffPrinterInterface;
 use SprykerSdk\Spryk\SprykConfig;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
@@ -57,11 +56,6 @@ class SprykExecutor implements SprykExecutorInterface
     protected FileResolverInterface $fileResolver;
 
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Printer\DiffPrinterInterface
-     */
-    protected DiffPrinterInterface $diffPrinter;
-
-    /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\FileDumperInterface
      */
     protected FileDumperInterface $fileDumper;
@@ -72,15 +66,13 @@ class SprykExecutor implements SprykExecutorInterface
      * @param array<\SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface> $sprykCommands
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolverInterface $fileResolver
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Dumper\FileDumperInterface $fileDumper
-     * @param \SprykerSdk\Spryk\Model\Spryk\Printer\DiffPrinterInterface $diffPrinter
      */
     public function __construct(
         SprykDefinitionBuilderInterface $definitionBuilder,
         SprykBuilderCollectionInterface $sprykBuilderCollection,
         array $sprykCommands,
         FileResolverInterface $fileResolver,
-        FileDumperInterface $fileDumper,
-        DiffPrinterInterface $diffPrinter
+        FileDumperInterface $fileDumper
     ) {
         $this->fileResolver = $fileResolver;
         $this->definitionBuilder = $definitionBuilder;
@@ -88,7 +80,6 @@ class SprykExecutor implements SprykExecutorInterface
         $this->sprykCommands = $sprykCommands;
         $this->fileResolver = $fileResolver;
         $this->fileDumper = $fileDumper;
-        $this->diffPrinter = $diffPrinter;
     }
 
     /**
@@ -124,8 +115,6 @@ class SprykExecutor implements SprykExecutorInterface
 
         $this->dumpFiles();
         $this->writeFiles($style);
-
-//        $this->fileResolver->reset();
     }
 
     /**
@@ -151,6 +140,7 @@ class SprykExecutor implements SprykExecutorInterface
             }
 
             if ($isDryRun) {
+                // Print diff to console
                 $style->writeln($resolved->getFilePath());
                 $style->writeln(DiffHelper::calculate($resolved->getOriginalContent(), $resolved->getContent()));
 
@@ -304,10 +294,12 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         foreach ($preSpryks as $preSprykDefinition) {
-            if (isset($this->executedSpryks[$preSprykDefinition->getSprykDefinitionKey()]) || isset($excludedSpryks[$preSprykDefinition->getSprykName()])) {
+            if (isset($this->executedSpryks[$preSprykDefinition->getSprykDefinitionKey()])) {
                 continue;
             }
-
+            if (isset($excludedSpryks[$preSprykDefinition->getSprykName()])) {
+                continue;
+            }
             $this->buildSpryk($preSprykDefinition, $style);
         }
     }
@@ -328,10 +320,12 @@ class SprykExecutor implements SprykExecutorInterface
         }
 
         foreach ($postSpryks as $postSprykDefinition) {
-            if (!$this->shouldSubSprykBeBuild($postSprykDefinition) || isset($excludedSpryks[$postSprykDefinition->getSprykName()])) {
+            if (!$this->shouldSubSprykBeBuild($postSprykDefinition)) {
                 continue;
             }
-
+            if (isset($excludedSpryks[$postSprykDefinition->getSprykName()])) {
+                continue;
+            }
             $this->buildSpryk($postSprykDefinition, $style);
         }
     }

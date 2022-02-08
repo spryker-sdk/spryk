@@ -54,19 +54,6 @@ class AssertionModule extends Module
 
     /**
      * @param string $className
-     * @param string $value
-     *
-     * @return void
-     */
-    public function assertClassNotContains(string $className, string $value): void
-    {
-        $resolved = $this->getResolvedByClassName($className);
-
-        $this->assertNotRegExp('/' . preg_quote($value, '/') . '/', $resolved->getContent(), sprintf('%s was not expected to be in the class, but was found.', $value));
-    }
-
-    /**
-     * @param string $className
      * @param string $constantName
      * @param string $constantValue
      * @param string $visibility
@@ -87,10 +74,6 @@ class AssertionModule extends Module
                 $constantName,
             ),
         );
-
-        if (!$classConst) {
-            return;
-        }
 
         $constantVisibility = $this->getVisibilityFromClassConst($classConst);
 

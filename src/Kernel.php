@@ -20,46 +20,15 @@ class Kernel extends BaseKernel
     use MicroKernelTrait;
 
     /**
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     *
      * @return void
      */
     public function build(ContainerBuilder $container): void
     {
         parent::build($container);
+
         $container->addCompilerPass(new AutowireArrayParameterCompilerPass());
-
-//        $container->registerForAutoconfiguration(SprykConfigurationExtenderPluginInterface::class)
-//            ->addTag('spry.config_extender');
-
-        // https://bezhermoso.github.io/2014/07/27/composing-services-with-pluggable-components-via-service-tags/
-//        $container->addCompilerPass(new class implements CompilerPassInterface {
-//            /**
-//             * @param ContainerBuilder $container
-//             */
-//            public function process(ContainerBuilder $container)
-//            {
-//                $configExtenderChain = $container->getDefinition(SprykConfigurationExtender::class);
-////                $configExtenderChain->replaceArgument(0, []);
-//
-//                $configExtenders = $container->findTaggedServiceIds('spry.config_extender');
-//
-//                foreach ($configExtenders as $serviceId => $attributes) {
-//                    if ($serviceId === $configExtenderChain->getClass()) {
-//                        continue;
-//                    }
-////                    $configExtenderChain->addMethodCall('addConfigExtender', [
-////                        new Definition($serviceId),
-////                    ]);
-//
-//                    foreach ($attributes as $attr) {
-//                        $configExtenderChain->addMethodCall('addConfigExtender', array(
-//                            new ReferenceConfigurator($serviceId),
-////                            new Definition($serviceId),
-//                        ));
-//                    }
-//                }
-//            }
-//
-//        });
     }
 
     /**
