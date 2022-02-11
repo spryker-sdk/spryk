@@ -2,11 +2,20 @@
 <?php
 
 define('SPRYKER_ROOT', getcwd());
+$autoloadPaths = [];
+if (defined('APPLICATION_SDK_DIR')) {
+    $autoloadPaths[] = APPLICATION_SDK_DIR . '/vendor/autoload.php';
+}
+$autoloadPaths[] = SPRYKER_ROOT . '/vendor/autoload.php';
+$autoloadPaths[] = __DIR__ . '/../../../../../autoload.php';
+$autoloadPaths[] = __DIR__ . '/../../../autoload.php';
 
-foreach ([SPRYKER_ROOT . '/vendor/autoload.php', __DIR__ . '/../../../../../autoload.php', __DIR__ . '/../../../autoload.php'] as $file) {
+foreach ($autoloadPaths as $file) {
     if (file_exists($file)) {
         define('SPRYKER_COMPOSER_INSTALL', $file);
-        define('APPLICATION_ROOT_DIR', realpath(dirname($file) . '/..'));
+        if (!defined('APPLICATION_ROOT_DIR')) {
+            define('APPLICATION_ROOT_DIR', realpath(dirname($file) . '/..'));
+        }
         break;
     }
 }

@@ -7,7 +7,6 @@
 
 namespace SprykerSdk\Spryk\Console;
 
-use Spryker\Zed\Console\Business\Model\Environment;
 use Symfony\Component\Console\Application;
 
 class ConsoleBootstrap extends Application

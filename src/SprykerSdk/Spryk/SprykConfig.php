@@ -7,9 +7,6 @@
 
 namespace SprykerSdk\Spryk;
 
-use Spryker\Shared\Config\Config;
-use Spryker\Shared\Kernel\KernelConstants;
-
 /**
  * @codeCoverageIgnore
  */
@@ -108,6 +105,21 @@ class SprykConfig
     public const SPRYK_DEFAULT_DUMP_LEVEL = self::SPRYK_LEVEL_1;
 
     /**
+     * @var string
+     */
+    protected const CONFIG_FILE_PREFIX = '/config/Shared/config_';
+
+    /**
+     * @var string
+     */
+    protected const SDK_CONFIG_FILE_PREFIX = '/config/spryk/config_';
+
+    /**
+     * @var array
+     */
+    protected static array $config = [];
+
+    /**
      * @return array<string>
      */
     public function getRootSprykDirectories(): array
@@ -198,8 +210,8 @@ class SprykConfig
             $namespaces = explode(',', $namespacesFromEnv);
         }
 
-        return Config::get(
-            KernelConstants::CORE_NAMESPACES,
+        return $this->get(
+            SprykConstants::CORE_NAMESPACES,
             $namespaces,
         );
     }
@@ -209,7 +221,7 @@ class SprykConfig
      */
     public function getProjectNamespace(): ?string
     {
-        return Config::get(KernelConstants::PROJECT_NAMESPACE, getenv('PROJECT_NAMESPACE') ?: '');
+        return $this->get(SprykConstants::PROJECT_NAMESPACE, getenv('PROJECT_NAMESPACE') ?: '');
     }
 
     /**
@@ -224,8 +236,8 @@ class SprykConfig
             $namespaces = explode(',', $namespacesFromEnv);
         }
 
-        return Config::get(
-            KernelConstants::PROJECT_NAMESPACES,
+        return $this->get(
+            SprykConstants::PROJECT_NAMESPACES,
             $namespaces,
         );
     }
@@ -260,6 +272,11 @@ class SprykConfig
         return static::SPRYK_LEVEL_3;
     }
 
+    public function isSdkContextEnabled(): bool
+    {
+        return (bool)getenv('APPLICATION_SDK_DIR', true);
+    }
+
     /**
      * @return string
      */
@@ -272,5 +289,47 @@ class SprykConfig
         ]);
 
         return $this->getRootDirectory() . $sprykRelativePath . DIRECTORY_SEPARATOR;
+    }
+
+    protected function get(string $key, $defaultValue = null)
+    {
+        $config = $this->resolveExternalConfig();
+
+        return $config[$key] ?? $defaultValue;
+    }
+
+    protected function resolveExternalConfig(): array
+    {
+        if (static::$config) {
+            return static::$config;
+        }
+
+        $configTypeToResolve = [
+            sprintf('%s%s', APPLICATION_ROOT_DIR, static::CONFIG_FILE_PREFIX) => [
+                'default', 'local',
+            ],
+            sprintf('%s%s', APPLICATION_SDK_DIR, static::SDK_CONFIG_FILE_PREFIX) => [
+                'default',
+            ],
+        ];
+
+        foreach ($configTypeToResolve as $path => $types) {
+            foreach ($types as $type) {
+                static::$config = array_merge(static::$config, $this->includeConfigFile($type, $path));
+            }
+        }
+
+        return static::$config;
+    }
+
+    protected function includeConfigFile(string $type, string $configRoot): array
+    {
+        $config = [];
+        $fileName = sprintf('%s%s.php', $configRoot, $type);
+        if (file_exists($fileName)) {
+            include $fileName;
+        }
+
+        return $config;
     }
 }

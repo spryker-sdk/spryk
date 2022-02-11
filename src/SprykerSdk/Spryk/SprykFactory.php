@@ -265,6 +265,26 @@ class SprykFactory
      */
     public function getCommandStack(): array
     {
+        if (!$this->getConfig()->isSdkContextEnabled()) {
+            return $this->getDefaultCommandsStack();
+        }
+
+        return $this->getSdkCommandsStack();
+    }
+
+    /**
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface>
+     */
+    public function getSdkCommandsStack(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return array<\SprykerSdk\Spryk\Model\Spryk\Command\SprykCommandInterface>
+     */
+    public function getDefaultCommandsStack(): array
+    {
         return [
             $this->createComposerReplaceGenerateSprykCommand(),
             $this->createComposerDumpAutoloadSprykCommand(),
