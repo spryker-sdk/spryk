@@ -21,7 +21,7 @@
         "symfony/finder": "^5.0.0 || ^6.0",
         "symfony/framework-bundle": "^5.0.0 || ^6.0",
         "symfony/proxy-manager-bridge": "^5.4",
-        "symfony/runtime": "^5.0.0 || ^6.0",
+        "symfony/runtime": "^6.0",
         "symfony/yaml": "^5.0.0 || ^6.0",
         "symplify/autowire-array-parameter": "^9.3",
         "twig/twig": "^3.0.0"
