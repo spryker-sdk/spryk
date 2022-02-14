@@ -5,6 +5,7 @@ define('SPRYKER_ROOT', getcwd());
 echo SPRYKER_ROOT . PHP_EOL;
 $autoloadPaths = [];
 if (defined('APPLICATION_SDK_DIR')) {
+    echo APPLICATION_SDK_DIR . PHP_EOL;
     $autoloadPaths[] = APPLICATION_SDK_DIR . '/vendor/autoload.php';
 }
 $autoloadPaths[] = SPRYKER_ROOT . '/vendor/autoload.php';
