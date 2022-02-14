@@ -56,6 +56,17 @@ class SprykHelper extends Module
     }
 
     /**
+     * @param string $service
+     * @param object $stubbedService
+     *
+     * @return void
+     */
+    public function setDependency(string $service, object $stubbedService): void
+    {
+        $this->getContainer()->set($service, $stubbedService);
+    }
+
+    /**
      * @param \Codeception\Test\Unit $testClass
      * @param array $arguments
      *

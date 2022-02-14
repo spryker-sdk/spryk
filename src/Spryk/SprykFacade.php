@@ -7,65 +7,54 @@
 
 namespace SprykerSdk\Spryk;
 
-use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Generator\ArgumentListGeneratorInterface;
-use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Reader\ArgumentListReaderInterface;
-use SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface;
-use SprykerSdk\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface;
+use SprykerSdk\Kernel;
 use SprykerSdk\Spryk\Model\Spryk\Executor\Configuration\SprykExecutorConfigurationInterface;
-use SprykerSdk\Spryk\Model\Spryk\Executor\SprykExecutorInterface;
 use SprykerSdk\Spryk\Style\SprykStyleInterface;
 
 class SprykFacade implements SprykFacadeInterface
 {
-//    /**
-//     * @var \SprykerSdk\Spryk\SprykFactory|null
-//     */
-//    protected $factory;
+    /**
+     * @var \SprykerSdk\Spryk\SprykFactory|null
+     */
+    protected ?SprykFactory $factory = null;
 
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Executor\SprykExecutorInterface
+     * This is only needed when the SprykFacadeInterface is used from an external module like `spryker-sdk/spryk-gui`.
+     * When using the console commands provided by this the factory will be auto-wired by the application.
+     *
+     * @param \SprykerSdk\Spryk\SprykFactory|null $factory
      */
-    protected SprykExecutorInterface $executor;
+    public function __construct(?SprykFactory $factory = null)
+    {
+        if ($factory) {
+            $this->factory = $factory;
+
+            return;
+        }
+
+        $this->factory = $this->getSprykFactory();
+    }
 
     /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface
+     * This method is only required to be able to use `new SprykFacade()` in other packages e.g. `spryker-sdk/spryk-gui`.
+     *
+     * @return SprykFactory
      */
-    protected SprykDefinitionDumperInterface $definitionDumper;
+    protected function getSprykFactory(): SprykFactory
+    {
+        if ($this->factory) {
+            return $this->factory;
+        }
 
-    /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\ArgumentList\Generator\ArgumentListGeneratorInterface
-     */
-    protected ArgumentListGeneratorInterface $argumentListGenerator;
+        $kernel = (new Kernel('prod', false));
+        $kernel->boot();
 
-    /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\ArgumentList\Reader\ArgumentListReaderInterface
-     */
-    protected ArgumentListReaderInterface $argumentListReader;
+        $container = $kernel->getContainer();
 
-    /**
-     * @var \SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface
-     */
-    protected SprykConfigurationLoaderInterface $configurationLoader;
+        /** @var SprykFactory $factory */
+        $factory = $container->get(SprykFactory::class);
 
-    /**
-     * @param \SprykerSdk\Spryk\Model\Spryk\Executor\SprykExecutorInterface $executor
-     * @param \SprykerSdk\Spryk\Model\Spryk\Dumper\SprykDefinitionDumperInterface $definitionDumper
-     * @param \SprykerSdk\Spryk\Model\Spryk\ArgumentList\Generator\ArgumentListGeneratorInterface $argumentListGenerator
-     * @param \SprykerSdk\Spryk\Model\Spryk\ArgumentList\Reader\ArgumentListReaderInterface $argumentListReader
-     * @param \SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface $configurationLoader
-     */
-    public function __construct(
-        SprykExecutorInterface $executor,
-        SprykDefinitionDumperInterface $definitionDumper,
-        ArgumentListGeneratorInterface $argumentListGenerator,
-        ArgumentListReaderInterface $argumentListReader,
-        SprykConfigurationLoaderInterface $configurationLoader
-    ) {
-        $this->executor = $executor;
-        $this->definitionDumper = $definitionDumper;
-        $this->argumentListGenerator = $argumentListGenerator;
-        $this->argumentListReader = $argumentListReader;
-        $this->configurationLoader = $configurationLoader;
+        return $factory;
     }
 
     /**
@@ -78,7 +67,7 @@ class SprykFacade implements SprykFacadeInterface
         SprykExecutorConfigurationInterface $sprykExecutorConfiguration,
         SprykStyleInterface $style
     ): void {
-        $this->executor->execute($sprykExecutorConfiguration, $style);
+        $this->factory->getExecutor()->execute($sprykExecutorConfiguration, $style);
     }
 
     /**
@@ -88,7 +77,7 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function getSprykDefinitions(?int $level = null): array
     {
-        return $this->definitionDumper->dump($level);
+        return $this->factory->getDefinitionDumper()->dump($level);
     }
 
     /**
@@ -98,7 +87,7 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function generateArgumentList(array $argumentsList): int
     {
-        return $this->argumentListGenerator->generateArgumentList($argumentsList);
+        return $this->factory->getArgumentListGenerator()->generateArgumentList($argumentsList);
     }
 
     /**
@@ -106,7 +95,7 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function getArgumentList(): array
     {
-        return $this->argumentListReader->getArgumentList();
+        return $this->factory->getArgumentListReader()->getArgumentList();
     }
 
     /**
@@ -117,6 +106,6 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function getSprykDefinition(string $sprykName, ?string $sprykMode = null): array
     {
-        return $this->configurationLoader->loadSpryk($sprykName, $sprykMode);
+        return $this->factory->getConfigurationLoader()->loadSpryk($sprykName, $sprykMode);
     }
 }

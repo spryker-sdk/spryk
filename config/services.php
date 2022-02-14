@@ -9,6 +9,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use PhpParser\Lexer;
 use PhpParser\Parser;
+use PhpParser\PrettyPrinter\Standard;
 use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Generator\ArgumentListGenerator;
 use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Reader\ArgumentListReader;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Parser\ClassParser;
@@ -33,13 +34,18 @@ return function (ContainerConfigurator $configurator) {
     $services->load('SprykerSdk\\', '../src/')
         ->exclude('../src/{DependencyInjection,Tests,Kernel.php}');
 
+    // Make SprykFactory public for instantiating the SprykFacade from external packages like `spryker-sdk/spryk-gui`
+    $services->get(SprykFactory::class)->public();
+
     // Make SprykConfig public for testing
+    // This should go to services_testing
     $services->get(SprykConfig::class)->public();
 
-    $services->load('PhpParser\\', '../vendor/nikic/php-parser/lib/PhpParser');
-    $services->set(FilesystemAdapter::class, '../vendor/nikic/php-parser/lib/PhpParser');
+    // TODO check if still needed
+//    $services->load('PhpParser\\', '../vendor/nikic/php-parser/lib/PhpParser');
+//    $services->set(FilesystemAdapter::class, '../vendor/nikic/php-parser/lib/PhpParser');
 
-    // Make the facade services lazy
+    // Make services lazy
     // https://symfony.com/doc/current/service_container/lazy_services.html
     $services->set(SprykExecutor::class)->lazy();
     $services->set(SprykDefinitionDumper::class)->lazy();
@@ -47,15 +53,6 @@ return function (ContainerConfigurator $configurator) {
     $services->set(ArgumentListReader::class)->lazy();
     $services->set(SprykConfigurationLoader::class)->lazy();
 
-    // Does not work with interfaces
-//    $services->set(SprykExecutorInterface::class)->lazy();
-//    $services->set(SprykDefinitionDumperInterface::class)->lazy();
-//    $services->set(ArgumentListGeneratorInterface::class)->lazy();
-//    $services->set(ArgumentListReaderInterface::class)->lazy();
-//    $services->set(SprykConfigurationLoaderInterface::class)->lazy();
-
-    // Named aliases
-    // $container->addCompilerPass(new NamedAliasPass());
     // https://symfony.com/doc/current/service_container/autowiring.html#dealing-with-multiple-implementations-of-the-same-type
     // TODO either refactor to use delegating service or automate with a CompilerPass
     $services->alias(ParserInterface::class . ' $classParser', ClassParser::class);
@@ -65,6 +62,10 @@ return function (ContainerConfigurator $configurator) {
     $services->alias(ParserInterface::class . ' $xmlParser', XmlParser::class);
 
     // https://symfony.com/doc/current/service_container/factories.html
+    $services->set(Standard::class)
+        ->factory([service(SprykFactory::class), 'createClassPrinter'])
+        ->args([service(SprykConfig::class)]);
+
     $services->set(Parser::class)
         ->factory([service(SprykFactory::class), 'createParser'])
         ->args([service(SprykConfig::class)]);

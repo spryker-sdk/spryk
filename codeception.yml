@@ -21,7 +21,6 @@ coverage:
     whitelist:
         include:
             - 'src/*.php'
-            - 'tests/*.php'
 
 suites:
     Spryk:
@@ -39,10 +38,6 @@ suites:
                       withTestSpryks: true
                       withTestTemplates: true
                 - SprykerSdkTest\Module\TransferModule
-                - SprykerSdkTest\Module\CleanUpModule:
-                      rootDirectory: 'tests/_data/'
-                - SprykerSdkTest\Module\DevelopmentModeModule:
-                      developmentMode: 'core'
 
     Console:
         bootstrap: _bootstrap.php
@@ -59,11 +54,6 @@ suites:
                       withTestSpryks: true
                       withTestTemplates: true
                 - SprykerSdkTest\Module\AssertionModule
-                - SprykerSdkTest\Module\ConsoleEnvironmentModule
-                -   SprykerSdkTest\Module\CleanUpModule:
-                        rootDirectory: 'tests/_data/'
-                -   SprykerSdkTest\Module\DevelopmentModeModule:
-                        developmentMode: 'core'
 
     Integration:
         bootstrap: _bootstrap.php
@@ -82,9 +72,5 @@ suites:
                       environment: 'test'
                 - SprykerSdkTest\Module\SprykHelper
                 - SprykerSdkTest\Module\AssertionModule
-                -   SprykerSdkTest\Module\CleanUpModule:
-                        rootDirectory: 'tests/_data/'
                 - SprykerSdkTest\Module\IntegrationModule
                 - SprykerSdkTest\Module\TransferModule
-                -   SprykerSdkTest\Module\DevelopmentModeModule:
-                        developmentMode: 'core'

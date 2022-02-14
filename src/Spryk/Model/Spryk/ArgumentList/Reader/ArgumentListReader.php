@@ -66,14 +66,6 @@ class ArgumentListReader implements ArgumentListReaderInterface
 
             return $this->argumentListBuilder->buildArgumentList($sprykDefinition);
         });
-
-//        if (file_exists($this->config->getArgumentListFilePath())) {
-//            return $this->getCachedArgumentList();
-//        }
-//
-//        $sprykDefinition = $this->definitionDumper->dump();
-//
-//        return $this->argumentListBuilder->buildArgumentList($sprykDefinition);
     }
 
     /**
