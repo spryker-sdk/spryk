@@ -1,31 +1,18 @@
 #!/usr/bin/env php
 <?php
 
-foreach ([__DIR__ . '/../../../../../autoload.php', __DIR__ . '/../../../autoload.php'] as $file) {
-    if (file_exists($file)) {
-        define('SPRYKER_COMPOSER_INSTALL', $file);
-        define('APPLICATION_ROOT_DIR', realpath(dirname($file) . '/..'));
-        break;
-    }
-}
+include $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
 
-unset($file);
+use SprykerSdk\Kernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 
-if (!defined('SPRYKER_COMPOSER_INSTALL')) {
-    throw new \Exception('Could not resolve path to vendor/autoload.php');
-}
+define('APPLICATION_ROOT_DIR', __DIR__ . '/..');
+define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?? 'prod');
+define('APPLICATION', 'Spryk');
+define('APPLICATION_STORE', '');
 
-define('SPRYKER_ROOT', getcwd());
-
-require_once SPRYKER_COMPOSER_INSTALL;
-
-use SprykerSdk\Spryk\Console\ConsoleBootstrap;
-use SprykerSdk\Spryk\Console\SprykDumpConsole;
-
-$application = new ConsoleBootstrap();
-$application->addCommands([
-    new SprykDumpConsole(),
-]);
+$kernel = new Kernel('prod', false);
+$application = new Application($kernel);
 $application->setDefaultCommand('spryk:dump', true);
 
-$application->run();
+exit($application->run());

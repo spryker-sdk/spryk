@@ -10,8 +10,10 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use PhpParser\Lexer;
 use PhpParser\Parser;
 use PhpParser\PrettyPrinter\Standard;
+use SprykerSdk\Spryk\Console\SprykRunConsole;
 use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Generator\ArgumentListGenerator;
 use SprykerSdk\Spryk\Model\Spryk\ArgumentList\Reader\ArgumentListReader;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\FileResolver;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Parser\ClassParser;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Parser\FileParser;
 use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Parser\JsonParser;
@@ -37,13 +39,13 @@ return function (ContainerConfigurator $configurator) {
     // Make SprykFactory public for instantiating the SprykFacade from external packages like `spryker-sdk/spryk-gui`
     $services->get(SprykFactory::class)->public();
 
+    $services->get(FileResolver::class)->public();
+
+
     // Make SprykConfig public for testing
     // This should go to services_testing
     $services->get(SprykConfig::class)->public();
-
-    // TODO check if still needed
-//    $services->load('PhpParser\\', '../vendor/nikic/php-parser/lib/PhpParser');
-//    $services->set(FilesystemAdapter::class, '../vendor/nikic/php-parser/lib/PhpParser');
+    $services->get(SprykRunConsole::class)->public();
 
     // Make services lazy
     // https://symfony.com/doc/current/service_container/lazy_services.html

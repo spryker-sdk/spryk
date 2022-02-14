@@ -10,6 +10,7 @@ namespace SprykerSdk;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderPluginInterface;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
@@ -18,6 +19,18 @@ use Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArr
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
+
+    /**
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
+     * @param \Symfony\Component\Config\Loader\LoaderInterface $loader
+     *
+     * @return void
+     */
+    protected function configureContainer(ContainerBuilder $containerBuilder, LoaderInterface $loader): void
+    {
+        $loader->load(__DIR__ . '/../config/services.php');
+        $loader->load(__DIR__ . '/../config/services_' . $this->environment . '.php');
+    }
 
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
