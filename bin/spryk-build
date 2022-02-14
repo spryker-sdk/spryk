@@ -1,31 +1,56 @@
 #!/usr/bin/env php
 <?php
 
-foreach ([__DIR__ . '/../../../../../autoload.php', __DIR__ . '/../../../autoload.php'] as $file) {
-    if (file_exists($file)) {
-        define('SPRYKER_COMPOSER_INSTALL', $file);
-        define('APPLICATION_ROOT_DIR', realpath(dirname($file) . '/..'));
-        break;
-    }
+use SprykerSdk\Kernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+
+if (!is_file(dirname(__DIR__).'/vendor/autoload_runtime.php')) {
+    throw new LogicException('Symfony Runtime is missing. Try running "composer require symfony/runtime".');
 }
 
-unset($file);
+require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 
-if (!defined('SPRYKER_COMPOSER_INSTALL')) {
-    throw new \Exception('Could not resolve path to vendor/autoload.php');
-}
+return function (array $context) {
+    define('APPLICATION_ROOT_DIR', __DIR__ . '/..');
+    define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?? 'prod');
+    define('APPLICATION', 'Spryk');
+    define('APPLICATION_STORE', '');
+    $kernel = new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
+    $application = new Application($kernel);
+    $application->setDefaultCommand('spryk:build', true);
 
-define('SPRYKER_ROOT', getcwd());
+    return $application;
+};
 
-require_once SPRYKER_COMPOSER_INSTALL;
 
-use SprykerSdk\Spryk\Console\ConsoleBootstrap;
-use SprykerSdk\Spryk\Console\SprykBuildConsole;
 
-$application = new ConsoleBootstrap();
-$application->addCommands([
-    new SprykBuildConsole(),
-]);
-$application->setDefaultCommand('spryk:build', true);
 
-$application->run();
+
+//foreach ([__DIR__ . '/../../../../../autoload.php', __DIR__ . '/../../../autoload.php'] as $file) {
+//    if (file_exists($file)) {
+//        define('SPRYKER_COMPOSER_INSTALL', $file);
+//        define('APPLICATION_ROOT_DIR', realpath(dirname($file) . '/..'));
+//        break;
+//    }
+//}
+//
+//unset($file);
+//
+//if (!defined('SPRYKER_COMPOSER_INSTALL')) {
+//    throw new \Exception('Could not resolve path to vendor/autoload.php');
+//}
+//
+//define('SPRYKER_ROOT', getcwd());
+//
+//require_once SPRYKER_COMPOSER_INSTALL;
+//
+//use SprykerSdk\Spryk\Console\ConsoleBootstrap;
+//use SprykerSdk\Spryk\Console\SprykBuildConsole;
+//
+//$application = new ConsoleBootstrap();
+//$application->addCommands([
+//    new SprykBuildConsole(),
+//]);
+//$application->setDefaultCommand('spryk:build', true);
+//
+//$application->run();
