@@ -2,6 +2,7 @@
 <?php
 
 define('SPRYKER_ROOT', getcwd());
+echo SPRYKER_ROOT . PHP_EOL;
 $autoloadPaths = [];
 if (defined('APPLICATION_SDK_DIR')) {
     $autoloadPaths[] = APPLICATION_SDK_DIR . '/vendor/autoload.php';
@@ -19,7 +20,8 @@ foreach ($autoloadPaths as $file) {
         break;
     }
 }
-
+echo SPRYKER_COMPOSER_INSTALL . PHP_EOL;
+echo APPLICATION_ROOT_DIR . PHP_EOL;
 unset($file);
 
 if (!defined('SPRYKER_COMPOSER_INSTALL')) {
