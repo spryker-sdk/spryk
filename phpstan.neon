@@ -7,7 +7,7 @@ parameters:
     checkGenericClassInNonGenericObjectType: false
 
     bootstrapFiles:
-        - %rootDir%/../../../phpstan-bootstrap.php
+        - '%rootDir%/../../../phpstan-bootstrap.php'
 
     ignoreErrors:
         - '#Parameter \#2 \$callback of function array_filter expects .+, .+glob.+ given#'
