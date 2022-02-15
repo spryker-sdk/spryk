@@ -25,5 +25,5 @@ arguments:
     title:
         required: true
 
-    api-version:
+    apiVersion:
         default: 0.1.0
