@@ -105,15 +105,10 @@ class SprykConfig
      */
     protected const SPRYK_LEVEL_3 = 3;
 
-    public const SPRYK_DEFAULT_DUMP_LEVEL = self::SPRYK_LEVEL_1;
-
     /**
-     * @return array<string>
+     * @var int
      */
-    public function getRootSprykDirectories(): array
-    {
-        return $this->buildDirectoryList();
-    }
+    public const SPRYK_DEFAULT_DUMP_LEVEL = self::SPRYK_LEVEL_1;
 
     /**
      * @return array<string>

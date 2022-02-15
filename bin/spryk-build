@@ -6,7 +6,8 @@ include $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
 use SprykerSdk\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 
-define('APPLICATION_ROOT_DIR', __DIR__ . '/..');
+define('APPLICATION_ROOT_DIR', getcwd() . DIRECTORY_SEPARATOR);
+define('APPLICATION_SOURCE_DIR', APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR);
 define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?? 'prod');
 define('APPLICATION', 'Spryk');
 define('APPLICATION_STORE', '');

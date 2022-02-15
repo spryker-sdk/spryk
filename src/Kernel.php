@@ -29,7 +29,6 @@ class Kernel extends BaseKernel
     protected function configureContainer(ContainerBuilder $containerBuilder, LoaderInterface $loader): void
     {
         $loader->load(__DIR__ . '/../config/services.php');
-        $loader->load(__DIR__ . '/../config/services_' . $this->environment . '.php');
     }
 
     /**
