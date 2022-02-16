@@ -41,7 +41,6 @@ return function (ContainerConfigurator $configurator) {
 
     $services->get(FileResolver::class)->public();
 
-
     // Make SprykConfig public for testing
     // This should go to services_testing
     $services->get(SprykConfig::class)->public();
