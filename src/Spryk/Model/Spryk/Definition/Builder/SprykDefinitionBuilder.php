@@ -51,37 +51,37 @@ class SprykDefinitionBuilder implements SprykDefinitionBuilderInterface
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Configuration\Loader\SprykConfigurationLoaderInterface
      */
-    protected $sprykLoader;
+    protected SprykConfigurationLoaderInterface $sprykLoader;
 
     /**
      * @var \SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Resolver\ArgumentResolverInterface
      */
-    protected $argumentResolver;
+    protected ArgumentResolverInterface $argumentResolver;
 
     /**
      * @var array<\SprykerSdk\Spryk\Model\Spryk\Definition\SprykDefinitionInterface>
      */
-    protected $definitionCollection = [];
+    protected array $definitionCollection = [];
 
     /**
      * @var array<\SprykerSdk\Spryk\Model\Spryk\Definition\Argument\Collection\ArgumentCollectionInterface>
      */
-    protected $argumentCollectionCache = [];
+    protected array $argumentCollectionCache = [];
 
     /**
      * @var string|null
      */
-    protected $calledSpryk;
+    protected ?string $calledSpryk = null;
 
     /**
      * @var \SprykerSdk\Spryk\Style\SprykStyleInterface
      */
-    protected $style;
+    protected SprykStyleInterface $style;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected $mode;
+    protected ?string $mode = null;
 
     /**
      * @var \SprykerSdk\Spryk\SprykConfig

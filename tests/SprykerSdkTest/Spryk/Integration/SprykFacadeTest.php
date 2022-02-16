@@ -7,9 +7,8 @@
 
 namespace SprykerSdkTest\Spryk\Integration;
 
-use Codeception\Stub;
 use Codeception\Test\Unit;
-use SprykerSdk\Spryk\Model\Spryk\Executor\SprykExecutorInterface;
+use ReflectionClass;
 use SprykerSdk\Spryk\SprykFacade;
 use SprykerSdk\Spryk\SprykFactory;
 
@@ -37,7 +36,7 @@ class SprykFacadeTest extends Unit
     public function testCreateSprykFacadeWillBootTheApplication(): void
     {
         $sprykFacade = new SprykFacade();
-        $reflection = new \ReflectionClass($sprykFacade);
+        $reflection = new ReflectionClass($sprykFacade);
         $factoryProperty = $reflection->getProperty('factory');
         $factoryProperty->setAccessible(true);
 

@@ -23,7 +23,7 @@ class ReflectionHelper implements ReflectionHelperInterface
     {
         $betterReflection = new BetterReflection();
 
-        return $betterReflection->classReflector()->reflect($className);
+        return $betterReflection->reflector()->reflectClass($className);
     }
 
     /**

@@ -8,7 +8,7 @@
         "ext-dom": "*",
         "ext-simplexml": "*",
         "jfcherng/php-diff": "^6.11",
-        "phpstan/phpstan": "^0.12.98",
+        "phpstan/phpstan": "^1.4.5",
         "ramsey/uuid": "^4.2",
         "spryker/config": "^3.0.0",
         "spryker/console": "^3.0.0 || ^4.0.0",

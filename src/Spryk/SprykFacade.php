@@ -38,7 +38,7 @@ class SprykFacade implements SprykFacadeInterface
     /**
      * This method is only required to be able to use `new SprykFacade()` in other packages e.g. `spryker-sdk/spryk-gui`.
      *
-     * @return SprykFactory
+     * @return \SprykerSdk\Spryk\SprykFactory
      */
     protected function getSprykFactory(): SprykFactory
     {
@@ -51,7 +51,7 @@ class SprykFacade implements SprykFacadeInterface
 
         $container = $kernel->getContainer();
 
-        /** @var SprykFactory $factory */
+        /** @var \SprykerSdk\Spryk\SprykFactory $factory */
         $factory = $container->get(SprykFactory::class);
 
         return $factory;
@@ -67,7 +67,7 @@ class SprykFacade implements SprykFacadeInterface
         SprykExecutorConfigurationInterface $sprykExecutorConfiguration,
         SprykStyleInterface $style
     ): void {
-        $this->factory->getExecutor()->execute($sprykExecutorConfiguration, $style);
+        $this->getSprykFactory()->getExecutor()->execute($sprykExecutorConfiguration, $style);
     }
 
     /**
@@ -77,7 +77,7 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function getSprykDefinitions(?int $level = null): array
     {
-        return $this->factory->getDefinitionDumper()->dump($level);
+        return $this->getSprykFactory()->getDefinitionDumper()->dump($level);
     }
 
     /**
@@ -87,7 +87,7 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function generateArgumentList(array $argumentsList): int
     {
-        return $this->factory->getArgumentListGenerator()->generateArgumentList($argumentsList);
+        return $this->getSprykFactory()->getArgumentListGenerator()->generateArgumentList($argumentsList);
     }
 
     /**
@@ -95,7 +95,7 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function getArgumentList(): array
     {
-        return $this->factory->getArgumentListReader()->getArgumentList();
+        return $this->getSprykFactory()->getArgumentListReader()->getArgumentList();
     }
 
     /**
@@ -106,6 +106,6 @@ class SprykFacade implements SprykFacadeInterface
      */
     public function getSprykDefinition(string $sprykName, ?string $sprykMode = null): array
     {
-        return $this->factory->getConfigurationLoader()->loadSpryk($sprykName, $sprykMode);
+        return $this->getSprykFactory()->getConfigurationLoader()->loadSpryk($sprykName, $sprykMode);
     }
 }
