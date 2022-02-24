@@ -32,7 +32,7 @@
     {% if visibility is defined %}{{ visibility }}{% else %}public{% endif %} function {{ method }}({% if inputString is not empty %}{{ inputString | typedArrayConvert }}{% endif %}){% if output.value is not empty %}: {{ output | typedArrayConvert }}{% endif %}
 
     {
-    {% if body is defined and body is not empty %}
-    {{ body | raw }}
-    {% endif -%}
+{% if body is defined and body is not empty %}
+{{ body | raw }}
+{% endif -%}
     }

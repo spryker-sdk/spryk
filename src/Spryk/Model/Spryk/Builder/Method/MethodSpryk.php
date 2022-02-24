@@ -164,7 +164,9 @@ class MethodSpryk extends AbstractBuilder
 
         $classMethodNode = $this->getClassMethodNode();
 
-        if ($this->arguments->hasArgument('allowOverride') && $this->arguments->getArgument('allowOverride')->getValue() && $methodExists) {
+        $bodyArgument = $this->arguments->hasArgument('body') ? $this->arguments->getArgument('body') : false;
+
+        if ($bodyArgument && $bodyArgument->getAllowOverride() && $methodExists) {
             $traverser = new NodeTraverser();
             $traverser->addVisitor(new ReplaceMethodBodyNodeVisitor($methodName, $classMethodNode));
 
@@ -193,6 +195,7 @@ class MethodSpryk extends AbstractBuilder
      */
     protected function getClassMethodNode(): ClassMethod
     {
+        $this->renderBody();
         $templateName = $this->getTemplateName();
 
         $methodContent = sprintf('<?php class Foo {%s}', $this->renderer->render(
@@ -210,6 +213,33 @@ class MethodSpryk extends AbstractBuilder
         $firstClassMethod = $classStmt->stmts[0];
 
         return $firstClassMethod;
+    }
+
+    /**
+     * In case the body:value refers to a template, render the template and add the code as body:value to the arguments
+     * list. The method body rendered by this method will be used when the method for the class is created in
+     * {@link \SprykerSdk\Spryk\Model\Spryk\Builder\Method\MethodSpryk::getClassMethodNode()}
+     *
+     * @example
+     * ```
+     * arguments:
+     *     body:
+     *         value: path/to/template.php.twig
+     * ```
+     *
+     * @return void
+     */
+    protected function renderBody(): void
+    {
+        $body = $this->getBody();
+
+        if (preg_match('/\.php\.twig/', $body)) {
+            $body = $this->renderer->render(
+                $body,
+                $this->arguments->getArguments(),
+            );
+            $this->arguments->getArgument('body')->setValue($body);
+        }
     }
 
     /**
@@ -235,6 +265,14 @@ class MethodSpryk extends AbstractBuilder
     protected function getTemplateName(): string
     {
         return $this->getStringArgument(static::ARGUMENT_TEMPLATE);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getBody(): string
+    {
+        return $this->arguments->hasArgument('body') ? $this->arguments->getArgument('body') : '';
     }
 
     /**

@@ -1,0 +1,17 @@
+        $errorMessageTransfer = $this->getFactory()->createRequestValidator()
+            ->validateAppRegistryRequest($request);
+
+        if ($errorMessageTransfer) {
+            $appRegistryResponseTransfer = (new \Generated\Shared\Transfer\AppRegistryResponseTransfer())
+                ->setIsSuccessful(false)
+                ->addErrorMessage($errorMessageTransfer);
+
+                return $this->buildResponse($appRegistryResponseTransfer);
+        }
+
+        $appRegistryRequestTransfer = $this->getFactory()->createRequestMapper()
+            ->mapAppRegistryRequestToTransfer($request, new \Generated\Shared\Transfer\AppRegistryRequestTransfer());
+
+        $appRegistryResponseTransfer = $this->getFacade()->disconnect($appRegistryRequestTransfer);
+
+        return $this->buildResponse($appRegistryResponseTransfer);

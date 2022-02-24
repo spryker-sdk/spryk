@@ -20,23 +20,6 @@ preSpryks:
     - AddModule
 
 postSpryks:
-    #    - AddZedBusinessModelMethod:
-    #          arguments:
-    #              allowOverride:
-    #                  value: true
-    #              className:
-    #                  value: Registry
-    #              subDirectory:
-    #                  value: Registry
-    #              modelMethod:
-    #                  value: connect
-    #              input:
-    #                  value: "\\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer $appRegistryRequestTransfer, \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer $appRegistryResponseTransfer"
-    #              output:
-    #                  value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer"
-    #              body:
-    #                  value: "return $appRegistryResponseTransfer;"
-
     - AddZedBusinessModelMethod:
           arguments:
               allowOverride:
@@ -112,43 +95,6 @@ postSpryks:
               target:
                   value: "\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}Config"
 
-    #    - AddZedCommunicationControllerAction:
-    #          excludedSpryks:
-    #              - AddZedPresentationTwig
-    #              - AddZedNavigationNode
-    #          arguments:
-    #              allowOverride:
-    #                  value: true
-    #              input:
-    #                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
-    #              output:
-    #                  value: "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
-    #              controller:
-    #                  value: RegistryController
-    #              controllerMethod:
-    #                  value: connect
-    #              body:
-    #                  allowOverride: true
-    #                  value:
-    #                    - "$appRegistryResponseTransfer = new AppRegistryResponseTransfer();"
-    #                    - "$appRegistryResponseTransfer = $this->getFactory()"
-    #                    - "        ->createRequestValidator()"
-    #                    - "        ->validateConnectRequest($request, $appRegistryResponseTransfer);"
-    #                    - ""
-    #                    - "if (!$appRegistryResponseTransfer->getIsSuccessful()) {"
-    #                    - "    return $this->buildErrorResponse($appRegistryResponseTransfer);"
-    #                    - "}"
-    #                    - ""
-    #                    - "$appRegistryRequestTransfer = $this->getFactory()->createRequestMapper()->mapConnectRequestToTransfer($request);"
-    #                    - ""
-    #                    - "$appRegistryResponseTransfer = $this->getFacade()->connect($appRegistryRequestTransfer, $appRegistryResponseTransfer);"
-    #                    - ""
-    #                    - "if (!$appRegistryResponseTransfer->getIsSuccessful()) {"
-    #                    - "    return $this->buildErrorResponse($appRegistryResponseTransfer);"
-    #                    - "}"
-    #                    - ""
-    #                    - "return $this->jsonResponse();"
-
     - AddZedCommunicationControllerAction:
           excludedSpryks:
               - AddZedPresentationTwig
@@ -166,24 +112,7 @@ postSpryks:
                   value: disconnect
               body:
                   allowOverride: true
-                  value:
-                      - "$errorMessageTransfer = $this->getFactory()->createRequestValidator()"
-                      - "    ->validateAppRegistryRequest($request);"
-                      - ""
-                      - "if ($errorMessageTransfer) {"
-                      - "    $appRegistryResponseTransfer = (new \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer())"
-                      - "        ->setIsSuccessful(false)"
-                      - "        ->addErrorMessage($errorMessageTransfer);"
-                      - ""
-                      - "        return $this->buildResponse($appRegistryResponseTransfer);"
-                      - "}"
-                      - ""
-                      - "$appRegistryRequestTransfer = $this->getFactory()->createRequestMapper()"
-                      - "    ->mapAppRegistryRequestToTransfer($request, new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer());"
-                      - ""
-                      - "$appRegistryResponseTransfer = $this->getFacade()->disconnect($appRegistryRequestTransfer);"
-                      - ""
-                      - "return $this->buildResponse($appRegistryResponseTransfer);"
+                  value: "App/Registry/ZedControllerDisconnectMethod.php.twig"
 
     - AddMethod:
           arguments:
@@ -207,8 +136,6 @@ postSpryks:
                       - "}"
                       - ""
                       - "return $this->jsonResponse([]);"
-
-
 
     - AddZedCommunicationTest:
           arguments:
@@ -317,41 +244,6 @@ postSpryks:
                       - ""
                       - "return $this->jsonResponse($responseData, \\Symfony\\Component\\HttpFoundation\\Response::HTTP_BAD_REQUEST);"
 
-    #    - AddZedBusinessFacadeMethod:
-    #        arguments:
-    #            allowOverride:
-    #                value: true
-    #            facadeMethod:
-    #                value: connect
-    #            input:
-    #                value: "\\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer $appRegistryRequestTransfer, \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer $appRegistryResponseTransfer"
-    #            output:
-    #                value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer"
-    #            body:
-    #                allowOverride: true
-    #                value: "return $this->getFactory()->createRegistry()->connect($appRegistryRequestTransfer, $appRegistryResponseTransfer);"
-
-    #    - AddZedBusinessFacadeMethodTest:
-    #          arguments:
-    #              allowOverride:
-    #                  value: true
-    #              facadeMethod:
-    #                  value: connect
-    #              output:
-    #                  value: "void"
-    #              body:
-    #                  allowOverride: true
-    #                  value:
-    #                      - "$appRegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer();"
-    #                      - "$appRegistryResponseTransfer = new \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer();"
-    #                      - ""
-    #                      - "$appRegistryResponseTransfer = $this->tester->getFacade()->connect($appRegistryRequestTransfer, $appRegistryResponseTransfer);"
-    #                      - ""
-    #                      - "$this->assertInstanceOf(\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer::class, $appRegistryResponseTransfer);"
-    #                      - "$this->assertTrue($appRegistryResponseTransfer->getIsSuccessful());"
-    #                      - "$this->assertSame(\\Symfony\\Component\\HttpFoundation\\Response::HTTP_OK, $appRegistryResponseTransfer->getHttpStatusCode());"
-
-
     - AddZedBusinessFacadeMethod:
           arguments:
               allowOverride:
@@ -403,22 +295,6 @@ postSpryks:
                       - ""
                       - "$this->tester->getFacade()->disconnect($appRegistryRequestTransfer);"
 
-    #    - AddZedCommunicationModelMethod:
-    #          arguments:
-    #              className:
-    #                  value: RequestValidator
-    #              subDirectory:
-    #                  value: RequestValidator
-    #              modelMethod:
-    #                  value: validateConnectRequest
-    #              input:
-    #                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request, \\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer $appRegistryResponseTransfer"
-    #              output:
-    #                  value: "\\Generated\\Shared\\Transfer\\AppRegistryResponseTransfer"
-    #              body:
-    #                  value: "return $appRegistryResponseTransfer;"
-
-
     - AddZedCommunicationModelMethod:
           arguments:
               className:
@@ -444,26 +320,6 @@ postSpryks:
                       - "}"
                       - ""
                       - "return null;"
-
-    #    - AddZedCommunicationModelMethod:
-    #          arguments:
-    #              allowOverride:
-    #                  value: true
-    #              className:
-    #                  value: RequestMapper
-    #              subDirectory:
-    #                  value: RequestMapper
-    #              modelMethod:
-    #                  value: mapConnectRequestToTransfer
-    #              input:
-    #                  value: "\\Symfony\\Component\\HttpFoundation\\Request $request"
-    #              output:
-    #                  value: "\\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer"
-    #              body:
-    #                  value:
-    #                      - "$appRegistryRequestTransfer = new \\Generated\\Shared\\Transfer\\AppRegistryRequestTransfer();"
-    #                      - ""
-    #                      - "return $appRegistryRequestTransfer;"
 
     - AddZedCommunicationModelMethod:
           arguments:
