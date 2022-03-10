@@ -7,26 +7,26 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection;
 
-use PHPStan\BetterReflection\Reflection\ReflectionMethod;
+use ReflectionMethod;
 
 interface MethodHelperInterface
 {
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
+     * @param \ReflectionMethod $reflectionMethod
      *
      * @return string
      */
     public function getMethodReturnType(ReflectionMethod $reflectionMethod): string;
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
+     * @param \ReflectionMethod $reflectionMethod
      *
      * @return string
      */
     public function getParameter(ReflectionMethod $reflectionMethod): string;
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
+     * @param \ReflectionMethod $reflectionMethod
      *
      * @return string
      */

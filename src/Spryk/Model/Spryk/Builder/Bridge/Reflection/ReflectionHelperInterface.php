@@ -7,14 +7,14 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection;
 
-use PHPStan\BetterReflection\Reflection\ReflectionClass;
+use ReflectionClass;
 
 interface ReflectionHelperInterface
 {
     /**
      * @param string $className
      *
-     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
+     * @return ReflectionClass
      */
     public function getReflectionClassByClassName(string $className): ReflectionClass;
 
