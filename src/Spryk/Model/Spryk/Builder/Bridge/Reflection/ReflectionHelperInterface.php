@@ -12,14 +12,14 @@ use ReflectionClass;
 interface ReflectionHelperInterface
 {
     /**
-     * @param string $className
+     * @param class-string|string $className
      *
-     * @return ReflectionClass
+     * @return \ReflectionClass
      */
     public function getReflectionClassByClassName(string $className): ReflectionClass;
 
     /**
-     * @param string $className
+     * @param class-string|string $className
      *
      * @throws \SprykerSdk\Spryk\Exception\ReflectionException
      *
@@ -28,7 +28,7 @@ interface ReflectionHelperInterface
     public function getFilePathByClassName(string $className): string;
 
     /**
-     * @param string $className
+     * @param class-string|string $className
      *
      * @throws \SprykerSdk\Spryk\Exception\EmptyFileException
      *

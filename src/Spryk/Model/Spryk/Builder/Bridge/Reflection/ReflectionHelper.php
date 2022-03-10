@@ -5,7 +5,6 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
- 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection;
 
 use ReflectionClass;
@@ -15,19 +14,19 @@ use SprykerSdk\Spryk\Exception\ReflectionException;
 class ReflectionHelper implements ReflectionHelperInterface
 {
     /**
-     * @param string $className
+     * @param class-string|string $className
      *
      * @return \ReflectionClass
      */
     public function getReflectionClassByClassName(string $className): ReflectionClass
     {
-        return new \ReflectionClass($className);
+        return new ReflectionClass($className);
     }
 
     /**
      * @codeCoverageIgnore
      *
-     * @param string $className
+     * @param class-string|string $className
      *
      * @throws \SprykerSdk\Spryk\Exception\ReflectionException
      *
@@ -37,7 +36,7 @@ class ReflectionHelper implements ReflectionHelperInterface
     {
         $targetReflection = $this->getReflectionClassByClassName($className);
 
-        if ($targetReflection->getFileName() === null) {
+        if ($targetReflection->getFileName() === false) {
             throw new ReflectionException('Filename is not expected to be null!');
         }
 
@@ -47,7 +46,7 @@ class ReflectionHelper implements ReflectionHelperInterface
     /**
      * @codeCoverageIgnore
      *
-     * @param string $className
+     * @param class-string|string $className
      *
      * @throws \SprykerSdk\Spryk\Exception\EmptyFileException
      *
