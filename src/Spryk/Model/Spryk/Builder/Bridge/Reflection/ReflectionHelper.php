@@ -37,7 +37,7 @@ class ReflectionHelper implements ReflectionHelperInterface
     {
         $targetReflection = $this->getReflectionClassByClassName($className);
 
-        if ($targetReflection->getFileName() == null) {
+        if ($targetReflection->getFileName() === null) {
             throw new ReflectionException('Filename is not expected to be null!');
         }
 
