@@ -7,9 +7,9 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection;
 
-use PHPStan\BetterReflection\Reflection\ReflectionMethod;
-use PHPStan\BetterReflection\Reflection\ReflectionNamedType;
-use PHPStan\BetterReflection\Reflection\ReflectionParameter;
+use ReflectionMethod;
+use ReflectionNamedType;
+use ReflectionParameter;
 
 class MethodHelper implements MethodHelperInterface
 {
@@ -24,13 +24,13 @@ class MethodHelper implements MethodHelperInterface
     protected const NON_NULLABLE_RETURN_TYPE_HINT = ': ';
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
+     * @param \ReflectionMethod $reflectionMethod
      *
      * @return string
      */
     public function getMethodReturnType(ReflectionMethod $reflectionMethod): string
     {
-        /** @var \PHPStan\BetterReflection\Reflection\ReflectionNamedType|null $reflectionType */
+        /** @var \ReflectionNamedType|null $reflectionType */
         $reflectionType = $reflectionMethod->getReturnType();
 
         if ($reflectionType === null) {
@@ -41,7 +41,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionNamedType $reflectionType
+     * @param \ReflectionNamedType $reflectionType
      *
      * @return string
      */
@@ -57,7 +57,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
+     * @param \ReflectionMethod $reflectionMethod
      *
      * @return string
      */
@@ -73,7 +73,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionParameter $reflectionParameter
+     * @param \ReflectionParameter $reflectionParameter
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class MethodHelper implements MethodHelperInterface
         }
 
         if ($reflectionParameter->hasType() && $reflectionParameter->getType() !== null) {
-            /** @var \PHPStan\BetterReflection\Reflection\ReflectionNamedType $reflectionType */
+            /** @var \ReflectionNamedType $reflectionType */
             $reflectionType = $reflectionParameter->getType();
             if (!$reflectionType->isBuiltin()) {
                 $parameter .= '\\';
@@ -101,7 +101,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionParameter $reflectionParameter
+     * @param \ReflectionParameter $reflectionParameter
      *
      * @return bool
      */
@@ -115,7 +115,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionParameter $reflectionParameter
+     * @param \ReflectionParameter $reflectionParameter
      *
      * @return string
      */
@@ -144,7 +144,7 @@ class MethodHelper implements MethodHelperInterface
     }
 
     /**
-     * @param \PHPStan\BetterReflection\Reflection\ReflectionMethod $reflectionMethod
+     * @param \ReflectionMethod $reflectionMethod
      *
      * @return string
      */

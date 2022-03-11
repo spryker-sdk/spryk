@@ -7,27 +7,28 @@
 
 namespace SprykerSdk\Spryk\Model\Spryk\Builder\Bridge\Reflection;
 
-use PHPStan\BetterReflection\BetterReflection;
-use PHPStan\BetterReflection\Reflection\ReflectionClass;
+use ReflectionClass;
 use SprykerSdk\Spryk\Exception\EmptyFileException;
 use SprykerSdk\Spryk\Exception\ReflectionException;
 
 class ReflectionHelper implements ReflectionHelperInterface
 {
     /**
+     * @phpstan-param class-string $className
+     *
      * @param string $className
      *
-     * @return \PHPStan\BetterReflection\Reflection\ReflectionClass
+     * @return \ReflectionClass
      */
     public function getReflectionClassByClassName(string $className): ReflectionClass
     {
-        $betterReflection = new BetterReflection();
-
-        return $betterReflection->reflector()->reflectClass($className);
+        return new ReflectionClass($className);
     }
 
     /**
      * @codeCoverageIgnore
+     *
+     * @phpstan-param class-string $className
      *
      * @param string $className
      *
@@ -39,7 +40,7 @@ class ReflectionHelper implements ReflectionHelperInterface
     {
         $targetReflection = $this->getReflectionClassByClassName($className);
 
-        if ($targetReflection->getFileName() === null) {
+        if ($targetReflection->getFileName() === false) {
             throw new ReflectionException('Filename is not expected to be null!');
         }
 
@@ -48,6 +49,8 @@ class ReflectionHelper implements ReflectionHelperInterface
 
     /**
      * @codeCoverageIgnore
+     *
+     * @phpstan-param class-string $className
      *
      * @param string $className
      *

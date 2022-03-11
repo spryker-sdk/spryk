@@ -229,10 +229,13 @@ class BridgeMethodsSpryk extends AbstractBuilder
     }
 
     /**
+     * @phpstan-return class-string
+     *
      * @return string
      */
     protected function getSourceClassName(): string
     {
+        /** @phpstan-var class-string */
         return $this->getStringArgument(static::ARGUMENT_SOURCE_CLASS);
     }
 
