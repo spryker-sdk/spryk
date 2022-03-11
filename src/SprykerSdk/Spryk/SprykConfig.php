@@ -154,10 +154,14 @@ class SprykConfig
 
         $directories = [];
         $projectSprykDirectory = realpath($this->getRootDirectory() . 'config/spryk/' . $subDirectory);
+        $sdkSprykDirectory = realpath($this->getSdkRootDirectory() . 'config/spryk/' . $subDirectory);
         $sprykModuleDirectory = realpath($this->getSprykCorePath() . 'config/spryk/' . $subDirectory);
 
         if ($projectSprykDirectory !== false) {
             $directories[] = $projectSprykDirectory . DIRECTORY_SEPARATOR;
+        }
+        if ($sdkSprykDirectory !== false) {
+            $directories[] = $sdkSprykDirectory . DIRECTORY_SEPARATOR;
         }
         if ($sprykModuleDirectory !== false) {
             $directories[] = $sprykModuleDirectory . DIRECTORY_SEPARATOR;
@@ -172,6 +176,14 @@ class SprykConfig
     public function getRootDirectory(): string
     {
         return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSdkRootDirectory(): string
+    {
+        return (defined('APPLICATION_SDK_DIR') ? APPLICATION_SDK_DIR : APPLICATION_ROOT_DIR) . DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -288,7 +300,7 @@ class SprykConfig
             static::NAME_PACKAGE,
         ]);
 
-        return $this->getRootDirectory() . $sprykRelativePath . DIRECTORY_SEPARATOR;
+        return $this->getSdkRootDirectory() . $sprykRelativePath . DIRECTORY_SEPARATOR;
     }
 
     protected function get(string $key, $defaultValue = null)

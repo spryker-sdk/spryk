@@ -2,12 +2,14 @@
 <?php
 
 define('SPRYKER_ROOT', getcwd());
-echo SPRYKER_ROOT . PHP_EOL;
+$rootDir = getenv('APPLICATION_ROOT_DIR');
+if ($rootDir) {
+    define('APPLICATION_ROOT_DIR', realpath($rootDir));
+}
 $autoloadPaths = [];
 $sdkDir = getenv('APPLICATION_SDK_DIR');
 if ($sdkDir) {
     define('APPLICATION_SDK_DIR', $sdkDir);
-    echo APPLICATION_SDK_DIR . PHP_EOL;
     $autoloadPaths[] = APPLICATION_SDK_DIR . '/vendor/autoload.php';
 }
 $autoloadPaths[] = SPRYKER_ROOT . '/vendor/autoload.php';
@@ -23,9 +25,6 @@ foreach ($autoloadPaths as $file) {
         break;
     }
 }
-echo SPRYKER_COMPOSER_INSTALL . PHP_EOL;
-echo APPLICATION_ROOT_DIR . PHP_EOL;
-unset($file);
 
 if (!defined('SPRYKER_COMPOSER_INSTALL')) {
     throw new \Exception('Could not resolve path to vendor/autoload.php');
