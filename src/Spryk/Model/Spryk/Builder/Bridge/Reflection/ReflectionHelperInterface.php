@@ -12,14 +12,18 @@ use ReflectionClass;
 interface ReflectionHelperInterface
 {
     /**
-     * @param class-string|string $className
+     * @phpstan-param class-string $className
+     *
+     * @param string $className
      *
      * @return \ReflectionClass
      */
     public function getReflectionClassByClassName(string $className): ReflectionClass;
 
     /**
-     * @param class-string|string $className
+     * @phpstan-param class-string $className
+     *
+     * @param string $className
      *
      * @throws \SprykerSdk\Spryk\Exception\ReflectionException
      *
@@ -28,7 +32,9 @@ interface ReflectionHelperInterface
     public function getFilePathByClassName(string $className): string;
 
     /**
-     * @param class-string|string $className
+     * @phpstan-param class-string $className
+     *
+     * @param string $className
      *
      * @throws \SprykerSdk\Spryk\Exception\EmptyFileException
      *

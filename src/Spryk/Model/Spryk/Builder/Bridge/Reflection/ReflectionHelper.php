@@ -14,7 +14,9 @@ use SprykerSdk\Spryk\Exception\ReflectionException;
 class ReflectionHelper implements ReflectionHelperInterface
 {
     /**
-     * @param class-string|string $className
+     * @phpstan-param class-string $className
+     *
+     * @param string $className
      *
      * @return \ReflectionClass
      */
@@ -26,7 +28,9 @@ class ReflectionHelper implements ReflectionHelperInterface
     /**
      * @codeCoverageIgnore
      *
-     * @param class-string|string $className
+     * @phpstan-param class-string $className
+     *
+     * @param string $className
      *
      * @throws \SprykerSdk\Spryk\Exception\ReflectionException
      *
@@ -46,7 +50,9 @@ class ReflectionHelper implements ReflectionHelperInterface
     /**
      * @codeCoverageIgnore
      *
-     * @param class-string|string $className
+     * @phpstan-param class-string $className
+     *
+     * @param string $className
      *
      * @throws \SprykerSdk\Spryk\Exception\EmptyFileException
      *
