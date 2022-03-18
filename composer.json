@@ -7,7 +7,6 @@
         "php": ">=7.4",
         "ext-dom": "*",
         "ext-simplexml": "*",
-        "jfcherng/php-diff": "^6.11",
         "ramsey/uuid": "^4.2",
         "spryker/config": "^3.5.0",
         "spryker/console": "^4.1.0",
@@ -22,6 +21,7 @@
         "symfony/proxy-manager-bridge": "^5.4.0",
         "symfony/runtime": "^5.3.0 || ^6.0.0",
         "symfony/yaml": "^5.0.0 || ^6.0.0",
+        "symplify/autowire-array-parameter": "^9.3.0",
         "twig/twig": "^3.0.0"
     },
     "require-dev": {
