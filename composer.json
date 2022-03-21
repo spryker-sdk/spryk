@@ -7,7 +7,6 @@
         "ext-dom": "*",
         "ext-simplexml": "*",
         "jfcherng/php-diff": "^6.11",
-        "nikic/php-parser": "*",
         "ondrejmirtes/better-reflection": "*",
         "php": ">=7.4",
         "spryker/config": "^3.5.0",
@@ -24,6 +23,7 @@
     },
     "require-dev": {
         "codeception/codeception": "*",
+        "codeception/module-symfony": "*",
         "nikic/php-parser": "*",
         "phpstan/phpstan": "*",
         "phpunit/phpunit": "*",
