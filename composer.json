@@ -86,8 +86,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
+        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/SprykerSdk tests/",
+        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/SprykerSdk tests/",
         "stan": "phpstan analyse",
         "test": "codecept run",
         "lowest": "validate-prefer-lowest -m",
