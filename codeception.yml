@@ -31,7 +31,7 @@ suites:
             enabled:
                 - Symfony:
                       part: services
-                      app_path: './src'
+                      app_path: '/src'
                       kernel_class: 'SprykerSdk\Kernel'
                       environment: 'test'
                 - SprykerSdkTest\Module\SprykHelper:
