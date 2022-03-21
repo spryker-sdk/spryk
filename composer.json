@@ -14,7 +14,6 @@
         "spryker/doctrine-inflector": "^1.1.0",
         "spryker/kernel": "^3.52.0",
         "spryker/laminas": "^1.0.0",
-        "symfony/cache": "^5.4",
         "symfony/console": "^5.2.5 || ^6.0.0",
         "symfony/filesystem": "^5.4.6 || ^6.0.0",
         "symfony/finder": "^5.2.0 || ^6.0.0",

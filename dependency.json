@@ -2,7 +2,6 @@
     "include": {
         "symfony/console": "Needed instead of spryker/symfony",
         "symfony/runtime": "Needed instead of spryker/symfony",
-        "symfony/cache": "Needed instead of spryker/symfony",
         "symfony/filesystem": "Needed instead of spryker/symfony",
         "symfony/proxy-manager-bridge": "Needed instead of spryker/symfony",
         "symfony/finder": "Needed instead of spryker/symfony",
@@ -14,7 +13,7 @@
     "include-dev": {
         "spryker/checkout-extension": "CheckoutExtension module is needed to create CheckoutExtension specific classes.",
         "codeception/module-symfony": "ModuleSymfony module is needed to run test",
-        "spryker/code-sniffe": "CodeSniffer module is needed to check codestyle.",
+        "spryker/code-sniffer": "CodeSniffer module is needed to check codestyle.",
         "spryker/data-import": "DataImport module is needed to create DataImport specific classes.",
         "spryker/glue-application-extension": "GlueApplicationExtension is needed to create Glue API specific classes.",
         "spryker/oms": "Oms is needed to create Oms specific classes.",
