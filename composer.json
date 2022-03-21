@@ -52,6 +52,11 @@
         "spryker/sales-payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
         "spryker/step-engine": "If you want to use Payment spryks, minimum required version: 1.0.0"
     },
+    "autoload": {
+        "psr-4": {
+            "SprykerSdk\\": "src/SprykerSdk/"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "SprykerSdkTest\\": "tests/SprykerSdkTest/",

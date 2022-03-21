@@ -33,8 +33,8 @@ return function (ContainerConfigurator $configurator) {
             ->autowire()
             ->autoconfigure();
 
-    $services->load('SprykerSdk\\', '../src/')
-        ->exclude('../src/{DependencyInjection,Tests,Kernel.php}');
+    $services->load('SprykerSdk\\', '../src/SprykerSdk/')
+        ->exclude('../src/SprykerSdk/{DependencyInjection,Tests,Kernel.php}');
 
     // Make SprykFactory public for instantiating the SprykFacade from external packages like `spryker-sdk/spryk-gui`
     $services->get(SprykFactory::class)->public();
