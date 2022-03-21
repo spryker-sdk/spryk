@@ -12,12 +12,24 @@ use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtend
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
 
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
+
+    protected function configureRoutes(RoutingConfigurator $routes): void
+    {
+    }
+
+    protected function configureContainer(ContainerConfigurator $configurator): void
+    {
+        $function = require_once __DIR__ . '/../config/services.php';
+        $function($configurator);
+    }
 
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
