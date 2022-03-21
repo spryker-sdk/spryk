@@ -2,6 +2,7 @@
     "include": {
         "symfony/console": "Needed instead of spryker/symfony",
         "symfony/runtime": "Needed instead of spryker/symfony",
+        "symfony/cache": "Needed instead of spryker/symfony",
         "symfony/filesystem": "Needed instead of spryker/symfony",
         "symfony/proxy-manager-bridge": "Needed instead of spryker/symfony",
         "symfony/finder": "Needed instead of spryker/symfony",

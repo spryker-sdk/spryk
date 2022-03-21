@@ -278,7 +278,7 @@ class SprykConfig
     {
         return [
             'debug' => false,
-            'cache' => __DIR__ . '/../../var/cache/twig',
+            'cache' => __DIR__ . '/../../../var/cache/twig',
         ];
     }
 }
