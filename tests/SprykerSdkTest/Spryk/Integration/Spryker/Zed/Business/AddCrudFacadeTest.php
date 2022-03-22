@@ -17,17 +17,4 @@ use SprykerSdkTest\SprykIntegrationTester;
 class AddCrudFacadeTest extends Unit
 {
     protected SprykIntegrationTester $tester;
-
-    /**
-     * @return void
-     */
-    public function testAddCrudFacade(): void
-    {
-        $this->markTestSkipped('Add tests when it can be done. The file does not do anything yet');
-
-        $this->tester->run($this, [
-            '--module' => 'NewModuleType',
-            '--organization' => 'TestOrganization',
-        ]);
-    }
 }
