@@ -23,34 +23,38 @@ class Kernel extends BaseKernel
 
     /**
      * @param \Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator $routes
+     *
+     * @return void
      */
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
         $configDir = $this->getConfigDir();
-        $routes->import($configDir.'/{routes}/'.$this->environment.'/*.yaml');
-        $routes->import($configDir.'/{routes}/*.yaml');
+        $routes->import($configDir . '/{routes}/' . $this->environment . '/*.yaml');
+        $routes->import($configDir . '/{routes}/*.yaml');
 
-        if (is_file($configDir.'/routes.yaml')) {
-            $routes->import($configDir.'/routes.yaml');
+        if (is_file($configDir . '/routes.yaml')) {
+            $routes->import($configDir . '/routes.yaml');
         } else {
-            $routes->import($configDir.'/{routes}.php');
+            $routes->import($configDir . '/{routes}.php');
         }
     }
 
     /**
-     * @param \Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $configurator
+     * @param \Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $container
+     *
+     * @return void
      */
-    protected function configureContainer(ContainerConfigurator $configurator): void
+    protected function configureContainer(ContainerConfigurator $container): void
     {
         $configDir = $this->getConfigDir();
-        $configurator->import($configDir.'/{packages}/*.yaml');
-        $configurator->import($configDir.'/{packages}/'.$this->environment.'/*.yaml');
+        $container->import($configDir . '/{packages}/*.yaml');
+        $container->import($configDir . '/{packages}/' . $this->environment . '/*.yaml');
 
-        if (is_file($configDir.'/services.yaml')) {
-            $configurator->import($configDir.'/services.yaml');
-            $configurator->import($configDir.'/{services}_'.$this->environment.'.yaml');
+        if (is_file($configDir . '/services.yaml')) {
+            $container->import($configDir . '/services.yaml');
+            $container->import($configDir . '/{services}_' . $this->environment . '.yaml');
         } else {
-            $configurator->import($configDir.'/{services}.php');
+            $container->import($configDir . '/{services}.php');
         }
     }
 
