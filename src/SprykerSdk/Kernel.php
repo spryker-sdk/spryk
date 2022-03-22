@@ -10,11 +10,13 @@ namespace SprykerSdk;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtender;
 use SprykerSdk\Spryk\Model\Spryk\Configuration\Extender\SprykConfigurationExtenderPluginInterface;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use Symfony\Component\Routing\RouteCollectionBuilder;
 use Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
 
 class Kernel extends BaseKernel
@@ -22,21 +24,10 @@ class Kernel extends BaseKernel
     use MicroKernelTrait;
 
     /**
-     * @param \Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator $routes
-     *
-     * @return void
+     * @param \Symfony\Component\Routing\RouteCollectionBuilder $routes
      */
-    protected function configureRoutes(RoutingConfigurator $routes): void
+    protected function configureRoutes(RouteCollectionBuilder $routes)
     {
-        $configDir = $this->getConfigDir();
-        $routes->import($configDir . '/{routes}/' . $this->environment . '/*.yaml');
-        $routes->import($configDir . '/{routes}/*.yaml');
-
-        if (is_file($configDir . '/routes.yaml')) {
-            $routes->import($configDir . '/routes.yaml');
-        } else {
-            $routes->import($configDir . '/{routes}.php');
-        }
     }
 
     /**
@@ -44,17 +35,31 @@ class Kernel extends BaseKernel
      *
      * @return void
      */
-    protected function configureContainer(ContainerConfigurator $container): void
+//    protected function configureContainer(ContainerConfigurator $container): void
+//    {
+//        $configDir = $this->getConfigDir();
+//        $container->import($configDir . '/{packages}/*.yaml');
+//        $container->import($configDir . '/{packages}/' . $this->environment . '/*.yaml');
+//
+//        if (is_file($configDir . '/services.yaml')) {
+//            $container->import($configDir . '/services.yaml');
+//            $container->import($configDir . '/{services}_' . $this->environment . '.yaml');
+//        } else {
+//            $container->import($configDir . '/{services}.php');
+//        }
+//    }
+    protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader): void
     {
+
         $configDir = $this->getConfigDir();
-        $container->import($configDir . '/{packages}/*.yaml');
-        $container->import($configDir . '/{packages}/' . $this->environment . '/*.yaml');
+        $loader->import($configDir . '/packages/framework.yaml');
+        $loader->import($configDir . '/packages/' . $this->environment . '/framework.yaml');
 
         if (is_file($configDir . '/services.yaml')) {
-            $container->import($configDir . '/services.yaml');
-            $container->import($configDir . '/{services}_' . $this->environment . '.yaml');
+            $loader->import($configDir . '/services.yaml');
+            $loader->import($configDir . '/services_' . $this->environment . '.yaml');
         } else {
-            $container->import($configDir . '/{services}.php');
+            $loader->import($configDir . '/services.php');
         }
     }
 
@@ -93,6 +98,19 @@ class Kernel extends BaseKernel
                 $configExtenderChain->addMethodCall('addConfigExtender', [
                     new Definition($serviceId),
                 ]);
+            }
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function registerBundles(): iterable
+    {
+        $contents = require $this->getProjectDir().'/config/bundles.php';
+        foreach ($contents as $class => $envs) {
+            if ($envs[$this->environment] ?? $envs['all'] ?? false) {
+                yield new $class();
             }
         }
     }
