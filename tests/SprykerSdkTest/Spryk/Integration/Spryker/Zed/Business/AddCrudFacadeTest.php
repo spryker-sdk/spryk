@@ -29,7 +29,7 @@ class AddCrudFacadeTest extends Unit
     public function testFilesExist(): void
     {
         $this->tester->run($this, [
-            '--organization' => 'TestOrganization',
+            '--module' => 'FooBar',
         ]);
     }
 }
