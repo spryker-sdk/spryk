@@ -1,5 +1,5 @@
 spryk: wrapper
-description: "Adds a CRUD code for a Domain Entity."
+description: "Adds CRUD code for a Domain Entity."
 priority: 1
 mode: both
 level: 2
