@@ -22,4 +22,14 @@ use SprykerSdkTest\SprykIntegrationTester;
 class AddCrudFacadeTest extends Unit
 {
     protected SprykIntegrationTester $tester;
+
+    /**
+     * @return void
+     */
+    public function testAddCrudFacade(): void
+    {
+        $this->tester->run($this, [
+            '--organization' => 'TestOrganization',
+        ]);
+    }
 }
