@@ -26,7 +26,7 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testAddCrudFacade(): void
+    public function testFilesExist(): void
     {
         $this->tester->run($this, [
             '--organization' => 'TestOrganization',
