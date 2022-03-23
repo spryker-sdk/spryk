@@ -67,7 +67,7 @@ class {{ domainEntity }}Creator implements {{ domainEntity }}CreatorInterface
      * @return \Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer
      */
     public function create{{ domainEntity }}Collection(
-        {{ domainEntity }}CollectionRequestTransfer $paymentMethodCollectionRequestTransfer
+        {{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
     ): {{ domainEntity }}CollectionResponseTransfer {
         if (${{ domainEntity | lcfirst }}CollectionRequestTransfer->isTransactional()) {
             return $this->transactionalCreate{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
@@ -89,7 +89,7 @@ class {{ domainEntity }}Creator implements {{ domainEntity }}CreatorInterface
         // Validate ALL of the entities before, if one is invalid break and return errors!
         $errorTransfers = $this->{{ domainEntity | lcfirst }}Validator->validateCollectionTransactional(${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity }}s());
 
-        if ($errors) {
+        if ($errorTransfers) {
             return ${{ domainEntity | lcfirst }}CollectionResponseTransfer
                 ->set{{ domainEntity }}s(${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity }}s())
                 ->setErrors($errorTransfers);
@@ -101,7 +101,7 @@ class {{ domainEntity }}Creator implements {{ domainEntity }}CreatorInterface
             // Run plugins
             $this->execute{{ domainEntity }}PreSavePlugins(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
 
-            ${{ domainEntity | lcfirst }}CollectionTransfer = new \Generated\Shared\Transfer\${{ domainEntity }}CollectionTransfer();
+            ${{ domainEntity | lcfirst }}CollectionTransfer = new \Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer();
 
             foreach (${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity }}s() as ${{ domainEntity | lcfirst }}Transfer) {
                 ${{ domainEntity | lcfirst }}CollectionTransfer->add{{ domainEntity }}($this->entityManager->update{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer));
@@ -116,8 +116,7 @@ class {{ domainEntity }}Creator implements {{ domainEntity }}CreatorInterface
             return ${{ domainEntity | lcfirst }}CollectionResponseTransfer;
         });
 
-        return ${{ domainEntity | lcfirst }}CollectionResponseTransfer
-            ->set{{ domainEntity }}s(${{ domainEntity | lcfirst }}Transfers);
+        return ${{ domainEntity | lcfirst }}CollectionResponseTransfer;
     }
 
     /**
@@ -137,7 +136,6 @@ class {{ domainEntity }}Creator implements {{ domainEntity }}CreatorInterface
 
         foreach (${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity }}s() as ${{ domainEntity | lcfirst }}Transfer) {
             // Check each SINGLE item before it is saved for errors, if it has some continue with the next one.
-
             if (isset($errorTransfers[$this->{{ domainEntity }}IdentifierBuilder->buildIdentifier(${{ domainEntity | lcfirst }}Transfer)])) {
                 ${{ domainEntity | lcfirst }}CollectionResponseTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
 
