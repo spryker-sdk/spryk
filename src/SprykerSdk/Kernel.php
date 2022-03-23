@@ -50,7 +50,8 @@ class Kernel extends BaseKernel
 //    }
 
     /**
-     * @return void
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $c
+     * @param \Symfony\Component\Config\Loader\LoaderInterface $loader
      */
     protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader): void
     {
@@ -106,9 +107,7 @@ class Kernel extends BaseKernel
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @return void
+     * @return iterable
      */
     public function registerBundles(): iterable
     {
