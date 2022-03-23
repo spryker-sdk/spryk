@@ -1,0 +1,19 @@
+${{ domainEntity | lcfirst }}CollectionTransfer = new {{ domainEntity }}CollectionTransfer();
+${{ domainEntity | lcfirst }}Query = $this->getFactory()
+    ->create{{ domainEntity }}Query();
+    
+${{ domainEntity | lcfirst }}Entities = $this->apply{{ domainEntity }}Filters(
+    ${{ domainEntity | lcfirst }}Query,
+    ${{ domainEntity | lcfirst }}CriteriaTransfer,
+)->find();
+
+if (!${{ domainEntity | lcfirst }}Entities->count()) {
+    return ${{ domainEntity | lcfirst }}CollectionTransfer;
+}
+
+return $this->getFactory()
+    ->create{{ domainEntity }}Mapper()
+    ->map{{ domainEntity }}EntityCollectionTo{{ domainEntity }}CollectionTransfer(
+        ${{ domainEntity | lcfirst }}Entities,
+        ${{ domainEntity | lcfirst }}CollectionTransfer,
+    );
