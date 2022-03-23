@@ -46,7 +46,7 @@ postSpryks:
               className:
                   value: "{{ domainEntity }}IdentifierBuilder"
               interfaceName:
-                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierInterface"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Identifier\\{{ domainEntity }}IdentifierInterface"
               subDirectory:
                   value: "{{ domainEntity }}/Identifier"
     - AddZedBusinessFactoryMethod:
