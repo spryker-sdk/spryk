@@ -1,5 +1,5 @@
 spryk: dependencyProvider
-description: "Adds a Client dependency method to Container in *module*DependencyProvider."
+description: "Adds a Facade dependency method to the Container in the *module*DependencyProvider."
 mode: both
 
 arguments:

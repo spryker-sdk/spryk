@@ -10,6 +10,7 @@ arguments:
 
     dependentModule:
         inherit: true
+        isOptional: true
         moduleFilter:
             application: Zed
 

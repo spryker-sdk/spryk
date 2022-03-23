@@ -1,6 +1,6 @@
 spryk: wrapper
 description: "Adds new add*Plugins and get*Plugins methods and a PLUGINS_* constant to the *module*DependencyProvider."
-mode: core
+mode: both
 
 arguments:
     organization:
@@ -22,6 +22,15 @@ preSpryks:
     - AddZedDependencyProvider
 
 postSpryks:
+    # Add the add*Plugins method to the provide* method
+    - AddZedDependencyToProvideMethodInDependencyProvider:
+          arguments:
+              layer:
+                  value: Business
+              provideMethod:
+                  value: "provideBusinessLayerDependencies"
+              providerMethod:
+                  value: "add{{ type | ucfirst }}Plugins"
     # Add the public const PLUGINS_{{ type }} constant to the DependencyProvider
     - AddZedDependencyProviderConstant:
           arguments:
@@ -29,8 +38,7 @@ postSpryks:
                 value: "PLUGINS_{{ type | camelCaseToUnderscore | upper }}"
               value:
                 value: "PLUGINS_{{ type | camelCaseToUnderscore | upper }}"
-    # Add the add{{ type }}Plugins method to the DependencyProvider
-    - AddZedDependencyAddPluginsDependencyProviderMethod
+    # Add the get{{ type }}Plugins method to the DependencyProvider
     - AddMethod:
           arguments:
               method:
@@ -41,3 +49,5 @@ postSpryks:
                   value: "return [];"
               target:
                   value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+    # Add the add{{ type }}Plugins method to the DependencyProvider
+    - AddZedDependencyAddPluginsDependencyProviderMethod

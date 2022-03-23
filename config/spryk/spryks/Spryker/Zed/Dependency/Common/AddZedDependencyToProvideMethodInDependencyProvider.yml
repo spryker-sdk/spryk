@@ -1,0 +1,32 @@
+spryk: dependencyProvider
+description: "Adds a add dependency method to the Container in the *module*DependencyProvider::{{ providerMethod }}."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    # Defines the provide*LayerDependencies method that needs to be created
+    layer: ~
+
+    # Name of the provideXy method. Example: provideBusinessLayerDependencies
+    provideMethod: ~
+
+    # Name of the method that provides a dependency to the container. Example: addFooBarPlugins
+    providerMethod: ~
+
+    template:
+        value: Zed/Dependency/Common/ZedDependencyDependencyProviderContainerAddMethod.php.twig
+
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+    # Add the DependencyProvider
+    - AddZedDependencyProvider
+    # Add the provide*LayerDependencies
+    - AddZedDependencyProviderProvideMethod
