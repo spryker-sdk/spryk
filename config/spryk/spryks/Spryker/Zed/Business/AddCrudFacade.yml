@@ -60,3 +60,15 @@ postSpryks:
                 inherit: true
             body:
                 value: Zed/Persistence/Repository/DomainEntity/HasMethod.php.twig
+    - AddZedPersistenceRepositoryMethod:
+        arguments:
+            repositoryMethod:
+                value: "get{{ domainEntity }}DeleteCollection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionTransfer"
+            domainEntity:
+                inherit: true
+            body:
+                value: Zed/Persistence/Repository/DomainEntity/GetDeleteCollectionMethod.php.twig
