@@ -30,11 +30,11 @@ class Kernel extends BaseKernel
     {
     }
 
-    /**
-     * @param \Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $container
-     *
-     * @return void
-     */
+//    /**
+//     * @param \Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $container
+//     *
+//     * @return void
+//     */
 //    protected function configureContainer(ContainerConfigurator $container): void
 //    {
 //        $configDir = $this->getConfigDir();
