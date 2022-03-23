@@ -35,7 +35,7 @@ preSpryks:
               constantName:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | uppercase }}_EXTENDER"
               output:
-                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\Extender\{{ domainEntity }}ExtenderPluginInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Extender\\{{ domainEntity }}ExtenderPluginInterface[]"
     - AddZedBusinessFactoryGetProvidedDependencyMethod:
           arguments:
               factoryMethod:
