@@ -11,6 +11,7 @@ arguments:
         default: Spryker
 
     layer: ~
+
     provideMethod:
         value: "provide{{ layer }}LayerDependencies"
 

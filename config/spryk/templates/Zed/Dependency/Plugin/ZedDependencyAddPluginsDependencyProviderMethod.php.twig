@@ -1,0 +1,12 @@
+
+    /**
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function {{ providerMethod }}(\Spryker\Zed\Kernel\Container $container): \Spryker\Zed\Kernel\Container
+    {
+        $container->set(static::PLUGINS_{{ type | camelCaseToUnderscore | upper }}, function (\Spryker\Zed\Kernel\Container $container) {
+            return $this->get{{ type | ucfirst }}Plugins();
+        });
+
+        return $container;
+    }

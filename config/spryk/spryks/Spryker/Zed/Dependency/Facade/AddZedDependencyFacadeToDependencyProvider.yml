@@ -1,5 +1,5 @@
 spryk: dependencyProvider
-description: "Adds a Client dependency method to Container in *module*DependencyProvider."
+description: "Adds a Facade dependency method to the Container in the *module*DependencyProvider."
 mode: both
 
 arguments:
@@ -20,7 +20,7 @@ arguments:
         value: "add{{ dependentModule }}Facade"
 
     template:
-        value: Zed/Dependency/Facade/ZedDependencyFacadeToDependencyProvider.php.twig
+        value: Zed/Dependency/Common/ZedDependencyDependencyProviderContainerAddMethod.php.twig
 
     target:
         value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
