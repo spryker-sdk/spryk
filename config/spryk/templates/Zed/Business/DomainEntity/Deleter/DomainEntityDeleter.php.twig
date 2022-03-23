@@ -13,12 +13,12 @@ use {{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInt
 class {{ domainEntity }}Deleter implements {{ domainEntity }}DeleterInterface
 {
     use TransactionTrait;
-    
+
     /**
      * @var \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInterface
      */
     protected {{ module }}EntityManagerInterface ${{ module | lcfirst }}EntityManager;
-    
+
     /**
      * @var \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}RepositoryInterface
      */
@@ -35,7 +35,7 @@ class {{ domainEntity }}Deleter implements {{ domainEntity }}DeleterInterface
         $this->{{ module | lcfirst }}EntityManager = ${{ module | lcfirst }}EntityManager;
         $this->{{ module | lcfirst }}Repository = ${{ module | lcfirst }}Repository;
     }
-    
+
     /**
      * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
      *
@@ -51,7 +51,7 @@ class {{ domainEntity }}Deleter implements {{ domainEntity }}DeleterInterface
 
         return $this->executeDelete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);
     }
-    
+
     /**
      * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
      *
@@ -60,7 +60,7 @@ class {{ domainEntity }}Deleter implements {{ domainEntity }}DeleterInterface
     public function executeDelete{{ domainEntity }}Collection({{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer): {{ domainEntity }}CollectionResponseTransfer
     {
         ${{ domainEntity | lcfirst }}CollectionResponseTransfer = new {{ domainEntity }}CollectionResponseTransfer();
-        
+
         try {
             ${{ domainEntity | lcfirst }}CollectionTransfer = $this->repository->get{{ domainEntity }}DeleteCollection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);
             $this->entityManager->set{{ domainEntity }}IsActiveFalse(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);

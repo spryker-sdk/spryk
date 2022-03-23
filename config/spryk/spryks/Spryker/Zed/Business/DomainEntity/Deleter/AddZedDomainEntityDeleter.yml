@@ -18,6 +18,9 @@ arguments:
 
     domainEntity: ~
 
+    className:
+        value: "{{ domainEntity }}Deleter"
+
     template:
         value: Zed/Business/DomainEntity/Deleter/DomainEntityDeleter.php.twig
 
