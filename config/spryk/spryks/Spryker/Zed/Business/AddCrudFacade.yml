@@ -48,3 +48,15 @@ postSpryks:
                 inherit: true
             body:
                 value: Zed/Persistence/Repository/DomainEntity/ApplyFiltersMethod.php.twig
+    - AddZedPersistenceRepositoryMethod:
+        arguments:
+            repositoryMethod:
+                value: "has{{ domainEntity }}"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer"
+            output:
+                value: "bool"
+            domainEntity:
+                inherit: true
+            body:
+                value: Zed/Persistence/Repository/DomainEntity/HasMethod.php.twig
