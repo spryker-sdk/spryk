@@ -72,3 +72,17 @@ postSpryks:
                 inherit: true
             body:
                 value: Zed/Persistence/Repository/DomainEntity/GetDeleteCollectionMethod.php.twig
+    - AddZedPersistenceRepositoryMethod:
+        arguments:
+            repositoryMethod:
+                value: "apply{{ domainEntity }}DeleteFilters"
+            input:
+                value:
+                    - "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query ${{ domainEntity | lcfirst }}Query"
+                    - "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer"
+            output:
+                value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
+            domainEntity:
+                inherit: true
+            body:
+                value: Zed/Persistence/Repository/DomainEntity/ApplyDeleteFiltersMethod.php.twig
