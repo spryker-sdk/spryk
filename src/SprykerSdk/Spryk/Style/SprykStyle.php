@@ -74,7 +74,11 @@ class SprykStyle implements SprykStyleInterface
         $this->newLine();
 
         $message = sprintf('<bg=green;options=bold> Build %s Spryk</>', $sprykDefinition->getSprykName());
-        $messageLengthWithoutDecoration = Helper::width(Helper::removeDecoration($this->output->getFormatter(), $message));
+
+        $messageLengthWithoutDecoration = (method_exists(Helper::class, 'width')) ?
+            Helper::width(Helper::removeDecoration($this->output->getFormatter(), $message)) :
+            Helper::strlenWithoutDecoration($this->output->getFormatter(), $message);
+
         $messageLength = $this->lineLength - $messageLengthWithoutDecoration;
 
         $this->writeln([
