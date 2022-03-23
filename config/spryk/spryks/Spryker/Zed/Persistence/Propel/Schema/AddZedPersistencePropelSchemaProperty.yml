@@ -1,4 +1,4 @@
-spryk: transferProperty
+spryk: schema
 description: "Adds a propel schema to *module*.schema.xml in the Zed application."
 mode: both
 level: 2
