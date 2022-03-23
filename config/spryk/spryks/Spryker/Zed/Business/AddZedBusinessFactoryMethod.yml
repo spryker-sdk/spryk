@@ -46,7 +46,7 @@ postSpryks:
               className:
                   value: "{{ domainEntity }}IdentifierBuilder"
               interfaceName:
-                  value: "\{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierInterface"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierInterface"
               subDirectory:
                   value: "{{ domainEntity }}/Identifier"
     - AddZedBusinessFactoryMethod:
@@ -56,7 +56,7 @@ postSpryks:
               className:
                   value: "{{ domainEntity }}Validator"
               interfaceName:
-                  value: "\{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorInterface"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorInterface"
               subDirectory:
                   value: "{{ domainEntity }}/Validator"
               dependencyMethods:
@@ -69,7 +69,7 @@ postSpryks:
               factoryMethod:
                   value: "get{{ domainEntity }}CreateValidatorRules"
               interfaceName:
-                  value: "\{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorRuleInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
               body:
                   value: "return [];"
     - AddZedBusinessFactoryMethod:
@@ -79,7 +79,7 @@ postSpryks:
               className:
                   value: "{{ domainEntity }}Validator"
               interfaceName:
-                  value: "\{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorInterface"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorInterface"
               subDirectory:
                   value: "{{ domainEntity }}/Validator"
               dependencyMethods:
@@ -92,6 +92,6 @@ postSpryks:
               factoryMethod:
                   value: "get{{ domainEntity }}UpdateValidatorRules"
               interfaceName:
-                  value: "\{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorRuleInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
               body:
                   value: "return [];"

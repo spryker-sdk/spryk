@@ -15,7 +15,7 @@ arguments:
     output: ~
 
     body:
-        value: "return $this->getProvidedDependency(\{{ organization }}\Zed\{{ module }}\{{ module }}DependencyProvider::{{ constantName }});"
+        value: "return $this->getProvidedDependency(\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider::{{ constantName }});"
 
     factoryMethod:
         callbackOnly: true
@@ -35,7 +35,7 @@ preSpryks:
               constantName:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | uppercase }}_EXTENDER"
               output:
-                  value: "\{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Extender\{{ domainEntity }}ExtenderPluginInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\Extender\{{ domainEntity }}ExtenderPluginInterface[]"
     - AddZedBusinessFactoryGetProvidedDependencyMethod:
           arguments:
               factoryMethod:
@@ -43,7 +43,7 @@ preSpryks:
               constantName:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | uppercase }}_PRE_CREATE"
               output:
-                  value: "\{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PreSaverPluginInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PreSaverPluginInterface[]"
     - AddZedBusinessFactoryGetProvidedDependencyMethod:
           arguments:
               factoryMethod:
@@ -51,7 +51,7 @@ preSpryks:
               constantName:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | uppercase }}_POST_CREATE"
               output:
-                  value: "\{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PostSaverPluginInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PostSaverPluginInterface[]"
     - AddZedBusinessFactoryGetProvidedDependencyMethod:
           arguments:
               factoryMethod:
@@ -59,7 +59,7 @@ preSpryks:
               constantName:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | uppercase }}_PRE_UPDATE"
               output:
-                  value: "\{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PreSaverPluginInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PreSaverPluginInterface[]"
     - AddZedBusinessFactoryGetProvidedDependencyMethod:
           arguments:
               factoryMethod:
@@ -67,7 +67,7 @@ preSpryks:
               constantName:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | uppercase }}_POST_UPDATE"
               output:
-                  value: "\{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PostSaverPluginInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PostSaverPluginInterface[]"
     - AddZedBusinessFactoryGetProvidedDependencyMethod:
           arguments:
               factoryMethod:
@@ -75,7 +75,7 @@ preSpryks:
               constantName:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | uppercase }}_UPDATE_VALIDATOR"
               output:
-                  value: "\{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorRulePluginInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
     - AddZedBusinessFactoryGetProvidedDependencyMethod:
           arguments:
               factoryMethod:
@@ -83,4 +83,4 @@ preSpryks:
               constantName:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | uppercase }}_CREATE_VALIDATOR"
               output:
-                  value: "\{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorRulePluginInterface[]"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
