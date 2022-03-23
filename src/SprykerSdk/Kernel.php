@@ -13,9 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
-use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 use Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
 
@@ -25,8 +23,10 @@ class Kernel extends BaseKernel
 
     /**
      * @param \Symfony\Component\Routing\RouteCollectionBuilder $routes
+     *
+     * @return void
      */
-    protected function configureRoutes(RouteCollectionBuilder $routes)
+    protected function configureRoutes(RouteCollectionBuilder $routes): void
     {
     }
 
@@ -48,9 +48,12 @@ class Kernel extends BaseKernel
 //            $container->import($configDir . '/{services}.php');
 //        }
 //    }
+
+    /**
+     * @return void
+     */
     protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader): void
     {
-
         $configDir = $this->getConfigDir();
         $loader->import($configDir . '/packages/framework.yaml');
         $loader->import($configDir . '/packages/' . $this->environment . '/framework.yaml');
@@ -103,11 +106,13 @@ class Kernel extends BaseKernel
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
+     *
+     * @return void
      */
     public function registerBundles(): iterable
     {
-        $contents = require $this->getProjectDir().'/config/bundles.php';
+        $contents = require $this->getProjectDir() . '/config/bundles.php';
         foreach ($contents as $class => $envs) {
             if ($envs[$this->environment] ?? $envs['all'] ?? false) {
                 yield new $class();
