@@ -1,0 +1,33 @@
+spryk: constant
+description: "Adds a dependency constant to the *module*DependencyProvider."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
+
+    dependentModule:
+        inherit: true
+        isOptional: true
+        moduleFilter:
+            application: Zed
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    name: ~
+
+    value: ~
+
+    visibility:
+        value: "public"
+
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+
+preSpryks:
+    - AddZedDependencyProvider
+

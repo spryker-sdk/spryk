@@ -55,7 +55,13 @@ class ArgumentListGenerator implements ArgumentListGeneratorInterface
         $dataDump = Yaml::dump($sprykDefinitions, 2, 2);
         $dataDump = $this->getFileDescriptionComment() . $dataDump;
 
-        $result = file_put_contents($this->config->getArgumentListFilePath(), $dataDump);
+        $filePath = $this->config->getArgumentListFilePath();
+
+        if (!is_dir(dirname($filePath))) {
+            mkdir(dirname($filePath), 0777, true);
+        }
+
+        $result = file_put_contents($filePath, $dataDump);
 
         if ($result !== false) {
             return $result;

@@ -22,7 +22,10 @@ arguments:
         value: Zed/Business/DomainEntity/Deleter/DomainEntityDeleter.php.twig
 
     targetFilename:
-        value: "src/{{ organization }}/Zed/{{ module }}/Business/{{ domainEntity }}/Deleter/{{ domainEntity }}Deleter.php"
+        value: "{{ domainEntity }}Deleter.php"
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Business/{{ domainEntity }}/Deleter/"
 
 preSpryks:
     - AddModule
