@@ -30,6 +30,12 @@ class AddCrudFacadeTest extends Unit
     {
         $this->tester->run($this, [
             '--module' => 'FooBar',
+            '--domainEntity' => 'FooBarEntity',
         ]);
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/FooBarEntity/Deleter/FooBarEntityDeleter.php',
+        );
     }
 }
