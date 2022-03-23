@@ -52,6 +52,8 @@ class Kernel extends BaseKernel
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $c
      * @param \Symfony\Component\Config\Loader\LoaderInterface $loader
+     *
+     * @return void
      */
     protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader): void
     {
