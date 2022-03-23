@@ -25,4 +25,4 @@ arguments:
         value: "src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/{{ module | underscored }}.schema.xml"
 
 preSpryks:
-    - AddSharedTransferDefinition
+    - AddZedPersistencePropelSchema
