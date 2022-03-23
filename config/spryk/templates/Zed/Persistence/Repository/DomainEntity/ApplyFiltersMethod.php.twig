@@ -1,0 +1,9 @@
+${{ domainEntity | lcfirst }}ConditionsTransfer = ${{ domainEntity | lcfirst }}CriteriaTransfer->get{{ domainEntity }}Conditions();
+
+if (!${{ domainEntity | lcfirst }}ConditionsTransfer) {
+    return ${{ domainEntity | lcfirst }}Query;
+}
+
+// Apply filters here
+
+return ${{ domainEntity | lcfirst }}Query;
