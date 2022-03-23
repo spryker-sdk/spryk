@@ -22,3 +22,58 @@ preSpryks:
     - AddModule
 
 postSpryks:
+    # Add add{{ domainEntity }}CreatePreSavePlugins, get{{ domainEntity }}CreatePreSavePlugins and const for the plugins to the DependencyProvider
+    - AddZedDependencyPlugins:
+          arguments:
+              type:
+                  value: "{{ domainEntity }}CreatePreSave"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PreSavePluginInterface[]"
+
+    # Add add{{ domainEntity }}CreatePostSavePlugins, get{{ domainEntity }}CreatePostSavePlugins and const for the plugins to the DependencyProvider
+    - AddZedDependencyPlugins:
+          arguments:
+              type:
+                  value: "{{ domainEntity }}CreatePostSave"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PostSavePluginInterface[]"
+
+    # Add add{{ domainEntity }}UpdatePreSavePlugins, get{{ domainEntity }}UpdatePreSavePlugins and const for the plugins to the DependencyProvider
+    - AddZedDependencyPlugins:
+          arguments:
+              type:
+                  value: "{{ domainEntity }}UpdatePreSave"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PreSavePluginInterface[]"
+
+    # Add add{{ domainEntity }}UpdatePostSavePlugins, get{{ domainEntity }}UpdatePostSavePlugins and const for the plugins to the DependencyProvider
+    - AddZedDependencyPlugins:
+          arguments:
+              type:
+                  value: "{{ domainEntity }}UpdatePostSave"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PostSavePluginInterface[]"
+
+    # Add add{{ domainEntity }}ExpanderPlugins, get{{ domainEntity }}ExpanderPlugins and const for the plugins to the DependencyProvider
+    - AddZedDependencyPlugins:
+          arguments:
+              type:
+                  value: "{{ domainEntity }}Expander"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Expander\\{{ domainEntity }}ExpanderPluginInterface[]"
+
+    # Add add{{ domainEntity }}UpdateValidatorRulePlugins, get{{ domainEntity }}UpdateValidatorRulePlugins and const for the plugins to the DependencyProvider
+    - AddZedDependencyPlugins:
+          arguments:
+              type:
+                  value: "{{ domainEntity }}UpdateValidatorRule"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
+
+    # Add add{{ domainEntity }}CreateValidatorRulePlugins, get{{ domainEntity }}CreateValidatorRulePlugins and const for the plugins to the DependencyProvider
+    - AddZedDependencyPlugins:
+              arguments:
+                  type:
+                      value: "{{ domainEntity }}CreateValidatorRule"
+                  output:
+                      value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"

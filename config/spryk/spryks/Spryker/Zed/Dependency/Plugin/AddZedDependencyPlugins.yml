@@ -44,10 +44,10 @@ postSpryks:
               method:
                   value: "get{{ type | ucfirst }}Plugins"
               output:
-                  value: "{{ output }}"
+                  inherit: true
               body:
                   value: "return [];"
               target:
-                  value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
     # Add the add{{ type }}Plugins method to the DependencyProvider
     - AddZedDependencyAddPluginsDependencyProviderMethod

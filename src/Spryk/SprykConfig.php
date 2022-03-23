@@ -235,10 +235,10 @@ class SprykConfig
         $generatedDirectory = $this->getSprykCorePath() . static::NAME_DIRECTORY_GENERATED;
 
         if (!file_exists($generatedDirectory)) {
-            $generatedDirectory = $this->getRootDirectory() . static::NAME_DIRECTORY_GENERATED;
+            $generatedDirectory = $this->getRootDirectory() . 'data' . DIRECTORY_SEPARATOR . static::NAME_DIRECTORY_GENERATED;
         }
 
-        return realpath($generatedDirectory) . DIRECTORY_SEPARATOR . static::NAME_FILE_ARGUMENT_LIST;
+        return $generatedDirectory . DIRECTORY_SEPARATOR . static::NAME_FILE_ARGUMENT_LIST;
     }
 
     /**
