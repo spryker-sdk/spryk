@@ -1,0 +1,24 @@
+spryk: wrapper
+description: "Adds CRUD code for a Domain Entity."
+priority: 1
+mode: both
+level: 2
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+
+    domainEntity: ~
+
+excludedSpryks:
+    - AddZedPresentationTwig
+    - AddZedNavigationNode
+
+preSpryks:
+    - AddModule
+
+postSpryks:
