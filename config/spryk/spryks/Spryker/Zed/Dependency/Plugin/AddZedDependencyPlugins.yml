@@ -1,0 +1,43 @@
+spryk: wrapper
+description: "Adds new add*Plugins and get*Plugins methods and a PLUGINS_* constant to the *module*DependencyProvider."
+mode: core
+
+arguments:
+    organization:
+        inherit: true
+        default: Spryker
+
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
+
+    # Defines the "*" in add*Plugins, get*Plugins and PLUGINS_*
+    type: ~
+
+    # Defines the return type used for the get*Plugins() method in the DependencyProvider
+    output: ~
+
+preSpryks:
+    - AddZedDependencyProvider
+
+postSpryks:
+    # Add the public const PLUGINS_{{ type }} constant to the DependencyProvider
+    - AddZedDependencyProviderConstant:
+          arguments:
+              name:
+                value: "PLUGINS_{{ type | camelCaseToUnderscore | upper }}"
+              value:
+                value: "PLUGINS_{{ type | camelCaseToUnderscore | upper }}"
+    # Add the add{{ type }}Plugins method to the DependencyProvider
+    - AddZedDependencyAddPluginsDependencyProviderMethod
+    - AddMethod:
+          arguments:
+              method:
+                  value: "get{{ type | ucfirst }}Plugins"
+              output:
+                  value: "{{ output }}"
+              body:
+                  value: "return [];"
+              target:
+                  value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
