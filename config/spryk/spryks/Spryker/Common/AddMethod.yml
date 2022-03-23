@@ -12,13 +12,15 @@ arguments:
 
     method: ~
 
-    body: ~
+    body:
+        default: ""
 
     visibility:
         inherit: true
         default: public
 
-    input: ~
+    input:
+        isOptional: true
 
     output:
         default: void

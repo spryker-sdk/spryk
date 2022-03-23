@@ -1,0 +1,26 @@
+spryk: method
+description: "Adds a add*Plugins dependency method to the *module*DependencyProvider."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+        moduleFilter:
+            application: Zed
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    type: ~ # Defines the "*" in add*Plugins
+        inherit: true
+
+    providerMethod:
+        value: "add{{ type | ucfirst }}Plugins"
+
+    template:
+        value: Zed/Dependency/Plugin/ZedDependencyAddPluginsDependencyProviderMethod.php.twig
+
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider"
+
