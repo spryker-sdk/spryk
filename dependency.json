@@ -4,7 +4,8 @@
         "symfony/filesystem": "Needed instead of spryker/symfony",
         "symfony/finder": "Needed instead of spryker/symfony",
         "symfony/yaml": "Needed instead of spryker/symfony",
-        "twig/twig": "Needed instead of spryker/twig"
+        "twig/twig": "Needed instead of spryker/twig",
+        "ondrejmirtes/better-reflection": "Provides reflection wrapper used for code analysis."
     },
     "include-dev": {
         "spryker/checkout-extension": "CheckoutExtension module is needed to create CheckoutExtension specific classes.",
