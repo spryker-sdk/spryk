@@ -101,8 +101,7 @@ class {{ domainEntity }}Creator implements {{ domainEntity }}CreatorInterface
             // Run plugins
             $this->execute{{ domainEntity }}PreSavePlugins(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
 
-            $className = '\Generated\Shared\Transfer\${{ domainEntity }}CollectionTransfer';
-            ${{ domainEntity | lcfirst }}CollectionTransfer = new (str_replace('/', '\\', $className))();
+            ${{ domainEntity | lcfirst }}CollectionTransfer = new \Generated\Shared\Transfer\${{ domainEntity }}CollectionTransfer();
 
             foreach (${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity }}s() as ${{ domainEntity | lcfirst }}Transfer) {
                 ${{ domainEntity | lcfirst }}CollectionTransfer->add{{ domainEntity }}($this->entityManager->update{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer));
@@ -129,10 +128,8 @@ class {{ domainEntity }}Creator implements {{ domainEntity }}CreatorInterface
     protected function nonTransactionalCreate{{ domainEntity }}Collection(
         {{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
     ): {{ domainEntity }}CollectionResponseTransfer {
-        $classname = '\Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer';
-        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = new $classname();
-        $classname = '\Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer';
-        $valid{{ domainEntity }}CollectionTransfer = new $classname();
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = new \Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer();
+        $valid{{ domainEntity }}CollectionTransfer = new \Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer();
 
         // Validate ALL of the entities before update, if one is invalid break and return errors
         $errorTransfers = $this->{{ domainEntity | lcfirst }}Validator->validate(${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity }}s());
