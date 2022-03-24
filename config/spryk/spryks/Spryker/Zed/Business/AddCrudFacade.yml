@@ -22,6 +22,7 @@ preSpryks:
     - AddModule
 
 postSpryks:
+    - AddZedDomainEntityCreator
     # Add add{{ domainEntity }}CreatePreSavePlugins, get{{ domainEntity }}CreatePreSavePlugins and const for the plugins to the DependencyProvider
     - AddZedDependencyPlugins:
           arguments:
