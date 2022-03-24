@@ -4,12 +4,12 @@
     "description": "Spryk module",
     "license": "proprietary",
     "require": {
-        "php": ">=7.4",
+        "doctrine/inflector": "^2.0",
         "ext-dom": "*",
         "ext-simplexml": "*",
-        "doctrine/inflector": "^2.0",
         "jfcherng/php-diff": "^6.11",
         "laminas/laminas-filter": "^2.14",
+        "php": ">=7.4",
         "ramsey/uuid": "^4.2",
         "symfony/cache": "^5.4",
         "symfony/console": "^5.2.5 || ^6.0.0",
@@ -28,9 +28,10 @@
         "codeception/module-symfony": "^2.1",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.5.0",
-        "rector/rector": "*"
+        "rector/rector": "*",
+        "spryker/code-sniffer": "*"
     },
-    "suggest": {},
+    "suggest": [],
     "autoload": {
         "psr-4": {
             "SprykerSdk\\": "src/"
@@ -69,7 +70,9 @@
         "stan": "phpstan analyse",
         "test": "codecept run",
         "lowest": "validate-prefer-lowest -m",
-        "lowest-setup": "composer update --prefer-lowest --prefer-stable --prefer-dist --no-interaction && cp composer.json composer.backup && composer require --dev dereuromark/composer-prefer-lowest && mv composer.backup composer.json"
+        "lowest-setup": "composer update --prefer-lowest --prefer-stable --prefer-dist --no-interaction && cp composer.json composer.backup && composer require --dev dereuromark/composer-prefer-lowest && mv composer.backup composer.json",
+        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
+        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/"
     },
     "extra": {
         "branch-alias": {
@@ -81,8 +84,7 @@
         "process-timeout": 600,
         "sort-packages": true,
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "symfony/runtime": true
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "bin": [
