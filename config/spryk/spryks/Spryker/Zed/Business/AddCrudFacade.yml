@@ -77,3 +77,37 @@ postSpryks:
                       value: "{{ domainEntity }}CreateValidatorRule"
                   output:
                       value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
+    # Add id_{{ domainEntity }} property to "spy_{{ module }}" entity of the Persistence layer.
+    -   AddZedPersistencePropelSchemaProperty:
+            arguments:
+                name:
+                    value: "spy_{{ module | underscored }}"
+                propertyName:
+                    value: "id_{{ domainEntity | underscored }}"
+                propertyType:
+                    value: "INTEGER"
+                required:
+                    value: "true"
+                autoIncrement:
+                    value: "true"
+                primaryKey:
+                    value: "true"
+                defaultValue:
+                    value: ""
+    # Add is_active property to "spy_{{ module }}" entity of the Persistence layer.
+    -   AddZedPersistencePropelSchemaProperty:
+            arguments:
+                name:
+                    value: "spy_{{ module | underscored }}"
+                propertyName:
+                    value: "is_active"
+                propertyType:
+                    value: "BOOLEAN"
+                required:
+                    value: ""
+                autoIncrement:
+                    value: ""
+                primaryKey:
+                    value: ""
+                defaultValue:
+                    value: ""
