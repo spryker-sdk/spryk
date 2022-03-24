@@ -1,0 +1,82 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+namespace {{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Saver;
+
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer;
+use Generated\Shared\Transfer\ErrorTransfer;
+use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
+use {{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\ValidatorInterface;
+use {{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInterface;
+
+class {{ domainEntity }}Deleter implements {{ domainEntity }}DeleterInterface
+{
+    use TransactionTrait;
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInterface
+     */
+    protected {{ module }}EntityManagerInterface ${{ module | lcfirst }}EntityManager;
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}RepositoryInterface
+     */
+    protected {{ module }}RepositoryInterface ${{ module | lcfirst }}Repository;
+
+    /**
+     * @param \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInterface ${{ module | lcfirst }}EntityManager
+     * @param \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}RepositoryInterface ${{ module | lcfirst }}Repository
+     */
+    public function __construct(
+        {{ module }}EntityManagerInterface ${{ module | lcfirst }}EntityManager,
+        {{ module }}EntityManagerInterface ${{ module | lcfirst }}Repository
+    ) {
+        $this->{{ module | lcfirst }}EntityManager = ${{ module | lcfirst }}EntityManager;
+        $this->{{ module | lcfirst }}Repository = ${{ module | lcfirst }}Repository;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer
+     */
+    public function delete{{ domainEntity }}Collection({{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer): {{ domainEntity }}CollectionResponseTransfer
+    {
+        if(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer->getIsTransactional()) {
+            return $this->getTransactionHandler()->handleTransaction(function () use (${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer) {
+                return $this->executeDelete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);
+            });
+        }
+
+        return $this->executeDelete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer
+     */
+    public function executeDelete{{ domainEntity }}Collection({{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer): {{ domainEntity }}CollectionResponseTransfer
+    {
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = new {{ domainEntity }}CollectionResponseTransfer();
+
+        try {
+            ${{ domainEntity | lcfirst }}CollectionTransfer = $this->repository->get{{ domainEntity }}DeleteCollection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);
+            $this->entityManager->set{{ domainEntity }}IsActiveFalse(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);
+
+            foreach (${{ domainEntity | lcfirst }}CollectionTransfer->get{{ domainEntity }}s as ${{ domainEntity | lcfirst }}Transfer) {
+                ${{ domainEntity | lcfirst }}CollectionResponseTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+            }
+
+            return ${{ domainEntity | lcfirst }}CollectionResponseTransfer;
+        } catch(\Throwable $exception) {
+            $errorTransfer = new ErrorTransfer();
+            $errorTransfer->setMessage($exception->getMessage());
+
+            ${{ domainEntity | lcfirst }}CollectionResponseTransfer->addError($errorTransfer);
+        }
+
+        return ${{ domainEntity | lcfirst }}CollectionResponseTransfer;
+    }
+}
