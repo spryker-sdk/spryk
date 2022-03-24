@@ -31,6 +31,11 @@
         "rector/rector": "*",
         "spryker/code-sniffer": "*"
     },
+    "autoload": {
+        "psr-4": {
+            "SprykerSdk\\": "src/"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "SprykerSdkTest\\": "tests/SprykerSdkTest/",
@@ -61,12 +66,12 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
+        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
         "stan": "phpstan analyse",
         "test": "codecept run",
         "lowest": "validate-prefer-lowest -m",
-        "lowest-setup": "composer update --prefer-lowest --prefer-stable --prefer-dist --no-interaction && cp composer.json composer.backup && composer require --dev dereuromark/composer-prefer-lowest && mv composer.backup composer.json",
-        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/"
+        "lowest-setup": "composer update --prefer-lowest --prefer-stable --prefer-dist --no-interaction && cp composer.json composer.backup && composer require --dev dereuromark/composer-prefer-lowest && mv composer.backup composer.json"
     },
     "extra": {
         "branch-alias": {
