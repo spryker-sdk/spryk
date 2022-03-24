@@ -31,12 +31,6 @@
         "rector/rector": "*",
         "spryker/code-sniffer": "*"
     },
-    "suggest": [],
-    "autoload": {
-        "psr-4": {
-            "SprykerSdk\\": "src/"
-        }
-    },
     "autoload-dev": {
         "psr-4": {
             "SprykerSdkTest\\": "tests/SprykerSdkTest/",
@@ -84,7 +78,8 @@
         "process-timeout": 600,
         "sort-packages": true,
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "symfony/runtime": true
         }
     },
     "bin": [
