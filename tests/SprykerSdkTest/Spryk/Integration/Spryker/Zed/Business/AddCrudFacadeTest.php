@@ -68,6 +68,15 @@ class AddCrudFacadeTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/ZipZap/Saver/ZipZapCreator.php',
+        );
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/ZipZap/Saver/ZipZapCreatorInterface.php',
+        );
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
             . 'src/Spryker/Zed/FooBar/Business/ZipZap/Deleter/ZipZapDeleter.php',
         );
     }
