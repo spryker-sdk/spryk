@@ -1,0 +1,28 @@
+spryk: schema
+description: "Adds a propel schema to *module*.schema.xml in the Zed application."
+mode: both
+level: 2
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    name:
+        inherit: true
+
+    propertyName: ~
+
+    propertyType: ~
+
+    singular:
+        default: false
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/{{ module | underscored }}.schema.xml"
+
+preSpryks:
+    - AddZedPersistencePropelSchema
