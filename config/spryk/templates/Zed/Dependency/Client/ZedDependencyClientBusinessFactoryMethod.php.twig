@@ -1,8 +1,0 @@
-
-    /**
-     * @return \{{ organization }}\Zed\{{ module }}\Dependency\Client\{{ module }}To{{ dependentModule }}ClientInterface
-     */
-    public function {{ factoryMethod }}(): \{{ organization }}\Zed\{{ module }}\Dependency\Client\{{ module }}To{{ dependentModule }}ClientInterface
-    {
-        return $this->getProvidedDependency(\{{ organization }}\Zed\{{ module}}\{{ module}}DependencyProvider::CLIENT_{{ dependentModule | underscored | upper }});
-    }

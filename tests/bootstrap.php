@@ -1,3 +1,0 @@
-<?php
-
-putenv('TESTING=true');

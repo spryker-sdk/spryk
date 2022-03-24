@@ -1,4 +1,0 @@
-arguments:
-  targetPath:
-    value: vendor/spryker/spryker/Bundles/
-    type: prepend

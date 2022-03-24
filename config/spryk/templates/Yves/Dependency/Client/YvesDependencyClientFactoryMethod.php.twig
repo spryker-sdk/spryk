@@ -1,8 +1,0 @@
-
-    /**
-     * @return \{{ organization }}\Yves\{{ module }}\Dependency\Client\{{ module }}To{{ dependentModule }}ClientInterface
-     */
-    public function {{ factoryMethod }}(): \{{ organization }}\Yves\{{ module }}\Dependency\Client\{{ module }}To{{ dependentModule }}ClientInterface
-    {
-        return $this->getProvidedDependency(\{{ organization }}\Yves\{{ module}}\{{ module}}DependencyProvider::CLIENT_{{ dependentModule | underscored | upper }});
-    }
