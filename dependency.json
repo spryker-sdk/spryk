@@ -8,19 +8,7 @@
         "ondrejmirtes/better-reflection": "Provides reflection wrapper used for code analysis."
     },
     "include-dev": {
-        "spryker/checkout-extension": "CheckoutExtension module is needed to create CheckoutExtension specific classes.",
-        "spryker/data-import": "DataImport module is needed to create DataImport specific classes.",
-        "spryker/glue-application-extension": "GlueApplicationExtension is needed to create Glue API specific classes.",
-        "spryker/oms": "Oms is needed to create Oms specific classes.",
-        "spryker/payment-extension": "PaymentExtension module is needed to create PaymentExtension specific classes.",
-        "spryker/router": "Router module is needed to create Router specific classes.",
-        "spryker/sales-payment-extension": "SalesPaymentExtension module is needed to create SalesPaymentExtension specific classes.",
-        "spryker/step-engine": "StepEngine module is needed to create StepEngine specific classes.",
         "codeception/codeception": "We need a specific version of it.",
         "phpunit/phpunit": "We need a specific version of it."
-    },
-    "exclude": {
-        "spryker/symfony": "All dependencies are added on their own.",
-        "spryker/twig": "Twig is added on its own."
     }
 }
