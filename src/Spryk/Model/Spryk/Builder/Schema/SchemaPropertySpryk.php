@@ -65,6 +65,7 @@ class SchemaPropertySpryk extends AbstractBuilder
      */
     protected function build(): void
     {
+        /** @var \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolved */
         $resolved = $this->fileResolver->resolve($this->getTargetPath());
         $simpleXmlElement = $resolved->getSimpleXmlElement();
         $schemaFileName = $this->getSchemaName();
