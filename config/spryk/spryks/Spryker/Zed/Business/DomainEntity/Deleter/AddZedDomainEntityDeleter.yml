@@ -1,0 +1,57 @@
+spryk: template
+description: "Adds a new Business DomainEntity deleter to the Zed application."
+mode: both
+level: 2
+
+application: Zed
+layer: Business
+
+priority: 1
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    domainEntity: ~
+
+    className:
+        value: "{{ domainEntity }}Deleter"
+
+    template:
+        value: Zed/Business/DomainEntity/Deleter/DomainEntityDeleter.php.twig
+
+    targetFilename:
+        value: "{{ domainEntity }}Deleter.php"
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Business/{{ domainEntity }}/Deleter/"
+
+preSpryks:
+    - AddModule
+
+postSpryks:
+    - AddZedBusinessModelInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}Deleter"
+              subDirectory:
+                  value: "{{ domainEntity }}/Saver"
+              modelMethod:
+                  value: "delete{{ domainEntity }}Collection"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+
+    - AddZedBusinessFactoryMethod:
+          arguments:
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Saver\\{{ domainEntity }}DeleterInterface"
+              dependencyMethods:
+                  value:
+                      - "getEntityManager"
+                      - "getRepository"
