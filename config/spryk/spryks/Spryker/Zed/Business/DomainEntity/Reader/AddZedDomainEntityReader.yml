@@ -19,8 +19,7 @@ arguments:
     className:
         value: "{{ domainEntity }}Reader"
 
-    domainEntity:
-        inherit: true
+    domainEntity: ~
 
     subDirectory:
         value: "{{ domainEntity }}/Reader"
