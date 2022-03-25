@@ -22,6 +22,46 @@ preSpryks:
     - AddModule
 
 postSpryks:
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: "get{{ domainEntity }}Collection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+            body:
+                value: "return $this->getFactory()->create{{ domainEntity }}Reader()->get{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);"
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: "create{{ domainEntity }}Collection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+            body:
+                value: "return $this->getFactory()->create{{ domainEntity }}Creator()->create{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);"
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: "update{{ domainEntity }}Collection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+            body:
+                value: "return $this->getFactory()->create{{ domainEntity }}Updater()->update{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);"
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: "delete{{ domainEntity }}Collection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+            body:
+                value: "return $this->getFactory()->create{{ domainEntity }}Deleter()->delete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);"
     - AddZedDomainEntityDeleter
     - AddZedDomainEntityCreator
     # Add add{{ domainEntity }}CreatePreSavePlugins, get{{ domainEntity }}CreatePreSavePlugins and const for the plugins to the DependencyProvider
