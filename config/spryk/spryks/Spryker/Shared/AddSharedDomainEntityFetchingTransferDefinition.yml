@@ -1,0 +1,187 @@
+spryk: wrapper
+description: "Adds transfers for *domainEntity* to be used in common entity fetching facade."
+mode: both
+level: 2
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    domainEntity:
+        inherit: true
+
+    targetPath:
+        value: "src/{{ organization }}/Shared/{{ module }}/Transfer/{{ module | underscored }}.transfer.xml"
+
+postSpryks:
+    # *domainEntity*Criteria
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "{{ domainEntity | ucfirst }}Criteria"
+                propertyName:
+                    value: "{{ domainEntity | lcfirst }}Conditions"
+                propertyType:
+                    value: "{{ domainEntity | ucfirst }}Conditions"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "{{ domainEntity | ucfirst }}Criteria"
+                propertyName:
+                    value: "sortCollection"
+                propertyType:
+                    value: "Sort[]"
+                singular:
+                    value: "sort"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "{{ domainEntity | ucfirst }}Criteria"
+                propertyName:
+                    value: "pagination"
+                propertyType:
+                    value: "Pagination"
+
+    # *domainEntity*Conditions
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "{{ domainEntity | ucfirst }}Conditions"
+                propertyName:
+                    value: "{{ domainEntity | lcfirst }}Ids"
+                propertyType:
+                    value: "int[]"
+                singular:
+                    value: "{{ domainEntity | lcfirst }}Id"
+
+    # *domainEntity*Collection
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "{{ domainEntity | ucfirst }}Collection"
+                propertyName:
+                    value: "{{ domainEntity | lcfirst | pluralize }}"
+                propertyType:
+                    value: "{{ domainEntity | ucfirst }}[]"
+                singular:
+                    value: "{{ domainEntity | lcfirst }}"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "{{ domainEntity | ucfirst }}Collection"
+                propertyName:
+                    value: "pagination"
+                propertyType:
+                    value: "Pagination"
+
+    # Sort
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Sort"
+                propertyName:
+                    value: "field"
+                propertyType:
+                    value: "string"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Sort"
+                propertyName:
+                    value: "isAscending"
+                propertyType:
+                    value: "bool"
+
+    # Pagination
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "limit"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "offset"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "page"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "maxPerPage"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "nbResults"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "firstIndex"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "lastIndex"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "firstPage"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "lastPage"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "nextPage"
+                propertyType:
+                    value: "int"
+    -   AddSharedTransferProperty:
+            arguments:
+                name:
+                    value: "Pagination"
+                propertyName:
+                    value: "previousPage"
+                propertyType:
+                    value: "int"
