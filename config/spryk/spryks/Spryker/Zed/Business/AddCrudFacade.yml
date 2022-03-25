@@ -11,7 +11,6 @@ arguments:
 
     module:
         inherit: true
-        default: FooBar
 
     domainEntity: ~
 
@@ -25,6 +24,114 @@ preSpryks:
 postSpryks:
     - AddZedDomainEntityDeleter
     - AddZedDomainEntityCreator
+    # Add transfers
+    - AddSharedDomainEntityFetchingTransferDefinition
+    - AddSharedDomainEntityManipulationTransferDefinition
+    - AddZedPersistenceRepositoryMethod:
+        arguments:
+            repositoryMethod:
+                value: "get{{ domainEntity }}Collection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionTransfer"
+            domainEntity:
+                inherit: true
+            body:
+                value: Zed/Persistence/Repository/DomainEntity/GetCollectionMethod.php.twig
+    - AddZedPersistenceRepositoryMethod:
+        arguments:
+            repositoryMethod:
+                value: "apply{{ domainEntity }}Filters"
+            input:
+                value:
+                    - "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query ${{ domainEntity | lcfirst }}Query"
+                    - "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer"
+            output:
+                value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
+            domainEntity:
+                inherit: true
+            body:
+                value: Zed/Persistence/Repository/DomainEntity/ApplyFiltersMethod.php.twig
+    - AddZedPersistenceRepositoryMethod:
+        arguments:
+            repositoryMethod:
+                value: "has{{ domainEntity }}"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer"
+            output:
+                value: "bool"
+            domainEntity:
+                inherit: true
+            body:
+                value: Zed/Persistence/Repository/DomainEntity/HasMethod.php.twig
+    - AddZedPersistenceRepositoryMethod:
+        arguments:
+            repositoryMethod:
+                value: "get{{ domainEntity }}DeleteCollection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionTransfer"
+            domainEntity:
+                inherit: true
+            body:
+                value: Zed/Persistence/Repository/DomainEntity/GetDeleteCollectionMethod.php.twig
+    - AddZedPersistenceRepositoryMethod:
+        arguments:
+            repositoryMethod:
+                value: "apply{{ domainEntity }}DeleteFilters"
+            input:
+                value:
+                    - "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query ${{ domainEntity | lcfirst }}Query"
+                    - "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer"
+            output:
+                value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
+            domainEntity:
+                inherit: true
+            body:
+                value: Zed/Persistence/Repository/DomainEntity/ApplyDeleteFiltersMethod.php.twig
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: "get{{ domainEntity }}Collection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+            body:
+                value: "return $this->getFactory()->create{{ domainEntity }}Reader()->get{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);"
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: "create{{ domainEntity }}Collection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+            body:
+                value: "return $this->getFactory()->create{{ domainEntity }}Creator()->create{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);"
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: "update{{ domainEntity }}Collection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+            body:
+                value: "return $this->getFactory()->create{{ domainEntity }}Updater()->update{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);"
+    - AddZedBusinessFacadeMethod:
+        arguments:
+            facadeMethod:
+                value: "delete{{ domainEntity }}Collection"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+            body:
+                value: "return $this->getFactory()->create{{ domainEntity }}Deleter()->delete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);"
+
     # Add add{{ domainEntity }}CreatePreSavePlugins, get{{ domainEntity }}CreatePreSavePlugins and const for the plugins to the DependencyProvider
     - AddZedDependencyPlugins:
           arguments:

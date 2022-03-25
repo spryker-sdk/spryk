@@ -8,6 +8,7 @@
 namespace SprykerSdkTest\Spryk\Integration\Spryker\Zed\Business;
 
 use Codeception\Test\Unit;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface;
 use SprykerSdkTest\Module\ClassName;
 use SprykerSdkTest\SprykIntegrationTester;
 
@@ -99,5 +100,56 @@ class AddCrudFacadeTest extends Unit
             $this->tester->getSprykerModuleDirectory()
             . 'src/Spryker/Zed/FooBarExtension/Dependency/ZipZap/Validator/ZipZapValidatorRulePluginInterface.php',
         );
+
+        // Transfers
+        $transferXml = $this->tester->getFileResolver()->resolve(
+            $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
+        );
+        $this->assertInstanceOf(ResolvedXmlInterface::class, $transferXml);
+
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCriteria');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapConditions');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollection');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'Sort');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'Pagination');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionRequest');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionResponse');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionDeleteCriteria');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'Error');
+    }
+
+    /**
+     * @return void
+     */
+    public function testFacadeContainsCrudMethods(): void
+    {
+        $this->tester->run($this, [
+            '--organization' => 'Spryker',
+            '--module' => 'FooBar',
+            '--domainEntity' => 'FooBar',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'getFooBarCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'createFooBarCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'updateFooBarCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'deleteFooBarCollection');
+    }
+
+    /**
+     * @return void
+     */
+    public function testRepositoryContainsCrudMethods(): void
+    {
+        $this->tester->run($this, [
+            '--organization' => 'Spryker',
+            '--module' => 'FooBar',
+            '--domainEntity' => 'FooBar',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'getFooBarCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'applyFooBarFilters');
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'hasFooBar');
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'getFooBarDeleteCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'applyFooBarDeleteFilters');
     }
 }

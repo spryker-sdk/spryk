@@ -106,6 +106,25 @@ class TransferModule extends Module
     /**
      * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolvedXml
      * @param string $transferName
+     *
+     * @return void
+     */
+    public function assertResolvedXmlHasTransfer(ResolvedXmlInterface $resolvedXml, string $transferName): void
+    {
+        $simpleXMLElement = $resolvedXml->getSimpleXmlElement();
+        $this->assertInstanceOf(SimpleXMLElement::class, $simpleXMLElement);
+
+        $transfer = $simpleXMLElement->xpath(sprintf('//transfer[@name="%s"]', $transferName))[0] ?? null;
+        $this->assertInstanceOf(SimpleXMLElement::class, $transfer);
+        $transfer = $transfer->asXML();
+        $expectedTransferString = sprintf('<transfer name="%s">', $transferName);
+
+        $this->assertStringContainsString($expectedTransferString, $transfer);
+    }
+
+    /**
+     * @param \SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface $resolvedXml
+     * @param string $transferName
      * @param string $propertyName
      * @param string $propertyType
      * @param string|null $singular
@@ -122,7 +141,7 @@ class TransferModule extends Module
         $simpleXMLElement = $resolvedXml->getSimpleXmlElement();
         $this->assertInstanceOf(SimpleXMLElement::class, $simpleXMLElement);
 
-        $property = $simpleXMLElement->xpath(sprintf('//transfer[@name="%s"]/property[@name="%s"]', $transferName, $propertyName))[0];
+        $property = $simpleXMLElement->xpath(sprintf('//transfer[@name="%s"]/property[@name="%s"]', $transferName, $propertyName))[0] ?? null;
         $this->assertInstanceOf(SimpleXMLElement::class, $property);
         $propertyString = $property->asXML();
         $expectedPropertyString = sprintf('<property name="%s" type="%s"%s/>', $propertyName, $propertyType, $singular ? sprintf(' singular="%s"', $singular) : '');
