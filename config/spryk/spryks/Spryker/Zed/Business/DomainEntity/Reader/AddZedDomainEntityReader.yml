@@ -19,10 +19,8 @@ arguments:
     className:
         value: "{{ domainEntity }}Reader"
 
-    domainEntity: ~
-
-    subDirectory:
-        value: "{{ domainEntity }}/Reader"
+    domainEntity:
+        inherit: true
 
     template:
         value: Zed/Business/DomainEntity/Reader/DomainEntityReader.php.twig
