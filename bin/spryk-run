@@ -2,15 +2,7 @@
 <?php
 
 include $_composer_autoload_path ?? getcwd() . '/vendor/autoload.php';
-define('SPRYKER_ROOT', getcwd());
 
-foreach ([SPRYKER_ROOT . '/vendor/autoload.php', __DIR__ . '/../../../../../autoload.php', __DIR__ . '/../../../autoload.php'] as $file) {
-    if (file_exists($file)) {
-        define('SPRYKER_COMPOSER_INSTALL', $file);
-        define('APPLICATION_ROOT_DIR', realpath(dirname($file) . '/..'));
-        break;
-    }
-}
 use SprykerSdk\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 
