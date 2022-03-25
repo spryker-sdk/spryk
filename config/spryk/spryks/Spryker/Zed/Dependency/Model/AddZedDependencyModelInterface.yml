@@ -33,7 +33,7 @@ arguments:
         callback: ZedDependencyModelInterfaceTargetFilenameCallback
 
     targetPath:
-        value: "src/{{ organization }}/Zed/{{ module }}{{ moduleSuffix }}/Dependency/"
+        value: "src/{{ organization }}/Zed/{{ module }}Extension/Dependency/"
 
 preSpryks:
     - AddModule

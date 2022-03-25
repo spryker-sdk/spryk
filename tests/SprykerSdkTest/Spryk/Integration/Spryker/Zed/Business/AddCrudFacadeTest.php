@@ -87,17 +87,17 @@ class AddCrudFacadeTest extends Unit
 
         $this->assertFileExists(
             $this->tester->getSprykerModuleDirectory()
-            . 'src/Spryker/Zed/FooBarSaver/Dependency/ZipZap/Saver/ZipZapPreSavePluginInterface.php',
+            . 'src/Spryker/Zed/FooBarExtension/Dependency/ZipZap/Saver/ZipZapPreSavePluginInterface.php',
         );
 
         $this->assertFileExists(
             $this->tester->getSprykerModuleDirectory()
-            . 'src/Spryker/Zed/FooBarSaver/Dependency/ZipZap/Saver/ZipZapPostSavePluginInterface.php',
+            . 'src/Spryker/Zed/FooBarExtension/Dependency/ZipZap/Saver/ZipZapPostSavePluginInterface.php',
         );
 
         $this->assertFileExists(
             $this->tester->getSprykerModuleDirectory()
-            . 'src/Spryker/Zed/FooBarValidator/Dependency/ZipZap/Validator/ZipZapValidatorRulePluginInterface.php',
+            . 'src/Spryker/Zed/FooBarExtension/Dependency/ZipZap/Validator/ZipZapValidatorRulePluginInterface.php',
         );
     }
 }

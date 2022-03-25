@@ -88,8 +88,6 @@ postSpryks:
                   value: "{{ domainEntity }}ExpanderPlugin"
               subDirectory:
                   value: "{{ domainEntity }}/Expander"
-              moduleSuffix:
-                  value: Extension
               modelMethod:
                   value: "expand"
               input:
@@ -104,8 +102,6 @@ postSpryks:
                         value: "{{ domainEntity }}PreSavePlugin"
                     subDirectory:
                         value: "{{ domainEntity }}/Saver"
-                    moduleSuffix:
-                        value: Saver
                     modelMethod:
                         value: "process"
                     input:
@@ -120,8 +116,6 @@ postSpryks:
                   value: "{{ domainEntity }}PostSavePlugin"
               subDirectory:
                   value: "{{ domainEntity }}/Saver"
-              moduleSuffix:
-                  value: Saver
               modelMethod:
                   value: "process"
               input:
@@ -136,8 +130,6 @@ postSpryks:
                   value: "{{ domainEntity }}ValidatorRulePlugin"
               subDirectory:
                   value: "{{ domainEntity }}/Validator"
-              moduleSuffix:
-                  value: Validator
               modelMethod:
                   value: "validate"
               input:

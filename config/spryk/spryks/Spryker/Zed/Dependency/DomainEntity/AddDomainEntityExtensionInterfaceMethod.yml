@@ -38,7 +38,7 @@ arguments:
         value: "{{ className }}Interface"
 
     fqcnPattern:
-        value: "{{ organization }}\\Zed\\{{ module }}{{ moduleSuffix }}\\Dependency\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}Interface"
+        value: "{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}Interface"
 
 preSpryks:
     - AddZedDependencyModelInterface:
