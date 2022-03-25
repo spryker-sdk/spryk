@@ -114,4 +114,22 @@ class AddCrudFacadeTest extends Unit
         $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'updateFooBarCollection');
         $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'deleteFooBarCollection');
     }
+
+    /**
+     * @return void
+     */
+    public function testRepositoryContainsCrudMethods(): void
+    {
+        $this->tester->run($this, [
+            '--organization' => 'Spryker',
+            '--module' => 'FooBar',
+            '--domainEntity' => 'FooBar',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'getFooBarCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'applyFooBarFilters');
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'hasFooBar');
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'getFooBarDeleteCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'applyFooBarDeleteFilters');
+    }
 }
