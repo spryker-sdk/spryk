@@ -6,10 +6,6 @@ arguments:
     module:
         inherit: true
 
-    moduleSuffix:
-        inherit: true
-        default: ""
-
     organization:
         inherit: true
         default: Spryker
