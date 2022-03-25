@@ -44,14 +44,14 @@ postSpryks:
               modelMethod:
                   value: "get{{ domainEntity }}Collection"
               input:
-                  value: "\Generated\Shared\Transfer\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer"
               output:
-                  value: "\Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionTransfer"
 
     - AddZedBusinessFactoryMethod:
           arguments:
               output:
-                  value: "\{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Reader\{{ domainEntity }}ReaderInterface"
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Reader\\{{ domainEntity }}ReaderInterface"
               dependencyMethods:
                   value:
                       - "getRepository"
