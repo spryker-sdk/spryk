@@ -1,0 +1,203 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+namespace {{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Saver;
+
+use ArrayObject;
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer;
+use Generated\Shared\Transfer\ErrorTransfer;
+use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
+use {{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierBuilderInterface;
+use {{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\ValidatorInterface;
+use {{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInterface;
+
+class {{ domainEntity }}Updater implements {{ domainEntity }}UpdaterInterface
+{
+    use TransactionTrait;
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInterface
+     */
+    protected {{ module }}EntityManagerInterface ${{ module | lcfirst }}EntityManager;
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorInterface
+     */
+    protected {{ domainEntity }}ValidatorInterface ${{ domainEntity | lcfirst }}Validator;
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierBuilderInterface
+     */
+    protected {{ domainEntity }}IdentifierBuilderInterface ${{ domainEntity | lcfirst }}IdentifierBuilder;
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PreSavePluginInterface[]
+     */
+    protected array ${{ domainEntity | lcfirst }}PreSavePlugins;
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PostSavePluginInterface[]
+     */
+    protected array ${{ domainEntity | lcfirst }}PostSavePlugins;
+
+    /**
+     * @param \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}EntityManagerInterface ${{ module | lcfirst }}EntityManager
+     * @param \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorInterface ${{ domainEntity | lcfirst }}Validator
+     * @param \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierBuilderInterface
+     * @param \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PreSavePluginInterface[]
+     * @param \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PostSavePluginInterface[]
+     */
+    public function __construct(
+        {{ module }}EntityManagerInterface ${{ module | lcfirst }}EntityManager,
+        {{ domainEntity }}ValidatorInterface ${{ domainEntity | lcfirst }}Validator,
+        {{ domainEntity }}IdentifierBuilderInterface ${{ domainEntity | lcfirst }}IdentifierBuilder,
+        array ${{ domainEntity | lcfirst }}PreSavePlugins,
+        array ${{ domainEntity | lcfirst }}PostSavePlugins
+    ) {
+        $this->{{ module | lcfirst }}EntityManager = ${{ module | lcfirst }}EntityManager;
+        $this->{{ domainEntity | lcfirst }}Validator = ${{ domainEntity | lcfirst }}Validator;
+        $this->{{ domainEntity | lcfirst }}IdentifierBuilder = ${{ domainEntity | lcfirst }}IdentifierBuilder;
+        $this->{{ domainEntity | lcfirst }}PreSavePlugins = ${{ domainEntity | lcfirst }}PreSavePlugins;
+        $this->{{ domainEntity | lcfirst }}PostSavePlugins = ${{ domainEntity | lcfirst }}PostSavePlugins;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer
+     */
+    public function update{{ domainEntity }}Collection(
+        {{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+    ): {{ domainEntity }}CollectionResponseTransfer {
+        if (${{ domainEntity | lcfirst }}CollectionRequestTransfer->isTransactional()) {
+            return $this->transactionalUpdate{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+        }
+
+        return $this->nonTransactionalUpdate{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+    }
+
+    /**
+     * Specification:
+     * - Validates ALL entities BEFORE saving, returns as soon as one is invalid.
+     * - Saves a list of ALL entities in ONE transaction.
+     */
+    protected function transactionalUpdate{{ domainEntity }}Collection(
+        {{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+    ): {{ domainEntity }}CollectionResponseTransfer {
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = new {{ domainEntity }}CollectionResponseTransfer();
+
+        // Validate ALL of the entities before update, if one is invalid break and return errors!
+        $errorTransfers = $this->{{ domainEntity | lcfirst }}Validator->validateCollectionTransactional(${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity | pluralize }}());
+
+        if ($errorTransfers) {
+            return ${{ domainEntity | lcfirst }}CollectionResponseTransfer
+                ->set{{ domainEntity | pluralize }}(${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity | pluralize }}())
+                ->setErrors($errorTransfers);
+        }
+
+        // This will save ALL entities in ONE transaction. If ANY of the entities in the collection fails to be persisted
+        // it will roll ALL of them back. And we DON'T catch exceptions here intentionally!
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->getTransactionHandler()->handleTransaction(function () use (${{ domainEntity | lcfirst }}CollectionRequestTransfer, ${{ domainEntity | lcfirst }}CollectionResponseTransfer) {
+            // Run pre-save plugins
+            ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+                ->set{{ domainEntity | pluralize }}($this->execute{{ domainEntity }}PreSavePlugins(${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity | pluralize }}()));
+
+            ${{ domainEntity | lcfirst }}CollectionTransfer = new {{ domainEntity }}CollectionTransfer();
+
+            foreach (${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity | pluralize }}() as ${{ domainEntity | lcfirst }}Transfer) {
+                ${{ domainEntity | lcfirst }}CollectionTransfer->add{{ domainEntity }}($this->entityManager->update{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer));
+            }
+
+            ${{ domainEntity | lcfirst }}CollectionResponseTransfer
+                ->set{{ domainEntity | pluralize }}(${{ domainEntity | lcfirst }}CollectionTransfer->get{{ domainEntity | pluralize }}());
+
+            // Run post-save plugins
+            ${{ domainEntity | lcfirst }}CollectionResponseTransfer
+                ->set{{ domainEntity | pluralize }}($this->execute{{ domainEntity }}PostSavePlugins(${{ domainEntity | lcfirst }}CollectionResponseTransfer->get{{ domainEntity | pluralize }}()));
+
+            return ${{ domainEntity | lcfirst }}CollectionResponseTransfer;
+        });
+
+        return ${{ domainEntity | lcfirst }}CollectionResponseTransfer;
+    }
+
+    /**
+     * Specification:
+     * - Validates entities before saving, if invalid it won't save the entity and continue with the next one.
+     * - Saves ONLY valid entities that passed validation.
+     */
+    protected function nonTransactionalUpdate{{ domainEntity }}Collection(
+        {{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+    ): {{ domainEntity }}CollectionResponseTransfer {
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = new {{ domainEntity }}CollectionResponseTransfer();
+        $valid{{ domainEntity }}CollectionTransfer = new {{ domainEntity }}CollectionTransfer();
+
+        // Validate ALL of the entities before update, if one is invalid break and return errors
+        $errorTransfers = $this->{{ domainEntity | lcfirst }}Validator->validate(${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity | pluralize }}());
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer->setErrors($errorTransfers);
+
+        foreach (${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity | pluralize }}() as ${{ domainEntity | lcfirst }}Transfer) {
+            // Check each SINGLE item before it is saved for errors, if it has some continue with the next one.
+            if (isset($errorTransfers[$this->{{ domainEntity }}IdentifierBuilder->buildIdentifier(${{ domainEntity | lcfirst }}Transfer)])) {
+                ${{ domainEntity | lcfirst }}CollectionResponseTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+                continue;
+            }
+
+            $valid{{ domainEntity }}CollectionTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+        }
+
+        // Process only the non-errored entities
+        $this->getTransactionHandler()->handleTransaction(function () use ($valid{{ domainEntity }}CollectionTransfer) {
+            // Run pre-save plugins
+            $valid{{ domainEntity }}CollectionTransfer
+                ->set{{ domainEntity | pluralize }}($this->execute{{ domainEntity }}PreSavePlugins($valid{{ domainEntity }}CollectionTransfer->get{{ domainEntity | pluralize }}()));
+
+            foreach ($valid{{ domainEntity }}CollectionTransfer->get{{ domainEntity | pluralize }}() as ${{ domainEntity | lcfirst }}Transfer) {
+                $this->entityManager->update{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+            }
+
+            // Run post-save plugins
+            $valid{{ domainEntity }}CollectionTransfer
+                ->set{{ domainEntity | pluralize }}($this->execute{{ domainEntity }}PostSavePlugins($valid{{ domainEntity }}CollectionTransfer->get{{ domainEntity | pluralize }}()));
+        });
+
+        foreach ($valid{{ domainEntity }}CollectionTransfer->get{{ domainEntity | pluralize }}() as ${{ domainEntity | lcfirst }}Transfer) {
+            ${{ domainEntity | lcfirst }}CollectionResponseTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+        }
+
+        return ${{ domainEntity | lcfirst }}CollectionResponseTransfer;
+    }
+
+    /**
+     * @param \ArrayObject|\Generated\Shared\Transfer\{{ domainEntity }}Transfer[] ${{ domainEntity | lcfirst }}Transfers
+     *
+     * @return \ArrayObject|\Generated\Shared\Transfer\{{ domainEntity }}Transfer[]
+     */
+    public function execute{{ domainEntity }}PreSavePlugins(
+        ArrayObject ${{ domainEntity | lcfirst }}Transfers
+    ): ArrayObject {
+        foreach ($this->{{ domainEntity | lcfirst }}PreSavePlugins as ${{ domainEntity | lcfirst }}PreSavePlugin) {
+            ${{ domainEntity | lcfirst }}Transfers = ${{ domainEntity | lcfirst }}PreSavePlugin->process(${{ domainEntity | lcfirst }}Transfers);
+        }
+
+        return ${{ domainEntity | lcfirst }}Transfers;
+    }
+
+    /**
+     * @param \ArrayObject|\Generated\Shared\Transfer\{{ domainEntity }}Transfer[] ${{ domainEntity | lcfirst }}Transfers
+     *
+     * @return \ArrayObject|\Generated\Shared\Transfer\{{ domainEntity }}Transfer[]
+     */
+    public function execute{{ domainEntity }}PostSavePlugins(
+        ArrayObject ${{ domainEntity | lcfirst }}Transfers
+    ): ArrayObject {
+        foreach ($this->{{ domainEntity | lcfirst }}PostSavePlugins as ${{ domainEntity | lcfirst }}PostSavePlugin) {
+            ${{ domainEntity | lcfirst }}Transfers = ${{ domainEntity | lcfirst }}PostSavePlugin->process(${{ domainEntity | lcfirst }}Transfers);
+        }
+
+        return ${{ domainEntity | lcfirst }}Transfers;
+    }
+}
