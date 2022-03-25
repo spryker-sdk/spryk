@@ -65,5 +65,36 @@ class AddCrudFacadeTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::ZED_DEPENDENCY_PROVIDER, 'addZipZapExpanderPlugins');
         $this->tester->assertClassHasMethod(ClassName::ZED_DEPENDENCY_PROVIDER, 'getZipZapExpanderPlugins');
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/ZipZap/Saver/ZipZapCreator.php',
+        );
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/ZipZap/Saver/ZipZapCreatorInterface.php',
+        );
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/ZipZap/Deleter/ZipZapDeleter.php',
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function testFacadeContainsCrudMethods(): void
+    {
+        $this->tester->run($this, [
+            '--organization' => 'Spryker',
+            '--module' => 'FooBar',
+            '--domainEntity' => 'FooBar',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'getFooBarCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'createFooBarCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'updateFooBarCollection');
+        $this->tester->assertClassHasMethod(ClassName::ZED_FACADE, 'deleteFooBarCollection');
     }
 }
