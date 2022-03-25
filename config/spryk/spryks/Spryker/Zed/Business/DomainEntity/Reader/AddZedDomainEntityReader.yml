@@ -31,6 +31,9 @@ arguments:
     targetFilename:
         value: "src/{{ organization }}/Zed/{{ module }}/Business/{{ domainEntity }}/Reader/{{ domainEntity }}Reader.php"
 
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Business/{{ domainEntity }}/Reader/"
+
 preSpryks:
     - AddModule
 
