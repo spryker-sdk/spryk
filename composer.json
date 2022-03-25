@@ -12,6 +12,7 @@
         "php": ">=7.4",
         "ramsey/uuid": "^4.2",
         "spryker/config": "^3.5.0",
+        "spryker/kernel": "^3.52.0",
         "symfony/cache": "^5.4",
         "symfony/console": "^5.2.5 || ^6.0.0",
         "symfony/filesystem": "^5.2.0 || ^6.0.0",
