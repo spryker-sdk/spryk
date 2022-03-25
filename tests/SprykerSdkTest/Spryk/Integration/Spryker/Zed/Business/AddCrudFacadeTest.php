@@ -8,6 +8,7 @@
 namespace SprykerSdkTest\Spryk\Integration\Spryker\Zed\Business;
 
 use Codeception\Test\Unit;
+use SprykerSdk\Spryk\Model\Spryk\Builder\Resolver\Resolved\ResolvedXmlInterface;
 use SprykerSdkTest\Module\ClassName;
 use SprykerSdkTest\SprykIntegrationTester;
 
@@ -79,6 +80,22 @@ class AddCrudFacadeTest extends Unit
             $this->tester->getSprykerModuleDirectory()
             . 'src/Spryker/Zed/FooBar/Business/ZipZap/Deleter/ZipZapDeleter.php',
         );
+
+        // Transfers
+        $transferXml = $this->tester->getFileResolver()->resolve(
+            $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
+        );
+        $this->assertInstanceOf(ResolvedXmlInterface::class, $transferXml);
+
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCriteria');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapConditions');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollection');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'Sort');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'Pagination');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionRequest');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionResponse');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionDeleteCriteria');
+        $this->tester->assertResolvedXmlHasTransfer($transferXml, 'Error');
     }
 
     /**

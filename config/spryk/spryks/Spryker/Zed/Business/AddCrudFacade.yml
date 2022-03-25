@@ -119,3 +119,6 @@ postSpryks:
                       value: "{{ domainEntity }}CreateValidatorRule"
                   output:
                       value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
+    # Add transfers
+    - AddSharedDomainEntityFetchingTransferDefinition
+    - AddSharedDomainEntityManipulationTransferDefinition
