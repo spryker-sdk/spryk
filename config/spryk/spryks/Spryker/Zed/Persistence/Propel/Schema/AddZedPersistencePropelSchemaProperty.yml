@@ -10,17 +10,24 @@ arguments:
         inherit: true
         default: Spryker
 
+    name:
+        inherit: true
+
     propertyName: ~
 
     propertyType: ~
 
-    required: ~
+    required:
+        default: false
 
-    autoIncrement: ~
+    autoIncrement:
+        default: false
 
-    primaryKey: ~
+    primaryKey:
+        default: false
 
-    defaultValue: ~
+    defaultValue:
+        default: ""
 
     targetPath:
         value: "src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/spy_{{ module | underscored }}.schema.xml"

@@ -101,9 +101,9 @@ class SchemaPropertySpryk extends AbstractBuilder
      */
     protected function findTableByName(SimpleXMLElement $simpleXmlElement, string $schemaName): ?SimpleXMLElement
     {
-        foreach ($simpleXmlElement->children() as $transferXmlElement) {
-            if ((string)$transferXmlElement['name'] === $schemaName) {
-                return $transferXmlElement;
+        foreach ($simpleXmlElement->children() as $schemaXmlElement) {
+            if ((string)$schemaXmlElement['name'] === $schemaName) {
+                return $schemaXmlElement;
             }
         }
 
