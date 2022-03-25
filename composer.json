@@ -29,8 +29,7 @@
         "mikey179/vfsstream": "^1.6.10",
         "phpunit/phpunit": "^9.5.0",
         "rector/rector": "*",
-        "spryker/code-sniffer": "*",
-        "spryker/config": "*"
+        "spryker/code-sniffer": "*"
     },
     "autoload": {
         "psr-4": {
