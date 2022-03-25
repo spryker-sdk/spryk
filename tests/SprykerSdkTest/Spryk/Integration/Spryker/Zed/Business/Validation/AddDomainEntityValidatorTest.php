@@ -44,6 +44,10 @@ class AddDomainEntityValidatorTest extends Unit
             . 'src/Spryker/Zed/FooBar/Business/Validator/ZipZap/ZipZapValidatorInterface.php',
         );
 
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validate');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validateCollection');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validateCollectionTransactional');
+
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createZipZapValidator');
     }
 }
