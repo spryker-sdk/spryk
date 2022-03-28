@@ -8,13 +8,33 @@
 namespace SprykerSdk\Spryk;
 
 use Spryker\Shared\Config\Config;
-use Spryker\Shared\Kernel\KernelConstants;
 
 /**
  * @codeCoverageIgnore
  */
 class SprykConfig
 {
+    /**
+     * @uses \Spryker\Shared\Kernel\KernelConstants::PROJECT_NAMESPACE
+     *
+     * @var string
+     */
+    protected const PROJECT_NAMESPACE = 'PROJECT_NAMESPACE';
+
+    /**
+     * @uses \Spryker\Shared\Kernel\KernelConstants::PROJECT_NAMESPACES
+     *
+     * @var string
+     */
+    protected const PROJECT_NAMESPACES = 'PROJECT_NAMESPACES';
+
+    /**
+     * @uses \Spryker\Shared\Kernel\KernelConstants::CORE_NAMESPACES
+     *
+     * @var string
+     */
+    protected const CORE_NAMESPACES = 'CORE_NAMESPACES';
+
     /**
      * @var string
      */
@@ -195,7 +215,7 @@ class SprykConfig
         }
 
         return Config::get(
-            KernelConstants::CORE_NAMESPACES,
+            static::CORE_NAMESPACES,
             $namespaces,
         );
     }
@@ -205,7 +225,7 @@ class SprykConfig
      */
     public function getProjectNamespace(): ?string
     {
-        return Config::get(KernelConstants::PROJECT_NAMESPACE, getenv('PROJECT_NAMESPACE') ?: '');
+        return Config::get(static::PROJECT_NAMESPACE, getenv('PROJECT_NAMESPACE') ?: '');
     }
 
     /**
@@ -222,7 +242,7 @@ class SprykConfig
         }
 
         return Config::get(
-            KernelConstants::PROJECT_NAMESPACES,
+            static::PROJECT_NAMESPACES,
             $namespaces,
         );
     }
