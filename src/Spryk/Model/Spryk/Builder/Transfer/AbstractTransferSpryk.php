@@ -14,9 +14,9 @@ use SprykerSdk\Spryk\Model\Spryk\Builder\AbstractBuilder;
 
 abstract class AbstractTransferSpryk extends AbstractBuilder
 {
- /**
-  * @var string
-  */
+    /**
+     * @var string
+     */
     public const ARGUMENT_NAME = 'name';
 
     /**

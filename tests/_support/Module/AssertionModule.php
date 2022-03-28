@@ -224,7 +224,7 @@ class AssertionModule extends Module
         $tableXmlElements = $simpleXmlElement->xpath('//table[@name="' . $tableName . '"]');
 
         if ($tableXmlElements === false) {
-            $this->assertTrue($tableXmlElements, 'Expected table not founf in schema.');
+            $this->assertTrue($tableXmlElements, 'Expected table not found in schema.');
 
             return;
         }
