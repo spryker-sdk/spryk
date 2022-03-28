@@ -14,3 +14,6 @@ nbproject/
 
 # tooling
 composer.lock
+
+architecture-baseline.json
+psalm-report.json
