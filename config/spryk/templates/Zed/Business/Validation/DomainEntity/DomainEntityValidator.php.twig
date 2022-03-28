@@ -3,7 +3,7 @@
 {{ include('Partials/license.twig') }}
 namespace {{ organization }}\Zed\{{ module }}\Business\Validator\{{ domainEntity }};
 
-class {{ domainEntity }}Validator implements {{ domainEntity }}ValidatorInterface
+class {{ domainEntity }}{{ type }}Validator implements {{ domainEntity }}ValidatorInterface
 {
     /**
      * @var \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\Rules\{{ domainEntity }}ValidatorRuleInterface[]
