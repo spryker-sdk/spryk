@@ -11,5 +11,10 @@
         "spryk-dump",
         "spryk-run",
         "spryk.phar"
-    ]
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
 }
