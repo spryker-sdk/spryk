@@ -22,6 +22,10 @@ preSpryks:
     - AddModule
 
 postSpryks:
+    - AddDomainEntityValidator:
+          arguments:
+              type:
+                  value: "Create"
     - AddZedPersistenceRepositoryMethod:
         arguments:
             repositoryMethod:
