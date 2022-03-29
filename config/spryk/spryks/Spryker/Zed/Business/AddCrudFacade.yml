@@ -25,6 +25,7 @@ postSpryks:
     - AddZedDomainEntityDeleter
     - AddZedDomainEntityCreator
     - AddZedDomainEntityReader
+    - AddZedDomainEntityUpdater
     # Add transfers
     - AddSharedDomainEntityFetchingTransferDefinition
     - AddSharedDomainEntityManipulationTransferDefinition
@@ -267,3 +268,9 @@ postSpryks:
                       value: "is_active"
                   propertyType:
                       value: "BOOLEAN"
+
+    # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
+    -   AddDataBuilderDefinition:
+            arguments:
+                name:
+                    value: "{{ domainEntity }}"
