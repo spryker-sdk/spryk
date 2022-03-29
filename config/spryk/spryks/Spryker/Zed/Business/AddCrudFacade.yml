@@ -218,3 +218,6 @@ postSpryks:
             arguments:
                 name:
                     value: "{{ domainEntity }}"
+
+    # Add test helper
+    -   AddDomainEntityTestHelper
