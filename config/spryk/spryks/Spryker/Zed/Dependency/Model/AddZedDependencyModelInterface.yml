@@ -25,8 +25,7 @@ arguments:
         value: Zed/Dependency/Model/ZedDependencyModelInterface.php.twig
 
     targetFilename:
-        callbackOnly: true
-        callback: ZedDependencyModelInterfaceTargetFilenameCallback
+        value: "{{ className }}Interface.php"
 
     targetPath:
         value: "src/{{ organization }}/Zed/{{ module }}Extension/Dependency/"
