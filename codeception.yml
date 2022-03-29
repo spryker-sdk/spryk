@@ -74,3 +74,4 @@ suites:
                 - SprykerSdkTest\Module\AssertionModule
                 - SprykerSdkTest\Module\IntegrationModule
                 - SprykerSdkTest\Module\TransferModule
+                - SprykerSdkTest\Module\SchemaModule

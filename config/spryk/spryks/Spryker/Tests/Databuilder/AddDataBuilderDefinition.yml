@@ -1,0 +1,21 @@
+spryk: transfer
+description: "Adds a new *module*.databuilder.xml to the Tests application."
+mode: both
+level: 2
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    name:
+        inherit: true
+
+    targetPath:
+        value: "tests/_data/{{ module | underscored }}.databuilder.xml"
+
+preSpryks:
+    - AddDataBuilderSchema
