@@ -8,6 +8,7 @@ arguments:
 
     targetModule:
         inherit: true
+        default: "{{ module | underscored }}"
 
     organization:
         inherit: true

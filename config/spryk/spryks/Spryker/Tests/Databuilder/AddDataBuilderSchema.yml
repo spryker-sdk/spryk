@@ -1,0 +1,23 @@
+spryk: template
+description: "Adds a new *module*.databuilder.xml to the Tests application."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    template:
+        value: Tests/DataBuilder/databuilder.xml.twig
+
+    targetFilename:
+        value: "{{ module | underscored }}.databuilder.xml"
+
+    targetPath:
+        value: "tests/_data/"
+
+preSpryks:
+    - AddModule
