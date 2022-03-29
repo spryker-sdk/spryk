@@ -46,8 +46,8 @@ jobs:
         run: composer install --no-interaction -o
 
       - name: Run dump command
-        run: spryk-dump
+        run: php spryk-dump
 
       - name: Run Spryk commands
         run: |
-          spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
+          php spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
