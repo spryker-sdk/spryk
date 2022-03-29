@@ -210,3 +210,11 @@ postSpryks:
                       value: "is_active"
                   propertyType:
                       value: "BOOLEAN"
+    
+    -   AddZedBusinessFacadeTest:
+              arguments:
+                  template:
+                      value: "Zed/Business/CrudFacadeTest.php.twig"
+                  targetFilename:
+                      value: "{{ domainEntity }}CrudFacade"
+    
