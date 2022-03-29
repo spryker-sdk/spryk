@@ -5,30 +5,24 @@
     {% set interfaceName = '\\' ~  organization ~ '\\Zed\\' ~ module ~ '\\Business\\' ~  subDirectoryName ~ className ~ 'Interface' %}
 {% endif %}
 {% set methodBody = 'return new \\' ~ organization ~ '\\Zed\\' ~ module ~ '\\Business\\' ~ subDirectoryName ~ className ~ '();' %}
-{% set phpDocReturn = interfaceName %}
-{% set methodReturn = interfaceName %}
+
 {% if body is defined and body.value is not null and body.value != '' %}
     {% set methodBody = body.value %}
 {% endif %}
 
-{% if returnArray is defined and returnArray.value == "true" %}
-    {% set phpDocReturn = interfaceName ~ '[]' %}
-    {% set methodReturn = 'array' %}
-{% endif %}
-
 {% if not dependencyMethods.value %}
     /**
-    * @return {{ phpDocReturn }}
+    * @return {% if output is not null %} {{ output | returnValueToDocParameter }} {% else %} {{ interfaceName }} {% endif %}
     */
-    public function {{ factoryMethod }}(): {{ methodReturn }}
+    public function {{ factoryMethod }}(): {% if output is not null %} {{ output | typedArrayConvert }} {% else %} {{ interfaceName }} {% endif %}
     {
         {{ methodBody }}
     }
 {% else %}
     /**
-    * @return {{ phpDocReturn }}
+    * @return {% if output is not null %} {{ output | returnValueToDocParameter }} {% else %} {{ interfaceName }} {% endif %}
     */
-    public function {{ factoryMethod }}(): {{ methodReturn }}
+    public function {{ factoryMethod }}(): {% if output is not null %} {{ output | typedArrayConvert }} {% else %} {{ interfaceName }} {% endif %}
     {
     return new \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ className }}(
     {% for dependencyMethod in dependencyMethods.value -%}

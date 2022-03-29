@@ -35,10 +35,6 @@ arguments:
     body:
         value: ""
 
-    returnArray:
-        default: "false"
-        isOptional: true
-
     template:
         value: Zed/Business/MethodBusinessFactory.php.twig
 
