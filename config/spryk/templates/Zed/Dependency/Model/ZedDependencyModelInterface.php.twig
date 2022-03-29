@@ -1,0 +1,9 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+
+namespace {{ organization }}\Zed\{{ module }}Extension\Dependency{% if subDirectory.value %}\{{ subDirectory | replace({'/': '\\'}) }}{% endif %};
+
+interface {{ interfaceName | classNameShort }}
+{
+}
