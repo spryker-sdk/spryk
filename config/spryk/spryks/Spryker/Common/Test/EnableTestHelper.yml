@@ -13,7 +13,6 @@ arguments:
     layer: ~
 
     helperClassName:
-        isOptional: true
 
     afterElement:
         isOptional: true
