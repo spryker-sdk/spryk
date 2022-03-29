@@ -1,0 +1,34 @@
+spryk: template
+description: "Adds a new Dependency Expander model interface to the Zed application."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    subDirectory:
+        inherit: true
+        isOptional: true
+
+    className:
+        inherit: true
+
+    interfaceName:
+        inherit: true
+        value: "{{ className }}Interface"
+
+    template:
+        value: Zed/Dependency/Model/ZedDependencyModelInterface.php.twig
+
+    targetFilename:
+        value: "{{ className }}Interface.php"
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}Extension/Dependency/"
+
+preSpryks:
+    - AddModule

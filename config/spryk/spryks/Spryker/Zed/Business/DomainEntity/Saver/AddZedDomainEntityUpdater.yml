@@ -1,0 +1,64 @@
+spryk: template
+description: "Adds a new Business DomainEntity updater to the Zed application."
+mode: both
+level: 2
+
+application: Zed
+layer: Business
+
+priority: 1
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    className:
+        value: "{{ domainEntity }}Updater"
+
+    domainEntity:
+        inherit: true
+
+    subDirectory:
+        value: "{{ domainEntity }}/Saver"
+
+    template:
+        value: Zed/Business/DomainEntity/Saver/DomainEntityUpdater.php.twig
+
+    targetFilename:
+        value: "{{ domainEntity }}Updater.php"
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Business/"
+
+preSpryks:
+    - AddModule
+
+postSpryks:
+    - AddZedBusinessModelInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}Updater"
+              subDirectory:
+                  value: "{{ domainEntity }}/Saver"
+              modelMethod:
+                  value: "update{{ domainEntity }}Collection"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+
+    - AddZedBusinessFactoryMethod:
+          arguments:
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Saver\\{{ domainEntity }}UpdaterInterface"
+              dependencyMethods:
+                  value:
+                      - "getEntityManager"
+                      - "create{{ domainEntity }}UpdateValidator"
+                      - "create{{ domainEntity }}IdentifierBuilder"
+                      - "get{{ domainEntity }}PreUpdatePlugins"
+                      - "get{{ domainEntity }}PostUpdatePlugins"

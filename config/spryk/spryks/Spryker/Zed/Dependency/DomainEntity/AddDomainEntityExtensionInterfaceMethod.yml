@@ -1,0 +1,46 @@
+spryk: method
+description: "Adds a new method to the *target* extension model interface."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    domainEntity:
+        inherit: true
+
+    className: ~
+
+    subDirectory:
+        inherit: true
+        isOptional: true
+
+    modelMethod:
+        inherit: true
+
+    input:
+        inherit: true
+
+    moduleSuffix:
+        inherit: true
+
+    output:
+        inherit: true
+
+    template:
+        value: Common/InterfaceMethod.php.twig
+
+    target:
+        value: "{{ className }}Interface"
+
+    fqcnPattern:
+        value: "{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ subDirectory | convertToClassNameFragment }}\\{{ className }}Interface"
+
+preSpryks:
+    - AddZedDependencyModelInterface:
+          moduleSuffix:
+              inherit: true

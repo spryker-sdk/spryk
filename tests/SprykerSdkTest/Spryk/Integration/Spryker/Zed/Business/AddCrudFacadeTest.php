@@ -81,6 +81,28 @@ class AddCrudFacadeTest extends Unit
             . 'src/Spryker/Zed/FooBar/Business/ZipZap/Deleter/ZipZapDeleter.php',
         );
 
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/ZipZap/Reader/ZipZapReader.php',
+        );
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/ZipZap/Reader/ZipZapReaderInterface.php',
+        );
+
+        # Updater Model
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/ZipZap/Saver/ZipZapUpdater.php',
+        );
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/ZipZap/Saver/ZipZapUpdaterInterface.php',
+        );
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\ZipZap\Saver\ZipZapUpdater', 'updateZipZapCollection');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\ZipZap\Saver\ZipZapUpdaterInterface', 'updateZipZapCollection');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\FooBarBusinessFactory', 'createZipZapUpdater');
+
         // Transfers
         $transferXml = $this->tester->getFileResolver()->resolve(
             $this->tester->getSprykerModuleDirectory() . 'src/Spryker/Shared/FooBar/Transfer/foo_bar.transfer.xml',
@@ -96,6 +118,37 @@ class AddCrudFacadeTest extends Unit
         $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionResponse');
         $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionDeleteCriteria');
         $this->tester->assertResolvedXmlHasTransfer($transferXml, 'Error');
+    }
+
+    /**
+     * @return void
+     */
+    public function testPluginsExist(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--domainEntity' => 'ZipZap',
+        ]);
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBarExtension/Dependency/ZipZap/Expander/ZipZapExpanderPluginInterface.php',
+        );
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBarExtension/Dependency/ZipZap/Saver/ZipZapPreSavePluginInterface.php',
+        );
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBarExtension/Dependency/ZipZap/Saver/ZipZapPostSavePluginInterface.php',
+        );
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBarExtension/Dependency/ZipZap/Validator/ZipZapValidatorRulePluginInterface.php',
+        );
     }
 
     /**
@@ -131,6 +184,27 @@ class AddCrudFacadeTest extends Unit
         $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'hasFooBar');
         $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'getFooBarDeleteCollection');
         $this->tester->assertClassHasMethod(ClassName::ZED_REPOSITORY, 'applyFooBarDeleteFilters');
+    }
+
+    /**
+     * @return void
+     */
+    public function testValidatorExists(): void
+    {
+        $this->tester->run($this, [
+            '--organization' => 'Spryker',
+            '--module' => 'FooBar',
+            '--domainEntity' => 'ZipZap',
+        ]);
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/Validator/ZipZap/ZipZapValidator.php',
+        );
+
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validate');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validateCollection');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validateCollectionTransactional');
     }
 
     /**
