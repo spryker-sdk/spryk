@@ -4,104 +4,17 @@
     "description": "Spryk module",
     "license": "proprietary",
     "require": {
-        "ext-dom": "*",
-        "ext-simplexml": "*",
-        "ondrejmirtes/better-reflection": "^4.3.19",
-        "php": ">=7.4",
-        "spryker/config": "^3.0.0",
-        "spryker/console": "^3.0.0 || ^4.0.0",
-        "spryker/doctrine-inflector": "^1.1.0",
-        "spryker/kernel": "^3.30.0",
-        "spryker/laminas": "^1.0.0",
-        "symfony/console": "^3.4.0 || ^4.0.0 || ^5.0.0",
-        "symfony/filesystem": "^3.4.0 || ^4.0.0 || ^5.0.0",
-        "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",
-        "symfony/yaml": "^3.4.9 || ^4.0.0 || ^5.0.0",
-        "twig/twig": "^1.41 || ^2.0.0 || ^3.0.0"
+        "php": ">=7.4"
     },
-    "require-dev": {
-        "codeception/codeception": "^4.0.0",
-        "phpstan/phpstan": "^0.12.98",
-        "phpunit/phpunit": "^9.5.0",
-        "spryker/checkout-extension": "^1.3.0",
-        "spryker/code-sniffer": "*",
-        "spryker/data-import": "^1.1.0",
-        "spryker/glue-application-extension": "^1.1.0",
-        "spryker/oms": "^10.0.0 || ^11.0.0",
-        "spryker/payment-extension": "^1.0.0",
-        "spryker/router": "^1.1.0",
-        "spryker/sales-payment-extension": "^1.0.0",
-        "spryker/step-engine": "^3.3.0",
-        "spryker/testify": "^3.40.0"
-    },
-    "suggest": {
-        "spryker/checkout-extension": "If you want to use Payment spryks, minimum required version: 1.3.0",
-        "spryker/data-import": "If you want to use DataImport spryks, minimum required version: 1.0.0",
-        "spryker/glue-application-extension": "If you want to use Glue spryks, minimum required version: 1.1.0",
-        "spryker/oms": "If you want to use Payment spryks, minimum required version: 6.0.0",
-        "spryker/payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
-        "spryker/router": "If you want to use Route spryks, minimum required version: 1.1.0",
-        "spryker/sales-payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
-        "spryker/step-engine": "If you want to use Payment spryks, minimum required version: 1.0.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "SprykerSdk\\": "src/SprykerSdk/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "SprykerSdkTest\\": "tests/SprykerSdkTest/",
-            "SprykerSdkTest\\Module\\": "tests/_support/Module/",
-            "Spryker\\Glue\\GlueApplicationExtension\\": "vendor/spryker/glue-application-extension/src/Spryker/Glue/GlueApplicationExtension/",
-            "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
-            "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
-            "Spryker\\Glue\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Glue/Kernel/",
-            "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
-            "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
-            "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
-            "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
-            "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
-            "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
-            "Spryker\\Glue\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Glue/FooBar/",
-            "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Zed/ZipZap/",
-            "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Client/ZipZap/",
-            "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/vendor/spryker/spryker/Bundles/ZipZap/src/Spryker/Service/ZipZap/",
-            "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
-            "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
-            "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
-            "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
-            "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
-            "Pyz\\Glue\\FooBar\\": "tests/_data/src/Pyz/Glue/FooBar/",
-            "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml --ignore=/Fixtures/,/tests/_data/ src/ tests/",
-        "stan": "phpstan analyse",
-        "test": "codecept run",
-        "lowest": "validate-prefer-lowest -m",
-        "lowest-setup": "composer update --prefer-lowest --prefer-stable --prefer-dist --no-interaction && cp composer.json composer.backup && composer require --dev dereuromark/composer-prefer-lowest && mv composer.backup composer.json"
-    },
+    "bin": [
+        "spryk-build",
+        "spryk-dump",
+        "spryk-run",
+        "spryk.phar"
+    ],
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
-    },
-    "config": {
-        "use-include-path": true,
-        "process-timeout": 600,
-        "sort-packages": true,
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "bin": [
-        "bin/spryk-run",
-        "bin/spryk-dump",
-        "bin/spryk-build"
-    ]
+    }
 }

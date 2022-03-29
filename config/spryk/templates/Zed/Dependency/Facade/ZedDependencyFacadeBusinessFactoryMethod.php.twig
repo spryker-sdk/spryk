@@ -1,8 +1,0 @@
-
-    /**
-     * @return \{{ organization }}\Zed\{{ module }}\Dependency\Facade\{{ module }}To{{ dependentModule }}FacadeInterface
-     */
-    public function {{ factoryMethod }}(): \{{ organization }}\Zed\{{ module }}\Dependency\Facade\{{ module }}To{{ dependentModule }}FacadeInterface
-    {
-        return $this->getProvidedDependency(\{{ organization }}\Zed\{{ module}}\{{ module}}DependencyProvider::FACADE_{{ dependentModule | underscored | upper }});
-    }

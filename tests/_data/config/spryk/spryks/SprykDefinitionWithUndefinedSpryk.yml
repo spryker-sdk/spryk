@@ -1,6 +1,0 @@
-spryk: undefinedSpryk
-description: "Unit Test configuration"
-
-arguments:
-  foo:
-    value: bar

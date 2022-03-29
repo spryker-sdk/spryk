@@ -45,54 +45,9 @@ jobs:
       - name: Composer install
         run: composer install --no-interaction -o
 
-      - name: Check PHP for syntax errors
-        run: find ./src -path src -prune -o -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
+      - name: Run dump command
+        run: php spryk-dump
 
-      - name: Codecept run test
-        run: vendor/bin/codecept run --coverage-xml
-
-      - name: CodeStyle checks
-        run: composer cs-check
-
-      - name: PHPStan checks
-        run: composer stan
-
-  prefer-lowest:
-    runs-on: ubuntu-18.04
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: [
-            '7.4'
-        ]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-            php-version: ${{ matrix.php-version }}
-            extensions: mbstring, intl, pdo_mysql
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
+      - name: Run Spryk commands
         run: |
-            echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Composer cache
-        uses: actions/cache@v2
-        with:
-            path: ${{ steps.composer-cache.outputs.dir }}
-            key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-            restore-keys: ${{ runner.os }}-composer-
-
-      - name: Composer prefer-lowest
-        run: composer lowest-setup
-
-      #- name: Codecept run test
-      #  run: vendor/bin/codecept run
-
-      - name: Validate prefer lowest
-        run: composer lowest
+          php spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
