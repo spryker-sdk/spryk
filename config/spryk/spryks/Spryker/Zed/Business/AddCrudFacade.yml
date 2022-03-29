@@ -210,3 +210,10 @@ postSpryks:
                       value: "is_active"
                   propertyType:
                       value: "BOOLEAN"
+    #Add "{{ domainEntity }}Mapper" into the Persistence layer.
+    - ZedPersistenceMapper:
+          arguments:
+              domainEntity:
+                  inherit: true
+              tableName:
+                  inherit: true
