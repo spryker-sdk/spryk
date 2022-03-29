@@ -1,0 +1,64 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+namespace {{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Reader;
+
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer;
+use Generated\Shared\Transfer\ErrorTransfer;
+use {{ organization }}\Zed\{{ module }}\Persistence\{{ module }}RepositoryInterface;
+
+class {{ domainEntity }}Reader implements {{ domainEntity }}ReaderInterface
+{
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}RepositoryInterface
+     */
+    protected {{ module }}RepositoryInterface ${{ module | lcfirst }}Repository;
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}ExpanderPluginInterface[]
+     */
+    protected array ${{ domainEntity | lcfirst }}ExpanderPlugins;
+
+    /**
+     * @param \{{ organization }}\Zed\{{ module }}\Persistence\{{ module }}RepositoryInterface ${{ module | lcfirst }}Repository
+     * @param \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}ExpanderPluginInterface[] ${{ domainEntity | lcfirst }}ExpanderPlugins
+     */
+    public function __construct(
+        {{ module }}RepositoryInterface ${{ module | lcfirst }}Repository,
+        array ${{ domainEntity | lcfirst }}ExpanderPlugins
+    ) {
+        $this->{{ module | lcfirst }}Repository = ${{ module | lcfirst }}Repository;
+        $this->{{ domainEntity | lcfirst }}ExpanderPlugins = ${{ domainEntity | lcfirst }}ExpanderPlugins;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer
+     */
+    public function get{{ domainEntity }}Collection(
+        {{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer
+    ): {{ domainEntity }}CollectionTransfer {
+        ${{ domainEntity | lcfirst }}CollectionTransfer = $this->{{ domainEntity | lcfirst }}Repository
+            ->get{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CriteriaTransfer);
+
+        return $this->expand{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer ${{ domainEntity | lcfirst }}CollectionTransfer
+     *
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer
+     */
+    protected function expand{{ domainEntity }}Collection(
+        {{ domainEntity }}CollectionTransfer ${{ domainEntity | lcfirst }}CollectionTransfer
+    ): {{ domainEntity }}CollectionTransfer {
+        foreach ($this->{{ domainEntity | lcfirst }}ExpanderPlugins as ${{ domainEntity | lcfirst }}ExpanderPlugin) {
+            ${{ domainEntity | lcfirst }}CollectionTransfer = ${{ domainEntity | lcfirst }}ExpanderPlugin
+                ->expand(${{ domainEntity | lcfirst }}CollectionTransfer->get{{ domainEntity }}s());
+        }
+
+        return ${{ domainEntity | lcfirst }}CollectionTransfer;
+    }
+}

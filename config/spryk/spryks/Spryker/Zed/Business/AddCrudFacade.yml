@@ -24,6 +24,7 @@ preSpryks:
 postSpryks:
     - AddZedDomainEntityDeleter
     - AddZedDomainEntityCreator
+    - AddZedDomainEntityReader
     # Add transfers
     - AddSharedDomainEntityFetchingTransferDefinition
     - AddSharedDomainEntityManipulationTransferDefinition
@@ -131,7 +132,6 @@ postSpryks:
                 value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
             body:
                 value: "return $this->getFactory()->create{{ domainEntity }}Deleter()->delete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);"
-
     # Add add{{ domainEntity }}CreatePreSavePlugins, get{{ domainEntity }}CreatePreSavePlugins and const for the plugins to the DependencyProvider
     - AddZedDependencyPlugins:
           arguments:
@@ -187,6 +187,7 @@ postSpryks:
                       value: "{{ domainEntity }}CreateValidatorRule"
                   output:
                       value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
+    # Add id_{{ domainEntity }} property to "spy_{{ module }}" entity of the Persistence layer.
 
     # Creates {{ domainEntity }}ExpanderPluginInterface
     - AddDomainEntityExtensionInterfaceMethod:
@@ -243,7 +244,6 @@ postSpryks:
                   value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer"
               output:
                   value: "array"
-    # Add id_{{ domainEntity }} property to "spy_{{ module }}" entity of the Persistence layer.
     -   AddZedPersistencePropelSchemaProperty:
               arguments:
                   name:
