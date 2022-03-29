@@ -216,7 +216,6 @@ postSpryks:
                       value: "is_active"
                   propertyType:
                       value: "BOOLEAN"
-
     # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
     -   AddDataBuilderDefinition:
             arguments:
