@@ -4,10 +4,10 @@
 {% if not interfaceName is defined or interfaceName.value is null %}
     {% set interfaceName = '\\' ~  organization ~ '\\Zed\\' ~ module ~ '\\Business\\' ~  subDirectoryName ~ className ~ 'Interface' %}
 {% endif %}
-{% set methodBody = 'return new \\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ subDirectoryName }}{{ className }}();' %}
+{% set methodBody = 'return new \\' ~ organization ~ '\\Zed\\' ~ module ~ '\\Business\\' ~ subDirectoryName ~ className ~ '();' %}
 {% set phpDocReturn = interfaceName %}
 {% set methodReturn = interfaceName %}
-{% if body is defined and body.value is not null %}
+{% if body is defined and body.value is not null and body.value != '' %}
     {% set methodBody = body.value %}
 {% endif %}
 
