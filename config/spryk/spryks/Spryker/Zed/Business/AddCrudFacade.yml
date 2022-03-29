@@ -210,3 +210,11 @@ postSpryks:
                       value: "is_active"
                   propertyType:
                       value: "BOOLEAN"
+    -   AddZedDomainEntityPersistenceFactoryMethod:
+            arguments:
+                fqcnClassName:
+                    value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
+                factoryMethod:
+                    value: "create{{ domainEntity }}Query"
+                output:
+                    value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
