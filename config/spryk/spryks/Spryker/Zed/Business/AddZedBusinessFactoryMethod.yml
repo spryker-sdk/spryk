@@ -10,6 +10,9 @@ arguments:
         inherit: true
         default: Spryker
 
+    domainEntity:
+        inherit: true
+
     subDirectory:
         inherit: true
         isOptional: true
@@ -29,6 +32,13 @@ arguments:
         isMultiple: true
         isOptional: true
 
+    body:
+        value: ""
+
+    returnArray:
+        default: "false"
+        isOptional: true
+
     template:
         value: Zed/Business/MethodBusinessFactory.php.twig
 
@@ -37,62 +47,3 @@ arguments:
 
 preSpryks:
     - AddZedBusinessFactory
-
-postSpryks:
-    - AddZedBusinessFactoryMethod:
-          arguments:
-              factoryMethod:
-                  value: "create{{ domainEntity }}IdentifierBuilder"
-              className:
-                  value: "{{ domainEntity }}IdentifierBuilder"
-              interfaceName:
-                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Identifier\\{{ domainEntity }}IdentifierInterface"
-              subDirectory:
-                  value: "{{ domainEntity }}/Identifier"
-    - AddZedBusinessFactoryMethod:
-          arguments:
-              factoryMethod:
-                  value: "create{{ domainEntity }}CreateValidator"
-              className:
-                  value: "{{ domainEntity }}Validator"
-              interfaceName:
-                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorInterface"
-              subDirectory:
-                  value: "{{ domainEntity }}/Validator"
-              dependencyMethods:
-                  value:
-                      - "get{{ domainEntity }}IdentifierBuilder"
-                      - "get{{ domainEntity }}CreateValidatorRules"
-                      - "get{{ domainEntity }}CreateValidatorRulePlugins"
-    - AddZedBusinessFactoryMethod:
-          arguments:
-              factoryMethod:
-                  value: "get{{ domainEntity }}CreateValidatorRules"
-              interfaceName:
-                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
-              body:
-                  value: "return [];"
-    - AddZedBusinessFactoryMethod:
-          arguments:
-              factoryMethod:
-                  value: "create{{ domainEntity }}UpdateValidator"
-              className:
-                  value: "{{ domainEntity }}Validator"
-              interfaceName:
-                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorInterface"
-              subDirectory:
-                  value: "{{ domainEntity }}/Validator"
-              dependencyMethods:
-                  value:
-                      - "get{{ domainEntity }}IdentifierBuilder"
-                      - "get{{ domainEntity }}UpdateValidatorRules"
-                      - "get{{ domainEntity }}UpdateValidatorRulePlugins"
-    - AddZedBusinessFactoryMethod:
-          arguments:
-              factoryMethod:
-                  value: "get{{ domainEntity }}UpdateValidatorRules"
-              interfaceName:
-                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
-              body:
-                  value: "return [];"
-
