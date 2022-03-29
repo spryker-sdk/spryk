@@ -186,6 +186,30 @@ postSpryks:
     # Add transfers
     - AddSharedDomainEntityFetchingTransferDefinition
     - AddSharedDomainEntityManipulationTransferDefinition
+    # Add id_{{ domainEntity }} property to "spy_{{ module }}" entity of the Persistence layer.
+    -   AddZedPersistencePropelSchemaProperty:
+              arguments:
+                  name:
+                      value: "spy_{{ module | underscored }}"
+                  propertyName:
+                      value: "id_{{ domainEntity | underscored }}"
+                  propertyType:
+                      value: "INTEGER"
+                  required:
+                      value: "true"
+                  autoIncrement:
+                      value: "true"
+                  primaryKey:
+                    value: "true"
+    # Add is_active property to "spy_{{ module }}" entity of the Persistence layer.
+    -   AddZedPersistencePropelSchemaProperty:
+              arguments:
+                  name:
+                      value: "spy_{{ module | underscored }}"
+                  propertyName:
+                      value: "is_active"
+                  propertyType:
+                      value: "BOOLEAN"
     - AddZedBusinessFactoryMethod:
           arguments:
               factoryMethod:
