@@ -269,6 +269,12 @@ postSpryks:
                       value: "is_active"
                   propertyType:
                       value: "BOOLEAN"
+    # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
+    -   AddDataBuilderDefinition:
+            arguments:
+                name:
+                    value: "{{ domainEntity }}"
+    # Add Spy{{ domainEntity }}Query method to persistence factory
     -   AddZedDomainEntityPersistenceFactoryMethod:
             arguments:
                 fqcnClassName:
@@ -277,9 +283,3 @@ postSpryks:
                     value: "create{{ domainEntity }}Query"
                 output:
                     value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
-
-    # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
-    -   AddDataBuilderDefinition:
-            arguments:
-                name:
-                    value: "{{ domainEntity }}"
