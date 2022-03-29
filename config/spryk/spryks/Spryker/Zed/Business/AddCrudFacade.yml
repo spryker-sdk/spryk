@@ -190,6 +190,62 @@ postSpryks:
                   output:
                       value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
     # Add id_{{ domainEntity }} property to "spy_{{ module }}" entity of the Persistence layer.
+
+    # Creates {{ domainEntity }}ExpanderPluginInterface
+    - AddDomainEntityExtensionInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}ExpanderPlugin"
+              subDirectory:
+                  value: "{{ domainEntity }}/Expander"
+              modelMethod:
+                  value: "expand"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
+
+    # Creates {{ domainEntity }}PreSavePluginInterface
+    -   AddDomainEntityExtensionInterfaceMethod:
+                arguments:
+                    className:
+                        value: "{{ domainEntity }}PreSavePlugin"
+                    subDirectory:
+                        value: "{{ domainEntity }}/Saver"
+                    modelMethod:
+                        value: "process"
+                    input:
+                        value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+                    output:
+                        value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
+
+    # Creates {{ domainEntity }}PostSavePluginInterface
+    - AddDomainEntityExtensionInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}PostSavePlugin"
+              subDirectory:
+                  value: "{{ domainEntity }}/Saver"
+              modelMethod:
+                  value: "process"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
+
+    # Creates {{ domainEntity }}ValidatorRulePluginInterface
+    - AddDomainEntityExtensionInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}ValidatorRulePlugin"
+              subDirectory:
+                  value: "{{ domainEntity }}/Validator"
+              modelMethod:
+                  value: "validate"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer"
+              output:
+                  value: "array"
     -   AddZedPersistencePropelSchemaProperty:
               arguments:
                   name:
