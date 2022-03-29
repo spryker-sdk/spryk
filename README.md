@@ -1,4 +1,4 @@
-# Spryk Module
+# Spryk
 [![CI](https://github.com/spryker-sdk/spryk/workflows/CI/badge.svg?branch=master)](https://github.com/spryker-sdk/spryk/actions?query=workflow%3ACI+branch%3Amaster)
 [![Latest Stable Version](https://poser.pugx.org/spryker-sdk/spryk/v/stable.svg)](https://packagist.org/packages/spryker-sdk/spryk)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
@@ -12,57 +12,6 @@ composer require --dev spryker-sdk/spryk
 
 This is a development only "require-dev" module. Please make sure you include it as such.
 
-## How to use Spryks?
-
-Currently we support two ways to work with Spryks.
-
-1. Console based (CLI).
-2. UI based (Zed GUI).
-
-### Spryk Console
-
-The console tool for working with Spryks is written with Symfony's Console component. To work with the Spryk Console you need to add it to your `ConsoleDependencyProvider`:
-
-```
-namespace Pyz\Zed\Console;
-
-use SprykerSdk\Spryk\Console\SprykDumpConsole;
-use SprykerSdk\Spryk\Console\SprykBuildConsole;
-use SprykerSdk\Spryk\Console\SprykRunConsole;
-
-class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
-{
-    protected function getConsoleCommands(Container $container)
-    {
-        if (Environment::isDevelopment()) {
-            $commands[] = new SprykRunConsole();
-            $commands[] = new SprykBuildConsole();
-            $commands[] = new SprykDumpConsole();
-        }
-        ...
-
-    }
-}
-```
-
-Currently available commands are `SprykDumpConsole` and `SprykRunConsole`.
-
-> **_NOTE:_** However, instead of registering command in `ConsoleDependencyProvider` you can use standalone commands: `vendor/bin/spryk-run`, `vendor/bin/spryk-build` and `vendor/bin/spryk-dump`.
-
-1. To get a list of top level spryks run `vendor/bin/console spryk:dump`.
-2. To get a list of all available spryks run `vendor/bin/console spryk:dump --level=all`.
-3. To get a list of all options available for a specific spryk run `vendor/bin/console spryk:dump {SPRYK NAME}`.
-4. To execute one Spryk run `vendor/bin/console spryk:run {SPRYK NAME}`.
-5. To reflect changes in Spryk arguments and generate a new cache for them run `vendor/bin/console spryk:build`.
-
-When you run a Spryk, the console will ask you for all needed arguments to build the Spryk. You also have the ability to pass all known arguments on the console by using `--{argument name}={argument value}`.
-
-### SprykGui
-
-We also provide a [UI](https://github.com/spryker-sdk/spryk-gui) built inside the Zed application to use Spryks UI based. For the UI you need to run `composer require --dev spryker-sdk/spryk-gui`
-
-When the SprykGui module is installed you can navigation to it inside Zed. The first page you see contains a list of all available Spryks. After you clicked on of the Spryks a form will be displayed and will give you the ability to enter all argument values the Spryk needs to run.
-
 # What are Spryks?
 
 Spryks are some sort of code generators for Spryker. Writing code is often a very repetitive task and you often need to write a lot code just to follow Spryker's clean and complex architecture.
@@ -72,62 +21,20 @@ Spryks are written with the help of yml files. The filename of the yml file repr
 
 The vast majority of the Spryks need to execute other Spryks before the called Spryk can run. For example Add a Zed Business Facade needs to have a properly created module before the Facade itself can be created. Therefore Spryks have pre and post Spryks and with the call of one Spryk many things can and will be created for you.
 
-## Currently we support the following Spryk types:
+# How to use Spryks?
 
-- template
-- structure
-- method
+- `vendor/bin/spryk-run` - Runs Spryks in your project
+- `vendor/bin/spryk-dump` - Lists all available Spryks
+- `vendor/bin/spryk-build` - Builds a cache file for all Spryk arguments
 
-### Template Spryk
 
-A template Spryk adds a new file to your filesystem and uses twig as render engine. Twig gives you the ability to easily create file from a template with placeholders e.g. for `module` or `organization`. The template Spryk will at least need the `template` argument defined. This argument tells the Spryk what template should be used to fullfill your task.
+Examples:
 
-Template Spryks can have as many arguments defined as you will need in the template which should be build.
+1. To get a list of top level spryks run `vendor/bin/spryk-dump`.
+2. To get a list of all available spryks run `vendor/bin/spryk-dump --level=all`.
+3. To get a list of all options available for a specific spryk run `vendor/bin/spryk-dump {SPRYK NAME}`.
+4. To execute one Spryk run `vendor/bin/spryk-run {SPRYK NAME}`.
+5. To reflect changes in Spryk arguments and generate a new cache for them run `vendor/bin/spryk-build`.
 
-### Structure Spryk
+When you run a Spryk, the console will ask you for all needed arguments to build the Spryk. You also have the ability to pass all known arguments on the console by using `--{argument name}={argument value}`.
 
-A structure Spryk creates directory structure you define. The CreateSprykerModule Spryk e.g. contains the definition of directories the Spryk has to create for you. The main argument in the structure Spryk is the directories argument. Here you can add a list of directories which have to be created.
-
-### Method Spryk
-
-The method Spryk is able to add methods to a specified target e.g. `Spryker\Zed\FooBar\Business\FooBarFacade` it needs some more arguments to fullfill the task as the prior mentioned Spryks.
-
-To get an idea what your Spryk needs take a look into the already existing Spryks.
-
-# How to create a Spryk?
-
-In most cases it is very easy to create a Spryk. As the whole Spryk Tool is covered by tests you also have to start by adding a test for the Spryk you want to create.
-
-If you only need to add a new Spryk configuration you will start by adding an Integration test for the new Spryk definition. You need to add the name of the Spryk you want to test. E.g. AddMySuperNiceFile and add the assertion to have this file created after you executed the test.
-
-When this is done run the Integration tests with `vendor/bin/codecept run Integration -g {YOUR TEST GROUP}` and see the test failing. You will get a message that the Spryk definition was not found by the given name, so add the definition file for you new Spryk.
-
-You need to add your Spryk definition file into `config/spryk/spryks/` on project or core level:
-
-```
-project OR package root directory
-│
-└─── config/
-│   └─── spryk/
-│   │    └─── spryks/
-│   │         │   ...
-│   │         │   spryk-name.yml
-│   │         │   ...
-│   └─── ...
-```
-
-If you selected the template Spryk, you will most likely see the error that the defined template file could not be found. In this case you need to add your template to `config/spryk/templates/` on project or core level:
-
-```
-project OR package root directory
-│
-└─── config/
-│   └─── spryk/
-│   │    └─── templates/
-│   │         │   ...
-│   │         │   template-name.twig
-│   │         │   ...
-│   └─── ...
-```
-
-When this is done re-run your tests. Now you should see a green test.

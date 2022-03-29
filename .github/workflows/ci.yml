@@ -44,3 +44,10 @@ jobs:
 
       - name: Composer install
         run: composer install --no-interaction -o
+
+      - name: Run dump command
+        run: php spryk-dump
+
+      - name: Run Spryk commands
+        run: |
+          php spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
