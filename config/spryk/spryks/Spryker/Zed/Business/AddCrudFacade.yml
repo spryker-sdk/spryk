@@ -243,6 +243,8 @@ postSpryks:
           arguments:
               factoryMethod:
                   value: "get{{ domainEntity }}CreateValidatorRules"
+              className:
+                  value: "{{ domainEntity }}Validator"
               interfaceName:
                   value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
               returnArray:
@@ -272,6 +274,8 @@ postSpryks:
                   value: "get{{ domainEntity }}UpdateValidatorRules"
               subDirectory:
                   value: "{{ domainEntity }}/Validator"
+              className:
+                  value: "{{ domainEntity }}Validator"
               interfaceName:
                   value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
               returnArray:
