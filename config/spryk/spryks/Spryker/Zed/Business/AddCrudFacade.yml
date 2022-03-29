@@ -128,6 +128,7 @@ postSpryks:
                 value: "return $this->getFactory()->create{{ domainEntity }}Deleter()->delete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);"
     - AddZedDomainEntityDeleter
     - AddZedDomainEntityCreator
+    - AddZedDomainEntityReader
     # Add add{{ domainEntity }}CreatePreSavePlugins, get{{ domainEntity }}CreatePreSavePlugins and const for the plugins to the DependencyProvider
     - AddZedDependencyPlugins:
           arguments:
