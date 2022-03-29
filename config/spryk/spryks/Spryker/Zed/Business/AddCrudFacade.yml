@@ -26,6 +26,7 @@ postSpryks:
     - AddZedDomainEntityCreator
     - AddZedDomainEntityReader
     - AddZedDomainEntityUpdater
+    - AddDomainEntityValidator
     # Add transfers
     - AddSharedDomainEntityFetchingTransferDefinition
     - AddSharedDomainEntityManipulationTransferDefinition

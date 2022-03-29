@@ -1,0 +1,32 @@
+spryk: template
+description: "Adds a new Business model validator interface to the Zed application."
+mode: both
+level: 2
+
+application: Zed
+layer: Business
+
+priority: 1
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    domainEntity:
+        inherit: true
+
+    template:
+        value: Zed/Business/Validation/DomainEntity/DomainEntityValidatorInterface.php.twig
+
+    targetFilename:
+        value: "{{ domainEntity }}ValidatorInterface.php"
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Business/Validator/{{ domainEntity }}/"
+
+preSpryks:
+    - AddDomainEntityValidator
