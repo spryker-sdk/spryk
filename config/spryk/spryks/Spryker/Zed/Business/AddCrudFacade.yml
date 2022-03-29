@@ -346,3 +346,9 @@ postSpryks:
                   value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
               returnArray:
                   value: "false"
+
+    # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
+    -   AddDataBuilderDefinition:
+            arguments:
+                name:
+                    value: "{{ domainEntity }}"
