@@ -1,0 +1,41 @@
+spryk: schemaProperty
+description: "Adds a Persistence schema to *module*.schema.xml in the Zed application."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    name:
+        inherit: true
+
+    propertyName: ~
+
+    propertyType: ~
+
+    required:
+        default: false
+
+    autoIncrement:
+        default: false
+
+    primaryKey:
+        default: false
+
+    defaultValue:
+        default: ""
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Persistence/Propel/Schema/spy_{{ module | underscored }}.schema.xml"
+
+preSpryks:
+    - AddZedPersistencePropelSchemaTable:
+          arguments:
+              tableName:
+                  value: "spy_{{ module | underscored }}"
+              targetModule:
+                  value: "{{ module | underscored }}"

@@ -22,6 +22,13 @@ preSpryks:
     - AddModule
 
 postSpryks:
+    - AddZedDomainEntityDeleter
+    - AddZedDomainEntityCreator
+    - AddZedDomainEntityReader
+    - AddZedDomainEntityUpdater
+    # Add transfers
+    - AddSharedDomainEntityFetchingTransferDefinition
+    - AddSharedDomainEntityManipulationTransferDefinition
     - AddDomainEntityValidator:
           arguments:
               type:
@@ -134,8 +141,6 @@ postSpryks:
                 value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
             body:
                 value: "return $this->getFactory()->create{{ domainEntity }}Deleter()->delete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);"
-    - AddZedDomainEntityDeleter
-    - AddZedDomainEntityCreator
     # Add add{{ domainEntity }}CreatePreSavePlugins, get{{ domainEntity }}CreatePreSavePlugins and const for the plugins to the DependencyProvider
     - AddZedDependencyPlugins:
           arguments:
@@ -191,6 +196,33 @@ postSpryks:
                       value: "{{ domainEntity }}CreateValidatorRule"
                   output:
                       value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
-    # Add transfers
-    - AddSharedDomainEntityFetchingTransferDefinition
-    - AddSharedDomainEntityManipulationTransferDefinition
+    # Add id_{{ domainEntity }} property to "spy_{{ module }}" entity of the Persistence layer.
+    -   AddZedPersistencePropelSchemaProperty:
+              arguments:
+                  name:
+                      value: "spy_{{ module | underscored }}"
+                  propertyName:
+                      value: "id_{{ domainEntity | underscored }}"
+                  propertyType:
+                      value: "INTEGER"
+                  required:
+                      value: "true"
+                  autoIncrement:
+                      value: "true"
+                  primaryKey:
+                    value: "true"
+    # Add is_active property to "spy_{{ module }}" entity of the Persistence layer.
+    -   AddZedPersistencePropelSchemaProperty:
+              arguments:
+                  name:
+                      value: "spy_{{ module | underscored }}"
+                  propertyName:
+                      value: "is_active"
+                  propertyType:
+                      value: "BOOLEAN"
+
+    # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
+    -   AddDataBuilderDefinition:
+            arguments:
+                name:
+                    value: "{{ domainEntity }}"
