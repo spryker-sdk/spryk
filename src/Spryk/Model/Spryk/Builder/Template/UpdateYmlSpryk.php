@@ -93,19 +93,25 @@ class UpdateYmlSpryk extends AbstractBuilder
      */
     protected function prepareTargetYaml(array $targetYaml): array
     {
-        $addToElement = $this->getAddToElement();
+        $addToElementPath = $this->getAddToElement();
         $afterElement = $this->getAfterElement();
 
-        $newTargetYaml = [];
-
-        if (!isset($targetYaml[$addToElement])) {
-            foreach ($targetYaml as $key => $value) {
-                $newTargetYaml[$key] = $value;
-                if ($key === $afterElement) {
-                    $newTargetYaml[$addToElement] = [];
+        $currentLevel = &$targetYaml;
+        foreach ($addToElementPath as $pathElement) {
+            if (!array_key_exists($pathElement, $currentLevel)) {
+                $newCurrentLevel = [];
+                foreach ($currentLevel as $key => $value) {
+                    $newCurrentLevel[$key] = $value;
+                    if ($key === $afterElement) {
+                        $newCurrentLevel[$pathElement] = [];
+                    }
                 }
+                if (!array_key_exists($pathElement, $newCurrentLevel)) {
+                    $newCurrentLevel[$pathElement] = [];
+                }
+                $currentLevel = $newCurrentLevel;
             }
-            $targetYaml = $newTargetYaml;
+            $currentLevel = &$currentLevel[$pathElement];
         }
 
         return $targetYaml;
@@ -163,36 +169,41 @@ class UpdateYmlSpryk extends AbstractBuilder
     protected function updateYaml(array $targetYaml): array
     {
         $content = $this->getYamlToAdd();
-        $addToElement = $this->getAddToElement();
+        $addToElementPath = $this->getAddToElement();
+
+        $currentLevel = &$targetYaml;
+        foreach ($addToElementPath as $key) {
+            $currentLevel = &$currentLevel[$key];
+        }
 
         if (is_array($content)) {
-            $targetYaml[$addToElement] = array_merge($targetYaml[$addToElement], $content);
+            $currentLevel = array_merge($currentLevel, $content);
 
             return $targetYaml;
         }
 
-        if (in_array($content, $targetYaml[$addToElement], true)) {
+        if (in_array($content, $currentLevel, true)) {
             return $targetYaml;
         }
 
-        $targetYaml[$addToElement][] = $content;
+        $currentLevel[] = $content;
 
         return $targetYaml;
     }
 
     /**
-     * @return string
+     * @return array
      */
-    protected function getAddToElement(): string
+    protected function getAddToElement(): array
     {
-        return $this->getStringArgument(static::ARGUMENT_ADD_TO_ELEMENT);
+        return explode('.', $this->getStringArgument(static::ARGUMENT_ADD_TO_ELEMENT));
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    protected function getAfterElement(): string
+    protected function getAfterElement(): ?string
     {
-        return $this->getStringArgument(static::ARGUMENT_AFTER_ELEMENT);
+        return $this->arguments->getArgument(static::ARGUMENT_AFTER_ELEMENT)->getValue();
     }
 }
