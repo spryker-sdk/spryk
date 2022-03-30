@@ -29,6 +29,9 @@ arguments:
         isMultiple: true
         isOptional: true
 
+    body:
+        value: ""
+
     template:
         value: Zed/Business/MethodBusinessFactory.php.twig
 
@@ -37,4 +40,3 @@ arguments:
 
 preSpryks:
     - AddZedBusinessFactory
-
