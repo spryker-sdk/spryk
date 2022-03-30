@@ -1,0 +1,42 @@
+spryk: template
+description: "Adds a new DomainEntity Test Helper."
+mode: both
+level: 2
+
+application: Zed
+layer: Business
+
+priority: 1
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    domainEntity:
+        inherit: true
+
+    template:
+        value: Zed/Test/Helper/ZedDomainEntityTestHelper.php.twig
+
+    targetFilename:
+        value: "{{ domainEntity }}CrudHelper.php"
+
+    targetPath:
+        value: "tests/{{ organization }}Test/Zed/{{ module }}/_support/Helper/"
+
+preSpryks:
+    - AddModule
+    - AddZedBusinessTestSuite
+
+postSpryks:
+    -   EnableTestHelper:
+            arguments:
+                layer:
+                    value: "Business"
+                helperClassName:
+                    value: "\\{{ organization }}Test\\Zed\\{{ module }}\\Helper\\{{ domainEntity }}CrudHelper"
+

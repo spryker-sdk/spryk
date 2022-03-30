@@ -26,7 +26,7 @@ arguments:
         value: Zed/Business/Validation/DomainEntity/DomainEntityValidator.php.twig
 
     targetFilename:
-        value: "{{ domainEntity }}Validator.php"
+        value: "{{ domainEntity }}{{ type }}Validator.php"
 
     targetPath:
         value: "src/{{ organization }}/Zed/{{ module }}/Business/Validator/{{ domainEntity }}/"
