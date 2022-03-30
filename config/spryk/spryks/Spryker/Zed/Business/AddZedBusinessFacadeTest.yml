@@ -9,6 +9,7 @@ arguments:
     organization:
         inherit: true
         default: Spryker
+        
     domainEntity:
         isOptional: true
         inherit: true

@@ -1,0 +1,54 @@
+spryk: template
+description: "Adds a new Business model validator to the Zed application."
+mode: both
+level: 2
+
+application: Zed
+layer: Business
+
+priority: 1
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    domainEntity:
+        inherit: true
+
+    type: # Defines the method name that gets created in the factory see below
+        value: ""
+
+    template:
+        value: Zed/Business/Validation/DomainEntity/DomainEntityValidator.php.twig
+
+    targetFilename:
+        value: "{{ domainEntity }}{{ type }}Validator.php"
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Business/Validator/{{ domainEntity }}/"
+
+preSpryks:
+    - AddModule
+
+postSpryks:
+    - AddDomainEntityValidatorInterface
+    - AddZedBusinessFactoryMethod:
+          arguments:
+              factoryMethod:
+                  value: "create{{ domainEntity }}{{ type }}Validator"
+              className:
+                  value: "{{ domainEntity }}Validator"
+              interfaceName:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorInterface"
+              subDirectory:
+                  value: "{{ domainEntity }}/Validator"
+              dependencyMethods:
+                  value:
+                      - "get{{ domainEntity }}IdentifierBuilder"
+                      - "get{{ domainEntity }}{{ type }}ValidatorRules"
+                      - "get{{ domainEntity }}{{ type }}ValidatorRulePlugins"
+

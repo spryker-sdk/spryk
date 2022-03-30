@@ -1,0 +1,43 @@
+spryk: method
+description: "Adds a get provided dependency method to the *module*BusinessFactory."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    domainEntity:
+        inherit: true
+
+    className:
+        inherit: true
+
+    constantName: ~
+
+    output: ~
+
+    body:
+        value: "return $this->getProvidedDependency(\\{{ organization }}\\Zed\\{{ module }}\\{{ module }}DependencyProvider::{{ constantName }});"
+
+    factoryMethod:
+        callbackOnly: true
+        callback: ZedBusinessFactoryMethodNameCallback
+
+    template:
+        value: Common/Method.php.twig
+
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Business\\{{ module }}BusinessFactory"
+
+preSpryks:
+    - AddZedDependencyProviderConstant:
+          arguments:
+              name:
+                  value: "{{ constantName | camelCaseToUnderscore | upper }}"
+              value:
+                  value: "{{ constantName | camelCaseToUnderscore | upper }}"
+
