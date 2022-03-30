@@ -433,10 +433,23 @@ postSpryks:
                 value: "string"
             body:
                 value: "return ${{ domainEntity | lcfirst}}Transfer->getId{{ domainEntity }}();"
+
     #Add "{{ domainEntity }}Mapper" into the Persistence layer.
-    - ZedPersistenceMapper:
+    - AddZedDomainEntityMethod:
           arguments:
-              domainEntity:
-                  inherit: true
-              tableName:
-                  inherit: true
+              layer:
+                  value: Persistence
+              className:
+                  value: "{{ domainEntity }}Mapper"
+              subDirectory:
+                  value: "{{ domainEntity }}/Mapper"
+              modelMethod:
+                  value: "map{{ domainEntity }}TransferTo{{ domainEntity }}Entity"
+              input:
+                  value:
+                      - "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer"
+                      - "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }} ${{ domainEntity }}Entity"
+              output:
+                  value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}"
+              body:
+                  value: "return ${{ domainEntity }}Entity->fromArray(${{ domainEntity }}Transfer->modifiedToArray());"
