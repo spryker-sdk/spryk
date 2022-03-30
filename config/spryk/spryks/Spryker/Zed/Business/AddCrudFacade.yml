@@ -499,6 +499,8 @@ postSpryks:
 
     - AddZedDomainEntityPersistenceFactoryMethod:
         arguments:
+            application:
+                value: "Zed"
             fqcnClassName:
                 value: "\\{{ organization }}\\{{ application }}\\{{ module }}\\Persistence\\Propel\\Mapper\\{{ domainEntity }}Mapper"
             factoryMethod:
