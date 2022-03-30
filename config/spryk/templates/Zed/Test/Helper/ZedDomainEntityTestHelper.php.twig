@@ -1,0 +1,378 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+namespace {{ organization }}Test\Zed\{{ module }}\Helper;
+
+use Codeception\Module;
+use Generated\Shared\DataBuilder\{{ domainEntity }}Builder;
+use Generated\Shared\Transfer\{{ domainEntity }}ConditionsTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}CriteriaTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}DeleteCriteriaTransfer;
+use Generated\Shared\Transfer\{{ domainEntity }}Transfer;
+use {{ organization }}\Zed\{{ module }}\Business\{{ module }}FacadeInterface;
+use {{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Expander\{{ domainEntity }}ExpanderPluginInterface;
+use {{ organization }}Test\Zed\Testify\Helper\Business\BusinessHelperTrait;
+
+class {{ domainEntity }}Helper extends Module
+{
+    use BusinessHelperTrait;
+
+    /**
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}Transfer
+     */
+    public function have{{ domainEntity }}TransferWithActiveFalsePersisted(): {{ domainEntity }}Transfer
+    {
+        return $this->persist{{ domainEntity }}($this->have{{ domainEntity }}Transfer(['is_active' => false]));
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}Transfer
+     */
+    public function have{{ domainEntity }}TransferWithActiveTruePersisted(): {{ domainEntity }}Transfer
+    {
+        return $this->persist{{ domainEntity }}($this->have{{ domainEntity }}Transfer(['is_active' => true]));
+    }
+
+    /**
+     * @param array<string, mixed> $seed
+     *
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}Transfer
+     */
+    public function have{{ domainEntity }}Transfer(array $seed = []): {{ domainEntity }}Transfer
+    {
+        ${{ domainEntity | lcfirst }}Builder = new {{ domainEntity }}Builder($seed);
+
+        return ${{ domainEntity | lcfirst }}Builder->build();
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}CriteriaTransfer
+     */
+    public function have{{ domainEntity }}CriteriaTransferWithIsActiveTrueCriteria(): {{ domainEntity }}CriteriaTransfer
+    {
+        ${{ domainEntity | lcfirst }}CriteriaTransfer = new {{ domainEntity }}CriteriaTransfer();
+        ${{ domainEntity | lcfirst }}ConditionsTransfer = new {{ domainEntity }}ConditionsTransfer();
+        ${{ domainEntity | lcfirst }}ConditionsTransfer->setIsActive(true);
+        ${{ domainEntity | lcfirst }}CriteriaTransfer->set{{ domainEntity }}Conditions(${{ domainEntity | lcfirst }}ConditionsTransfer);
+
+        return ${{ domainEntity | lcfirst }}CriteriaTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}DeleteCriteriaTransfer
+     */
+    public function have{{ domainEntity }}DeleteCriteriaTransferWithIsActiveTrueCriteria(): {{ domainEntity }}DeleteCriteriaTransfer
+    {
+        ${{ domainEntity | lcfirst }}DeleteCriteriaTransfer = new {{ domainEntity }}DeleteCriteriaTransfer();
+        ${{ domainEntity | lcfirst }}ConditionsTransfer = new {{ domainEntity }}ConditionsTransfer();
+        ${{ domainEntity | lcfirst }}ConditionsTransfer->setIsActive(true);
+        ${{ domainEntity | lcfirst }}DeleteCriteriaTransfer->set{{ domainEntity }}Conditions(${{ domainEntity | lcfirst }}ConditionsTransfer);
+
+        return ${{ domainEntity | lcfirst }}DeleteCriteriaTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}CriteriaTransfer
+     */
+    public function have{{ domainEntity }}CriteriaTransferWithIsActiveFalseCriteria(): {{ domainEntity }}CriteriaTransfer
+    {
+        ${{ domainEntity | lcfirst }}CriteriaTransfer = new {{ domainEntity }}CriteriaTransfer();
+        ${{ domainEntity | lcfirst }}ConditionsTransfer = new {{ domainEntity }}ConditionsTransfer();
+        ${{ domainEntity | lcfirst }}ConditionsTransfer->setIsActive(false);
+        ${{ domainEntity | lcfirst }}CriteriaTransfer->set{{ domainEntity }}Conditions(${{ domainEntity | lcfirst }}ConditionsTransfer);
+
+        return ${{ domainEntity | lcfirst }}CriteriaTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer
+     *
+     * @return \Generated\Shared\Transfer\{{ domainEntity }}Transfer
+     */
+    protected function persist{{ domainEntity }}({{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer): {{ domainEntity }}Transfer
+    {
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->set{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->getFacade()->create{{ domainEntity }}Collection();
+
+        return current(${{ domainEntity | lcfirst }}CollectionResponseTransfer->get{{ domainEntity }}s());
+    }
+
+    /**
+     * @return void
+     */
+    public function have{{ domainEntity }}ExpanderPluginSetIsActiveFalseEnabled(): void
+    {
+        ${{ domainEntity | lcfirst }}ExpanderPluginSetIsActiveFalse = new class implements {{ domainEntity }}ExpanderPluginInterface {
+            /**
+             * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer[] ${{ domainEntity | lcfirst }}Transfers
+             *
+             * @return \Generated\Shared\Transfer\{{ domainEntity }}Transfer[]
+             */
+            public function expand(array ${{ domainEntity | lcfirst }}Transfers): array
+            {
+                foreach (${{ domainEntity | lcfirst }}Transfers as ${{ domainEntity | lcfirst }}Transfer) {
+                    ${{ domainEntity | lcfirst }}Transfer->setIsActive(false);
+                }
+
+                return ${{ domainEntity | lcfirst }}Transfers;
+            }
+        };
+
+        $this->getBusinessHelper()->mockFactoryMethod('get{{ domainEntity }}ExpanderPlugins', [${{ domainEntity | lcfirst }}ExpanderPluginSetIsActiveFalse], '{{ module }}');
+    }
+
+    /**
+     * @return void
+     */
+    public function have{{ domainEntity }}CreatePreSavePluginSetIsActiveFalseEnabled(): void
+    {
+        $this->mock{{ domainEntity }}PreSavePluginSetIsActiveFalse('get{{ domainEntity }}CreatePreSavePlugins');
+    }
+
+    /**
+     * @return void
+     */
+    public function have{{ domainEntity }}CreatePostSavePluginSetIsActiveFalseEnabled(): void
+    {
+        $this->mock{{ domainEntity }}PostSavePluginSetIsActiveFalse('get{{ domainEntity }}CreatePostSavePlugins');
+    }
+
+    /**
+     * @return void
+     */
+    public function have{{ domainEntity }}UpdatePreSavePluginSetIsActiveFalseEnabled(): void
+    {
+        $this->mock{{ domainEntity }}PreSavePluginSetIsActiveFalse('get{{ domainEntity }}UpdatePreSavePlugins');
+    }
+
+    /**
+     * @return void
+     */
+    public function have{{ domainEntity }}UpdatePostSavePluginSetIsActiveFalseEnabled(): void
+    {
+        $this->mock{{ domainEntity }}PostSavePluginSetIsActiveFalse('get{{ domainEntity }}UpdatePostSavePlugins');
+    }
+
+    /**
+     * @param string $factoryMethod
+     *
+     * @return void
+     */
+    protected function mock{{ domainEntity }}PreSavePluginSetIsActiveFalse(string $factoryMethod): void
+    {
+        ${{ domainEntity | lcfirst }}PreSavePlugin = new class implements \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PreSavePluginInterface {
+            /**
+             * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer[] ${{ domainEntity | lcfirst }}Transfers
+             *
+             * @return \Generated\Shared\Transfer\{{ domainEntity }}Transfer[]
+             */
+            public function process(array ${{ domainEntity | lcfirst }}Transfers): array
+            {
+                foreach (${{ domainEntity | lcfirst }}Transfers as ${{ domainEntity | lcfirst }}Transfer) {
+                    ${{ domainEntity | lcfirst }}Transfer->setIsActive(false);
+                }
+
+                return ${{ domainEntity | lcfirst }}Transfers;
+            }
+        };
+
+        $this->getBusinessHelper()->mockFactoryMethod($factoryMethod, [${{ domainEntity | lcfirst }}PreSavePlugin], '{{ module }}');
+    }
+
+    /**
+     * @param string $factoryMethod
+     *
+     * @return void
+     */
+    protected function mock{{ domainEntity }}PostSavePluginSetIsActiveFalse(string $factoryMethod): void
+    {
+        ${{ domainEntity | lcfirst }}PostSavePlugin = new class implements \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Saver\{{ domainEntity }}PostSavePluginInterface {
+            /**
+             * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer[] ${{ domainEntity | lcfirst }}Transfers
+             *
+             * @return \Generated\Shared\Transfer\{{ domainEntity }}Transfer[]
+             */
+            public function process(array ${{ domainEntity | lcfirst }}Transfers): array
+            {
+                foreach (${{ domainEntity | lcfirst }}Transfers as ${{ domainEntity | lcfirst }}Transfer) {
+                    ${{ domainEntity | lcfirst }}Transfer->setIsActive(false);
+                }
+
+                return ${{ domainEntity | lcfirst }}Transfers;
+            }
+        };
+
+        $this->getBusinessHelper()->mockFactoryMethod($factoryMethod, [${{ domainEntity | lcfirst }}PostSavePlugin], '{{ module }}');
+    }
+
+    /**
+     * @return void
+     */
+    public function have{{ domainEntity }}AlwaysFailingCreateValidatorRuleEnabled(): void
+    {
+        $this->mock{{ domainEntity }}AlwaysFailingValidatorRule('get{{ domainEntity }}CreateValidatorRules');
+    }
+
+    /**
+     * @return void
+     */
+    public function have{{ domainEntity }}AlwaysFailingUpdateValidatorRuleEnabled(): void
+    {
+        $this->mock{{ domainEntity }}AlwaysFailingValidatorRule('get{{ domainEntity }}UpdateValidatorRules');
+    }
+
+    /**
+     * @param string $factoryMethod
+     *
+     * @return void
+     */
+    protected function mock{{ domainEntity }}AlwaysFailingValidatorRule(string $factoryMethod): void
+    {
+        ${{ domainEntity | lcfirst }}ValidatorRule = new class implements \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\Rule\{{ domainEntity }}ValidatorRuleInterface {
+            /**
+             * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer
+             *
+             * @return array<string>
+             */
+            public function validate(array ${{ domainEntity | lcfirst }}Transfer): array
+            {
+                return ['Validation failed'];
+            }
+        };
+
+        $this->getBusinessHelper()->mockFactoryMethod($factoryMethod, [${{ domainEntity | lcfirst }}ValidatorRule], '{{ module }}');
+    }
+
+    /**
+     * @return void
+     */
+    public function have{{ domainEntity }}AlwaysFailingCreateValidatorRulePluginEnabled(): void
+    {
+        $this->mock{{ domainEntity }}AlwaysFailingValidatorRule('get{{ domainEntity }}CreateValidatorRulePlugins');
+    }
+
+    /**
+     * @return void
+     */
+    public function have{{ domainEntity }}AlwaysFailingUpdateValidatorRulePluginEnabled(): void
+    {
+        $this->mock{{ domainEntity }}AlwaysFailingValidatorRulePlugin('get{{ domainEntity }}UpdateValidatorRulePlugins');
+    }
+
+    /**
+     * @param string $factoryMethod
+     *
+     * @return void
+     */
+    protected function mock{{ domainEntity }}AlwaysFailingValidatorRulePlugin(string $factoryMethod): void
+    {
+        ${{ domainEntity | lcfirst }}ValidatorRulePlugin = new class implements \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorRulePluginInterface {
+            /**
+             * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer|array ${{ domainEntity | lcfirst }}Transfer
+             *
+             * @return array<string>
+             */
+            public function validate(array ${{ domainEntity | lcfirst }}Transfer): array
+            {
+                return ['Validation failed'];
+            }
+        };
+
+        $this->getBusinessHelper()->mockFactoryMethod($factoryMethod, [${{ domainEntity | lcfirst }}ValidatorRulePlugin], '{{ module }}');
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer ${{ domainEntity | lcfirst }}CollectionTransfer
+     *
+     * @return void
+     */
+    public function assert{{ domainEntity }}CollectionIsEmpty({{ domainEntity }}CollectionTransfer ${{ domainEntity | lcfirst }}CollectionTransfer): void
+    {
+        $this->assertCount(0, ${{ domainEntity | lcfirst }}CollectionTransfer->get{{ domainEntity }}s(), sprintf('Expected to have an empty collection but found "%s" items', ${{ domainEntity | lcfirst }}CollectionTransfer->get{{ domainEntity }}s()->count()));
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer ${{ domainEntity | lcfirst }}CollectionResponseTransfer
+     *
+     * @return void
+     */
+    public function assert{{ domainEntity }}CollectionResponseIsEmpty({{ domainEntity }}CollectionResponseTransfer ${{ domainEntity | lcfirst }}CollectionResponseTransfer): void
+    {
+        $this->assertCount(0, ${{ domainEntity | lcfirst }}CollectionResponseTransfer->get{{ domainEntity }}s(), sprintf('Expected to have an empty response collection but found "%s" items', ${{ domainEntity | lcfirst }}CollectionResponseTransfer->get{{ domainEntity }}s()->count()));
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionTransfer ${{ domainEntity | lcfirst }}CollectionTransfer
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer
+     *
+     * @return void
+     */
+    public function assert{{ domainEntity }}CollectionContainsTransferWithId({{ domainEntity }}CollectionTransfer ${{ domainEntity | lcfirst }}CollectionTransfer, {{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer): void
+    {
+        $transferFound = false;
+
+        foreach (${{ domainEntity | lcfirst }}CollectionTransfer->get{{ domainEntity }}s() as ${{ domainEntity | lcfirst }}TransferFromCollection) {
+            if (${{ domainEntity | lcfirst }}TransferFromCollection->getId{{ domainEntity }}() === ${{ domainEntity | lcfirst }}Transfer->getId{{ domainEntity }}()) {
+                $transferFound = true;
+            }
+        }
+
+        $this->assertTrue($transferFound, sprintf('Expected to have a transfer in the collection but transfer by id "%s" was not found in the collection', ${{ domainEntity | lcfirst }}Transfer->getId{{ domainEntity }}()));
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer ${{ domainEntity | lcfirst }}CollectionResponseTransfer
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer
+     *
+     * @return void
+     */
+    public function assert{{ domainEntity }}CollectionResponseContainsTransferWithId(
+        {{ domainEntity }}CollectionResponseTransfer ${{ domainEntity | lcfirst }}CollectionResponseTransfer,
+        {{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer
+    ): void {
+        $transferFound = false;
+
+        foreach (${{ domainEntity | lcfirst }}CollectionResponseTransfer->get{{ domainEntity }}s() as ${{ domainEntity | lcfirst }}TransferFromCollection) {
+            if (${{ domainEntity | lcfirst }}TransferFromCollection->getId{{ domainEntity }}() === ${{ domainEntity | lcfirst }}Transfer->getId{{ domainEntity }}()) {
+                $transferFound = true;
+            }
+        }
+
+        $this->assertTrue($transferFound, sprintf('Expected to have a transfer in the collection but transfer by id "%s" was not found in the collection', ${{ domainEntity | lcfirst }}Transfer->getId{{ domainEntity }}()));
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionResponseTransfer ${{ domainEntity | lcfirst }}CollectionResponseTransfer
+     * @param string $message
+     *
+     * @return void
+     */
+    public function assert{{ domainEntity }}CollectionResponseContainsFailedValidationRuleError(
+        {{ domainEntity }}CollectionResponseTransfer ${{ domainEntity | lcfirst }}CollectionResponseTransfer,
+        string $message = 'Validation failed'
+    ): void {
+        $errorFound = false;
+
+        foreach (${{ domainEntity | lcfirst }}CollectionResponseTransfer->getErrors() as $errorTransfer) {
+            if ($errorTransfer->getMessage() === $message) {
+                $errorFound = true;
+            }
+        }
+
+        $this->assertTrue($errorFound, sprintf('Expected to have a message "%s" in the error collection but was not found', $message));
+    }
+
+    /**
+     * @return \{{ organization }}\Zed\{{ module }}\Business\{{ module }}FacadeInterface
+     */
+    protected function getFacade(): {{ module }}FacadeInterface
+    {
+        /** @var \{{ organization }}\Zed\{{ module }}\Business\{{ module }}FacadeInterface */
+        return $this->getBusinessHelper()->getModule('{{ module }}');
+    }
+}
