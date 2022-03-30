@@ -215,7 +215,7 @@ postSpryks:
               modelMethod:
                   value: "expand"
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity | lcfirst }}Transfers"
               output:
                   value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
 
@@ -229,7 +229,7 @@ postSpryks:
                     modelMethod:
                         value: "process"
                     input:
-                        value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+                        value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity | lcfirst }}Transfers"
                     output:
                         value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
 
@@ -243,7 +243,7 @@ postSpryks:
               modelMethod:
                   value: "process"
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity | lcfirst }}Transfers"
               output:
                   value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
 
@@ -257,7 +257,7 @@ postSpryks:
               modelMethod:
                   value: "validate"
               input:
-                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer"
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer"
               output:
                   value: "array"
     -   AddZedPersistencePropelSchemaProperty:
