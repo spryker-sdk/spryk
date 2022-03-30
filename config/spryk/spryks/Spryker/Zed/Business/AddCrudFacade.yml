@@ -283,14 +283,6 @@ postSpryks:
                       value: "is_active"
                   propertyType:
                       value: "BOOLEAN"
-    
-    -   AddZedBusinessFacadeTest:
-              arguments:
-                  template:
-                      value: "Zed/Business/CrudFacadeTest.php.twig"
-                  targetFilename:
-                      value: "{{ domainEntity }}CrudFacadeTest"
-    
     # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
     -   AddDataBuilderDefinition:
             arguments:
@@ -447,3 +439,9 @@ postSpryks:
                 value: "string"
             body:
                 value: "return ${{ domainEntity | lcfirst}}Transfer->getId{{ domainEntity }}();"
+    - AddZedBusinessFacadeTest:
+        arguments:
+            template:
+                value: "Zed/Business/CrudFacadeTest.php.twig"
+            targetFilename:
+                value: "{{ domainEntity }}CrudFacade"
