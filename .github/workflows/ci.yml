@@ -51,3 +51,4 @@ jobs:
       - name: Run Spryk commands
         run: |
           php spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
+          php spryk-run AddCrudFacade --mode project --organization Pyz --module Ay --domainEntity Entity -n -vvv
