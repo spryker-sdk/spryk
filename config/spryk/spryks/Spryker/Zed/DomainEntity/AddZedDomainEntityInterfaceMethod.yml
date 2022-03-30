@@ -1,0 +1,48 @@
+spryk: method
+description: "Adds a new method to the *target* interface."
+mode: both
+level: 2
+
+application: Zed
+
+priority: 1
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    layer:
+        inherit: true
+        default: Business
+
+    className:
+        inherit: true
+
+    subDirectory:
+        inherit: true
+        isOptional: true
+
+    modelMethod: ~
+
+    input:
+        isOptional: true
+        isMultiple: true
+
+    output:
+        isOptional: true
+
+    template:
+        value: Common/InterfaceMethod.php.twig
+
+    target:
+        value: "{{ className }}"
+
+    fqcnPattern:
+        value: "{{ organization }}\\Zed\\{{ module }}\\{{ layer }}{% if subDirectory %}\\{{ subDirectory | convertToClassNameFragment }}{% endif %}\\{{ className }}Interface"
+
+preSpryks:
+    - AddZedDomainEntityInterface

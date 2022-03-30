@@ -418,3 +418,18 @@ postSpryks:
                     value: "create{{ domainEntity }}Query"
                 output:
                     value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
+
+    - AddZedDomainEntityMethod:
+        arguments:
+            className:
+                value: "{{ domainEntity }}IdentifierBuilder"
+            subDirectory:
+                value: "{{ domainEntity }}/IdentifierBuilder"
+            modelMethod:
+                value: "buildIdentifier"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst}}Transfer"
+            output:
+                value: "string"
+            body:
+                value: "return ${{ domainEntity | lcfirst}}Transfer->getId{{ domainEntity }}();"

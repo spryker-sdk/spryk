@@ -1,0 +1,21 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+namespace {{ organization }}\Zed\{{ module }}\{{ layer }}{% if subDirectory.value %}\{{ subDirectory | replace({'/': '\\'}) }}{% endif %};
+
+{% if extends.value %}
+    {% set extendedInterfaces = [] %}
+    {% if extends.value is iterable %}
+        {% for interfaceName in extends.value %}
+            {% set extendedInterfaces = extendedInterfaces | merge( [interfaceName | classNameShort]) %}
+use {{ interfaceName | replace({'/': '\\'}) | trim('\\') }};
+        {% endfor %}
+    {% else %}
+    {% set extendedInterfaces = extendedInterfaces | merge( [extends.value | classNameShort]) %}
+use {{ extends.value | replace({'/': '\\'}) | trim('\\') }};
+    {% endif %}
+{% endif %}
+
+interface {{ interfaceName }}{% if extendedInterfaces %} extends {{ extendedInterfaces | join(', ') }}{% endif ~%}
+{
+}
