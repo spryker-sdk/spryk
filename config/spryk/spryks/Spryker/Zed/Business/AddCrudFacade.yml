@@ -409,6 +409,15 @@ postSpryks:
 
     # Add test helper
     - AddDomainEntityTestHelper
+    # Add Spy{{ domainEntity }}Query method to persistence factory
+    -   AddZedDomainEntityPersistenceFactoryMethod:
+            arguments:
+                fqcnClassName:
+                    value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
+                factoryMethod:
+                    value: "create{{ domainEntity }}Query"
+                output:
+                    value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
 
     - AddZedDomainEntityMethod:
         arguments:
