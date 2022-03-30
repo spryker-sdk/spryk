@@ -36,6 +36,14 @@ postSpryks:
           arguments:
               type:
                   value: "Create"
+    - AddDomainEntityValidator:
+          arguments:
+              type:
+                  value: "Update"
+    - AddDomainEntityValidator:
+          arguments:
+              type:
+                  value: "Create"
     - AddZedPersistenceRepositoryMethod:
         arguments:
             repositoryMethod:
