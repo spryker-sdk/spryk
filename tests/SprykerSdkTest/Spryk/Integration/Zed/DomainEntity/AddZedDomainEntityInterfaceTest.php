@@ -8,7 +8,6 @@
 namespace SprykerSdkTest\Spryk\Integration\Zed;
 
 use Codeception\Test\Unit;
-use SprykerSdkTest\Module\ClassName;
 
 /**
  * Auto-generated group annotations
