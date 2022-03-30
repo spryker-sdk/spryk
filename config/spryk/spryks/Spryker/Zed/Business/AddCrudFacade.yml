@@ -22,6 +22,14 @@ preSpryks:
     - AddModule
 
 postSpryks:
+    - AddZedDomainEntityDeleter
+    - AddZedDomainEntityCreator
+    - AddZedDomainEntityReader
+    - AddZedDomainEntityUpdater
+    - AddDomainEntityValidator
+    # Add transfers
+    - AddSharedDomainEntityFetchingTransferDefinition
+    - AddSharedDomainEntityManipulationTransferDefinition
     - AddZedPersistenceRepositoryMethod:
         arguments:
             repositoryMethod:
@@ -126,10 +134,6 @@ postSpryks:
                 value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
             body:
                 value: "return $this->getFactory()->create{{ domainEntity }}Deleter()->delete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);"
-    - AddZedDomainEntityDeleter
-    - AddZedDomainEntityCreator
-    - AddZedDomainEntityReader
-    - AddZedDomainEntityUpdater
     # Add add{{ domainEntity }}CreatePreSavePlugins, get{{ domainEntity }}CreatePreSavePlugins and const for the plugins to the DependencyProvider
     - AddZedDependencyPlugins:
           arguments:
@@ -185,10 +189,63 @@ postSpryks:
                       value: "{{ domainEntity }}CreateValidatorRule"
                   output:
                       value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
-    # Add transfers
-    - AddSharedDomainEntityFetchingTransferDefinition
-    - AddSharedDomainEntityManipulationTransferDefinition
     # Add id_{{ domainEntity }} property to "spy_{{ module }}" entity of the Persistence layer.
+
+    # Creates {{ domainEntity }}ExpanderPluginInterface
+    - AddDomainEntityExtensionInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}ExpanderPlugin"
+              subDirectory:
+                  value: "{{ domainEntity }}/Expander"
+              modelMethod:
+                  value: "expand"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
+
+    # Creates {{ domainEntity }}PreSavePluginInterface
+    -   AddDomainEntityExtensionInterfaceMethod:
+                arguments:
+                    className:
+                        value: "{{ domainEntity }}PreSavePlugin"
+                    subDirectory:
+                        value: "{{ domainEntity }}/Saver"
+                    modelMethod:
+                        value: "process"
+                    input:
+                        value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+                    output:
+                        value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
+
+    # Creates {{ domainEntity }}PostSavePluginInterface
+    - AddDomainEntityExtensionInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}PostSavePlugin"
+              subDirectory:
+                  value: "{{ domainEntity }}/Saver"
+              modelMethod:
+                  value: "process"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
+
+    # Creates {{ domainEntity }}ValidatorRulePluginInterface
+    - AddDomainEntityExtensionInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}ValidatorRulePlugin"
+              subDirectory:
+                  value: "{{ domainEntity }}/Validator"
+              modelMethod:
+                  value: "validate"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer"
+              output:
+                  value: "array"
     -   AddZedPersistencePropelSchemaProperty:
               arguments:
                   name:

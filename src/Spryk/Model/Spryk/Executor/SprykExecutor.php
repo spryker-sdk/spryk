@@ -74,7 +74,6 @@ class SprykExecutor implements SprykExecutorInterface
         FileResolverInterface $fileResolver,
         FileDumperInterface $fileDumper
     ) {
-        $this->fileResolver = $fileResolver;
         $this->definitionBuilder = $definitionBuilder;
         $this->sprykBuilderCollection = $sprykBuilderCollection;
         $this->sprykCommands = $sprykCommands;
