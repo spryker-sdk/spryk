@@ -216,5 +216,5 @@ postSpryks:
                   template:
                       value: "Zed/Business/CrudFacadeTest.php.twig"
                   targetFilename:
-                      value: "{{ domainEntity }}CrudFacade"
+                      value: "{{ domainEntity }}CrudFacadeTest"
     
