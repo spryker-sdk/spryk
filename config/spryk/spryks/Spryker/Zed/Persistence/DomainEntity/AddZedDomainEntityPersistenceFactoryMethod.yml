@@ -1,0 +1,43 @@
+spryk: method
+description: "Adds a *domainEntity* method to the *module*PersistenceFactory."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    subDirectory:
+        inherit: true
+        isOptional: true
+
+    domainEntity:
+        inherit: true
+
+    className: # When className is set the name will be constructed following Spryker Standards
+        isOptional: true
+
+    fqcnClassName: # When fqcnClassName is set it will be used instead of the constructed one
+        isOptional: true
+
+    interfaceName:
+        inherit: true
+        isOptional: true
+
+    factoryMethod: ~
+
+    dependencyMethods:
+        isMultiple: true
+        isOptional: true
+
+    template:
+        value: Zed/Persistence/PersistenceFactoryMethod.php.twig
+
+    target:
+        value: "{{ organization }}\\Zed\\{{ module }}\\Persistence\\{{ module }}PersistenceFactory"
+
+preSpryks:
+    - AddZedPersistenceFactory

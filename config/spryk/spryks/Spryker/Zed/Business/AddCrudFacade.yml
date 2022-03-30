@@ -408,6 +408,15 @@ postSpryks:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_CREATE_VALIDATOR"
               output:
                   value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
+    # Add Spy{{ domainEntity }}Query method to persistence factory
+    -   AddZedDomainEntityPersistenceFactoryMethod:
+            arguments:
+                fqcnClassName:
+                    value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
+                factoryMethod:
+                    value: "create{{ domainEntity }}Query"
+                output:
+                    value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
     - AddZedDomainEntityMethod:
         arguments:
             className:
