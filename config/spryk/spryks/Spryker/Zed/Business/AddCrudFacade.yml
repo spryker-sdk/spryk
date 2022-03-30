@@ -30,6 +30,8 @@ postSpryks:
     # Add transfers
     - AddSharedDomainEntityFetchingTransferDefinition
     - AddSharedDomainEntityManipulationTransferDefinition
+    # Add test helper
+    - AddDomainEntityTestHelper
     - AddDomainEntityValidator:
           arguments:
               type:
@@ -406,9 +408,6 @@ postSpryks:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_CREATE_VALIDATOR"
               output:
                   value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
-
-    # Add test helper
-    - AddDomainEntityTestHelper
     # Add Spy{{ domainEntity }}Query method to persistence factory
     -   AddZedDomainEntityPersistenceFactoryMethod:
             arguments:
@@ -418,7 +417,6 @@ postSpryks:
                     value: "create{{ domainEntity }}Query"
                 output:
                     value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
-
     - AddZedDomainEntityMethod:
         arguments:
             className:
