@@ -1,0 +1,153 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+namespace {{ organization }}\Zed\{{ module }}\Business\Validator\{{ domainEntity }};
+
+class {{ domainEntity }}{{ type }}Validator implements {{ domainEntity }}ValidatorInterface
+{
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\Rules\{{ domainEntity }}ValidatorRuleInterface[]
+     */
+    protected array $validatorRules = [];
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorRulePluginInterface[]
+     */
+    protected array $validatorRulePlugins = [];
+
+    /**
+     * @var \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierBuilderInterface
+     */
+    protected \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierBuilderInterface $identifierBuilder;
+
+    /**
+     * @param \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Validator\Rules\{{ domainEntity }}ValidatorRuleInterface[] $validatorRules
+     * @param \{{ organization }}\Zed\{{ module }}Extension\Dependency\{{ domainEntity }}\Validator\{{ domainEntity }}ValidatorRulePluginInterface[] $validatorRulePlugins
+     * @param \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierBuilderInterface $identifierBuilder
+     */
+    public function __constrauct(
+        array $validatorRules,
+        array $validatorRulePlugins,
+        \{{ organization }}\Zed\{{ module }}\Business\{{ domainEntity }}\Identifier\{{ domainEntity }}IdentifierBuilderInterface $identifierBuilder
+    ) {
+        $this->validatorRules = $validatorRules;
+        $this->validatorRulePlugins = $validatorRulePlugins;
+        $this->identifierBuilder = $identifierBuilder;
+    }
+
+    /**
+     * Use this method to breakOnFirstError instead of validating all transfers
+     *
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\ErrorTransfer[]|null Null indicates that no validation error occured.
+     */
+    public function validateCollectionTransactional(
+        \Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+    ): ?array {
+        return $this->validateCollection(${{ domainEntity | lcfirst }}CollectionRequestTransfer, true);
+    }
+
+    /**
+     * Specification:
+     * - Validates all {{ domainEntity }} transfers in the collection.
+     *
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer
+     * @param bool $breakOnFirstError = false
+     *
+     * @return \Generated\Shared\Transfer\ErrorTransfer[]|null Null indicates that no validation error occurred.
+     */
+    public function validateCollection(
+        \Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer ${{ domainEntity | lcfirst }}CollectionRequestTransfer,
+        bool $breakOnFirstError = false
+    ): ?array {
+        $errorTransfers = [];
+
+        foreach (${{ domainEntity | lcfirst }}CollectionRequestTransfer->get{{ domainEntity }}s as ${{ domainEntity | lcfirst }}Transfer) {
+            $errorTransfers = $this->validate(${{ domainEntity | lcfirst }}Transfer, $errorTransfers);
+
+            if ($breakOnFirstError && !empty($errorTransfers)) {
+                return $errorTransfers;
+            }
+        }
+
+        return empty($errorTransfers) ? null : $errorTransfers;
+    }
+
+    /**
+     * This method will do the validation of a single item. If you need to validate
+     * associated entities, then you should validate them in their module and model.
+     *
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer
+     * @param \Generated\Shared\Transfer\ErrorTransfer[] $errorTransfers
+     *
+     * @return \Generated\Shared\Transfer\ErrorTransfer[]
+     */
+    public function validate(\Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer, array $errorTransfers): array
+    {
+        $errorTransfers = $this->executeValidatorRules(${{ domainEntity | lcfirst }}Transfer, $errorTransfers);
+        $errorTransfers = $this->executeValidatorRulePlugins(${{ domainEntity | lcfirst }}Transfer, $errorTransfers);
+
+        return $errorTransfers;
+    }
+
+    /**
+     * Specification:
+     * - Validates a single {{ domainEntity }} transfer.
+     * - Runs validator rules.
+     *
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer
+     * @param \Generated\Shared\Transfer\ErrorTransfer[] $errorTransfers
+     *
+     * @return \Generated\Shared\Transfer\ErrorTransfer[]
+     */
+    protected function executeValidatorRules(\Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer, array $errorTransfers): array
+    {
+        foreach ($this->validatorRules as $validatorRule) {
+            $errors = $validatorRule->validate(${{ domainEntity | lcfirst }}Transfer);
+        }
+
+        return $this->addErrorsToErrorTransfers(${{ domainEntity | lcfirst }}Transfer, $errors, $errorTransfers);
+    }
+
+    /**
+     * Specification:
+     * - Validates a single {{ domainEntity }} transfer.
+     * - Runs validator rule plugins.
+     *
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer
+     * @param \Generated\Shared\Transfer\ErrorTransfer[] $errorTransfers
+     *
+     * @return \Generated\Shared\Transfer\ErrorTransfer[]
+     */
+    protected function executeValidationRulePlugins(\Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer, array $errorTransfers): array
+    {
+        foreach ($this->validationRules as $validationRule) {
+            $errors = $validationRule->validate(${{ domainEntity }}Transfer);
+        }
+
+        return $this->addErrorsToErrorTransfers(${{ domainEntity }}Transfer, $errors, $errorTransfers);
+    }
+
+    /**
+     * Helper method to reduce repeating the instantiation of the error transfer.
+     *
+     * @param \Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer
+     * @param array $errors
+     * @param \Generated\Shared\Transfer\ErrorTransfer[] $errorTransfers
+     *
+     * @return \Generated\Shared\Transfer\ErrorTransfer[]
+     */
+    protected function addErrorsToErrorCollection(\Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer, array $errors, array $errorTransfers): array
+    {
+        $identifier = $this->identifierBuilder->buildIdentifier(${{ domainEntity }}Transfer);
+
+        foreach ($errors as $error) {
+            $errorTransfers[] = (new ErrorTransfer())
+                ->setMessage($error)
+                ->setIdentifier($identifier);
+        }
+
+        return $errorTransfers;
+    }
+}

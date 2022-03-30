@@ -1,0 +1,61 @@
+{% set inputString = input.value %}
+{% if input.value is not empty %}
+    {% if input.value is iterable %}
+        {% set inputString = input.value | join(',') %}
+    {% endif %}
+{% endif %}
+
+{%- apply spaceless -%}
+    {% if subDirectory is defined and subDirectory.value is not null %}
+        {% set subDirectory = '\\' ~ subDirectory | replace({"/": "\\"}) %}
+    {% else %}
+        {% set subDirectory = '' %}
+    {% endif %}
+{%- endapply -%}
+
+{% if fqcnClassName.value is not empty %}
+    {% set class = fqcnClassName %}
+{% else %}
+    {% set class = '\\' ~ organization ~ '\\Zed\\' ~ module ~ '\\Persistence' ~ subDirectory ~ '\\' ~ className  %}
+{% endif %}
+
+/**
+{% if comment is defined and comment.value is not empty %}
+    {%- for commentLine in comment.value -%}
+        * {{ commentLine }}
+    {% endfor -%}
+    *
+{% endif -%}
+     {% if annotations.value is not empty -%}
+         {% for annotation in annotations.value -%}
+             * {{ annotation }}
+             *
+         {% endfor -%}
+     {% endif -%}
+     {% if inputString is not empty -%}
+         {% set inputs = inputString | split(',') -%}
+         {%- if inputs is iterable -%}
+             {% for input in inputs -%}
+                 * @param {{ input | argumentToDocParameter }}
+             {% endfor -%}
+             *
+         {% endif -%}
+     {% endif -%}
+* @return {{ output | returnValueToDocParameter }}
+*/
+{% if visibility is defined %}{{ visibility }}{% else %}public{% endif %} function {{ method }}({% if inputString is not empty %}{{ inputString | typedArrayConvert }}{% endif %}){% if output.value is not empty %}: {{ output | typedArrayConvert }}{% endif %}
+
+{
+return new {{ class }}(
+{% for dependencyMethod in dependencyMethods.value -%}
+    {%- apply spaceless -%}
+        {% set endofline = '' %}
+        {% if not loop.last %}
+            {% set endofline = ',' %}
+        {% endif %}
+        {% set line = '    $this->' ~ dependencyMethod ~ '()' ~ endofline %}
+    {%- endapply -%}
+    {{ line | raw }}
+{% endfor -%}
+);
+}

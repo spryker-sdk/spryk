@@ -22,6 +22,18 @@ preSpryks:
     - AddModule
 
 postSpryks:
+    - AddZedDomainEntityDeleter
+    - AddZedDomainEntityCreator
+    - AddZedDomainEntityReader
+    - AddZedDomainEntityUpdater
+    - AddDomainEntityValidator
+    # Add transfers
+    - AddSharedDomainEntityFetchingTransferDefinition
+    - AddSharedDomainEntityManipulationTransferDefinition
+    - AddDomainEntityValidator:
+          arguments:
+              type:
+                  value: "Create"
     - AddZedPersistenceRepositoryMethod:
         arguments:
             repositoryMethod:
@@ -126,8 +138,6 @@ postSpryks:
                 value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
             body:
                 value: "return $this->getFactory()->create{{ domainEntity }}Deleter()->delete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);"
-    - AddZedDomainEntityDeleter
-    - AddZedDomainEntityCreator
     # Add add{{ domainEntity }}CreatePreSavePlugins, get{{ domainEntity }}CreatePreSavePlugins and const for the plugins to the DependencyProvider
     - AddZedDependencyPlugins:
           arguments:
@@ -183,10 +193,63 @@ postSpryks:
                       value: "{{ domainEntity }}CreateValidatorRule"
                   output:
                       value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
-    # Add transfers
-    - AddSharedDomainEntityFetchingTransferDefinition
-    - AddSharedDomainEntityManipulationTransferDefinition
     # Add id_{{ domainEntity }} property to "spy_{{ module }}" entity of the Persistence layer.
+
+    # Creates {{ domainEntity }}ExpanderPluginInterface
+    - AddDomainEntityExtensionInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}ExpanderPlugin"
+              subDirectory:
+                  value: "{{ domainEntity }}/Expander"
+              modelMethod:
+                  value: "expand"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
+
+    # Creates {{ domainEntity }}PreSavePluginInterface
+    -   AddDomainEntityExtensionInterfaceMethod:
+                arguments:
+                    className:
+                        value: "{{ domainEntity }}PreSavePlugin"
+                    subDirectory:
+                        value: "{{ domainEntity }}/Saver"
+                    modelMethod:
+                        value: "process"
+                    input:
+                        value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+                    output:
+                        value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
+
+    # Creates {{ domainEntity }}PostSavePluginInterface
+    - AddDomainEntityExtensionInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}PostSavePlugin"
+              subDirectory:
+                  value: "{{ domainEntity }}/Saver"
+              modelMethod:
+                  value: "process"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[] ${{ domainEntity }}Transfers"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer[]"
+
+    # Creates {{ domainEntity }}ValidatorRulePluginInterface
+    - AddDomainEntityExtensionInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}ValidatorRulePlugin"
+              subDirectory:
+                  value: "{{ domainEntity }}/Validator"
+              modelMethod:
+                  value: "validate"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer"
+              output:
+                  value: "array"
     -   AddZedPersistencePropelSchemaProperty:
               arguments:
                   name:
@@ -210,6 +273,166 @@ postSpryks:
                       value: "is_active"
                   propertyType:
                       value: "BOOLEAN"
+    # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
+    -   AddDataBuilderDefinition:
+            arguments:
+                name:
+                    value: "{{ domainEntity }}"
+    - AddZedBusinessFactoryMethod:
+          arguments:
+              factoryMethod:
+                  value: "create{{ domainEntity }}IdentifierBuilder"
+              className:
+                  value: "{{ domainEntity }}IdentifierBuilder"
+              interfaceName:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Identifier\\{{ domainEntity }}IdentifierInterface"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Identifier\\{{ domainEntity }}IdentifierInterface"
+              subDirectory:
+                  value: "{{ domainEntity }}/Identifier"
+    - AddZedBusinessFactoryMethod:
+          arguments:
+              factoryMethod:
+                  value: "create{{ domainEntity }}CreateValidator"
+              className:
+                  value: "{{ domainEntity }}Validator"
+              interfaceName:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorInterface"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorInterface"
+              subDirectory:
+                  value: "{{ domainEntity }}/Validator"
+              dependencyMethods:
+                  value:
+                      - "get{{ domainEntity }}IdentifierBuilder"
+                      - "get{{ domainEntity }}CreateValidatorRules"
+                      - "get{{ domainEntity }}CreateValidatorRulePlugins"
+    - AddZedBusinessFactoryMethod:
+          arguments:
+              factoryMethod:
+                  value: "get{{ domainEntity }}CreateValidatorRules"
+              className:
+                  value: "{{ domainEntity }}Validator"
+              interfaceName:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
+              body:
+                  value: "return [];"
+    - AddZedBusinessFactoryMethod:
+          arguments:
+              factoryMethod:
+                  value: "create{{ domainEntity }}UpdateValidator"
+              className:
+                  value: "{{ domainEntity }}Validator"
+              interfaceName:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorInterface"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorInterface"
+              subDirectory:
+                  value: "{{ domainEntity }}/Validator"
+              dependencyMethods:
+                  value:
+                      - "get{{ domainEntity }}IdentifierBuilder"
+                      - "get{{ domainEntity }}UpdateValidatorRules"
+                      - "get{{ domainEntity }}UpdateValidatorRulePlugins"
+    - AddZedBusinessFactoryMethod:
+          arguments:
+              factoryMethod:
+                  value: "get{{ domainEntity }}UpdateValidatorRules"
+              subDirectory:
+                  value: "{{ domainEntity }}/Validator"
+              className:
+                  value: "{{ domainEntity }}Validator"
+              interfaceName:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRuleInterface[]"
+              body:
+                  value: "return [];"
+    - AddZedBusinessFactoryGetProvidedDependencyMethod:
+          arguments:
+              factoryMethod:
+                  value: "get{{ domainEntity }}ExtenderPlugins"
+              constantName:
+                  value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_EXTENDER"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Extender\\{{ domainEntity }}ExtenderPluginInterface[]"
+    - AddZedBusinessFactoryGetProvidedDependencyMethod:
+          arguments:
+              factoryMethod:
+                  value: "get{{ domainEntity }}PreCreatePlugins"
+              constantName:
+                  value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_PRE_CREATE"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PreSaverPluginInterface[]"
+    - AddZedBusinessFactoryGetProvidedDependencyMethod:
+          arguments:
+              factoryMethod:
+                  value: "get{{ domainEntity }}PostCreatePlugins"
+              constantName:
+                  value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_POST_CREATE"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PostSaverPluginInterface[]"
+    - AddZedBusinessFactoryGetProvidedDependencyMethod:
+          arguments:
+              factoryMethod:
+                  value: "get{{ domainEntity }}PreUpdatePlugins"
+              constantName:
+                  value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_PRE_UPDATE"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PreSaverPluginInterface[]"
+    - AddZedBusinessFactoryGetProvidedDependencyMethod:
+          arguments:
+              factoryMethod:
+                  value: "get{{ domainEntity }}PostUpdatePlugins"
+              constantName:
+                  value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_POST_UPDATE"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Saver\\{{ domainEntity }}PostSaverPluginInterface[]"
+    - AddZedBusinessFactoryGetProvidedDependencyMethod:
+          arguments:
+              factoryMethod:
+                  value: "get{{ domainEntity }}UpdateValidatorRulePlugins"
+              constantName:
+                  value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_UPDATE_VALIDATOR"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
+    - AddZedBusinessFactoryGetProvidedDependencyMethod:
+          arguments:
+              factoryMethod:
+                  value: "get{{ domainEntity }}CreateValidatorRulePlugins"
+              constantName:
+                  value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_CREATE_VALIDATOR"
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
+
+    # Add test helper
+    - AddDomainEntityTestHelper
+    # Add Spy{{ domainEntity }}Query method to persistence factory
+    -   AddZedDomainEntityPersistenceFactoryMethod:
+            arguments:
+                fqcnClassName:
+                    value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
+                factoryMethod:
+                    value: "create{{ domainEntity }}Query"
+                output:
+                    value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
+
+    - AddZedDomainEntityMethod:
+        arguments:
+            className:
+                value: "{{ domainEntity }}IdentifierBuilder"
+            subDirectory:
+                value: "{{ domainEntity }}/IdentifierBuilder"
+            modelMethod:
+                value: "buildIdentifier"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst}}Transfer"
+            output:
+                value: "string"
+            body:
+                value: "return ${{ domainEntity | lcfirst}}Transfer->getId{{ domainEntity }}();"
     #Add "{{ domainEntity }}Mapper" into the Persistence layer.
     - ZedPersistenceMapper:
           arguments:

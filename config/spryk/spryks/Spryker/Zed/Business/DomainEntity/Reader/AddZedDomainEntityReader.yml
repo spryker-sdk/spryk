@@ -1,0 +1,58 @@
+spryk: template
+description: "Adds a new Business DomainEntity reader to the Zed application."
+mode: both
+level: 2
+
+application: Zed
+layer: Business
+
+priority: 1
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    className:
+        value: "{{ domainEntity }}Reader"
+
+    domainEntity:
+        inherit: true
+
+    template:
+        value: Zed/Business/DomainEntity/Reader/DomainEntityReader.php.twig
+
+    targetFilename:
+        value: "{{ domainEntity }}Reader.php"
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Business/{{ domainEntity }}/Reader/"
+
+preSpryks:
+    - AddModule
+
+postSpryks:
+    - AddZedBusinessModelInterfaceMethod:
+          arguments:
+              className:
+                  value: "{{ domainEntity }}Reader"
+              subDirectory:
+                  value: "{{ domainEntity }}/Reader"
+              modelMethod:
+                  value: "get{{ domainEntity }}Collection"
+              input:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CriteriaTransfer ${{ domainEntity | lcfirst }}CriteriaTransfer"
+              output:
+                  value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionTransfer"
+
+    - AddZedBusinessFactoryMethod:
+          arguments:
+              output:
+                  value: "\\{{ organization }}\\Zed\\{{ module }}\\Business\\{{ domainEntity }}\\Reader\\{{ domainEntity }}ReaderInterface"
+              dependencyMethods:
+                  value:
+                      - "getRepository"
+                      - "get{{ domainEntity }}ExtenderPlugins"

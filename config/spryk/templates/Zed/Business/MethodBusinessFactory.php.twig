@@ -4,33 +4,37 @@
 {% if not interfaceName is defined or interfaceName.value is null %}
     {% set interfaceName = '\\' ~  organization ~ '\\Zed\\' ~ module ~ '\\Business\\' ~  subDirectoryName ~ className ~ 'Interface' %}
 {% endif %}
+{% set methodBody = 'return new \\' ~ organization ~ '\\Zed\\' ~ module ~ '\\Business\\' ~ subDirectoryName ~ className ~ '();' %}
 
+{% if body is defined and body.value is not null and body.value != '' %}
+    {% set methodBody = body.value %}
+{% endif %}
 
 {% if not dependencyMethods.value %}
     /**
-     * @return {{ interfaceName }}
-     */
-    public function {{ factoryMethod }}(): {{ interfaceName }}
+    * @return {% if output is not null %}{{ output | returnValueToDocParameter }}{% else %}{{ interfaceName }}{% endif %}
+    */
+    public function {{ factoryMethod }}(): {% if output is not null %} {{ output | typedArrayConvert }} {% else %} {{ interfaceName }} {% endif %}
     {
-        return new \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ className }}();
+        {{ methodBody }}
     }
 {% else %}
     /**
-    * @return {{ interfaceName }}
+    * @return {% if output is not null %}{{ output | returnValueToDocParameter }}{% else %}{{ interfaceName }}{% endif %}
     */
-    public function {{ factoryMethod }}(): {{ interfaceName }}
+    public function {{ factoryMethod }}(): {% if output is not null %} {{ output | typedArrayConvert }} {% else %} {{ interfaceName }} {% endif %}
     {
-        return new \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ className }}(
-        {% for dependencyMethod in dependencyMethods.value -%}
-            {%- apply spaceless -%}
-                {% set endofline = '' %}
-                {% if not loop.last %}
-                    {% set endofline = ',' %}
-                {% endif %}
-                {% set line = '    $this->' ~ dependencyMethod ~ '()' ~ endofline %}
-            {%- endapply -%}
-            {{ line | raw }}
-        {% endfor -%}
-        );
+    return new \{{ organization }}\Zed\{{ module }}\Business\{{ subDirectoryName }}{{ className }}(
+    {% for dependencyMethod in dependencyMethods.value -%}
+        {%- apply spaceless -%}
+            {% set endofline = '' %}
+            {% if not loop.last %}
+                {% set endofline = ',' %}
+            {% endif %}
+            {% set line = '    $this->' ~ dependencyMethod ~ '()' ~ endofline %}
+        {%- endapply -%}
+        {{ line | raw }}
+    {% endfor -%}
+    );
     }
 {% endif %}

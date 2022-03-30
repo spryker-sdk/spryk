@@ -27,6 +27,14 @@ class ZedBusinessFactoryMethodNameCallback implements CallbackInterface
      */
     public function getValue(ArgumentCollectionInterface $argumentCollection, $value)
     {
+        $factoryMethod = $argumentCollection->hasArgument('factoryMethod')
+            ? $argumentCollection->getArgument('factoryMethod')->getValue()
+            : false;
+
+        if ($factoryMethod) {
+            return $factoryMethod;
+        }
+
         $className = $argumentCollection->getArgument('className')->getValue();
         $classNameFragments = explode('\\', $className);
 
