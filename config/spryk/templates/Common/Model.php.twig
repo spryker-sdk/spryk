@@ -1,0 +1,27 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+namespace {{ organization }}\Zed\{{ module }}\{{ layer }}{% if subDirectory is not empty %}\{{ subDirectory | replace({'/': '\\'}) }}{% endif %};
+
+{% if extends.value %}
+use {{ extends.value | replace({'/': '\\'}) | trim('\\') }};
+{% endif %}
+
+{% if implements.value %}
+    {% set implementedInterfaces = [] %}
+    {% if implements.value is iterable %}
+        {% for interfaceName in implements.value %}
+            {% set implementedInterfaces = implementedInterfaces | merge( [interfaceName | classNameShort] ) %}
+use {{ interfaceName | replace({'/': '\\'}) | trim('\\') }};
+        {% endfor %}
+    {% else %}
+    {% set implementedInterfaces = implementedInterfaces | merge( [implements.value | classNameShort] ) %}
+        {% if not className in implements.value %}
+use {{ implements.value | replace({'/': '\\'}) | trim('\\') }};
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+class {{ className }}{% if extends.value is not empty %} extends {{ extends.value | replace({'/': '\\'}) | classNameShort }}{% endif %}{% if implementedInterfaces %} implements {{ implementedInterfaces | join(', ') }}{% endif ~%}
+{
+}
