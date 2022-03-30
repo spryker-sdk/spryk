@@ -1,0 +1,30 @@
+spryk: update-yml
+description: "Updates the *module* test configuration and adds a test helper."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    layer: ~
+
+    helperClassName:
+
+    afterElement:
+        isOptional: true
+
+    addToElement:
+        value: "suites.{{ layer }}.modules.enabled"
+
+    targetPath:
+        value: "tests/{{ organization }}Test/Zed/{{ module }}/codeception.yml"
+
+    content:
+        value: "{{ helperClassName }}"
+
+preSpryks:
+    - AddZedTestCodeceptionConfiguration

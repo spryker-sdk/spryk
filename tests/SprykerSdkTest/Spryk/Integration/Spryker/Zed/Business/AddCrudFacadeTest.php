@@ -139,6 +139,11 @@ class AddCrudFacadeTest extends Unit
         $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionResponse');
         $this->tester->assertResolvedXmlHasTransfer($transferXml, 'ZipZapCollectionDeleteCriteria');
         $this->tester->assertResolvedXmlHasTransfer($transferXml, 'Error');
+
+        // Test helper
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/_support/Helper/ZipZapCrudHelper.php',
+        );
     }
 
     /**
