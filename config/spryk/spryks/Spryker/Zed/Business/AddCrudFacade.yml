@@ -434,7 +434,7 @@ postSpryks:
             body:
                 value: "return ${{ domainEntity | lcfirst}}Transfer->getId{{ domainEntity }}();"
 
-    #Add "{{ domainEntity }}Mapper" into the Persistence layer.
+    #Add "{{ domainEntity }}Mapper" into Persistence layer.
     - AddZedDomainEntityMethod:
           arguments:
               layer:
@@ -453,3 +453,57 @@ postSpryks:
                   value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}"
               body:
                   value: "return ${{ domainEntity }}Entity->fromArray(${{ domainEntity }}Transfer->modifiedToArray());"
+
+    - AddZedDomainEntityMethod:
+        arguments:
+            layer:
+                value: Persistence
+            className:
+                value: "{{ domainEntity }}Mapper"
+            subDirectory:
+                value: "{{ domainEntity }}/Mapper"
+            modelMethod:
+                value: "map{{ domainEntity }}EntityTo{{ domainEntity }}Transfer"
+            input:
+                value:
+                    - "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }} ${{ domainEntity | lcfirst }}Entity"
+                    - "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer"
+            body:
+                value: "return ${{ domainEntity | lcfirst }}Transfer->fromArray(${{ domainEntity | lcfirst }}Entity->toArray(), true);"
+
+    - AddZedDomainEntityMethod:
+        arguments:
+            layer:
+                value: Persistence
+            className:
+                value: "{{ domainEntity }}Mapper"
+            subDirectory:
+                value: "{{ domainEntity }}/Mapper"
+            modelMethod:
+                value: "map{{ domainEntity }}EntityCollectionTo{{ domainEntity }}CollectionResponseTransfer"
+            input:
+                value:
+                    - "\\Propel\\Runtime\\Collection\\ObjectCollection|\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}[] ${{ domainEntity | lcfirst }}EntityCollection"
+                    - "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer ${{ domainEntity | lcfirst }}CollectionResponseTransfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionResponseTransfer"
+            body:
+                value:
+                    - "foreach (${{ domainEntity | lcfirst }}EntityCollection as ${{ domainEntity | lcfirst }}Entity) {"
+                    - "    ${{ domainEntity | lcfirst }}CollectionResponseTransfer->add{{ domainEntity }}($this->map{{ domainEntity }}EntityTo{{ domainEntity }}Transfer(${{ domainEntity | lcfirst }}Entity, new {{ domainEntity }}Transfer()));"
+                    - "}"
+                    - ""
+                    - "return ${{ domainEntity | lcfirst }}CollectionResponseTransfer;"
+
+    - AddZedDomainEntityPersistenceFactoryMethod:
+        arguments:
+            fqcnClassName:
+                value: "\\{{ organization }}\\{{ application }}\\{{ module }}\\Persistence\\Propel\\Mapper\\{{ domainEntity }}Mapper"
+            factoryMethod:
+                value: "create{{ domainEntity }}Mapper"
+            output:
+                value: "\\{{ organization }}\\{{ application }}\\{{ module }}\\Persistence\\Propel\\Mapper\\{{ domainEntity }}MapperInterface"
+            body:
+                value: "return new \\{{ organization }}\\{{ application }}\\{{ module }}\\Persistence\\Propel\\Mapper\\{{ domainEntity }}Mapper();"
