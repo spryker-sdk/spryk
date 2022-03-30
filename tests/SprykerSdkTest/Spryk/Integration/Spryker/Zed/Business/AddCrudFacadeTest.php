@@ -261,4 +261,17 @@ class AddCrudFacadeTest extends Unit
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapCreateValidator', 'validateCollection');
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapCreateValidator', 'validateCollectionTransactional');
     }
+
+    /**
+     * @return void
+     */
+    public function testPersistenceFactoryContainsMethods(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--domainEntity' => 'ZipZap',
+        ]);
+
+        $this->tester->assertClassHasMethod(ClassName::ZED_PERSISTENCE_FACTORY, 'createZipZapQuery');
+    }
 }

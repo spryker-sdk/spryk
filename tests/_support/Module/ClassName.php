@@ -282,6 +282,11 @@ interface ClassName
     /**
      * @var string
      */
+    public const ZED_PERSISTENCE_FACTORY = 'Spryker\Zed\FooBar\Persistence\FooBarPersistenceFactory';
+
+    /**
+     * @var string
+     */
     public const ZED_ENTITY_MANAGER = 'Spryker\Zed\FooBar\Persistence\FooBarEntityManager';
 
     /**
