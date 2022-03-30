@@ -274,4 +274,51 @@ class AddCrudFacadeTest extends Unit
 
         $this->tester->assertClassHasMethod(ClassName::ZED_PERSISTENCE_FACTORY, 'createZipZapQuery');
     }
+
+    /**
+     * @return void
+     */
+    public function testPersistenceEntityManagerExists(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--domainEntity' => 'ZipZap',
+        ]);
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Persistence/FooBarEntityManager.php',
+        );
+
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\FooBarEntityManager', 'createZipZap');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\FooBarEntityManager', 'deleteZipZap');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\FooBarEntityManager', 'setZipZapIsActiveFalse');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\FooBarEntityManager', 'applyZipZapDeleteFilters');
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Persistence/FooBarEntityManagerInterface.php',
+        );
+
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\FooBarEntityManagerInterface', 'createZipZap');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\FooBarEntityManagerInterface', 'deleteZipZap');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\FooBarEntityManagerInterface', 'setZipZapIsActiveFalse');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\FooBarEntityManagerInterface', 'applyZipZapDeleteFilters');
+    }
+
+    /**
+     * @return void
+     */
+    public function testPersistenceEntityManagerFactoryExists(): void
+    {
+        $this->tester->run($this, [
+            '--module' => 'FooBar',
+            '--domainEntity' => 'ZipZap',
+        ]);
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Persistence/FooBarPersistenceFactory.php',
+        );
+    }
 }
