@@ -439,3 +439,9 @@ postSpryks:
                 value: "string"
             body:
                 value: "return ${{ domainEntity | lcfirst}}Transfer->getId{{ domainEntity }}();"
+    - AddZedBusinessFacadeTest:
+        arguments:
+            template:
+                value: "Zed/Business/CrudFacadeTest.php.twig"
+            targetFilename:
+                value: "{{ domainEntity }}CrudFacade"

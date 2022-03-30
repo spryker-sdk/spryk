@@ -9,6 +9,10 @@ arguments:
     organization:
         inherit: true
         default: Spryker
+        
+    domainEntity:
+        isOptional: true
+        inherit: true
 
     template:
         value: Zed/Business/ZedBusinessFacadeTest.php.twig
