@@ -10,9 +10,6 @@ arguments:
         inherit: true
         default: Spryker
 
-    domainEntity:
-        inherit: true
-
     subDirectory:
         inherit: true
         isOptional: true
