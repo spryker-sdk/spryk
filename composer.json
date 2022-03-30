@@ -109,8 +109,9 @@
         }
     },
     "bin": [
-        "bin/spryk-run",
-        "bin/spryk-dump",
-        "bin/spryk-build"
+        "spryk-build",
+        "spryk-dump",
+        "spryk-run",
+        "spryk.phar"
     ]
 }
