@@ -30,6 +30,10 @@ postSpryks:
     # Add transfers
     - AddSharedDomainEntityFetchingTransferDefinition
     - AddSharedDomainEntityManipulationTransferDefinition
+    - AddDomainEntityValidator:
+          arguments:
+              type:
+                  value: "Create"
     - AddZedPersistenceRepositoryMethod:
         arguments:
             repositoryMethod:
@@ -269,6 +273,11 @@ postSpryks:
                       value: "is_active"
                   propertyType:
                       value: "BOOLEAN"
+    # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
+    -   AddDataBuilderDefinition:
+            arguments:
+                name:
+                    value: "{{ domainEntity }}"
     - AddZedBusinessFactoryMethod:
           arguments:
               factoryMethod:
@@ -397,8 +406,3 @@ postSpryks:
                   value: "PLUGINS_{{ domainEntity | camelCaseToUnderscore | upper }}_CREATE_VALIDATOR"
               output:
                   value: "\\{{ organization }}\\Zed\\{{ module }}Extension\\Dependency\\{{ domainEntity }}\\Validator\\{{ domainEntity }}ValidatorRulePluginInterface[]"
-    # Add add{{ domainEntity }}DataBuilderDefinition for the tests transfer builder
-    -   AddDataBuilderDefinition:
-            arguments:
-                name:
-                    value: "{{ domainEntity }}"
