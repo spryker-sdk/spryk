@@ -1,0 +1,11 @@
+${{ domainEntity | lcfirst }}Query = $this->getFactory()
+    ->create{{ domainEntity }}Query();
+
+${{ domainEntity | lcfirst }}Query = $this->applyPaymentMethodDeleteFilter(${{ domainEntity | lcfirst }}Query, ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);
+${{ domainEntity | lcfirst }}Entities = ${{ domainEntity | lcfirst }}Query->find();
+
+foreach (${{ domainEntity | lcfirst }}Entities as ${{ domainEntity | lcfirst }}Entity) {
+    ${{ domainEntity | lcfirst }}Entity->setIsActive(false);
+}
+
+${{ domainEntity | lcfirst }}Entities->save();

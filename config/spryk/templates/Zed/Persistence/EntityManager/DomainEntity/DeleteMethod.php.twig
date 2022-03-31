@@ -1,0 +1,5 @@
+${{ domainEntity | lcfirst }}Query = $this->getFactory()
+    ->createPaymentMethodQuery();
+
+${{ domainEntity | lcfirst }}Query = $this->apply{{ domainEntity }}DeleteFilters(${{ domainEntity | lcfirst }}Query, ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer);
+${{ domainEntity | lcfirst }}Query->delete();
