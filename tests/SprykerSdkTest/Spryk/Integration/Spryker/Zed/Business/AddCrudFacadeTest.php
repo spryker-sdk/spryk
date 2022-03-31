@@ -223,27 +223,6 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testValidatorExists(): void
-    {
-        $this->tester->run($this, [
-            '--organization' => 'Spryker',
-            '--module' => 'FooBar',
-            '--domainEntity' => 'ZipZap',
-        ]);
-
-        $this->assertFileExists(
-            $this->tester->getSprykerModuleDirectory()
-            . 'src/Spryker/Zed/FooBar/Business/Validator/ZipZap/ZipZapValidator.php',
-        );
-
-        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validate');
-        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validateCollection');
-        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validateCollectionTransactional');
-    }
-
-    /**
-     * @return void
-     */
     public function testCreateValidatorExists(): void
     {
         $this->tester->run($this, [
@@ -260,6 +239,48 @@ class AddCrudFacadeTest extends Unit
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapCreateValidator', 'validate');
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapCreateValidator', 'validateCollection');
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapCreateValidator', 'validateCollectionTransactional');
+    }
+
+    /**
+     * @return void
+     */
+    public function testUpdateValidatorExists(): void
+    {
+        $this->tester->run($this, [
+            '--organization' => 'Spryker',
+            '--module' => 'FooBar',
+            '--domainEntity' => 'ZipZap',
+        ]);
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/Validator/ZipZap/ZipZapUpdateValidator.php',
+        );
+
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapUpdateValidator', 'validate');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapUpdateValidator', 'validateCollection');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapUpdateValidator', 'validateCollectionTransactional');
+    }
+
+    /**
+     * @return void
+     */
+    public function testValidatorExists(): void
+    {
+        $this->tester->run($this, [
+            '--organization' => 'Spryker',
+            '--module' => 'FooBar',
+            '--domainEntity' => 'ZipZap',
+        ]);
+
+        $this->assertFileExists(
+            $this->tester->getSprykerModuleDirectory()
+            . 'src/Spryker/Zed/FooBar/Business/Validator/ZipZap/ZipZapValidator.php',
+        );
+
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validate');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validateCollection');
+        $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Business\Validator\ZipZap\ZipZapValidator', 'validateCollectionTransactional');
     }
 
     /**

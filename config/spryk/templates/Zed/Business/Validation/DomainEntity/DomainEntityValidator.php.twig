@@ -120,13 +120,13 @@ class {{ domainEntity }}{{ type }}Validator implements {{ domainEntity }}Validat
      *
      * @return \Generated\Shared\Transfer\ErrorTransfer[]
      */
-    protected function executeValidationRulePlugins(\Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer, array $errorTransfers): array
+    protected function executeValidationRulePlugins(\Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer, array $errorTransfers): array
     {
         foreach ($this->validationRules as $validationRule) {
-            $errors = $validationRule->validate(${{ domainEntity }}Transfer);
+            $errors = $validationRule->validate(${{ domainEntity | lcfirst }}Transfer);
         }
 
-        return $this->addErrorsToErrorTransfers(${{ domainEntity }}Transfer, $errors, $errorTransfers);
+        return $this->addErrorsToErrorTransfers(${{ domainEntity | lcfirst }}Transfer, $errors, $errorTransfers);
     }
 
     /**
@@ -138,9 +138,9 @@ class {{ domainEntity }}{{ type }}Validator implements {{ domainEntity }}Validat
      *
      * @return \Generated\Shared\Transfer\ErrorTransfer[]
      */
-    protected function addErrorsToErrorCollection(\Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity }}Transfer, array $errors, array $errorTransfers): array
+    protected function addErrorsToErrorCollection(\Generated\Shared\Transfer\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer, array $errors, array $errorTransfers): array
     {
-        $identifier = $this->identifierBuilder->buildIdentifier(${{ domainEntity }}Transfer);
+        $identifier = $this->identifierBuilder->buildIdentifier(${{ domainEntity | lcfirst }}Transfer);
 
         foreach ($errors as $error) {
             $errorTransfers[] = (new ErrorTransfer())
