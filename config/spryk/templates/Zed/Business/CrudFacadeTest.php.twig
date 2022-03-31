@@ -1,0 +1,316 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+namespace {{ organization }}Test\Zed\{{ module }}\Business;
+
+use Codeception\Test\Unit;
+use Generated\Shared\Transfer\{{ domainEntity }}CollectionRequestTransfer;
+
+/**
+ * Auto-generated group annotations
+ *
+ * @group {{ organization }}Test
+ * @group Zed
+ * @group {{ module }}
+ * @group Business
+ * @group Facade
+ * @group {{ domainEntity }}CrudFacadeTest
+ * Add your own group annotations below this line
+ */
+class {{ domainEntity }}CrudFacadeTest extends Unit
+{
+    /**
+     * @var \{{ organization }}Test\Zed\{{ module }}\{{ module }}BusinessTester
+     */
+    protected $tester;
+
+    /**
+     * Test ensures to always get a Collection back even if no entity was found.
+     *
+     * @return void
+     */
+    public function testGet{{ domainEntity }}ReturnsEmptyCollectionWhenNoEntityMatchedByCriteria(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}TransferWithActiveFalsePersisted();
+        ${{ domainEntity | lcfirst }}CriteriaTransfer = $this->tester->have{{ domainEntity }}CriteriaTransferWithIsActiveTrueCriteria();
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionTransfer = $this->tester->getFacade()->get{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CriteriaTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionIsEmpty(${{ domainEntity | lcfirst }}CollectionTransfer);
+    }
+
+    /**
+     * Test ensures to get a Collection with entities back when criteria was matching.
+     *
+     * @return void
+     */
+    public function testGet{{ domainEntity }}ReturnsCollectionWithOne{{ domainEntity }}EntityWhenCriteriaMatched(): void
+    {
+        // Arrange
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CriteriaTransfer = $this->tester->have{{ domainEntity }}CriteriaTransferWithIsActiveFalseCriteria();
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionTransfer = $this->tester->getFacade()->get{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CriteriaTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionContainsTransferWithId(${{ domainEntity | lcfirst }}CollectionTransfer, ${{ domainEntity | lcfirst }}Transfer);
+    }
+
+    /**
+     * Test ensures that expanders are applied to found entities.
+     *
+     * @return void
+     */
+    public function testGet{{ domainEntity }}CollectionReturnsCollectionWithOneExpanded{{ domainEntity }}Entity(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}ExpanderPluginSetIsActiveFalseEnabled(); // This will set the loaded isActive:true entity to `false` to see if expanders are working
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+
+        ${{ domainEntity | lcfirst }}CriteriaTransfer = $this->tester->have{{ domainEntity }}CriteriaTransferWithIsActiveFalseCriteria();
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionTransfer = $this->tester->getFacade()->get{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CriteriaTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionContainsTransferWithId(${{ domainEntity | lcfirst }}CollectionTransfer, ${{ domainEntity | lcfirst }}Transfer);
+    }
+
+    /**
+     * @return void
+     */
+    public function testCreate{{ domainEntity }}CollectionReturnsCollectionWithOne{{ domainEntity }}EntityWhenEntityWasSaved(): void
+    {
+        // Arrange
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->create{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsTransferWithId(${{ domainEntity | lcfirst }}CollectionResponseTransfer, ${{ domainEntity | lcfirst }}Transfer);
+    }
+
+    /**
+     * Tests that pre-save plugins are applied to entities.
+     *
+     * @return void
+     */
+    public function testCreate{{ domainEntity }}CollectionAppliesPreSavePlugins(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}CreatePreSavePluginSetIsActiveFalseEnabled(); // This will set the loaded isActive:true entity to `false` to see if pre save plugins are working
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->create{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        ${{ domainEntity | lcfirst }}Transfer->setIsActive(false); // Created transfer was isActive:true before plugin was applied.
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsTransferWithId(${{ domainEntity | lcfirst }}CollectionResponseTransfer, ${{ domainEntity | lcfirst }}Transfer);
+    }
+
+    /**
+     * Tests that pre-save plugins are applied to entities.
+     *
+     * @return void
+     */
+    public function testCreate{{ domainEntity }}CollectionAppliesPostSavePlugins(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}CreatePostSavePluginSetIsActiveFalseEnabled(); // This will set the loaded isActive:true entity to `false` to see if pre save plugins are working
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->create{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        ${{ domainEntity | lcfirst }}Transfer->setIsActive(false); // Created transfer was isActive:true before plugin was applied.
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsTransferWithId(${{ domainEntity | lcfirst }}CollectionResponseTransfer, ${{ domainEntity | lcfirst }}Transfer);
+    }
+
+    /**
+     * Tests that entities are validated with internal ValidatorRuleInterface.
+     *
+     * @return void
+     */
+    public function testCreate{{ domainEntity }}CollectionReturnsErroredCollectionResponseWhenValidationRuleFailed(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}AlwaysFailingCreateValidatorRuleEnabled(); // This will always return a validation error
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->create{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsFailedValidationRuleError(${{ domainEntity | lcfirst }}CollectionResponseTransfer);
+    }
+
+    /**
+     * Tests that entities are validated with external ValidatorRulePluginInterface.
+     *
+     * @return void
+     */
+    public function testCreate{{ domainEntity }}CollectionReturnsErroredCollectionResponseWhenValidationRulePluginFailed(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}AlwaysFailingCreateValidatorRulePluginEnabled(); // This will always return a validation error
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->create{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsFailedValidationRuleError(${{ domainEntity | lcfirst }}CollectionResponseTransfer);
+    }
+
+    /**
+     * @return void
+     */
+    public function testUpdate{{ domainEntity }}CollectionReturnsCollectionWithOne{{ domainEntity }}EntityWhenEntityWasSaved(): void
+    {
+        // Arrange
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->update{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsTransferWithId(${{ domainEntity | lcfirst }}CollectionResponseTransfer, ${{ domainEntity | lcfirst }}Transfer);
+    }
+
+    /**
+     * Tests that pre-save plugins are applied to entities.
+     *
+     * @return void
+     */
+    public function testUpdate{{ domainEntity }}CollectionAppliesPreSavePlugins(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}UpdatePreSavePluginSetIsActiveFalseEnabled(); // This will set the loaded isActive:true entity to `false` to see if pre save plugins are working
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->update{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        ${{ domainEntity | lcfirst }}Transfer->setIsActive(false); // Created transfer was isActive:true before plugin was applied.
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsTransferWithId(${{ domainEntity | lcfirst }}CollectionResponseTransfer, ${{ domainEntity | lcfirst }}Transfer);
+    }
+
+    /**
+     * Tests that pre-save plugins are applied to entities.
+     *
+     * @return void
+     */
+    public function testUpdate{{ domainEntity }}CollectionAppliesPostSavePlugins(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}UpdatePostSavePluginSetIsActiveFalseEnabled(); // This will set the loaded isActive:true entity to `false` to see if pre save plugins are working
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->update{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        ${{ domainEntity | lcfirst }}Transfer->setIsActive(false); // Created transfer was isActive:true before plugin was applied.
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsTransferWithId(${{ domainEntity | lcfirst }}CollectionResponseTransfer, ${{ domainEntity | lcfirst }}Transfer);
+    }
+
+    /**
+     * Tests that entities are validated with internal ValidatorRuleInterface.
+     *
+     * @return void
+     */
+    public function testUpdate{{ domainEntity }}CollectionReturnsErroredCollectionResponseWhenValidationRuleFailed(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}AlwaysFailingUpdateValidatorRuleEnabled(); // This will always return a validation error
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->update{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsFailedValidationRuleError(${{ domainEntity | lcfirst }}CollectionResponseTransfer);
+    }
+
+    /**
+     * Tests that entities are validated with external ValidatorRulePluginInterface.
+     *
+     * @return void
+     */
+    public function testUpdate{{ domainEntity }}CollectionReturnsErroredCollectionResponseWhenValidationRulePluginFailed(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}AlwaysFailingUpdateValidatorRulePluginEnabled(); // This will always return a validation error
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer = new {{ domainEntity }}CollectionRequestTransfer();
+        ${{ domainEntity | lcfirst }}CollectionRequestTransfer->add{{ domainEntity }}(${{ domainEntity | lcfirst }}Transfer);
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->update{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}CollectionRequestTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsFailedValidationRuleError(${{ domainEntity | lcfirst }}CollectionResponseTransfer);
+    }
+
+    /**
+     * Test ensures to always get a Collection back even if no entity was deleted.
+     *
+     * @return void
+     */
+    public function testDelete{{ domainEntity }}ReturnsEmptyCollectionWhenNoEntityMatchedByCriteria(): void
+    {
+        // Arrange
+        $this->tester->have{{ domainEntity }}TransferWithActiveFalsePersisted();
+        ${{ domainEntity | lcfirst }}DeleteCriteriaTransfer = $this->tester->have{{ domainEntity }}DeleteCriteriaTransferWithIsActiveTrueCriteria();
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->delete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}DeleteCriteriaTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionResponseIsEmpty(${{ domainEntity | lcfirst }}CollectionResponseTransfer);
+    }
+
+    /**
+     * Test ensures to get a Collection with deleted entities back when criteria was matching.
+     *
+     * @return void
+     */
+    public function testDelete{{ domainEntity }}ReturnsCollectionWithOne{{ domainEntity }}EntityWhenCriteriaMatched(): void
+    {
+        // Arrange
+        ${{ domainEntity | lcfirst }}Transfer = $this->tester->have{{ domainEntity }}TransferWithActiveTruePersisted();
+        ${{ domainEntity | lcfirst }}DeleteCriteriaTransfer = $this->tester->have{{ domainEntity }}CriteriaTransferWithIsActiveFalseCriteria();
+
+        // Act
+        ${{ domainEntity | lcfirst }}CollectionResponseTransfer = $this->tester->getFacade()->delete{{ domainEntity }}Collection(${{ domainEntity | lcfirst }}DeleteCriteriaTransfer);
+
+        // Assert
+        $this->tester->assert{{ domainEntity }}CollectionResponseContainsTransferWithId(${{ domainEntity | lcfirst }}CollectionResponseTransfer, ${{ domainEntity | lcfirst }}Transfer);
+    }
+}
