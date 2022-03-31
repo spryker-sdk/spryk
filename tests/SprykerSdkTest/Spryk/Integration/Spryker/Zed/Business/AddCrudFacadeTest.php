@@ -317,7 +317,6 @@ class AddCrudFacadeTest extends Unit
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\ZipZap\Mapper\ZipZapMapper', 'mapZipZapEntityToZipZapTransfer');
         $this->tester->assertClassHasMethod('Spryker\Zed\FooBar\Persistence\ZipZap\Mapper\ZipZapMapper', 'mapZipZapEntityCollectionToZipZapCollectionResponseTransfer');
 
-
         $this->assertFileExists(
             $this->tester->getSprykerModuleDirectory()
             . 'src/Spryker/Zed/FooBar/Persistence/ZipZap/Mapper/ZipZapMapperInterface.php',
