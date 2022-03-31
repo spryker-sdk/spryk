@@ -484,7 +484,7 @@ postSpryks:
                 value: Zed/Persistence/EntityManager/DomainEntity/ApplyDeleteFiltersMethod.php.twig
             input:
                 value:
-                    - \Orm\Zed\{{ module }}\Persistence\Spy{{ domainEntity }}Query ${{ domainEntity | lcfirst }}Query
-                    - \Generated\Shared\Transfer\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer
+                    - "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query ${{ domainEntity | lcfirst }}Query"
+                    - "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer"
             output:
-                value: "void"
+                value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
