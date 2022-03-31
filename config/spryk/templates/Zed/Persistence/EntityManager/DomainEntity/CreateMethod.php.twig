@@ -1,0 +1,9 @@
+${{ domainEntity | lcfirst }}Entity = $this->getFactory()
+    ->create{{ domainEntity }}Mapper()
+    ->map{{ domainEntity }}TransferTo{{ domainEntity }}Entity(${{ domainEntity | lcfirst }}Transfer, (new Spy{{ domainEntity }}()));
+
+${{ domainEntity | lcfirst }}Entity->save();
+
+return $this->getFactory()
+    ->create{{ domainEntity }}Mapper()
+    ->map{{ domainEntity }}EntityTo{{ domainEntity }}Transfer(${{ domainEntity | lcfirst }}Entity, (new {{ domainEntity }}Transfer()));

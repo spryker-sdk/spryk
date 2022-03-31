@@ -445,3 +445,58 @@ postSpryks:
                 value: "Zed/Business/CrudFacadeTest.php.twig"
             targetFilename:
                 value: "{{ domainEntity }}CrudFacade"
+
+    # Add {{ domainEntity }}EntityManager into Persistence layer
+    - AddZedPersistenceEntityManagerMethod:
+        arguments:
+            domainEntity:
+                inherit: true
+            entityManagerMethod:
+                value: "create{{ domainEntity }}"
+            body:
+                value: Zed/Persistence/EntityManager/DomainEntity/CreateMethod.php.twig
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer ${{ domainEntity | lcfirst }}Transfer"
+            output:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}Transfer"
+
+    - AddZedPersistenceEntityManagerMethod:
+        arguments:
+          domainEntity:
+              inherit: true
+          entityManagerMethod:
+              value: "delete{{ domainEntity }}"
+          body:
+              value: Zed/Persistence/EntityManager/DomainEntity/DeleteMethod.php.twig
+          input:
+              value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer"
+          output:
+              value: "void"
+
+    - AddZedPersistenceEntityManagerMethod:
+        arguments:
+            domainEntity:
+                inherit: true
+            entityManagerMethod:
+                value: "set{{ domainEntity }}IsActiveFalse"
+            input:
+                value: "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer"
+            output:
+                value: "void"
+            body:
+                value: Zed/Persistence/EntityManager/DomainEntity/SetIsActiveFalseMethod.php.twig
+
+    - AddZedPersistenceEntityManagerMethod:
+        arguments:
+            domainEntity:
+                inherit: true
+            entityManagerMethod:
+                value: "apply{{ domainEntity }}DeleteFilters"
+            body:
+                value: Zed/Persistence/EntityManager/DomainEntity/ApplyDeleteFiltersMethod.php.twig
+            input:
+                value:
+                    - "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query ${{ domainEntity | lcfirst }}Query"
+                    - "\\Generated\\Shared\\Transfer\\{{ domainEntity }}CollectionDeleteCriteriaTransfer ${{ domainEntity | lcfirst }}CollectionDeleteCriteriaTransfer"
+            output:
+                value: "\\Orm\\Zed\\{{ module }}\\Persistence\\Spy{{ domainEntity }}Query"
