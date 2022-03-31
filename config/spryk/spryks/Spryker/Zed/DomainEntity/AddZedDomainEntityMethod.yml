@@ -48,7 +48,11 @@ arguments:
         value: "{{ organization }}\\Zed\\{{ module }}\\{{ layer }}{% if subDirectory %}\\{{ subDirectory | convertToClassNameFragment }}{% endif %}\\{{ className }}"
 
 preSpryks:
-    - AddZedDomainEntity
+    - AddZedDomainEntity:
+        arguments:
+            implements:
+                value:
+                    - "{{ organization }}\\Zed\\{{ module }}\\{{ layer }}{% if subDirectory %}\\{{ subDirectory | convertToClassNameFragment }}{% endif %}\\{{ className }}Interface"
 
 postSpryks:
     - AddZedDomainEntityInterfaceMethod
