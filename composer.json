@@ -17,9 +17,9 @@
         "sort-packages": true
     },
     "bin": [
-        "spryk-build",
-        "spryk-dump",
-        "spryk-run",
+        "bin/spryk-build",
+        "bin/spryk-dump",
+        "bin/spryk-run",
         "spryk.phar"
     ]
 }

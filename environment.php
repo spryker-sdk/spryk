@@ -13,7 +13,6 @@ if (file_exists($autoloadPath)) {
 
     if (class_exists(Config::class) && interface_exists(KernelConstants::class)) {
         Environment::initialize();
-        define('SPRYKER_SPRYK_CACHE_PATH', Config::get('SPRYK_CACHE_PATH', sprintf("%s/%s/", sys_get_temp_dir(), 'spryk')));
         define('SPRYKER_PROJECT_NAMESPACE', Config::get(KernelConstants::PROJECT_NAMESPACE, ''));
         define('SPRYKER_PROJECT_NAMESPACES', implode(',', Config::get(KernelConstants::PROJECT_NAMESPACES, '')));
         define('SPRYKER_CORE_NAMESPACES', Config::get(KernelConstants::CORE_NAMESPACES, ''));
