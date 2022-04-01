@@ -38,3 +38,26 @@ Examples:
 
 When you run a Spryk, the console will ask you for all needed arguments to build the Spryk. You also have the ability to pass all known arguments on the console by using `--{argument name}={argument value}`.
 
+# Extending Spryk
+
+## Adding Spryks
+
+You can add your own Spryks by creating a Spryk definition in your projects `config/spryk/spryks/` directory.
+
+Spryk definitions in this directory will be found by the tool and can be executed as usually.
+
+## Adding Spryk templates
+
+You can add your own Spryk templates by creating a template in your projects `config/spryk/templates/` directory.
+
+Spryk templates in this directory will be found by the tool and can be used in your Spryks.
+
+# Configuration
+
+Spryks need some project related configurations. These are passed automatically to the tool.
+
+The following configurations will be passed to the Spryk tool:
+
+- `Spryker\Shared\Kernel\KernelConstants::PROJECT_NAMESPACE`
+- `Spryker\Shared\Kernel\KernelConstants::PROJECT_NAMESPACES`
+- `Spryker\Shared\Kernel\KernelConstants::CORE_NAMESPACES`

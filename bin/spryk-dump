@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'environment.php';
+
+Phar::loadPhar(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'spryk.phar', 'spryk.phar');
+
+require 'phar://spryk.phar/bin/spryk-dump';
