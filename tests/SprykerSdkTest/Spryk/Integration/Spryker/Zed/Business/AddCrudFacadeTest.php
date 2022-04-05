@@ -152,18 +152,23 @@ class AddCrudFacadeTest extends Unit
         $this->assertFileExists(
             $this->tester->getSprykerModuleDirectory() . 'tests/SprykerTest/Zed/FooBar/_support/Helper/ZipZapCrudHelper.php',
         );
+
+        $this->assertPluginsExist();
+        $this->assertFacadeContainsCrudMethods();
+        $this->assertRepositoryContainsCrudMethods();
+        $this->assertCreateValidatorExists();
+        $this->assertUpdateValidatorExists();
+        $this->assertValidatorExists();
+        $this->assertPersistenceFactoryContainsMethods();
+        $this->assertPersistenceEntityManagerExists();
+        $this->assertPersistenceEntityManagerFactoryExists();
     }
 
     /**
      * @return void
      */
-    public function testPluginsExist(): void
+    protected function assertPluginsExist(): void
     {
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--domainEntity' => 'ZipZap',
-        ]);
-
         $this->assertFileExists(
             $this->tester->getSprykerModuleDirectory()
             . 'src/Spryker/Zed/FooBarExtension/Dependency/ZipZap/Expander/ZipZapExpanderPluginInterface.php',
@@ -188,7 +193,7 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testFacadeContainsCrudMethods(): void
+    protected function assertFacadeContainsCrudMethods(): void
     {
         $this->tester->run($this, [
             '--organization' => 'Spryker',
@@ -205,7 +210,7 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testRepositoryContainsCrudMethods(): void
+    protected function assertRepositoryContainsCrudMethods(): void
     {
         $this->tester->run($this, [
             '--organization' => 'Spryker',
@@ -223,7 +228,7 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testCreateValidatorExists(): void
+    protected function assertCreateValidatorExists(): void
     {
         $this->tester->run($this, [
             '--organization' => 'Spryker',
@@ -244,7 +249,7 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testUpdateValidatorExists(): void
+    protected function assertUpdateValidatorExists(): void
     {
         $this->tester->run($this, [
             '--organization' => 'Spryker',
@@ -265,7 +270,7 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testValidatorExists(): void
+    protected function assertValidatorExists(): void
     {
         $this->tester->run($this, [
             '--organization' => 'Spryker',
@@ -286,13 +291,8 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testPersistenceFactoryContainsMethods(): void
+    protected function assertPersistenceFactoryContainsMethods(): void
     {
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--domainEntity' => 'ZipZap',
-        ]);
-
         $this->tester->assertClassHasMethod(ClassName::ZED_PERSISTENCE_FACTORY, 'createZipZapQuery');
         $this->tester->assertClassHasMethod(ClassName::ZED_PERSISTENCE_FACTORY, 'createZipZapMapper');
     }
@@ -300,7 +300,7 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testPersistenceMapperExists(): void
+    protected function assertPersistenceMapperExists(): void
     {
         $this->tester->run($this, [
             '--organization' => 'Spryker',
@@ -330,13 +330,8 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testPersistenceEntityManagerExists(): void
+    protected function assertPersistenceEntityManagerExists(): void
     {
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--domainEntity' => 'ZipZap',
-        ]);
-
         $this->assertFileExists(
             $this->tester->getSprykerModuleDirectory()
             . 'src/Spryker/Zed/FooBar/Persistence/FooBarEntityManager.php',
@@ -361,13 +356,8 @@ class AddCrudFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testPersistenceEntityManagerFactoryExists(): void
+    protected function assertPersistenceEntityManagerFactoryExists(): void
     {
-        $this->tester->run($this, [
-            '--module' => 'FooBar',
-            '--domainEntity' => 'ZipZap',
-        ]);
-
         $this->assertFileExists(
             $this->tester->getSprykerModuleDirectory()
             . 'src/Spryker/Zed/FooBar/Persistence/FooBarPersistenceFactory.php',
