@@ -1,7 +1,7 @@
 {
     "name": "spryker-sdk/spryk",
     "type": "library",
-    "description": "Spryk module",
+    "description": "Spryk library",
     "license": "proprietary",
     "require": {
         "php": ">=7.4"
