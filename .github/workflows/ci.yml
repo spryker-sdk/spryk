@@ -55,3 +55,4 @@ jobs:
         run: |
           php bin/spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
           php bin/spryk-run AddCrudFacade --mode project --organization Pyz --module Ay --domainEntity Entity -n -vvv
+          php bin/spryk-run AddGlueResourceMethodResponse --mode project --organization Pyz --resource=/foo-bars --httpMethod get --httpResponseCode 200 -n -vvv
