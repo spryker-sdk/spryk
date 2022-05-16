@@ -45,9 +45,14 @@ jobs:
       - name: Composer install
         run: composer install --no-interaction -o
 
+      - name: Run build command
+        run: php bin/spryk-build
+
       - name: Run dump command
-        run: php spryk-dump
+        run: php bin/spryk-dump
 
       - name: Run Spryk commands
         run: |
-          php spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
+          php bin/spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
+          php bin/spryk-run AddCrudFacade --mode project --organization Pyz --module Ay --domainEntity Entity -n -vvv
+          php bin/spryk-run AddGlueResourceMethodResponse --mode project --organization Pyz --resource=/foo-bars --httpMethod get --httpResponseCode 200 -n -vvv

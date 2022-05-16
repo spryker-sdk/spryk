@@ -1,6 +1,0 @@
-#!/usr/bin/env php
-<?php
-
-Phar::loadPhar(__DIR__ . '/spryk.phar', 'spryk.phar');
-
-require 'phar://spryk.phar/bin/spryk-run';
