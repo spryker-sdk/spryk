@@ -21,5 +21,10 @@
         "bin/spryk-dump",
         "bin/spryk-run",
         "spryk.phar"
-    ]
+    ],
+    "require-dev": {
+        "spryker/config": "*",
+        "spryker/console": "*",
+        "spryker/kernel": "*"
+    }
 }
