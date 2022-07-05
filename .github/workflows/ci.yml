@@ -10,6 +10,8 @@ on:
 jobs:
   validation:
     runs-on: ubuntu-18.04
+    env:
+        APPLICATION_DEBUG: 1
     strategy:
       fail-fast: false
       matrix:
@@ -53,6 +55,6 @@ jobs:
 
       - name: Run Spryk commands
         run: |
-          APPLICATION_DEBUG=1 php bin/spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
-          APPLICATION_DEBUG=1 php bin/spryk-run AddCrudFacade --mode project --organization Pyz --module Ay --domainEntity Entity -n -vvv
-          APPLICATION_DEBUG=1 php bin/spryk-run AddGlueResourceMethodResponse --mode project --organization Pyz --resource=/foo-bars --httpMethod get --httpResponseCode 200 -n -vvv
+          php bin/spryk-run AddAppRegistry --mode project --organization Pyz --module Ay -n -vvv
+          php bin/spryk-run AddCrudFacade --mode project --organization Pyz --module Ay --domainEntity Entity -n -vvv
+          php bin/spryk-run AddGlueResourceMethodResponse --mode project --organization Pyz --resource=/foo-bars --httpMethod get --httpResponseCode 200 -n -vvv
