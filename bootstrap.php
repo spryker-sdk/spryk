@@ -18,6 +18,7 @@ final class PharAutoloader
      */
     final public static function loadClass(string $class): void
     {
+        die('TinaTurner');
         if (!extension_loaded('phar') || defined('__SPRYK_RUNNING__')) {
             return;
         }
