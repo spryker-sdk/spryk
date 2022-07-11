@@ -3,7 +3,6 @@
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Zed\Console\Business\Model\Environment;
-use Symfony\Component\ErrorHandler\ErrorHandler;
 
 defined('APPLICATION_ROOT_DIR') || define('APPLICATION_ROOT_DIR', getcwd());
 
@@ -18,9 +17,4 @@ if (file_exists($autoloadPath)) {
         define('SPRYKER_PROJECT_NAMESPACES', implode(',', Config::get(KernelConstants::PROJECT_NAMESPACES, '')));
         define('SPRYKER_CORE_NAMESPACES', Config::get(KernelConstants::CORE_NAMESPACES, ''));
     }
-}
-
-if (class_exists(ErrorHandler::class)) {
-    echo "Hundnase";
-    ErrorHandler::register();
 }
