@@ -21,5 +21,6 @@ if (file_exists($autoloadPath)) {
 }
 
 if (class_exists(ErrorHandler::class)) {
+    echo "Hundnase";
     ErrorHandler::register();
 }
