@@ -10,8 +10,6 @@ on:
 jobs:
   validation:
     runs-on: ubuntu-18.04
-    env:
-        APPLICATION_DEBUG: 1
     strategy:
       fail-fast: false
       matrix:
@@ -46,6 +44,9 @@ jobs:
 
       - name: Composer install
         run: composer install --no-interaction -o
+
+      - name: Set ErrorHandler
+        run: composer require errors/exceptions -o
 
       - name: Run build command
         run: php bin/spryk-build
