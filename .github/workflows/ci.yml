@@ -49,7 +49,7 @@ jobs:
         run: composer install --no-interaction -o
 
       - name: Install ErrorHandler
-        run: composer require symfony/error-handler -o
+        run: composer require errors/exceptions -o
 
       - name: Run build command
         run: php bin/spryk-build
