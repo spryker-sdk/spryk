@@ -47,8 +47,11 @@ jobs:
       - name: Composer install
         run: composer install --no-interaction -o
 
-      - name: ErrorHandler
-        run: composer require errors/exceptions -o
+      - name: Install ErrorHandler
+        run: composer require symfony/error-handler -o
+
+      - name: Enable ErrorHandler
+        run: php ci-error-handler.php
 
       - name: Run build command
         run: php bin/spryk-build
