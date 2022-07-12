@@ -28,6 +28,15 @@ jobs:
             php-version: ${{ matrix.php-version }}
             extensions: mbstring, intl, pdo_mysql
 
+      - name: Run PHP code
+        shell: php {0}
+        run: |
+            <?php
+
+            set_error_handler(function($errno, $errstr, $errfile, $errline) {
+                throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+            });
+
       - name: Validate composer.json and composer.lock
         run: composer validate
 
