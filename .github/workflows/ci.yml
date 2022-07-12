@@ -10,8 +10,6 @@ on:
 jobs:
   validation:
     runs-on: ubuntu-18.04
-    env:
-        APPLICATION_DEBUG: 1
     strategy:
       fail-fast: false
       matrix:
