@@ -12,5 +12,7 @@ nbproject/
 *.AppleDB
 *.AppleDesktop
 
+generated/*
+
 # tooling
 composer.lock
