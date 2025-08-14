@@ -45,7 +45,7 @@ jobs:
             restore-keys: ${{ runner.os }}-composer-
 
       - name: Composer install
-        run: composer install --no-interaction -o
+        run: composer install --no-interaction
 
       - name: Install ErrorHandler
         run: composer require errors/exceptions -o
